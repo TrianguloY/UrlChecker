@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.UrlUtilities;
+import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
 public class OpenModule extends BaseModule implements View.OnClickListener {
 
@@ -42,6 +42,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener {
 
     private void openUrl() {
         UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);
+        cntx.finish();
     }
 
     private void shareUrl() {

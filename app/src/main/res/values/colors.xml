@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="good">#8076FF03</color>
+    <color name="warning">#80FF9100</color>
+    <color name="bad">#80FF1744</color>
+</resources>

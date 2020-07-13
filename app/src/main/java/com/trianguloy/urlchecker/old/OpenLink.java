@@ -2,7 +2,6 @@ package com.trianguloy.urlchecker.old;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -10,7 +9,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -20,12 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.UrlUtilities;
+import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OpenLink extends Activity {
@@ -173,13 +172,15 @@ public class OpenLink extends Activity {
                 break;
             case R.id.txt_result:
                 if (result != null) {
-                    openUrlInBrowser(result.scanUrl);
+                    UrlUtilities.openUrlRemoveThis(result.scanUrl, this);
+                    finish();
                 }
                 break;
             
             //DEBUG: just in case
             case R.id.url:
-                openUrlInBrowser(url);
+                UrlUtilities.openUrlRemoveThis(url, this);
+                finish();
                 break;
         }
     }
@@ -207,7 +208,7 @@ public class OpenLink extends Activity {
     
     //https://stackoverflow.com/questions/1884230/urlconnection-doesnt-follow-redirect
     private void followRedirect() {
-        
+
         new Thread(new Runnable() {
             public void run() {
                 String message = null;
@@ -235,7 +236,7 @@ public class OpenLink extends Activity {
                     }
                 }
                 _createBrowsers();
-                
+
                 final String finalMessage = message;
                 runOnUiThread(new Runnable() {
                     public void run() {
@@ -248,8 +249,8 @@ public class OpenLink extends Activity {
                 });
             }
         }).start();
-        
-        
+
+
     }
     
     private void createBrowsers() {
@@ -278,27 +279,6 @@ public class OpenLink extends Activity {
             }
         }
     }
-    
-    
-    private void openUrlInBrowser(String url) {
-        Intent baseIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        PackageManager packageManager = getPackageManager();
-        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(baseIntent, Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0);
-        List<Intent> intents = new ArrayList<>();
-        for (ResolveInfo resolveInfo : resolveInfos) {
-            if (!resolveInfo.activityInfo.packageName.equals(getPackageName())) {
-                Intent intent = new Intent(baseIntent);
-                intent.setPackage(resolveInfo.activityInfo.packageName);
-                intents.add(intent);
-            }
-        }
-        
-        Intent chooserIntent = Intent.createChooser(intents.remove(0), "Choose app");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[intents.size()]));
-        
-        startActivity(chooserIntent);
-        
-        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-        finish();
-    }
+
+
 }

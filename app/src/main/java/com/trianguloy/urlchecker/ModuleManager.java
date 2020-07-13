@@ -7,6 +7,7 @@ import com.trianguloy.urlchecker.modules.AsciiModule;
 import com.trianguloy.urlchecker.modules.BaseModule;
 import com.trianguloy.urlchecker.modules.OpenModule;
 import com.trianguloy.urlchecker.modules.RedirectModule;
+import com.trianguloy.urlchecker.modules.VirusTotalModule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ public class ModuleManager {
     static {
         modules.put("ascii", AsciiModule.class);
         modules.put("redirect", RedirectModule.class);
+        modules.put("virustotal", VirusTotalModule.class);
     }
 
     // ------------------- class -------------------

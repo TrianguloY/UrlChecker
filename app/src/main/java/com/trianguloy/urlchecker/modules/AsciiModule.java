@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class AsciiModule extends BaseModule {
 
         if(messages.isEmpty()){
             txt_ascii.setText("Good url");
+            txt_ascii.setBackgroundColor(Color.TRANSPARENT);
         }else {
             txt_ascii.setText("");
             boolean newline = false;
@@ -46,6 +48,7 @@ public class AsciiModule extends BaseModule {
                 newline = true;
                 txt_ascii.append(message);
             }
+            txt_ascii.setBackgroundColor(cntx.getResources().getColor(R.color.warning));
         }
     }
 }

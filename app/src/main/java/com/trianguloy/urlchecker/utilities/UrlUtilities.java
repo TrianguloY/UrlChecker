@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker;
+package com.trianguloy.urlchecker.utilities;
 
 import android.content.Context;
 import android.content.Intent;

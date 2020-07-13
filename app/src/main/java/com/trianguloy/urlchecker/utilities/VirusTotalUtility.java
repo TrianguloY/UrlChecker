@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.old;
+package com.trianguloy.urlchecker.utilities;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,23 +12,23 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * Class that [INSERT DESCRIPTION HERE]
+ * Class that manages the virusTotal connection
  */
 public class VirusTotalUtility {
     static private final String key = "**REMOVED**";
     
     static private final String urlGetReport = "http://www.virustotal.com/vtapi/v2/url/report";
     
-    static class InternalReponse {
-        String error = "Unknown error";
-        int detectionsPositive;
-        int detectionsTotal;
-        String date;
-        String scanUrl;
-        String info;
+    static public class InternalReponse {
+        public String error = "Unknown error";
+        public int detectionsPositive;
+        public int detectionsTotal;
+        public String date;
+        public String scanUrl;
+        public String info;
     }
     
-    static InternalReponse scanUrl(String urlToScan) {
+    public static InternalReponse scanUrl(String urlToScan) {
         InternalReponse result = new InternalReponse();
         
         String responseJSON = performPOST(urlGetReport, getPOSTparameters(urlToScan));
