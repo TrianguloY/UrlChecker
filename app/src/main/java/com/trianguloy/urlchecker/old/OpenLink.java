@@ -1,7 +1,8 @@
-package com.trianguloy.urlchecker;
+package com.trianguloy.urlchecker.old;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -17,6 +18,8 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.trianguloy.urlchecker.R;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -54,7 +57,7 @@ public class OpenLink extends Activity {
         }
         url = uri.toString();
         
-        txt_url = findViewById(R.id.txt_url);
+        txt_url = findViewById(R.id.url);
         txt_result = findViewById(R.id.txt_result);
         btn_redirect = findViewById(R.id.btn_goRedirect);
         btn_scan = findViewById(R.id.btn_scan);
@@ -175,7 +178,7 @@ public class OpenLink extends Activity {
                 break;
             
             //DEBUG: just in case
-            case R.id.txt_url:
+            case R.id.url:
                 openUrlInBrowser(url);
                 break;
         }

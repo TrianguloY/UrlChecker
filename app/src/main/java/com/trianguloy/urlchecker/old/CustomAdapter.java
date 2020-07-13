@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker;
+package com.trianguloy.urlchecker.old;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+
+import com.trianguloy.urlchecker.R;
 
 import java.util.ArrayList;
 
