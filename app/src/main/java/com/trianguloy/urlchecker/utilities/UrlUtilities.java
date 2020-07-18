@@ -2,28 +2,32 @@ package com.trianguloy.urlchecker.utilities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UrlUtilities {
 
+    static public Intent getViewIntent(String url, String packageName) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        if (packageName != null) intent.setPackage(packageName);
+        return intent;
+    }
+
     static public void openUrlRemoveThis(String url, Context cntx) {
-        Intent baseIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        PackageManager packageManager = cntx.getPackageManager();
-        List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(baseIntent, Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0);
+
         List<Intent> intents = new ArrayList<>();
-        for (ResolveInfo resolveInfo : resolveInfos) {
-            if (!resolveInfo.activityInfo.packageName.equals(cntx.getPackageName())) {
-                Intent intent = new Intent(baseIntent);
-                intent.setPackage(resolveInfo.activityInfo.packageName);
-                intents.add(intent);
-            }
+        for (String pack : PackageUtilities.getOtherPackages(getViewIntent(url, null), cntx)) {
+            intents.add(getViewIntent(url, pack));
+        }
+
+        if (intents.isEmpty()) {
+            Toast.makeText(cntx, "No apps can open this url", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         Intent chooserIntent = Intent.createChooser(intents.remove(0), "Choose app");
