@@ -60,7 +60,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.open:
-                openUrl();
+                openUrl(0);
                 break;
             case R.id.share:
                 shareUrl();
@@ -73,45 +73,50 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        final String chosed = packages.get(item.getItemId());
-        latest.set(chosed);
-        cntx.startActivity(UrlUtilities.getViewIntent(cntx.getUrl(), chosed));
+        openUrl(item.getItemId());
         return false;
     }
 
     private void updateSpinner() {
         packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(cntx.getUrl(), null), cntx);
 
+        // check no apps
         if (packages.isEmpty()) {
             btn_open.setText("");
             btn_open.setEnabled(false);
+            btn_openWith.setVisibility(View.GONE);
             return;
         }
 
-        String main = packages.remove(0);
-        if(packages.contains(latest.get())){
-            main = latest.get();
+        // sort
+        if (packages.contains(latest.get())) {
             packages.remove(latest.get());
-        }else{
-            main = packages.remove(0);
+            packages.add(0, latest.get());
         }
 
-        btn_open.setText("Open with " + PackageUtilities.getPackageName(main, cntx));
+        // set
+        btn_open.setText("Open with " + PackageUtilities.getPackageName(packages.get(0), cntx));
         btn_open.setEnabled(true);
         menu.clear();
-        if (packages.isEmpty()) {
+        if (packages.size() == 1) {
             btn_openWith.setVisibility(View.GONE);
         } else {
             btn_openWith.setVisibility(View.VISIBLE);
-            for (int i = 0; i < packages.size(); i++) {
+            for (int i = 1; i < packages.size(); i++) {
                 menu.add(Menu.NONE, i, i, "Open with " + PackageUtilities.getPackageName(packages.get(i), cntx));
             }
         }
 
     }
 
-    private void openUrl() {
-        UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);
+    private void openUrl(int index) {
+        if (index < 0 || index >= packages.size()) return;
+
+        String chosed = packages.get(index);
+        latest.set(chosed);
+        cntx.startActivity(UrlUtilities.getViewIntent(cntx.getUrl(), chosed));
+
+//        UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);
     }
 
     private void showList() {
