@@ -1,13 +1,12 @@
 package com.trianguloy.urlchecker;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +39,8 @@ public class MainDialog extends Activity implements TextWatcher {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_dialog);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.dialog_main);
 
         txt_url = findViewById(R.id.url);
         txt_url.addTextChangedListener(this);
@@ -58,7 +58,7 @@ public class MainDialog extends Activity implements TextWatcher {
         for (BaseModule module : modules) {
 
             // set title
-            final String name = module.getName();
+            String name = module.getName();
             if(name != null) {
                 final TextView title = new TextView(this);
                 title.setText(name + ":");
@@ -66,10 +66,9 @@ public class MainDialog extends Activity implements TextWatcher {
             }
 
             // set content
-            final View views = getLayoutInflater().inflate(module.getLayoutBase(), null);
+            View views = getLayoutInflater().inflate(module.getLayoutBase(), ll_mods);
             module.setContext(this);
             module.initialize(views);
-            ll_mods.addView(views);
         }
 
         // bottom module (open)

@@ -5,25 +5,33 @@ import android.content.SharedPreferences;
 
 public abstract class GenericPref<T> {
 
-    protected final SharedPreferences prefs;
+    protected SharedPreferences prefs;
     protected final String prefName;
     protected final T defaultValue;
 
-    public GenericPref(Context cntx, String filename, String prefName, T defaultValue) {
+    public GenericPref(String prefName, T defaultValue) {
         this.prefName = prefName;
         this.defaultValue = defaultValue;
-        prefs = cntx.getSharedPreferences(filename, Context.MODE_PRIVATE);
+    }
+
+    public void init(Context cntx){
+        prefs = cntx.getSharedPreferences(cntx.getPackageName(), Context.MODE_PRIVATE);
     }
 
     public abstract T get();
 
     public abstract void set(T value);
 
+    @Override
+    public String toString() {
+        return prefName+" = "+get();
+    }
+
     // ------------------- Implementations -------------------
 
     static public class Int extends GenericPref<Integer> {
-        public Int(Context cntx, String filename, String prefName, Integer defaultValue) {
-            super(cntx, filename, prefName, defaultValue);
+        public Int(String prefName, Integer defaultValue) {
+            super(prefName, defaultValue);
         }
 
         @Override
@@ -38,8 +46,8 @@ public abstract class GenericPref<T> {
     }
 
     static public class Str extends GenericPref<String> {
-        public Str(Context cntx, String filename, String prefName, String defaultValue) {
-            super(cntx, filename, prefName, defaultValue);
+        public Str(String prefName, String defaultValue) {
+            super(prefName, defaultValue);
         }
 
         @Override

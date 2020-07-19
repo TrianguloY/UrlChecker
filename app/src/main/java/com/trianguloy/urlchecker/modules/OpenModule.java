@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class OpenModule extends BaseModule implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
-    private GenericPref<String> latest;
+    private LastOpened lastOpened;
 
     private List<String> packages;
     private Button btn_open;
@@ -48,7 +48,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         popup.setOnMenuItemClickListener(this);
         menu = popup.getMenu();
 
-        latest = new GenericPref.Str(cntx, "open", "latest", null);
+        lastOpened = new LastOpened(cntx);
     }
 
     @Override
@@ -89,10 +89,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         }
 
         // sort
-        if (packages.contains(latest.get())) {
-            packages.remove(latest.get());
-            packages.add(0, latest.get());
-        }
+        lastOpened.sort(packages);
 
         // set
         btn_open.setText("Open with " + PackageUtilities.getPackageName(packages.get(0), cntx));
@@ -113,7 +110,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         if (index < 0 || index >= packages.size()) return;
 
         String chosed = packages.get(index);
-        latest.set(chosed);
+        lastOpened.usedPackage(chosed);
         cntx.startActivity(UrlUtilities.getViewIntent(cntx.getUrl(), chosed));
 
 //        UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);

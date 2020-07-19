@@ -1,23 +1,17 @@
-package com.trianguloy.urlchecker.old;
+package com.trianguloy.urlchecker;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import com.trianguloy.urlchecker.R;
-
-public class Settings extends Activity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-
-
+        setContentView(R.layout.activity_main);
     }
 
     public void onClick(View view) {
