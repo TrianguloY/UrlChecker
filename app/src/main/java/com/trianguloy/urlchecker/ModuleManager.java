@@ -41,9 +41,6 @@ public class ModuleManager {
             }
         }
 
-        // always at the end
-        enabled.add(new OpenModule());
-
         return enabled;
     }
 }

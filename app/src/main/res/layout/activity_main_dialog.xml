@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,29 +7,34 @@
     android:orientation="vertical"
     tools:context="com.trianguloy.urlchecker.MainDialog">
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/url"
+        style="@android:style/Widget.TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/url"
-            style="@android:style/Widget.TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/mods"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
+    <include
+        android:id="@+id/open_module"
+        layout="@layout/module_open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-</ScrollView>
+
+</LinearLayout>

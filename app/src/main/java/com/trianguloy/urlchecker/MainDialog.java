@@ -13,14 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.OpenModule;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainDialog extends Activity implements TextWatcher {
-
-    private PackageManager pm;
-    private ComponentName compName;
 
     public void setUrl(String url) {
         txt_url.setText(url);
@@ -73,6 +71,12 @@ public class MainDialog extends Activity implements TextWatcher {
             module.initialize(views);
             ll_mods.addView(views);
         }
+
+        // bottom module (open)
+        OpenModule openModule = new OpenModule();
+        openModule.setContext(this);
+        openModule.initialize(findViewById(R.id.open_module));
+        modules.add(openModule);
     }
 
     private String getOpenUrl() {
