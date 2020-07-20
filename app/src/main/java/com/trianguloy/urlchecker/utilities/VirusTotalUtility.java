@@ -13,6 +13,7 @@ import java.net.URLEncoder;
 
 /**
  * Class that manages the virusTotal connection
+ * // TODO: replace with generic POST class and move logic to VirusTotalModule
  */
 public class VirusTotalUtility {
     static private final String key = "**REMOVED**";
