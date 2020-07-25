@@ -12,11 +12,17 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Stack;
 
+/**
+ * A module that allows checking for redirection by using a local browser
+ */
 public class RedirectModule extends BaseModule implements View.OnClickListener {
 
     private Button check;
     private Button undo;
 
+    /**
+     * The redirected urls, for undoing
+     */
     private Stack<String> urls = new Stack<>();
 
     @Override
@@ -56,16 +62,23 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
         }
     }
 
-    //https://stackoverflow.com/questions/1884230/urlconnection-doesnt-follow-redirect
+    /**
+     * Checks a redirect, in background
+     * https://stackoverflow.com/questions/1884230/urlconnection-doesnt-follow-redirect
+     */
     private void check() {
+        // disable button and run in background
         check.setEnabled(false);
         new Thread(new Runnable() {
             public void run() {
+
+                // get url
                 String url = getUrl();
 
                 String message = "Unknown error";
                 HttpURLConnection conn = null;
                 try {
+                    // perform GET to the url
                     conn = (HttpURLConnection) new URL(url).openConnection();
                     conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
                     switch (conn.getResponseCode()) {
@@ -89,13 +102,16 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
                     }
                 }
 
+                // notify
                 final String finalMessage = message;
                 final String finalUrl = url;
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         if (finalUrl == null) {
+                            // no redirection, show message (keep buton disabled)
                             Toast.makeText(getActivity(), finalMessage, Toast.LENGTH_SHORT).show();
                         } else {
+                            // redirection, change url and enable button again
                             urls.push(getUrl());
                             setUrl(finalUrl);
                             undo.setEnabled(true);
@@ -107,9 +123,13 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
         }).start();
     }
 
+    /**
+     * Undo one redirection
+     */
     private void undo() {
         if (urls.isEmpty()) return;
 
+        // set previous url and enable/disable buttons if needed
         setUrl(urls.pop());
         check.setEnabled(true);
         if (urls.isEmpty()) undo.setEnabled(false);

@@ -7,6 +7,9 @@ import android.widget.EditText;
 
 import com.trianguloy.urlchecker.R;
 
+/**
+ * This module shows the current url and allows manual editing
+ */
 public class TextInputModule extends BaseModule implements TextWatcher {
 
     private EditText edtxt_url;
@@ -14,7 +17,7 @@ public class TextInputModule extends BaseModule implements TextWatcher {
 
     @Override
     public String getName() {
-        return null;
+        return null; // not used
     }
 
     @Override
@@ -30,6 +33,7 @@ public class TextInputModule extends BaseModule implements TextWatcher {
 
     @Override
     public void onNewUrl(String url) {
+        // setText fires the afterTextChanged listener, so we need to manually disable it
         editByCode = true;
         edtxt_url.setText(url);
         editByCode = false;
@@ -48,6 +52,7 @@ public class TextInputModule extends BaseModule implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         if(editByCode) return;
+        // new url by the user
         setUrl(s.toString());
     }
 }

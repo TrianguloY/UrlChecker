@@ -15,13 +15,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manager of all the modules
+ */
 public class ModuleManager {
 
     // ------------------- configuration -------------------
 
+    /**
+     * list of registered modules
+     */
     private static final Map<String, Class<? extends BaseModule>> modules = new HashMap<>();
 
     static {
+        // TODO: auto-load with reflection?
         modules.put("ascii", AsciiModule.class);
         modules.put("redirect", RedirectModule.class);
         modules.put("virustotal", VirusTotalModule.class);
@@ -29,15 +36,31 @@ public class ModuleManager {
 
     // ------------------- class -------------------
 
-    static TextInputModule getTopModule() {
+    private static final String PREF_NAME = "MM";
+    private static final String PREF_SUFFIX = "_en";
+
+    /**
+     * @return the uninitialized top module
+     */
+    static BaseModule getTopModule() {
         return new TextInputModule();
     }
 
+    /**
+     * Returns the uninitialized middle modules
+     *
+     * @param cntx base context (for the sharedpref)
+     * @return the list, may be empty
+     */
     public static List<BaseModule> getMiddleModules(Context cntx) {
         List<BaseModule> enabled = new ArrayList<>();
-        SharedPreferences prefs = cntx.getSharedPreferences("MM", Context.MODE_PRIVATE);
+        SharedPreferences prefs = cntx.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        // for each module
         for (Map.Entry<String, Class<? extends BaseModule>> module : modules.entrySet()) {
-            if(prefs.getBoolean(module.getKey()+"_en", true)){
+            // check if enabled
+            if (prefs.getBoolean(module.getKey() + PREF_SUFFIX, true)) {
+                // and return
                 try {
                     enabled.add(module.getValue().newInstance());
                 } catch (Exception e) {
@@ -49,7 +72,10 @@ public class ModuleManager {
         return enabled;
     }
 
-    static OpenModule getBottomModule() {
+    /**
+     * @return the uninitialized bottom module
+     */
+    static BaseModule getBottomModule() {
         return new OpenModule();
     }
 }

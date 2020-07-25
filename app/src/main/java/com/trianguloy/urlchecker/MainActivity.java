@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * The activity to show when clicking the desktop shortcut (when 'opening' the app)
+ */
 public class MainActivity extends Activity {
 
     @Override
@@ -14,6 +17,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * ButtonClick
+     * @param view which button
+     */
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_debug:

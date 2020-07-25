@@ -15,6 +15,9 @@ import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
 import java.util.List;
 
+/**
+ * This module contains an open and share buttons
+ */
 public class OpenModule extends BaseModule implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private LastOpened lastOpened;
@@ -27,7 +30,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
 
     @Override
     public String getName() {
-        return null;
+        return null; // not used
     }
 
     @Override
@@ -56,6 +59,8 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         updateSpinner();
     }
 
+    // ------------------- Button listener -------------------
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -71,11 +76,15 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         }
     }
 
+    // ------------------- PopupMenu.OnMenuItemClickListener -------------------
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         openUrl(item.getItemId());
         return false;
     }
+
+    // ------------------- Spinner -------------------
 
     private void updateSpinner() {
         packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
@@ -106,26 +115,39 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
 
     }
 
+    // ------------------- Buttons -------------------
+
+    /**
+     * Open url in a specific app
+     * @param index index from the packages list of the app to use
+     */
     private void openUrl(int index) {
         if (index < 0 || index >= packages.size()) return;
 
+        // open
         String chosed = packages.get(index);
         lastOpened.usedPackage(chosed);
         getActivity().startActivity(UrlUtilities.getViewIntent(getUrl(), chosed));
-
-//        UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);
     }
 
+    /**
+     * Show the popup with the rest of the apps
+     */
     private void showList() {
         popup.show();
     }
 
+    /**
+     * Shares the url as text
+     */
     private void shareUrl() {
+        // create send intent
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, getUrl());
         sendIntent.setType("text/plain");
 
+        // share intent
         Intent shareIntent = Intent.createChooser(sendIntent, "Share");
         getActivity().startActivity(shareIntent);
     }
