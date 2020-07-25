@@ -44,11 +44,11 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         views.findViewById(R.id.share).setOnClickListener(this);
 
 
-        popup = new PopupMenu(cntx, btn_open);
+        popup = new PopupMenu(getActivity(), btn_open);
         popup.setOnMenuItemClickListener(this);
         menu = popup.getMenu();
 
-        lastOpened = new LastOpened(cntx);
+        lastOpened = new LastOpened(getActivity());
     }
 
     @Override
@@ -78,7 +78,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     }
 
     private void updateSpinner() {
-        packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(cntx.getUrl(), null), cntx);
+        packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
 
         // check no apps
         if (packages.isEmpty()) {
@@ -92,7 +92,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         lastOpened.sort(packages);
 
         // set
-        btn_open.setText("Open with " + PackageUtilities.getPackageName(packages.get(0), cntx));
+        btn_open.setText("Open with " + PackageUtilities.getPackageName(packages.get(0), getActivity()));
         btn_open.setEnabled(true);
         menu.clear();
         if (packages.size() == 1) {
@@ -100,7 +100,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
         } else {
             btn_openWith.setVisibility(View.VISIBLE);
             for (int i = 1; i < packages.size(); i++) {
-                menu.add(Menu.NONE, i, i, "Open with " + PackageUtilities.getPackageName(packages.get(i), cntx));
+                menu.add(Menu.NONE, i, i, "Open with " + PackageUtilities.getPackageName(packages.get(i), getActivity()));
             }
         }
 
@@ -111,7 +111,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
 
         String chosed = packages.get(index);
         lastOpened.usedPackage(chosed);
-        cntx.startActivity(UrlUtilities.getViewIntent(cntx.getUrl(), chosed));
+        getActivity().startActivity(UrlUtilities.getViewIntent(getUrl(), chosed));
 
 //        UrlUtilities.openUrlRemoveThis(cntx.getUrl(), cntx);
     }
@@ -123,10 +123,10 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     private void shareUrl() {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, cntx.getUrl());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getUrl());
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, "Share");
-        cntx.startActivity(shareIntent);
+        getActivity().startActivity(shareIntent);
     }
 }

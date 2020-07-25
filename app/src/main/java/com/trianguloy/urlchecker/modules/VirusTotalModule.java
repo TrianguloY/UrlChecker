@@ -84,12 +84,12 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
     private void _scanUrl() {
         VirusTotalUtility.InternalReponse response;
         while (scanning) {
-            response = VirusTotalUtility.scanUrl(cntx.getUrl());
+            response = VirusTotalUtility.scanUrl(getUrl());
 
             if (response.detectionsTotal > 0) {
                 result = response;
                 scanning = false;
-                cntx.runOnUiThread(new Runnable() {
+                getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         updateUI();
                     }
@@ -135,7 +135,7 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
     }
 
     private void setResult(String message, int color) {
-        txt_result.setBackgroundColor(color == 0 ? Color.TRANSPARENT : cntx.getResources().getColor(color));
+        txt_result.setBackgroundColor(color == 0 ? Color.TRANSPARENT : getActivity().getResources().getColor(color));
         txt_result.setText(message);
     }
 
@@ -144,10 +144,9 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
         if (result == null) return;
 
         if (details) {
-            UrlUtilities.openUrlRemoveThis(result.scanUrl, cntx);
-            cntx.finish();
+            UrlUtilities.openUrlRemoveThis(result.scanUrl, getActivity());
         } else {
-            new AlertDialog.Builder(cntx)
+            new AlertDialog.Builder(getActivity())
                     .setMessage(result.info)
                     .show();
         }

@@ -3,8 +3,6 @@ package com.trianguloy.urlchecker;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -12,26 +10,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.modules.BaseModule;
-import com.trianguloy.urlchecker.modules.OpenModule;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainDialog extends Activity implements TextWatcher {
+public class MainDialog extends Activity {
 
-    public void setUrl(String url) {
-        txt_url.setText(url);
-        //onChangedUrl(); // not needed, the textwatcher does it
+    boolean onSettingUrl = false;
+
+    public void setUrl(String url, BaseModule providerModule) {
+        if (BuildConfig.DEBUG && onSettingUrl) {
+            throw new AssertionError("Attempting to change an url inside a setUrl call");
+        }
+        this.url = url;
+        onSettingUrl = true;
+        onChangedUrl(providerModule);
+        onSettingUrl = false;
     }
 
     public String getUrl() {
-        return txt_url.getText().toString();
+        return url;
     }
 
     // ------------------- data -------------------
 
     private final List<BaseModule> modules = new ArrayList<>();
-    private TextView txt_url;
+    private String url;
     private LinearLayout ll_mods;
 
     // ------------------- initialize -------------------
@@ -42,40 +46,45 @@ public class MainDialog extends Activity implements TextWatcher {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
 
-        txt_url = findViewById(R.id.url);
-        txt_url.addTextChangedListener(this);
-
-        ll_mods = findViewById(R.id.mods);
+        ll_mods = findViewById(R.id.middle_modules);
 
         initialize();
 
-        setUrl(getOpenUrl());
+        setUrl(getOpenUrl(), null);
 
     }
 
     private void initialize() {
-        modules.addAll(ModuleManager.getEnabled(this));
-        for (BaseModule module : modules) {
+        modules.clear();
+
+        // top module
+        initializeModule(ModuleManager.getTopModule(), findViewById(R.id.top_module));
+
+        final List<BaseModule> middleModules = ModuleManager.getMiddleModules(this);
+        for (BaseModule module : middleModules) {
 
             // set title
             String name = module.getName();
-            if(name != null) {
+            if (name != null) {
                 final TextView title = new TextView(this);
                 title.setText(name + ":");
                 ll_mods.addView(title);
             }
 
             // set content
-            View views = getLayoutInflater().inflate(module.getLayoutBase(), ll_mods);
-            module.setContext(this);
-            module.initialize(views);
+            initializeModule(module,
+                    getLayoutInflater().inflate(module.getLayoutBase(), ll_mods)
+            );
         }
 
-        // bottom module (open)
-        OpenModule openModule = new OpenModule();
-        openModule.setContext(this);
-        openModule.initialize(findViewById(R.id.open_module));
-        modules.add(openModule);
+        // bottom module
+        initializeModule(ModuleManager.getBottomModule(), findViewById(R.id.bottom_module));
+    }
+
+    private void initializeModule(BaseModule module, View views){
+        module.registerDialog(this);
+        module.initialize(views);
+        modules.add(module);
     }
 
     private String getOpenUrl() {
@@ -90,24 +99,11 @@ public class MainDialog extends Activity implements TextWatcher {
 
     // ------------------- url -------------------
 
-    private void onChangedUrl() {
+    private void onChangedUrl(BaseModule providerModule) {
         for (BaseModule module : modules) {
-            module.onNewUrl(getUrl());
+            if (module != providerModule)
+                module.onNewUrl(getUrl());
         }
     }
 
-    // ------------------- TextWatcher -------------------
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        onChangedUrl();
-    }
 }

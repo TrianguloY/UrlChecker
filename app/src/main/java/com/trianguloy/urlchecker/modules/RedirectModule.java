@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.old.OpenLink;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -19,7 +18,6 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
     private Button undo;
 
     private Stack<String> urls = new Stack<>();
-    private boolean expected = false;
 
     @Override
     public String getName() {
@@ -41,10 +39,6 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
 
     @Override
     public void onNewUrl(String url) {
-        if (expected) {
-            expected = false;
-            return;
-        }
         urls.clear();
         check.setEnabled(true);
         undo.setEnabled(false);
@@ -64,9 +58,10 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
 
     //https://stackoverflow.com/questions/1884230/urlconnection-doesnt-follow-redirect
     private void check() {
+        check.setEnabled(false);
         new Thread(new Runnable() {
             public void run() {
-                String url = cntx.getUrl();
+                String url = getUrl();
 
                 String message = "Unknown error";
                 HttpURLConnection conn = null;
@@ -96,16 +91,15 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
 
                 final String finalMessage = message;
                 final String finalUrl = url;
-                cntx.runOnUiThread(new Runnable() {
+                getActivity().runOnUiThread(new Runnable() {
                     public void run() {
                         if (finalUrl == null) {
-                            Toast.makeText(cntx, finalMessage, Toast.LENGTH_SHORT).show();
-                            check.setEnabled(false);
+                            Toast.makeText(getActivity(), finalMessage, Toast.LENGTH_SHORT).show();
                         } else {
-                            urls.push(cntx.getUrl());
-                            expected = true;
-                            cntx.setUrl(finalUrl);
+                            urls.push(getUrl());
+                            setUrl(finalUrl);
                             undo.setEnabled(true);
+                            check.setEnabled(true);
                         }
                     }
                 });
@@ -116,8 +110,7 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
     private void undo() {
         if (urls.isEmpty()) return;
 
-        expected = true;
-        cntx.setUrl(urls.pop());
+        setUrl(urls.pop());
         check.setEnabled(true);
         if (urls.isEmpty()) undo.setEnabled(false);
     }

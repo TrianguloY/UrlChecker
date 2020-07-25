@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context="com.trianguloy.urlchecker.MainDialog">
 
     <LinearLayout
@@ -12,17 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/url"
-            style="@android:style/Widget.TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
+        <include
+            android:id="@+id/top_module"
+            layout="@layout/module_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:id="@+id/mods"
+            android:id="@+id/middle_modules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -30,7 +29,7 @@
         </LinearLayout>
 
         <include
-            android:id="@+id/open_module"
+            android:id="@+id/bottom_module"
             layout="@layout/module_open"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

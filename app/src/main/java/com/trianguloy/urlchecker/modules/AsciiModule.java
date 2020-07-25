@@ -48,7 +48,7 @@ public class AsciiModule extends BaseModule {
                 newline = true;
                 txt_ascii.append(message);
             }
-            txt_ascii.setBackgroundColor(cntx.getResources().getColor(R.color.warning));
+            txt_ascii.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
         }
     }
 }

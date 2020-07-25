@@ -7,6 +7,7 @@ import com.trianguloy.urlchecker.modules.AsciiModule;
 import com.trianguloy.urlchecker.modules.BaseModule;
 import com.trianguloy.urlchecker.modules.OpenModule;
 import com.trianguloy.urlchecker.modules.RedirectModule;
+import com.trianguloy.urlchecker.modules.TextInputModule;
 import com.trianguloy.urlchecker.modules.VirusTotalModule;
 
 import java.util.ArrayList;
@@ -28,7 +29,11 @@ public class ModuleManager {
 
     // ------------------- class -------------------
 
-    public static List<BaseModule> getEnabled(Context cntx) {
+    static TextInputModule getTopModule() {
+        return new TextInputModule();
+    }
+
+    public static List<BaseModule> getMiddleModules(Context cntx) {
         List<BaseModule> enabled = new ArrayList<>();
         SharedPreferences prefs = cntx.getSharedPreferences("MM", Context.MODE_PRIVATE);
         for (Map.Entry<String, Class<? extends BaseModule>> module : modules.entrySet()) {
@@ -42,5 +47,9 @@ public class ModuleManager {
         }
 
         return enabled;
+    }
+
+    static OpenModule getBottomModule() {
+        return new OpenModule();
     }
 }
