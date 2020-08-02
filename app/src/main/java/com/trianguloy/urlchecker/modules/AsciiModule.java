@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.MainDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,8 @@ public class AsciiModule extends BaseModule {
 
     private TextView txt_ascii;
 
-    @Override
-    public String getName() {
-        return "Ascii checker";
+    public AsciiModule(MainDialog dialog) {
+        super(dialog);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class AsciiModule extends BaseModule {
     }
 
     @Override
-    public void initialize(View views) {
+    public void onInitialize(View views) {
         txt_ascii = views.findViewById(R.id.ascii);
     }
 
@@ -44,7 +44,7 @@ public class AsciiModule extends BaseModule {
 
         if (messages.isEmpty()) {
             // no messages, all good
-            txt_ascii.setText("Good url");
+            txt_ascii.setText("No issues found");
             txt_ascii.setBackgroundColor(Color.TRANSPARENT);
         } else {
             // messages to show, concatenate them

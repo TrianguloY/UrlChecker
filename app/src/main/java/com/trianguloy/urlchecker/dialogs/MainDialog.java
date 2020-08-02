@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker;
+package com.trianguloy.urlchecker.dialogs;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,6 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.trianguloy.urlchecker.BuildConfig;
+import com.trianguloy.urlchecker.modules.ModuleData;
+import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.BaseModule;
 
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class MainDialog extends Activity {
      * to avoid infinite loops when setting urls
      */
     boolean onSettingUrl = false;
+    private LinearLayout ll_mods;
 
     /**
      * A module changed the url
@@ -78,6 +83,9 @@ public class MainDialog extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
 
+        // get views
+        ll_mods = findViewById(R.id.middle_modules);
+
         // initialize
         initializeModules();
 
@@ -92,15 +100,14 @@ public class MainDialog extends Activity {
         modules.clear();
 
         // top module
-        initializeModule(ModuleManager.getTopModule(), findViewById(R.id.top_module));
+        initializeModule(ModuleData.topModule);
 
         // middle modules
-        final List<BaseModule> middleModules = ModuleManager.getMiddleModules(this);
-        LinearLayout ll_mods = findViewById(R.id.middle_modules);
-        for (BaseModule module : middleModules) {
+        final List<ModuleData> middleModules = ModuleManager.getMiddleModules(this);
+        for (ModuleData module : middleModules) {
 
             // set title
-            String name = module.getName();
+            String name = module.name;
             if (name != null) {
                 final TextView title = new TextView(this);
                 title.setText(name + ":");
@@ -108,25 +115,30 @@ public class MainDialog extends Activity {
             }
 
             // set content
-            initializeModule(module,
-                    getLayoutInflater().inflate(module.getLayoutBase(), ll_mods)
-            );
+            initializeModule(module);
         }
 
         // bottom module
-        initializeModule(ModuleManager.getBottomModule(), findViewById(R.id.bottom_module));
+        initializeModule(ModuleData.bottomModule);
     }
 
     /**
      * Initializes a module by registering with this dialog and adding to the list
      *
-     * @param module which module to initialize
-     * @param views  the views of that module
+     * @param moduleData which module to initialize
      */
-    private void initializeModule(BaseModule module, View views) {
-        module.registerDialog(this);
-        module.initialize(views);
-        modules.add(module);
+    private void initializeModule(ModuleData moduleData) {
+        try {
+            // enabled, add
+            BaseModule module = moduleData.dialogClass.getDeclaredConstructor(MainDialog.class).newInstance(this);
+            View views = getLayoutInflater().inflate(module.getLayoutBase(), ll_mods,false);
+            ll_mods.addView(views); // separated to return the inflated view instead of the parent
+            module.onInitialize(views);
+            modules.add(module);
+        } catch (Exception e) {
+            // can't add module
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
 
@@ -22,9 +23,8 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
     private boolean scanning = false;
     private VirusTotalUtility.InternalReponse result = null;
 
-    @Override
-    public String getName() {
-        return "VirusTotal";
+    public VirusTotalModule(MainDialog dialog) {
+        super(dialog);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
     }
 
     @Override
-    public void initialize(View views) {
+    public void onInitialize(View views) {
         btn_scan = views.findViewById(R.id.scan);
         txt_result = views.findViewById(R.id.result);
 

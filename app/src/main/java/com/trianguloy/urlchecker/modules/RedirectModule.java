@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.MainDialog;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -25,9 +26,8 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
      */
     private Stack<String> urls = new Stack<>();
 
-    @Override
-    public String getName() {
-        return "Redirection";
+    public RedirectModule(MainDialog dialog) {
+        super(dialog);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
     }
 
     @Override
-    public void initialize(View views) {
+    public void onInitialize(View views) {
         check = views.findViewById(R.id.check);
         check.setOnClickListener(this);
         undo = views.findViewById(R.id.undo);

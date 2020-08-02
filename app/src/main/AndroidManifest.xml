@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainDialog"
+        <activity android:name=".activities.ModulesActivity"></activity>
+        <activity
+            android:name=".dialogs.MainDialog"
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:theme="@android:style/Theme.DeviceDefault.Dialog">
@@ -25,7 +27,7 @@
                 <data android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.MainDialog;
 
 /**
  * This module shows the current url and allows manual editing
@@ -15,10 +16,10 @@ public class TextInputModule extends BaseModule implements TextWatcher {
     private EditText edtxt_url;
     private boolean editByCode = false;
 
-    @Override
-    public String getName() {
-        return null; // not used
+    public TextInputModule(MainDialog dialog) {
+        super(dialog);
     }
+
 
     @Override
     public int getLayoutBase() {
@@ -26,7 +27,7 @@ public class TextInputModule extends BaseModule implements TextWatcher {
     }
 
     @Override
-    public void initialize(View views) {
+    public void onInitialize(View views) {
         edtxt_url = views.findViewById(R.id.url);
         edtxt_url.addTextChangedListener(this);
     }

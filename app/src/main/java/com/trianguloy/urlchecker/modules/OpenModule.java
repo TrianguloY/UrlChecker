@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -28,9 +29,8 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     private Menu menu;
     private PopupMenu popup;
 
-    @Override
-    public String getName() {
-        return null; // not used
+    public OpenModule(MainDialog dialog) {
+        super(dialog);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     }
 
     @Override
-    public void initialize(View views) {
+    public void onInitialize(View views) {
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(this);
         btn_openWith = views.findViewById(R.id.open_with);
