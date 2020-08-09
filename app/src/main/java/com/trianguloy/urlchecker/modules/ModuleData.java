@@ -28,19 +28,41 @@ public class ModuleData {
         toggleableModules.add(new ModuleData(dialogClass, id, name));
     }
 
-    // ------------------- struct -------------------
+    // ------------------- instantiated struct -------------------
 
+    /**
+     * The module class
+     */
     public final Class<? extends BaseModule> dialogClass;
+
+    /**
+     * Identifier of the module
+     */
     public final String id;
 
+    /**
+     * Visible name of this module
+     */
     public final String name;
 
+    /**
+     * Full constructor for a module
+     *
+     * @param dialogClass the class
+     * @param id          identifier
+     * @param name        user name
+     */
     public ModuleData(Class<? extends BaseModule> dialogClass, String id, String name) {
         this.dialogClass = dialogClass;
         this.id = id;
         this.name = name;
     }
 
+    /**
+     * Simplified constructor (for fixed modules)
+     *
+     * @param dialogClass the class of the module
+     */
     public ModuleData(Class<? extends BaseModule> dialogClass) {
         this.dialogClass = dialogClass;
         id = name = null;

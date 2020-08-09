@@ -12,7 +12,7 @@ public abstract class BaseModule {
 
     // ------------------- private data -------------------
 
-    private MainDialog dialog;
+    private final MainDialog dialog;
 
     // ------------------- initialization -------------------
 
@@ -28,7 +28,8 @@ public abstract class BaseModule {
     public abstract int getLayoutBase();
 
     /**
-     * Notification of a new url, on this callback you can't call {@link #setUrl(String)}
+     * Notification of a new url.
+     * On this callback you can't call {@link #setUrl(String)}
      *
      * @param url the new url
      */
@@ -37,7 +38,7 @@ public abstract class BaseModule {
     /**
      * Initializes this module from the given views (generated from {@link #getLayoutBase()})
      *
-     * @param views
+     * @param views the inflated views
      */
     public abstract void onInitialize(View views);
 
@@ -46,14 +47,14 @@ public abstract class BaseModule {
     /**
      * @return this activity context
      */
-    protected Activity getActivity() {
+    protected final Activity getActivity() {
         return dialog;
     }
 
     /**
      * @return the current url
      */
-    protected String getUrl() {
+    protected final String getUrl() {
         return dialog.getUrl();
     }
 
@@ -62,7 +63,7 @@ public abstract class BaseModule {
      *
      * @param url new url
      */
-    protected void setUrl(String url) {
+    protected final void setUrl(String url) {
         dialog.setUrl(url, this);
     }
 
