@@ -10,7 +10,8 @@ import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
-import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.AModuleData;
+import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -20,7 +21,30 @@ import java.util.List;
 /**
  * This module contains an open and share buttons
  */
-public class OpenModule extends BaseModule implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+public class OpenModule extends AModuleData {
+
+    @Override
+    public String getId() {
+        return "open";
+    }
+
+    @Override
+    public String getName() {
+        return "Open & Share";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Allows to open or share the current url.";
+    }
+
+    @Override
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new OpenDialog(dialog);
+    }
+}
+
+class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private LastOpened lastOpened;
 
@@ -30,7 +54,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     private Menu menu;
     private PopupMenu popup;
 
-    public OpenModule(MainDialog dialog) {
+    public OpenDialog(MainDialog dialog) {
         super(dialog);
     }
 

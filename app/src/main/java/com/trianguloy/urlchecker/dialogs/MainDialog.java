@@ -10,10 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
-import com.trianguloy.urlchecker.modules.ModuleData;
-import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.AModuleData;
+import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.ModuleManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class MainDialog extends Activity {
      * @param url            the new url
      * @param providerModule which module changed it (null if first change)
      */
-    public void setUrl(String url, BaseModule providerModule) {
+    public void setUrl(String url, AModuleDialog providerModule) {
         if (onSettingUrl) {
             // a recursive call, invalid
             if (BuildConfig.DEBUG) {
@@ -70,7 +70,7 @@ public class MainDialog extends Activity {
     /**
      * All active modules
      */
-    private final List<BaseModule> modules = new ArrayList<>();
+    private final List<AModuleDialog> modules = new ArrayList<>();
 
     // the current url
     private String url;
@@ -100,14 +100,14 @@ public class MainDialog extends Activity {
         modules.clear();
 
         // top module
-        initializeModule(ModuleData.topModule);
+        initializeModule(ModuleManager.topModule);
 
         // middle modules
-        final List<ModuleData> middleModules = ModuleManager.getMiddleModules(this);
-        for (ModuleData module : middleModules) {
+        final List<AModuleData> middleModules = ModuleManager.getEnabledMiddleModules(this);
+        for (AModuleData module : middleModules) {
 
             // set title
-            String name = module.name;
+            String name = module.getName();
             if (name != null) {
                 final TextView title = new TextView(this);
                 title.setText(name + ":");
@@ -119,7 +119,7 @@ public class MainDialog extends Activity {
         }
 
         // bottom module
-        initializeModule(ModuleData.bottomModule);
+        initializeModule(ModuleManager.bottomModule);
     }
 
     /**
@@ -127,11 +127,11 @@ public class MainDialog extends Activity {
      *
      * @param moduleData which module to initialize
      */
-    private void initializeModule(ModuleData moduleData) {
+    private void initializeModule(AModuleData moduleData) {
         try {
             // enabled, add
-            BaseModule module = moduleData.dialogClass.getDeclaredConstructor(MainDialog.class).newInstance(this);
-            View views = getLayoutInflater().inflate(module.getLayoutDialog(), ll_mods,false);
+            AModuleDialog module = moduleData.getDialog(this);
+            View views = getLayoutInflater().inflate(module.getLayoutDialog(), ll_mods, false);
             ll_mods.addView(views); // separated to return the inflated view instead of the parent
             module.onInitialize(views);
             modules.add(module);
@@ -167,8 +167,8 @@ public class MainDialog extends Activity {
      *
      * @param providerModule the module that provided the new url, won't be called (if null all are called)
      */
-    private void onChangedUrl(BaseModule providerModule) {
-        for (BaseModule module : modules) {
+    private void onChangedUrl(AModuleDialog providerModule) {
+        for (AModuleDialog module : modules) {
             if (module != providerModule)
                 module.onNewUrl(getUrl());
         }

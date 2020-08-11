@@ -10,7 +10,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.modules.ModuleData;
+import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
@@ -32,16 +32,16 @@ public class ModulesActivity extends Activity {
 
     private void initialize() {
 
-        initModule(ModuleData.topModule, false);
+        initModule(ModuleManager.topModule, false);
 
-        for (ModuleData module : ModuleData.toggleableModules) {
+        for (AModuleData module : ModuleManager.toggleableModules) {
             initModule(module, true);
         }
 
-        initModule(ModuleData.bottomModule, false);
+        initModule(ModuleManager.bottomModule, false);
     }
 
-    private void initModule(ModuleData module, boolean enableable) {
+    private void initModule(AModuleData module, boolean enableable) {
         // inflate
         View views = getLayoutInflater().inflate(R.layout.conf_module, list, false);
         list.addView(views); // separated to return the inflated view instead of the parent
@@ -63,8 +63,8 @@ public class ModulesActivity extends Activity {
         }
 
         // configure info
-        ((TextView) views.findViewById(R.id.label)).setText(module.name);
-        ((TextView) views.findViewById(R.id.desc)).setText(module.description);
+        ((TextView) views.findViewById(R.id.label)).setText(module.getName());
+        ((TextView) views.findViewById(R.id.desc)).setText(module.getDescription());
 
         // configure toggleable description
         final View details_cont = views.findViewById(R.id.details);

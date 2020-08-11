@@ -7,17 +7,41 @@ import android.widget.EditText;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
-import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.AModuleData;
+import com.trianguloy.urlchecker.modules.AModuleDialog;
 
 /**
  * This module shows the current url and allows manual editing
  */
-public class TextInputModule extends BaseModule implements TextWatcher {
+public class TextInputModule extends AModuleData {
+
+    @Override
+    public String getId() {
+        return "text";
+    }
+
+    @Override
+    public String getName() {
+        return "Input text";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Allows to edit the url manually";
+    }
+
+    @Override
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new TextInputDialog(dialog);
+    }
+}
+
+class TextInputDialog extends AModuleDialog implements TextWatcher {
 
     private EditText edtxt_url;
     private boolean editByCode = false;
 
-    public TextInputModule(MainDialog dialog) {
+    public TextInputDialog(MainDialog dialog) {
         super(dialog);
     }
 

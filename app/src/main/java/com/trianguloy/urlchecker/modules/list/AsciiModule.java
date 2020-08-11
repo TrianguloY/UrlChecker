@@ -6,7 +6,8 @@ import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
-import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.AModuleData;
+import com.trianguloy.urlchecker.modules.AModuleDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,34 @@ import java.util.List;
 /**
  * This module checks for non-ascii characters in the url
  */
-public class AsciiModule extends BaseModule {
+public class AsciiModule extends AModuleData {
+
+    @Override
+    public String getId() {
+        return "ascii";
+    }
+
+    @Override
+    public String getName() {
+        return "Ascii checker";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Checks for non-ascii characters";
+    }
+
+    @Override
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new AsciiDialog(dialog);
+    }
+}
+
+class AsciiDialog extends AModuleDialog {
 
     private TextView txt_ascii;
 
-    public AsciiModule(MainDialog dialog) {
+    public AsciiDialog(MainDialog dialog) {
         super(dialog);
     }
 

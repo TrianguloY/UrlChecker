@@ -6,7 +6,8 @@ import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
-import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.modules.AModuleData;
+import com.trianguloy.urlchecker.modules.AModuleDialog;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -17,7 +18,30 @@ import java.util.Stack;
 /**
  * A module that allows checking for redirection by using a local browser
  */
-public class RedirectModule extends BaseModule implements View.OnClickListener {
+public class RedirectModule extends AModuleData {
+
+    @Override
+    public String getId() {
+        return "redirect";
+    }
+
+    @Override
+    public String getName() {
+        return "Redirection";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Allows to check for redirection";
+    }
+
+    @Override
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new RedirectDialog(dialog);
+    }
+}
+
+class RedirectDialog extends AModuleDialog implements View.OnClickListener {
 
     private Button check;
     private Button undo;
@@ -27,7 +51,7 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
      */
     private Stack<String> urls = new Stack<>();
 
-    public RedirectModule(MainDialog dialog) {
+    public RedirectDialog(MainDialog dialog) {
         super(dialog);
     }
 

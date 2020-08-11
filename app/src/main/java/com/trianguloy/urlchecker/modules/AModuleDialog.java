@@ -4,15 +4,11 @@ import android.app.Activity;
 import android.view.View;
 
 import com.trianguloy.urlchecker.dialogs.MainDialog;
-import com.trianguloy.urlchecker.utilities.GenericConfiguration;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Base class for a module.
  */
-public abstract class BaseModule {
+public abstract class AModuleDialog {
 
     // ------------------- private data -------------------
 
@@ -20,7 +16,7 @@ public abstract class BaseModule {
 
     // ------------------- initialization -------------------
 
-    public BaseModule(MainDialog dialog) {
+    public AModuleDialog(MainDialog dialog) {
         this.dialog = dialog;
     }
 
@@ -32,9 +28,11 @@ public abstract class BaseModule {
     public abstract int getLayoutDialog();
 
     /**
-     * @return the layout resource of this module
+     * Initializes this module from the given views (generated from {@link #getLayoutDialog()})
+     *
+     * @param views the inflated views
      */
-    public List<GenericConfiguration> getConfigurations(){return Collections.EMPTY_LIST;}
+    public abstract void onInitialize(View views);
 
     /**
      * Notification of a new url.
@@ -43,13 +41,6 @@ public abstract class BaseModule {
      * @param url the new url
      */
     public abstract void onNewUrl(String url);
-
-    /**
-     * Initializes this module from the given views (generated from {@link #getLayoutDialog()})
-     *
-     * @param views the inflated views
-     */
-    public abstract void onInitialize(View views);
 
     // ------------------- utilities -------------------
 
