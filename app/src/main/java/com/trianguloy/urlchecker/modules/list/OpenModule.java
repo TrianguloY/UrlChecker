@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.modules;
+package com.trianguloy.urlchecker.modules.list;
 
 import android.content.Intent;
 import android.view.Menu;
@@ -10,6 +10,7 @@ import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.BaseModule;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -34,7 +35,7 @@ public class OpenModule extends BaseModule implements View.OnClickListener, Popu
     }
 
     @Override
-    public int getLayoutBase() {
+    public int getLayoutDialog() {
         return R.layout.module_open;
     }
 

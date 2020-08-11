@@ -131,7 +131,7 @@ public class MainDialog extends Activity {
         try {
             // enabled, add
             BaseModule module = moduleData.dialogClass.getDeclaredConstructor(MainDialog.class).newInstance(this);
-            View views = getLayoutInflater().inflate(module.getLayoutBase(), ll_mods,false);
+            View views = getLayoutInflater().inflate(module.getLayoutDialog(), ll_mods,false);
             ll_mods.addView(views); // separated to return the inflated view instead of the parent
             module.onInitialize(views);
             modules.add(module);

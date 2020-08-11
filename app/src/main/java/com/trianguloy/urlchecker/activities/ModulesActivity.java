@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,43 +14,72 @@ import com.trianguloy.urlchecker.modules.ModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
-import java.util.List;
-
 /**
  * An activity that shows the list of modules that can be enabled/disabled
  */
 public class ModulesActivity extends Activity {
 
+    private LinearLayout list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modules);
+        list = findViewById(R.id.list);
 
         initialize();
     }
 
     private void initialize() {
-        LinearLayout ll = findViewById(R.id.list);
 
-        List<ModuleData> modules = ModuleData.toggleableModules;
+        initModule(ModuleData.topModule, false);
 
-        for (ModuleData module : modules) {
-            // inflate
-            View views = getLayoutInflater().inflate(R.layout.conf_module, ll, false);
-            ll.addView(views); // separated to return the inflated view instead of the parent
+        for (ModuleData module : ModuleData.toggleableModules) {
+            initModule(module, true);
+        }
 
-            // configure
-            Switch enabled = views.findViewById(R.id.enable);
+        initModule(ModuleData.bottomModule, false);
+    }
+
+    private void initModule(ModuleData module, boolean enableable) {
+        // inflate
+        View views = getLayoutInflater().inflate(R.layout.conf_module, list, false);
+        list.addView(views); // separated to return the inflated view instead of the parent
+
+        // configure enable toggle
+        Switch toggleEnable = views.findViewById(R.id.enable);
+        if (enableable) {
             final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
-            enabled.setChecked(enabled_pref.get());
-            enabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            toggleEnable.setChecked(enabled_pref.get());
+            toggleEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     enabled_pref.set(isChecked);
                 }
             });
-            ((TextView) views.findViewById(R.id.label)).setText(module.name);
+        } else {
+            toggleEnable.setChecked(true);
+            toggleEnable.setEnabled(false);
         }
 
+        // configure info
+        ((TextView) views.findViewById(R.id.label)).setText(module.name);
+        ((TextView) views.findViewById(R.id.desc)).setText(module.description);
+
+        // configure toggleable description
+        final View details_cont = views.findViewById(R.id.details);
+        View toggle = views.findViewById(R.id.toggle);
+        toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checked = v.getTag() != null;
+                v.setTag(checked ? null : new Object());
+                details_cont.setVisibility(checked ? View.VISIBLE : View.GONE);
+                ((ImageView) v).setImageResource(checked ? R.drawable.expanded : R.drawable.collapsed);
+            }
+        });
+        toggle.performClick();
+
+        // add configurations
     }
 }

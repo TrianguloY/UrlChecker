@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.modules;
+package com.trianguloy.urlchecker.modules.list;
 
 import android.graphics.Color;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.BaseModule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class AsciiModule extends BaseModule {
     }
 
     @Override
-    public int getLayoutBase() {
+    public int getLayoutDialog() {
         return R.layout.module_ascii;
     }
 

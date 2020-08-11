@@ -16,7 +16,6 @@ import java.net.URLEncoder;
  * // TODO: replace with generic POST class and move logic to VirusTotalModule
  */
 public class VirusTotalUtility {
-    static private final String key = "**REMOVED**";
     
     static private final String urlGetReport = "http://www.virustotal.com/vtapi/v2/url/report";
     
@@ -29,10 +28,10 @@ public class VirusTotalUtility {
         public String info;
     }
     
-    public static InternalReponse scanUrl(String urlToScan) {
+    public static InternalReponse scanUrl(String urlToScan, String key) {
         InternalReponse result = new InternalReponse();
         
-        String responseJSON = performPOST(urlGetReport, getPOSTparameters(urlToScan));
+        String responseJSON = performPOST(urlGetReport, getPOSTparameters(urlToScan, key));
         
         // parse response
         try {
@@ -61,7 +60,7 @@ public class VirusTotalUtility {
         
     }
     
-    static private String getPOSTparameters(String url) {
+    static private String getPOSTparameters(String url, String key) {
         String data = null;
         try {
             data = URLEncoder.encode("resource", "UTF-8")

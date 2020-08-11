@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.modules;
+package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
 import android.widget.Button;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.BaseModule;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -31,7 +32,7 @@ public class RedirectModule extends BaseModule implements View.OnClickListener {
     }
 
     @Override
-    public int getLayoutBase() {
+    public int getLayoutDialog() {
         return R.layout.module_redirect;
     }
 

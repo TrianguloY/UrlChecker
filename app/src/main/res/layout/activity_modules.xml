@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".activities.ModulesActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List of modules: You can enable or disable them, also check its description and configuration" />
+
     <LinearLayout
         android:id="@+id/list"
         android:layout_width="match_parent"

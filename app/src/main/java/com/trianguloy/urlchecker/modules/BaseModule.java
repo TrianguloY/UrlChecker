@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.view.View;
 
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.utilities.GenericConfiguration;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Base class for a module.
@@ -25,7 +29,12 @@ public abstract class BaseModule {
     /**
      * @return the layout resource of this module
      */
-    public abstract int getLayoutBase();
+    public abstract int getLayoutDialog();
+
+    /**
+     * @return the layout resource of this module
+     */
+    public List<GenericConfiguration> getConfigurations(){return Collections.EMPTY_LIST;}
 
     /**
      * Notification of a new url.
@@ -36,7 +45,7 @@ public abstract class BaseModule {
     public abstract void onNewUrl(String url);
 
     /**
-     * Initializes this module from the given views (generated from {@link #getLayoutBase()})
+     * Initializes this module from the given views (generated from {@link #getLayoutDialog()})
      *
      * @param views the inflated views
      */

@@ -27,7 +27,7 @@ public class ModuleManager {
     }
 
     /**
-     * Returns the uninitialized middle modules
+     * Returns the uninitialized enabled middle modules
      *
      * @param cntx base context (for the sharedpref)
      * @return the list, may be empty

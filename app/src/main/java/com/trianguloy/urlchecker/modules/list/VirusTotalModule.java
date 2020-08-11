@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.modules;
+package com.trianguloy.urlchecker.modules.list;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
@@ -8,8 +8,14 @@ import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.BaseModule;
+import com.trianguloy.urlchecker.utilities.GenericConfiguration;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This module uses the VirusTotal api (https://developers.virustotal.com/reference) for url reports
@@ -23,13 +29,24 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
     private boolean scanning = false;
     private VirusTotalUtility.InternalReponse result = null;
 
+    private GenericPref.Str api_key = new GenericPref.Str("api_key","**REMOVED**");
+
     public VirusTotalModule(MainDialog dialog) {
         super(dialog);
+        api_key.init(dialog);
     }
 
     @Override
-    public int getLayoutBase() {
+    public int getLayoutDialog() {
         return R.layout.module_virustotal;
+    }
+
+    @Override
+    public List<GenericConfiguration> getConfigurations() {
+        final ArrayList<GenericConfiguration> list = new ArrayList<GenericConfiguration>();
+        list.add(new GenericConfiguration.StrPrefConfiguration("Api key", api_key));
+
+        return list;
     }
 
     @Override
@@ -99,7 +116,7 @@ public class VirusTotalModule extends BaseModule implements View.OnClickListener
         VirusTotalUtility.InternalReponse response;
         while (scanning) {
             // asks for the report
-            response = VirusTotalUtility.scanUrl(getUrl());
+            response = VirusTotalUtility.scanUrl(getUrl(),api_key.get());
 
             // check valid report
             if (response.detectionsTotal > 0) {
