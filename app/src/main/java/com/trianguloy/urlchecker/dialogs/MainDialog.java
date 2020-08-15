@@ -136,7 +136,7 @@ public class MainDialog extends Activity {
             }
 
             // set module content
-            View child = Inflater.inflate(module.getLayoutDialog(), parent, this);
+            View child = Inflater.inflate(module.getLayoutId(), parent, this);
             module.onInitialize(child);
 
             modules.add(module);

@@ -1,14 +1,14 @@
 package com.trianguloy.urlchecker.modules;
 
 import android.app.Activity;
-import android.view.View;
 
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.utilities.Fragment;
 
 /**
  * Base class for a module.
  */
-public abstract class AModuleDialog {
+public abstract class AModuleDialog implements Fragment {
 
     // ------------------- private data -------------------
 
@@ -21,18 +21,6 @@ public abstract class AModuleDialog {
     }
 
     // ------------------- abstract functions -------------------
-
-    /**
-     * @return the layout resource of this module
-     */
-    public abstract int getLayoutDialog();
-
-    /**
-     * Initializes this module from the given views (generated from {@link #getLayoutDialog()})
-     *
-     * @param views the inflated views
-     */
-    public abstract void onInitialize(View views);
 
     /**
      * Notification of a new url.

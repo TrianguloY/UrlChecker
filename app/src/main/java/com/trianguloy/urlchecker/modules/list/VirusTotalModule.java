@@ -1,13 +1,18 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -19,9 +24,9 @@ import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
  */
 public class VirusTotalModule extends AModuleData {
 
-
-    static final String API_KEY = "api_key";
-    static final String API_KEY_DEFAULT = "**REMOVED**";
+    static GenericPref.Str API_PREF() {
+        return new GenericPref.Str("api_key", "**REMOVED**");
+    }
 
     @Override
     public String getId() {
@@ -34,16 +39,55 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
-    public String getDescription() {
-        return "Allows to check the url in VirusTotal (an api key is needed)";
-    }
-
-    @Override
     public AModuleDialog getDialog(MainDialog dialog) {
         return new VirusTotalDialog(dialog);
     }
+
+    @Override
+    public AModuleConfig getConfig(Context cntx) {
+        return new VirusTotalConfig(cntx);
+    }
 }
 
+class VirusTotalConfig extends AModuleConfig implements TextWatcher {
+
+    GenericPref.Str api_key = VirusTotalModule.API_PREF();
+
+    public VirusTotalConfig(Context cntx) {
+        api_key.init(cntx);
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        final String key = api_key.get();
+        return key != null && !key.isEmpty();
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_virustotal;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        final EditText edit_key = (EditText) views.findViewById(R.id.api_key);
+        edit_key.setText(api_key.get());
+        edit_key.addTextChangedListener(this);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        api_key.set(s.toString());
+    }
+}
 
 class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
 
@@ -58,22 +102,14 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
     public VirusTotalDialog(MainDialog dialog) {
         super(dialog);
-        api_key = new GenericPref.Str(VirusTotalModule.API_KEY, VirusTotalModule.API_KEY_DEFAULT);
+        api_key = VirusTotalModule.API_PREF();
         api_key.init(dialog);
     }
 
     @Override
-    public int getLayoutDialog() {
-        return R.layout.module_virustotal;
+    public int getLayoutId() {
+        return R.layout.dialog_virustotal;
     }
-
-//    @Override
-//    public List<GenericConfiguration> getConfigurations() {
-//        final ArrayList<GenericConfiguration> list = new ArrayList<GenericConfiguration>();
-//        list.add(new GenericConfiguration.StrPrefConfiguration("Api key", api_key));
-//
-//        return list;
-//    }
 
     @Override
     public void onInitialize(View views) {

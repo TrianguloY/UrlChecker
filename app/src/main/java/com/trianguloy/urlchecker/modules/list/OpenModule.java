@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,8 +11,10 @@ import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -34,13 +37,13 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public String getDescription() {
-        return "Allows to open or share the current url.";
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new OpenDialog(dialog);
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new OpenDialog(dialog);
+    public AModuleConfig getConfig(Context cntx) {
+        return new DescriptionConfig("Allows to open or share the current url.");
     }
 }
 
@@ -59,8 +62,8 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     }
 
     @Override
-    public int getLayoutDialog() {
-        return R.layout.module_open;
+    public int getLayoutId() {
+        return R.layout.dialog_open;
     }
 
     @Override

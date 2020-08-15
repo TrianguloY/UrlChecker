@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -7,8 +8,10 @@ import android.widget.EditText;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.DescriptionConfig;
 
 /**
  * This module shows the current url and allows manual editing
@@ -26,13 +29,13 @@ public class TextInputModule extends AModuleData {
     }
 
     @Override
-    public String getDescription() {
-        return "Allows to edit the url manually";
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new TextInputDialog(dialog);
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new TextInputDialog(dialog);
+    public AModuleConfig getConfig(Context cntx) {
+        return new DescriptionConfig("Allows to edit the url manually");
     }
 }
 
@@ -47,8 +50,8 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
 
 
     @Override
-    public int getLayoutDialog() {
-        return R.layout.module_text;
+    public int getLayoutId() {
+        return R.layout.dialog_text;
     }
 
     @Override

@@ -1,13 +1,16 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.DescriptionConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +31,13 @@ public class AsciiModule extends AModuleData {
     }
 
     @Override
-    public String getDescription() {
-        return "Checks for non-ascii characters";
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new AsciiDialog(dialog);
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new AsciiDialog(dialog);
+    public AModuleConfig getConfig(Context cntx) {
+        return new DescriptionConfig("Checks for non-ascii characters");
     }
 }
 
@@ -47,8 +50,8 @@ class AsciiDialog extends AModuleDialog {
     }
 
     @Override
-    public int getLayoutDialog() {
-        return R.layout.module_ascii;
+    public int getLayoutId() {
+        return R.layout.dialog_ascii;
     }
 
     @Override

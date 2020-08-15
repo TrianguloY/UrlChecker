@@ -1,13 +1,16 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.DescriptionConfig;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -31,13 +34,13 @@ public class RedirectModule extends AModuleData {
     }
 
     @Override
-    public String getDescription() {
-        return "Allows to check for redirection";
+    public AModuleDialog getDialog(MainDialog dialog) {
+        return new RedirectDialog(dialog);
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new RedirectDialog(dialog);
+    public AModuleConfig getConfig(Context cntx) {
+        return new DescriptionConfig("Allows to check for redirection");
     }
 }
 
@@ -56,8 +59,8 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     @Override
-    public int getLayoutDialog() {
-        return R.layout.module_redirect;
+    public int getLayoutId() {
+        return R.layout.dialog_redirect;
     }
 
     @Override

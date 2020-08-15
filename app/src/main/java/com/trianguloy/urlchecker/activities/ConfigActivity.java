@@ -3,27 +3,31 @@ package com.trianguloy.urlchecker.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.Inflater;
 
 /**
  * An activity that shows the list of modules that can be enabled/disabled
  */
-public class ModulesActivity extends Activity {
+public class ConfigActivity extends Activity {
 
     private LinearLayout list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modules);
+        setContentView(R.layout.config_activity);
         list = findViewById(R.id.list);
 
         initialize();
@@ -41,19 +45,26 @@ public class ModulesActivity extends Activity {
     }
 
     private void initModule(AModuleData module, boolean enableable) {
+        final AModuleConfig config = module.getConfig(this);
+
         // inflate
-        View views = getLayoutInflater().inflate(R.layout.conf_module, list, false);
-        list.addView(views); // separated to return the inflated view instead of the parent
+        View parent = getLayoutInflater().inflate(R.layout.config_module, list, false);
+        list.addView(parent); // separated to return the inflated view instead of the parent
 
         // configure enable toggle
-        Switch toggleEnable = views.findViewById(R.id.enable);
+        Switch toggleEnable = parent.findViewById(R.id.enable);
         if (enableable) {
             final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
             toggleEnable.setChecked(enabled_pref.get());
             toggleEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    enabled_pref.set(isChecked);
+                    if (isChecked && !config.canBeEnabled()) {
+                        Toast.makeText(ConfigActivity.this, "Can't enable the module, missing configuration?", Toast.LENGTH_LONG).show();
+                        buttonView.setChecked(false);
+                    } else {
+                        enabled_pref.set(isChecked);
+                    }
                 }
             });
         } else {
@@ -61,23 +72,23 @@ public class ModulesActivity extends Activity {
             toggleEnable.setEnabled(false);
         }
 
-        // configure info
-        final TextView title = views.findViewById(R.id.label);
+        // configure label
+        final TextView title = parent.findViewById(R.id.label);
         title.setText(module.getName());
-        ((TextView) views.findViewById(R.id.desc)).setText(module.getDescription());
+
+        // configuration of the module
+        final View child = Inflater.inflate(config.getLayoutId(), (ViewGroup) parent.findViewById(R.id.box), this);
+        config.onInitialize(child);
 
         // configure toggleable description
-        final View details_cont = views.findViewById(R.id.details);
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean checked = details_cont.getVisibility() == View.GONE;
-                details_cont.setVisibility(checked ? View.VISIBLE : View.GONE);
+                boolean checked = child.getVisibility() == View.GONE;
+                child.setVisibility(checked ? View.VISIBLE : View.GONE);
                 title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
             }
         });
         title.performClick();
-
-        // add configurations
     }
 }

@@ -33,19 +33,13 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/details"
+    <FrameLayout
+        android:id="@+id/box"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
 
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
