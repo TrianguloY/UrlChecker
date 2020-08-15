@@ -19,6 +19,10 @@ import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
  */
 public class VirusTotalModule extends AModuleData {
 
+
+    static final String API_KEY = "api_key";
+    static final String API_KEY_DEFAULT = "**REMOVED**";
+
     @Override
     public String getId() {
         return "virustotal";
@@ -50,10 +54,11 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     private boolean scanning = false;
     private VirusTotalUtility.InternalReponse result = null;
 
-    private GenericPref.Str api_key = new GenericPref.Str("api_key", "**REMOVED**");
+    private final GenericPref.Str api_key;
 
     public VirusTotalDialog(MainDialog dialog) {
         super(dialog);
+        api_key = new GenericPref.Str(VirusTotalModule.API_KEY, VirusTotalModule.API_KEY_DEFAULT);
         api_key.init(dialog);
     }
 
@@ -137,7 +142,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         VirusTotalUtility.InternalReponse response;
         while (scanning) {
             // asks for the report
-            response = VirusTotalUtility.scanUrl(getUrl(),api_key.get());
+            response = VirusTotalUtility.scanUrl(getUrl(), api_key.get());
 
             // check valid report
             if (response.detectionsTotal > 0) {
