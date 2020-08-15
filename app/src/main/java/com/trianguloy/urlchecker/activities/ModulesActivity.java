@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -63,22 +62,21 @@ public class ModulesActivity extends Activity {
         }
 
         // configure info
-        ((TextView) views.findViewById(R.id.label)).setText(module.getName());
+        final TextView title = views.findViewById(R.id.label);
+        title.setText(module.getName());
         ((TextView) views.findViewById(R.id.desc)).setText(module.getDescription());
 
         // configure toggleable description
         final View details_cont = views.findViewById(R.id.details);
-        View toggle = views.findViewById(R.id.toggle);
-        toggle.setOnClickListener(new View.OnClickListener() {
+        title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean checked = v.getTag() != null;
-                v.setTag(checked ? null : new Object());
+                boolean checked = details_cont.getVisibility() == View.GONE;
                 details_cont.setVisibility(checked ? View.VISIBLE : View.GONE);
-                ((ImageView) v).setImageResource(checked ? R.drawable.expanded : R.drawable.collapsed);
+                title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
             }
         });
-        toggle.performClick();
+        title.performClick();
 
         // add configurations
     }

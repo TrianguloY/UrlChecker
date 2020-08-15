@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,26 +102,16 @@ public class MainDialog extends Activity {
         modules.clear();
 
         // top module
-        initializeModule(ModuleManager.topModule);
+        initializeModule(ModuleManager.topModule, false);
 
         // middle modules
         final List<AModuleData> middleModules = ModuleManager.getEnabledMiddleModules(this);
         for (AModuleData module : middleModules) {
-
-            // set title
-            String name = module.getName();
-            if (name != null) {
-                final TextView title = new TextView(this);
-                title.setText(name + ":");
-                ll_mods.addView(title);
-            }
-
-            // set content
-            initializeModule(module);
+            initializeModule(module, true);
         }
 
         // bottom module
-        initializeModule(ModuleManager.bottomModule);
+        initializeModule(ModuleManager.bottomModule, false);
     }
 
     /**
@@ -127,13 +119,26 @@ public class MainDialog extends Activity {
      *
      * @param moduleData which module to initialize
      */
-    private void initializeModule(AModuleData moduleData) {
+    private void initializeModule(AModuleData moduleData, boolean decorations) {
         try {
             // enabled, add
             AModuleDialog module = moduleData.getDialog(this);
-            View views = getLayoutInflater().inflate(module.getLayoutDialog(), ll_mods, false);
-            ll_mods.addView(views); // separated to return the inflated view instead of the parent
-            module.onInitialize(views);
+
+            ViewGroup parent;
+            // set module block
+            if (decorations) {
+                View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
+                final TextView title = block.findViewById(R.id.title);
+                title.setText(moduleData.getName() + ":");
+                parent = block.findViewById(R.id.mod);
+            } else {
+                parent = ll_mods;
+            }
+
+            // set module content
+            View child = Inflater.inflate(module.getLayoutDialog(), parent, this);
+            module.onInitialize(child);
+
             modules.add(module);
         } catch (Exception e) {
             // can't add module
