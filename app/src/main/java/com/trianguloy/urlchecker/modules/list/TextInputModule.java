@@ -1,12 +1,12 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -34,7 +34,7 @@ public class TextInputModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(Context cntx) {
+    public AModuleConfig getConfig(ConfigActivity cntx) {
         return new DescriptionConfig("Allows to edit the url manually");
     }
 }

@@ -1,7 +1,6 @@
 package com.trianguloy.urlchecker.modules;
 
-import android.content.Context;
-
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 
 public abstract class AModuleData {
@@ -11,5 +10,5 @@ public abstract class AModuleData {
 
     public abstract AModuleDialog getDialog(MainDialog dialog);
 
-    public abstract AModuleConfig getConfig(Context cntx);
+    public abstract AModuleConfig getConfig(ConfigActivity cntx);
 }

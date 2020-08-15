@@ -1,11 +1,11 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -36,7 +36,7 @@ public class AsciiModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(Context cntx) {
+    public AModuleConfig getConfig(ConfigActivity cntx) {
         return new DescriptionConfig("Checks for non-ascii characters");
     }
 }

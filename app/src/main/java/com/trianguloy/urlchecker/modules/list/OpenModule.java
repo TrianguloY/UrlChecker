@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -42,7 +42,7 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(Context cntx) {
+    public AModuleConfig getConfig(ConfigActivity cntx) {
         return new DescriptionConfig("Allows to open or share the current url.");
     }
 }

@@ -17,6 +17,9 @@ import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An activity that shows the list of modules that can be enabled/disabled
  */
@@ -67,6 +70,7 @@ public class ConfigActivity extends Activity {
                     }
                 }
             });
+            switches.put(config, toggleEnable);
         } else {
             toggleEnable.setChecked(true);
             toggleEnable.setEnabled(false);
@@ -90,5 +94,12 @@ public class ConfigActivity extends Activity {
             }
         });
         title.performClick();
+    }
+
+    private Map<AModuleConfig, Switch> switches = new HashMap<>();
+
+    public void disableModule(AModuleConfig module) {
+        final Switch vswitch = switches.get(module);
+        if (vswitch != null) vswitch.setChecked(false);
     }
 }

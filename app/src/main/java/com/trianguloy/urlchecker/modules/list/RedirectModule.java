@@ -1,11 +1,11 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -39,7 +39,7 @@ public class RedirectModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(Context cntx) {
+    public AModuleConfig getConfig(ConfigActivity cntx) {
         return new DescriptionConfig("Allows to check for redirection");
     }
 }

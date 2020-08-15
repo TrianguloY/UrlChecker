@@ -1,7 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -44,7 +44,7 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(Context cntx) {
+    public AModuleConfig getConfig(ConfigActivity cntx) {
         return new VirusTotalConfig(cntx);
     }
 }
@@ -53,7 +53,8 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 
     GenericPref.Str api_key = VirusTotalModule.API_PREF();
 
-    public VirusTotalConfig(Context cntx) {
+    public VirusTotalConfig(ConfigActivity cntx) {
+        super(cntx);
         api_key.init(cntx);
     }
 
@@ -86,6 +87,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         api_key.set(s.toString());
+        if (!canBeEnabled()) disable();
     }
 }
 
