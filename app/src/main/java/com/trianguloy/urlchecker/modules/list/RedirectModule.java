@@ -34,8 +34,8 @@ public class RedirectModule extends AModuleData {
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new RedirectDialog(dialog);
+    public AModuleDialog getDialog(MainDialog cntx) {
+        return new RedirectDialog(cntx);
     }
 
     @Override

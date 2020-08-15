@@ -29,8 +29,8 @@ public class TextInputModule extends AModuleData {
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new TextInputDialog(dialog);
+    public AModuleDialog getDialog(MainDialog cntx) {
+        return new TextInputDialog(cntx);
     }
 
     @Override

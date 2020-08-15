@@ -31,8 +31,8 @@ public class AsciiModule extends AModuleData {
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new AsciiDialog(dialog);
+    public AModuleDialog getDialog(MainDialog cntx) {
+        return new AsciiDialog(cntx);
     }
 
     @Override

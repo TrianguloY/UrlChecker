@@ -39,8 +39,8 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new VirusTotalDialog(dialog);
+    public AModuleDialog getDialog(MainDialog cntx) {
+        return new VirusTotalDialog(cntx);
     }
 
     @Override

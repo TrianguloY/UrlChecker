@@ -3,6 +3,9 @@ package com.trianguloy.urlchecker.modules;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.utilities.Fragment;
 
+/**
+ * Base class for a module configuration fragment
+ */
 public abstract class AModuleConfig implements Fragment {
 
     // ------------------- private data -------------------
@@ -21,10 +24,16 @@ public abstract class AModuleConfig implements Fragment {
 
     // ------------------- abstract functions -------------------
 
+    /**
+     * @return true iff this module can be enabled (possibly from current settings)
+     */
     public abstract boolean canBeEnabled();
 
-
     // ------------------- utilities -------------------
+
+    /**
+     * Disables this module
+     */
     public final void disable() {
         if (activity != null) activity.disableModule(this);
     }

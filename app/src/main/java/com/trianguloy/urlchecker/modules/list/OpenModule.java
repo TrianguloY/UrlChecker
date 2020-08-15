@@ -37,8 +37,8 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public AModuleDialog getDialog(MainDialog dialog) {
-        return new OpenDialog(dialog);
+    public AModuleDialog getDialog(MainDialog cntx) {
+        return new OpenDialog(cntx);
     }
 
     @Override

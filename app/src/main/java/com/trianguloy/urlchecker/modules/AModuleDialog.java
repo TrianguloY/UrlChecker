@@ -6,7 +6,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.utilities.Fragment;
 
 /**
- * Base class for a module.
+ * Base class for a module's dialog fragment.
  */
 public abstract class AModuleDialog implements Fragment {
 

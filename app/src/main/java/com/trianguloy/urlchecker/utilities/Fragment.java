@@ -2,6 +2,11 @@ package com.trianguloy.urlchecker.utilities;
 
 import android.view.View;
 
+/**
+ * Android fragments are deprecated?
+ * I need to use that ugly huge compatibility library?
+ * No way, I'll do my own.
+ */
 public interface Fragment {
 
     /**

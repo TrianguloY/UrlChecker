@@ -5,6 +5,10 @@ import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 
+/**
+ * A simple Module configuration where just a description is needed
+ * This module can always be enabled
+ */
 public class DescriptionConfig extends AModuleConfig {
 
     private final String description;
