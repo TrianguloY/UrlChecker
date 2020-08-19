@@ -39,6 +39,11 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
+    public boolean isEnabledByDefault() {
+        return false;
+    }
+
+    @Override
     public AModuleDialog getDialog(MainDialog cntx) {
         return new VirusTotalDialog(cntx);
     }

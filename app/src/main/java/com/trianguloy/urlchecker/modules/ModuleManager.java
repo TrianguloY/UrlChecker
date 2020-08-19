@@ -32,13 +32,9 @@ public class ModuleManager {
     // ------------------- class -------------------
 
     private static final String PREF_SUFFIX = "_en";
-    /**
-     * Status of modules by default (true=enabled, false=disabled)
-     */
-    private static final boolean ENABLED_DEFAULT = true;
 
     public static GenericPref.Bool getEnabledPrefOfModule(AModuleData module, Context cntx) {
-        final GenericPref.Bool enabledPref = new GenericPref.Bool(module.getId() + PREF_SUFFIX, ENABLED_DEFAULT);
+        final GenericPref.Bool enabledPref = new GenericPref.Bool(module.getId() + PREF_SUFFIX, module.isEnabledByDefault());
         enabledPref.init(cntx);
         return enabledPref;
     }

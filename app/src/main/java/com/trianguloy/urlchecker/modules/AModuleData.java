@@ -16,6 +16,13 @@ public abstract class AModuleData {
     public abstract String getName();
 
     /**
+     * @return whether this module should be enabled by default
+     */
+    public boolean isEnabledByDefault() {
+        return true;
+    }
+
+    /**
      * Returns the dialog fragment of this module
      *
      * @param cntx for the fragment
