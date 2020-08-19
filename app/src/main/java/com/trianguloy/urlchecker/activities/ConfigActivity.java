@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
@@ -26,6 +27,7 @@ import java.util.Map;
 public class ConfigActivity extends Activity {
 
     private LinearLayout list;
+    private Map<AModuleConfig, Switch> switches = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,8 @@ public class ConfigActivity extends Activity {
         final AModuleConfig config = module.getConfig(this);
 
         // inflate
-        View parent = getLayoutInflater().inflate(R.layout.config_module, list, false);
-        list.addView(parent); // separated to return the inflated view instead of the parent
+        View parent = Inflater.inflate(R.layout.config_module, list, this);
+        Animations.enableAnimations(parent);
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);
@@ -93,10 +95,8 @@ public class ConfigActivity extends Activity {
                 title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
             }
         });
-        title.performClick();
+        title.performClick(); // initial hide
     }
-
-    private Map<AModuleConfig, Switch> switches = new HashMap<>();
 
     public void disableModule(AModuleConfig module) {
         final Switch vswitch = switches.get(module);
