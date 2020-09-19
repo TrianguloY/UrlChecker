@@ -40,7 +40,7 @@ public class RedirectModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Allows to check for redirection");
+        return new DescriptionConfig("By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced (can be undo). The url is fetched, but not evaluated, so redirection based on javascript won't be detected.");
     }
 }
 

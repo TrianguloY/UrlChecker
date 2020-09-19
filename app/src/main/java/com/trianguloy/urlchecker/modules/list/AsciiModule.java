@@ -37,7 +37,7 @@ public class AsciiModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Checks for non-ascii characters");
+        return new DescriptionConfig("Checks for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com");
     }
 }
 

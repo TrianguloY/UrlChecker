@@ -9,17 +9,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/label"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableStart="@drawable/collapsed"
-            android:drawableLeft="@drawable/collapsed"
-            android:gravity="center_vertical"
-            android:padding="5dp" />
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/collapsed"
+                android:drawableLeft="@drawable/collapsed"
+                android:gravity="center_vertical"
+                android:padding="5dp" />
+
+            <FrameLayout
+                android:id="@+id/box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
+
+            </FrameLayout>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView"
@@ -33,15 +51,5 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/box"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
-
-    </FrameLayout>
 
 </LinearLayout>

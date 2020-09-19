@@ -43,7 +43,7 @@ public class OpenModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Allows to open or share the current url.");
+        return new DescriptionConfig("Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. \nCan't be disabled.");
     }
 }
 

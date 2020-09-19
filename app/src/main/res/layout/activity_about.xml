@@ -3,80 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     android:padding="@dimen/padding"
-    android:weightSum="5"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.AboutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/m_img_icon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@android:color/transparent"
-            android:onClick="onClick"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
-
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/app_name" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding"
             android:gravity="center"
-            android:text="@string/txt_info" />
+            android:paddingBottom="@dimen/padding"
+            android:text="@string/txt_about" />
 
         <TextView
-            android:id="@+id/txt_sample"
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding"
-            android:autoLink="web"
             android:gravity="center"
-            android:onClick="onClick"
-            android:text="@string/txt_sample" />
+            android:text="@string/modVT_tm" />
 
         <Button
-            android:id="@+id/setup"
+            android:id="@+id/btn_blog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding"
-            android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_manage"
-            android:drawableLeft="@android:drawable/ic_menu_manage"
+            android:drawableLeft="@android:drawable/ic_menu_set_as"
             android:drawablePadding="@dimen/padding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/a_setup" />
+            android:text="@string/btn_blog" />
 
         <Button
-            android:id="@+id/about"
+            android:id="@+id/btn_openStore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding"
-            android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_info_details"
-            android:drawableLeft="@android:drawable/ic_menu_info_details"
+            android:drawableLeft="@android:drawable/ic_media_play"
             android:drawablePadding="@dimen/padding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/a_about" />
+            android:text="@string/btn_openStore" />
+
+        <Button
+            android:id="@+id/btn_shareStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding"
+            android:drawableLeft="@android:drawable/ic_menu_share"
+            android:drawablePadding="@dimen/padding"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:text="@string/btn_shareStore" />
 
     </LinearLayout>
 </ScrollView>

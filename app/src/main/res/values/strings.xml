@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Url checker</string>
+
+    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Check the setup screen for the available modules and what they do.</string>
+
+    <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/</string>
+
+    <string name="a_setup">Setup</string>
+    <string name="a_about">About</string>
+
+    <string name="toast_error">Can\'t open activity</string>
+    <string name="txt_about">"App created by TrianguloY."</string>
+
+    <string name="btn_blog">TrianguloY\'s blog</string>
+    <string name="btn_openStore">Open Play Store</string>
+    <string name="btn_shareStore">Share App</string>
+    <string name="toast_noBrowser">Can\'t open the browser</string>
+
+
+    <string name="modVT_apiKey">api key</string>
+    <string name="modVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="modVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
+    <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
+
 </resources>

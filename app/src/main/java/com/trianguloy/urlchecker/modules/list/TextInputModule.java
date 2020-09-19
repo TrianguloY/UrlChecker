@@ -35,7 +35,7 @@ public class TextInputModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Allows to edit the url manually");
+        return new DescriptionConfig("Displays the current url, which can be edited manually.\nCan't be disabled.");
     }
 }
 
