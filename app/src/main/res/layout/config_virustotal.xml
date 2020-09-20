@@ -8,7 +8,7 @@
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/modVT_desc" />
+        android:text="@string/mVT_desc" />
 
     <EditText
         android:id="@+id/api_key"
@@ -16,12 +16,12 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/modVT_apiKey"
+        android:hint="@string/mVT_apiKey"
         android:inputType="none|text" />
 
     <TextView
         android:id="@+id/label2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/modVT_tm" />
+        android:text="@string/mVT_tm" />
 </LinearLayout>

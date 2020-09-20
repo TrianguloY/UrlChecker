@@ -29,8 +29,8 @@ public class RedirectModule extends AModuleData {
     }
 
     @Override
-    public String getName() {
-        return "Redirection";
+    public int getName() {
+        return R.string.mRedir_name;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class RedirectModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced (can be undo). The url is fetched, but not evaluated, so redirection based on javascript won't be detected.");
+        return new DescriptionConfig(R.string.mRedir_desc);
     }
 }
 
@@ -103,7 +103,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                 // get url
                 String url = getUrl();
 
-                String message = "Unknown error";
+                int message = R.string.mRedir_error;
                 HttpURLConnection conn = null;
                 try {
                     // perform GET to the url
@@ -117,12 +117,12 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                             url = new URL(new URL(url), location).toExternalForm(); // Deal with relative URLs
                             break;
                         default:
-                            message = "No redirection, final URL, try to scan now";
+                            message = R.string.mRedir_final;
                             url = null;
                     }
                 } catch (IOException e) {
+                    // error
                     e.printStackTrace();
-                    message = "Error when following redirect";
                     url = null;
                 } finally {
                     if (conn != null) {
@@ -131,7 +131,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                 }
 
                 // notify
-                final String finalMessage = message;
+                final int finalMessage = message;
                 final String finalUrl = url;
                 getActivity().runOnUiThread(new Runnable() {
                     public void run() {

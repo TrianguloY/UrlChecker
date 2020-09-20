@@ -65,7 +65,7 @@ public class ConfigActivity extends Activity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked && !config.canBeEnabled()) {
-                        Toast.makeText(ConfigActivity.this, "Can't enable the module, missing configuration?", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ConfigActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
                         buttonView.setChecked(false);
                     } else {
                         enabled_pref.set(isChecked);
@@ -80,7 +80,7 @@ public class ConfigActivity extends Activity {
 
         // configure label
         final TextView title = parent.findViewById(R.id.label);
-        title.setText(module.getName());
+        title.setText(getString(R.string.dd, getString(module.getName())));
 
         // configuration of the module
         final View child = Inflater.inflate(config.getLayoutId(), (ViewGroup) parent.findViewById(R.id.box), this);

@@ -1,25 +1,61 @@
 <resources>
+    <!-- main -->
     <string name="app_name">Url checker</string>
-
     <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Check the setup screen for the available modules and what they do.</string>
-
     <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/</string>
-
     <string name="a_setup">Setup</string>
     <string name="a_about">About</string>
 
-    <string name="toast_error">Can\'t open activity</string>
+    <!-- about -->
     <string name="txt_about">"App created by TrianguloY."</string>
-
     <string name="btn_blog">TrianguloY\'s blog</string>
     <string name="btn_openStore">Open Play Store</string>
     <string name="btn_shareStore">Share App</string>
-    <string name="toast_noBrowser">Can\'t open the browser</string>
 
-
-    <string name="modVT_apiKey">api key</string>
-    <string name="modVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
-    <string name="modVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
+    <!-- configuration -->
     <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
+    <string name="toast_cantEnable">Can\'t enable the module, missing configuration?</string>
+
+    <!-- generic -->
+    <string name="toast_error">Can\'t open activity</string>
+    <string name="toast_noBrowser">Can\'t open the browser</string>
+    <string name="toast_cantOpen">No other apps can open this url</string>
+    <string name="title_choose">Choose app</string>
+    <string name="dd">%s:</string>
+
+
+    <!-- modules -->
+    <string name="mAscii_name">Ascii checker</string>
+    <string name="mAscii_desc">Checks for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com</string>
+    <string name="mAscii_warning">Warning! Non ascii characters found</string>
+    <string name="mAscii_ok">No issues found</string>
+
+    <string name="mOpen_name"><![CDATA[Open & Share]]></string>
+    <string name="mOpen_desc">Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. \nCan\'t be disabled.</string>
+    <string name="mOpen_with">Open with %s</string>
+    <string name="mOpen_open">Open</string>
+    <string name="mOpen_share">Share</string>
+
+    <string name="mRedir_name">Redirection</string>
+    <string name="mRedir_desc">By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced (can be undo). The url is fetched, but not evaluated, so redirection based on javascript won\'t be detected.</string>
+    <string name="mRedir_error">Error when following redirect</string>
+    <string name="mRedir_final">No redirection, final URL, try to scan now</string>
+    <string name="mRedir_check">Check</string>
+    <string name="mRedir_undo">Undo</string>
+
+    <string name="mInput_name">Input text</string>
+    <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>
+
+    <string name="mVT_name">VirusTotal</string>
+    <string name="mVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_apiKey">api key</string>
+    <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
+    <string name="mVT_scan">Press to scan</string>
+    <string name="mVT_scanning">Scanning…</string>
+    <string name="mVT_goodUrl">None of the %d engines detected the url (as of date %s)</string>
+    <string name="mVT_warningUrl">Warning, %d/%d engines detected the url (as of date %s)</string>
+    <string name="mVT_badUrl">Careful! %d/%d engines detected the url (as of date %s)</string>
+    <string name="mVT_connectError">Can\'t connect to VirusTotal. Make sure you have an active internet connection or try again later.</string>
+    <string name="mVT_jsonError">Can\'t connect to VirusTotal. Make sure the api key is valid or try again later.</string>
 
 </resources>

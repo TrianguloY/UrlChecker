@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/modVT_tm" />
+            android:text="@string/mVT_tm" />
 
         <Button
             android:id="@+id/btn_blog"

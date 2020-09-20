@@ -24,8 +24,8 @@ public class TextInputModule extends AModuleData {
     }
 
     @Override
-    public String getName() {
-        return "Input text";
+    public int getName() {
+        return R.string.mInput_name;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class TextInputModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Displays the current url, which can be edited manually.\nCan't be disabled.");
+        return new DescriptionConfig(R.string.mInput_desc);
     }
 }
 

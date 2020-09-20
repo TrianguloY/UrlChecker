@@ -34,8 +34,8 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
-    public String getName() {
-        return "VirusTotal";
+    public int getName() {
+        return R.string.mVT_name;
     }
 
     @Override
@@ -185,10 +185,10 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         VirusTotalUtility.InternalReponse response;
         while (scanning) {
             // asks for the report
-            response = VirusTotalUtility.scanUrl(getUrl(), api_key.get());
+            response = VirusTotalUtility.scanUrl(getUrl(), api_key.get(), getActivity());
 
             // check valid report
-            if (response.detectionsTotal > 0) {
+            if (response.detectionsTotal > 0 || response.error != null) {
                 result = response;
                 scanning = false;
                 getActivity().runOnUiThread(new Runnable() {
@@ -216,31 +216,35 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         if (scanning) {
             // scanning in progress, show cancel
             btn_scan.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
-            setResult("Scanning...", 0);
+            setResult(getActivity().getString(R.string.mVT_scanning), 0);
             btn_scan.setEnabled(true);
         } else {
             // not a scanning in progress
             btn_scan.setImageResource(android.R.drawable.ic_menu_search);
             if (result == null) {
                 // no result available, new url
-                setResult("Press to scan", 0);
+                setResult(getActivity().getString(R.string.mVT_scan), 0);
                 btn_scan.setEnabled(true);
             } else {
                 // result available
-                if (result.detectionsTotal <= 0) {
-                    // this should never happen...
-                    setResult("no detections? strange", R.color.warning);
-                } else if (result.detectionsPositive > 2) {
-                    // more thst two bad detection, bad url
-                    setResult("Uh oh, " + result.detectionsPositive + "/" + result.detectionsTotal + " engines detected the url (as of date " + result.date + ")", R.color.bad);
-                } else if (result.detectionsPositive > 0) {
-                    // 1 or 2 bad ddetectings, warning
-                    setResult("Uh oh, " + result.detectionsPositive + "/" + result.detectionsTotal + " engines detected the url (as of date " + result.date + ")", R.color.warning);
+                if (result.error != null) {
+                    // an error ocurred
+                    setResult(result.error, Color.TRANSPARENT);
+                    btn_scan.setEnabled(true);
                 } else {
-                    // no detections, good
-                    setResult("None of the " + result.detectionsTotal + " engines detected the site (as of date " + result.date + ")", R.color.good);
+                    // valid result
+                    btn_scan.setEnabled(false);
+                    if (result.detectionsPositive > 2) {
+                        // more that two bad detection, bad url
+                        setResult(getActivity().getString(R.string.mVT_badUrl, result.detectionsPositive, result.detectionsTotal, result.date), R.color.bad);
+                    } else if (result.detectionsPositive > 0) {
+                        // 1 or 2 bad detections, warning
+                        setResult(getActivity().getString(R.string.mVT_warningUrl, result.detectionsPositive, result.detectionsTotal, result.date), R.color.warning);
+                    } else {
+                        // no detections, good
+                        setResult(getActivity().getString(R.string.mVT_goodUrl, result.detectionsTotal, result.date), R.color.good);
+                    }
                 }
-                btn_scan.setEnabled(false);
             }
         }
 
@@ -263,7 +267,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
      * @param details if true, the virustotal page is opened, if false just a basic dialog with the json
      */
     private void showInfo(boolean details) {
-        if (result == null) return;
+        if (result == null || result.error != null) return;
 
         if (details) {
             UrlUtilities.openUrlRemoveThis(result.scanUrl, getActivity());

@@ -32,8 +32,8 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public String getName() {
-        return "Open & Share";
+    public int getName() {
+        return R.string.mOpen_name;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class OpenModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. \nCan't be disabled.");
+        return new DescriptionConfig(R.string.mOpen_desc);
     }
 }
 
@@ -129,7 +129,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         lastOpened.sort(packages);
 
         // set
-        btn_open.setText("Open with " + PackageUtilities.getPackageName(packages.get(0), getActivity()));
+        btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(0), getActivity())));
         btn_open.setEnabled(true);
         menu.clear();
         if (packages.size() == 1) {
@@ -137,7 +137,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         } else {
             btn_openWith.setVisibility(View.VISIBLE);
             for (int i = 1; i < packages.size(); i++) {
-                menu.add(Menu.NONE, i, i, "Open with " + PackageUtilities.getPackageName(packages.get(i), getActivity()));
+                menu.add(Menu.NONE, i, i, getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(i), getActivity())));
             }
         }
 
@@ -147,6 +147,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     /**
      * Open url in a specific app
+     *
      * @param index index from the packages list of the app to use
      */
     private void openUrl(int index) {
@@ -176,7 +177,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         sendIntent.setType("text/plain");
 
         // share intent
-        Intent shareIntent = Intent.createChooser(sendIntent, "Share");
+        Intent shareIntent = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
         getActivity().startActivity(shareIntent);
     }
 }

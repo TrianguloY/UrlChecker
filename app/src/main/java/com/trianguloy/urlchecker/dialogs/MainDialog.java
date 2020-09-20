@@ -129,7 +129,7 @@ public class MainDialog extends Activity {
             if (decorations) {
                 View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
                 final TextView title = block.findViewById(R.id.title);
-                title.setText(moduleData.getName() + ":");
+                title.setText(getString(R.string.dd, getString(moduleData.getName())));
                 parent = block.findViewById(R.id.mod);
             } else {
                 parent = ll_mods;
@@ -156,7 +156,7 @@ public class MainDialog extends Activity {
 
         if (uri == null) {
             // check in case someone opens this without url
-            Toast.makeText(this, "No url!!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No url", Toast.LENGTH_SHORT).show();
             finish();
             return null;
         }

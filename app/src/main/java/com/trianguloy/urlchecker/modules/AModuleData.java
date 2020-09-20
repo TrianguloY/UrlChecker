@@ -13,7 +13,7 @@ public abstract class AModuleData {
     /**
      * @return the user visible name of this module
      */
-    public abstract String getName();
+    public abstract int getName();
 
     /**
      * @return whether this module should be enabled by default

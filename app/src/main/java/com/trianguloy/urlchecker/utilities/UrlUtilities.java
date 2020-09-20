@@ -2,10 +2,11 @@ package com.trianguloy.urlchecker.utilities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.widget.Toast;
+
+import com.trianguloy.urlchecker.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +45,12 @@ public class UrlUtilities {
 
         // check if none
         if (intents.isEmpty()) {
-            Toast.makeText(cntx, "No other apps can open this url", Toast.LENGTH_SHORT).show();
+            Toast.makeText(cntx, R.string.toast_cantOpen, Toast.LENGTH_SHORT).show();
             return;
         }
 
         // create chooser
-        Intent chooserIntent = Intent.createChooser(intents.remove(0), "Choose app");
+        Intent chooserIntent = Intent.createChooser(intents.remove(0), cntx.getString(R.string.title_choose));
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[intents.size()]));
 
         // open

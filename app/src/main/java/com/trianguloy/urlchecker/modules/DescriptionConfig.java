@@ -11,9 +11,9 @@ import com.trianguloy.urlchecker.R;
  */
 public class DescriptionConfig extends AModuleConfig {
 
-    private final String description;
+    private final int description;
 
-    public DescriptionConfig(String description) {
+    public DescriptionConfig(int description) {
         this.description = description;
     }
 

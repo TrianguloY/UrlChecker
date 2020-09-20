@@ -8,12 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Check" />
+        android:text="@string/mRedir_check" />
 
     <Button
         android:id="@+id/undo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Undo" />
+        android:text="@string/mRedir_undo" />
 </LinearLayout>

@@ -26,8 +26,8 @@ public class AsciiModule extends AModuleData {
     }
 
     @Override
-    public String getName() {
-        return "Ascii checker";
+    public int getName() {
+        return R.string.mAscii_name;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class AsciiModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig("Checks for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com");
+        return new DescriptionConfig(R.string.mAscii_desc);
     }
 }
 
@@ -65,14 +65,14 @@ class AsciiDialog extends AModuleDialog {
 
         // check for non-ascii characters
         if (!url.matches("\\A\\p{ASCII}*\\z")) {
-            messages.add("Warning! Non ascii characters found");
+            messages.add(getActivity().getString(R.string.mAscii_warning));
         }
 
         // TODO: other checks?
 
         if (messages.isEmpty()) {
             // no messages, all good
-            txt_ascii.setText("No issues found");
+            txt_ascii.setText(R.string.mAscii_ok);
             txt_ascii.setBackgroundColor(Color.TRANSPARENT);
         } else {
             // messages to show, concatenate them

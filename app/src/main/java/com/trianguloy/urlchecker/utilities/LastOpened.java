@@ -19,6 +19,7 @@ public class LastOpened {
      * The preferences
      */
     private final List<GenericPref.Str> list = new ArrayList<>(N);
+    private static final String PREFIX = "opened";
 
     /**
      * Initializes this utility
@@ -27,7 +28,7 @@ public class LastOpened {
      */
     public LastOpened(Context cntx) {
         for (int i = 0; i < N; i++) {
-            GenericPref.Str gp = new GenericPref.Str("opened" + i, null);
+            GenericPref.Str gp = new GenericPref.Str(PREFIX + i, null);
             gp.init(cntx);
             list.add(gp);
         }
