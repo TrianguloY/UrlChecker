@@ -25,7 +25,7 @@ import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
 public class VirusTotalModule extends AModuleData {
 
     static GenericPref.Str API_PREF() {
-        return new GenericPref.Str("api_key", "**REMOVED**");
+        return new GenericPref.Str("api_key", "");
     }
 
     @Override
