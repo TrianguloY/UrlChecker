@@ -1,5 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
@@ -47,7 +51,7 @@ public class OpenModule extends AModuleData {
     }
 }
 
-class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, View.OnLongClickListener {
 
     private LastOpened lastOpened;
 
@@ -72,7 +76,9 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         btn_open.setOnClickListener(this);
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(this);
-        views.findViewById(R.id.share).setOnClickListener(this);
+        View btn_share = views.findViewById(R.id.share);
+        btn_share.setOnClickListener(this);
+        btn_share.setOnLongClickListener(this);
 
 
         popup = new PopupMenu(getActivity(), btn_open);
@@ -102,6 +108,18 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                 showList();
                 break;
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.share:
+                copyToClipboard();
+                break;
+            default:
+                return false;
+        }
+        return true;
     }
 
     // ------------------- PopupMenu.OnMenuItemClickListener -------------------
@@ -179,5 +197,17 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         // share intent
         Intent shareIntent = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
         getActivity().startActivity(shareIntent);
+    }
+
+    /**
+     * Copy the url to the clipboard
+     */
+    private void copyToClipboard() {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("", getUrl());
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getActivity(), R.string.mO_clipboard, Toast.LENGTH_LONG).show();
+        }
     }
 }
