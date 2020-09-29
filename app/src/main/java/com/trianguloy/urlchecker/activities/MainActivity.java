@@ -29,29 +29,30 @@ public class MainActivity extends Activity {
      * @param view which button
      */
     public void onClick(View view) {
-        Class cls;
         switch (view.getId()) {
             case R.id.setup:
-                cls = ConfigActivity.class;
+                // open setup
+                PackageUtilities.startActivity(new Intent(this, ConfigActivity.class), R.string.toast_error, this);
                 break;
             case R.id.about:
-                cls = AboutActivity.class;
+                // open about
+                PackageUtilities.startActivity(new Intent(this, AboutActivity.class), R.string.toast_error, this);
                 break;
             case R.id.txt_sample:
+                // click on the google url
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
                 i.setPackage(getPackageName());
                 PackageUtilities.startActivity(i, R.string.toast_error, this);
-                return;
+                break;
             case R.id.m_img_icon:
+                // click on the app icon
                 Toast.makeText(this, getString(R.string.app_name) + ", by TrianguloY", Toast.LENGTH_SHORT).show();
-                return;
+                break;
             default:
                 Log.d("SWITCH", view.toString());
                 if (BuildConfig.DEBUG)
                     Toast.makeText(this, "Unknown view: " + view, Toast.LENGTH_LONG).show();
-                return;
         }
-        PackageUtilities.startActivity(new Intent(this, cls), R.string.toast_error, this);
     }
 
 }

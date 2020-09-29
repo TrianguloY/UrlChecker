@@ -47,6 +47,7 @@
             android:layout_marginTop="@dimen/padding"
             android:autoLink="web"
             android:gravity="center"
+            android:linksClickable="false"
             android:onClick="onClick"
             android:text="@string/txt_sample" />
 
