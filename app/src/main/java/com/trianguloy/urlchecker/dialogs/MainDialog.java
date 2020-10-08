@@ -1,6 +1,7 @@
 package com.trianguloy.urlchecker.dialogs;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -147,22 +148,39 @@ public class MainDialog extends Activity {
     }
 
     /**
-     * @return the url that this activity was opened with (intent uri)
+     * @return the url that this activity was opened with (intent uri or sent text)
      */
     private String getOpenUrl() {
+        // get the intent
+        Intent intent = getIntent();
+        if (intent == null) return invalid();
 
-        // get data
-        Uri uri = this.getIntent().getData();
-
-        if (uri == null) {
-            // check in case someone opens this without url
-            Toast.makeText(this, "No url", Toast.LENGTH_SHORT).show();
-            finish();
-            return null;
+        // check the action
+        String action = getIntent().getAction();
+        if (Intent.ACTION_SEND.equals(action)) {
+            // sent text
+            String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+            if (sharedText == null) return invalid();
+            return sharedText.trim();
+        } else if (Intent.ACTION_VIEW.equals(action)) {
+            // view url
+            Uri uri = intent.getData();
+            if (uri == null) return invalid();
+            return uri.toString();
+        } else {
+            // other
+            return invalid();
         }
+    }
 
-        // return
-        return uri.toString();
+    /**
+     * @return null, finishes the activity and shows a toast
+     */
+    private String invalid() {
+        // for an invalid parameter
+        Toast.makeText(this, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
+        finish();
+        return null;
     }
 
     // ------------------- url -------------------

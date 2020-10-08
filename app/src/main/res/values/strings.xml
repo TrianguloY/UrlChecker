@@ -19,8 +19,8 @@
     <!-- generic -->
     <string name="toast_error">Can\'t open activity</string>
     <string name="toast_noBrowser">Can\'t open the browser</string>
-    <string name="toast_cantOpen">No other apps can open this url</string>
     <string name="title_choose">Choose app</string>
+    <string name="toast_invalid">Invalid</string>
     <string name="dd">%s:</string>
 
 

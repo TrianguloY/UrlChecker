@@ -45,7 +45,7 @@ public class UrlUtilities {
 
         // check if none
         if (intents.isEmpty()) {
-            Toast.makeText(cntx, R.string.toast_cantOpen, Toast.LENGTH_SHORT).show();
+            Toast.makeText(cntx, R.string.toast_noBrowser, Toast.LENGTH_SHORT).show();
             return;
         }
 

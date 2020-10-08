@@ -33,8 +33,7 @@ public class AboutActivity extends Activity {
                 share.setType("text/plain");
                 share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
-                // Add data to the intent, the receiving app will decide
-                // what to do with it.
+                // Add data to the intent, the receiving app will decide what to do with it.
                 share.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
                 share.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=" + getPackageName());
 
