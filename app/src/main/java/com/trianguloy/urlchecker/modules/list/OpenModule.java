@@ -137,7 +137,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         // check no apps
         if (packages.isEmpty()) {
-            btn_open.setText("");
+            btn_open.setText(R.string.mOpen_noapps);
             btn_open.setEnabled(false);
             btn_openWith.setVisibility(View.GONE);
             return;
@@ -207,7 +207,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         ClipData clip = ClipData.newPlainText("", getUrl());
         if (clipboard != null) {
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(getActivity(), R.string.mO_clipboard, Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.mOpen_clipboard, Toast.LENGTH_LONG).show();
         }
     }
 }
