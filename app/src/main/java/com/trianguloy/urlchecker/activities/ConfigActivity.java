@@ -32,7 +32,7 @@ public class ConfigActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.config_activity);
+        setContentView(R.layout.activity_config);
         list = findViewById(R.id.list);
 
         initialize();

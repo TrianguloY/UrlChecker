@@ -5,7 +5,7 @@
 
     <Button
         android:id="@+id/open"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:text="@string/mOpen_open" />
@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/share"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/mOpen_share" />

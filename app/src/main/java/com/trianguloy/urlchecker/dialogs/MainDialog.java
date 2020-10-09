@@ -85,6 +85,7 @@ public class MainDialog extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
+        setFinishOnTouchOutside(true);
 
         // get views
         ll_mods = findViewById(R.id.middle_modules);
