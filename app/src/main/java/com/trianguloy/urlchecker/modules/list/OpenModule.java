@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -171,10 +172,22 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     private void openUrl(int index) {
         if (index < 0 || index >= packages.size()) return;
 
-        // open
+        // update chosen
         String chosed = packages.get(index);
         lastOpened.usedPackage(chosed);
-        getActivity().startActivity(UrlUtilities.getViewIntent(getUrl(), chosed));
+
+        // open
+        Intent intent = new Intent(getActivity().getIntent());
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            // preserve original VIEW intent
+            intent.setData(Uri.parse(getUrl()));
+            intent.setComponent(null);
+            intent.setPackage(chosed);
+        } else {
+            // replace with new VIEW intent
+            intent = UrlUtilities.getViewIntent(getUrl(), chosed);
+        }
+        getActivity().startActivity(intent);
     }
 
     /**
