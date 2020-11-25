@@ -25,11 +25,13 @@
 
 
     <!-- modules -->
-    <string name="mAscii_name">Ascii checker</string>
-    <string name="mAscii_desc">Checks for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com</string>
-    <string name="mAscii_warning">Warning! Non ascii characters found</string>
-    <string name="mAscii_http">Http link, consider using https</string>
-    <string name="mAscii_ok">No issues found</string>
+    <string name="mPttrn_name">Patterns checker</string>
+    <string name="mPttrn_desc">"Checks for common issues in the url:
+* Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
+* http links, you should use https instead"</string>
+    <string name="mPttrn_ascii">Warning! Non ascii characters found</string>
+    <string name="mPttrn_http">Http link, consider using https</string>
+    <string name="mPttrn_ok">No issues found</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. \nCan\'t be disabled.</string>

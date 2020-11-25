@@ -2,8 +2,8 @@ package com.trianguloy.urlchecker.modules;
 
 import android.content.Context;
 
-import com.trianguloy.urlchecker.modules.list.AsciiModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
+import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.RedirectModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
@@ -25,7 +25,7 @@ public class ModuleManager {
         // TODO: auto-load with reflection?
         toggleableModules.add(new RedirectModule());
         toggleableModules.add(new VirusTotalModule());
-        toggleableModules.add(new AsciiModule());
+        toggleableModules.add(new PatternModule());
     }
 
 

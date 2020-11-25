@@ -16,47 +16,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This module checks for non-ascii characters in the url
+ * This module checks for patterns characters in the url
  */
-public class AsciiModule extends AModuleData {
+public class PatternModule extends AModuleData {
 
     @Override
     public String getId() {
-        return "ascii";
+        return "pattern";
     }
 
     @Override
     public int getName() {
-        return R.string.mAscii_name;
+        return R.string.mPttrn_name;
     }
 
     @Override
     public AModuleDialog getDialog(MainDialog cntx) {
-        return new AsciiDialog(cntx);
+        return new PatternDialog(cntx);
     }
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.mAscii_desc);
+        return new DescriptionConfig(R.string.mPttrn_desc);
     }
 }
 
-class AsciiDialog extends AModuleDialog {
+class PatternDialog extends AModuleDialog {
 
-    private TextView txt_ascii;
+    private TextView txt_pattern;
 
-    public AsciiDialog(MainDialog dialog) {
+    public PatternDialog(MainDialog dialog) {
         super(dialog);
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_ascii;
+        return R.layout.dialog_pattern;
     }
 
     @Override
     public void onInitialize(View views) {
-        txt_ascii = views.findViewById(R.id.ascii);
+        txt_pattern = views.findViewById(R.id.pattern);
     }
 
     @Override
@@ -65,30 +65,30 @@ class AsciiDialog extends AModuleDialog {
 
         // check for non-ascii characters
         if (!url.matches("\\A\\p{ASCII}*\\z")) {
-            messages.add(getActivity().getString(R.string.mAscii_warning));
+            messages.add(getActivity().getString(R.string.mPttrn_ascii));
         }
 
         // check for http
         if (url.startsWith("http:")) {
-            messages.add(getActivity().getString(R.string.mAscii_http));
+            messages.add(getActivity().getString(R.string.mPttrn_http));
         }
 
         // TODO: other checks?
 
         if (messages.isEmpty()) {
             // no messages, all good
-            txt_ascii.setText(R.string.mAscii_ok);
-            txt_ascii.setBackgroundColor(Color.TRANSPARENT);
+            txt_pattern.setText(R.string.mPttrn_ok);
+            txt_pattern.setBackgroundColor(Color.TRANSPARENT);
         } else {
             // messages to show, concatenate them
-            txt_ascii.setText("");
+            txt_pattern.setText("");
             boolean newline = false;
             for (String message : messages) {
-                if (newline) txt_ascii.append("\n");
+                if (newline) txt_pattern.append("\n");
                 newline = true;
-                txt_ascii.append(message);
+                txt_pattern.append(message);
             }
-            txt_ascii.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+            txt_pattern.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
         }
     }
 }
