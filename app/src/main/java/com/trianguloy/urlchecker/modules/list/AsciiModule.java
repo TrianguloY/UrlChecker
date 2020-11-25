@@ -68,6 +68,11 @@ class AsciiDialog extends AModuleDialog {
             messages.add(getActivity().getString(R.string.mAscii_warning));
         }
 
+        // check for http
+        if (url.startsWith("http:")) {
+            messages.add(getActivity().getString(R.string.mAscii_http));
+        }
+
         // TODO: other checks?
 
         if (messages.isEmpty()) {

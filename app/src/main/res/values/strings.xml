@@ -28,6 +28,7 @@
     <string name="mAscii_name">Ascii checker</string>
     <string name="mAscii_desc">Checks for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com</string>
     <string name="mAscii_warning">Warning! Non ascii characters found</string>
+    <string name="mAscii_http">Http link, consider using https</string>
     <string name="mAscii_ok">No issues found</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
@@ -59,5 +60,6 @@
     <string name="mVT_badUrl">Careful! %d/%d engines detected the url (as of date %s)</string>
     <string name="mVT_connectError">Can\'t connect to VirusTotal. Make sure you have an active internet connection or try again later.</string>
     <string name="mVT_jsonError">Can\'t connect to VirusTotal. Make sure the api key is valid or try again later.</string>
+
 
 </resources>
