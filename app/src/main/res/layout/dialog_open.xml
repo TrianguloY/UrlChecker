@@ -3,6 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageButton
+        android:id="@+id/ctabs"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/ctabs_off" />
+
     <Button
         android:id="@+id/open"
         android:layout_width="wrap_content"
