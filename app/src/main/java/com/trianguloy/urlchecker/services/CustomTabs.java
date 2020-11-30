@@ -18,25 +18,25 @@ public class CustomTabs extends Service {
 
     @Override
     public void onCreate() {
-        log("onCreate");
         super.onCreate();
+        log("onCreate", true);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        log("onStartCommand");
+        log("onStartCommand\n" + intent.toUri(0), true);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-        log("onDestroy");
+        log("onDestroy", true);
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        log("onBind");
+        log("onBind\n" + intent.toUri(0), false); // a toast here, for some reason, isn't shown and later it crashes
         return null;
 //        return new IBinder() {
 //            @Override
@@ -94,12 +94,12 @@ public class CustomTabs extends Service {
 
     // ------------------- logging -------------------
 
-    private static final String TAG = "CT-service";
+    private static final String TAG = "CUSTOMTABS";
 
-    private void log(String message) {
-        if (BuildConfig.DEBUG) {
-            Toast.makeText(this, TAG + ": " + message, Toast.LENGTH_SHORT).show();
-        }
+    private void log(String message, boolean toast) {
         Log.d(TAG, message);
+        if (BuildConfig.DEBUG && toast) {
+            Toast.makeText(this, TAG + ": " + message, Toast.LENGTH_LONG).show();
+        }
     }
 }

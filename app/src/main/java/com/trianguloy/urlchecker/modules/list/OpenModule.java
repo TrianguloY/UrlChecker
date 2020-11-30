@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
@@ -140,7 +141,8 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                 Toast.makeText(getActivity(), "Toggle Custom Tabs feature", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.open:
-                intentDetails();
+                if (BuildConfig.DEBUG)
+                    intentDetails();
                 break;
             case R.id.share:
                 copyToClipboard();
