@@ -2,6 +2,7 @@ package com.trianguloy.urlchecker.modules;
 
 import android.content.Context;
 
+import com.trianguloy.urlchecker.modules.list.DebugModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.RedirectModule;
@@ -26,6 +27,7 @@ public class ModuleManager {
         toggleableModules.add(new RedirectModule());
         toggleableModules.add(new VirusTotalModule());
         toggleableModules.add(new PatternModule());
+        toggleableModules.add(new DebugModule());
     }
 
 

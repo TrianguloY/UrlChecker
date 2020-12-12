@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
@@ -139,10 +137,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         switch (v.getId()) {
             case R.id.ctabs:
                 Toast.makeText(getActivity(), "Toggle Custom Tabs feature", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.open:
-                if (BuildConfig.DEBUG)
-                    intentDetails();
                 break;
             case R.id.share:
                 copyToClipboard();
@@ -288,12 +282,4 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         ctabs = state;
     }
 
-    /**
-     * Shows the uri of the current intent
-     */
-    private void intentDetails() {
-        new AlertDialog.Builder(getActivity())
-                .setMessage(getActivity().getIntent().toUri(0))
-                .show();
-    }
 }
