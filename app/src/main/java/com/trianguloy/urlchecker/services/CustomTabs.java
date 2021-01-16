@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.BuildConfig;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
  * Empty service for fake custom tabs.
@@ -15,28 +15,31 @@ import com.trianguloy.urlchecker.BuildConfig;
  */
 public class CustomTabs extends Service {
 
+    public static GenericPref.Bool SHOWTOAST_PREF() {
+        return new GenericPref.Bool("ctabs_toast", false);
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        log("onCreate", true);
+        log("onCreate");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        log("onStartCommand\n" + intent.toUri(0), true);
+        log("onStartCommand\n" + intent.toUri(0));
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-        log("onDestroy", true);
+        log("onDestroy");
         super.onDestroy();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        log("onBind\n" + intent.toUri(0), false); // a toast here, for some reason, isn't shown and later it crashes
+        log("onBind\n" + intent.toUri(0)); // a toast here, for some reason, isn't shown and later it crashes
         return null;
 //        return new IBinder() {
 //            @Override
@@ -96,9 +99,11 @@ public class CustomTabs extends Service {
 
     private static final String TAG = "CUSTOMTABS";
 
-    private void log(String message, boolean toast) {
+    private void log(String message) {
         Log.d(TAG, message);
-        if (BuildConfig.DEBUG && toast) {
+        GenericPref.Bool showToast = SHOWTOAST_PREF();
+        showToast.init(this);
+        if (showToast.get()) {
             Toast.makeText(this, TAG + ": " + message, Toast.LENGTH_LONG).show();
         }
     }

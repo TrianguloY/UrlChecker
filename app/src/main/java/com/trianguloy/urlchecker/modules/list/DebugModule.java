@@ -1,6 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -9,11 +11,13 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.services.CustomTabs;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
  * A textview with debug info.
  * Currently shows the original intent (as uri)
+ * Allows also to enable/disable ctabs toasts
  */
 public class DebugModule extends AModuleData {
     @Override
@@ -38,7 +42,7 @@ public class DebugModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.dbg_desc);
+        return new DebugConfig(cntx);
     }
 }
 
@@ -63,5 +67,37 @@ class DebugDialog extends AModuleDialog {
         ((TextView) views.findViewById(R.id.text1)).setText(
                 getActivity().getIntent().toUri(0)
         );
+    }
+}
+
+class DebugConfig extends AModuleConfig {
+
+    GenericPref.Bool show_toasts = CustomTabs.SHOWTOAST_PREF();
+
+    public DebugConfig(ConfigActivity activity) {
+        super(activity);
+        show_toasts.init(activity);
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        return true;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_debug;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        CheckBox chk_ctabs = views.findViewById(R.id.chk_ctabs);
+        chk_ctabs.setChecked(show_toasts.get());
+        chk_ctabs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                show_toasts.set(isChecked);
+            }
+        });
     }
 }
