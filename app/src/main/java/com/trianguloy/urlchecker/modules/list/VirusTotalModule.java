@@ -56,7 +56,7 @@ public class VirusTotalModule extends AModuleData {
 
 class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 
-    GenericPref.Str api_key = VirusTotalModule.API_PREF();
+    final GenericPref.Str api_key = VirusTotalModule.API_PREF();
 
     public VirusTotalConfig(ConfigActivity cntx) {
         super(cntx);
@@ -149,10 +149,9 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
     @Override
     public boolean onLongClick(View v) {
-        switch (v.getId()) {
-            case R.id.result:
-                showInfo(true);
-                return true;
+        if (v.getId() == R.id.result) {
+            showInfo(true);
+            return true;
         }
         return false;
     }
@@ -169,11 +168,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         } else {
             // start scan
             scanning = true;
-            new Thread(new Runnable() {
-                public void run() {
-                    _scanUrl();
-                }
-            }).start();
+            new Thread(this::_scanUrl).start();
         }
         updateUI();
     }
@@ -191,11 +186,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
             if (response.detectionsTotal > 0 || response.error != null) {
                 result = response;
                 scanning = false;
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        updateUI();
-                    }
-                });
+                getActivity().runOnUiThread(this::updateUI);
                 return;
             }
 

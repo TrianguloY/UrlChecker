@@ -52,7 +52,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
     /**
      * The redirected urls, for undoing
      */
-    private Stack<String> urls = new Stack<>();
+    private final Stack<String> urls = new Stack<>();
 
     public RedirectDialog(MainDialog dialog) {
         super(dialog);
@@ -97,57 +97,53 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
     private void check() {
         // disable button and run in background
         check.setEnabled(false);
-        new Thread(new Runnable() {
-            public void run() {
+        new Thread(() -> {
 
-                // get url
-                String url = getUrl();
+            // get url
+            String url = getUrl();
 
-                int message = R.string.mRedir_error;
-                HttpURLConnection conn = null;
-                try {
-                    // perform GET to the url
-                    conn = (HttpURLConnection) new URL(url).openConnection();
-                    conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
-                    switch (conn.getResponseCode()) {
-                        case HttpURLConnection.HTTP_MOVED_PERM:
-                        case HttpURLConnection.HTTP_MOVED_TEMP:
-                            String location = conn.getHeaderField("Location");
-                            location = URLDecoder.decode(location, "UTF-8");
-                            url = new URL(new URL(url), location).toExternalForm(); // Deal with relative URLs
-                            break;
-                        default:
-                            message = R.string.mRedir_final;
-                            url = null;
-                    }
-                } catch (IOException e) {
-                    // error
-                    e.printStackTrace();
-                    url = null;
-                } finally {
-                    if (conn != null) {
-                        conn.disconnect();
-                    }
+            int message = R.string.mRedir_error;
+            HttpURLConnection conn = null;
+            try {
+                // perform GET to the url
+                conn = (HttpURLConnection) new URL(url).openConnection();
+                conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
+                switch (conn.getResponseCode()) {
+                    case HttpURLConnection.HTTP_MOVED_PERM:
+                    case HttpURLConnection.HTTP_MOVED_TEMP:
+                        String location = conn.getHeaderField("Location");
+                        location = URLDecoder.decode(location, "UTF-8");
+                        url = new URL(new URL(url), location).toExternalForm(); // Deal with relative URLs
+                        break;
+                    default:
+                        message = R.string.mRedir_final;
+                        url = null;
                 }
-
-                // notify
-                final int finalMessage = message;
-                final String finalUrl = url;
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        if (finalUrl == null) {
-                            // no redirection, show message (keep buton disabled)
-                            Toast.makeText(getActivity(), finalMessage, Toast.LENGTH_SHORT).show();
-                        } else {
-                            // redirection, change url and enable button again
-                            urls.push(getUrl());
-                            setUrl(finalUrl);
-                            undo.setEnabled(true);
-                            check.setEnabled(true);
-                        }
-                    }
-                });
+            } catch (IOException e) {
+                // error
+                e.printStackTrace();
+                url = null;
+            } finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
             }
+
+            // notify
+            final int finalMessage = message;
+            final String finalUrl = url;
+            getActivity().runOnUiThread(() -> {
+                if (finalUrl == null) {
+                    // no redirection, show message (keep buton disabled)
+                    Toast.makeText(getActivity(), finalMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    // redirection, change url and enable button again
+                    urls.push(getUrl());
+                    setUrl(finalUrl);
+                    undo.setEnabled(true);
+                    check.setEnabled(true);
+                }
+            });
         }).start();
     }
 

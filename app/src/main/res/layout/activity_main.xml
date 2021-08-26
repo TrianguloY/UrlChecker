@@ -26,14 +26,12 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/app_name" />
 
         <TextView
-            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding"
@@ -50,7 +48,8 @@
             android:gravity="center"
             android:linksClickable="false"
             android:onClick="onClick"
-            android:text="@string/txt_sample" />
+            android:text="@string/txt_sample"
+            android:focusable="true" />
 
         <Button
             android:id="@+id/setup"

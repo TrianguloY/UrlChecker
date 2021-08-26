@@ -51,7 +51,7 @@ public class UrlUtilities {
 
         // create chooser
         Intent chooserIntent = Intent.createChooser(intents.remove(0), cntx.getString(R.string.title_choose));
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[intents.size()]));
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[0]));
 
         // open
         cntx.startActivity(chooserIntent);

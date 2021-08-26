@@ -14,6 +14,7 @@ public class Inflater {
     static public <T extends View> T inflate(int resource, ViewGroup root, Activity cntx) {
         final View view = cntx.getLayoutInflater().inflate(resource, root, false);
         root.addView(view);
+        //noinspection unchecked
         return ((T) view);
     }
 }

@@ -69,7 +69,6 @@ public class LastOpened {
             list.get(N - 2).set(null);
             return;
         }
-        ;
 
         // check intermediate ones, and swap with previous
         for (int i = N - 2; i >= 0; i--) {

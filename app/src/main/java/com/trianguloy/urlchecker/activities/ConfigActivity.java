@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -27,7 +26,7 @@ import java.util.Map;
 public class ConfigActivity extends Activity {
 
     private LinearLayout list;
-    private Map<AModuleConfig, Switch> switches = new HashMap<>();
+    private final Map<AModuleConfig, Switch> switches = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +60,12 @@ public class ConfigActivity extends Activity {
         if (enableable) {
             final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
             toggleEnable.setChecked(enabled_pref.get());
-            toggleEnable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked && !config.canBeEnabled()) {
-                        Toast.makeText(ConfigActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
-                        buttonView.setChecked(false);
-                    } else {
-                        enabled_pref.set(isChecked);
-                    }
+            toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked && !config.canBeEnabled()) {
+                    Toast.makeText(ConfigActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
+                    buttonView.setChecked(false);
+                } else {
+                    enabled_pref.set(isChecked);
                 }
             });
             switches.put(config, toggleEnable);
@@ -87,13 +83,10 @@ public class ConfigActivity extends Activity {
         config.onInitialize(child);
 
         // configure toggleable description
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean checked = child.getVisibility() == View.GONE;
-                child.setVisibility(checked ? View.VISIBLE : View.GONE);
-                title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
-            }
+        title.setOnClickListener(v -> {
+            boolean checked = child.getVisibility() == View.GONE;
+            child.setVisibility(checked ? View.VISIBLE : View.GONE);
+            title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
         });
         title.performClick(); // initial hide
     }

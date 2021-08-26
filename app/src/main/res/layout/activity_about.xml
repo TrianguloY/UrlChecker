@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -21,7 +20,6 @@
             android:text="@string/txt_about" />
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -38,7 +36,8 @@
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_blog" />
+            android:text="@string/btn_blog"
+            android:drawableStart="@android:drawable/ic_menu_set_as" />
 
         <Button
             android:id="@+id/btn_openStore"
@@ -51,7 +50,8 @@
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_openStore" />
+            android:text="@string/btn_openStore"
+            android:drawableStart="@android:drawable/ic_media_play" />
 
         <Button
             android:id="@+id/btn_shareStore"
@@ -64,7 +64,8 @@
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_shareStore" />
+            android:text="@string/btn_shareStore"
+            android:drawableStart="@android:drawable/ic_menu_share" />
 
     </LinearLayout>
 </ScrollView>
