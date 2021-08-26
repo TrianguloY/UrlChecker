@@ -158,7 +158,7 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Removes duplicated entries
+     * Removes duplicated entries, also empty ones
      */
     private void removeDuplicates(boolean continuous) {
         for (int i = 0; i < history.size(); ) {
@@ -173,6 +173,11 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
                 // check if there is another later same element
                 replaceIndex = history.lastIndexOf(entry);
             }
+            if (entry.isEmpty() && index != i) {
+                // remove empty, unless it is current index
+                replaceIndex = index;
+            }
+
             if (replaceIndex != i) {
                 // remove this and replace
                 if (index == i) index = replaceIndex;

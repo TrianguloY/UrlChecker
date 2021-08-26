@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -89,6 +90,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
         // disable button and run in background
         check.setEnabled(false);
         info.setText(R.string.mRedir_checking);
+
         new Thread(() -> {
 
             // get url
@@ -100,7 +102,9 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                 // perform GET to the url
                 conn = (HttpURLConnection) new URL(url).openConnection();
                 conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
-                switch (conn.getResponseCode()) {
+                int responseCode = conn.getResponseCode();
+                Log.d("RESPONSE_CODE", url + ": " + responseCode);
+                switch (responseCode) {
                     case HttpURLConnection.HTTP_MOVED_PERM:
                     case HttpURLConnection.HTTP_MOVED_TEMP:
                         String location = conn.getHeaderField("Location");
@@ -130,6 +134,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                     info.setText(finalMessage);
                 } else {
                     // redirection, change url and enable button again
+                    info.setText(R.string.mRedir_redir);
                     updateUrl(finalUrl);
                     check.setEnabled(true);
                 }

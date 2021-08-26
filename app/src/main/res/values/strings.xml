@@ -43,6 +43,7 @@
 
     <string name="mRedir_name">Redirection</string>
     <string name="mRedir_desc">By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced. The url is fetched, but not evaluated, so redirection based on javascript won\'t be detected.</string>
+    <string name="mRedir_redir">Redirected</string>
     <string name="mRedir_error">Error when following redirect</string>
     <string name="mRedir_final">No redirection, final URL.</string>
     <string name="mRedir_check">Check</string>
