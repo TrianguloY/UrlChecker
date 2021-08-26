@@ -139,7 +139,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
                 } else {
                     // redirection, change url and enable button again
                     urls.push(getUrl());
-                    setUrl(finalUrl);
+                    updateUrl(finalUrl);
                     undo.setEnabled(true);
                     check.setEnabled(true);
                 }
@@ -154,7 +154,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
         if (urls.isEmpty()) return;
 
         // set previous url and enable/disable buttons if needed
-        setUrl(urls.pop());
+        updateUrl(urls.pop());
         check.setEnabled(true);
         if (urls.isEmpty()) undo.setEnabled(false);
     }

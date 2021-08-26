@@ -82,6 +82,6 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     public void afterTextChanged(Editable s) {
         if(editByCode) return;
         // new url by the user
-        setUrl(s.toString());
+        updateUrl(s.toString());
     }
 }

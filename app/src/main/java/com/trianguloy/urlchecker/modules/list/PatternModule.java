@@ -11,6 +11,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.utilities.ClickableLinks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class PatternModule extends AModuleData {
     }
 }
 
-class PatternDialog extends AModuleDialog {
+class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListener {
 
     private TextView txt_pattern;
 
@@ -64,8 +65,9 @@ class PatternDialog extends AModuleDialog {
         List<String> messages = new ArrayList<>();
 
         // check for non-ascii characters
-        if (!url.matches("\\A\\p{ASCII}*\\z")) {
-            messages.add(getActivity().getString(R.string.mPttrn_ascii));
+        String strange = url.replaceAll("\\p{ASCII}", "");
+        if (!strange.isEmpty()) {
+            messages.add(getActivity().getString(R.string.mPttrn_ascii, strange));
         }
 
         // check for http
@@ -89,6 +91,17 @@ class PatternDialog extends AModuleDialog {
                 txt_pattern.append(message);
             }
             txt_pattern.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+        }
+        ClickableLinks.linkify(txt_pattern, this);
+    }
+
+    @Override
+    public void onLinkClick(String tag) {
+        switch (tag) {
+            case "http":
+                // replace http with https
+                setUrl(getUrl().replaceFirst("^http:", "https:"));
+                break;
         }
     }
 }

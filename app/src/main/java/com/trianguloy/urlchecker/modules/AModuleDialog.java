@@ -24,7 +24,7 @@ public abstract class AModuleDialog implements Fragment {
 
     /**
      * Notification of a new url.
-     * On this callback you can't call {@link #setUrl(String)}
+     * On this callback you can't call {@link #updateUrl(String)}
      *
      * @param url the new url
      */
@@ -47,12 +47,25 @@ public abstract class AModuleDialog implements Fragment {
     }
 
     /**
-     * Changes the current url
+     * Changes the current url.
+     * All the other modules are notified, BUT NOT THE CALLER
      *
      * @param url new url
+     * @see AModuleDialog#setUrl(String)
+     */
+    protected final void updateUrl(String url) {
+        dialog.setUrl(url, this);
+    }
+
+    /**
+     * Changes the current url.
+     * All the modules are notified, INCLUDING THE CALLER
+     *
+     * @param url new url
+     * @see AModuleDialog#updateUrl(String)
      */
     protected final void setUrl(String url) {
-        dialog.setUrl(url, this);
+        dialog.setUrl(url, null);
     }
 
 }
