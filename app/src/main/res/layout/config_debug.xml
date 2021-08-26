@@ -7,11 +7,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dbg_desc" />
+        android:text="@string/mD_desc" />
 
     <CheckBox
         android:id="@+id/chk_ctabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dbg_ctabs" />
+        android:text="@string/mD_ctabs" />
 </LinearLayout>

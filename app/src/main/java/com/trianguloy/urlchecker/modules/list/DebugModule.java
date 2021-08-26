@@ -26,7 +26,7 @@ public class DebugModule extends AModuleData {
 
     @Override
     public int getName() {
-        return R.string.dbg_name;
+        return R.string.mD_name;
     }
 
     @Override
