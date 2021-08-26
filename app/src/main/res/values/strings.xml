@@ -42,11 +42,10 @@
     <string name="mOpen_noapps">No apps</string>
 
     <string name="mRedir_name">Redirection</string>
-    <string name="mRedir_desc">By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced (can be undo). The url is fetched, but not evaluated, so redirection based on javascript won\'t be detected.</string>
+    <string name="mRedir_desc">By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced. The url is fetched, but not evaluated, so redirection based on javascript won\'t be detected.</string>
     <string name="mRedir_error">Error when following redirect</string>
     <string name="mRedir_final">No redirection, final URL.</string>
     <string name="mRedir_check">Check</string>
-    <string name="mRedir_undo">Undo</string>
 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>

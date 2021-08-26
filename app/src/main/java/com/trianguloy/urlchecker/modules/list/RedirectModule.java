@@ -2,7 +2,7 @@ package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.Stack;
 
 /**
  * A module that allows checking for redirection by using a local browser
+ * TODO: show also and maybe react to other codes
  */
 public class RedirectModule extends AModuleData {
 
@@ -47,12 +47,7 @@ public class RedirectModule extends AModuleData {
 class RedirectDialog extends AModuleDialog implements View.OnClickListener {
 
     private Button check;
-    private Button undo;
-
-    /**
-     * The redirected urls, for undoing
-     */
-    private final Stack<String> urls = new Stack<>();
+    private TextView info;
 
     public RedirectDialog(MainDialog dialog) {
         super(dialog);
@@ -67,27 +62,23 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
     public void onInitialize(View views) {
         check = views.findViewById(R.id.check);
         check.setOnClickListener(this);
-        undo = views.findViewById(R.id.undo);
-        undo.setOnClickListener(this);
+        info = views.findViewById(R.id.info);
     }
 
     @Override
     public void onNewUrl(String url) {
-        urls.clear();
+        // reset all
         check.setEnabled(true);
-        undo.setEnabled(false);
+        info.setText("");
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.check:
-                check();
-                break;
-            case R.id.undo:
-                undo();
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.check: // only one
+        check();
+//                break;
+//        }
     }
 
     /**
@@ -134,29 +125,15 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
             final String finalUrl = url;
             getActivity().runOnUiThread(() -> {
                 if (finalUrl == null) {
-                    // no redirection, show message (keep buton disabled)
-                    Toast.makeText(getActivity(), finalMessage, Toast.LENGTH_SHORT).show();
+                    // no redirection, show message (keep button disabled)
+                    info.setText(finalMessage);
                 } else {
                     // redirection, change url and enable button again
-                    urls.push(getUrl());
                     updateUrl(finalUrl);
-                    undo.setEnabled(true);
                     check.setEnabled(true);
                 }
             });
         }).start();
-    }
-
-    /**
-     * Undo one redirection
-     */
-    private void undo() {
-        if (urls.isEmpty()) return;
-
-        // set previous url and enable/disable buttons if needed
-        updateUrl(urls.pop());
-        check.setEnabled(true);
-        if (urls.isEmpty()) undo.setEnabled(false);
     }
 
 }
