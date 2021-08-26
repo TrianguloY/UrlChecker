@@ -88,6 +88,7 @@ class RedirectDialog extends AModuleDialog implements View.OnClickListener {
     private void check() {
         // disable button and run in background
         check.setEnabled(false);
+        info.setText(R.string.mRedir_checking);
         new Thread(() -> {
 
             // get url

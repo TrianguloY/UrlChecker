@@ -18,7 +18,7 @@
         android:src="@android:drawable/ic_media_previous" />
 
     <ImageButton
-        android:id="@+id/lists"
+        android:id="@+id/list"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

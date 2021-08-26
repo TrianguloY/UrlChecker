@@ -27,7 +27,7 @@ public class HistoryModule extends AModuleData {
 
     @Override
     public int getName() {
-        return R.string.mH_name;
+        return R.string.mHist_name;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class HistoryModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.mH_desc);
+        return new DescriptionConfig(R.string.mHist_desc);
     }
 }
 

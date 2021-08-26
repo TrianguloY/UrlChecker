@@ -46,6 +46,7 @@
     <string name="mRedir_error">Error when following redirect</string>
     <string name="mRedir_final">No redirection, final URL.</string>
     <string name="mRedir_check">Check</string>
+    <string name="mRedir_checking">Checking…</string>
 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>
@@ -66,7 +67,7 @@
     <string name="mD_desc">Displays the received intent as uri, intended for developers.</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
 
-    <string name="mH_name">History</string>
-    <string name="mH_desc">When the url is edited, either manually or by other modules, this module allows you to view and revert changes.</string>
+    <string name="mHist_name">History</string>
+    <string name="mHist_desc">When the url is edited, either manually or by other modules, this module allows you to view and revert changes.</string>
 
 </resources>
