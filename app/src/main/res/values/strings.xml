@@ -41,13 +41,30 @@
     <string name="mOpen_clipboard">Url copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
 
-    <string name="mRedir_name">Redirection</string>
-    <string name="mRedir_desc">By pressing the redirect button a petition will be made to retrieve that url. If the result is a redirection, the new url will be replaced. The url is fetched, but not evaluated, so redirection based on javascript won\'t be detected.</string>
-    <string name="mRedir_redir">Redirected</string>
-    <string name="mRedir_error">Error when following redirect</string>
-    <string name="mRedir_final">No redirection, final URL.</string>
-    <string name="mRedir_check">Check</string>
-    <string name="mRedir_checking">Checking…</string>
+    <string name="mStatus_name">Status code</string>
+    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code.\nIf the result is a redirection, you will be able to view the destination url. The url is fetched, but not evaluated, so redirections based on javascript won\'t be detected.</string>
+    <string name="mStatus_error">Internal error when trying to check the url</string>
+    <string name="mStatus_check">Check</string>
+    <string name="mStatus_checking">Checking…</string>
+    <string-array name="mStatus_codes">
+        <item>200: OK</item>
+        <item>301: Moved permanently</item>
+        <item>302: Moved temporarily</item>
+        <item>307: Moved temporarily</item>
+        <item>308: Moved permanently</item>
+        <item>400: Bad request</item>
+        <item>401: Unauthenticated</item>
+        <item>403: Forbidden</item>
+        <item>404: Not found</item>
+        <item>410: Gone permanently</item>
+        <item>418: That\'s a teapot! :D</item>
+        <item>500: Server error</item>
+        <item>503: Temporarily unavailable</item>
+        <item>502: Server error</item>
+        <item>504: Server timeout</item>
+    </string-array>
+    <string name="mStatus_unknownCode">%d: Unknown status code</string>
+    <string name="mStatus_redir">Redirect</string>
 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>

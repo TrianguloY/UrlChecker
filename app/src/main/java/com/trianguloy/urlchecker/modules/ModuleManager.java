@@ -6,7 +6,7 @@ import com.trianguloy.urlchecker.modules.list.DebugModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
-import com.trianguloy.urlchecker.modules.list.RedirectModule;
+import com.trianguloy.urlchecker.modules.list.StatusModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -26,7 +26,7 @@ public class ModuleManager {
     static {
         // TODO: auto-load with reflection?
         toggleableModules.add(new HistoryModule());
-        toggleableModules.add(new RedirectModule());
+        toggleableModules.add(new StatusModule());
         toggleableModules.add(new VirusTotalModule());
         toggleableModules.add(new PatternModule());
         toggleableModules.add(new DebugModule());
