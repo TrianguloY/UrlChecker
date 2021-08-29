@@ -2,7 +2,7 @@
     <!-- main -->
     <string name="app_name">Url checker</string>
     <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Check the setup screen for the available modules and what they do.</string>
-    <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/</string>
+    <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/?ref=referrer</string>
     <string name="a_setup">Setup</string>
     <string name="a_about">About</string>
 
@@ -87,5 +87,21 @@
 
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the url is edited, either manually or by other modules, this module allows you to view and revert changes.</string>
+
+    <string name="mClear_name">Clear URL</string>
+    <string name="mClear_desc">This module uses the Clear URL data (https://docs.clearurls.xyz/latest/) to remove tracking elements from urls, and other referrers and useless parameters from the url. It also allows for offline url redirections.</string>
+    <string name="mClear_clear">Clear</string>
+    <string name="mClear_matches">Matches %s</string>
+    <string name="mClear_blocked">- BLOCKED!</string>
+    <string name="mClear_exception">- ignored due to exception</string>
+    <string name="mClear_rule">- useless parameter found</string>
+    <string name="mClear_rawRule">- useless content found</string>
+    <string name="mClear_referral">- referral found</string>
+    <string name="mClear_forcedRedirection">- forced redirection found</string>
+    <string name="mClear_redirection">- redirection found</string>
+    <string name="mClear_noRules">Nothing found</string>
+    <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
+    <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
+    <string name="mClear_error">An error ocurred while checking rules</string>
 
 </resources>

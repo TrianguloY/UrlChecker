@@ -2,6 +2,7 @@ package com.trianguloy.urlchecker.modules;
 
 import android.content.Context;
 
+import com.trianguloy.urlchecker.modules.list.ClearUrlModule;
 import com.trianguloy.urlchecker.modules.list.DebugModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
@@ -28,6 +29,7 @@ public class ModuleManager {
         toggleableModules.add(new HistoryModule());
         toggleableModules.add(new StatusModule());
         toggleableModules.add(new VirusTotalModule());
+        toggleableModules.add(new ClearUrlModule());
         toggleableModules.add(new PatternModule());
         toggleableModules.add(new DebugModule());
     }
