@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
@@ -40,7 +41,8 @@ public class MainActivity extends Activity {
                 break;
             case R.id.txt_sample:
                 // click on the google url
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
+                String label = ((TextView) view).getText().toString();
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(label.substring(label.indexOf('\n') + 1)));
                 i.setPackage(getPackageName());
                 PackageUtilities.startActivity(i, R.string.toast_error, this);
                 break;
