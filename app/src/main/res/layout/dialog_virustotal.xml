@@ -4,20 +4,18 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:onClick="onClick" />
-
-    <ImageButton
+    <Button
         android:id="@+id/scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:contentDescription="@string/mVT_scan"
-        android:onClick="onClick"
-        android:src="@android:drawable/ic_menu_search" />
+        android:text="@string/mVT_scan" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical" />
+
 </LinearLayout>

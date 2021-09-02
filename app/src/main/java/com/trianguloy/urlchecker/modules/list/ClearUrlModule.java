@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -172,14 +173,14 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                     for (int i = 0; i < redirections.length(); i++) {
                         String redirection = redirections.getString(i);
                         Matcher matcher = Pattern.compile(redirection).matcher(cleared);
-                        if (matcher.find()) {
+                        if (matcher.find() && matcher.groupCount() >= 1) {
                             if (providerData.optBoolean("forceRedirection", false)) {
                                 // maybe do something special?
                                 append(R.string.mClear_forcedRedirection);
                             } else {
                                 append(R.string.mClear_redirection);
                             }
-                            cleared = URLDecoder.decode(matcher.group(1));
+                            cleared = decodeURIComponent(matcher.group(1));
                             setColor(R.color.warning);
                             continue whileProvider;
                         }
@@ -228,7 +229,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                     }
                 }
             }
-        } catch (JSONException e) {
+        } catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
             append(R.string.mClear_error);
         }
@@ -242,6 +243,28 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (info.getText().length() == 0) {
             info.setText(R.string.mClear_noRules);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        // pressed the fix button
+        if (cleared != null) setUrl(cleared);
+    }
+
+    // ------------------- utils -------------------
+
+    /**
+     * Hopefully the same as javascript's decodeURIComponent
+     * Idea from https://stackoverflow.com/a/6926987, but using own implementation
+     */
+    private static String decodeURIComponent(String text) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        String[] parts = text.split("\\+");
+        for (String part : parts) {
+            if (result.length() != 0) result.append('+');
+            result.append(URLDecoder.decode(part, "UTF-8"));
+        }
+        return result.toString();
     }
 
     /**
@@ -259,12 +282,6 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
         info.setTag(color);
         info.setBackgroundColor(getActivity().getResources().getColor(color));
-    }
-
-    @Override
-    public void onClick(View v) {
-        // pressed the fix button
-        if (cleared != null) setUrl(cleared);
     }
 
     /**

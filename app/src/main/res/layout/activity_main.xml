@@ -63,7 +63,7 @@
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/a_setup" />
+            android:text="@string/a_modules" />
 
         <Button
             android:id="@+id/about"

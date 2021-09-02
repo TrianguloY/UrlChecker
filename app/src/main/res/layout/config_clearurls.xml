@@ -5,11 +5,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:linksClickable="true"
         android:text="@string/mClear_desc" />
 
     <CheckBox
@@ -23,4 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mClear_toggleVerbose" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="@string/mClear_tm" />
 </LinearLayout>

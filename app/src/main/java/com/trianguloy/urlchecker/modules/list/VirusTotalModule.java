@@ -5,8 +5,8 @@ import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -99,7 +99,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
 
     private static final int RETRY_TIMEOUT = 5000;
-    private ImageButton btn_scan;
+    private Button btn_scan;
     private TextView txt_result;
 
     private boolean scanning = false;
@@ -206,15 +206,15 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     private void updateUI() {
         if (scanning) {
             // scanning in progress, show cancel
-            btn_scan.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+            btn_scan.setText(R.string.mVT_cancel);
             setResult(getActivity().getString(R.string.mVT_scanning), 0);
             btn_scan.setEnabled(true);
         } else {
             // not a scanning in progress
-            btn_scan.setImageResource(android.R.drawable.ic_menu_search);
+            btn_scan.setText(R.string.mVT_scan);
             if (result == null) {
                 // no result available, new url
-                setResult(getActivity().getString(R.string.mVT_scan), 0);
+                setResult(getActivity().getString(R.string.mVT_pressScan), 0);
                 btn_scan.setEnabled(true);
             } else {
                 // result available

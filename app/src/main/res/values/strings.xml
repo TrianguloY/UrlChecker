@@ -1,13 +1,13 @@
 <resources>
     <!-- main -->
     <string name="app_name">Url checker</string>
-    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Check the setup screen for the available modules and what they do.</string>
+    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to see the available modules and what they do.</string>
     <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/?ref=referrer</string>
-    <string name="a_setup">Setup</string>
+    <string name="a_modules">Modules</string>
     <string name="a_about">About</string>
 
     <!-- about -->
-    <string name="txt_about">"App created by TrianguloY."</string>
+    <string name="txt_about">App created by TrianguloY.</string>
     <string name="btn_blog">TrianguloY\'s blog</string>
     <string name="btn_openStore">Open Play Store</string>
     <string name="btn_shareStore">Share App</string>
@@ -73,7 +73,9 @@
     <string name="mVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
-    <string name="mVT_scan">Press to scan</string>
+    <string name="mVT_pressScan">Press to scan</string>
+    <string name="mVT_scan">Scan</string>
+    <string name="mVT_cancel">Cancel</string>
     <string name="mVT_scanning">Scanning…</string>
     <string name="mVT_goodUrl">None of the %d engines detected the url (as of date %s)</string>
     <string name="mVT_warningUrl">Warning, %d/%d engines detected the url (as of date %s)</string>
@@ -86,11 +88,12 @@
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
 
     <string name="mHist_name">History</string>
-    <string name="mHist_desc">When the url is edited, either manually or by other modules, this module allows you to view and revert changes.</string>
+    <string name="mHist_desc">When the url is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
 
     <string name="mClear_name">Clear URL</string>
-    <string name="mClear_desc">This module uses the Clear URL data (https://docs.clearurls.xyz/latest/) to remove tracking elements from urls, and other referrers and useless parameters from the url. It also allows for offline url redirections.</string>
-    <string name="mClear_clear">Clear</string>
+    <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
+    <string name="mClear_tm">Uses the Clear URL database (version Dec 25, 2020) from https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
     <string name="mClear_blocked">- BLOCKED!</string>
     <string name="mClear_exception">- ignored due to exception</string>
@@ -102,6 +105,6 @@
     <string name="mClear_noRules">Nothing found</string>
     <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
-    <string name="mClear_error">An error ocurred while checking rules</string>
+    <string name="mClear_error">An error occurred while checking rules</string>
 
 </resources>

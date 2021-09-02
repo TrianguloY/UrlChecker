@@ -25,6 +25,15 @@
             android:gravity="center"
             android:text="@string/mVT_tm" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:gravity="center"
+            android:text="@string/mClear_tm" />
+
         <Button
             android:id="@+id/btn_blog"
             android:layout_width="wrap_content"
