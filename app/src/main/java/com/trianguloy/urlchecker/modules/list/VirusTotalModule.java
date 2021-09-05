@@ -263,6 +263,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         if (details) {
             UrlUtilities.openUrlRemoveThis(result.scanUrl, getActivity());
         } else {
+            // TODO: beautify this
             new AlertDialog.Builder(getActivity())
                     .setMessage(result.info)
                     .show();

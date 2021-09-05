@@ -31,10 +31,11 @@ public class MainActivity extends Activity {
      */
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.setup:
+            case R.id.modules:
                 // open setup
                 PackageUtilities.startActivity(new Intent(this, ConfigActivity.class), R.string.toast_error, this);
                 break;
+            // TODO: add setup activity
             case R.id.about:
                 // open about
                 PackageUtilities.startActivity(new Intent(this, AboutActivity.class), R.string.toast_error, this);
