@@ -52,6 +52,8 @@ public class MainDialog extends Activity {
             }
         }
 
+        if (url == null) url = "";
+
         // change url
         this.url = url;
 
@@ -76,7 +78,7 @@ public class MainDialog extends Activity {
     private final List<AModuleDialog> modules = new ArrayList<>();
 
     // the current url
-    private String url;
+    private String url = "";
 
     // ------------------- initialize -------------------
 

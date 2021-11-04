@@ -21,7 +21,7 @@ import java.util.List;
 public class ModuleManager {
 
     public final static AModuleData topModule = new TextInputModule();
-    public final static AModuleData bottomModule = new OpenModule();
+
     public final static List<AModuleData> toggleableModules = new ArrayList<>();
 
     static {
@@ -33,6 +33,8 @@ public class ModuleManager {
         toggleableModules.add(new PatternModule());
         toggleableModules.add(new DebugModule());
     }
+
+    public final static AModuleData bottomModule = new OpenModule();
 
 
     // ------------------- class -------------------
