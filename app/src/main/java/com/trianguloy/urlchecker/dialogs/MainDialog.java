@@ -108,10 +108,14 @@ public class MainDialog extends Activity {
         // top module
         initializeModule(ModuleManager.topModule, false);
 
+        addSeparator();
+
         // middle modules
         final List<AModuleData> middleModules = ModuleManager.getEnabledMiddleModules(this);
         for (AModuleData module : middleModules) {
             initializeModule(module, true);
+
+            addSeparator();
         }
 
         // bottom module
@@ -148,6 +152,13 @@ public class MainDialog extends Activity {
             // can't add module
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Adds a separator component to the list of mods
+     */
+    private void addSeparator() {
+        Inflater.inflate(R.layout.separator, ll_mods, this);
     }
 
     /**

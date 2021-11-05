@@ -36,45 +36,48 @@
 
         <Button
             android:id="@+id/btn_blog"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding"
+            android:drawableStart="@android:drawable/ic_menu_set_as"
             android:drawableLeft="@android:drawable/ic_menu_set_as"
             android:drawablePadding="@dimen/padding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_blog"
-            android:drawableStart="@android:drawable/ic_menu_set_as" />
+            android:text="@string/btn_blog" />
 
         <Button
             android:id="@+id/btn_openStore"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding"
+            android:drawableStart="@android:drawable/ic_media_play"
             android:drawableLeft="@android:drawable/ic_media_play"
             android:drawablePadding="@dimen/padding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_openStore"
-            android:drawableStart="@android:drawable/ic_media_play" />
+            android:text="@string/btn_openStore" />
 
         <Button
             android:id="@+id/btn_shareStore"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding"
+            android:drawableStart="@android:drawable/ic_menu_share"
             android:drawableLeft="@android:drawable/ic_menu_share"
             android:drawablePadding="@dimen/padding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
-            android:text="@string/btn_shareStore"
-            android:drawableStart="@android:drawable/ic_menu_share" />
+            android:text="@string/btn_shareStore" />
 
     </LinearLayout>
 </ScrollView>

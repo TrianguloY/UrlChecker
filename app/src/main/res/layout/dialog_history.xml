@@ -5,6 +5,7 @@
 
     <ImageButton
         android:id="@+id/first"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -12,6 +13,7 @@
 
     <ImageButton
         android:id="@+id/back"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -19,6 +21,7 @@
 
     <ImageButton
         android:id="@+id/list"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -26,6 +29,7 @@
 
     <ImageButton
         android:id="@+id/forward"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -33,6 +37,7 @@
 
     <ImageButton
         android:id="@+id/last"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

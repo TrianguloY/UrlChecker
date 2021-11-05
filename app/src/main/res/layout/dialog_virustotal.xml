@@ -6,6 +6,7 @@
 
     <Button
         android:id="@+id/scan"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -15,7 +16,6 @@
         android:id="@+id/result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_vertical" />
+        android:layout_weight="1" />
 
 </LinearLayout>
