@@ -45,11 +45,12 @@
             android:layout_marginTop="@dimen/padding"
             android:autoLink="web"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
             android:linksClickable="false"
+            android:minHeight="48dp"
             android:onClick="onClick"
-            android:text="@string/txt_sample"
-            android:focusable="true" />
+            android:text="@string/txt_sample" />
 
         <Button
             android:id="@+id/modules"
@@ -60,7 +61,7 @@
             android:layout_weight="1"
             android:drawableStart="@android:drawable/ic_menu_manage"
             android:drawableLeft="@android:drawable/ic_menu_manage"
-            android:drawablePadding="@dimen/padding"
+            android:drawablePadding="@dimen/smallPadding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
@@ -75,7 +76,7 @@
             android:layout_weight="1"
             android:drawableStart="@android:drawable/ic_menu_info_details"
             android:drawableLeft="@android:drawable/ic_menu_info_details"
-            android:drawablePadding="@dimen/padding"
+            android:drawablePadding="@dimen/smallPadding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
