@@ -214,7 +214,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
             btn_scan.setText(R.string.mVT_scan);
             if (result == null) {
                 // no result available, new url
-                setResult(getActivity().getString(R.string.mVT_pressScan), 0);
+                setResult("", 0);
                 btn_scan.setEnabled(true);
             } else {
                 // result available

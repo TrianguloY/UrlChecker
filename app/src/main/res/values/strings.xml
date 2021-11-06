@@ -73,7 +73,6 @@
     <string name="mVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
-    <string name="mVT_pressScan">Press to scan</string>
     <string name="mVT_scan">Scan</string>
     <string name="mVT_cancel">Cancel</string>
     <string name="mVT_scanning">Scanning…</string>
