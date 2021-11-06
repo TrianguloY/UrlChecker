@@ -94,11 +94,11 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
      * updated the UI with the internal data (buttons visibility)
      */
     private void updateUI() {
-        first.setEnabled(index > 0); // at least something to go back
-        back.setEnabled(index > 0); // at least something to go back
+        setEnabled(first, index > 0); // at least something to go back
+        setEnabled(back, index > 0); // at least something to go back
         list.setEnabled(!history.isEmpty()); // at least something
-        forward.setEnabled(index < history.size() - 1); // at least something to go forward
-        last.setEnabled(index < history.size() - 1); // at least something to go forward
+        setEnabled(forward, index < history.size() - 1); // at least something to go forward
+        setEnabled(last, index < history.size() - 1); // at least something to go forward
     }
 
     @Override
@@ -202,6 +202,17 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
             updateUrl(history.get(newIndex));
         }
         updateUI();
+    }
 
+    /**
+     * For some reason some drawable buttons are displayed the same when enabled and disabled.
+     * This method also sets an alpha as a workaround
+     *
+     * @param view    view to enable/disable
+     * @param enabled new state
+     */
+    private void setEnabled(View view, boolean enabled) {
+        view.setEnabled(enabled);
+        view.setAlpha(enabled ? 1f : 0.35f);
     }
 }
