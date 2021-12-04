@@ -4,6 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--
+    As of API 30+ package discovery is restricted, and you can't even open an url: https://developer.android.com/training/basics/intents/package-visibility#intent-signature
+    A queries tag with description of what intents you use is required, but if you don't want to be bothered this is a simple alternative.
+    This is valid queries tag that will return all packages with at least one intent. Some internal device packages won't be returned, but probably you didn't want them anyway. All the functionality from pre29 should be restored.
+    -->
+    <queries>
+        <intent>
+            <action android:name="*" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
