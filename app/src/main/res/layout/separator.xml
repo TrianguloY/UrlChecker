@@ -6,5 +6,5 @@
     android:layout_marginLeft="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginRight="5dp"
-    android:background="@android:color/tab_indicator_text"
+    android:background="#808080"
     android:orientation="vertical" />

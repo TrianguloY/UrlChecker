@@ -6,7 +6,7 @@ android {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 7
+        versionCode 8
         versionName "2.0"
     }
     buildTypes {

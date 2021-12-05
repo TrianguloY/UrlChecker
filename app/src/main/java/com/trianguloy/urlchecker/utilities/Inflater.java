@@ -9,7 +9,7 @@ import android.view.ViewGroup;
  */
 public class Inflater {
     /**
-     * @see {@link android.view.LayoutInflater#inflate(int, ViewGroup)}, but returns the inflated view (not the root view)
+     * like {@link android.view.LayoutInflater#inflate(int, ViewGroup)}, but returns the inflated view (not the root view)
      */
     static public <T extends View> T inflate(int resource, ViewGroup root, Activity cntx) {
         final View view = cntx.getLayoutInflater().inflate(resource, root, false);
