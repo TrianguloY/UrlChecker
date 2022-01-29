@@ -1,0 +1,1 @@
+Allows you to analyze (or share) urls before opening them.

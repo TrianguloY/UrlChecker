@@ -1,0 +1,25 @@
+This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Specially useful when you need to open an external link either from an email, from a social network app, or similar.
+
+
+The app was for personal use, but shared to others can benefit from it. It is free and without any ads, as small as possible and using as few permissions as possible (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too, in case you want to suggest or even add new modules to the app: https://github.com/TrianguloY/UrlChecker
+
+
+It was developed using a modular setup, you can enable or disable individual modules:
+
+* Input text: Displays the current url, which can be edited manually. Can't be disabled.
+
+* History: View and revert any change from other modules, or edits from the user (typical undo/redo feature, and also a list)
+
+* Status code: By pressing the button a petition will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to replace with the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
+
+* VirusTotal analysis: When this module is enabled you can scan the url using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
+
+* Clear Url modules: Uses the Clear Url database to detect referral and useless parameters from the url to 'clear' it. It also allows for common offline url redirections. Uses the Clear URL database (version Dec 25, 2020) from https://docs.clearurls.xyz/latest/specs/rules/
+
+* Pattern module: Performs checks based on patterns:
+    - If the url is an http one, press the warning message to replace it with https.
+    - Checks and warns for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com.
+
+* Debug module: Displays the intent uri, and optionally info about the ctabs (custom tabs) service. This is intended for developers.
+
+* Open module: Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. Can't be disabled.
