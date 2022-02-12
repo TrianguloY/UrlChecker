@@ -1,3 +1,8 @@
+V 2.1
+- Fixed and improved ClearUrl module
+- Improved some texts and messages
+- Tweaked style to be more compact
+
 V 2.0
 - Style update
 - Updated Clear Url database
