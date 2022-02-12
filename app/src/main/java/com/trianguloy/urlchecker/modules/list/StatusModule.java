@@ -137,9 +137,13 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
             }
 
         } catch (IOException e) {
-            // error
+            // io error
             e.printStackTrace();
-            message = getActivity().getString(R.string.mStatus_error);
+            message = getActivity().getString(R.string.mStatus_ioerror, e.getMessage());
+        } catch (Exception e) {
+            // other error
+            e.printStackTrace();
+            message = getActivity().getString(R.string.mStatus_error, e.getMessage());
         } finally {
             if (conn != null) {
                 conn.disconnect();

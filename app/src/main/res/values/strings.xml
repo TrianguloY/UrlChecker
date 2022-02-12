@@ -47,7 +47,8 @@ This module can\'t be disabled."</string>
 
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code.\nIf the result is a redirection, you will be able to view the destination url. The url is fetched, but not evaluated, so redirections based on javascript won\'t be detected.</string>
-    <string name="mStatus_error">Internal error when trying to check the url</string>
+    <string name="mStatus_ioerror">Network error while trying to check the url: %s</string>
+    <string name="mStatus_error">Internal error while trying to check the url: %s</string>
     <string name="mStatus_check">Check</string>
     <string name="mStatus_checking">Checking…</string>
     <string-array name="mStatus_codes">
