@@ -34,7 +34,11 @@
     <string name="mPttrn_ok">No issues found</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
-    <string name="mOpen_desc">Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. \nCan\'t be disabled.</string>
+    <string name="mOpen_desc">"Contains the following buttons (left to right):
+- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
+- Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
+- Share button: Press the button to share the link. Long press to quickly copy to clipboard.
+This module can\'t be disabled."</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
