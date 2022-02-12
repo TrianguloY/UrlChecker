@@ -137,18 +137,19 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
             whileProvider:
             while (providers.hasNext()) {
+                // evaluate each provider
                 String provider = providers.next();
                 JSONObject providerData = data.getJSONObject(provider);
-                if (!Pattern.compile(providerData.getString("urlPattern")).matcher(cleared).find()) {
+                if (!matcher(providerData.getString("urlPattern"), cleared).find()) {
                     continue;
                 }
 
                 // info
-                if (verbose.get())
-                    append(R.string.mClear_matches, provider);
+                if (verbose.get()) append(R.string.mClear_matches, provider);
 
                 // check blocked completeProvider
                 if (providerData.optBoolean("completeProvider", false)) {
+                    // provider blocked
                     append(R.string.mClear_blocked);
                     setColor(R.color.bad);
                     continue;
@@ -159,9 +160,9 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                     JSONArray exceptions = providerData.getJSONArray("exceptions");
                     for (int i = 0; i < exceptions.length(); i++) {
                         String exception = exceptions.getString(i);
-                        if (Pattern.compile(exception).matcher(cleared).find()) {
-                            if (verbose.get())
-                                append(R.string.mClear_exception);
+                        if (matcher(exception, cleared).find()) {
+                            // exception matches, ignore provider
+                            if (verbose.get()) append(R.string.mClear_exception, exception);
                             continue whileProvider;
                         }
                     }
@@ -174,29 +175,17 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                         String redirection = redirections.getString(i);
                         Matcher matcher = Pattern.compile(redirection).matcher(cleared);
                         if (matcher.find() && matcher.groupCount() >= 1) {
+                            // redirection found
                             if (providerData.optBoolean("forceRedirection", false)) {
                                 // maybe do something special?
                                 append(R.string.mClear_forcedRedirection);
                             } else {
                                 append(R.string.mClear_redirection);
                             }
-                            cleared = decodeURIComponent(matcher.group(1));
+                            if (verbose.get()) details(redirection);
+                            cleared = decodeURIComponent(matcher.group(1)); // can't be null, checked in the if
                             setColor(R.color.warning);
                             continue whileProvider;
-                        }
-                    }
-                }
-
-                // apply rules
-                if (providerData.has("rules")) {
-                    JSONArray rules = providerData.getJSONArray("rules");
-                    for (int i = 0; i < rules.length(); i++) {
-                        String rule = "(?:&amp;|[/?#&])(?:" + rules.getString(i) + "=[^&]*)";
-                        Matcher matcher = Pattern.compile(rule).matcher(cleared);
-                        if (matcher.find()) {
-                            cleared = matcher.replaceAll("");
-                            append(R.string.mClear_rule);
-                            setColor(R.color.warning);
                         }
                     }
                 }
@@ -206,10 +195,29 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                     JSONArray rawRules = providerData.getJSONArray("rawRules");
                     for (int i = 0; i < rawRules.length(); i++) {
                         String rawRule = rawRules.getString(i);
-                        Matcher matcher = Pattern.compile(rawRule).matcher(cleared);
+                        Matcher matcher = matcher(rawRule, cleared);
                         if (matcher.find()) {
+                            // rawrule matches, apply
                             cleared = matcher.replaceAll("");
                             append(R.string.mClear_rawRule);
+                            if (verbose.get()) details(rawRule);
+                            setColor(R.color.warning);
+                        }
+                    }
+                }
+
+                // apply rules
+                if (providerData.has("rules")) {
+                    JSONArray rules = providerData.getJSONArray("rules");
+                    for (int i = 0; i < rules.length(); i++) {
+                        String rule = "([?&#])" + rules.getString(i) + "=[^&#]*";
+                        Matcher matcher = matcher(rule, cleared);
+                        while (matcher.find()) {
+                            // rule applies
+                            cleared = matcher.replaceFirst("$1");
+                            matcher.reset(cleared);
+                            append(R.string.mClear_rule);
+                            if (verbose.get()) details(rules.getString(i));
                             setColor(R.color.warning);
                         }
                     }
@@ -219,15 +227,31 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                 if (!allowReferral.get() && providerData.has("referralMarketing")) {
                     JSONArray referrals = providerData.getJSONArray("referralMarketing");
                     for (int i = 0; i < referrals.length(); i++) {
-                        String referral = "(?:&amp;|[/?#&])(?:" + referrals.getString(i) + "=[^&]*)";
-                        Matcher matcher = Pattern.compile(referral).matcher(cleared);
-                        if (matcher.find()) {
-                            cleared = matcher.replaceAll("");
+                        String referral = "([?&#])" + referrals.getString(i) + "=[^&#]*";
+                        Matcher matcher = matcher(referral, cleared);
+                        while (matcher.find()) {
+                            // raw rule applies
+                            cleared = matcher.replaceFirst("$1");
+                            matcher.reset(cleared);
                             append(R.string.mClear_referral);
+                            if (verbose.get()) details(referrals.getString(i));
                             setColor(R.color.warning);
                         }
                     }
                 }
+
+                // fix empty elements
+                cleared = cleared
+                        .replaceAll("\\?&+", "?")
+                        .replaceAll("\\?#", "#")
+                        .replaceAll("\\?$", "")
+                        .replaceAll("&&+", "&")
+                        .replaceAll("&#", "#")
+                        .replaceAll("&$", "")
+                        .replaceAll("#&+", "#")
+                        .replaceAll("#$", "")
+                ;
+
             }
         } catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -237,6 +261,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         // url changed, enable button
         if (!cleared.equals(url)) {
             fix.setEnabled(true);
+            if (verbose.get()) info.append("\n\n -> " + cleared);
         }
 
         // nothing found
@@ -268,11 +293,29 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
+     * Matches cas insnsitive regexp into an input
+     *
+     * @param regexp regexp to use
+     * @param input  input to use
+     * @return the matcher object
+     */
+    private static Matcher matcher(String regexp, String input) {
+        return Pattern.compile(regexp, Pattern.CASE_INSENSITIVE).matcher(input);
+    }
+
+    /**
      * Utility to append a line to the info textview, manages linebreaks
      */
     private void append(int line, Object... formatArgs) {
         if (info.getText().length() != 0) info.append("\n");
         info.append(getActivity().getString(line, formatArgs));
+    }
+
+    /**
+     * utility to append data to the info textview, after calling append
+     */
+    private void details(String data) {
+        info.append(": " + data);
     }
 
     /**
@@ -285,7 +328,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Reads a JSON file and returns its content
+     * Reads a file and returns its content
      * From https://www.bezkoder.com/java-android-read-json-file-assets-gson/
      */
     static String getJsonFromAssets(Context context, String fileName) throws IOException {

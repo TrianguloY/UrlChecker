@@ -91,11 +91,11 @@
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
-    <string name="mClear_tm">Uses the Clear URL database (version March 30, 2021) from https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Uses the Clear URL database (version February 11, 2022) from https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
     <string name="mClear_blocked">- BLOCKED!</string>
-    <string name="mClear_exception">- ignored due to exception</string>
+    <string name="mClear_exception">- ignored due to exception %s</string>
     <string name="mClear_rule">- useless parameter found</string>
     <string name="mClear_rawRule">- useless content found</string>
     <string name="mClear_referral">- referral found</string>
