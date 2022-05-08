@@ -71,12 +71,18 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         URL urlObject = null;
         try {
             urlObject = new URL(url);
+
+            //retrieve all components
             String protocol = urlObject.getProtocol();
+            protocol = protocol + ":";
             String authority = urlObject.getAuthority();
+            authority = authority != null ? "//" + authority : "";
             String path = urlObject.getPath();
             String ref = urlObject.getRef();
             ref = ref != null ? "#" + ref : "";
-            cleared = protocol + "://" + authority + path + ref;
+
+            //create the url but without queries
+            cleared = protocol + authority + path + ref;
         } catch (MalformedURLException e) {
 
         }
