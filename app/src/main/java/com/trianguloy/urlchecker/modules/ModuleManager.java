@@ -10,6 +10,7 @@ import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.StatusModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
+import com.trianguloy.urlchecker.modules.list.RemoveQueriesModule;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class ModuleManager {
         toggleableModules.add(new ClearUrlModule());
         toggleableModules.add(new PatternModule());
         toggleableModules.add(new DebugModule());
+        toggleableModules.add(new RemoveQueriesModule());
     }
 
     public final static AModuleData bottomModule = new OpenModule();
