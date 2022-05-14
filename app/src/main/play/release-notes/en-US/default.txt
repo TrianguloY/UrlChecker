@@ -1,3 +1,6 @@
+V 2.2
+- New module 'Remove queries module': removes all queries from the url. Thanks to PabloOQ for the idea and original implementation!
+
 V 2.1
 - Fixed and improved ClearUrl module
 - Improved some texts and messages
