@@ -195,6 +195,7 @@
         "(?:%3F)?cmpid",
         "(?:%3F)?os_ehash",
         "(?:%3F)?_ga",
+        "(?:%3F)?_gl",
         "(?:%3F)?__twitter_impression",
         "(?:%3F)?wt_?z?mc",
         "(?:%3F)?wtrid",
@@ -244,7 +245,8 @@
         "^https?:\\/\\/like.co\\/api\\/like\\/likebutton\\/[^?]+.*?&?referrer=[^/?&]*",
         "^https?:\\/\\/button.like.co\\/in\\/.*?&?referrer=[^/?&]*",
         "^https?:\\/\\/www\\.mma\\.go\\.kr",
-        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?github\\.com"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?github\\.com",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?billiger\\.de\\/.*?mc="
       ]
     },
     "adtech": {
@@ -302,7 +304,7 @@
         "[a-z]*ref[a-z]*",
         "__tn__",
         "eid",
-        "__xts__(?:\\[|%5B)\\d(?:\\]|%5D)",
+        "__(?:xts|cft)__(?:\\[|%5B)\\d(?:\\]|%5D)",
         "comment_tracking",
         "dti",
         "app",
@@ -311,7 +313,10 @@
         "pageid",
         "padding",
         "ls_ref",
-        "action_history"
+        "action_history",
+        "tracking",
+        "referral_code",
+        "referral_story_type"
       ],
       "exceptions": [
         "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/.*?(plugins|ajax)\\/",
@@ -1570,6 +1575,53 @@
         "click_key",
         "click_sum",
         "organic_search_click"
+      ]
+    },
+    "magento.com": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?magento\\.com",
+      "rules": [
+        "itm_campaign",
+        "itm_medium",
+        "itm_source",
+        "itm_term"
+      ]
+    },
+    "novinky.cz": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?novinky\\.cz",
+      "rules": [
+        "dop_ab_variant",
+        "dop_source_zone_name",
+        "dop_req_id",
+        "dop_id",
+        "source",
+        "seq_no"
+      ]
+    },
+    "aktualne.cz": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?aktualne\\.cz",
+      "rules": [
+        "dop_ab_variant",
+        "dop_source_zone_name",
+        "dop_req_id",
+        "dop_id"
+      ]
+    },
+    "seznamzpravy.cz": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?seznamzpravy\\.cz",
+      "rules": [
+        "dop_ab_variant",
+        "dop_source_zone_name",
+        "dop_req_id",
+        "dop_id",
+        "source",
+        "seq_no"
+      ]
+    },
+    "billiger.de": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?billiger\\.de",
+      "rules": [
+        "log",
+        "p"
       ]
     }
   }
