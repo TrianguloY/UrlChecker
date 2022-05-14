@@ -26,6 +26,10 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This module clears the url using the ClearUrl database (an asset copy)
+ * TODO: allow updating the database from the official page
+ */
 public class ClearUrlModule extends AModuleData {
 
     public static GenericPref.Bool REFERRAL_PREF() {
