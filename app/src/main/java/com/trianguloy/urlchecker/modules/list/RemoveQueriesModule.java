@@ -12,13 +12,10 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 
-// Importing required classes
-
-import java.net.URL;
-import java.net.MalformedURLException;
-
-
-
+/**
+ * This module removes queries "?foo=bar" from an url
+ * Originally made by PabloOQ
+ */
 public class RemoveQueriesModule extends AModuleData {
 
     @Override
@@ -49,7 +46,9 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
     private String cleared = null;
 
-    public RemoveQueriesDialog(MainDialog dialog) { super(dialog); }
+    public RemoveQueriesDialog(MainDialog dialog) {
+        super(dialog);
+    }
 
     @Override
     public int getLayoutId() {
@@ -65,58 +64,30 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
     @Override
     public void onNewUrl(String url) {
-        info.setText("");
-        cleared = url;
-        remove.setEnabled(false);
-        URL urlObject = null;
-        try {
-            urlObject = new URL(url);
+        // clear
+        // an uri is defined as [scheme:][//authority][path][?query][#fragment]
+        // in order to remove the query, we need to remove everything between the '?' (included) and the '#' if present (excluded)
+        // we need to match a '?' followed by anything except a '#', and remove it
+        // this allows us to work with any string, even with non-standard urls
+        cleared = url.replaceAll("\\?[^#]*", "");
 
-            //retrieve all components
-            String protocol = urlObject.getProtocol();
-            protocol = protocol + ":";
-            String authority = urlObject.getAuthority();
-            authority = authority != null ? "//" + authority : "";
-            String path = urlObject.getPath();
-            String ref = urlObject.getRef();
-            ref = ref != null ? "#" + ref : "";
-
-            //create the url but without queries
-            cleared = protocol + authority + path + ref;
-        } catch (MalformedURLException e) {
-
-        }
-
-        // url changed, enable button
-        if (urlObject != null && urlObject.getQuery() != null) {
+        if (!cleared.equals(url)) {
+            // query present, notify
             remove.setEnabled(true);
             info.setText(R.string.mRemove_found);
-            setColor(R.color.warning);
-        }
-
-        // nothing found
-        if (info.getText().length() == 0) {
+            info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+        } else {
+            // no query present, nothing to notify
+            remove.setEnabled(false);
             info.setText(R.string.mRemove_noQueries);
-            setColor(R.color.transparent);
+            info.setBackgroundColor(getActivity().getResources().getColor(R.color.transparent));
         }
     }
 
     @Override
     public void onClick(View v) {
-        // pressed the fix button
+        // pressed the apply button
         if (cleared != null) setUrl(cleared);
-    }
-
-    // ------------------- utils -------------------
-
-
-    /**
-     * Utility to set the info background color. Manages color importance
-     */
-    private void setColor(int color) {
-        if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
-        info.setTag(color);
-        info.setBackgroundColor(getActivity().getResources().getColor(color));
     }
 
 }

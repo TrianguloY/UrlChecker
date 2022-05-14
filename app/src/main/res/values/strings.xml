@@ -112,8 +112,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_error">An error occurred while checking rules</string>
 
     <string name="mRemove_name">Remove Queries</string>
-    <string name="mRemove_desc">This module removes all queries from the url.</string>
-    <string name="mRemove_remove">Remove</string>
+    <string name="mRemove_desc">This module removes all queries from the url.\nThanks to PabloOQ for the idea and original implementation!</string>
     <string name="mRemove_found">Queries found</string>
     <string name="mRemove_noQueries">No queries</string>
     <string name="mRemove_apply">Apply</string>
