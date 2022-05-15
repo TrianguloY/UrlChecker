@@ -49,7 +49,7 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     private Button remove;
     private TextView more;
     private LinearLayout box;
-    private List<Button> queryButtons = new ArrayList<>();
+    private List<Button> queryKeyButtons = new ArrayList<>();
     private String[] queriesArray;
 
     private String cleared = null;
@@ -91,10 +91,10 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         cleared = url.replaceAll("\\?[^#]*", "");
 
         // remove previously generated buttons
-        for (Button q : queryButtons) {
+        for (Button q : queryKeyButtons) {
             box.removeView(q);
         }
-        queryButtons = new ArrayList<>();
+        queryKeyButtons = new ArrayList<>();
 
         if (!cleared.equals(url)) {
             // query present, notify
@@ -107,19 +107,25 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             queriesArray = extractQueries(url);
 
             // create a button for each query
-            // FIXME if multiple query keys are equal, multiple buttons will be created
-            for (String q : queriesArray) {
+            // if multiple query keys are equal, multiple buttons will be created, however these
+            // buttons will individually address each one in the order they are found
+            for (int i = 0; i < queriesArray.length; i++) {
                 Button queryRemover = new Button(box.getContext());
+                int queryN = i;
                 queryRemover.setOnClickListener(v -> {
-                    removeQuery((String) queryRemover.getText());
+                    removeQuery(queryN);
                 });
-                queryButtons.add(queryRemover);
-                // FIXME if text is too long button will be too, very unlikely
-                // FIXME style
-                queryRemover.setText(q.split("=")[0]);
+                queryKeyButtons.add(queryRemover);
+                // text will be the query key
+                String text = queriesArray[i].split("=")[0];
+
+                int maximumLength = 30;
+                if (maximumLength < text.length()){
+                    text = text.substring(0,maximumLength) + "...";
+                }
+                queryRemover.setText(text);
                 box.addView(queryRemover);
             }
-
         } else {
             // no query present, nothing to notify
             remove.setEnabled(false);
@@ -140,7 +146,7 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         if (cleared != null) setUrl(cleared);
     }
 
-    public void removeQuery(String query) {
+    private void removeQuery(int n) {
         if (cleared != null){
             String oldUrl = getUrl();
             // copy everything from previous url, except queries and fragment
@@ -148,17 +154,17 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
             // to later check if we need to use '?' or '&'
             boolean firstQuery = true;
-            // FIXME will ignore ALL query keys that are equal to 'query'
-            for (String s : queriesArray) {
+
+            for (int i = 0; i < queriesArray.length; i++) {
                 // skip query to remove
-                if (!s.split("=")[0].equals(query)) {
+                if (i != n) {
                     if (firstQuery) {
                         newUrl.append('?');
                         firstQuery = false;
                     } else {
                         newUrl.append('&');
                     }
-                    newUrl.append(s);
+                    newUrl.append(queriesArray[i]);
                 }
             }
 
