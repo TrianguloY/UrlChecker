@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,9 +13,6 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
-
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * This module removes queries "?foo=bar" from an url
@@ -49,8 +47,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     private Button remove;
     private TextView more;
     private LinearLayout box;
-    private List<Button> queryKeyButtons = new ArrayList<>();
-    private String[] queriesArray;
 
     private String cleared = null;
 
@@ -91,10 +87,7 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         cleared = url.replaceAll("\\?[^#]*", "");
 
         // remove previously generated buttons
-        for (Button q : queryKeyButtons) {
-            box.removeView(q);
-        }
-        queryKeyButtons = new ArrayList<>();
+        box.removeAllViews();
 
         if (!cleared.equals(url)) {
             // query present, notify
@@ -104,26 +97,22 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
 
             // extract queries
-            queriesArray = extractQueries(url);
+            String[] queriesArray = extractQueries(url);
 
             // create a button for each query
             // if multiple query keys are equal, multiple buttons will be created, however these
             // buttons will individually address each one in the order they are found
             for (int i = 0; i < queriesArray.length; i++) {
-                Button queryRemover = new Button(box.getContext());
-                int queryN = i;
-                queryRemover.setOnClickListener(v -> {
-                    removeQuery(queryN);
-                });
-                queryKeyButtons.add(queryRemover);
-                // text will be the query key
-                String text = queriesArray[i].split("=")[0];
-
-                int maximumLength = 30;
-                if (maximumLength < text.length()){
-                    text = text.substring(0,maximumLength) + "...";
-                }
-                queryRemover.setText(text);
+                Button queryRemover = new Button(getActivity());
+                // when clicked, the query will be removed
+                queryRemover.setTag(i);
+                queryRemover.setOnClickListener(v -> removeQuery((Integer) v.getTag()));
+                // text will be the query key (and on one line only)
+                queryRemover.setSingleLine(true);
+                queryRemover.setEllipsize(TextUtils.TruncateAt.END);
+                queryRemover.setText(
+                        getActivity().getString(R.string.mRemove_one, queriesArray[i].split("=")[0])
+                );
                 box.addView(queryRemover);
             }
         } else {
@@ -146,40 +135,51 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         if (cleared != null) setUrl(cleared);
     }
 
+    /**
+     * Removes the query at index n
+     */
     private void removeQuery(int n) {
-        if (cleared != null){
-            String oldUrl = getUrl();
-            // copy everything from previous url, except queries and fragment
-            StringBuilder newUrl = new StringBuilder(oldUrl.substring(0, oldUrl.indexOf("?")));
+        if (cleared == null) return;
 
-            // to later check if we need to use '?' or '&'
-            boolean firstQuery = true;
+        String oldUrl = getUrl();
+        String[] queriesArray = extractQueries(oldUrl);
+        // copy everything from previous url, except queries and fragment
+        StringBuilder newUrl = new StringBuilder(oldUrl.substring(0, oldUrl.indexOf("?")));
 
-            for (int i = 0; i < queriesArray.length; i++) {
-                // skip query to remove
-                if (i != n) {
-                    if (firstQuery) {
-                        newUrl.append('?');
-                        firstQuery = false;
-                    } else {
-                        newUrl.append('&');
-                    }
-                    newUrl.append(queriesArray[i]);
+        // to later check if we need to use '?' or '&'
+        boolean firstQuery = true;
+
+        for (int i = 0; i < queriesArray.length; i++) {
+            // skip query to remove
+            if (i != n) {
+                if (firstQuery) {
+                    newUrl.append('?');
+                    firstQuery = false;
+                } else {
+                    newUrl.append('&');
                 }
+                newUrl.append(queriesArray[i]);
             }
-
-            // add fragment
-            if (oldUrl.contains("#")){
-                newUrl.append(oldUrl.substring(oldUrl.indexOf("#")));
-            }
-            setUrl(newUrl.toString());
         }
+
+        // add fragment
+        if (oldUrl.contains("#")) {
+            newUrl.append(oldUrl.substring(oldUrl.indexOf("#")));
+        }
+        setUrl(newUrl.toString());
     }
 
-    private String[] extractQueries(String url){
+    /**
+     * Returns a list of all queries from a given url
+     */
+    private String[] extractQueries(String url) {
         int start = url.indexOf("?") + 1;
         int end = url.indexOf("#");
         end = end == -1 ? url.length() : end;
+
+        // failsafe in case the url has a '#' before a '?'
+        if (start > end) return new String[0];
+
         String queriesString = url.substring(start, end);
         return queriesString.split("&");
     }

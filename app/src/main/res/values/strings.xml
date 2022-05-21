@@ -115,5 +115,6 @@ This module can\'t be disabled."</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
     <string name="mRemove_found">Queries found</string>
     <string name="mRemove_noQueries">No queries</string>
-    <string name="mRemove_apply">Apply</string>
+    <string name="mRemove_all">Remove all</string>
+    <string name="mRemove_one">Remove %s</string>
 </resources>
