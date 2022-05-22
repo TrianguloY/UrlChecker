@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,6 +12,11 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.utilities.Inflater;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * This module removes queries "?foo=bar" from an url
@@ -48,8 +52,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     private TextView more;
     private LinearLayout box;
 
-    private String cleared = null;
-
     public RemoveQueriesDialog(MainDialog dialog) {
         super(dialog);
     }
@@ -79,108 +81,135 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
     @Override
     public void onNewUrl(String url) {
-        // clear
-        // an uri is defined as [scheme:][//authority][path][?query][#fragment]
-        // in order to remove the query, we need to remove everything between the '?' (included) and the '#' if present (excluded)
-        // we need to match a '?' followed by anything except a '#', and remove it
-        // this allows us to work with any string, even with non-standard urls
-        cleared = url.replaceAll("\\?[^#]*", "");
-
-        // remove previously generated buttons
+        // initialize
         box.removeAllViews();
 
-        if (!cleared.equals(url)) {
-            // query present, notify
-            remove.setEnabled(true);
-            more.setEnabled(true);
-            info.setText(R.string.mRemove_found);
-            info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+        // parse
+        UrlParts parts = new UrlParts(url);
 
-            // extract queries
-            String[] queriesArray = extractQueries(url);
-
-            // create a button for each query
-            // if multiple query keys are equal, multiple buttons will be created, however these
-            // buttons will individually address each one in the order they are found
-            for (int i = 0; i < queriesArray.length; i++) {
-                Button queryRemover = new Button(getActivity());
-                // when clicked, the query will be removed
-                queryRemover.setTag(i);
-                queryRemover.setOnClickListener(v -> removeQuery((Integer) v.getTag()));
-                // text will be the query key (and on one line only)
-                queryRemover.setSingleLine(true);
-                queryRemover.setEllipsize(TextUtils.TruncateAt.END);
-                queryRemover.setText(
-                        getActivity().getString(R.string.mRemove_one, queriesArray[i].split("=")[0])
-                );
-                box.addView(queryRemover);
-            }
-        } else {
-            // no query present, nothing to notify
-            remove.setEnabled(false);
-
-            // not pretty, but this sets 'more' on collapsed
-            box.setVisibility(View.VISIBLE);
-            more.performClick();
-
-            more.setEnabled(false);
+        if (parts.getQueries() == 0) {
+            // no queries present, nothing to notify
             info.setText(R.string.mRemove_noQueries);
             info.setBackgroundColor(getActivity().getResources().getColor(R.color.transparent));
+            remove.setEnabled(false); // disable the remove button
+            more.setVisibility(View.GONE); // hide the more toggle
+        } else {
+            // queries present, notify
+            info.setText(parts.getQueries() == 1
+                    ? getActivity().getString(R.string.mRemove_found1) // 1 query
+                    : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
+            );
+            info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+            remove.setEnabled(true); // enable the remove all button
+            more.setVisibility(View.VISIBLE); // and show the toggle
+
+            // for each query, create a button
+            for (int i = 0; i < parts.getQueries(); i++) {
+                Button queryRemover = Inflater.inflate(R.layout.extra_remove_button, box, getActivity());
+                queryRemover.setTag(i); // will remove this i query when clicked
+                queryRemover.setOnClickListener(this);
+                String queryName = parts.getQueryName(i);
+                queryRemover.setText(queryName.isEmpty()
+                        // if no name
+                        ? getActivity().getString(R.string.mRemove_empty)
+                        // with name
+                        : getActivity().getString(R.string.mRemove_one, queryName)
+                );
+            }
         }
     }
 
     @Override
     public void onClick(View v) {
-        // pressed the apply button
-        if (cleared != null) setUrl(cleared);
+        UrlParts parts = new UrlParts(getUrl());
+
+        // remove all queries (no tag) or a specific one
+        Integer tag = (Integer) v.getTag();
+        parts.removeQuery(tag == null ? -1 : tag);
+
+        // join and set
+        setUrl(parts.getUrl());
     }
 
     /**
-     * Removes the query at index n
+     * Manages the splitting, removing and merging of queries
      */
-    private void removeQuery(int n) {
-        if (cleared == null) return;
+    private static class UrlParts {
+        private final String preQuery; // "http://google.com"
+        private final List<String> queries = new ArrayList<>(); // ["ref=foo","bar"]
+        private final String postQuery; // "#start"
 
-        String oldUrl = getUrl();
-        String[] queriesArray = extractQueries(oldUrl);
-        // copy everything from previous url, except queries and fragment
-        StringBuilder newUrl = new StringBuilder(oldUrl.substring(0, oldUrl.indexOf("?")));
+        /**
+         * Prepares a url and extracts its queries
+         */
+        public UrlParts(String url) {
+            // an uri is defined as [scheme:][//authority][path][?query][#fragment]
+            // we need to find a '?' followed by anything except a '#'
+            // this allows us to work with any string, even with non-standard or malformed uris
+            int iStart = url.indexOf("?"); // position of '?' (-1 if not present)
+            int iEnd = url.indexOf("#", iStart + 1);
+            iEnd = iEnd == -1 ? url.length() : iEnd; // position of '#' (end of string if not present)
 
-        // to later check if we need to use '?' or '&'
-        boolean firstQuery = true;
+            // add part until '?' or until postQuery if not present
+            preQuery = url.substring(0, iStart != -1 ? iStart : iEnd);
+            // add queries if any
+            if (iStart != -1) {
+                queries.addAll(splitFix(url.substring(iStart + 1, iEnd), "&"));
+            }
+            // add part after queries (empty if not present)
+            postQuery = url.substring(iEnd);
+        }
 
-        for (int i = 0; i < queriesArray.length; i++) {
-            // skip query to remove
-            if (i != n) {
-                if (firstQuery) {
-                    newUrl.append('?');
-                    firstQuery = false;
-                } else {
-                    newUrl.append('&');
-                }
-                newUrl.append(queriesArray[i]);
+        /**
+         * Joins the url back into a full string
+         */
+        public String getUrl() {
+            StringBuilder sb = new StringBuilder(preQuery);
+            // first query after '?', the rest after '&'
+            for (int i = 0; i < queries.size(); ++i) sb.append(i == 0 ? "?" : "&").append(queries.get(i));
+            sb.append(postQuery);
+            return sb.toString();
+        }
+
+        /**
+         * returns the number of queries present
+         */
+        public int getQueries() {
+            return queries.size();
+        }
+
+        /**
+         * Returns the name of the query
+         */
+        public String getQueryName(int i) {
+            return queries.get(i).split("=")[0];
+        }
+
+        /**
+         * Removes a query by its index i, or all if -1
+         */
+        public void removeQuery(int i) {
+            if (i == -1) {
+                // remove all queries
+                queries.clear();
+            } else {
+                // remove that query
+                queries.remove(i);
             }
         }
-
-        // add fragment
-        if (oldUrl.contains("#")) {
-            newUrl.append(oldUrl.substring(oldUrl.indexOf("#")));
-        }
-        setUrl(newUrl.toString());
     }
 
     /**
-     * Returns a list of all queries from a given url
+     * {@link String#split(String)} won't return the last element if it's empty.
+     * This function does. And it returns a list instead of an array.
+     * Everything else is the same.
+     * Note: regexp must not match '#', it does change this function
      */
-    private String[] extractQueries(String url) {
-        int start = url.indexOf("?") + 1;
-        int end = url.indexOf("#");
-        end = end == -1 ? url.length() : end;
-
-        // failsafe in case the url has a '#' before a '?'
-        if (start > end) return new String[0];
-
-        String queriesString = url.substring(start, end);
-        return queriesString.split("&");
+    private static List<String> splitFix(String string, String regexp) {
+        // split with an extra char
+        String[] parts = (string + "#").split(regexp);
+        // remove the extra char
+        parts[parts.length - 1] = parts[parts.length - 1].substring(0, parts[parts.length - 1].length() - 1);
+        return Arrays.asList(parts);
     }
 }

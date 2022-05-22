@@ -2,7 +2,7 @@
     <!-- main -->
     <string name="app_name">Url checker</string>
     <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to see the available modules and what they do.</string>
-    <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/?ref=referrer</string>
+    <string name="txt_sample">Press the link below to test it:\nhttp://www.google.com/?ref=referrer&amp;foo=bar#tag</string>
     <string name="a_modules">Modules</string>
     <string name="a_about">About</string>
 
@@ -113,8 +113,10 @@ This module can\'t be disabled."</string>
 
     <string name="mRemove_name">Remove Queries</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
-    <string name="mRemove_found">Queries found</string>
+    <string name="mRemove_found1">1 query found</string>
+    <string name="mRemove_found">%d queries found</string>
     <string name="mRemove_noQueries">No queries</string>
     <string name="mRemove_all">Remove all</string>
     <string name="mRemove_one">Remove %s</string>
+    <string name="mRemove_empty">Remove empty</string>
 </resources>
