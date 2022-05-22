@@ -22,25 +22,26 @@ import java.util.List;
  */
 public class ModuleManager {
 
-    public final static AModuleData topModule = new TextInputModule();
-
-    private final static List<AModuleData> toggleableModules = new ArrayList<>();
+    private final static List<AModuleData> modules = new ArrayList<>();
 
     static {
         // TODO: auto-load with reflection?
-        toggleableModules.add(new HistoryModule());
-        toggleableModules.add(new StatusModule());
-        toggleableModules.add(new VirusTotalModule());
-        toggleableModules.add(new ClearUrlModule());
-        toggleableModules.add(new RemoveQueriesModule());
-        toggleableModules.add(new PatternModule());
-        toggleableModules.add(new DebugModule());
+        modules.add(new TextInputModule());
+
+        modules.add(new HistoryModule());
+        modules.add(new StatusModule());
+        modules.add(new VirusTotalModule());
+        modules.add(new ClearUrlModule());
+        modules.add(new RemoveQueriesModule());
+        modules.add(new PatternModule());
+        // new modules should preferably be added directly above this line
+        modules.add(new DebugModule());
+
+        modules.add(new OpenModule());
     }
 
-    public final static AModuleData bottomModule = new OpenModule();
-
     /**
-     * User defined order of the toggleable modules
+     * User defined order of the modules
      */
     public static GenericPref.LstStr ORDER_PREF() {
         return new GenericPref.LstStr("order", Collections.emptyList());
@@ -61,18 +62,18 @@ public class ModuleManager {
     }
 
     /**
-     * Returns the uninitialized middle modules based on the user order.
+     * Returns the uninitialized modules based on the user order.
      * If includeDisabled is false, non-enabled modules will not be returned
      *
      * @param cntx base context (for the sharedpref)
      * @return the list, may be empty
      */
-    public static List<AModuleData> getMiddleModules(boolean includeDisabled, Context cntx) {
+    public static List<AModuleData> getModules(boolean includeDisabled, Context cntx) {
         List<AModuleData> availableModules = new ArrayList<>();
 
         // check each module
-        for (AModuleData module : toggleableModules) {
-            if (includeDisabled || getEnabledPrefOfModule(module, cntx).get()) {
+        for (AModuleData module : modules) {
+            if (!module.canBeDisabled() || includeDisabled || getEnabledPrefOfModule(module, cntx).get()) {
                 try {
                     // enabled, add
                     availableModules.add(module);
@@ -82,8 +83,14 @@ public class ModuleManager {
             }
         }
 
+        // sort modules
         List<String> order = ORDER_PREF().init(cntx).get();
-        Collections.sort(availableModules, (a, b) -> order.indexOf(b.getId()) - order.indexOf(a.getId()));
+        int insertion = order.indexOf(DebugModule.ID); // non-present modules will be inserted where the debug module is
+        Collections.sort(availableModules, (a, b) -> {
+            int posA = order.contains(a.getId()) ? order.indexOf(a.getId()) : insertion;
+            int posB = order.contains(b.getId()) ? order.indexOf(b.getId()) : insertion;
+            return posB - posA;
+        });
 
         return availableModules;
     }
@@ -92,8 +99,8 @@ public class ModuleManager {
      * returns all the modules ids in the order they should be
      */
     public static List<String> getOrderedModulesId(Context cntx) {
-        // this is just "return getMiddleModules(...).map{it.getId}" but with java 7
-        List<AModuleData> modules = getMiddleModules(true, cntx);
+        // this is just "return getModules(...).map{it.getId}" but with java 7
+        List<AModuleData> modules = getModules(true, cntx);
         List<String> ids = new ArrayList<>();
         for (AModuleData module : modules) {
             ids.add(module.getId());

@@ -44,6 +44,11 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
+    public boolean canBeDisabled() {
+        return false;
+    }
+
+    @Override
     public AModuleDialog getDialog(MainDialog cntx) {
         return new OpenDialog(cntx);
     }

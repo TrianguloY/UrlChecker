@@ -39,13 +39,9 @@ public class ConfigActivity extends Activity {
         order.init(this);
 
         // initialize modules
-        initModule(ModuleManager.topModule, false);
-
-        for (AModuleData module : ModuleManager.getMiddleModules(true, this)) {
-            initModule(module, true);
+        for (AModuleData module : ModuleManager.getModules(true, this)) {
+            initModule(module);
         }
-
-        initModule(ModuleManager.bottomModule, false);
 
         // init buttons
         updateMovableButtons();
@@ -54,7 +50,7 @@ public class ConfigActivity extends Activity {
     /**
      * Initializes and adds a module to the list
      */
-    private void initModule(AModuleData module, boolean enableable) {
+    private void initModule(AModuleData module) {
         final AModuleConfig config = module.getConfig(this);
 
         // inflate
@@ -64,7 +60,8 @@ public class ConfigActivity extends Activity {
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);
-        if (enableable) {
+        if (module.canBeDisabled()) {
+            // allow disabling
             final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
             toggleEnable.setChecked(enabled_pref.get());
             toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -77,6 +74,7 @@ public class ConfigActivity extends Activity {
             });
             switches.put(config, toggleEnable);
         } else {
+            // disallow disabling
             toggleEnable.setChecked(true);
             toggleEnable.setEnabled(false);
         }
@@ -105,14 +103,11 @@ public class ConfigActivity extends Activity {
 
     /**
      * Moves a module a specific number of positions in the list
-     *
-     * @param moduleView
-     * @param delta
      */
     private void moveModule(View moduleView, int delta) {
         int position = list.indexOfChild(moduleView);
         if (position == -1) return; // no view? impossible
-        int newPosition = Math.min(Math.max(1, position + delta), list.getChildCount() - 1); // clamp
+        int newPosition = Math.min(Math.max(0, position + delta), list.getChildCount() - 1); // clamp
         if (newPosition == position) return; // same position? just ignore
 
         // swap
@@ -122,7 +117,7 @@ public class ConfigActivity extends Activity {
 
         // update preferences order
         List<String> modules = new ArrayList<>();
-        for (int i = list.getChildCount() - 2; i >= 1; i--) {
+        for (int i = list.getChildCount() - 1; i >= 0; i--) {
             // reversed, because -1 means bottom
             modules.add(list.getChildAt(i).getTag().toString());
         }
@@ -145,12 +140,12 @@ public class ConfigActivity extends Activity {
             View child = list.getChildAt(i);
             // enable up unless already at the top
             View up = child.findViewById(R.id.move_up);
-            up.setEnabled(i != list.getChildCount() - 1 && i >= 2);
-            up.setAlpha(i != list.getChildCount() - 1 && i >= 2 ? 1 : 0.5f);
+            up.setEnabled(i > 0);
+            up.setAlpha(i > 0 ? 1 : 0.5f);
             // enable down unless already at the bottom
             View down = child.findViewById(R.id.move_down);
-            down.setEnabled(i != 0 && i <= list.getChildCount() - 2);
-            down.setAlpha(i != 0 && i <= list.getChildCount() - 3 ? 1 : 0.5f);
+            down.setEnabled(i < list.getChildCount() - 1);
+            down.setAlpha(i < list.getChildCount() - 1 ? 1 : 0.5f);
         }
     }
 
@@ -161,21 +156,20 @@ public class ConfigActivity extends Activity {
         // updates preference
         order.clear();
 
-        // updates views
+        // get and remove all views
         List<View> views = new ArrayList<>();
-        while (list.getChildCount() > 2) {
-            // get all of them
-            views.add(list.getChildAt(1));
-            list.removeViewAt(1);
+        for (int i = 0; i < list.getChildCount(); i++) {
+            views.add(list.getChildAt(i));
         }
+        list.removeAllViews();
 
-        // sort
+        // sort views based on the order they should have
         List<String> modules = ModuleManager.getOrderedModulesId(this);
-        Collections.sort(views, (a, b) -> modules.indexOf(b.getTag().toString()) - modules.indexOf(a.getTag().toString()));
+        Collections.sort(views, (a, b) -> modules.indexOf(a.getTag().toString()) - modules.indexOf(b.getTag().toString()));
 
-        // set
+        // add
         for (View view : views) {
-            list.addView(view, 1);
+            list.addView(view);
         }
         updateMovableButtons();
 

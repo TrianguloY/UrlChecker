@@ -14,14 +14,17 @@ import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
- * A textview with debug info.
+ * This modules marks the insertion point of new modules
+ * If enabled, shows a textview with debug info.
  * Currently shows the original intent (as uri)
  * Allows also to enable/disable ctabs toasts
  */
 public class DebugModule extends AModuleData {
+    public static String ID = "debug";
+
     @Override
     public String getId() {
-        return "debug";
+        return ID;
     }
 
     @Override

@@ -23,6 +23,13 @@ public abstract class AModuleData {
     }
 
     /**
+     * @return whether this module can be disabled or not
+     */
+    public boolean canBeDisabled() {
+        return true;
+    }
+
+    /**
      * Returns the dialog fragment of this module
      *
      * @param cntx for the fragment

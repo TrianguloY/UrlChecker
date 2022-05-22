@@ -105,21 +105,12 @@ public class MainDialog extends Activity {
     private void initializeModules() {
         modules.clear();
 
-        // top module
-        initializeModule(ModuleManager.topModule, false);
-
-        addSeparator();
-
-        // middle modules
-        final List<AModuleData> middleModules = ModuleManager.getMiddleModules(false, this);
+        // add
+        final List<AModuleData> middleModules = ModuleManager.getModules(false, this);
         for (AModuleData module : middleModules) {
-            initializeModule(module, true);
-
-            addSeparator();
+            if (ll_mods.getChildCount() != 0) addSeparator();
+            initializeModule(module);
         }
-
-        // bottom module
-        initializeModule(ModuleManager.bottomModule, false);
     }
 
     /**
@@ -127,19 +118,21 @@ public class MainDialog extends Activity {
      *
      * @param moduleData which module to initialize
      */
-    private void initializeModule(AModuleData moduleData, boolean decorations) {
+    private void initializeModule(AModuleData moduleData) {
         try {
             // enabled, add
             AModuleDialog module = moduleData.getDialog(this);
 
             ViewGroup parent;
             // set module block
-            if (decorations) {
+            if (moduleData.canBeDisabled()) {
+                // init decorations
                 View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
                 final TextView title = block.findViewById(R.id.title);
                 title.setText(getString(R.string.dd, getString(moduleData.getName())));
                 parent = block.findViewById(R.id.mod);
             } else {
+                // non-disable modules are considered internal and won't show decorations
                 parent = ll_mods;
             }
 
