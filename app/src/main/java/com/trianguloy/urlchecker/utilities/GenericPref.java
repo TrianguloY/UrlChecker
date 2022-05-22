@@ -3,6 +3,10 @@ package com.trianguloy.urlchecker.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * A generic type preference
  *
@@ -38,11 +42,13 @@ public abstract class GenericPref<T> {
 
     /**
      * Initializes this preference
+     * Returns itself, but as the subtype (I don't know how to return the correct type)
      *
      * @param cntx with this base context
      */
-    public void init(Context cntx) {
+    public GenericPref<T> init(Context cntx) {
         prefs = cntx.getSharedPreferences(cntx.getPackageName(), Context.MODE_PRIVATE);
+        return this;
     }
 
     /**
@@ -60,6 +66,13 @@ public abstract class GenericPref<T> {
     @Override
     public String toString() {
         return prefName + " = " + get();
+    }
+
+    /**
+     * Clears this preference value
+     */
+    public void clear() {
+        prefs.edit().remove(prefName).apply();
     }
 
     // ------------------- Implementations -------------------
@@ -118,6 +131,44 @@ public abstract class GenericPref<T> {
         @Override
         public void set(String value) {
             prefs.edit().putString(prefName, value).apply();
+        }
+    }
+
+
+    /**
+     * A list of strings preference
+     */
+    static public class LstStr extends GenericPref<List<String>> {
+
+        static final String SEPARATOR = ";";
+
+        public LstStr(String prefName, List<String> defaultValue) {
+            super(prefName, defaultValue);
+        }
+
+        @Override
+        public List<String> get() {
+            return split(prefs.getString(prefName, join(defaultValue)));
+        }
+
+        @Override
+        public void set(List<String> value) {
+            prefs.edit().putString(prefName, join(value)).apply();
+        }
+
+        private static String join(List<String> value) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < value.size(); i++) {
+                if (i != 0) sb.append(SEPARATOR);
+                sb.append(value.get(i));
+            }
+            return sb.toString();
+        }
+
+        private static List<String> split(String value) {
+            ArrayList<String> list = new ArrayList<>();
+            if (value != null) list.addAll(Arrays.asList(value.split(SEPARATOR)));
+            return list;
         }
     }
 }

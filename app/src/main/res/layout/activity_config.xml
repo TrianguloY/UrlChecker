@@ -17,11 +17,16 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_conf" />
 
-        <LinearLayout
-            android:id="@+id/list"
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:layout_height="wrap_content"
+            android:onClick="resetOrder"
+            android:text="@string/reset_order" /><LinearLayout
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
     </LinearLayout>
 
 </ScrollView>

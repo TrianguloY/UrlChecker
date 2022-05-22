@@ -111,7 +111,7 @@ public class MainDialog extends Activity {
         addSeparator();
 
         // middle modules
-        final List<AModuleData> middleModules = ModuleManager.getEnabledMiddleModules(this);
+        final List<AModuleData> middleModules = ModuleManager.getMiddleModules(false, this);
         for (AModuleData module : middleModules) {
             initializeModule(module, true);
 

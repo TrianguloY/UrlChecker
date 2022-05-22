@@ -101,9 +101,7 @@ public class CustomTabs extends Service {
 
     private void log(String message) {
         Log.d(TAG, message);
-        GenericPref.Bool showToast = SHOWTOAST_PREF();
-        showToast.init(this);
-        if (showToast.get()) {
+        if (SHOWTOAST_PREF().init(this).get()) {
             Toast.makeText(this, TAG + ": " + message, Toast.LENGTH_LONG).show();
         }
     }

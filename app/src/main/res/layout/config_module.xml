@@ -3,47 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="5dp">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
 
         <TextView
             android:id="@+id/label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawableStart="@drawable/collapsed"
             android:drawableLeft="@drawable/collapsed"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <FrameLayout
-            android:id="@+id/box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp">
-
-        </FrameLayout>
-    </LinearLayout>
-
-    <ImageView
+            android:textStyle="bold" /><ImageView
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray"
-        android:scaleType="centerInside" />
-
-    <Switch
+        android:scaleType="centerInside" /><ImageButton
+        android:id="@+id/move_up"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@android:drawable/arrow_up_float" /><ImageButton
+        android:id="@+id/move_down"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@android:drawable/arrow_down_float" /><ImageView
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:scaleType="centerInside" /><Switch
         android:id="@+id/enable"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        </FrameLayout>
 
 </LinearLayout>
