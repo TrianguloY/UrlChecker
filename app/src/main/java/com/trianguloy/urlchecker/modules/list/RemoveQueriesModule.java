@@ -49,7 +49,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
     private TextView info;
     private Button remove;
-    private TextView more;
     private LinearLayout box;
 
     public RemoveQueriesDialog(MainDialog dialog) {
@@ -65,16 +64,13 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     public void onInitialize(View views) {
         info = views.findViewById(R.id.text);
         remove = views.findViewById(R.id.fix);
-        more = views.findViewById(R.id.more);
         box = views.findViewById(R.id.box);
 
         // expand queries
-        more.setOnClickListener(v -> {
-            boolean checked = box.getVisibility() == View.GONE;
-            box.setVisibility(checked ? View.VISIBLE : View.GONE);
-            more.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
+        info.setOnClickListener(v -> {
+            box.setVisibility(box.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+            updateMoreIndicator();
         });
-        more.performClick(); // initial hide
 
         remove.setOnClickListener(this);
     }
@@ -92,7 +88,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             info.setText(R.string.mRemove_noQueries);
             info.setBackgroundColor(getActivity().getResources().getColor(R.color.transparent));
             remove.setEnabled(false); // disable the remove button
-            more.setVisibility(View.GONE); // hide the more toggle
         } else {
             // queries present, notify
             info.setText(parts.getQueries() == 1
@@ -101,7 +96,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             );
             info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
             remove.setEnabled(true); // enable the remove all button
-            more.setVisibility(View.VISIBLE); // and show the toggle
 
             // for each query, create a button
             for (int i = 0; i < parts.getQueries(); i++) {
@@ -117,6 +111,9 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
                 );
             }
         }
+
+        // update
+        updateMoreIndicator();
     }
 
     @Override
@@ -129,6 +126,17 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
         // join and set
         setUrl(parts.getUrl());
+    }
+
+    /**
+     * Sets the 'more' indicator.
+     */
+    private void updateMoreIndicator() {
+        info.setCompoundDrawablesWithIntrinsicBounds(
+                box.getChildCount() == 0 ? 0
+                        : box.getVisibility() == View.VISIBLE ? R.drawable.expanded
+                        : R.drawable.collapsed,
+                0, 0, 0);
     }
 
     /**
