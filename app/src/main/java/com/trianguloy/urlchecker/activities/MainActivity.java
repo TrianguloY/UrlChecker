@@ -4,13 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 
 /**
@@ -52,9 +51,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(this, getString(R.string.app_name) + ", by TrianguloY", Toast.LENGTH_SHORT).show();
                 break;
             default:
-                Log.d("SWITCH", view.toString());
-                if (BuildConfig.DEBUG)
-                    Toast.makeText(this, "Unknown view: " + view, Toast.LENGTH_LONG).show();
+                AndroidUtils.assertError("Unknown view: " + view);
         }
     }
 

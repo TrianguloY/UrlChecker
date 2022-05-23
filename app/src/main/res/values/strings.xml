@@ -88,7 +88,7 @@ This module can\'t be disabled."</string>
     <string name="mVT_connectError">Can\'t connect to VirusTotal. Make sure you have an active internet connection or try again later.</string>
     <string name="mVT_jsonError">Can\'t connect to VirusTotal. Make sure the api key is valid or try again later.</string>
 
-    <string name="mD_name">Debug module / Marker module</string>
+    <string name="mD_name">Debug/Marker module</string>
     <string name="mD_desc">If you reorder the modules, new ones added in future updates will be placed before this.\n\nIf you enable this it will display the received intent as uri, useful for developers.</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
 

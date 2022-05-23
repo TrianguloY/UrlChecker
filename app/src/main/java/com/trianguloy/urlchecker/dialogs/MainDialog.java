@@ -11,11 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
@@ -43,13 +43,7 @@ public class MainDialog extends Activity {
     public void setUrl(String url, AModuleDialog providerModule) {
         if (onSettingUrl) {
             // a recursive call, invalid
-            if (BuildConfig.DEBUG) {
-                // in debug mode, assert
-                throw new AssertionError("Attempting to change an url inside a setUrl call");
-            } else {
-                // non-debug, just discard
-                return;
-            }
+            AndroidUtils.assertError("Attempting to change an url inside a setUrl call");
         }
 
         if (url == null) url = "";
@@ -199,8 +193,13 @@ public class MainDialog extends Activity {
      */
     private void onChangedUrl(AModuleDialog providerModule) {
         for (AModuleDialog module : modules) {
-            if (module != providerModule)
-                module.onNewUrl(getUrl());
+            if (module != providerModule) {
+                try {
+                    module.onNewUrl(getUrl());
+                } catch (Exception e) {
+                    AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
+                }
+            }
         }
     }
 
