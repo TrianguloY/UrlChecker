@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/label"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableStart="@drawable/collapsed"
@@ -24,7 +24,10 @@
             android:textStyle="bold" /><ImageView
         android:layout_width="2dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:background="@android:color/darker_gray"
+        android:paddingBottom="2dp"
         android:scaleType="centerInside" /><ImageButton
         android:id="@+id/move_up"
         style="?android:attr/buttonBarButtonStyle"
@@ -40,6 +43,8 @@
         android:src="@android:drawable/arrow_down_float" /><ImageView
         android:layout_width="2dp"
         android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:background="@android:color/darker_gray"
         android:scaleType="centerInside" /><Switch
         android:id="@+id/enable"

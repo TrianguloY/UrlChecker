@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +10,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.ClickableLinks;
 
 import java.util.ArrayList;
@@ -80,7 +80,7 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
         if (messages.isEmpty()) {
             // no messages, all good
             txt_pattern.setText(R.string.mPttrn_ok);
-            txt_pattern.setBackgroundColor(Color.TRANSPARENT);
+            AndroidUtils.clearRoundedColor(txt_pattern);
         } else {
             // messages to show, concatenate them
             txt_pattern.setText("");
@@ -90,7 +90,7 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
                 newline = true;
                 txt_pattern.append(message);
             }
-            txt_pattern.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+            AndroidUtils.setRoundedColor(R.color.warning, txt_pattern, getActivity());
         }
         ClickableLinks.linkify(txt_pattern, this);
     }

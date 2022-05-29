@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,6 +14,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
@@ -86,15 +89,23 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         if (parts.getQueries() == 0) {
             // no queries present, nothing to notify
             info.setText(R.string.mRemove_noQueries);
-            info.setBackgroundColor(getActivity().getResources().getColor(R.color.transparent));
+            AndroidUtils.clearRoundedColor(info);
             remove.setEnabled(false); // disable the remove button
         } else {
             // queries present, notify
-            info.setText(parts.getQueries() == 1
-                    ? getActivity().getString(R.string.mRemove_found1) // 1 query
-                    : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
+            SpannableStringBuilder text = new SpannableStringBuilder(
+                    parts.getQueries() == 1
+                            ? getActivity().getString(R.string.mRemove_found1) // 1 query
+                            : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
             );
-            info.setBackgroundColor(getActivity().getResources().getColor(R.color.warning));
+            // mark the text as clickable (but the click does nothing, it is managed when clicked the view)
+            text.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(View ignored) {
+                }
+            }, 0, text.length(), 0);
+            info.setText(text);
+            AndroidUtils.setRoundedColor(R.color.warning, info, getActivity());
             remove.setEnabled(true); // enable the remove all button
 
             // for each query, create a button

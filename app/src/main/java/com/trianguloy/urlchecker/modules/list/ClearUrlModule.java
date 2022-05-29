@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 import org.json.JSONArray;
@@ -328,7 +329,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private void setColor(int color) {
         if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
         info.setTag(color);
-        info.setBackgroundColor(getActivity().getResources().getColor(color));
+        AndroidUtils.setRoundedColor(color, info, getActivity());
     }
 
     /**

@@ -15,6 +15,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
@@ -249,7 +250,11 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
      */
     private void setResult(String message, int color) {
         txt_result.setText(message);
-        txt_result.setBackgroundColor(color == 0 ? Color.TRANSPARENT : getActivity().getResources().getColor(color));
+        if (color != 0) {
+            AndroidUtils.setRoundedColor(color, txt_result, getActivity());
+        } else {
+            AndroidUtils.clearRoundedColor(txt_result);
+        }
     }
 
     /**
