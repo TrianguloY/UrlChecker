@@ -43,8 +43,6 @@ public class HistoryModule extends AModuleData {
 
 class HistoryDialog extends AModuleDialog implements View.OnClickListener {
 
-    public static final int SAME_UPDATE_TIMEOUT = 1000; // if two updates happens in less than this milliseconds, they are considered as the same
-
     // views
     private ImageButton first;
     private ImageButton back;
@@ -54,8 +52,6 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
 
     private final List<String> history = new ArrayList<>(); // list of urls
     private int index = -1; // current url in history (-1 if none)
-
-    private long previousMillis = -1; // last time the history was updated
 
     // ------------------- internal -------------------
 
@@ -109,8 +105,8 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
         if (index + 1 < history.size())
             history.subList(index + 1, history.size()).clear();
 
-        if (minorUpdate && currentMillis - previousMillis < SAME_UPDATE_TIMEOUT) {
-            // very fast minor update, replace previous entry
+        if (minorUpdate) {
+            // minor update, replace previous entry
             history.set(index, url);
         } else {
             // add new entry
@@ -120,7 +116,6 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
 
         // update
         updateUI();
-        previousMillis = currentMillis;
     }
 
     @Override
@@ -199,7 +194,7 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     private void setIndex(int newIndex) {
         if (newIndex >= 0 && newIndex < history.size()) {
             index = newIndex;
-            forceUrl(history.get(newIndex));
+            setUrl(history.get(newIndex), Flags.DISABLE_UPDATE, Flags.DONT_NOTIFY_OWN);
         }
         updateUI();
     }

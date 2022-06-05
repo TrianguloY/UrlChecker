@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 /**
@@ -41,10 +42,10 @@ public class MainDialog extends Activity {
      * @param url            the new url
      * @param providerModule which module changed it (null if first change)
      */
-    public void setUrl(String url, AModuleDialog providerModule, boolean allowUpdate, boolean minorUpdate) {
+    public void setUrl(String url, AModuleDialog providerModule, EnumSet<AModuleDialog.Flags> flags) {
         // test and mark recursion
         if (updating > MAX_UPDATES) return;
-        if (!allowUpdate) updating = MAX_UPDATES;
+        if (flags.contains(AModuleDialog.Flags.DISABLE_UPDATE)) updating = MAX_UPDATES;
         updating++;
         int updating_current = updating;
 
@@ -54,14 +55,15 @@ public class MainDialog extends Activity {
 
         // and notify the other modules
         for (AModuleDialog module : modules) {
-            if (module != providerModule) {
-                try {
-                    module.onNewUrl(url, minorUpdate);
-                } catch (Exception e) {
-                    AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
-                }
-                if (updating_current != updating) return;
+            // skip own if required
+            if (flags.contains(AModuleDialog.Flags.DONT_NOTIFY_OWN) && module == providerModule) continue;
+            try {
+                module.onNewUrl(url, flags.contains(AModuleDialog.Flags.MINOR_UPDATE));
+            } catch (Exception e) {
+                e.printStackTrace();
+                AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
             }
+            if (updating_current != updating) return;
         }
         updating = 0;
     }
@@ -99,7 +101,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        setUrl(getOpenUrl(), null, true, false);
+        setUrl(getOpenUrl(), null, EnumSet.noneOf(AModuleDialog.Flags.class));
     }
 
     /**

@@ -5,6 +5,9 @@ import android.app.Activity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.utilities.Fragment;
 
+import java.util.Arrays;
+import java.util.EnumSet;
+
 /**
  * Base class for a module's dialog fragment.
  */
@@ -24,7 +27,7 @@ public abstract class AModuleDialog implements Fragment {
 
     /**
      * Notification of a new url.
-     * On this callback you can't call {@link #updateUrl(String)}
+     * On this callback you can't call {@link #setUrl(String, Flags...)}
      *
      * @param url         the new url
      * @param minorUpdate if true, the new url is considered a minor update
@@ -48,47 +51,37 @@ public abstract class AModuleDialog implements Fragment {
     }
 
     /**
-     * Changes the current url.
-     * All the other modules are notified, BUT NOT THE CALLER
-     *
-     * @param url new url
-     * @see AModuleDialog#setUrl(String)
+     * Updates flags
      */
-    protected final void updateUrl(String url) {
-        dialog.setUrl(url, this, true, false);
+    public enum Flags {
+        /**
+         * A flag that means 'no flag', for convenience
+         */
+        NONE,
+        /**
+         * If set, the module that triggers the update will NOT be notified
+         */
+        DONT_NOTIFY_OWN,
+        /**
+         * If set, the url will not be changed (future setUrl calls will be ignored)
+         */
+        DISABLE_UPDATE,
+        /**
+         * If set, this update is considered 'minor' and modules may decide to ignore or merge it with the previous one
+         */
+        MINOR_UPDATE
     }
 
     /**
      * Changes the current url.
-     * All the modules are notified, INCLUDING THE CALLER
      *
-     * @param url new url
-     * @see AModuleDialog#updateUrl(String)
+     * @param url   new url
+     * @param flags updating flags
      */
-    protected final void setUrl(String url) {
-        dialog.setUrl(url, null, true, false);
-    }
-
-    /**
-     * Forces an url. Modules won't be able to change it.
-     * All the modules are notified, BUT NOT THE CALLER
-     *
-     * @param url new url
-     * @see AModuleDialog#updateUrl(String)
-     */
-    protected final void forceUrl(String url) {
-        dialog.setUrl(url, this, false, false);
-    }
-
-    /**
-     * Changes the current url with a minor modification. Disables other updates.
-     * All the other modules are notified, BUT NOT THE CALLER
-     *
-     * @param url new url
-     * @see AModuleDialog#setUrl(String)
-     */
-    protected final void minorUpdateUrl(String url) {
-        dialog.setUrl(url, this, false, true);
+    protected final void setUrl(String url, Flags... flags) {
+        dialog.setUrl(url, this,
+                flags.length == 0 ? EnumSet.noneOf(Flags.class) : EnumSet.copyOf(Arrays.asList(flags))
+        );
     }
 
 }

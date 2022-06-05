@@ -46,13 +46,14 @@ public class TextInputModule extends AModuleData {
 
 class TextInputDialog extends AModuleDialog implements TextWatcher {
 
+    private static final int SAME_UPDATE_TIMEOUT = 1000; // if two updates happens in less than this milliseconds, they are considered as the same
+
+    private long lastUpdateTimeMillis = -1; // previous edittext update time
     private EditText edtxt_url;
-    private boolean editByCode = false;
 
     public TextInputDialog(MainDialog dialog) {
         super(dialog);
     }
-
 
     @Override
     public int getLayoutId() {
@@ -67,10 +68,11 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
 
     @Override
     public void onNewUrl(String url, boolean minorUpdate) {
-        // setText fires the afterTextChanged listener, so we need to manually disable it
-        editByCode = true;
+        // setText fires the afterTextChanged listener, so we need to remove it
+        edtxt_url.removeTextChangedListener(this);
         edtxt_url.setText(url);
-        editByCode = false;
+        edtxt_url.addTextChangedListener(this);
+        lastUpdateTimeMillis = -1; // next user update, even if immediately after, will be considered new
     }
 
     // ------------------- TextWatcher -------------------
@@ -85,8 +87,11 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        if(editByCode) return;
         // new url by the user
-        minorUpdateUrl(s.toString());
+        long currentTime = System.currentTimeMillis();
+        setUrl(s.toString(), Flags.DONT_NOTIFY_OWN, Flags.DISABLE_UPDATE,
+                // considered minor if the previous update was very recent
+                currentTime - lastUpdateTimeMillis < SAME_UPDATE_TIMEOUT ? Flags.MINOR_UPDATE : Flags.NONE);
+        lastUpdateTimeMillis = currentTime;
     }
 }
