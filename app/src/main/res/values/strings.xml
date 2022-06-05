@@ -108,6 +108,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_forcedRedirection">- forced redirection found</string>
     <string name="mClear_redirection">- redirection found</string>
     <string name="mClear_noRules">Nothing found</string>
+    <string name="mClear_auto">Apply automatically</string>
     <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
     <string name="mClear_error">An error occurred while checking rules</string>

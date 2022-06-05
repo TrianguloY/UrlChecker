@@ -130,7 +130,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         scanning = false;
         result = null;
         updateUI();

@@ -10,6 +10,11 @@
         android:text="@string/mClear_desc" />
 
     <CheckBox
+        android:id="@+id/auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_auto" />
+    <CheckBox
         android:id="@+id/referral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

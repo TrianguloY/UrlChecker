@@ -70,7 +70,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         // reset all
         check.setEnabled(true);
         info.setText("");

@@ -113,7 +113,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         updateSpinner();
     }
 

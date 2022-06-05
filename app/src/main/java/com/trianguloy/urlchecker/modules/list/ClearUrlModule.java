@@ -41,6 +41,10 @@ public class ClearUrlModule extends AModuleData {
         return new GenericPref.Bool("clearurl_verbose", false);
     }
 
+    public static GenericPref.Bool AUTO_PREF() {
+        return new GenericPref.Bool("clearurl_auto", false);
+    }
+
     @Override
     public String getId() {
         return "clearUrl";
@@ -66,11 +70,13 @@ class ClearUrlConfig extends AModuleConfig {
 
     private final GenericPref.Bool referralPref = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbosePref = ClearUrlModule.VERBOSE_PREF();
+    private final GenericPref.Bool autoPref = ClearUrlModule.AUTO_PREF();
 
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
         referralPref.init(activity);
         verbosePref.init(activity);
+        autoPref.init(activity);
     }
 
     @Override
@@ -85,13 +91,18 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        CheckBox referral = views.findViewById(R.id.referral);
-        referral.setChecked(referralPref.get());
-        referral.setOnCheckedChangeListener((buttonView, isChecked) -> referralPref.set(isChecked));
+        attach(views, R.id.referral, referralPref);
+        attach(views, R.id.verbose, verbosePref);
+        attach(views, R.id.auto, autoPref);
+    }
 
-        CheckBox verbose = views.findViewById(R.id.verbose);
-        verbose.setChecked(verbosePref.get());
-        verbose.setOnCheckedChangeListener((buttonView, isChecked) -> verbosePref.set(isChecked));
+    /**
+     * Initializes a config from a checkbox view
+     */
+    private void attach(View views, int viewId, GenericPref.Bool config) {
+        CheckBox chxbx = views.findViewById(viewId);
+        chxbx.setChecked(config.get());
+        chxbx.setOnCheckedChangeListener((buttonView, isChecked) -> config.set(isChecked));
     }
 }
 
@@ -99,6 +110,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
+    private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
 
     private JSONObject data = null;
     private TextView info;
@@ -115,6 +127,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         }
         allowReferral.init(dialog);
         verbose.init(dialog);
+        auto.init(dialog);
     }
 
 
@@ -131,7 +144,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         info.setText("");
         cleared = url;
         fix.setEnabled(false);
@@ -267,6 +280,8 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (!cleared.equals(url)) {
             fix.setEnabled(true);
             if (verbose.get()) info.append("\n\n -> " + cleared);
+            // and apply automatically if required
+            if (auto.get()) setUrl(cleared);
         }
 
         // nothing found

@@ -79,7 +79,7 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         // initialize
         box.removeAllViews();
 

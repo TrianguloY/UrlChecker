@@ -102,15 +102,15 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         long currentMillis = System.currentTimeMillis();
 
         // clear newer entries
         if (index + 1 < history.size())
             history.subList(index + 1, history.size()).clear();
 
-        if (currentMillis - previousMillis < SAME_UPDATE_TIMEOUT) {
-            // very fast update, replace previous entry
+        if (minorUpdate && currentMillis - previousMillis < SAME_UPDATE_TIMEOUT) {
+            // very fast minor update, replace previous entry
             history.set(index, url);
         } else {
             // add new entry
@@ -199,7 +199,7 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     private void setIndex(int newIndex) {
         if (newIndex >= 0 && newIndex < history.size()) {
             index = newIndex;
-            updateUrl(history.get(newIndex));
+            forceUrl(history.get(newIndex));
         }
         updateUI();
     }

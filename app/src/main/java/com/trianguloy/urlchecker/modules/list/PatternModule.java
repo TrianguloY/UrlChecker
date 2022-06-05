@@ -61,7 +61,7 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         List<String> messages = new ArrayList<>();
 
         // check for non-ascii characters

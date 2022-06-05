@@ -26,9 +26,10 @@ public abstract class AModuleDialog implements Fragment {
      * Notification of a new url.
      * On this callback you can't call {@link #updateUrl(String)}
      *
-     * @param url the new url
+     * @param url         the new url
+     * @param minorUpdate if true, the new url is considered a minor update
      */
-    public abstract void onNewUrl(String url);
+    public abstract void onNewUrl(String url, boolean minorUpdate);
 
     // ------------------- utilities -------------------
 
@@ -54,7 +55,7 @@ public abstract class AModuleDialog implements Fragment {
      * @see AModuleDialog#setUrl(String)
      */
     protected final void updateUrl(String url) {
-        dialog.setUrl(url, this);
+        dialog.setUrl(url, this, true, false);
     }
 
     /**
@@ -65,7 +66,29 @@ public abstract class AModuleDialog implements Fragment {
      * @see AModuleDialog#updateUrl(String)
      */
     protected final void setUrl(String url) {
-        dialog.setUrl(url, null);
+        dialog.setUrl(url, null, true, false);
+    }
+
+    /**
+     * Forces an url. Modules won't be able to change it.
+     * All the modules are notified, BUT NOT THE CALLER
+     *
+     * @param url new url
+     * @see AModuleDialog#updateUrl(String)
+     */
+    protected final void forceUrl(String url) {
+        dialog.setUrl(url, this, false, false);
+    }
+
+    /**
+     * Changes the current url with a minor modification. Disables other updates.
+     * All the other modules are notified, BUT NOT THE CALLER
+     *
+     * @param url new url
+     * @see AModuleDialog#setUrl(String)
+     */
+    protected final void minorUpdateUrl(String url) {
+        dialog.setUrl(url, this, false, true);
     }
 
 }

@@ -55,7 +55,7 @@ class DebugDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         // ignore
     }
 

@@ -66,7 +66,7 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     }
 
     @Override
-    public void onNewUrl(String url) {
+    public void onNewUrl(String url, boolean minorUpdate) {
         // setText fires the afterTextChanged listener, so we need to manually disable it
         editByCode = true;
         edtxt_url.setText(url);
@@ -87,6 +87,6 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     public void afterTextChanged(Editable s) {
         if(editByCode) return;
         // new url by the user
-        updateUrl(s.toString());
+        minorUpdateUrl(s.toString());
     }
 }

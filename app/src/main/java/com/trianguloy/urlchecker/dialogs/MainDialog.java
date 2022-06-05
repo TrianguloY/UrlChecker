@@ -25,13 +25,14 @@ import java.util.List;
  * The main dialog, when opening a url
  */
 public class MainDialog extends Activity {
+    private static final int MAX_UPDATES = 100;
 
     // ------------------- module functions -------------------
 
     /**
-     * to avoid infinite loops when setting urls
+     * to allow changing url while notifying
      */
-    boolean onSettingUrl = false;
+    private int updating = 0;
     private LinearLayout ll_mods;
 
     /**
@@ -40,21 +41,29 @@ public class MainDialog extends Activity {
      * @param url            the new url
      * @param providerModule which module changed it (null if first change)
      */
-    public void setUrl(String url, AModuleDialog providerModule) {
-        if (onSettingUrl) {
-            // a recursive call, invalid
-            AndroidUtils.assertError("Attempting to change an url inside a setUrl call");
-        }
-
-        if (url == null) url = "";
+    public void setUrl(String url, AModuleDialog providerModule, boolean allowUpdate, boolean minorUpdate) {
+        // test and mark recursion
+        if (updating > MAX_UPDATES) return;
+        if (!allowUpdate) updating = MAX_UPDATES;
+        updating++;
+        int updating_current = updating;
 
         // change url
+        if (url == null) url = "";
         this.url = url;
 
         // and notify the other modules
-        onSettingUrl = true;
-        onChangedUrl(providerModule);
-        onSettingUrl = false;
+        for (AModuleDialog module : modules) {
+            if (module != providerModule) {
+                try {
+                    module.onNewUrl(url, minorUpdate);
+                } catch (Exception e) {
+                    AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
+                }
+                if (updating_current != updating) return;
+            }
+        }
+        updating = 0;
     }
 
     /**
@@ -90,7 +99,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        setUrl(getOpenUrl(), null);
+        setUrl(getOpenUrl(), null, true, false);
     }
 
     /**
@@ -185,22 +194,5 @@ public class MainDialog extends Activity {
     }
 
     // ------------------- url -------------------
-
-    /**
-     * Notifies all modules (except the one that changed it) of a new url
-     *
-     * @param providerModule the module that provided the new url, won't be called (if null all are called)
-     */
-    private void onChangedUrl(AModuleDialog providerModule) {
-        for (AModuleDialog module : modules) {
-            if (module != providerModule) {
-                try {
-                    module.onNewUrl(getUrl());
-                } catch (Exception e) {
-                    AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
-                }
-            }
-        }
-    }
 
 }
