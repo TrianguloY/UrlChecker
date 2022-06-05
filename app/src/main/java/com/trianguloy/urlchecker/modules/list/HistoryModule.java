@@ -123,12 +123,19 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
         if (v.getId() == R.id.list) {
             // cleanup
             removeDuplicates(false);
+            // prepare elements (inverted because they look nicer top=newer)
             List<String> items = new ArrayList<>(history);
             Collections.reverse(items);
 
             // show list
             new AlertDialog.Builder(getActivity())
-                    .setItems(items.toArray(new CharSequence[0]), (dialog, which) -> setIndex(which))
+                    .setSingleChoiceItems(
+                            items.toArray(new CharSequence[0]),
+                            index == -1 ? -1 : items.size() - 1 - index,
+                            (dialog, which) -> {
+                                setIndex(history.size() - 1 - which);
+                                dialog.dismiss();
+                            })
                     .show();
             updateUI();
             return;

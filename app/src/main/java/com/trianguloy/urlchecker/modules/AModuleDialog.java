@@ -79,7 +79,7 @@ public abstract class AModuleDialog implements Fragment {
      * @param flags updating flags
      */
     protected final void setUrl(String url, Flags... flags) {
-        dialog.setUrl(url, this,
+        dialog.onNewUrl(url, this,
                 flags.length == 0 ? EnumSet.noneOf(Flags.class) : EnumSet.copyOf(Arrays.asList(flags))
         );
     }

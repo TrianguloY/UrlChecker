@@ -42,7 +42,7 @@ public class MainDialog extends Activity {
      * @param url            the new url
      * @param providerModule which module changed it (null if first change)
      */
-    public void setUrl(String url, AModuleDialog providerModule, EnumSet<AModuleDialog.Flags> flags) {
+    public void onNewUrl(String url, AModuleDialog providerModule, EnumSet<AModuleDialog.Flags> flags) {
         // test and mark recursion
         if (updating > MAX_UPDATES) return;
         if (flags.contains(AModuleDialog.Flags.DISABLE_UPDATE)) updating = MAX_UPDATES;
@@ -101,7 +101,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        setUrl(getOpenUrl(), null, EnumSet.noneOf(AModuleDialog.Flags.class));
+        onNewUrl(getOpenUrl(), null, EnumSet.noneOf(AModuleDialog.Flags.class));
     }
 
     /**
