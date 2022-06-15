@@ -1,0 +1,123 @@
+<resources>
+    <!-- main -->
+    <string name="app_name">Url checker</string>
+    <string name="txt_info">Este aplicativo funciona como um intermediário para abrir links de URL. Quando você clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
+    <string name="txt_sample">Clique no link abaixo para testá ço:\nhttp://www.google.com/?ref=referrer&amp;foo=bar#tag</string>
+    <string name="a_modules">Módulos</string>
+    <string name="a_about">Sobre</string>
+
+    <!-- about -->
+    <string name="txt_about">Aplicação criada por TrianguloY.</string>
+    <string name="btn_blog">Blog do TrianguloY</string>
+    <string name="btn_openStore">Abrir Play Store</string>
+    <string name="btn_shareStore">Partilhar app</string>
+
+    <!-- configuration -->
+    <string name="txt_conf">Lista de módulos: Você pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
+    <string name="toast_cantEnable">Não é possível habilitar o módulo, configuração em falta?</string>
+    <string name="reset_order">Redefinir ordem</string>
+
+    <!-- generic -->
+    <string name="toast_error">Não é possível abrir a atividade</string>
+    <string name="toast_noBrowser">Não é possível abrir o navegador</string>
+    <string name="title_choose">Escolher aplicação</string>
+    <string name="toast_invalid">Inválido</string>
+    <string name="dd">%s:</string>
+
+
+    <!-- modules -->
+    <string name="mPttrn_name">Verificador de padrões</string>
+    <string name="mPttrn_desc">"Verifica problemas comuns no URL:
+* Caracteres não-ascii como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
+* links http, você deve usar https em vez disso"</string>
+    <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados "%s"</string>
+    <string name="mPttrn_http">link http, considere usar https: [[http|Fix]]</string>
+    <string name="mPttrn_ok">Nenhum problema encontrado</string>
+
+    <string name="mOpen_name"><![CDATA[Open & Share]]></string>
+    <string name="mOpen_desc">"Contém os seguintes botões (da esquerda para a direita):
+- Botão de guias personalizadas: alterne para ativar/desativar o recurso de guia personalizada. Quando ativado, o navegador deve ser aberto no modo 'l'.
+- Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que você escolha.
+- Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência.
+Este módulo não pode ser desativado."</string>
+    <string name="mOpen_with">Abrir com %s</string>
+    <string name="mOpen_open">Abrir</string>
+    <string name="mOpen_share">Partilhar</string>
+    <string name="mOpen_clipboard">url copiado para a área de transferência</string>
+    <string name="mOpen_noapps">Sem aplicação</string>
+
+    <string name="mStatus_name">Código de status</string>
+    <string name="mStatus_desc">Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.\nSe o resultado for um redirecionamento, você poderá visualizar a url de destino. A url é buscada, mas não avaliada, então redirecionamentos baseados em javascript não serão detectados.</string>
+    <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
+    <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
+    <string name="mStatus_check">Verificar</string>
+    <string name="mStatus_checking">Verificando…</string>
+    <string-array name="mStatus_codes">
+        <item>200: OK</item>
+        <item>301: Movido permanentemente</item>
+        <item>302: Movido temporariamente</item>
+        <item>307: Movido temporariamente</item>
+        <item>308: Movido permanentemente</item>
+        <item>400: Pedido errado</item>
+        <item>401: Não autenticado</item>
+        <item>403: Proibido</item>
+        <item>404: Não encontrado</item>
+        <item>410: Desapareceu permanentemente</item>
+        <item>418: Isso é um teapot! :D</item>
+        <item>500: Erro de servidor</item>
+        <item>503: Temporariamente indisponível</item>
+        <item>502: Erro de servidor</item>
+        <item>504: Tempo limite do servidor</item>
+    </string-array>
+    <string name="mStatus_unknownCode">%d: Código de status desconhecido</string>
+    <string name="mStatus_redir">Redirecionar</string>
+
+    <string name="mInput_name">Entrada de texto</string>
+    <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.\Não pode ser desabilitado.</string>
+
+    <string name="mVT_name">VirusTotal</string>
+    <string name="mVT_desc">Quando este módulo está ativado, você pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, você pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_apiKey">api key</string>
+    <string name="mVT_tm">VirusTotal™ é uma marca comercial da Google, Inc.</string>
+    <string name="mVT_scan">Examinar</string>
+    <string name="mVT_cancel">Cancelar</string>
+    <string name="mVT_scanning">Examinando…</string>
+    <string name="mVT_goodUrl">Nenhum dos mecanismos %d detectou o URL (na data %s)</string>
+    <string name="mVT_warningUrl">Aviso, os mecanismos %d/%d detectaram o URL (na data %s)</string>
+    <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detectaram o URL (na data %s)</string>
+    <string name="mVT_connectError">Não é possível conectar ao VirusTotal. Verifique se você tem uma conexão ativa com a Internet ou tente novamente mais tarde.</string>
+    <string name="mVT_jsonError">Não é possível conectar ao VirusTotal. Verifique se a chave da API é válida ou tente novamente mais tarde.</string>
+
+    <string name="mD_name">Módulo de depuração/marcador</string>
+    <string name="mD_desc">Se você reordenar os módulos, novos módulos adicionados em futuras atualizações serão colocados antes disso.\n\nSe você habilitar isso, exibirá a intenção recebida como uri, útil para desenvolvedores.</string>
+    <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de guias personalizadas</string>
+
+    <string name="mHist_name">Histórico</string>
+    <string name="mHist_desc">Quando o URL é editado, manualmente ou por outros módulos, este permite visualizar e reverter as alterações.</string>
+
+    <string name="mClear_name">Limpar URL</string>
+    <string name="mClear_desc">Este módulo remove rastreamento, referenciador e outros parâmetros inúteis da url. Também permite redirecionamentos de URL offline comuns.</string>
+    <string name="mClear_tm">Usa o banco de dados Limpar URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">Aplicar</string>
+    <string name="mClear_matches">Correspondências %s</string>
+    <string name="mClear_blocked">- BLOQUEADO!</string>
+    <string name="mClear_exception">- ignorado por exceção %s</string>
+    <string name="mClear_rule">- parâmetro inútil encontrado</string>
+    <string name="mClear_rawRule">- conteúdo inútil encontrado</string>
+    <string name="mClear_referral">- referência encontrada</string>
+    <string name="mClear_forcedRedirection">- redirecionamento forçado encontrado</string>
+    <string name="mClear_redirection">- redirecionamento encontrado</string>
+    <string name="mClear_noRules">Nada encontrado</string>
+    <string name="mClear_toggleReferral">Ativar o marketing de referência (os parâmetros de referência não serão apagados)</string>
+    <string name="mClear_toggleVerbose">Ativar informações detalhadas para o processo de correspondência</string>
+    <string name="mClear_error">Ocorreu um erro ao verificar as regras</string>
+
+    <string name="mRemove_name">Remover consultas</string>
+    <string name="mRemove_desc">Com este módulo você pode remover as consultas da URL.\nPressione o botão para remover todas as consultas ou pressione a seta para remover as consultas uma de cada vez.\nObrigado PabloOQ pela ideia e implementação original!</string>
+    <string name="mRemove_found1">1 consulta encontrada</string>
+    <string name="mRemove_found">%d consultas encontradas</string>
+    <string name="mRemove_noQueries">Sem consultas</string>
+    <string name="mRemove_all">Remover tudo</string>
+    <string name="mRemove_one">Remover %s</string>
+    <string name="mRemove_empty">Remover vazio</string>
+</resources>
