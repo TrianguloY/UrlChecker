@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
@@ -108,6 +109,8 @@ class ClearUrlConfig extends AModuleConfig {
 
 class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
+    public static final String CLEARED = "cleared";
+
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
@@ -144,11 +147,18 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
-        info.setText("");
-        cleared = url;
+    public void onNewUrl(UrlData urlData) {
+        cleared = urlData.url;
+        if (urlData.getData(CLEARED) != null) {
+            // was cleared
+            info.setText(R.string.mClear_cleared);
+            setColor(R.color.good);
+        } else {
+            // was not cleared
+            info.setText("");
+            setColor(R.color.transparent);
+        }
         fix.setEnabled(false);
-        setColor(R.color.transparent);
 
         try {
             Iterator<String> providers = data.keys();
@@ -277,11 +287,11 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         }
 
         // url changed, enable button
-        if (!cleared.equals(url)) {
+        if (!cleared.equals(urlData.url)) {
             fix.setEnabled(true);
             if (verbose.get()) info.append("\n\n -> " + cleared);
             // and apply automatically if required
-            if (auto.get()) setUrl(cleared);
+            if (auto.get()) onClick(null);
         }
 
         // nothing found
@@ -293,7 +303,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         // pressed the fix button
-        if (cleared != null) setUrl(cleared);
+        if (cleared != null) setUrl(new UrlData(cleared).putData(CLEARED, CLEARED));
     }
 
     // ------------------- utils -------------------

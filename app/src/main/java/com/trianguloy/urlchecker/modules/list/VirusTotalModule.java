@@ -15,6 +15,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -130,7 +131,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         scanning = false;
         result = null;
         updateUI();

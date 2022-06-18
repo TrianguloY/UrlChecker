@@ -11,6 +11,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
@@ -55,7 +56,7 @@ class DebugDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         // ignore
     }
 

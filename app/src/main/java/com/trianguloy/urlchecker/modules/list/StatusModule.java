@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.ClickableLinks;
 
 import java.io.IOException;
@@ -70,7 +71,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         // reset all
         check.setEnabled(true);
         info.setText("");

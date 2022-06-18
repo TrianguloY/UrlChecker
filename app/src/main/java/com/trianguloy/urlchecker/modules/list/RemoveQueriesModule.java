@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
@@ -79,12 +80,12 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         // initialize
         box.removeAllViews();
 
         // parse
-        UrlParts parts = new UrlParts(url);
+        UrlParts parts = new UrlParts(urlData.url);
 
         if (parts.getQueries() == 0) {
             // no queries present, nothing to notify

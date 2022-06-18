@@ -11,6 +11,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -98,19 +99,17 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
-        long currentMillis = System.currentTimeMillis();
-
+    public void onNewUrl(UrlData urlData) {
         // clear newer entries
         if (index + 1 < history.size())
             history.subList(index + 1, history.size()).clear();
 
-        if (minorUpdate) {
+        if (urlData.minorUpdate) {
             // minor update, replace previous entry
-            history.set(index, url);
+            history.set(index, urlData.url);
         } else {
             // add new entry
-            history.add(url);
+            history.add(urlData.url);
             index++;
         }
 
@@ -201,7 +200,11 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
     private void setIndex(int newIndex) {
         if (newIndex >= 0 && newIndex < history.size()) {
             index = newIndex;
-            setUrl(history.get(newIndex), Flags.DISABLE_UPDATE, Flags.DONT_NOTIFY_OWN);
+            setUrl(
+                    new UrlData(history.get(newIndex))
+                            .disableUpdates()
+                            .dontTriggerOwn()
+            );
         }
         updateUI();
     }

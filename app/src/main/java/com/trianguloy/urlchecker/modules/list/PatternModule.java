@@ -10,6 +10,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.ClickableLinks;
 
@@ -61,8 +62,9 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         List<String> messages = new ArrayList<>();
+        String url = urlData.url;
 
         // check for non-ascii characters
         String strange = url.replaceAll("\\p{ASCII}", "");

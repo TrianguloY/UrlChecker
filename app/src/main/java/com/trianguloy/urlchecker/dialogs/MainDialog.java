@@ -15,53 +15,56 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 
 /**
  * The main dialog, when opening a url
  */
 public class MainDialog extends Activity {
-    private static final int MAX_UPDATES = 100;
 
     // ------------------- module functions -------------------
+
+    /**
+     * Maximum number of updates to avoid loops
+     */
+    private static final int MAX_UPDATES = 100;
 
     /**
      * to allow changing url while notifying
      */
     private int updating = 0;
-    private LinearLayout ll_mods;
 
     /**
      * A module changed the url
      *
-     * @param url            the new url
+     * @param urlData        the new url and its data
      * @param providerModule which module changed it (null if first change)
      */
-    public void onNewUrl(String url, AModuleDialog providerModule, EnumSet<AModuleDialog.Flags> flags) {
+    public void onNewUrl(UrlData urlData, AModuleDialog providerModule) {
         // test and mark recursion
         if (updating > MAX_UPDATES) return;
-        if (flags.contains(AModuleDialog.Flags.DISABLE_UPDATE)) updating = MAX_UPDATES;
+        if (urlData.disableUpdates) updating = MAX_UPDATES;
         updating++;
         int updating_current = updating;
 
         // change url
-        if (url == null) url = "";
-        this.url = url;
+        if (updating == 1) urlData.mergeData(this.urlData);
+        this.urlData = urlData;
 
         // and notify the other modules
         for (AModuleDialog module : modules) {
             // skip own if required
-            if (flags.contains(AModuleDialog.Flags.DONT_NOTIFY_OWN) && module == providerModule) continue;
+            if (!urlData.triggerOwn && module == providerModule) continue;
             try {
-                module.onNewUrl(url, flags.contains(AModuleDialog.Flags.MINOR_UPDATE));
+                module.onNewUrl(urlData);
             } catch (Exception e) {
                 e.printStackTrace();
-                AndroidUtils.assertError("Exception in onNewUrl for module " + providerModule.getClass().getName());
+                AndroidUtils.assertError("Exception in onNewUrl for module " + (providerModule == null ? "-none-" : providerModule.getClass().getName()));
             }
             if (updating_current != updating) return;
         }
@@ -72,7 +75,7 @@ public class MainDialog extends Activity {
      * @return the current url
      */
     public String getUrl() {
-        return url;
+        return urlData.url;
     }
 
     // ------------------- data -------------------
@@ -83,9 +86,11 @@ public class MainDialog extends Activity {
     private final List<AModuleDialog> modules = new ArrayList<>();
 
     // the current url
-    private String url = "";
+    private UrlData urlData = new UrlData("");
 
     // ------------------- initialize -------------------
+
+    private LinearLayout ll_mods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +106,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        onNewUrl(getOpenUrl(), null, EnumSet.noneOf(AModuleDialog.Flags.class));
+        onNewUrl(new UrlData(getOpenUrl()), null);
     }
 
     /**
@@ -186,7 +191,7 @@ public class MainDialog extends Activity {
     }
 
     /**
-     * @return null, finishes the activity and shows a toast
+     * shows a toast, finishes the activity and returns null
      */
     private String invalid() {
         // for an invalid parameter
@@ -194,7 +199,5 @@ public class MainDialog extends Activity {
         finish();
         return null;
     }
-
-    // ------------------- url -------------------
 
 }

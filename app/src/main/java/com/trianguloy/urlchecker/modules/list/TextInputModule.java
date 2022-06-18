@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 
 /**
  * This module shows the current url and allows manual editing
@@ -67,10 +68,10 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     }
 
     @Override
-    public void onNewUrl(String url, boolean minorUpdate) {
+    public void onNewUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to remove it
         edtxt_url.removeTextChangedListener(this);
-        edtxt_url.setText(url);
+        edtxt_url.setText(urlData.url);
         edtxt_url.addTextChangedListener(this);
         lastUpdateTimeMillis = -1; // next user update, even if immediately after, will be considered new
     }
@@ -88,10 +89,18 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         // new url by the user
+        UrlData newUrlData = new UrlData(s.toString())
+                .dontTriggerOwn()
+                .disableUpdates();
+
+        // mark as minor if too quick
         long currentTime = System.currentTimeMillis();
-        setUrl(s.toString(), Flags.DONT_NOTIFY_OWN, Flags.DISABLE_UPDATE,
-                // considered minor if the previous update was very recent
-                currentTime - lastUpdateTimeMillis < SAME_UPDATE_TIMEOUT ? Flags.MINOR_UPDATE : Flags.NONE);
+        if (currentTime - lastUpdateTimeMillis < SAME_UPDATE_TIMEOUT) {
+            newUrlData.asMinorUpdate();
+        }
         lastUpdateTimeMillis = currentTime;
+
+        // set
+        setUrl(newUrlData);
     }
 }
