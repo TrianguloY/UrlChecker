@@ -1,3 +1,10 @@
+V 2.3
+- Allow reordering modules
+- Clear urls module can be configured to auto-apply
+- Remove queries module can remove individual queries
+- Added European Portuguese translation. Thanks to Tiago Carmo!
+- Some tweaks and fixes
+
 V 2.2
 - New module 'Remove queries module': removes all queries from the url. Thanks to PabloOQ for the idea and original implementation!
 
