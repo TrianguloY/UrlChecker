@@ -27,6 +27,54 @@
         android:text="@string/mClear_toggleVerbose" />
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_sourceDesc" />
+
+    <EditText
+        android:id="@+id/clear_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/mClear_source"
+        android:inputType="none|text" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_hashDesc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <EditText
+            android:id="@+id/clear_hash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/mClear_hash"
+            android:inputType="none|text" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/clear_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_update" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="web"
