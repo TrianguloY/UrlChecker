@@ -33,12 +33,12 @@
         android:text="@string/mClear_sourceDesc" />
 
     <EditText
-        android:id="@+id/clear_source"
+        android:id="@+id/database_URL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/mClear_source"
+        android:hint="database_URL"
         android:inputType="none|text" />
 
     <TextView
@@ -53,23 +53,22 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkHash"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true" />
+            android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/clear_hash"
+            android:id="@+id/hash_URL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:ems="10"
-            android:hint="@string/mClear_hash"
+            android:hint="hash_URL"
             android:inputType="none|text" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/clear_update"
+        android:id="@+id/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mClear_update" />

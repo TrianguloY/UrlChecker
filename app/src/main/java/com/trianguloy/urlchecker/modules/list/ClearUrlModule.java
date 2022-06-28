@@ -1,9 +1,12 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -46,6 +49,17 @@ public class ClearUrlModule extends AModuleData {
         return new GenericPref.Bool("clearurl_auto", false);
     }
 
+    static GenericPref.Str DATABASE_URL() {
+        return new GenericPref.Str("clearurl_databaseURL", "https://rules2.clearurls.xyz/data.minify.json");
+    }
+    static GenericPref.Str HASH_URL() {
+        return new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash");
+    }
+
+    public static GenericPref.Bool HASH_PREF() {
+        return new GenericPref.Bool("clearurl_hash", true);
+    }
+
     @Override
     public String getId() {
         return "clearUrl";
@@ -72,12 +86,19 @@ class ClearUrlConfig extends AModuleConfig {
     private final GenericPref.Bool referralPref = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbosePref = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool autoPref = ClearUrlModule.AUTO_PREF();
+    final GenericPref.Str databaseURL = ClearUrlModule.DATABASE_URL();
+    final GenericPref.Str hashURL = ClearUrlModule.HASH_URL();
+    private final GenericPref.Bool hashPref = ClearUrlModule.HASH_PREF();
+    private Button update;
 
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
         referralPref.init(activity);
         verbosePref.init(activity);
         autoPref.init(activity);
+        hashPref.init(activity);
+        databaseURL.init(activity);
+        hashURL.init(activity);
     }
 
     @Override
@@ -95,6 +116,19 @@ class ClearUrlConfig extends AModuleConfig {
         attach(views, R.id.referral, referralPref);
         attach(views, R.id.verbose, verbosePref);
         attach(views, R.id.auto, autoPref);
+        attach(views, R.id.checkHash, hashPref);
+
+        final EditText edit_database = textEditor(R.id.database_URL, databaseURL, views);
+        final EditText edit_hash = textEditor(R.id.hash_URL, hashURL, views);
+
+        update = views.findViewById(R.id.update);
+        update.setOnClickListener(v -> {
+            updateDatabase();
+        });
+    }
+
+    private void updateDatabase(){
+        // TODO
     }
 
     /**
@@ -104,6 +138,31 @@ class ClearUrlConfig extends AModuleConfig {
         CheckBox chxbx = views.findViewById(viewId);
         chxbx.setChecked(config.get());
         chxbx.setOnCheckedChangeListener((buttonView, isChecked) -> config.set(isChecked));
+    }
+
+    /**
+     * Initializes a text pref
+     */
+    private EditText textEditor(int id, GenericPref.Str strPref, View views){
+        EditText res = (EditText) views.findViewById(id);
+        res.setText(strPref.get());
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                strPref.set(s.toString());
+                if (!canBeEnabled()) disable();
+            }
+        };
+        res.addTextChangedListener(textWatcher);
+        return res;
     }
 }
 
@@ -124,7 +183,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
         try {
-            data = new JSONObject(getJsonFromAssets(dialog, "data.minify.json")).getJSONObject("providers");
+            data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
