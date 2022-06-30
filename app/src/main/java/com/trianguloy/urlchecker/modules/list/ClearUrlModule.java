@@ -24,6 +24,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +42,7 @@ import java.util.regex.Pattern;
 
 /**
  * This module clears the url using the ClearUrl database (an asset copy)
- * TODO: allow updating the database from the official page
+ * TODO: add option to delete custom database?
  */
 public class ClearUrlModule extends AModuleData {
 
@@ -144,9 +146,9 @@ class ClearUrlConfig extends AModuleConfig {
     /**
      * Replaces the database with a new one
      */
-    private void replaceDatabase(String filename, String source, String hash, boolean checkHash, Context context){
-
-        try (FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE)){
+    private void replaceDatabase(String fileName, String source, String hash, boolean checkHash, Context context){
+        // TODO check hash
+        try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)){
             JSONObject sourceJson = readJsonFromUrl(source);
 
             fos.write(sourceJson.toString().getBytes(Charset.forName("UTF-8")));
@@ -235,9 +237,15 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
         try {
-            data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
+            // TODO fall back if file is downloading?
+            data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
+        } catch (Exception ignore) {
+            // downloaded database failed, falling back to bundled database
+            try {
+                data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            }
         }
         allowReferral.init(dialog);
         verbose.init(dialog);
@@ -469,7 +477,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Reads a file and returns its content
+     * Reads a file from assets and returns its content
      * From https://www.bezkoder.com/java-android-read-json-file-assets-gson/
      */
     static String getJsonFromAssets(Context context, String fileName) throws IOException {
@@ -480,6 +488,23 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         byte[] buffer = new byte[size];
         is.read(buffer);
         is.close();
+
+        jsonString = new String(buffer, "UTF-8");
+
+        return jsonString;
+    }
+
+    /**
+     * Reads a file from internal storage and returns its content
+     */
+    static String getJsonFromStorage(Context context, String fileName) throws IOException {
+        String jsonString;
+        FileInputStream fis = context.openFileInput(fileName);
+
+        int size = fis.available();
+        byte[] buffer = new byte[size];
+        fis.read(buffer);
+        fis.close();
 
         jsonString = new String(buffer, "UTF-8");
 
