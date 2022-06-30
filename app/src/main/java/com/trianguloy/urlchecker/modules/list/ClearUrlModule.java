@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -32,6 +33,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -132,7 +134,8 @@ class ClearUrlConfig extends AModuleConfig {
             if (!downloading) {
                 downloading = true;
                 new Thread(() -> {
-                    replaceDatabase("", databaseURL.get(), "", false);
+                    replaceDatabase(views.getContext().getString(R.string.mClear_database),
+                            databaseURL.get(), "", false, views.getContext());
                 }).start();
             }
         });
@@ -141,13 +144,16 @@ class ClearUrlConfig extends AModuleConfig {
     /**
      * Replaces the database with a new one
      */
-    private void replaceDatabase(String file, String source, String hash, boolean checkHash){
-        try {
+    private void replaceDatabase(String filename, String source, String hash, boolean checkHash, Context context){
+
+        try (FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE)){
             JSONObject sourceJson = readJsonFromUrl(source);
+
+            fos.write(sourceJson.toString().getBytes(Charset.forName("UTF-8")));
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-        // TODO store in app-specific files
+
         downloading = false;
     }
 
