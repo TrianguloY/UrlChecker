@@ -23,10 +23,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,6 +95,7 @@ class ClearUrlConfig extends AModuleConfig {
     final GenericPref.Str hashURL = ClearUrlModule.HASH_URL();
     private final GenericPref.Bool hashPref = ClearUrlModule.HASH_PREF();
     private Button update;
+    private volatile boolean downloading = false;
 
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
@@ -118,17 +124,58 @@ class ClearUrlConfig extends AModuleConfig {
         attach(views, R.id.auto, autoPref);
         attach(views, R.id.checkHash, hashPref);
 
-        final EditText edit_database = textEditor(R.id.database_URL, databaseURL, views);
-        final EditText edit_hash = textEditor(R.id.hash_URL, hashURL, views);
+        textEditor(R.id.database_URL, databaseURL, views);
+        textEditor(R.id.hash_URL, hashURL, views);
 
         update = views.findViewById(R.id.update);
         update.setOnClickListener(v -> {
-            updateDatabase();
+            if (!downloading) {
+                downloading = true;
+                new Thread(() -> {
+                    replaceDatabase("", databaseURL.get(), "", false);
+                }).start();
+            }
         });
     }
 
-    private void updateDatabase(){
-        // TODO
+    /**
+     * Replaces the database with a new one
+     */
+    private void replaceDatabase(String file, String source, String hash, boolean checkHash){
+        try {
+            JSONObject sourceJson = readJsonFromUrl(source);
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+        // TODO store in app-specific files
+        downloading = false;
+    }
+
+    /**
+     * from https://stackoverflow.com/a/4308662
+     */
+    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+        int retries = 5;
+        for (int i = 0; i < retries; i++) {
+            try (InputStream is = new URL(url).openStream();) {
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+                String jsonText = readAll(rd);
+                JSONObject json = new JSONObject(jsonText);
+                return json;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    private static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
     }
 
     /**
@@ -141,11 +188,11 @@ class ClearUrlConfig extends AModuleConfig {
     }
 
     /**
-     * Initializes a text pref
+     * Initializes a string from a EditText view, also watches for changes
      */
-    private EditText textEditor(int id, GenericPref.Str strPref, View views){
-        EditText res = (EditText) views.findViewById(id);
-        res.setText(strPref.get());
+    private void textEditor(int id, GenericPref.Str strPref, View views){
+        EditText txt = (EditText) views.findViewById(id);
+        txt.setText(strPref.get());
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -161,8 +208,7 @@ class ClearUrlConfig extends AModuleConfig {
                 if (!canBeEnabled()) disable();
             }
         };
-        res.addTextChangedListener(textWatcher);
-        return res;
+        txt.addTextChangedListener(textWatcher);
     }
 }
 
