@@ -162,7 +162,23 @@ class ClearUrlConfig extends AModuleConfig {
                         throw new Exception("Hash does not match");
                     }
                 }
+
+                // FIXME If the json is faulty the retry loop will keep trying in vain
+                // This checks that the database structure is correct, specification:
+                // https://docs.clearurls.xyz/1.23.0/specs/rules/#dataminjson-catalog
+                JSONObject data = sourceJson.getJSONObject("providers");
+                Iterator<String> providers = data.keys();
+                while (providers.hasNext()) {
+                    // evaluate each provider
+                    String provider = providers.next();
+                    JSONObject providerData = data.getJSONObject(provider);
+                    providerData.getString("urlPattern");
+                    // At the time of writing the docs state that 'completeProvider' is required,
+                    // however if we check the ClearURLs database we can see that it is missing
+                    // in almost all providers (11/177), so we don't check it
+                }
                 fos.write(jsonString.getBytes(Charset.forName("UTF-8")));
+                break;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -256,6 +272,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
             // TODO fall back if file is downloading?
             data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
         } catch (Exception ignore) {
+            // FIXME warn user
             // downloaded database failed, falling back to bundled database
             try {
                 data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
