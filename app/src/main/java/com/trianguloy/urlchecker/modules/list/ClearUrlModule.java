@@ -25,7 +25,6 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,7 +34,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -137,7 +136,7 @@ class ClearUrlConfig extends AModuleConfig {
                 downloading = true;
                 new Thread(() -> {
                     replaceDatabase(views.getContext().getString(R.string.mClear_database),
-                            databaseURL.get(), "", false, views.getContext());
+                            databaseURL.get(), hashURL.get(),  hashPref.get(), views.getContext());
                 }).start();
             }
         });
@@ -146,33 +145,50 @@ class ClearUrlConfig extends AModuleConfig {
     /**
      * Replaces the database with a new one
      */
-    private void replaceDatabase(String fileName, String source, String hash, boolean checkHash, Context context){
-        // TODO check hash
-        try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)){
-            JSONObject sourceJson = readJsonFromUrl(source);
-
-            fos.write(sourceJson.toString().getBytes(Charset.forName("UTF-8")));
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
+    private void replaceDatabase(String fileName, String databaseSource, String hashSource, boolean checkHash, Context context){
+        // In case something fails, which can be: file writing, url reading, file download
+        int retries = 5;
+        for (int i = 0; i < retries; i++) {
+            try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
+                String jsonString = readFromUrl(databaseSource);
+                JSONObject sourceJson = new JSONObject(jsonString);
+                if (checkHash) {
+                    MessageDigest md = MessageDigest.getInstance("SHA-256");
+                    md.update(jsonString.getBytes(Charset.forName("UTF-8")));
+                    String encoded = encodeHex(md.digest());
+                    // Hash from ClearURLs has a newline character at the end, we trim it
+                    String hash = readFromUrl(hashSource).trim();
+                    if (!hash.equals(encoded)){
+                        throw new Exception("Hash does not match");
+                    }
+                }
+                fos.write(jsonString.getBytes(Charset.forName("UTF-8")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
         downloading = false;
+    }
+
+    /**
+     * from https://gist.github.com/avilches/750151
+     */
+    private static String encodeHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte byt : bytes) sb.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
+        return sb.toString();
     }
 
     /**
      * from https://stackoverflow.com/a/4308662
      */
-    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-        int retries = 5;
-        for (int i = 0; i < retries; i++) {
-            try (InputStream is = new URL(url).openStream();) {
-                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-                String jsonText = readAll(rd);
-                JSONObject json = new JSONObject(jsonText);
-                return json;
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+    public static String readFromUrl(String url) throws IOException {
+
+        try (InputStream is = new URL(url).openStream();) {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            return readAll(rd);
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return null;
     }
