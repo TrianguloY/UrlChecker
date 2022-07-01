@@ -27,6 +27,18 @@
         android:text="@string/mClear_toggleVerbose" />
 
     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_customDBdesc" />
+
+    <CheckBox
+        android:id="@+id/customDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_customDB" />
+
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,7 +83,7 @@
         android:id="@+id/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mClear_update" />
+        android:text="@string/mClear_download" />
 
     <TextView
         android:layout_width="match_parent"

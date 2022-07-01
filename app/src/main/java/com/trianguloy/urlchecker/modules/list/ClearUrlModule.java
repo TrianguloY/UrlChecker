@@ -41,7 +41,6 @@ import java.util.regex.Pattern;
 
 /**
  * This module clears the url using the ClearUrl database (an asset copy)
- * TODO: add option to delete custom database?
  */
 public class ClearUrlModule extends AModuleData {
 
@@ -66,6 +65,10 @@ public class ClearUrlModule extends AModuleData {
 
     public static GenericPref.Bool HASH_PREF() {
         return new GenericPref.Bool("clearurl_hash", true);
+    }
+
+    public static GenericPref.Bool CUSTOM_PREF() {
+        return new GenericPref.Bool("clearurl_custom", false);
     }
 
     @Override
@@ -97,6 +100,7 @@ class ClearUrlConfig extends AModuleConfig {
     final GenericPref.Str databaseURL = ClearUrlModule.DATABASE_URL();
     final GenericPref.Str hashURL = ClearUrlModule.HASH_URL();
     private final GenericPref.Bool hashPref = ClearUrlModule.HASH_PREF();
+    private final GenericPref.Bool customPref = ClearUrlModule.CUSTOM_PREF();
     private Button update;
     private volatile boolean downloading = false;
 
@@ -108,6 +112,7 @@ class ClearUrlConfig extends AModuleConfig {
         hashPref.init(activity);
         databaseURL.init(activity);
         hashURL.init(activity);
+        customPref.init(activity);
     }
 
     @Override
@@ -126,6 +131,7 @@ class ClearUrlConfig extends AModuleConfig {
         attach(views, R.id.verbose, verbosePref);
         attach(views, R.id.auto, autoPref);
         attach(views, R.id.checkHash, hashPref);
+        attach(views, R.id.customDB, customPref);
 
         textEditor(R.id.database_URL, databaseURL, views);
         textEditor(R.id.hash_URL, hashURL, views);
@@ -259,6 +265,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
+    private final GenericPref.Bool customPref = ClearUrlModule.CUSTOM_PREF();
 
     private JSONObject data = null;
     private TextView info;
@@ -268,21 +275,31 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
-        try {
-            // TODO fall back if file is downloading?
-            data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
-        } catch (Exception ignore) {
-            // FIXME warn user
-            // downloaded database failed, falling back to bundled database
+        allowReferral.init(dialog);
+        verbose.init(dialog);
+        auto.init(dialog);
+        customPref.init(dialog);
+        
+        boolean error = false;
+        if (customPref.get()) {
+            // use custom database
+            try {
+                // TODO fall back if file is downloading?
+                data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
+            } catch (Exception ignore) {
+                // TODO warn user
+                // downloaded database failed, falling back to built-in database
+                error = true;
+            }
+        }
+        if (!customPref.get() || error) {
+            // use built-in database
             try {
                 data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
             } catch (JSONException | IOException e) {
                 e.printStackTrace();
             }
         }
-        allowReferral.init(dialog);
-        verbose.init(dialog);
-        auto.init(dialog);
     }
 
 

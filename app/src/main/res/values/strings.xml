@@ -97,9 +97,11 @@ This module can\'t be disabled."</string>
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
-    <string name="mClear_sourceDesc">URL of the database JSON file with the rules:</string>
-    <string name="mClear_hashDesc">URL of the hash of the source, can be ignored if the checkbox is deactivated:</string>
-    <string name="mClear_update">Update</string>
+    <string name="mClear_customDBdesc">By default the app uses a built-in database, but you can download a new one and use that instead. The default values of the urls are the source of the built-in database, so it can be used to download a newer version as a custom database, a hash (SHA256) can be used to ensure a correct download.</string>
+    <string name="mClear_customDB">Use custom database</string>
+    <string name="mClear_sourceDesc">URL of the custom database JSON file with the rules:</string>
+    <string name="mClear_hashDesc">URL of the hash of the custom database, can be ignored if the checkbox is disabled:</string>
+    <string name="mClear_download">Download</string>
     <string name="mClear_database">data.minify.json</string>
     <string name="mClear_tm">Uses the Clear URL database from https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
