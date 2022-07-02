@@ -1,0 +1,125 @@
+<resources>
+    <!-- main -->
+    <string name="app_name">Url checker</string>
+    <string name="txt_info">Cette application agit comme une étape intermédiaire pour l\'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l\'ouvrir, une boîte de dialogue contenant des informations sur le lien s\'affiche. Appuyez sur le bouton Module ci-dessous pour voir les modules disponibles et ce qu\'ils font.</string>
+    <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:\nhttp://www.google.com/?ref=referrer&amp;foo=bar#tag</string>
+    <string name="a_modules">Modules</string>
+    <string name="a_about">À Propos</string>
+
+    <!-- about -->
+    <string name="txt_about">Application créée par TrianguloY.</string>
+    <string name="btn_blog">Blog de TrianguloY</string>
+    <string name="btn_openStore">Ouvrir le Play Store</string>
+    <string name="btn_shareStore">Partager l\'application</string>
+
+    <!-- configuration -->
+    <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
+    <string name="toast_cantEnable">Impossible d\'activer le module, configuration manquante?</string>
+    <string name="reset_order">Réinitialiser l\'Ordre</string>
+
+    <!-- generic -->
+    <string name="toast_error">Impossible d\'ouvrir l\'activité</string>
+    <string name="toast_noBrowser">Impossible d\'ouvrir le navigateur</string>
+    <string name="title_choose">Choisir l\'app</string>
+    <string name="toast_invalid">Invalide</string>
+    <string name="dd">%s:</string>
+
+
+    <!-- modules -->
+    <string name="mPttrn_name">Analyseur de Style</string>
+    <string name="mPttrn_desc">"Recherche les problèmes courants dans les urls:
+* Caractères non-ascii comme les lettres grecques. Cela peut être utilisé pour l\'hameçonnage: googĺe.com à la place de google.com
+* liens http, vous devriez utiliser https à la place"</string>
+    <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés "%s"</string>
+    <string name="mPttrn_http">Lien http, pensez à utiliser l\'https: [[http|Fix]]</string>
+    <string name="mPttrn_ok">Aucun problème n\'a été détecté</string>
+
+    <string name="mOpen_name"><![CDATA[Ouvrir & Partager]]></string>
+    <string name="mOpen_desc">"Contient les boutons suivants (de gauche à droite):
+- Bouton Onglets personnalisés: activez/désactivez la fonction d\'onglet personnalisé. Si activé, le navigateur sera ouvert en mode 'alléger'.
+- Bouton Ouvrir: appuyez sur le nom de l\'application pour ouvrir le lien avec. Si un lien peut être ouvert avec plusieurs applications, une flèche s\'affiche afin de vous offrir le choix.
+- Bouton Partager: appuyez sur le bouton pour partager le lien. Appuyez longuement pour le copier rapidement dans le presse-papiers.
+Ce module ne peut pas être désactivé."</string>
+    <string name="mOpen_with">Ouvrir avec %s</string>
+    <string name="mOpen_open">Ouvrir</string>
+    <string name="mOpen_share">Partager</string>
+    <string name="mOpen_clipboard">Url copiée dans le presse-papier</string>
+    <string name="mOpen_noapps">Aucune application</string>
+
+    <string name="mStatus_name">Code d\'état</string>
+    <string name="mStatus_desc">En appuyant sur le bouton de vérification, une requête sera faite pour récupérer et afficher le code d\'état du site.\nSi le résultat est une redirection, vous pourrez voir l\'url de destination. L\'url est récupérée, mais pas évaluée, les redirections basées sur javascript ne seront donc pas détectées.</string>
+    <string name="mStatus_ioerror">Erreur réseau lors de la tentative de vérification de l\'URL: %s</string>
+    <string name="mStatus_error">Erreur interne lors de la tentative de vérification de l\'URL: %s</string>
+    <string name="mStatus_check">Vérifier</string>
+    <string name="mStatus_checking">Vérification…</string>
+    <string-array name="mStatus_codes">
+        <item>200: Bon</item>
+        <item>301: Déménagé définitivement</item>
+        <item>302: Déménagé provisoirement</item>
+        <item>307: Déplacé temporairement</item>
+        <item>308: Déplacé définitivement</item>
+        <item>400: Requête incorrecte</item>
+        <item>401: Non authentifié</item>
+        <item>403: Interdit</item>
+        <item>404: Introuvable</item>
+        <item>410: Disparu définitivement</item>
+        <item>418: C\'est une théière! :D</item>
+        <item>500: Erreur de serveur</item>
+        <item>503: Temporairement indisponible</item>
+        <item>502: Server error</item>
+        <item>504: délai du serveur dépassé</item>
+    </string-array>
+    <string name="mStatus_unknownCode">%d: Code d\'état inconnu</string>
+    <string name="mStatus_redir">Redirection</string>
+
+    <string name="mInput_name">Texte d\'entrée</string>
+    <string name="mInput_desc">Affiche l\'url actuelle, qui peut être modifiée manuellement.\nNe peut être désactivé.</string>
+
+    <string name="mVT_name">VirusTotal</string>
+    <string name="mVT_desc">Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.\nUne clé personnelle de l\'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us.</string>
+    <string name="mVT_apiKey">Clé d\'api</string>
+    <string name="mVT_tm">VirusTotal™ est une marque de Google, Inc.</string>
+    <string name="mVT_scan">Analyse</string>
+    <string name="mVT_cancel">Annuler</string>
+    <string name="mVT_scanning">Balayage…</string>
+    <string name="mVT_goodUrl">Aucun des moteurs %d n\'a détecté l'URL (en date du %s)</string>
+    <string name="mVT_warningUrl">Attention, les moteurs %d/%d ont détecté l\'URL (en date du %s)</string>
+    <string name="mVT_badUrl">Prudence! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
+    <string name="mVT_connectError">Connexion à VirusTotal impossible. Assurez-vous de disposez d\'une connexion Internet active ou réessayez ultérieurement.</string>
+    <string name="mVT_jsonError">Connexion à VirusTotal impossible. Assurez-vous que la clé d\'API est valide ou réessayez ultérieurement.</string>
+
+    <string name="mD_name">Module de débogage/marqueur</string>
+    <string name="mD_desc">Si vous réorganisez les modules, les nouveaux ajoutés par les futures mises à jour seront placés avant cela.\n\nSi vous activez cette option, l\'intention reçue s'affichera sous forme d\'URI, utile aux développeurs.</string>
+    <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
+
+    <string name="mHist_name">Historique</string>
+    <string name="mHist_desc">Lorsque l\'url est modifiée, manuellement ou par d\'autres modules, ceci vous permet de visualiser et d\'annuler les modifications.</string>
+
+    <string name="mClear_name">Nettoyer l\'URL</string>
+    <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
+    <string name="mClear_tm">Utilise la base de données Clear URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">Appliquer</string>
+    <string name="mClear_matches">Correspond à %s</string>
+    <string name="mClear_blocked">- BLOQUÉ!</string>
+    <string name="mClear_exception">- ignoré en raison de l\'exception %s</string>
+    <string name="mClear_rule">- paramètre inutile détecté</string>
+    <string name="mClear_rawRule">- contenu inutile détecté</string>
+    <string name="mClear_referral">- Aiguillage détecté</string>
+    <string name="mClear_forcedRedirection">- redirection forcée détectée</string>
+    <string name="mClear_redirection">- redirection détectée</string>
+    <string name="mClear_cleared">- Effacé</string>
+    <string name="mClear_noRules">Rien n\'a été trouvé</string>
+    <string name="mClear_auto">Appliquer automatiquement</string>
+    <string name="mClear_toggleReferral">Activer le marketing de parrainage (les paramètres de réferences ne seront pas effacés)</string>
+    <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
+    <string name="mClear_error">Une erreur s\'est produite lors de la vérification des règles</string>
+
+    <string name="mRemove_name">Retirer des requêtes</string>
+    <string name="mRemove_desc">Avec ce module, vous pouvez supprimer des requêtes de l\'URL.\nAppuyez sur le bouton pour supprimer toutes les requêtes ou appuyez sur la flèche pour visualiser et supprimer les requêtes une à une.\nMerci à PabloOQ pour l\'idée et la mise en œuvre originale!</string>
+    <string name="mRemove_found1">1 requête trouvée</string>
+    <string name="mRemove_found">%drequêtes trouvées</string>
+    <string name="mRemove_noQueries">Aucune requête</string>
+    <string name="mRemove_all">Tout retirer</string>
+    <string name="mRemove_one">Retirer %s</string>
+    <string name="mRemove_empty">Retirer les vides</string>
+</resources>
