@@ -95,9 +95,9 @@ Este módulo não pode ser desativado."</string>
     <string name="mHist_name">Histórico</string>
     <string name="mHist_desc">Quando o URL é editado, manualmente ou por outros módulos, este permite visualizar e reverter as alterações.</string>
 
-    <string name="mClear_name">Limpar URL</string>
+    <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">Este módulo remove rastreamento, referenciador e outros parâmetros inúteis da url. Também permite redirecionamentos de URL offline comuns.</string>
-    <string name="mClear_tm">Usa o banco de dados Limpar URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Usa o banco de dados Clear URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Aplicar</string>
     <string name="mClear_matches">Correspondências %s</string>
     <string name="mClear_blocked">- BLOQUEADO!</string>
@@ -107,7 +107,9 @@ Este módulo não pode ser desativado."</string>
     <string name="mClear_referral">- referência encontrada</string>
     <string name="mClear_forcedRedirection">- redirecionamento forçado encontrado</string>
     <string name="mClear_redirection">- redirecionamento encontrado</string>
+    <string name="mClear_cleared">- Limpo</string>
     <string name="mClear_noRules">Nada encontrado</string>
+    <string name="mClear_auto">Aplicar automaticamente</string>
     <string name="mClear_toggleReferral">Ativar o marketing de referência (os parâmetros de referência não serão apagados)</string>
     <string name="mClear_toggleVerbose">Ativar informações detalhadas para o processo de correspondência</string>
     <string name="mClear_error">Ocorreu um erro ao verificar as regras</string>
