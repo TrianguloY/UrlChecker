@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
@@ -154,7 +155,7 @@ class ClearUrlConfig extends AModuleConfig {
     private void replaceDatabase(String fileName, String databaseSource, String hashSource, boolean checkHash, Context context){
         // In case something fails, which can be: file writing, url reading, file download
         int retries = 5;
-        for (int i = 0; i < retries; i++) {
+        for (int i = 1; i <= retries; i++) {
             try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
                 String jsonString = readFromUrl(databaseSource);
                 JSONObject sourceJson = new JSONObject(jsonString);
@@ -186,11 +187,14 @@ class ClearUrlConfig extends AModuleConfig {
                 }
                 fos.write(jsonString.getBytes(Charset.forName("UTF-8")));
                 break;
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception e){
+                if (i == retries) {
+                    e.printStackTrace();
+
+                }
             }
         }
-        // FIXME inform user if it succeeded or not and why
+        // TODO inform user if it succeeded or not and why
         downloading = false;
     }
 
@@ -281,27 +285,29 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         verbose.init(dialog);
         auto.init(dialog);
         custom.init(dialog);
-        
-        boolean error = false;
+
         if (custom.get()) {
             // use custom database
             try {
                 // TODO fall back if file is downloading?
                 data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
             } catch (Exception ignore) {
-                // TODO warn user
-                // downloaded database failed, falling back to built-in database
-                error = true;
+                // custom database load failed, falling back to built-in database
+                Toast.makeText(dialog, dialog.getString(R.string.mClear_customDBLoadError), Toast.LENGTH_LONG).show();
+                try {
+                    data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-        if (!custom.get() || error) {
-            // use built-in database
+        }else{
             try {
                 data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
             } catch (JSONException | IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
 

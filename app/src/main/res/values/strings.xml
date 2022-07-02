@@ -102,6 +102,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_sourceDesc">URL of the custom database JSON file with the rules:</string>
     <string name="mClear_hashDesc">URL of the hash of the custom database, must be in lowercase. Can be ignored if the checkbox is disabled:</string>
     <string name="mClear_download">Download</string>
+    <string name="mClear_downloadSuccess">Custom DB successfully downloaded</string>
     <string name="mClear_database">data.minify.json</string>
     <string name="mClear_tm">Uses the Clear URL database from https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
@@ -119,6 +120,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
     <string name="mClear_error">An error occurred while checking rules</string>
+    <string name="mClear_customDBLoadError">Custom DB load failed, falling back to built-in DB</string>
 
     <string name="mRemove_name">Remove Queries</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
