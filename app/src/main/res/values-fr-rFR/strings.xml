@@ -76,20 +76,20 @@ Ce module ne peut pas être désactivé."</string>
     <string name="mInput_desc">Affiche l\'url actuelle, qui peut être modifiée manuellement.\nNe peut être désactivé.</string>
 
     <string name="mVT_name">VirusTotal</string>
-    <string name="mVT_desc">Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.\nUne clé personnelle de l\'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us.</string>
+    <string name="mVT_desc">Lorsque ce module est activé, vous pouvez analyser l\'URL à l\'aide de VirusTotal et en vérifier le rapport.\nUne clé personnelle de l\'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us.</string>
     <string name="mVT_apiKey">Clé d\'api</string>
     <string name="mVT_tm">VirusTotal™ est une marque de Google, Inc.</string>
     <string name="mVT_scan">Analyse</string>
     <string name="mVT_cancel">Annuler</string>
     <string name="mVT_scanning">Balayage…</string>
-    <string name="mVT_goodUrl">Aucun des moteurs %d n\'a détecté l'URL (en date du %s)</string>
+    <string name="mVT_goodUrl">Aucun des moteurs %d n\'a détecté l\'URL (en date du %s)</string>
     <string name="mVT_warningUrl">Attention, les moteurs %d/%d ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_badUrl">Prudence! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_connectError">Connexion à VirusTotal impossible. Assurez-vous de disposez d\'une connexion Internet active ou réessayez ultérieurement.</string>
     <string name="mVT_jsonError">Connexion à VirusTotal impossible. Assurez-vous que la clé d\'API est valide ou réessayez ultérieurement.</string>
 
     <string name="mD_name">Module de débogage/marqueur</string>
-    <string name="mD_desc">Si vous réorganisez les modules, les nouveaux ajoutés par les futures mises à jour seront placés avant cela.\n\nSi vous activez cette option, l\'intention reçue s'affichera sous forme d\'URI, utile aux développeurs.</string>
+    <string name="mD_desc">Si vous réorganisez les modules, les nouveaux ajoutés par les futures mises à jour seront placés avant cela.\n\nSi vous activez cette option, l\'intention reçue s\'affichera sous forme d\'URI, utile aux développeurs.</string>
     <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
 
     <string name="mHist_name">Historique</string>
