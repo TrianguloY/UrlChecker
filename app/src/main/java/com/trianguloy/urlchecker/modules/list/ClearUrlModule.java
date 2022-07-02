@@ -37,6 +37,7 @@ import java.net.URLDecoder;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -155,10 +156,13 @@ class ClearUrlConfig extends AModuleConfig {
     private void replaceDatabase(String fileName, String databaseSource, String hashSource, boolean checkHash, Context context){
         // In case something fails, which can be: file writing, url reading, file download
         int retries = 5;
+        int seconds = 3;
         for (int i = 1; i <= retries; i++) {
             try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
+                // download json
                 String jsonString = readFromUrl(databaseSource);
                 JSONObject sourceJson = new JSONObject(jsonString);
+                // sha256 checking
                 if (checkHash) {
                     // TODO ? if the hash is the same as the downloaded file, there is no need to download the database
                     MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -171,7 +175,7 @@ class ClearUrlConfig extends AModuleConfig {
                     }
                 }
 
-                // FIXME If the json is faulty the retry loop will keep trying in vain
+                // FIXME If the json is faulty the retry loop will keep trying in vain until all retries have finished
                 // This checks that the database structure is correct, specification:
                 // https://docs.clearurls.xyz/1.23.0/specs/rules/#dataminjson-catalog
                 JSONObject data = sourceJson.getJSONObject("providers");
@@ -185,13 +189,19 @@ class ClearUrlConfig extends AModuleConfig {
                     // however if we check the ClearURLs database we can see that it is missing
                     // in almost all providers (11/177), so we don't check it
                 }
+                // store json
                 fos.write(jsonString.getBytes(Charset.forName("UTF-8")));
                 break;
             } catch (Exception e){
                 if (i == retries) {
                     e.printStackTrace();
-
                 }
+            }
+            // delay between retries
+            try {
+                TimeUnit.SECONDS.sleep(seconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         // TODO inform user if it succeeded or not and why
