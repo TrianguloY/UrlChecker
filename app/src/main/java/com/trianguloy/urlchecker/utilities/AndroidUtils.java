@@ -1,7 +1,11 @@
 package com.trianguloy.urlchecker.utilities;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +17,26 @@ import com.trianguloy.urlchecker.R;
  * Generic Android utilities
  */
 public class AndroidUtils {
+
+    /**
+     * Sets the theme (light/dark mode) to an activity
+     */
+    public static void setTheme(Activity activity) {
+        activity.setTheme(
+                (activity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
+                        ? R.style.DialogThemeLight // explicit light mode
+                        : R.style.DialogThemeDark // dark mode or device default
+        );
+    }
+
+    /**
+     * Changes the action bar color
+     */
+    public static void setActionBarColor(Activity activity) {
+        ActionBar actionBar = activity.getActionBar();
+        if (actionBar != null)
+            actionBar.setBackgroundDrawable(new ColorDrawable(activity.getResources().getColor(R.color.app)));
+    }
 
     /**
      * In debug mode, throws an AssertionError, in production just logs it and continues.

@@ -1,0 +1,26 @@
+V 2.3
+- Autorise la réorganisation des modules.
+- Le module 'Nettoyer l'url' peut être configuré pour s'appliquer automatiquement.
+- Le module de suppression des requêtes permet la suppression des requêtes individuellement.
+- Ajout de la traduction en Portugais Européen. Merci à Tiago Carmo!
+- Quelques ajustements et corrections.
+
+V 2.2
+- Nouveau module 'Module de suppression des requêtes': supprime toutes les requêtes de l'url. Merci à PabloOQ pour l'idée et la mise en œuvre originale!
+
+V 2.1
+- Module 'Nettoyer l'url' corrigé et amélioré.
+- Amélioration de certains textes et messages.
+- Style ajusté pour être plus compact.
+
+V 2.0
+- Mise à jour des styles.
+- Mise à jour de la base de données Clear Url.
+
+Version 1.1
+- Nouveau module 'Nettoyer l'url': utilise le dictionnaire Clear Url pour effacer les URL de référence et d'autres paramètres d'URL inutiles.
+- Nouveau module "Historique": Annulez les modifications de n'importe quel module.
+- Remplacement du module 'Redirection' par 'État': Récupère le code de statut de la page, permet toujours la redirection.
+- Module 'Style' amélioré: Appuyez sur 'Fix' pour convertir http en https
+- Nouveau module 'Deboggage' : Pour les développeurs (affichage des messages intent uri et ctabs)
+- Nettoyage de l'interface utilisateur.

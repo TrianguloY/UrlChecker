@@ -94,6 +94,7 @@ public class MainDialog extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidUtils.setTheme(this);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
