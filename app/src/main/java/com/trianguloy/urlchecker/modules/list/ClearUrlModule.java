@@ -159,6 +159,7 @@ class ClearUrlConfig extends AModuleConfig {
                 String jsonString = readFromUrl(databaseSource);
                 JSONObject sourceJson = new JSONObject(jsonString);
                 if (checkHash) {
+                    // TODO ? if the hash is the same as the downloaded file, there is no need to download the database
                     MessageDigest md = MessageDigest.getInstance("SHA-256");
                     md.update(jsonString.getBytes(Charset.forName("UTF-8")));
                     String encoded = encodeHex(md.digest());
@@ -189,6 +190,7 @@ class ClearUrlConfig extends AModuleConfig {
                 e.printStackTrace();
             }
         }
+        // FIXME inform user if it succeeded or not and why
         downloading = false;
     }
 
@@ -265,7 +267,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
-    private final GenericPref.Bool customPref = ClearUrlModule.CUSTOM_PREF();
+    private final GenericPref.Bool custom = ClearUrlModule.CUSTOM_PREF();
 
     private JSONObject data = null;
     private TextView info;
@@ -278,10 +280,10 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         allowReferral.init(dialog);
         verbose.init(dialog);
         auto.init(dialog);
-        customPref.init(dialog);
+        custom.init(dialog);
         
         boolean error = false;
-        if (customPref.get()) {
+        if (custom.get()) {
             // use custom database
             try {
                 // TODO fall back if file is downloading?
@@ -292,7 +294,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                 error = true;
             }
         }
-        if (!customPref.get() || error) {
+        if (!custom.get() || error) {
             // use built-in database
             try {
                 data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
