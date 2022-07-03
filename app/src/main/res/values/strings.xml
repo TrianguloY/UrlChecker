@@ -8,8 +8,9 @@
 
     <!-- about -->
     <string name="txt_about">App created by TrianguloY.</string>
-    <string name="btn_blog">TrianguloY\'s blog</string>
-    <string name="btn_openStore">Open Play Store</string>
+    <string name="btn_blog">TrianguloY\'s blog:</string>
+    <string name="btn_playStore">Play Store:</string><!-- No need to be translated if same -->
+    <string name="btn_fDroid">F-Droid:</string><!-- No need to be translated if same -->
     <string name="btn_shareStore">Share App</string>
 
     <!-- configuration -->

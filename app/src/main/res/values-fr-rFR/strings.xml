@@ -8,8 +8,7 @@
 
     <!-- about -->
     <string name="txt_about">Application créée par TrianguloY.</string>
-    <string name="btn_blog">Blog de TrianguloY</string>
-    <string name="btn_openStore">Ouvrir le Play Store</string>
+    <string name="btn_blog">Blog de TrianguloY:</string>
     <string name="btn_shareStore">Partager l\'application</string>
 
     <!-- configuration -->

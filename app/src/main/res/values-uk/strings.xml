@@ -7,9 +7,8 @@
     <string name="a_about">Більше</string>
 
     <!-- about -->
-    <string name="txt_about">Програма зроблена Trianguloy\'ом</string>
-    <string name="btn_blog">Блог, який веде Trianguloy</string>
-    <string name="btn_openStore">Відкрити Play Store</string>
+    <string name="txt_about">Програма зроблена TrianguloY\'ом</string>
+    <string name="btn_blog">Блог, який веде TrianguloY:</string>
     <string name="btn_shareStore">Поділитись додатком</string>
 
     <!-- configuration -->
