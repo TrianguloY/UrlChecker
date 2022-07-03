@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
             case R.id.txt_sample:
                 // click on the google url
                 String label = ((TextView) view).getText().toString();
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(label.substring(label.indexOf('\n') + 1)));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(label));
                 i.setPackage(getPackageName());
                 PackageUtilities.startActivity(i, R.string.toast_error, this);
                 break;

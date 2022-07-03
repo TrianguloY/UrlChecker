@@ -2,7 +2,7 @@
     <!-- main -->
     <string name="app_name">Url checker</string>
     <string name="txt_info">Ця програма виконує роль проміжного кроку відкриття посилань. Коли ви натискаєте на посилання та вибираєте цю програму для її відкриття, вона показує вам діалогове вікно з певною  інформацією про посилання. Натисніть на кнопку модулі нижче, щоб побачити доступні модул   і та те, що вони.</string>
-    <string name="txt_sample">:Натисніть на посилання нижче, щоб перевірити:\nhttp://www.google.com/?ref=referrer&amp;foo=bar#tag</string>
+    <string name="txt_sample">:Натисніть на посилання нижче, щоб перевірити:</string>
     <string name="a_modules">Модулі</string>
     <string name="a_about">Більше</string>
 

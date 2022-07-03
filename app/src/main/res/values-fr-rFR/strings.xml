@@ -2,7 +2,7 @@
     <!-- main -->
     <string name="app_name">Url checker</string>
     <string name="txt_info">Cette application agit comme une étape intermédiaire pour l\'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l\'ouvrir, une boîte de dialogue contenant des informations sur le lien s\'affiche. Appuyez sur le bouton Module ci-dessous pour voir les modules disponibles et ce qu\'ils font.</string>
-    <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:\nhttp://www.google.com/?ref=referrer&amp;foo=bar#tag</string>
+    <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:</string>
     <string name="a_modules">Modules</string>
     <string name="a_about">À Propos</string>
 
