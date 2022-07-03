@@ -78,6 +78,6 @@ public class AboutActivity extends Activity {
         share.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
         share.putExtra(Intent.EXTRA_TEXT, url);
 
-        PackageUtilities.startActivity(Intent.createChooser(share, getString(R.string.btn_shareStore)), R.string.toast_error, this);
+        PackageUtilities.startActivity(Intent.createChooser(share, getString(R.string.btn_shareStore)), R.string.toast_noApp, this);
     }
 }

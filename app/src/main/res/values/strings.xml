@@ -9,8 +9,6 @@
     <!-- about -->
     <string name="txt_about">App created by TrianguloY.</string>
     <string name="btn_blog">TrianguloY\'s blog:</string>
-    <string name="btn_playStore">Play Store:</string><!-- No need to be translated if same -->
-    <string name="btn_fDroid">F-Droid:</string><!-- No need to be translated if same -->
     <string name="btn_shareStore">Share App</string>
 
     <!-- configuration -->
@@ -19,11 +17,10 @@
     <string name="reset_order">Reset Order</string>
 
     <!-- generic -->
-    <string name="toast_error">Can\'t open activity</string>
+    <string name="toast_noApp">Can\'t open activity</string>
     <string name="toast_noBrowser">Can\'t open the browser</string>
     <string name="title_choose">Choose app</string>
     <string name="toast_invalid">Invalid</string>
-    <string name="dd">%s:</string>
 
 
     <!-- modules -->
@@ -76,7 +73,7 @@ This module can\'t be disabled."</string>
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>
 
-    <string name="mVT_name">VirusTotal</string>
+    <string name="mVT_name">Scan url</string>
     <string name="mVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
@@ -98,7 +95,7 @@ This module can\'t be disabled."</string>
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
-    <string name="mClear_tm">Uses the Clear URL database from https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Uses the ClearURLs database from https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
     <string name="mClear_blocked">- BLOCKED!</string>

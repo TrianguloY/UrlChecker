@@ -17,11 +17,10 @@
     <string name="reset_order">Réinitialiser l\'Ordre</string>
 
     <!-- generic -->
-    <string name="toast_error">Impossible d\'ouvrir l\'activité</string>
+    <string name="toast_noApp">Impossible d\'ouvrir l\'activité</string>
     <string name="toast_noBrowser">Impossible d\'ouvrir le navigateur</string>
     <string name="title_choose">Choisir l\'app</string>
     <string name="toast_invalid">Invalide</string>
-    <string name="dd">%s:</string>
 
 
     <!-- modules -->
@@ -96,7 +95,7 @@ Ce module ne peut pas être désactivé."</string>
 
     <string name="mClear_name">Nettoyer l\'URL</string>
     <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
-    <string name="mClear_tm">Utilise la base de données Clear URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Utilise la base de données ClearURLs de https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Appliquer</string>
     <string name="mClear_matches">Correspond à %s</string>
     <string name="mClear_blocked">- BLOQUÉ!</string>

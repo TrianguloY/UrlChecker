@@ -9,7 +9,6 @@
     <!-- about -->
     <string name="txt_about">Aplicação criada por TrianguloY.</string>
     <string name="btn_blog">Blog do TrianguloY:</string>
-    <string name="btn_playStore">Abrir Play Store</string>
     <string name="btn_shareStore">Partilhar app</string>
 
     <!-- configuration -->
@@ -18,11 +17,10 @@
     <string name="reset_order">Redefinir ordem</string>
 
     <!-- generic -->
-    <string name="toast_error">Não é possível abrir a atividade</string>
+    <string name="toast_noApp">Não é possível abrir a atividade</string>
     <string name="toast_noBrowser">Não é possível abrir o navegador</string>
     <string name="title_choose">Escolher aplicação</string>
     <string name="toast_invalid">Inválido</string>
-    <string name="dd">%s:</string>
 
 
     <!-- modules -->
@@ -97,7 +95,7 @@ Este módulo não pode ser desativado."</string>
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">Este módulo remove rastreamento, referenciador e outros parâmetros inúteis da url. Também permite redirecionamentos de URL offline comuns.</string>
-    <string name="mClear_tm">Usa o banco de dados Clear URL de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Usa o banco de dados ClearURLs de https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Aplicar</string>
     <string name="mClear_matches">Correspondências %s</string>
     <string name="mClear_blocked">- BLOQUEADO!</string>

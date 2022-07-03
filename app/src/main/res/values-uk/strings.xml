@@ -17,11 +17,10 @@
     <string name="reset_order">Відновити початковий порядок</string>
 
     <!-- generic -->
-    <string name="toast_error">Не можу відкрити діяльність</string>
+    <string name="toast_noApp">Не можу відкрити діяльність</string>
     <string name="toast_noBrowser">Не можу відкрити браузер</string>
     <string name="title_choose">Виберіть додаток</string>
     <string name="toast_invalid">Не підходить</string>
-    <string name="dd">%s:</string>
 
 
     <!-- modules -->
@@ -97,7 +96,7 @@
 
     <string name="mClear_name">Почистити URL</string>
     <string name="mClear_desc">Цей модуль прибирає слідкуючі, реферальні та інші непотрібні параметри з посилання. Також він дозволяє  переходити за посиланнями, на які вас перенаправили, без справжнього переходу користувача на сайт.</string>
-    <string name="mClear_tm">Програма використовує базу данних з https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Програма використовує базу данних з ClearURLs https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Почистити</string>
     <string name="mClear_matches">Збіги %s</string>
     <string name="mClear_blocked">- ЗАБЛОКОВАНО!</string>
