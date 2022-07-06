@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
@@ -25,6 +26,7 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         AndroidUtils.setActionBarColor(this);
+        setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
     }
 
     /**
