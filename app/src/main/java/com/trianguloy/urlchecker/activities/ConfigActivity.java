@@ -12,7 +12,6 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
@@ -36,7 +35,6 @@ public class ConfigActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
-        AndroidUtils.setActionBarColor(this);
         list = findViewById(R.id.list);
         order.init(this);
 

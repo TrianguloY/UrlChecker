@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 
 public class AboutActivity extends Activity {
@@ -16,7 +15,6 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        AndroidUtils.setActionBarColor(this);
     }
 
     public void onClick(View view) {

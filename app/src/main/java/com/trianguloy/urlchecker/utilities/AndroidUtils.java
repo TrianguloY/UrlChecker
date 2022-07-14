@@ -30,15 +30,6 @@ public class AndroidUtils {
     }
 
     /**
-     * Changes the action bar color
-     */
-    public static void setActionBarColor(Activity activity) {
-        ActionBar actionBar = activity.getActionBar();
-        if (actionBar != null)
-            actionBar.setBackgroundDrawable(new ColorDrawable(activity.getResources().getColor(R.color.app)));
-    }
-
-    /**
      * In debug mode, throws an AssertionError, in production just logs it and continues.
      */
     public static void assertError(String detailMessage) {
