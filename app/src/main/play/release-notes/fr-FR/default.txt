@@ -1,6 +1,6 @@
 V 2.4
-- Ajout de la traduction française. Merci à Ilithy!
-- Ajout de la traduction ukrainienne. Merci à Idris!
+- Ajout de la traduction Française. Merci à Ilithy!
+- Ajout de la traduction Ukrainienne. Merci à Idris!
 - Thème noir/blanc automatique
 
 V 2.3
