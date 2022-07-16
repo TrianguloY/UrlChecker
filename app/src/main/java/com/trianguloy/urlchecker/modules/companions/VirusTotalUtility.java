@@ -1,8 +1,9 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.modules.companions;
 
 import android.content.Context;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

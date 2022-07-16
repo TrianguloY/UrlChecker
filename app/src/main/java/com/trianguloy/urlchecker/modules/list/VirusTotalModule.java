@@ -15,11 +15,11 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.companions.VirusTotalUtility;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
-import com.trianguloy.urlchecker.utilities.VirusTotalUtility;
 
 /**
  * This module uses the VirusTotal api (https://developers.virustotal.com/reference) for url reports
