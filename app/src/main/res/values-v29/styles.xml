@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ActivityTheme" parent="android:Theme.DeviceDefault.DayNight" />
+    <style name="ActivityTheme" parent="android:Theme.DeviceDefault.DayNight">
+        <item name="android:windowLightStatusBar">?android:attr/isLightTheme</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightNavigationBar">?android:attr/isLightTheme</item>
+    </style>
 </resources>
