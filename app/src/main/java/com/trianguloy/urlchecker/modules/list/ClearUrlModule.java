@@ -1,9 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -12,6 +10,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.companions.ClearUrlCatalog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -20,8 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Iterator;
@@ -29,8 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * This module clears the url using the ClearUrl database (an asset copy)
- * TODO: allow updating the database from the official page
+ * This module clears the url using the ClearUrl catalog
  */
 public class ClearUrlModule extends AModuleData {
 
@@ -73,11 +69,14 @@ class ClearUrlConfig extends AModuleConfig {
     private final GenericPref.Bool verbosePref = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool autoPref = ClearUrlModule.AUTO_PREF();
 
+    private final ClearUrlCatalog catalog;
+
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
         referralPref.init(activity);
         verbosePref.init(activity);
         autoPref.init(activity);
+        catalog = new ClearUrlCatalog(activity);
     }
 
     @Override
@@ -92,19 +91,14 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        attach(views, R.id.referral, referralPref);
-        attach(views, R.id.verbose, verbosePref);
-        attach(views, R.id.auto, autoPref);
+        referralPref.attachToCheckBox(views.findViewById(R.id.referral));
+        verbosePref.attachToCheckBox(views.findViewById(R.id.verbose));
+        autoPref.attachToCheckBox(views.findViewById(R.id.auto));
+
+        views.findViewById(R.id.update).setOnClickListener(v -> catalog.showUpdater());
+        views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
     }
 
-    /**
-     * Initializes a config from a checkbox view
-     */
-    private void attach(View views, int viewId, GenericPref.Bool config) {
-        CheckBox chxbx = views.findViewById(viewId);
-        chxbx.setChecked(config.get());
-        chxbx.setOnCheckedChangeListener((buttonView, isChecked) -> config.set(isChecked));
-    }
 }
 
 class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
@@ -115,7 +109,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
 
-    private JSONObject data = null;
+    private final JSONObject data;
     private TextView info;
     private Button fix;
 
@@ -123,16 +117,12 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
-        try {
-            data = new JSONObject(getJsonFromAssets(dialog, "data.minify.json")).getJSONObject("providers");
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
         allowReferral.init(dialog);
         verbose.init(dialog);
         auto.init(dialog);
-    }
 
+        data = ClearUrlCatalog.getProviders(getActivity());
+    }
 
     @Override
     public int getLayoutId() {
@@ -323,7 +313,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Matches cas insnsitive regexp into an input
+     * Matches cas insensitive regexp into an input
      *
      * @param regexp regexp to use
      * @param input  input to use
@@ -355,24 +345,6 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
         info.setTag(color);
         AndroidUtils.setRoundedColor(color, info, getActivity());
-    }
-
-    /**
-     * Reads a file and returns its content
-     * From https://www.bezkoder.com/java-android-read-json-file-assets-gson/
-     */
-    static String getJsonFromAssets(Context context, String fileName) throws IOException {
-        String jsonString;
-        InputStream is = context.getAssets().open(fileName);
-
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        is.read(buffer);
-        is.close();
-
-        jsonString = new String(buffer, "UTF-8");
-
-        return jsonString;
     }
 
 }

@@ -2,6 +2,10 @@ package com.trianguloy.urlchecker.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,21 +82,21 @@ public abstract class GenericPref<T> {
     // ------------------- Implementations -------------------
 
     /**
-     * An integer preference
+     * A Long preference
      */
-    static public class Int extends GenericPref<Integer> {
-        public Int(String prefName, Integer defaultValue) {
+    static public class Lng extends GenericPref<Long> {
+        public Lng(String prefName, Long defaultValue) {
             super(prefName, defaultValue);
         }
 
         @Override
-        public Integer get() {
-            return prefs.getInt(prefName, defaultValue);
+        public Long get() {
+            return prefs.getLong(prefName, defaultValue);
         }
 
         @Override
-        public void set(Integer value) {
-            prefs.edit().putInt(prefName, value).apply();
+        public void set(Long value) {
+            prefs.edit().putLong(prefName, value).apply();
         }
     }
 
@@ -113,6 +117,14 @@ public abstract class GenericPref<T> {
         public void set(Boolean value) {
             prefs.edit().putBoolean(prefName, value).apply();
         }
+
+        /**
+         * This checkbox will be set to the pref value, and when the checkbox changes the value will too
+         */
+        public void attachToCheckBox(CheckBox checkBox) {
+            checkBox.setChecked(get());
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
+        }
     }
 
     /**
@@ -131,6 +143,27 @@ public abstract class GenericPref<T> {
         @Override
         public void set(String value) {
             prefs.edit().putString(prefName, value).apply();
+        }
+
+        /**
+         * This editText will be set to the pref value, and when the editText changes the value will too
+         */
+        public void attachToEditText(EditText editText) {
+            editText.setText(get());
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    set(s.toString());
+                }
+            });
         }
     }
 

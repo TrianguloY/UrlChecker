@@ -1,11 +1,9 @@
 package com.trianguloy.urlchecker.utilities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
@@ -27,15 +25,6 @@ public class AndroidUtils {
                         ? R.style.DialogThemeLight // explicit light mode
                         : R.style.DialogThemeDark // dark mode or device default
         );
-    }
-
-    /**
-     * Changes the action bar color
-     */
-    public static void setActionBarColor(Activity activity) {
-        ActionBar actionBar = activity.getActionBar();
-        if (actionBar != null)
-            actionBar.setBackgroundDrawable(new ColorDrawable(activity.getResources().getColor(R.color.app)));
     }
 
     /**
