@@ -7,14 +7,9 @@ import com.trianguloy.urlchecker.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLEncoder;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Class that manages the virusTotal connection
@@ -36,9 +31,11 @@ public class VirusTotalUtility {
     public static InternalReponse scanUrl(String urlToScan, String key, Context cntx) {
         InternalReponse result = new InternalReponse();
 
-        String responseJSON = performPOST(urlGetReport, getPOSTparameters(urlToScan, key));
-
-        if (responseJSON == null) {
+        String responseJSON;
+        try {
+            responseJSON = StreamUtils.performPOST(urlGetReport, getPOSTparameters(urlToScan, key));
+        } catch (IOException e) {
+            e.printStackTrace();
             result.error = cntx.getString(R.string.mVT_connectError);
             return result;
         }
@@ -91,46 +88,4 @@ public class VirusTotalUtility {
     }
 
 
-    private static String performPOST(String urlString, String parameters) {
-        BufferedReader reader = null;
-        try {
-
-            // Defined URL  where to send data
-            URL url = new URL(urlString);
-
-            // Send POST data request
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setConnectTimeout(5000);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(parameters);
-            wr.flush();
-
-            // Get the server response
-            reader = new BufferedReader(new InputStreamReader(
-                    conn.getResponseCode() >= 200 && conn.getResponseCode() < 300
-                            ? conn.getInputStream()
-                            : conn.getErrorStream()
-            ));
-            StringBuilder sb = new StringBuilder();
-            String line;
-            // Read Server Response
-            while ((line = reader.readLine()) != null) {
-                // Append server response in string
-                sb.append(line).append("\n");
-            }
-            return sb.toString();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-        return null;
-    }
 }

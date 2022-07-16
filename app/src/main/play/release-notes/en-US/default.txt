@@ -15,7 +15,7 @@ V 2.1
 
 V 2.0
 - Style update
-- Updated Clear Url database
+- Updated Clear Url catalog
 
 V 1.1
 - New module 'Clear Url': Uses the Clear Url dictionary to clear urls from referral and other useless url parameters.

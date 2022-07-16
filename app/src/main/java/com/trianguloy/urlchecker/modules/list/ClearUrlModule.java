@@ -1,14 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
@@ -16,6 +10,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.companions.ClearUrlCatalog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -24,25 +19,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLDecoder;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
 import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * This module clears the url using the ClearUrl database (an asset copy)
+ * This module clears the url using the ClearUrl catalog
  */
 public class ClearUrlModule extends AModuleData {
 
@@ -56,21 +40,6 @@ public class ClearUrlModule extends AModuleData {
 
     public static GenericPref.Bool AUTO_PREF() {
         return new GenericPref.Bool("clearurl_auto", false);
-    }
-
-    static GenericPref.Str DATABASE_URL() {
-        return new GenericPref.Str("clearurl_databaseURL", "https://rules2.clearurls.xyz/data.minify.json");
-    }
-    static GenericPref.Str HASH_URL() {
-        return new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash");
-    }
-
-    public static GenericPref.Bool HASH_PREF() {
-        return new GenericPref.Bool("clearurl_hash", true);
-    }
-
-    public static GenericPref.Bool CUSTOM_PREF() {
-        return new GenericPref.Bool("clearurl_custom", false);
     }
 
     @Override
@@ -99,22 +68,15 @@ class ClearUrlConfig extends AModuleConfig {
     private final GenericPref.Bool referralPref = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbosePref = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool autoPref = ClearUrlModule.AUTO_PREF();
-    final GenericPref.Str databaseURL = ClearUrlModule.DATABASE_URL();
-    final GenericPref.Str hashURL = ClearUrlModule.HASH_URL();
-    private final GenericPref.Bool hashPref = ClearUrlModule.HASH_PREF();
-    private final GenericPref.Bool customPref = ClearUrlModule.CUSTOM_PREF();
-    private Button update;
-    private volatile boolean downloading = false;
+
+    private final ClearUrlCatalog catalog;
 
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
         referralPref.init(activity);
         verbosePref.init(activity);
         autoPref.init(activity);
-        hashPref.init(activity);
-        databaseURL.init(activity);
-        hashURL.init(activity);
-        customPref.init(activity);
+        catalog = new ClearUrlCatalog(activity);
     }
 
     @Override
@@ -129,149 +91,14 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        attach(views, R.id.referral, referralPref);
-        attach(views, R.id.verbose, verbosePref);
-        attach(views, R.id.auto, autoPref);
-        attach(views, R.id.checkHash, hashPref);
-        attach(views, R.id.customDB, customPref);
+        referralPref.attachToCheckBox(views.findViewById(R.id.referral));
+        verbosePref.attachToCheckBox(views.findViewById(R.id.verbose));
+        autoPref.attachToCheckBox(views.findViewById(R.id.auto));
 
-        textEditor(R.id.database_URL, databaseURL, views);
-        textEditor(R.id.hash_URL, hashURL, views);
-
-        update = views.findViewById(R.id.update);
-        update.setOnClickListener(v -> {
-            if (!downloading) {
-                downloading = true;
-                new Thread(() -> {
-                    replaceDatabase(views.getContext().getString(R.string.mClear_database),
-                            databaseURL.get(), hashURL.get(),  hashPref.get(), views.getContext());
-                }).start();
-            }
-        });
+        views.findViewById(R.id.update).setOnClickListener(v -> catalog.showUpdater());
+        views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
     }
 
-    /**
-     * Replaces the database with a new one
-     */
-    private void replaceDatabase(String fileName, String databaseSource, String hashSource, boolean checkHash, Context context){
-        // In case something fails, which can be: file writing, url reading, file download
-        int retries = 5;
-        int seconds = 3;
-        for (int i = 1; i <= retries; i++) {
-            try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
-                // download json
-                String jsonString = readFromUrl(databaseSource);
-                JSONObject sourceJson = new JSONObject(jsonString);
-                // sha256 checking
-                if (checkHash) {
-                    // TODO ? if the hash is the same as the downloaded file, there is no need to download the database
-                    MessageDigest md = MessageDigest.getInstance("SHA-256");
-                    md.update(jsonString.getBytes(Charset.forName("UTF-8")));
-                    String encoded = encodeHex(md.digest());
-                    // Hash from ClearURLs has a newline character at the end, we trim it
-                    String hash = readFromUrl(hashSource).trim();
-                    if (!hash.equals(encoded)){
-                        throw new Exception("Hash does not match");
-                    }
-                }
-
-                // FIXME If the json is faulty the retry loop will keep trying in vain until all retries have finished
-                // This checks that the database structure is correct, specification:
-                // https://docs.clearurls.xyz/1.23.0/specs/rules/#dataminjson-catalog
-                JSONObject data = sourceJson.getJSONObject("providers");
-                Iterator<String> providers = data.keys();
-                while (providers.hasNext()) {
-                    // evaluate each provider
-                    String provider = providers.next();
-                    JSONObject providerData = data.getJSONObject(provider);
-                    providerData.getString("urlPattern");
-                    // At the time of writing the docs state that 'completeProvider' is required,
-                    // however if we check the ClearURLs database we can see that it is missing
-                    // in almost all providers (11/177), so we don't check it
-                }
-                // store json
-                fos.write(jsonString.getBytes(Charset.forName("UTF-8")));
-                break;
-            } catch (Exception e){
-                if (i == retries) {
-                    e.printStackTrace();
-                }
-            }
-            // delay between retries
-            try {
-                TimeUnit.SECONDS.sleep(seconds);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        // TODO inform user if it succeeded or not and why
-        downloading = false;
-    }
-
-    /**
-     * from https://gist.github.com/avilches/750151
-     */
-    private static String encodeHex(byte[] bytes) {
-        StringBuilder sb = new StringBuilder();
-        for (byte byt : bytes) sb.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
-        return sb.toString();
-    }
-
-    /**
-     * from https://stackoverflow.com/a/4308662
-     */
-    public static String readFromUrl(String url) throws IOException {
-
-        try (InputStream is = new URL(url).openStream();) {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            return readAll(rd);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Initializes a config from a checkbox view
-     */
-    private void attach(View views, int viewId, GenericPref.Bool config) {
-        CheckBox chxbx = views.findViewById(viewId);
-        chxbx.setChecked(config.get());
-        chxbx.setOnCheckedChangeListener((buttonView, isChecked) -> config.set(isChecked));
-    }
-
-    /**
-     * Initializes a string from a EditText view, also watches for changes
-     */
-    private void textEditor(int id, GenericPref.Str strPref, View views){
-        EditText txt = (EditText) views.findViewById(id);
-        txt.setText(strPref.get());
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                strPref.set(s.toString());
-                if (!canBeEnabled()) disable();
-            }
-        };
-        txt.addTextChangedListener(textWatcher);
-    }
 }
 
 class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
@@ -281,9 +108,8 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
-    private final GenericPref.Bool custom = ClearUrlModule.CUSTOM_PREF();
 
-    private JSONObject data = null;
+    private final JSONObject data;
     private TextView info;
     private Button fix;
 
@@ -294,32 +120,9 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         allowReferral.init(dialog);
         verbose.init(dialog);
         auto.init(dialog);
-        custom.init(dialog);
 
-        if (custom.get()) {
-            // use custom database
-            try {
-                // TODO fall back if file is downloading?
-                data = new JSONObject(getJsonFromStorage(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
-            } catch (Exception ignore) {
-                // custom database load failed, falling back to built-in database
-                Toast.makeText(dialog, dialog.getString(R.string.mClear_customDBLoadError), Toast.LENGTH_LONG).show();
-                try {
-                    data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }else{
-            try {
-                data = new JSONObject(getJsonFromAssets(dialog, getActivity().getString(R.string.mClear_database))).getJSONObject("providers");
-            } catch (JSONException | IOException e) {
-                e.printStackTrace();
-            }
-        }
-
+        data = ClearUrlCatalog.getProviders(getActivity());
     }
-
 
     @Override
     public int getLayoutId() {
@@ -510,7 +313,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Matches cas insnsitive regexp into an input
+     * Matches cas insensitive regexp into an input
      *
      * @param regexp regexp to use
      * @param input  input to use
@@ -542,41 +345,6 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
         info.setTag(color);
         AndroidUtils.setRoundedColor(color, info, getActivity());
-    }
-
-    /**
-     * Reads a file from assets and returns its content
-     * From https://www.bezkoder.com/java-android-read-json-file-assets-gson/
-     */
-    static String getJsonFromAssets(Context context, String fileName) throws IOException {
-        String jsonString;
-        InputStream is = context.getAssets().open(fileName);
-
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        is.read(buffer);
-        is.close();
-
-        jsonString = new String(buffer, "UTF-8");
-
-        return jsonString;
-    }
-
-    /**
-     * Reads a file from internal storage and returns its content
-     */
-    static String getJsonFromStorage(Context context, String fileName) throws IOException {
-        String jsonString;
-        FileInputStream fis = context.openFileInput(fileName);
-
-        int size = fis.available();
-        byte[] buffer = new byte[size];
-        fis.read(buffer);
-        fis.close();
-
-        jsonString = new String(buffer, "UTF-8");
-
-        return jsonString;
     }
 
 }

@@ -14,7 +14,7 @@ It was developed using a modular setup, you can enable or disable individual mod
 
 * VirusTotal analysis: When this module is enabled you can scan the url using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
 
-* Clear Url modules: Uses the Clear Url database to detect referral and useless parameters from the url to 'clear' it. It also allows for common offline url redirections. Uses the Clear URL database from https://docs.clearurls.xyz/latest/specs/rules/
+* Clear Url modules: Uses the Clear Url catalog to detect referral and useless parameters from the url to 'clear' it. It also allows for common offline url redirections. Uses the Clear URL catalog from https://docs.clearurls.xyz/latest/specs/rules/
 
 * Pattern module: Performs checks based on patterns:
     - If the url is an http one, press the warning message to replace it with https.

@@ -23,6 +23,8 @@
     <string name="title_choose">Choose app</string>
     <string name="toast_invalid">Invalid</string>
     <string name="dd">%s:</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
 
 
     <!-- modules -->
@@ -97,14 +99,7 @@ This module can\'t be disabled."</string>
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
-    <string name="mClear_customDBdesc">By default the app uses a built-in database, but you can download a new one and use that instead. The default values of the urls are the source of the built-in database, so it can be used to download a newer version as a custom database, a hash (SHA256) can be used to ensure a correct download.</string>
-    <string name="mClear_customDB">Use custom database</string>
-    <string name="mClear_sourceDesc">URL of the custom database JSON file with the rules:</string>
-    <string name="mClear_hashDesc">URL of the hash of the custom database, must be in lowercase. Can be ignored if the checkbox is disabled:</string>
-    <string name="mClear_download">Download</string>
-    <string name="mClear_downloadSuccess">Custom DB successfully downloaded</string>
-    <string name="mClear_database">data.minify.json</string>
-    <string name="mClear_tm">Uses the Clear URL database from https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Uses the Clear URL catalog from https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
     <string name="mClear_blocked">- BLOCKED!</string>
@@ -120,7 +115,20 @@ This module can\'t be disabled."</string>
     <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
     <string name="mClear_error">An error occurred while checking rules</string>
-    <string name="mClear_customDBLoadError">Custom DB load failed, falling back to built-in DB</string>
+    <string name="mClear_updater">Updater</string>
+    <string name="mClear_edit">Edit rules</string>
+    <string name="mClear_sourceDesc">URL of the JSON file catalog with the rules:</string>
+    <string name="mClear_urlHint">Catalog url</string>
+    <string name="mClear_hashDesc">URL of the catalog hash. If omitted, the download will not be checked to see if it was tampered/modified (not recommended)</string>
+    <string name="mClear_hashHint">No hash check</string>
+    <string name="mClear_updateNow">Update now</string>
+    <string name="mClear_autoUpdate">Update periodically</string>
+    <string name="mClear_updated">Catalog updated</string>
+    <string name="mClear_urlError">Unable to fetch the rules, make sure the url is valid and you have an active connection</string>
+    <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
+    <string name="mClear_hashMismatch">Hashes do not match, if you want to skip the check remove the hash url</string>
+    <string name="mClear_restore">Restore ClearUrl paths</string>
+    <string name="mClear_editor">This is an advance feature. Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification here will be overwritten if the catalog is updated manually or automatically from the updater dialog.</string>
 
     <string name="mRemove_name">Remove Queries</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
