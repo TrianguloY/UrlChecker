@@ -21,7 +21,8 @@
     <string name="toast_noBrowser">Impossible d\'ouvrir le navigateur</string>
     <string name="title_choose">Choisir l\'app</string>
     <string name="toast_invalid">Invalide</string>
-
+    <string name="save">Sauvegarder</string>
+    <string name="reset">Réinitialiser</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Analyseur de Style</string>
@@ -95,7 +96,7 @@ Ce module ne peut pas être désactivé."</string>
 
     <string name="mClear_name">Nettoyer l\'URL</string>
     <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
-    <string name="mClear_tm">Utilise la base de données ClearURLs de https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Utilise le catalogue de ClearURLs à l\'adresse https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Appliquer</string>
     <string name="mClear_matches">Correspond à %s</string>
     <string name="mClear_blocked">- BLOQUÉ!</string>
@@ -111,7 +112,21 @@ Ce module ne peut pas être désactivé."</string>
     <string name="mClear_toggleReferral">Activer le marketing de parrainage (les paramètres de réferences ne seront pas effacés)</string>
     <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
     <string name="mClear_error">Une erreur s\'est produite lors de la vérification des règles</string>
-
+    <string name="mClear_updater">Mise à jour</string>
+    <string name="mClear_edit">Modifier les règles</string>
+    <string name="mClear_sourceDesc">URL du fichier de catalogue JSON contenant les règles:</string>
+    <string name="mClear_urlHint">URL du catalogue</string>
+    <string name="mClear_hashDesc">URL du hachage du catalogue. Si elle est omise, le téléchargement ne sera pas vérifié pour voir s\'il a été altéré/modifié (non recommandé).</string>
+    <string name="mClear_hashHint">Pas de vérification du hachage</string>
+    <string name="mClear_updateNow">Mettre à jour maintenant</string>
+    <string name="mClear_autoUpdate">Mettre à jour périodiquement</string>connection
+    <string name="mClear_updated">Catalogue actualisé</string>
+    <string name="mClear_urlError">Impossible de récupérer les règles, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
+    <string name="mClear_hashError">Impossible de récupérer le hachage, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
+    <string name="mClear_hashMismatch">Les hachages ne correspondent pas, si vous souhaitez ignorer la vérification, supprimez l\'URL de hachage</string>
+    <string name="mClear_restore">Restaurer les chemins d\'accès ClearUrl</string>
+    <string name="mClear_editor">Il s\'agit d\'une fonctionnalité avancée. Ici, vous pouvez modifier directement les règles du catalogue. Elles doivent respecter le format de https://docs.clearurls.xyz/latest/specs/rules/.\nNotez que toute modification effectuer ici sera écrasée si le catalogue est mis à jour manuellement ou automatiquement depuis la boîte de dialogue de mise à jour.</string>
+    
     <string name="mRemove_name">Retirer des requêtes</string>
     <string name="mRemove_desc">Avec ce module, vous pouvez supprimer des requêtes de l\'URL.\nAppuyez sur le bouton pour supprimer toutes les requêtes ou appuyez sur la flèche pour visualiser et supprimer les requêtes une à une.\nMerci à PabloOQ pour l\'idée et la mise en œuvre originale!</string>
     <string name="mRemove_found1">1 requête trouvée</string>
