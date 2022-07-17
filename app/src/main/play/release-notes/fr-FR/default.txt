@@ -20,7 +20,7 @@ V 2.1
 
 V 2.0
 - Mise à jour des styles.
-- Mise à jour de la base de données Clear Url.
+- Mise à jour du catalogue de ClearUrl.
 
 Version 1.1
 - Nouveau module 'Nettoyer l'url': utilise le dictionnaire Clear Url pour effacer les URL de référence et d'autres paramètres d'URL inutiles.
