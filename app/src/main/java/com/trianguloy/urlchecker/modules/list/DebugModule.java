@@ -67,7 +67,7 @@ class DebugDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        ((TextView) views.findViewById(R.id.text1)).setText(
+        ((TextView) views.findViewById(R.id.text)).setText(
                 getActivity().getIntent().toUri(0)
         );
     }

@@ -131,6 +131,7 @@ public class ClearUrlCatalog {
      */
     public void clear() {
         cntx.deleteFile(fileName);
+        lastUpdate.clear();
     }
 
     // ------------------- dialogs -------------------
