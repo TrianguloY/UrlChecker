@@ -35,6 +35,7 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
 * http links, you should use https instead"</string>
     <string name="mPttrn_ascii">Warning! Non ascii characters found "%s"</string>
     <string name="mPttrn_http">Http link, consider using https: [[http|Fix]]</string>
+    <string name="mPttrn_noProtocol">Missing protocol. [[+http|Add http]] or [[+https|add https]]</string>
     <string name="mPttrn_ok">No issues found</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>

@@ -258,17 +258,26 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                     }
                 }
 
-                // fix empty elements
-                cleared = cleared
-                        .replaceAll("\\?&+", "?")
-                        .replaceAll("\\?#", "#")
-                        .replaceAll("\\?$", "")
-                        .replaceAll("&&+", "&")
-                        .replaceAll("&#", "#")
-                        .replaceAll("&$", "")
-                        .replaceAll("#&+", "#")
-                        .replaceAll("#$", "")
-                ;
+                // if changed, fix cleaning artifacts
+                if (!cleared.equals(urlData.url)) {
+
+                    // remove empty elements
+                    cleared = cleared
+                            .replaceAll("\\?&+", "?")
+                            .replaceAll("\\?#", "#")
+                            .replaceAll("\\?$", "")
+                            .replaceAll("&&+", "&")
+                            .replaceAll("&#", "#")
+                            .replaceAll("&$", "")
+                            .replaceAll("#&+", "#")
+                            .replaceAll("#$", "")
+                    ;
+
+                    // restore missing domain
+                    if (!cleared.matches("^https?://.*")) {
+                        cleared = "http://" + cleared;
+                    }
+                }
 
             }
         } catch (JSONException | UnsupportedEncodingException e) {
