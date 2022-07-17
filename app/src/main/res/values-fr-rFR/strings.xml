@@ -7,7 +7,10 @@
     <string name="a_about">À Propos</string>
 
     <!-- about -->
-    <string name="txt_about">Application créée par TrianguloY.</string>
+    <string name="txt_about">"Application créée par TrianguloY.
+
+Aide à la programmation de: PabloOQ.
+Aide à la traduction de: Tiago Carmo, Ilithy, Idris."</string>
     <string name="btn_blog">Blog de TrianguloY:</string>
     <string name="btn_shareStore">Partager l\'application</string>
 
@@ -31,6 +34,7 @@
 * liens http, vous devriez utiliser https à la place"</string>
     <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés "%s"</string>
     <string name="mPttrn_http">Lien http, pensez à utiliser l\'https: [[http|Fix]]</string>
+    <string name="mPttrn_noProtocol">Protocole manquant. [[+http|Add http]] ou [[+https|add https]]</string>
     <string name="mPttrn_ok">Aucun problème n\'a été détecté</string>
 
     <string name="mOpen_name"><![CDATA[Ouvrir & Partager]]></string>
