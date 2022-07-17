@@ -73,8 +73,13 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
         }
 
         // check for http
-        if (url.startsWith("http:")) {
+        if (url.startsWith("http://")) {
             messages.add(getActivity().getString(R.string.mPttrn_http));
+        }
+
+        // check for missing protocol
+        if (!url.matches("^https?://.*")) {
+            messages.add(getActivity().getString(R.string.mPttrn_noProtocol));
         }
 
         // TODO: other checks?
@@ -102,7 +107,15 @@ class PatternDialog extends AModuleDialog implements ClickableLinks.OnUrlListene
         switch (tag) {
             case "http":
                 // replace http with https
-                setUrl(getUrl().replaceFirst("^http:", "https:"));
+                setUrl(getUrl().replaceFirst("^http://", "https://"));
+                break;
+            case "+http":
+                // prepend http
+                setUrl("http://" + getUrl());
+                break;
+            case "+https":
+                // prepend https
+                setUrl("https://" + getUrl());
                 break;
         }
     }

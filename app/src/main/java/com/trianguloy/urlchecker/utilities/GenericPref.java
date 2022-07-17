@@ -77,6 +77,7 @@ public abstract class GenericPref<T> {
      */
     public void clear() {
         prefs.edit().remove(prefName).apply();
+
     }
 
     // ------------------- Implementations -------------------

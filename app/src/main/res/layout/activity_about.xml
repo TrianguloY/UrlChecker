@@ -12,6 +12,13 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:onClick="onClick"
+            android:scaleType="fitCenter"
+            android:src="@drawable/trianguloy" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +33,6 @@
             android:text="@string/mVT_tm" />
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoLink="web"
