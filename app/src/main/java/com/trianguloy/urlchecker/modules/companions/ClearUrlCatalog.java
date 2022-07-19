@@ -7,10 +7,10 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.JavaUtilities;
@@ -82,8 +82,13 @@ public class ClearUrlCatalog {
     /**
      * Returns the catalog as json
      */
-    public JSONObject getJson() throws JSONException {
-        return new JSONObject(new ClearUrlCatalog(cntx).getRaw());
+    public JSONObject getJson() {
+        try {
+            return new JSONObject(new ClearUrlCatalog(cntx).getRaw());
+        } catch (JSONException e) {
+            // invalid catalog, return empty
+            return new JSONObject();
+        }
     }
 
     /**
@@ -127,24 +132,24 @@ public class ClearUrlCatalog {
      * Saves a new local catalog. Returns true if it was saved correctly, false on error.
      * When merge is true, only the top-objects with the same key are replaced.
      */
-    public boolean setRules(String content, boolean merge) {
-        // first test if it can be parsed, and compact
-        try {
-            JSONObject json = new JSONObject(content);
-            if (merge) {
+    public boolean setRules(JSONObject rules, boolean merge) {
+        // merge rules if required
+        if (merge) {
+            try {
                 // replace only the top objects
                 JSONObject merged = getJson();
-                for (String key : JavaUtilities.toList(json.keys())) {
-                    merged.put(key, json.getJSONObject(key));
+                for (String key : JavaUtilities.toList(rules.keys())) {
+                    merged.put(key, rules.getJSONObject(key));
                 }
-                json = merged;
+                rules = merged;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                // can't be parsed
+                return false;
             }
-            content = json.toString();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            // can't be parsed
-            return false;
         }
+        // compact
+        String content = rules.toString();
 
         // the same, already saved
         if (content.equals(getRaw())) return true;
@@ -173,47 +178,15 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        // prepare dialog content
-        View views = cntx.getLayoutInflater().inflate(R.layout.config_clearurls_editor, null);
-
-        // init rules
-        EditText rules = views.findViewById(R.id.rules);
-        rules.setText(getFormattedRules());
-
-        // formatter
-        views.findViewById(R.id.format).setOnClickListener(v -> {
-            try {
-                rules.setText(new JSONObject(rules.getText().toString()).toString(2));
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(cntx, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // prepare dialog
-        AlertDialog dialog = new AlertDialog.Builder(cntx)
-                .setView(views)
-                .setPositiveButton(R.string.save, null) // set below
-                .setNegativeButton(android.R.string.cancel, null)
-                .setNeutralButton(R.string.reset, null) // set below
-                .setCancelable(false)
-                .show();
-
-        // prepare more dialog
-        // these are configured here to allow auto-closing the dialog when they are pressed
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            if (setRules(rules.getText().toString(), false)) {
+        JsonEditor.show(getJson(), R.string.mClear_editor, cntx, content -> {
+            if (setRules(content, false)) {
                 // saved data, close dialog
-                dialog.dismiss();
+                return true;
             } else {
                 // invalid data, keep dialog and show why
                 Toast.makeText(cntx, R.string.toast_invalid, Toast.LENGTH_LONG).show();
+                return false;
             }
-        });
-        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v -> {
-            // clear catalog and reload internal
-            clear();
-            rules.setText(getFormattedRules());
         });
     }
 
@@ -310,8 +283,17 @@ public class ClearUrlCatalog {
             }
         }
 
+        // parse json
+        JSONObject json;
+        try {
+            json = new JSONObject(rawRules);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return R.string.toast_invalid;
+        }
+
         // valid, save and update
-        if (setRules(rawRules, true)) {
+        if (setRules(json, true)) {
             lastUpdate.set(System.currentTimeMillis());
             return R.string.mClear_updated;
         } else {

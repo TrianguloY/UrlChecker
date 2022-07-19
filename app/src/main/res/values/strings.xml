@@ -27,6 +27,8 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
     <string name="save">Save</string>
     <string name="reset">Reset</string>
 
+    <string name="editor_desc">This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
+
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>
@@ -130,7 +132,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
     <string name="mClear_hashMismatch">Hashes do not match, if you want to skip the check remove the hash url</string>
     <string name="mClear_restore">Restore ClearUrl paths</string>
-    <string name="mClear_editor">This is an advanced feature. Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification to the top \'providers\' object will be overwritten if the catalog is updated manually or automatically from the updater dialog. To have personal rules set them in a different parent group (any name).</string>
+    <string name="mClear_editor">Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification to the parent object \'providers\' will be overwritten if the catalog is updated manually or automatically from the updater dialog. To have personal rules set them in a different parent object (any name).</string>
 
     <string name="mRemove_name">Remove Queries</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
@@ -140,4 +142,5 @@ This module can\'t be disabled."</string>
     <string name="mRemove_all">Remove all</string>
     <string name="mRemove_one">Remove %s</string>
     <string name="mRemove_empty">Remove empty</string>
+
 </resources>
