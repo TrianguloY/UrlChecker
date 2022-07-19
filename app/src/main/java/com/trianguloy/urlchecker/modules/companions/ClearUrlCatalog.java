@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.JavaUtilities;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import org.json.JSONException;
@@ -19,6 +21,9 @@ import org.json.JSONObject;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Manages the local catalog with the rules
@@ -75,16 +80,34 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Parses and returns the providers from the catalog
+     * Returns the catalog as json
      */
-    public static JSONObject getProviders(Activity cntx) {
+    public JSONObject getJson() throws JSONException {
+        return new JSONObject(new ClearUrlCatalog(cntx).getRaw());
+    }
+
+    /**
+     * Parses and returns the providers from the catalog
+     * Returns a list of pairs: [(rule,data),...]
+     */
+    public static List<Pair<String, JSONObject>> getRules(Activity cntx) {
         try {
-            return new JSONObject(new ClearUrlCatalog(cntx).getRaw())
-                    .getJSONObject("providers");
+            // prepare
+            List<Pair<String, JSONObject>> rules = new ArrayList<>();
+            JSONObject json = new ClearUrlCatalog(cntx).getJson();
+
+            // extract and merge each provider
+            for (String provider : JavaUtilities.toList(json.keys())) {
+                JSONObject providerData = json.getJSONObject(provider);
+                for (String rule : JavaUtilities.toList(providerData.keys())) {
+                    rules.add(Pair.create(rule, providerData.getJSONObject(rule)));
+                }
+            }
+            return rules;
         } catch (JSONException e) {
             // invalid catalog, return empty
             AndroidUtils.assertError(e.getMessage());
-            return new JSONObject();
+            return Collections.emptyList();
         }
     }
 
@@ -101,22 +124,32 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Saves a new local catalog. Returns true if it was saved correctly, false on error
+     * Saves a new local catalog. Returns true if it was saved correctly, false on error.
+     * When merge is true, only the top-objects with the same key are replaced.
      */
-    public boolean setRules(String content) {
-        // the same, already saved
-        if (content.equals(getRaw())) return true;
-
-        // first test if it can be parsed
+    public boolean setRules(String content, boolean merge) {
+        // first test if it can be parsed, and compact
         try {
-            new JSONObject(content).getJSONObject("providers");
+            JSONObject json = new JSONObject(content);
+            if (merge) {
+                // replace only the top objects
+                JSONObject merged = getJson();
+                for (String key : JavaUtilities.toList(json.keys())) {
+                    merged.put(key, json.getJSONObject(key));
+                }
+                json = merged;
+            }
+            content = json.toString();
         } catch (JSONException e) {
             e.printStackTrace();
             // can't be parsed
             return false;
         }
 
-        // store json
+        // the same, already saved
+        if (content.equals(getRaw())) return true;
+
+        // store
         try (FileOutputStream fos = cntx.openFileOutput(fileName, Context.MODE_PRIVATE)) {
             fos.write(content.getBytes(StreamUtils.UTF_8));
             return true;
@@ -169,7 +202,7 @@ public class ClearUrlCatalog {
         // prepare more dialog
         // these are configured here to allow auto-closing the dialog when they are pressed
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            if (setRules(rules.getText().toString())) {
+            if (setRules(rules.getText().toString(), false)) {
                 // saved data, close dialog
                 dialog.dismiss();
             } else {
@@ -278,7 +311,7 @@ public class ClearUrlCatalog {
         }
 
         // valid, save and update
-        if (setRules(rawRules)) {
+        if (setRules(rawRules, true)) {
             lastUpdate.set(System.currentTimeMillis());
             return R.string.mClear_updated;
         } else {

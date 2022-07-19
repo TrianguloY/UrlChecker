@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,7 +111,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
     private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
 
-    private final JSONObject data;
+    private final List<Pair<String, JSONObject>> data;
     private TextView info;
     private Button fix;
 
@@ -121,7 +123,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         verbose.init(dialog);
         auto.init(dialog);
 
-        data = ClearUrlCatalog.getProviders(getActivity());
+        data = ClearUrlCatalog.getRules(getActivity());
     }
 
     @Override
@@ -150,14 +152,12 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         }
         fix.setEnabled(false);
 
-        try {
-            Iterator<String> providers = data.keys();
-
-            whileProvider:
-            while (providers.hasNext()) {
-                // evaluate each provider
-                String provider = providers.next();
-                JSONObject providerData = data.getJSONObject(provider);
+        whileProvider:
+        for (Pair<String, JSONObject> pair : data) {
+            // evaluate each provider
+            String provider = pair.first;
+            JSONObject providerData = pair.second;
+            try {
                 if (!matcher(providerData.getString("urlPattern"), cleared).find()) {
                     continue;
                 }
@@ -278,11 +278,13 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
                         cleared = "http://" + cleared;
                     }
                 }
-
+            } catch (JSONException | UnsupportedEncodingException e) {
+                e.printStackTrace();
+                if (verbose.get()) {
+                    append(R.string.mClear_error);
+                    details(provider);
+                }
             }
-        } catch (JSONException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-            append(R.string.mClear_error);
         }
 
         // url changed, enable button
@@ -351,7 +353,8 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
      * Utility to set the info background color. Manages color importance
      */
     private void setColor(int color) {
-        if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning) return; // keep bad instead of replacing with warning
+        if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning)
+            return; // keep bad instead of replacing with warning
         info.setTag(color);
         AndroidUtils.setRoundedColor(color, info, getActivity());
     }
