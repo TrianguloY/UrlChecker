@@ -11,7 +11,8 @@
 
     <Button
         android:id="@+id/button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mClear_edit" />
+        android:text="@string/json_edit" />
 </LinearLayout>

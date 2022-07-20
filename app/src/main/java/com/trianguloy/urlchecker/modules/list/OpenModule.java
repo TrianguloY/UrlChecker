@@ -163,6 +163,9 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     // ------------------- Spinner -------------------
 
+    /**
+     * Populates the spinner with the apps that android says that can open it
+     */
     private void updateSpinner() {
         packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
 

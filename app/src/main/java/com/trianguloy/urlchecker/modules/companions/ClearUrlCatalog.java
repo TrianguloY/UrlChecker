@@ -2,7 +2,6 @@ package com.trianguloy.urlchecker.modules.companions;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -12,14 +11,15 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.AssetFile;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.InternalFile;
 import com.trianguloy.urlchecker.utilities.JavaUtilities;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,8 @@ public class ClearUrlCatalog {
 
     /* ------------------- constants ------------------- */
 
-    private static final String fileName = "data.minify.json";
+    private final InternalFile custom = new InternalFile("clearUrlCatalog");
+    private final AssetFile builtIn = new AssetFile("data.minify.json");
     private static final int AUTOUPDATE_PERIOD = /* 1 week (in milliseconds) */
             7/*days*/ * 24/*hours*/ * 60/*minutes*/ * 60/*seconds*/ * 1000/*milliseconds*/;
 
@@ -53,6 +54,8 @@ public class ClearUrlCatalog {
         hashURL.init(cntx);
         autoUpdate.init(cntx);
         lastUpdate.init(cntx);
+        custom.init(cntx);
+        builtIn.init(cntx);
 
         updateIfNecessary();
     }
@@ -64,24 +67,20 @@ public class ClearUrlCatalog {
      */
     public String getCatalog() {
         // get the updated file first
-        try {
-            return StreamUtils.inputStream2String(cntx.openFileInput(fileName));
-        } catch (IOException ignored) {
-        }
+        String internal = custom.get();
+        if (internal != null) return internal;
 
         // no updated file or can't read, use built-in one
         return getBuiltIn();
     }
 
     /**
-     * Returns the built-in catalog)
+     * Returns the built-in catalog
      */
     public String getBuiltIn() {
         // read internal file
-        try {
-            return StreamUtils.inputStream2String(cntx.getAssets().open(fileName));
-        } catch (IOException ignored) {
-        }
+        String builtIn = this.builtIn.get();
+        if (builtIn != null) return builtIn;
 
         // can't read either? panic! return empty
         return "{\"providers\":{}}";
@@ -136,9 +135,6 @@ public class ClearUrlCatalog {
         // compact
         String content = rules.toString();
 
-        // the same, already saved
-        if (content.equals(getCatalog())) return true;
-
         // same as builtin (maybe a reset?), clear custom
         if (content.equals(getBuiltIn())) {
             clear();
@@ -146,20 +142,14 @@ public class ClearUrlCatalog {
         }
 
         // store
-        try (FileOutputStream fos = cntx.openFileOutput(fileName, Context.MODE_PRIVATE)) {
-            fos.write(content.getBytes(StreamUtils.UTF_8));
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return custom.set(content);
     }
 
     /**
      * Deletes the custom catalog, built-in one will be returned afterwards
      */
     public void clear() {
-        cntx.deleteFile(fileName);
+        custom.delete();
         lastUpdate.clear();
     }
 
@@ -229,6 +219,9 @@ public class ClearUrlCatalog {
 
     // ------------------- internal -------------------
 
+    /**
+     * If the catalog is old, updates it in background. Otherwise does nothing.
+     */
     private void updateIfNecessary() {
         if (autoUpdate.get() && lastUpdate.get() + AUTOUPDATE_PERIOD < System.currentTimeMillis()) {
             new Thread(() -> {

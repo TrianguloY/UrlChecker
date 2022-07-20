@@ -31,7 +31,7 @@ public class JsonEditor {
     public static void show(JSONObject content, JSONObject reset, int description, Activity cntx, Listener onSave) {
 
         // prepare dialog content
-        View views = cntx.getLayoutInflater().inflate(R.layout.util_json_editor, null);
+        View views = cntx.getLayoutInflater().inflate(R.layout.json_editor, null);
         views.<TextView>findViewById(R.id.description).setText(description);
 
         // init rules
