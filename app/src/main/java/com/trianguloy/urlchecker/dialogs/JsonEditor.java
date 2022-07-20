@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @see this#show(JSONObject, int, Activity, Listener)
+ * @see this#show
  */
 public class JsonEditor {
 
@@ -28,8 +28,7 @@ public class JsonEditor {
     /**
      * Displays a generic editor for json content.
      */
-    public static void show(JSONObject content, int description, Activity cntx, Listener onSave) {
-        String originalContent = noFailToString(content);
+    public static void show(JSONObject content, JSONObject reset, int description, Activity cntx, Listener onSave) {
 
         // prepare dialog content
         View views = cntx.getLayoutInflater().inflate(R.layout.util_json_editor, null);
@@ -37,7 +36,7 @@ public class JsonEditor {
 
         // init rules
         EditText data = views.findViewById(R.id.data);
-        data.setText(originalContent);
+        data.setText(noFailToString(content));
 
         // formatter
         views.findViewById(R.id.format).setOnClickListener(v -> {
@@ -72,7 +71,7 @@ public class JsonEditor {
         });
         dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v -> {
             // clear catalog and reload internal
-            data.setText(originalContent);
+            data.setText(noFailToString(reset));
         });
     }
 

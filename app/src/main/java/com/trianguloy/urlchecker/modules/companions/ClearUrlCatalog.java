@@ -62,7 +62,7 @@ public class ClearUrlCatalog {
     /**
      * Returns the catalog content as text
      */
-    public String getRaw() {
+    public String getCatalog() {
         // get the updated file first
         try {
             return StreamUtils.inputStream2String(cntx.openFileInput(fileName));
@@ -70,6 +70,14 @@ public class ClearUrlCatalog {
         }
 
         // no updated file or can't read, use built-in one
+        return getBuiltIn();
+    }
+
+    /**
+     * Returns the built-in catalog)
+     */
+    public String getBuiltIn() {
+        // read internal file
         try {
             return StreamUtils.inputStream2String(cntx.getAssets().open(fileName));
         } catch (IOException ignored) {
@@ -80,11 +88,11 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Returns the catalog as json
+     * Converts a string into a json object, returns empty on failure
      */
-    public JSONObject getJson() {
+    public static JSONObject toJson(String content) {
         try {
-            return new JSONObject(new ClearUrlCatalog(cntx).getRaw());
+            return new JSONObject(content);
         } catch (JSONException e) {
             // invalid catalog, return empty
             return new JSONObject();
@@ -99,7 +107,8 @@ public class ClearUrlCatalog {
         try {
             // prepare
             List<Pair<String, JSONObject>> rules = new ArrayList<>();
-            JSONObject json = new ClearUrlCatalog(cntx).getJson();
+            ClearUrlCatalog clearUrlCatalog = new ClearUrlCatalog(cntx);
+            JSONObject json = toJson(clearUrlCatalog.getCatalog());
 
             // extract and merge each provider
             for (String provider : JavaUtilities.toList(json.keys())) {
@@ -117,18 +126,6 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Returns the rules formatted
-     */
-    public String getFormattedRules() {
-        try {
-            return new JSONObject(getRaw()).toString(2);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
-
-    /**
      * Saves a new local catalog. Returns true if it was saved correctly, false on error.
      * When merge is true, only the top-objects with the same key are replaced.
      */
@@ -137,7 +134,7 @@ public class ClearUrlCatalog {
         if (merge) {
             try {
                 // replace only the top objects
-                JSONObject merged = getJson();
+                JSONObject merged = toJson(getCatalog());
                 for (String key : JavaUtilities.toList(rules.keys())) {
                     merged.put(key, rules.getJSONObject(key));
                 }
@@ -152,7 +149,13 @@ public class ClearUrlCatalog {
         String content = rules.toString();
 
         // the same, already saved
-        if (content.equals(getRaw())) return true;
+        if (content.equals(getCatalog())) return true;
+
+        // same as builtin (maybe a reset?), clear custom
+        if (content.equals(getBuiltIn())) {
+            clear();
+            return true;
+        }
 
         // store
         try (FileOutputStream fos = cntx.openFileOutput(fileName, Context.MODE_PRIVATE)) {
@@ -178,7 +181,7 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        JsonEditor.show(getJson(), R.string.mClear_editor, cntx, content -> {
+        JsonEditor.show(toJson(getCatalog()), toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
             if (setRules(content, false)) {
                 // saved data, close dialog
                 return true;
