@@ -88,18 +88,6 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Converts a string into a json object, returns empty on failure
-     */
-    public static JSONObject toJson(String content) {
-        try {
-            return new JSONObject(content);
-        } catch (JSONException e) {
-            // invalid catalog, return empty
-            return new JSONObject();
-        }
-    }
-
-    /**
      * Parses and returns the providers from the catalog
      * Returns a list of pairs: [(rule,data),...]
      */
@@ -108,7 +96,7 @@ public class ClearUrlCatalog {
             // prepare
             List<Pair<String, JSONObject>> rules = new ArrayList<>();
             ClearUrlCatalog clearUrlCatalog = new ClearUrlCatalog(cntx);
-            JSONObject json = toJson(clearUrlCatalog.getCatalog());
+            JSONObject json = JavaUtilities.toJson(clearUrlCatalog.getCatalog());
 
             // extract and merge each provider
             for (String provider : JavaUtilities.toList(json.keys())) {
@@ -134,7 +122,7 @@ public class ClearUrlCatalog {
         if (merge) {
             try {
                 // replace only the top objects
-                JSONObject merged = toJson(getCatalog());
+                JSONObject merged = JavaUtilities.toJson(getCatalog());
                 for (String key : JavaUtilities.toList(rules.keys())) {
                     merged.put(key, rules.getJSONObject(key));
                 }
@@ -181,7 +169,7 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        JsonEditor.show(toJson(getCatalog()), toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
+        JsonEditor.show(JavaUtilities.toJson(getCatalog()), JavaUtilities.toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
             if (setRules(content, false)) {
                 // saved data, close dialog
                 return true;

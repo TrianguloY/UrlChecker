@@ -51,8 +51,8 @@ public abstract class AModuleDialog implements Fragment {
      *
      * @param url new url
      */
-    protected final void setUrl(String url) {
-        setUrl(new UrlData(url));
+    protected final boolean setUrl(String url) {
+        return setUrl(new UrlData(url));
     }
 
     /**
@@ -60,8 +60,8 @@ public abstract class AModuleDialog implements Fragment {
      *
      * @param urlData new url and data
      */
-    protected final void setUrl(UrlData urlData) {
-        dialog.onNewUrl(urlData, this);
+    protected final boolean setUrl(UrlData urlData) {
+        return dialog.onNewUrl(urlData, this);
     }
 
 }

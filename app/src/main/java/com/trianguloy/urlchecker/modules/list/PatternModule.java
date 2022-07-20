@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.app.Activity;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,6 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.modules.companions.PatternCatalog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
@@ -46,7 +46,36 @@ public class PatternModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.mPttrn_desc);
+        return new PatternConfig(cntx);
+    }
+}
+
+class PatternConfig extends AModuleConfig implements View.OnClickListener {
+
+    private final PatternCatalog catalog;
+
+    public PatternConfig(Activity cntx) {
+        catalog = new PatternCatalog(cntx);
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        return true;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_patterns;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        views.findViewById(R.id.button).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        catalog.showEditor();
     }
 }
 
@@ -55,8 +84,11 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
     private TextView txt_pattern;
     private LinearLayout box;
 
+    private final PatternCatalog catalog;
+
     public PatternDialog(MainDialog dialog) {
         super(dialog);
+        catalog = new PatternCatalog(dialog);
     }
 
     @Override
@@ -76,22 +108,26 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
         String url = urlData.url;
 
         // for each pattern
-        JSONObject patterns = PatternCatalog.getBuiltIn(getActivity());
+        JSONObject patterns = catalog.getCatalog();
         for (String pattern : JavaUtilities.toList(patterns.keys())) {
-            JSONObject data = patterns.optJSONObject(pattern);
-            if (data == null) continue;
-            if (!data.optBoolean("enabled")) continue;
-            String regex = data.optString("regex", "(?!)");
-            if (url.matches(regex)) {
-                String replacement = data.has("replacement") ? data.optString("replacement") : null;
-                if (replacement != null) {
-                    replacement = url.replaceAll(regex, replacement);
-                    if (data.optBoolean("automatic")) {
-                        setUrl(replacement);
-                        return;
+            try {
+                JSONObject data = patterns.optJSONObject(pattern);
+                if (data == null) continue;
+                if (!data.optBoolean("enabled", true)) continue;
+                String regex = data.optString("regex", "(?!)");
+                if (url.matches(regex)) {
+                    String replacement = data.has("replacement") ? data.optString("replacement") : null;
+                    if (replacement != null) {
+                        replacement = url.replaceAll(regex, replacement);
+                        if (data.optBoolean("automatic")
+                                && setUrl(replacement)) {
+                            return;
+                        }
+                        messages.add(Pair.create(pattern, replacement));
                     }
                 }
-                messages.add(Pair.create(pattern, replacement));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 

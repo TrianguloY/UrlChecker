@@ -40,14 +40,11 @@ public class MainDialog extends Activity {
     private int updating = 0;
 
     /**
-     * A module changed the url
-     *
-     * @param urlData        the new url and its data
-     * @param providerModule which module changed it (null if first change)
+     * A module (null if first change) want to set a new url. Return true if set, false if not.
      */
-    public void onNewUrl(UrlData urlData, AModuleDialog providerModule) {
+    public boolean onNewUrl(UrlData urlData, AModuleDialog providerModule) {
         // test and mark recursion
-        if (updating > MAX_UPDATES) return;
+        if (updating > MAX_UPDATES) return false;
         if (urlData.disableUpdates) updating = MAX_UPDATES;
         updating++;
         int updating_current = updating;
@@ -66,9 +63,10 @@ public class MainDialog extends Activity {
                 e.printStackTrace();
                 AndroidUtils.assertError("Exception in onNewUrl for module " + (providerModule == null ? "-none-" : providerModule.getClass().getName()));
             }
-            if (updating_current != updating) return;
+            if (updating_current != updating) return true;
         }
         updating = 0;
+        return true;
     }
 
     /**

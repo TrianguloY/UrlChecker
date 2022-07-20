@@ -41,6 +41,7 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
     <string name="mPttrn_noSchemeHttp">Missing http scheme.</string>
     <string name="mPttrn_noSchemeHttps">Missing https scheme.</string>
     <string name="mPttrn_ok">No issues found</string>
+    <string name="mPttrn_editor">Here you can edit or add new pattern rules. Note: if you edit the rules, app updates will not add new rules (if any).</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):

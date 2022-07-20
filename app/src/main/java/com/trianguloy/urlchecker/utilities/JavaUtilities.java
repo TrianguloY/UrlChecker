@@ -1,5 +1,8 @@
 package com.trianguloy.urlchecker.utilities;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,5 +22,17 @@ public class JavaUtilities {
             list.add(iterator.next());
         }
         return list;
+    }
+
+    /**
+     * Converts a string into a json object, returns empty on failure
+     */
+    public static JSONObject toJson(String content) {
+        try {
+            return new JSONObject(content);
+        } catch (JSONException e) {
+            // invalid catalog, return empty
+            return new JSONObject();
+        }
     }
 }
