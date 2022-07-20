@@ -67,7 +67,8 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     @Override
     public void onInitialize(View views) {
         info = views.findViewById(R.id.text);
-        remove = views.findViewById(R.id.fix);
+        remove = views.findViewById(R.id.button);
+        remove.setText(R.string.mRemove_all);
         box = views.findViewById(R.id.box);
 
         // expand queries
@@ -111,7 +112,8 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
             // for each query, create a button
             for (int i = 0; i < parts.getQueries(); i++) {
-                Button queryRemover = Inflater.inflate(R.layout.extra_remove_button, box, getActivity());
+                Button queryRemover = Inflater.inflate(R.layout.button_text, box, getActivity())
+                        .findViewById(R.id.button);
                 queryRemover.setTag(i); // will remove this i query when clicked
                 queryRemover.setOnClickListener(this);
                 String queryName = parts.getQueryName(i);
@@ -186,7 +188,8 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         public String getUrl() {
             StringBuilder sb = new StringBuilder(preQuery);
             // first query after '?', the rest after '&'
-            for (int i = 0; i < queries.size(); ++i) sb.append(i == 0 ? "?" : "&").append(queries.get(i));
+            for (int i = 0; i < queries.size(); ++i)
+                sb.append(i == 0 ? "?" : "&").append(queries.get(i));
             sb.append(postQuery);
             return sb.toString();
         }

@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -128,13 +127,14 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_clearurl;
+        return R.layout.button_text;
     }
 
     @Override
     public void onInitialize(View views) {
         info = views.findViewById(R.id.text);
-        fix = views.findViewById(R.id.fix);
+        fix = views.findViewById(R.id.button);
+        fix.setText(R.string.mClear_clear);
         fix.setOnClickListener(this);
     }
 

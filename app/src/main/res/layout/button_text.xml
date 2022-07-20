@@ -5,15 +5,15 @@
     android:gravity="center_vertical">
 
     <Button
-        android:id="@+id/check"
+        android:id="@+id/button"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="@string/mStatus_check" />
+        android:minHeight="0dp" />
 
     <TextView
-        android:id="@+id/info"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
