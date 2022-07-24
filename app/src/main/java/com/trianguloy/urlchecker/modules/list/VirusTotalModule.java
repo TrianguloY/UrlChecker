@@ -117,15 +117,16 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_virustotal;
+        return R.layout.button_text;
     }
 
     @Override
     public void onInitialize(View views) {
-        btn_scan = views.findViewById(R.id.scan);
-        txt_result = views.findViewById(R.id.result);
-
+        btn_scan = views.findViewById(R.id.button);
+        btn_scan.setText(R.string.mVT_scan);
         btn_scan.setOnClickListener(this);
+
+        txt_result = views.findViewById(R.id.text);
         txt_result.setOnClickListener(this);
         txt_result.setOnLongClickListener(this);
     }
@@ -140,10 +141,10 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.scan:
+            case R.id.button:
                 scanOrCancel();
                 break;
-            case R.id.result:
+            case R.id.text:
                 showInfo(false);
                 break;
         }
@@ -151,7 +152,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
     @Override
     public boolean onLongClick(View v) {
-        if (v.getId() == R.id.result) {
+        if (v.getId() == R.id.text) {
             showInfo(true);
             return true;
         }

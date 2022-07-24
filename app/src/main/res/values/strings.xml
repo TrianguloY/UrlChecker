@@ -27,16 +27,28 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
     <string name="save">Save</string>
     <string name="reset">Reset</string>
 
+    <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
+    <string name="json_edit">Advanced editor</string>
+
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>
-    <string name="mPttrn_desc">"Checks for common issues in the url:
+    <string name="mPttrn_desc">"Checks for common issues in the url. Built-in rules:
 * Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
-* http links, you should use https instead"</string>
-    <string name="mPttrn_ascii">Warning! Non ascii characters found "%s"</string>
-    <string name="mPttrn_http">Http link, consider using https: [[http|Fix]]</string>
-    <string name="mPttrn_noProtocol">Missing protocol. [[+http|Add http]] or [[+https|add https]]</string>
-    <string name="mPttrn_ok">No issues found</string>
+* http links, you should use https instead
+* Missing http(s) scheme"</string>
+    <string name="mPttrn_fix">Fix</string>
+    <string name="mPttrn_ascii">Warning! Non ascii characters found</string>
+    <string name="mPttrn_http">Http link, consider using https</string>
+    <string name="mPttrn_noSchemeHttp">Missing http scheme.</string>
+    <string name="mPttrn_noSchemeHttps">Missing https scheme.</string>
+    <string name="mPttrn_ok">No patterns match</string>
+    <string name="mPttrn_editor">"Here you can edit or add new pattern rules. Format:
+- 'regex': valid java regex that will be matched against the url.
+- 'replacement': if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'.
+- 'automatic': set to true to automatically apply the rule.
+- 'enabled': set to false to disable the rule.
+Note: if you edit the rules, app updates will not modify built-in ones (you can restore them with the reset option)."</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
@@ -101,7 +113,7 @@ This module can\'t be disabled."</string>
 
     <string name="mClear_name">Clear URL</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
-    <string name="mClear_tm">Uses the ClearURLs catalog from https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_tm">Built-in catalog copied from ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
     <string name="mClear_blocked">- BLOCKED!</string>
@@ -116,9 +128,8 @@ This module can\'t be disabled."</string>
     <string name="mClear_auto">Apply automatically</string>
     <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
-    <string name="mClear_error">An error occurred while checking rules</string>
+    <string name="mClear_error">An error occurred while checking rule</string>
     <string name="mClear_updater">Updater</string>
-    <string name="mClear_edit">Edit rules</string>
     <string name="mClear_sourceDesc">URL of the JSON file catalog with the rules:</string>
     <string name="mClear_urlHint">Catalog url</string>
     <string name="mClear_hashDesc">URL of the catalog hash. If omitted, the download will not be checked to see if it was tampered/modified (not recommended)</string>
@@ -130,7 +141,7 @@ This module can\'t be disabled."</string>
     <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
     <string name="mClear_hashMismatch">Hashes do not match, if you want to skip the check remove the hash url</string>
     <string name="mClear_restore">Restore ClearUrl paths</string>
-    <string name="mClear_editor">This is an advance feature. Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification here will be overwritten if the catalog is updated manually or automatically from the updater dialog.</string>
+    <string name="mClear_editor">Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification to the parent object \'providers\' will be overwritten if the catalog is updated manually or automatically from the updater dialog. To have personal rules set them in a different parent object (any name).</string>
 
     <string name="mRemove_name">Remove Queries</string>
     <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
@@ -140,4 +151,5 @@ This module can\'t be disabled."</string>
     <string name="mRemove_all">Remove all</string>
     <string name="mRemove_one">Remove %s</string>
     <string name="mRemove_empty">Remove empty</string>
+
 </resources>

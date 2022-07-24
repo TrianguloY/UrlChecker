@@ -44,12 +44,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/mClear_updater" /><Button
-                android:id="@+id/edit"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/mClear_edit" /></LinearLayout>
+                android:text="@string/mClear_updater" />
+
+                <Button
+                    android:id="@+id/edit"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/json_edit" />
+            </LinearLayout>
 
     </LinearLayout>

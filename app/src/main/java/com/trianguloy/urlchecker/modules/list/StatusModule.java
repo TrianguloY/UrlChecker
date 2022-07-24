@@ -60,14 +60,15 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_status;
+        return R.layout.button_text;
     }
 
     @Override
     public void onInitialize(View views) {
-        check = views.findViewById(R.id.check);
+        check = views.findViewById(R.id.button);
+        check.setText(R.string.mStatus_check);
         check.setOnClickListener(this);
-        info = views.findViewById(R.id.info);
+        info = views.findViewById(R.id.text);
     }
 
     @Override

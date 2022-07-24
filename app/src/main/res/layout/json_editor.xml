@@ -5,19 +5,33 @@
     android:orientation="vertical"
     android:padding="@dimen/smallPadding">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:autoLink="web"
-    android:text="@string/mClear_editor" /><FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:text="@string/json_desc" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"><EditText
-    android:id="@+id/rules"
+    android:id="@+id/data"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ems="10"

@@ -2,23 +2,28 @@ package com.trianguloy.urlchecker.modules.companions;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.AssetFile;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.InternalFile;
+import com.trianguloy.urlchecker.utilities.JavaUtilities;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Manages the local catalog with the rules
@@ -27,7 +32,8 @@ public class ClearUrlCatalog {
 
     /* ------------------- constants ------------------- */
 
-    private static final String fileName = "data.minify.json";
+    private final InternalFile custom = new InternalFile("clearUrlCatalog");
+    private final AssetFile builtIn = new AssetFile("data.minify.json");
     private static final int AUTOUPDATE_PERIOD = /* 1 week (in milliseconds) */
             7/*days*/ * 24/*hours*/ * 60/*minutes*/ * 60/*seconds*/ * 1000/*milliseconds*/;
 
@@ -48,6 +54,8 @@ public class ClearUrlCatalog {
         hashURL.init(cntx);
         autoUpdate.init(cntx);
         lastUpdate.init(cntx);
+        custom.init(cntx);
+        builtIn.init(cntx);
 
         updateIfNecessary();
     }
@@ -57,18 +65,22 @@ public class ClearUrlCatalog {
     /**
      * Returns the catalog content as text
      */
-    public String getRaw() {
+    public String getCatalog() {
         // get the updated file first
-        try {
-            return StreamUtils.inputStream2String(cntx.openFileInput(fileName));
-        } catch (IOException ignored) {
-        }
+        String internal = custom.get();
+        if (internal != null) return internal;
 
         // no updated file or can't read, use built-in one
-        try {
-            return StreamUtils.inputStream2String(cntx.getAssets().open(fileName));
-        } catch (IOException ignored) {
-        }
+        return getBuiltIn();
+    }
+
+    /**
+     * Returns the built-in catalog
+     */
+    public String getBuiltIn() {
+        // read internal file
+        String builtIn = this.builtIn.get();
+        if (builtIn != null) return builtIn;
 
         // can't read either? panic! return empty
         return "{\"providers\":{}}";
@@ -76,61 +88,68 @@ public class ClearUrlCatalog {
 
     /**
      * Parses and returns the providers from the catalog
+     * Returns a list of pairs: [(rule,data),...]
      */
-    public static JSONObject getProviders(Activity cntx) {
+    public static List<Pair<String, JSONObject>> getRules(Activity cntx) {
         try {
-            return new JSONObject(new ClearUrlCatalog(cntx).getRaw())
-                    .getJSONObject("providers");
+            // prepare
+            List<Pair<String, JSONObject>> rules = new ArrayList<>();
+            ClearUrlCatalog clearUrlCatalog = new ClearUrlCatalog(cntx);
+            JSONObject json = JavaUtilities.toJson(clearUrlCatalog.getCatalog());
+
+            // extract and merge each provider
+            for (String provider : JavaUtilities.toList(json.keys())) {
+                JSONObject providerData = json.getJSONObject(provider);
+                for (String rule : JavaUtilities.toList(providerData.keys())) {
+                    rules.add(Pair.create(rule, providerData.getJSONObject(rule)));
+                }
+            }
+            return rules;
         } catch (JSONException e) {
             // invalid catalog, return empty
             AndroidUtils.assertError(e.getMessage());
-            return new JSONObject();
+            return Collections.emptyList();
         }
     }
 
     /**
-     * Returns the rules formatted
+     * Saves a new local catalog. Returns true if it was saved correctly, false on error.
+     * When merge is true, only the top-objects with the same key are replaced.
      */
-    public String getFormattedRules() {
-        try {
-            return new JSONObject(getRaw()).toString(2);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "";
+    public boolean setRules(JSONObject rules, boolean merge) {
+        // merge rules if required
+        if (merge) {
+            try {
+                // replace only the top objects
+                JSONObject merged = JavaUtilities.toJson(getCatalog());
+                for (String key : JavaUtilities.toList(rules.keys())) {
+                    merged.put(key, rules.getJSONObject(key));
+                }
+                rules = merged;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                // can't be parsed
+                return false;
+            }
         }
-    }
+        // compact
+        String content = rules.toString();
 
-    /**
-     * Saves a new local catalog. Returns true if it was saved correctly, false on error
-     */
-    public boolean setRules(String content) {
-        // the same, already saved
-        if (content.equals(getRaw())) return true;
-
-        // first test if it can be parsed
-        try {
-            new JSONObject(content).getJSONObject("providers");
-        } catch (JSONException e) {
-            e.printStackTrace();
-            // can't be parsed
-            return false;
-        }
-
-        // store json
-        try (FileOutputStream fos = cntx.openFileOutput(fileName, Context.MODE_PRIVATE)) {
-            fos.write(content.getBytes(StreamUtils.UTF_8));
+        // same as builtin (maybe a reset?), clear custom
+        if (content.equals(getBuiltIn())) {
+            clear();
             return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
         }
+
+        // store
+        return custom.set(content);
     }
 
     /**
      * Deletes the custom catalog, built-in one will be returned afterwards
      */
     public void clear() {
-        cntx.deleteFile(fileName);
+        custom.delete();
         lastUpdate.clear();
     }
 
@@ -140,47 +159,15 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        // prepare dialog content
-        View views = cntx.getLayoutInflater().inflate(R.layout.config_clearurls_editor, null);
-
-        // init rules
-        EditText rules = views.findViewById(R.id.rules);
-        rules.setText(getFormattedRules());
-
-        // formatter
-        views.findViewById(R.id.format).setOnClickListener(v -> {
-            try {
-                rules.setText(new JSONObject(rules.getText().toString()).toString(2));
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(cntx, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // prepare dialog
-        AlertDialog dialog = new AlertDialog.Builder(cntx)
-                .setView(views)
-                .setPositiveButton(R.string.save, null) // set below
-                .setNegativeButton(android.R.string.cancel, null)
-                .setNeutralButton(R.string.reset, null) // set below
-                .setCancelable(false)
-                .show();
-
-        // prepare more dialog
-        // these are configured here to allow auto-closing the dialog when they are pressed
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-            if (setRules(rules.getText().toString())) {
+        JsonEditor.show(JavaUtilities.toJson(getCatalog()), JavaUtilities.toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
+            if (setRules(content, false)) {
                 // saved data, close dialog
-                dialog.dismiss();
+                return true;
             } else {
                 // invalid data, keep dialog and show why
                 Toast.makeText(cntx, R.string.toast_invalid, Toast.LENGTH_LONG).show();
+                return false;
             }
-        });
-        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v -> {
-            // clear catalog and reload internal
-            clear();
-            rules.setText(getFormattedRules());
         });
     }
 
@@ -232,6 +219,9 @@ public class ClearUrlCatalog {
 
     // ------------------- internal -------------------
 
+    /**
+     * If the catalog is old, updates it in background. Otherwise does nothing.
+     */
     private void updateIfNecessary() {
         if (autoUpdate.get() && lastUpdate.get() + AUTOUPDATE_PERIOD < System.currentTimeMillis()) {
             new Thread(() -> {
@@ -277,8 +267,17 @@ public class ClearUrlCatalog {
             }
         }
 
+        // parse json
+        JSONObject json;
+        try {
+            json = new JSONObject(rawRules);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return R.string.toast_invalid;
+        }
+
         // valid, save and update
-        if (setRules(rawRules)) {
+        if (setRules(json, true)) {
             lastUpdate.set(System.currentTimeMillis());
             return R.string.mClear_updated;
         } else {
