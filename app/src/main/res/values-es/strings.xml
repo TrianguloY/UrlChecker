@@ -1,0 +1,164 @@
+<resources>
+    <!-- main -->
+    <string name="app_name">Analizador de Urls</string>
+    <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Cuando hacer click en uno y eliges esta aplicación para abrirlo, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
+    <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
+    <string name="a_modules">Módulos</string>
+    <string name="a_about">Acerca de</string>
+
+    <!-- about -->
+    <string name="txt_about">"Aplicación creada por TrianguloY.
+
+Contribuciones de programación de: PabloOQ.
+Traducciones de: Tiago Carmo, Ilithy, Idris."</string>
+    <string name="btn_blog">Blog de TrianguloY:</string>
+    <string name="btn_shareStore">Compartir aplicación</string>
+
+    <!-- configuration -->
+    <string name="txt_conf">Lista de módulos: puedes habilitarlos o deshabilitarlos, ver su descripción y configurarlos.</string>
+    <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
+    <string name="reset_order">Reinicar orden</string>
+
+    <!-- generic -->
+    <string name="toast_noApp">No se puede abrir la aplicación</string>
+    <string name="toast_noBrowser">No se puede abrir el navegador</string>
+    <string name="title_choose">Elige aplicación</string>
+    <string name="toast_invalid">Invalido</string>
+    <string name="save">Guardar</string>
+    <string name="reset">Reiniciar</string>
+
+    <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
+    <string name="json_edit">Advanced editor</string>
+
+
+    <!-- modules -->
+    <string name="mPttrn_name">Comprobador de patrones</string>
+    <string name="mPttrn_desc">"Comprueba problemas comunes en la url. Patrones incorporados:
+* Carácteres no-ascii, como letras griegas. Pueden ser usadas para phising: googĺe.com vs google.com
+* Enlaces http, deberías usar https
+* Enlaces sin esquema http(s)"</string>
+    <string name="mPttrn_fix">Arreglar</string>
+    <string name="mPttrn_ascii">¡Aviso! Carácteres no-ascii encontrados</string>
+    <string name="mPttrn_http">Enlace http, considera usar https</string>
+    <string name="mPttrn_noSchemeHttp">Falta esquema http.</string>
+    <string name="mPttrn_noSchemeHttps">Falta esquema https.</string>
+    <string name="mPttrn_ok">Ningún patron coincide</string>
+    <string name="mPttrn_editor">"Aquí puedes editar o añadir nuevos patrones. Formato:
+- 'regex': string: java regex válido con el que se comprobará la url.
+- 'replacement': string: si se incluye, el botón de 'arreglar' ejecutará 'url=url.replaceAll(regex,replacement)'.
+- 'automatic': boolean: si se pone a 'true' el patrón será aplicado automáticamente.
+- 'enabled': boolean: ponlo a 'false' para deshabilitar el patrón.
+Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizaciones no serán añadidos automáticamente (puedes recuperarlos con la opción de reset)."</string>
+
+    <string name="mOpen_name"><![CDATA[Abrir y compartir]]></string>
+    <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
+- Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
+- Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
+- Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador.
+Este módulo no puede ser deshabilitado."</string>
+    <string name="mOpen_with">Abrir con %s</string>
+    <string name="mOpen_open">Abrir</string>
+    <string name="mOpen_share">Compartir</string>
+    <string name="mOpen_clipboard">Url copiada al portapapeles</string>
+    <string name="mOpen_noapps">Sin aplicaciones</string>
+
+    <string name="mStatus_name">Código de estado</string>
+    <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.
+Si el resultado es una redirección, podrás ver la url destino.
+El contenido de la url se pide (GET), pero no se evalúa, con lo que redirecciones basadas en javascript no serán detectadas.</string>
+    <string name="mStatus_ioerror">Error de red al intentar comprobar la url: %s</string>
+    <string name="mStatus_error">Error interno al intentar comprobar la url: %s</string>
+    <string name="mStatus_check">Comprobar</string>
+    <string name="mStatus_checking">Comprobando…</string>
+    <string-array name="mStatus_codes">
+        <item>200: OK</item>
+        <item>301: Movido permanentemente</item>
+        <item>302: Movido temporalmente</item>
+        <item>307: Movido temporalmente</item>
+        <item>308: Movido permanentemente</item>
+        <item>400: Petición inválida</item>
+        <item>401: Sin autenticar</item>
+        <item>403: Prohibido</item>
+        <item>404: No encontrado</item>
+        <item>410: Quitado permanentemente</item>
+        <item>418: ¡Es una tetera! :D</item>
+        <item>500: Error del servidor</item>
+        <item>503: No disponible temporalmente</item>
+        <item>502: Error de servidor</item>
+        <item>504: Servidor no responde</item>
+    </string-array>
+    <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
+    <string name="mStatus_redir">Redirigir</string>
+
+    <string name="mInput_name">Texto de entrada</string>
+    <string name="mInput_desc">"Muestra la url actual, que puede ser modificada manualmente.
+No se puede deshabilitar."</string>
+
+    <string name="mVT_name">Escanear url</string>
+    <string name="mVT_desc">"Cuando este módulo se habilita puedes escanear la url mediante VirusTotal y comprobar el informe.
+Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us."</string>
+    <string name="mVT_apiKey">Clave de la API</string>
+    <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
+    <string name="mVT_scan">Escanear</string>
+    <string name="mVT_cancel">Cancelar</string>
+    <string name="mVT_scanning">Escaneando…</string>
+    <string name="mVT_goodUrl">Ninguno de los antivirus ha detectado la url como maliciosa (a fecha %s)</string>
+    <string name="mVT_warningUrl">Aviso, %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
+    <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
+    <string name="mVT_connectError">No se ha podido conectar con VirusTotal. Comprueba que tienes acceso a internet o prueba mas tarde.</string>
+    <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la api es correcta o prueba mas tarde.</string>
+
+    <string name="mD_name">Módulo debug/marcador</string>
+    <string name="mD_desc">"Si reordenas los módulos, los que se añadan en futuras actualizaciones serán colocados encima de este.
+
+Si lo habilitas, mostrará el intent recibido como uri, útil para desarrolladores."</string>
+    <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
+
+    <string name="mHist_name">Historial</string>
+    <string name="mHist_desc">Cuando la url cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
+
+    <string name="mClear_name">Limpiar url</string>
+    <string name="mClear_desc">Este módulo elimina parámetros innecesarios de la url como seguimiento o de referencia. También detecta redirecciones comúnes sin necesidad de pedirla al servidor.</string>
+    <string name="mClear_tm">Catálogo incluido copiado de ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">Aplicar</string>
+    <string name="mClear_matches">%s detectado</string>
+    <string name="mClear_blocked">- BLOQUEADO!</string>
+    <string name="mClear_exception">- ignorado debido a error %s</string>
+    <string name="mClear_rule">- contiene parámetro innecesario</string>
+    <string name="mClear_rawRule">- contiene contenido innecesario</string>
+    <string name="mClear_referral">- contiene referencia</string>
+    <string name="mClear_forcedRedirection">- contiene redirección forzada</string>
+    <string name="mClear_redirection">- contiene redirección</string>
+    <string name="mClear_cleared">- Limpiado</string>
+    <string name="mClear_noRules">No se ha encontrado nada</string>
+    <string name="mClear_auto">Aplicar automáticamente</string>
+    <string name="mClear_toggleReferral">Permitir parámetros de referencia de marketing (no serán limpiados)</string>
+    <string name="mClear_toggleVerbose">Mostrar información detallada del proceso de limpieza</string>
+    <string name="mClear_error">Ha ocurrido un error mientras se comprobaban las reglas</string>
+    <string name="mClear_updater">Actualizador</string>
+    <string name="mClear_sourceDesc">Url del fichero JSON con el ctálogo de reglas:</string>
+    <string name="mClear_urlHint">Url del catálogo</string>
+    <string name="mClear_hashDesc">Url del hash del fichero del catálogo. Si se omite, la descarga no será comprobada por si ha sido alterada/modificada (no se recomienda)</string>
+    <string name="mClear_hashHint">No comprobar hash</string>
+    <string name="mClear_updateNow">Actualizar ahora</string>
+    <string name="mClear_autoUpdate">Actualizar regularmente</string>
+    <string name="mClear_updated">Catálogo actualizado</string>
+    <string name="mClear_urlError">No se han podido descargar las reglas, comprueba que la url es correcta y que tienes acceso a internet</string>
+    <string name="mClear_hashError">No se ha podido descargar el hash, comprueba que la url es correcta y que tienes acceso a internet</string>
+    <string name="mClear_hashMismatch">Los hashes no coinciden, el catálogo puede haber sido alterado. Si quieres desactivar la comprobación de hash borra la url de hash</string>
+    <string name="mClear_restore">Restaurar direcciones de ClearURLs</string>
+    <string name="mClear_editor">"Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/.
+Ten en cuenta que las modificaciones del objeto principal 'providers' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre)"</string>
+
+    <string name="mRemove_name">Eliminar parámetros</string>
+    <string name="mRemove_desc">"Con este módulo puedes eliminar los parámetros de la URL.
+Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
+¡Gracias a PabloOQ por la idea e implementación original!"</string>
+    <string name="mRemove_found1">1 parámetro encontrado</string>
+    <string name="mRemove_found">%d parámetros encontrados</string>
+    <string name="mRemove_noQueries">Sin parámetros</string>
+    <string name="mRemove_all">Eliminar todos</string>
+    <string name="mRemove_one">Eliminar %s</string>
+    <string name="mRemove_empty">Eliminar vacío</string>
+
+</resources>
