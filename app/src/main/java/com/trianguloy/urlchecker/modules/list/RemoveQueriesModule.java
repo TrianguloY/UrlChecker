@@ -1,7 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -95,18 +93,11 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             remove.setEnabled(false); // disable the remove button
         } else {
             // queries present, notify
-            SpannableStringBuilder text = new SpannableStringBuilder(
-                    parts.getQueries() == 1
-                            ? getActivity().getString(R.string.mRemove_found1) // 1 query
-                            : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
+            info.setText(parts.getQueries() == 1
+                    ? getActivity().getString(R.string.mRemove_found1) // 1 query
+                    : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
             );
-            // mark the text as clickable (but the click does nothing, it is managed when clicked the view)
-            text.setSpan(new ClickableSpan() {
-                @Override
-                public void onClick(View ignored) {
-                }
-            }, 0, text.length(), 0);
-            info.setText(text);
+            AndroidUtils.setAsClickable(info);
             AndroidUtils.setRoundedColor(R.color.warning, info, getActivity());
             remove.setEnabled(true); // enable the remove all button
 
@@ -148,8 +139,8 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     private void updateMoreIndicator() {
         info.setCompoundDrawablesWithIntrinsicBounds(
                 box.getChildCount() == 0 ? 0
-                        : box.getVisibility() == View.VISIBLE ? R.drawable.expanded
-                        : R.drawable.collapsed,
+                        : box.getVisibility() == View.VISIBLE ? R.drawable.arrow_down
+                        : R.drawable.arrow_right,
                 0, 0, 0);
     }
 
