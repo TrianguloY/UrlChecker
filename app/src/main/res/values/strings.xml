@@ -1,7 +1,7 @@
 <resources>
     <!-- main -->
     <string name="app_name">Url checker</string>
-    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to see the available modules and what they do.</string>
+    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to check and configure all available modules.</string>
     <string name="txt_sample">Press the link below to test it:</string>
     <string name="a_modules">Modules</string>
     <string name="a_about">About</string>
@@ -9,19 +9,19 @@
     <!-- about -->
     <string name="txt_about">"App created by TrianguloY.
 
-Programing help from: PabloOQ.
-Translation help from: Tiago Carmo, Ilithy, Idris."</string>
-    <string name="btn_blog">TrianguloY\'s blog:</string>
+Programing contributions from: PabloOQ.
+Translations from: Tiago Carmo, Ilithy, Idris."</string>
+    <string name="btn_blog">"TrianguloY's blog:"</string>
     <string name="btn_shareStore">Share App</string>
 
     <!-- configuration -->
     <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
-    <string name="toast_cantEnable">Can\'t enable the module, missing configuration?</string>
+    <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
     <string name="reset_order">Reset Order</string>
 
     <!-- generic -->
-    <string name="toast_noApp">Can\'t open activity</string>
-    <string name="toast_noBrowser">Can\'t open the browser</string>
+    <string name="toast_noApp">"Can't open application"</string>
+    <string name="toast_noBrowser">"Can't open the browser"</string>
     <string name="title_choose">Choose app</string>
     <string name="toast_invalid">Invalid</string>
     <string name="save">Save</string>
@@ -33,7 +33,7 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>
-    <string name="mPttrn_desc">"Checks for common issues in the url. Built-in rules:
+    <string name="mPttrn_desc">"Checks for common issues in the url. Built-in patterns:
 * Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 * http links, you should use https instead
 * Missing http(s) scheme"</string>
@@ -43,19 +43,19 @@ Translation help from: Tiago Carmo, Ilithy, Idris."</string>
     <string name="mPttrn_noSchemeHttp">Missing http scheme.</string>
     <string name="mPttrn_noSchemeHttps">Missing https scheme.</string>
     <string name="mPttrn_ok">No patterns match</string>
-    <string name="mPttrn_editor">"Here you can edit or add new pattern rules. Format:
-- 'regex': valid java regex that will be matched against the url.
-- 'replacement': if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'.
-- 'automatic': set to true to automatically apply the rule.
-- 'enabled': set to false to disable the rule.
-Note: if you edit the rules, app updates will not modify built-in ones (you can restore them with the reset option)."</string>
+    <string name="mPttrn_editor">"Here you can edit or add new pattern. Format:
+- 'regex': string: valid java regex that will be matched against the url.
+- 'replacement': string: if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'.
+- 'automatic': boolean: set to true to automatically apply the pattern.
+- 'enabled': boolean: set to false to disable the pattern.
+Note: if you edit the patterns, new built-in patterns from app updates will not be added automatically (you can restore them with the reset option)."</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
 - Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard.
-This module can\'t be disabled."</string>
+This module can't be disabled."</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
@@ -63,7 +63,9 @@ This module can\'t be disabled."</string>
     <string name="mOpen_noapps">No apps</string>
 
     <string name="mStatus_name">Status code</string>
-    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code.\nIf the result is a redirection, you will be able to view the destination url. The url is fetched, but not evaluated, so redirections based on javascript won\'t be detected.</string>
+    <string name="mStatus_desc">"By pressing the check button, a petition will be made to retrieve and display the site status code.
+If the result is a redirection, you will be able to view the destination url.
+The url content is obtained (GET), but not evaluated, so redirections based on javascript won't be detected."</string>
     <string name="mStatus_ioerror">Network error while trying to check the url: %s</string>
     <string name="mStatus_error">Internal error while trying to check the url: %s</string>
     <string name="mStatus_check">Check</string>
@@ -79,7 +81,7 @@ This module can\'t be disabled."</string>
         <item>403: Forbidden</item>
         <item>404: Not found</item>
         <item>410: Gone permanently</item>
-        <item>418: That\'s a teapot! :D</item>
+        <item>"418: That's a teapot! :D"</item>
         <item>500: Server error</item>
         <item>503: Temporarily unavailable</item>
         <item>502: Server error</item>
@@ -89,10 +91,12 @@ This module can\'t be disabled."</string>
     <string name="mStatus_redir">Redirect</string>
 
     <string name="mInput_name">Input text</string>
-    <string name="mInput_desc">Displays the current url, which can be edited manually.\nCan\'t be disabled.</string>
+    <string name="mInput_desc">"Displays the current url, which can be edited manually.
+Can't be disabled."</string>
 
     <string name="mVT_name">Scan url</string>
-    <string name="mVT_desc">When this module is enabled you can scan the url using VirusTotal and check the report.\nA personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">"When this module is enabled you can scan the url using VirusTotal and check the report.
+A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us."</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>
@@ -101,17 +105,19 @@ This module can\'t be disabled."</string>
     <string name="mVT_goodUrl">None of the %d engines detected the url (as of date %s)</string>
     <string name="mVT_warningUrl">Warning, %d/%d engines detected the url (as of date %s)</string>
     <string name="mVT_badUrl">Careful! %d/%d engines detected the url (as of date %s)</string>
-    <string name="mVT_connectError">Can\'t connect to VirusTotal. Make sure you have an active internet connection or try again later.</string>
-    <string name="mVT_jsonError">Can\'t connect to VirusTotal. Make sure the api key is valid or try again later.</string>
+    <string name="mVT_connectError">"Can't connect to VirusTotal. Make sure you have an active internet connection or try again later."</string>
+    <string name="mVT_jsonError">"Can't connect to VirusTotal. Make sure the api key is valid or try again later."</string>
 
     <string name="mD_name">Debug/Marker module</string>
-    <string name="mD_desc">If you reorder the modules, new ones added in future updates will be placed before this.\n\nIf you enable this it will display the received intent as uri, useful for developers.</string>
+    <string name="mD_desc">"If you reorder the modules, new ones added in future updates will be placed above this one.
+
+If you enable this it will display the received intent as uri, useful for developers."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
 
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the url is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
 
-    <string name="mClear_name">Clear URL</string>
+    <string name="mClear_name">Clear url</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
     <string name="mClear_tm">Built-in catalog copied from ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
@@ -126,25 +132,28 @@ This module can\'t be disabled."</string>
     <string name="mClear_cleared">- Cleared</string>
     <string name="mClear_noRules">Nothing found</string>
     <string name="mClear_auto">Apply automatically</string>
-    <string name="mClear_toggleReferral">Enable referral marketing (referral parameters won\'t be cleared)</string>
+    <string name="mClear_toggleReferral">"Enable referral marketing (referral parameters won't be cleared)"</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
     <string name="mClear_error">An error occurred while checking rule</string>
     <string name="mClear_updater">Updater</string>
     <string name="mClear_sourceDesc">URL of the JSON file catalog with the rules:</string>
     <string name="mClear_urlHint">Catalog url</string>
-    <string name="mClear_hashDesc">URL of the catalog hash. If omitted, the download will not be checked to see if it was tampered/modified (not recommended)</string>
+    <string name="mClear_hashDesc">URL of the catalog hash file. If omitted, the download will not be checked to see if it was tampered/modified (not recommended)</string>
     <string name="mClear_hashHint">No hash check</string>
     <string name="mClear_updateNow">Update now</string>
     <string name="mClear_autoUpdate">Update periodically</string>
     <string name="mClear_updated">Catalog updated</string>
     <string name="mClear_urlError">Unable to fetch the rules, make sure the url is valid and you have an active connection</string>
     <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
-    <string name="mClear_hashMismatch">Hashes do not match, if you want to skip the check remove the hash url</string>
-    <string name="mClear_restore">Restore ClearUrl paths</string>
-    <string name="mClear_editor">Here you can directly edit the catalog rules. They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.\nNote that any modification to the parent object \'providers\' will be overwritten if the catalog is updated manually or automatically from the updater dialog. To have personal rules set them in a different parent object (any name).</string>
+    <string name="mClear_hashMismatch">Hashes do not match, the file may have been tampered with. If you want to skip the check remove the hash url</string>
+    <string name="mClear_restore">Restore ClearURLs paths</string>
+    <string name="mClear_editor">"Catalog rules: They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.
+Note that any modification to the parent object 'providers' will be overwritten if the catalog is updated automatically or manually from the updater dialog. To have personal rules set them in a different parent object (any name)."</string>
 
     <string name="mRemove_name">Remove Queries</string>
-    <string name="mRemove_desc">With this module you can remove queries from the URL.\nPress the button to remove all queries or press the arrow to remove queries one at a time.\nThanks to PabloOQ for the idea and original implementation!</string>
+    <string name="mRemove_desc">"With this module you can remove queries from the URL.
+Press the button to remove them all or press the arrow to remove one at a time.
+Thanks to PabloOQ for the idea and original implementation!"</string>
     <string name="mRemove_found1">1 query found</string>
     <string name="mRemove_found">%d queries found</string>
     <string name="mRemove_noQueries">No queries</string>
