@@ -1,7 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,6 +16,7 @@ import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -95,34 +94,35 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             remove.setEnabled(false); // disable the remove button
         } else {
             // queries present, notify
-            SpannableStringBuilder text = new SpannableStringBuilder(
-                    parts.getQueries() == 1
-                            ? getActivity().getString(R.string.mRemove_found1) // 1 query
-                            : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
+            info.setText(parts.getQueries() == 1
+                    ? getActivity().getString(R.string.mRemove_found1) // 1 query
+                    : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
             );
-            // mark the text as clickable (but the click does nothing, it is managed when clicked the view)
-            text.setSpan(new ClickableSpan() {
-                @Override
-                public void onClick(View ignored) {
-                }
-            }, 0, text.length(), 0);
-            info.setText(text);
+            AndroidUtils.setAsClickable(info);
             AndroidUtils.setRoundedColor(R.color.warning, info, getActivity());
             remove.setEnabled(true); // enable the remove all button
 
             // for each query, create a button
             for (int i = 0; i < parts.getQueries(); i++) {
-                Button queryRemover = Inflater.inflate(R.layout.button_text, box, getActivity())
-                        .findViewById(R.id.button);
-                queryRemover.setTag(i); // will remove this i query when clicked
-                queryRemover.setOnClickListener(this);
+                View button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
+                button_text.setTag(i); // to mark the query this button/text must act on
+
+                // button that removes the query
+                Button button = button_text.findViewById(R.id.button);
                 String queryName = parts.getQueryName(i);
-                queryRemover.setText(queryName.isEmpty()
+                button.setText(queryName.isEmpty()
                         // if no name
                         ? getActivity().getString(R.string.mRemove_empty)
                         // with name
                         : getActivity().getString(R.string.mRemove_one, queryName)
                 );
+                button.setOnClickListener(this);
+
+                // text that displays the query value and sets it
+                TextView text = button_text.findViewById(R.id.text);
+                text.setText(parts.getQueryValue(i));
+                AndroidUtils.setAsClickable(text);
+                text.setOnClickListener(this);
             }
         }
 
@@ -133,13 +133,21 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         UrlParts parts = new UrlParts(getUrl());
+        Integer tag = (Integer) ((View) v.getParent()).getTag();
 
-        // remove all queries (no tag) or a specific one
-        Integer tag = (Integer) v.getTag();
-        parts.removeQuery(tag == null ? -1 : tag);
+        if (v instanceof Button) {
+            // remove all queries (no tag) or a specific one
+            parts.removeQuery(tag == null ? -1 : tag);
+            // join and set
+            setUrl(parts.getUrl());
+        } else if (v instanceof TextView) {
+            // replace the query url
+            setUrl(parts.getQueryValue(tag));
+        } else {
+            AndroidUtils.assertError("Invalid view " + v.getClass().getName());
+        }
 
-        // join and set
-        setUrl(parts.getUrl());
+
     }
 
     /**
@@ -206,6 +214,20 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
          */
         public String getQueryName(int i) {
             return queries.get(i).split("=")[0];
+        }
+
+        /**
+         * Returns the decoded value of the query
+         */
+        public String getQueryValue(int i) {
+            String[] split = queries.get(i).split("=");
+            if (split.length == 1) return "";
+            try {
+                return URLDecoder.decode(split[1]);
+            } catch (Exception e) {
+                // can't decode, return it directly
+                return split[1];
+            }
         }
 
         /**

@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
@@ -53,5 +56,19 @@ public class AndroidUtils {
      */
     public static void clearRoundedColor(View view) {
         view.setBackgroundDrawable(null);
+    }
+
+    /**
+     * Makes the text of a textview display as a link (which does nothing when clicked)
+     */
+    public static void setAsClickable(TextView textview) {
+        SpannableStringBuilder text = new SpannableStringBuilder(textview.getText());
+        text.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View ignored) {
+                // do nothing
+            }
+        }, 0, text.length(), 0);
+        textview.setText(text);
     }
 }
