@@ -1,3 +1,9 @@
+V 2.5
+- Advanced JSON editor for ClearURLs and Patterns
+- The ClearURLs database can now be updated
+- Added Spanish translation
+- Styles and texts improvements
+
 V 2.4
 - Added French translation. Thanks to Ilithy!
 - Added Ukrainian translation. Thanks to Idris!
