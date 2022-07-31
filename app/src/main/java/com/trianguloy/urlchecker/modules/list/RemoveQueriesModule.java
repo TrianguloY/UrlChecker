@@ -156,8 +156,8 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
     private void updateMoreIndicator() {
         info.setCompoundDrawablesWithIntrinsicBounds(
                 box.getChildCount() == 0 ? 0
-                        : box.getVisibility() == View.VISIBLE ? R.drawable.expanded
-                        : R.drawable.collapsed,
+                        : box.getVisibility() == View.VISIBLE ? R.drawable.arrow_down
+                        : R.drawable.arrow_right,
                 0, 0, 0);
     }
 
