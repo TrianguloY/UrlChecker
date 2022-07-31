@@ -64,7 +64,7 @@
                 android:onClick="onClick"
                 android:padding="@dimen/smallPadding"
                 android:src="@android:drawable/ic_menu_view"
-                android:tint="?android:attr/colorAccent" />
+                android:tint="?attr/colorAccent" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,7 +91,7 @@
                 android:onClick="onClick"
                 android:padding="@dimen/smallPadding"
                 android:src="@android:drawable/ic_menu_view"
-                android:tint="?android:attr/colorAccent" />
+                android:tint="?attr/colorAccent" />
 
             <ImageButton
                 android:id="@+id/btn_sharePlay"
@@ -102,7 +102,7 @@
                 android:onClick="onClick"
                 android:padding="@dimen/smallPadding"
                 android:src="@android:drawable/ic_menu_share"
-                android:tint="?android:attr/colorAccent" />
+                android:tint="?attr/colorAccent" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,7 +129,7 @@
                 android:onClick="onClick"
                 android:padding="@dimen/smallPadding"
                 android:src="@android:drawable/ic_menu_view"
-                android:tint="?android:attr/colorAccent" />
+                android:tint="?attr/colorAccent" />
 
             <ImageButton
                 android:id="@+id/btn_shareDroid"
@@ -140,7 +140,7 @@
                 android:onClick="onClick"
                 android:padding="@dimen/smallPadding"
                 android:src="@android:drawable/ic_menu_share"
-                android:tint="?android:attr/colorAccent" />
+                android:tint="?attr/colorAccent" />
         </LinearLayout>
 
         </LinearLayout>
