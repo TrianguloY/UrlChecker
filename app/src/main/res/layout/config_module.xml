@@ -16,42 +16,53 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableStart="@drawable/collapsed"
-            android:drawableLeft="@drawable/collapsed"
+            android:drawableStart="@drawable/arrow_right"
+            android:drawableLeft="@drawable/arrow_right"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:textSize="18sp"
-            android:textStyle="bold" /><ImageView
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
-        android:background="@android:color/darker_gray"
-        android:paddingBottom="2dp"
-        android:scaleType="centerInside" /><ImageButton
-        android:id="@+id/move_up"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:src="@android:drawable/arrow_up_float" /><ImageButton
-        android:id="@+id/move_down"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:src="@android:drawable/arrow_down_float" /><ImageView
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
-        android:background="@android:color/darker_gray"
-        android:scaleType="centerInside" /><Switch
-        android:id="@+id/enable"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
 
-        </LinearLayout>
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@android:color/darker_gray"
+            android:paddingBottom="2dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/move_up"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:rotation="180"
+            android:src="@drawable/arrow_down" />
+
+        <ImageButton
+            android:id="@+id/move_down"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/arrow_down" />
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@android:color/darker_gray"
+            android:scaleType="centerInside" />
+
+        <Switch
+            android:id="@+id/enable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/box"

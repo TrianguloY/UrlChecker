@@ -127,6 +127,7 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                     }
                 }
             } catch (Exception e) {
+                // invalid pattern? ignore
                 e.printStackTrace();
             }
         }

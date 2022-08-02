@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:minHeight="0dp"
-        android:src="@android:drawable/ic_media_rew" />
+        android:src="@android:drawable/ic_media_rew"
+        android:tint="?attr/colorAccent" />
 
     <ImageButton
         android:id="@+id/back"
@@ -19,7 +20,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:minHeight="0dp"
-        android:src="@android:drawable/ic_media_previous" />
+        android:src="@android:drawable/ic_media_previous"
+        android:tint="?attr/colorAccent" />
 
     <ImageButton
         android:id="@+id/list"
@@ -28,7 +30,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:minHeight="0dp"
-        android:src="@android:drawable/ic_menu_recent_history" />
+        android:src="@android:drawable/ic_menu_recent_history"
+        android:tint="?attr/colorAccent" />
 
     <ImageButton
         android:id="@+id/forward"
@@ -37,7 +40,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:minHeight="0dp"
-        android:src="@android:drawable/ic_media_next" />
+        android:src="@android:drawable/ic_media_next"
+        android:tint="?attr/colorAccent" />
 
     <ImageButton
         android:id="@+id/last"
@@ -46,6 +50,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:minHeight="0dp"
-        android:src="@android:drawable/ic_media_ff" />
+        android:src="@android:drawable/ic_media_ff"
+        android:tint="?attr/colorAccent" />
 
 </LinearLayout>

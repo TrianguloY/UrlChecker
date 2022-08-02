@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="ActivityTheme" parent="android:Theme.DeviceDefault.DayNight">
+        <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:windowLightStatusBar">?android:attr/isLightTheme</item>
         <item name="android:windowLightNavigationBar">?android:attr/isLightTheme</item>
         <item name="android:navigationBarColor">?android:attr/colorBackground</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="DialogThemeDark" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="colorAccent">?android:attr/colorAccent</item>
+    </style>
+    <style name="DialogThemeLight" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="colorAccent">?android:attr/colorAccent</item>
     </style>
 </resources>

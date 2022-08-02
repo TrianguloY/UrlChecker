@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
@@ -87,6 +88,7 @@ public class ConfigActivity extends Activity {
         // configure label
         final TextView title = parent.findViewById(R.id.label);
         title.setText(getString(R.string.dd, getString(module.getName())));
+        AndroidUtils.setAsClickable(title);
 
         // configuration of the module
         final View child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
@@ -96,7 +98,7 @@ public class ConfigActivity extends Activity {
         title.setOnClickListener(v -> {
             boolean checked = child.getVisibility() == View.GONE;
             child.setVisibility(checked ? View.VISIBLE : View.GONE);
-            title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.expanded : R.drawable.collapsed, 0, 0, 0);
+            title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.arrow_down : R.drawable.arrow_right, 0, 0, 0);
         });
         title.performClick(); // initial hide
     }

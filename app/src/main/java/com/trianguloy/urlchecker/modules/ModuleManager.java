@@ -74,12 +74,8 @@ public class ModuleManager {
         // check each module
         for (AModuleData module : modules) {
             if (!module.canBeDisabled() || includeDisabled || getEnabledPrefOfModule(module, cntx).get()) {
-                try {
-                    // enabled, add
-                    availableModules.add(module);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                // enabled, add
+                availableModules.add(module);
             }
         }
 

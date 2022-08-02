@@ -153,6 +153,7 @@ public class MainDialog extends Activity {
         } catch (Exception e) {
             // can't add module
             e.printStackTrace();
+            AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId());
         }
     }
 
