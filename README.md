@@ -8,8 +8,8 @@
 ### Android app made by TrianguloY
 
 [**Url Checker**](https://f-droid.org/en/packages/com.trianguloy.urlchecker/) acts as an intermediary when opening url links, allowing, among other things:  
-to remove trackers, affiliate links, unnecessary elements and many more.  
-Facilitating link sharing and protecting against certain phishing techniques
+to remove trackers, affiliate links, unnecessary elements, facilitating link sharing, protecting against certain phishing techniques and many more...
+and many more.  
 
 <p align="center">
 <img 
