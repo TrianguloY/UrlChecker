@@ -239,7 +239,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent.removeExtra(CTABS_EXTRA);
         }
 
-        getActivity().startActivity(intent);
+        PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
     }
 
     /**
@@ -260,8 +260,11 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         sendIntent.setType("text/plain");
 
         // share intent
-        Intent shareIntent = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
-        getActivity().startActivity(shareIntent);
+        PackageUtilities.startActivity(
+                Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share)),
+                R.string.mOpen_noapps,
+                getActivity()
+        );
     }
 
     /**

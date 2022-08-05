@@ -54,6 +54,6 @@ public class UrlUtilities {
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[0]));
 
         // open
-        cntx.startActivity(chooserIntent);
+        PackageUtilities.startActivity(chooserIntent, R.string.toast_noBrowser, cntx);
     }
 }
