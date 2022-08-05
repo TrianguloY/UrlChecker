@@ -94,7 +94,7 @@ The url content is obtained (GET), but not evaluated, so redirections based on j
     <string name="mInput_desc">"Displays the current url, which can be edited manually.
 Can't be disabled."</string>
 
-    <string name="mVT_name">Scan url</string>
+    <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"When this module is enabled you can scan the url using VirusTotal and check the report.
 A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us."</string>
     <string name="mVT_apiKey">api key</string>
@@ -117,7 +117,7 @@ If you enable this it will display the received intent as uri, useful for develo
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the url is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
 
-    <string name="mClear_name">Clear url</string>
+    <string name="mClear_name">Url Cleaner</string>
     <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
     <string name="mClear_tm">Built-in catalog copied from ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
@@ -150,7 +150,7 @@ If you enable this it will display the received intent as uri, useful for develo
     <string name="mClear_editor">"Catalog rules: They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.
 Note that any modification to the parent object 'providers' will be overwritten if the catalog is updated automatically or manually from the updater dialog. To have personal rules set them in a different parent object (any name)."</string>
 
-    <string name="mRemove_name">Remove Queries</string>
+    <string name="mRemove_name">Queries Remover</string>
     <string name="mRemove_desc">"With this module you can remove queries from the URL.
 Press the button to remove them all or press the arrow to remove one at a time.
 Thanks to PabloOQ for the idea and original implementation!"</string>
