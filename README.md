@@ -1,18 +1,27 @@
-# Url Checker
+<p align="center">
 
-Android app made by TrianguloY
+<img alt="Welcome" src="https://github.com/Ilithy/UrlChecker/blob/5208b7e01f987ed4dba652d99b107843b58515ed/art/presentation%20banner.png"/>
 
-Get it on Google Play:\
-https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker \
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+</p>
 
-Get it on F-Droid:\
-https://f-droid.org/packages/com.trianguloy.urlchecker/ \
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-alt="Get it on F-Droid"
-height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)
+## Url Checker
+
+### Android app made by TrianguloY
+
+Url Checker acts as an intermediary when opening url links, allowing, among other things:  
+to remove trackers, affiliate links, unnecessary elements and many more.  
+Facilitating link sharing and protecting against certain phishing techniques
+
+## Download
+
+[<img 
+    src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+    alt="Get it on Google Play"
+    height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img 
+    src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)
+
 
 ### Contribution
 
@@ -27,7 +36,7 @@ I don't have a coding style, but try to keep it similar to mine, with just a cou
 
 You can use parts of this project in your own ones, or upload modified versions of it AS LONG AS you credit me.
 
-How to credit:
+**How to credit:**
 
-- You must add my nick (TrianguloY) in an 'about' or 'acknowledgments' section visible to the user.
-- You must add a link to this GitHub main page (https://github.com/TrianguloY/UrlChecker) or subpage (if you used a part of the code or an asset) in an 'about' or 'acknowledgments' section visible to the user.
+- You must add my nick [TrianguloY](https://github.com/TrianguloY/UrlChecker) in an `about` or `acknowledgments` section visible to the user.
+- You must add a link to this GitHub main page **https://github.com/TrianguloY/UrlChecker** or subpage (if you used a part of the code or an asset) in an `about` or `acknowledgments` section visible to the user.
