@@ -8,7 +8,7 @@
 
 ### Android app made by TrianguloY
 
-Url Checker acts as an intermediary when opening url links, allowing, among other things:  
+[**Url Checker**](https://f-droid.org/fr/packages/com.trianguloy.urlchecker/) acts as an intermediary when opening url links, allowing, among other things:  
 to remove trackers, affiliate links, unnecessary elements and many more.  
 Facilitating link sharing and protecting against certain phishing techniques
 
@@ -32,8 +32,13 @@ I don't have a coding style, but try to keep it similar to mine, with just a cou
 - Please write comments. No need to write full paragraphs each line, but at least a minor comment for functions and non-obvious blocks of code really help.
 - Try to make small commits, when possible, I'll need to review you changes manually so help me understand it.
 
-### License
+## License
 
+[<img 
+    src="https://github.com/Ilithy/UrlChecker/blob/b1351478891c0428b7b1abb3f672248af8f37395/art/CC_BY_4.0.png"
+    alt="Creative Commons Attribution 4.0 International"
+    height="80">](http://creativecommons.org/licenses/by/4.0/)
+    
 You can use parts of this project in your own ones, or upload modified versions of it AS LONG AS you credit me.
 
 **How to credit:**
