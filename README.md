@@ -12,6 +12,21 @@
 to remove trackers, affiliate links, unnecessary elements and many more.  
 Facilitating link sharing and protecting against certain phishing techniques
 
+<p align="center">
+<img 
+    src="art/0.png" 
+    height="400"> 
+<img 
+    src="art/1.png" 
+    height="400"> 
+<img 
+    src="art/2.png" 
+    height="400"> 
+<img 
+    src="art/3.png" 
+    height="400">
+</p>
+
 ## Download
 
 [<img 
