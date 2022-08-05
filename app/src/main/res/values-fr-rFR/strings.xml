@@ -94,7 +94,7 @@ Le contenu de l'url est obtenu (GET), mais pas évaluée, les redirections basé
     <string name="mInput_desc">"Affiche l'url actuelle, qui peut être modifiée manuellement.
 Ne peut être désactivé."</string>
 
-    <string name="mVT_name">VirusTotal</string>
+    <string name="mVT_name">Scanneur d\'Url</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.
 Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us."</string>
     <string name="mVT_apiKey">Clé d\'api</string>
@@ -117,7 +117,7 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mHist_name">Historique</string>
     <string name="mHist_desc">Lorsque l\'url est modifiée, manuellement ou par d\'autres modules, ceci vous permet de visualiser et d\'annuler les modifications.</string>
 
-    <string name="mClear_name">Nettoyer l\'url</string>
+    <string name="mClear_name">Nettoyeur d\'Url</string>
     <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
     <string name="mClear_tm">Catalogue intégré copié depuis ClearURL: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Appliquer</string>
@@ -150,7 +150,7 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mClear_editor">"Règles du catalogue: elles doivent suivre le format de https://docs.clearurls.xyz/latest/specs/rules/.
 Notez que toute modification apportée à l'objet parent 'fournisseurs' sera écrasée si le catalogue est mis à jour automatiquement ou manuellement depuis la boîte de dialogue de mise à jour. Pour que des règles personnelles soient définies dans un objet parent différent (n'importe quel nom)."</string>
 
-    <string name="mRemove_name">Retirer des requêtes</string>
+    <string name="mRemove_name">Suppresseur de requêtes</string>
     <string name="mRemove_desc">"Avec ce module, vous pouvez supprimer des requêtes d'une URL.
 Appuyez sur le bouton pour les supprimer toute ou appuyez sur la flèche pour les supprimer une par une.
 Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
