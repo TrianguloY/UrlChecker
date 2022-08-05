@@ -1,7 +1,6 @@
 <p align="center">
-
-<img alt="Welcome" src="https://github.com/Ilithy/UrlChecker/blob/5208b7e01f987ed4dba652d99b107843b58515ed/art/presentation%20banner.png"/>
-
+<img 
+    src="art/presentation%20banner.png">
 </p>
 
 ## Url Checker
