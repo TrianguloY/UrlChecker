@@ -21,16 +21,19 @@
     src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
     alt="Get it on F-Droid"
     height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)  
-<details><summary><h4>links</h4></summary>
+<!-- <details><summary><h4>links</h4></summary>
 
   - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
   - FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
-</details>
+</details> -->
+
+<div align="center">
     
-[**Url Checker**](https://f-droid.org/en/packages/com.trianguloy.urlchecker/) acts as an intermediary when opening url links, allowing, among other things:  
+**Url Checker** acts as an intermediary when opening url links, allowing, among other things:  
 to remove trackers, affiliate links, unnecessary elements,  
 facilitating link sharing, protecting against certain phishing techniques and many more...
-
+    
+</div>
 
 <p align="center">
 <img 
