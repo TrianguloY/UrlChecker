@@ -5,12 +5,6 @@
 
 <h1 align="center">Url Checker</h1>
 <h3 align="center">Android app made by TrianguloY</h3>
-<h3 align="left">Download</h3>
-<details><summary><h4>links</h4></summary>
-
-  - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
-  - FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
-</details>
 
 [<img
     src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
@@ -18,7 +12,12 @@
     height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img 
     src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
     alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)
+    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)  
+<details><summary><h4>links</h4></summary>
+
+  - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
+  - FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
+</details>
     
 [**Url Checker**](https://f-droid.org/en/packages/com.trianguloy.urlchecker/) acts as an intermediary when opening url links, allowing, among other things:  
 to remove trackers, affiliate links, unnecessary elements,  
