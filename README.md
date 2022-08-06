@@ -14,13 +14,15 @@
 
 </div>
 
+<div align="center">
+
 [<img
     src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
     alt="Get it on Google Play"
     height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img 
     src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
     alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)  
+    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)  </div>
 <!-- <details><summary><h4>links</h4></summary>
 
   - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
