@@ -55,7 +55,7 @@ Feel free to **suggest changes**, create [**issues**](https://github.com/Triangu
 
 I don't have a coding style, but try to keep it similar to mine, with just a couple notes:
 
-- Please write comments. No need to write full paragraphs each line, but at least a minor comment for functions and non-obvious blocks of code really help.
+- Please write comments. No need to write full paragraphs for each line, but at least a minor comment for functions, **non-obvious blocks of code really help.**
 - Try to make small commits, when possible, I'll need to review you changes manually so help me understand it.
 
 ## License
