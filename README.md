@@ -40,7 +40,8 @@ facilitating link sharing, protecting against certain phishing techniques and ma
 
 ### Contribution
 
-All help is welcomed! Feel free to suggest changes, create issues or even pull requests (from a simple typo fix to a full new module or even more!)
+All help is greatly welcomed!  
+Feel free to **suggest changes**, create [**issues**](https://github.com/TrianguloY/UrlChecker/issues/new) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_
 
 I don't have a coding style, but try to keep it similar to mine, with just a couple notes:
 
