@@ -1,6 +1,6 @@
 <div align="center">
 <img 
-    src="art/presentation%20banner.png">
+    src="https://github.com/Ilithy/UrlChecker/blob/54a22e694a0133038776dc588c8b4ae5a30515a2/app/src/main/play/listings/en-US/graphics/feature-graphic/presentation%20banner.png">
 
 <h1>Url Checker</h1>
 <h3>Android app made by TrianguloY</h3></div>
@@ -34,16 +34,16 @@ facilitating link sharing, protecting against certain phishing techniques and ma
 
 <p align="center">
 <img 
-    src="art/0.png" 
+    src="https://github.com/Ilithy/UrlChecker/blob/bddf6b922ae8853b3eeebbd5fded352e0ed38236/app/src/main/play/listings/en-US/graphics/phone-screenshots/0.png" 
     height="400"> 
 <img 
-    src="art/1.png" 
+    src="https://github.com/Ilithy/UrlChecker/blob/bddf6b922ae8853b3eeebbd5fded352e0ed38236/app/src/main/play/listings/en-US/graphics/phone-screenshots/1.png" 
     height="400"> 
 <img 
-    src="art/2.png" 
+    src="https://github.com/Ilithy/UrlChecker/blob/bddf6b922ae8853b3eeebbd5fded352e0ed38236/app/src/main/play/listings/en-US/graphics/phone-screenshots/2.png" 
     height="400"> 
 <img 
-    src="art/3.png" 
+    src="https://github.com/Ilithy/UrlChecker/blob/bddf6b922ae8853b3eeebbd5fded352e0ed38236/app/src/main/play/listings/en-US/graphics/phone-screenshots/3.png" 
     height="400">
 </p>
 
