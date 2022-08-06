@@ -1,10 +1,17 @@
-<p align="center">
+<div align="center">
 <img 
     src="art/presentation%20banner.png">
-</p>
 
-<h1 align="center">Url Checker</h1>
-<h3 align="center">Android app made by TrianguloY</h3>
+<h1>Url Checker</h1>
+<h3>Android app made by TrianguloY</h3></div>
+
+<div align="center">
+
+![maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
+[![Maintainer](https://img.shields.io/badge/maintainer-TrianguloY-royalblue)](https://github.com/TrianguloY/)
+[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
+
+</div>
 
 [<img
     src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
