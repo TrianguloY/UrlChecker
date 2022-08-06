@@ -3,10 +3,23 @@
     src="art/presentation%20banner.png">
 </p>
 
-## Url Checker
+<h1 align="center">Url Checker</h1>
+<h3 align="center">Android app made by TrianguloY</h3>
+<h3 align="left">Download</h3>
+<details><summary><h4>links</h4></summary>
 
-### Android app made by TrianguloY
+  - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
+  - FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
+</details>
 
+[<img
+    src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+    alt="Get it on Google Play"
+    height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img 
+    src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)
+    
 [**Url Checker**](https://f-droid.org/en/packages/com.trianguloy.urlchecker/) acts as an intermediary when opening url links, allowing, among other things:  
 to remove trackers, affiliate links, unnecessary elements,  
 facilitating link sharing, protecting against certain phishing techniques and many more...
@@ -27,18 +40,8 @@ facilitating link sharing, protecting against certain phishing techniques and ma
     height="400">
 </p>
 
-## Download
 
-[<img 
-    src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-    alt="Get it on Google Play"
-    height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img 
-    src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)
-
-
-### Contribution
+## Contribution
 
 All help is greatly welcomed!  
 Feel free to **suggest changes**, create [**issues**](https://github.com/TrianguloY/UrlChecker/issues/new) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_
@@ -51,7 +54,7 @@ I don't have a coding style, but try to keep it similar to mine, with just a cou
 ## License
 
 [<img 
-    src="https://github.com/Ilithy/UrlChecker/blob/b1351478891c0428b7b1abb3f672248af8f37395/art/CC_BY_4.0.png"
+    src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png"
     alt="Creative Commons Attribution 4.0 International"
     height="80">](http://creativecommons.org/licenses/by/4.0/)
     
