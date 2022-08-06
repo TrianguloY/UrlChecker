@@ -1,6 +1,6 @@
 <div align="center">
 <img 
-    src="https://github.com/Ilithy/UrlChecker/blob/54a22e694a0133038776dc588c8b4ae5a30515a2/app/src/main/play/listings/en-US/graphics/feature-graphic/presentation%20banner.png">
+    src="https://github.com/Ilithy/UrlChecker/blob/1290169cd81dfcdea6c69662875be5a8e55d1932/app/src/main/play/listings/en-US/graphics/feature-graphic/Presentation.png">
 
 <h1>Url Checker</h1>
 <h3>Android app made by TrianguloY</h3></div>
