@@ -9,7 +9,7 @@
 
 ![maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 [![Maintainer](https://img.shields.io/badge/maintainer-TrianguloY-royalblue)](https://github.com/TrianguloY/)
-[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
+[![made-with-java](https://img.shields.io/badge/Made%20with-Java-1f425f.svg)](https://www.java.com/en/)
 [![patreon](https://img.shields.io/badge/patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
