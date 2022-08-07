@@ -51,6 +51,7 @@ facilitating link sharing, protecting against certain phishing techniques and ma
     src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/3.png" 
     height="400">
 </p>
+</div>
 
 
 ## Contribution
