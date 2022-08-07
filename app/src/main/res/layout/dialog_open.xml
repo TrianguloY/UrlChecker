@@ -34,7 +34,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/open_right"
             android:paddingRight="1dp"
-            android:src="@drawable/arrow_down" />
+            android:src="@drawable/arrow_down"
+            android:tint="?attr/colorAccent" />
 
     </LinearLayout>
 

@@ -18,6 +18,7 @@
             android:layout_weight="1"
             android:drawableStart="@drawable/arrow_right"
             android:drawableLeft="@drawable/arrow_right"
+            android:drawableTint="?attr/colorAccent"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -39,7 +40,8 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:rotation="180"
-            android:src="@drawable/arrow_down" />
+            android:src="@drawable/arrow_down"
+            android:tint="?attr/colorAccent" />
 
         <ImageButton
             android:id="@+id/move_down"
@@ -47,7 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:src="@drawable/arrow_down" />
+            android:src="@drawable/arrow_down"
+            android:tint="?attr/colorAccent" />
 
         <ImageView
             android:layout_width="2dp"
