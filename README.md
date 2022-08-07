@@ -2,6 +2,7 @@
 <div align="center">
 
 <img src="./app/src/main/play/listings/en-US/graphics/feature-graphic/featured.png">
+<!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
 <h1>Url Checker</h1>
 <h3>Android app made by TrianguloY</h3>
