@@ -7,9 +7,9 @@
 
 <div align="center">
 
-![maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
-[![Maintainer](https://img.shields.io/badge/maintainer-TrianguloY-royalblue)](https://github.com/TrianguloY/)
-[![made-with-java](https://img.shields.io/badge/Made%20with-Java-1f425f.svg)](https://www.java.com/en/)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/TrianguloY/UrlChecker?color=white&label=Github%20version)
+![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-droid%20version)
+![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DAndroid%2520version%26m%3D%24version)
 [![patreon](https://img.shields.io/badge/patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
