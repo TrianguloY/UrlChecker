@@ -12,10 +12,10 @@
 <!-- ---------- Badges ---------- -->
 <div align="center">
 
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/TrianguloY/UrlChecker?color=white&label=Github%20version)
-![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-droid%20version)
-![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3D%24version)
-[![patreon](https://img.shields.io/badge/patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/TrianguloY/UrlChecker?color=white&label=Github%20version&sort=semver)](https://github.com/TrianguloY/UrlChecker)
+[![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-Droid%20version)](https://f-droid.org/packages/com.trianguloy.urlchecker)
+[![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+[![Patreon](https://img.shields.io/badge/Patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
 
@@ -26,7 +26,7 @@
 alt="Get it on Google Play"
 height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 alt="Get it on F-Droid"
-height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker/)  </div>
+height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker)  </div>
 <!-- <details><summary><h4>links</h4></summary>
 
   - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
@@ -78,7 +78,7 @@ I don't have a coding style, but try to keep it similar to mine, with just a cou
 
 [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png"
 alt="Creative Commons Attribution 4.0 International"
-height="80">](http://creativecommons.org/licenses/by/4.0/)
+height="40">](http://creativecommons.org/licenses/by/4.0/)
 
 </div>
 
