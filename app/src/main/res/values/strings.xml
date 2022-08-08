@@ -37,7 +37,8 @@ Translations: Tiago Carmo, Ilithy, Idris, Metezd."</string>
 * Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 * http links, you should use https instead
 * Missing http(s) scheme"</string>
-    <string name="mPttrn_fix">Fix</string>
+    <string name="mPttrn_fix">Apply</string>
+    <string name="mPttrn_fixed">Applied - %s</string>
     <string name="mPttrn_ascii">Warning! Non ascii characters found</string>
     <string name="mPttrn_http">Http link, consider using https</string>
     <string name="mPttrn_noSchemeHttp">Missing http scheme.</string>

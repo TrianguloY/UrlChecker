@@ -104,7 +104,7 @@ class ClearUrlConfig extends AModuleConfig {
 
 class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
-    public static final String CLEARED = "cleared";
+    public static final String CLEARED = "clearUrl.cleared";
 
     private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
     private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
