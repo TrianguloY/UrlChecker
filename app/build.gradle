@@ -15,6 +15,11 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        alpha {
+            applicationIdSuffix '.alpha'
+            versionNameSuffix '-ALPHA'
+            signingConfig signingConfigs.debug
+        }
     }
 }
 

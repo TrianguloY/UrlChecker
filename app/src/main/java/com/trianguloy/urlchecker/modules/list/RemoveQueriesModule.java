@@ -90,7 +90,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         if (parts.getQueries() == 0) {
             // no queries present, nothing to notify
             info.setText(R.string.mRemove_noQueries);
-            AndroidUtils.clearRoundedColor(info);
             remove.setEnabled(false); // disable the remove button
         } else {
             // queries present, notify
@@ -99,7 +98,6 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
                     : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
             );
             AndroidUtils.setAsClickable(info);
-            AndroidUtils.setRoundedColor(R.color.warning, info, getActivity());
             remove.setEnabled(true); // enable the remove all button
 
             // for each query, create a button

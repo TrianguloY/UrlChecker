@@ -1,7 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.app.Activity;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -80,8 +79,9 @@ class PatternConfig extends AModuleConfig implements View.OnClickListener {
 }
 
 class PatternDialog extends AModuleDialog implements View.OnClickListener {
+    public static final String APPLIED = "pattern.applied";
 
-    private TextView txt_pattern;
+    private TextView txt_noPatterns;
     private LinearLayout box;
 
     private final PatternCatalog catalog;
@@ -98,71 +98,115 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
 
     @Override
     public void onInitialize(View views) {
-        txt_pattern = views.findViewById(R.id.pattern);
+        txt_noPatterns = views.findViewById(R.id.pattern);
         box = views.findViewById(R.id.box);
     }
 
     @Override
     public void onNewUrl(UrlData urlData) {
-        List<Pair<String, String>> messages = new ArrayList<>();
+        // init
+        List<Message> messages = new ArrayList<>();
         String url = urlData.url;
 
-        // for each pattern
+        // check each pattern
         JSONObject patterns = catalog.getCatalog();
         for (String pattern : JavaUtilities.toList(patterns.keys())) {
             try {
                 JSONObject data = patterns.optJSONObject(pattern);
+                Message message = new Message(pattern);
+
+                // enabled?
                 if (data == null) continue;
                 if (!data.optBoolean("enabled", true)) continue;
+
+                // applied?
+                message.applied = urlData.getData(APPLIED + pattern) != null;
+
+                // check regexp
                 String regex = data.optString("regex", "(?!)");
-                if (url.matches(regex)) {
+                if (url.matches(".*" + regex + ".*")) {
+                    message.matches = true;
+                    // check replacements
                     String replacement = data.has("replacement") ? data.optString("replacement") : null;
                     if (replacement != null) {
-                        replacement = url.replaceAll(regex, replacement);
-                        if (data.optBoolean("automatic")
-                                && setUrl(replacement)) {
-                            return;
-                        }
-                        messages.add(Pair.create(pattern, replacement));
+                        message.newUrl = url.replaceAll(regex, replacement);
                     }
                 }
+
+                // automatic?
+                message.automatic = data.optBoolean("automatic");
+
+                // add
+                if (message.applied || message.matches) messages.add(message);
+
             } catch (Exception e) {
                 // invalid pattern? ignore
                 e.printStackTrace();
             }
         }
 
+        // visualize
         box.removeAllViews();
         if (messages.isEmpty()) {
             // no messages, all good
-            txt_pattern.setVisibility(View.VISIBLE);
+            txt_noPatterns.setVisibility(View.VISIBLE);
         } else {
             // messages to show, set them
-            txt_pattern.setVisibility(View.GONE);
+            txt_noPatterns.setVisibility(View.GONE);
 
-            for (Pair<String, String> pair : messages) {
-                String label = pair.first;
-                String newUrl = pair.second;
+            for (Message message : messages) {
+                // either matches and/or applied is true
                 View row = Inflater.inflate(R.layout.button_text, box, getActivity());
 
                 // text
                 TextView text = row.findViewById(R.id.text);
-                text.setText(label);
-                AndroidUtils.setRoundedColor(R.color.warning, text, getActivity());
+                text.setText(message.applied
+                        ? getActivity().getString(R.string.mPttrn_fixed, message.pattern)
+                        : message.pattern
+                );
+                AndroidUtils.setRoundedColor(message.matches ? R.color.warning : R.color.good, text, getActivity());
 
                 // button
                 Button fix = row.findViewById(R.id.button);
                 fix.setText(R.string.mPttrn_fix);
-                fix.setEnabled(newUrl != null);
-                fix.setTag(newUrl); // will set this when clicked
+                fix.setEnabled(message.newUrl != null);
+                fix.setTag(new String[]{message.pattern, message.newUrl}); // data for the onCLick
                 fix.setOnClickListener(this);
+
+                // autoclick
+                if (message.automatic && onClick(message.pattern, message.newUrl)) {
+                    return;
+                }
             }
         }
     }
 
     @Override
     public void onClick(View view) {
-        Object tag = view.getTag();
-        if (tag != null) setUrl(tag.toString());
+        String[] tag = (String[]) view.getTag();
+        if (tag != null) onClick(tag[0], tag[1]);
+    }
+
+    /**
+     * applies a pattern
+     */
+    private boolean onClick(String pattern, String url) {
+        if (url == null) return false;
+        return setUrl(new UrlData(url).putData(APPLIED + pattern, APPLIED));
+    }
+
+    /**
+     * DataClass for pattern messages
+     */
+    private static class Message {
+        final String pattern;
+        public boolean automatic;
+        boolean applied;
+        public boolean matches;
+        String newUrl;
+
+        public Message(String pattern) {
+            this.pattern = pattern;
+        }
     }
 }

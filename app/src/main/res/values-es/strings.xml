@@ -9,8 +9,8 @@
     <!-- about -->
     <string name="txt_about">"Aplicación creada por TrianguloY.
 
-Contribuciones de programación de: PabloOQ.
-Traducciones de: Tiago Carmo, Ilithy, Idris."</string>
+Contribuciones de programación: PabloOQ.
+Traducciones: Tiago Carmo, Ilithy, Idris, Metezd."</string>
     <string name="btn_blog">Blog de TrianguloY:</string>
     <string name="btn_shareStore">Compartir aplicación</string>
 
@@ -94,7 +94,7 @@ El contenido de la url se pide (GET), pero no se evalúa, con lo que redireccion
     <string name="mInput_desc">"Muestra la url actual, que puede ser modificada manualmente.
 No se puede deshabilitar."</string>
 
-    <string name="mVT_name">Escanear url</string>
+    <string name="mVT_name">Escáner</string>
     <string name="mVT_desc">"Cuando este módulo se habilita puedes escanear la url mediante VirusTotal y comprobar el informe.
 Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us."</string>
     <string name="mVT_apiKey">Clave de la API</string>
@@ -117,7 +117,7 @@ Si lo habilitas, mostrará el intent recibido como uri, útil para desarrollador
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la url cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
 
-    <string name="mClear_name">Limpiar url</string>
+    <string name="mClear_name">Limpiador</string>
     <string name="mClear_desc">Este módulo elimina parámetros innecesarios de la url como seguimiento o de referencia. También detecta redirecciones comúnes sin necesidad de pedirla al servidor.</string>
     <string name="mClear_tm">Catálogo incluido copiado de ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Aplicar</string>
@@ -150,7 +150,7 @@ Si lo habilitas, mostrará el intent recibido como uri, útil para desarrollador
     <string name="mClear_editor">"Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/.
 Ten en cuenta que las modificaciones del objeto principal 'providers' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre)"</string>
 
-    <string name="mRemove_name">Eliminar parámetros</string>
+    <string name="mRemove_name">Eliminador de parámetros</string>
     <string name="mRemove_desc">"Con este módulo puedes eliminar los parámetros de la URL.
 Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
 ¡Gracias a PabloOQ por la idea e implementación original!"</string>
