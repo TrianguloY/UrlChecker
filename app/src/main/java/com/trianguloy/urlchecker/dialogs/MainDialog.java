@@ -43,15 +43,16 @@ public class MainDialog extends Activity {
      * A module (null if first change) want to set a new url. Return true if set, false if not.
      */
     public boolean onNewUrl(UrlData urlData, AModuleDialog providerModule) {
-        // test and mark recursion
         if (updating > MAX_UPDATES) return false;
+
+        // change url (merge if not the first)
+        if (updating != 0) urlData.mergeData(this.urlData);
+        this.urlData = urlData;
+
+        // test and mark recursion
         if (urlData.disableUpdates) updating = MAX_UPDATES;
         updating++;
         int updating_current = updating;
-
-        // change url
-        if (updating == 1) urlData.mergeData(this.urlData);
-        this.urlData = urlData;
 
         // and notify the other modules
         for (AModuleDialog module : modules) {
