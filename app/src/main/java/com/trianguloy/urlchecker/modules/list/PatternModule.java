@@ -115,7 +115,7 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                 if (data == null) continue;
                 if (!data.optBoolean("enabled", true)) continue;
                 String regex = data.optString("regex", "(?!)");
-                if (url.matches(regex)) {
+                if (url.matches(".*" + regex + ".*")) {
                     String replacement = data.has("replacement") ? data.optString("replacement") : null;
                     if (replacement != null) {
                         replacement = url.replaceAll(regex, replacement);
