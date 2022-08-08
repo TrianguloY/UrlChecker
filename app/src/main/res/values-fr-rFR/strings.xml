@@ -116,10 +116,10 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
 
     <string name="mHist_name">Historique</string>
-    <string name="mHist_desc">Lorsque l\'url est modifiée, manuellement ou par d\'autres modules, ceci vous permet de visualiser et d\'annuler les modifications.</string>
+    <string name="mHist_desc">"Lorsque l'url est modifiée, manuellement ou par d'autres modules, ceci vous permet de visualiser et d'annuler les modifications."</string>
 
     <string name="mClear_name">Nettoyeur</string>
-    <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
+    <string name="mClear_desc">"Ce module supprime les paramètres de suivi, d'affiliation ainsi que d'autres paramètres inutiles de l'url. Il permet également des redirections d'URL hors-ligne courantes."</string>
     <string name="mClear_tm">Catalogue intégré copié depuis ClearURL: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Appliquer</string>
     <string name="mClear_matches">Correspond à %s</string>
@@ -127,13 +127,13 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mClear_exception">- ignoré en raison de l\'exception %s</string>
     <string name="mClear_rule">- paramètre inutile détecté</string>
     <string name="mClear_rawRule">- contenu inutile détecté</string>
-    <string name="mClear_referral">- aiguillage détecté</string>
+    <string name="mClear_referral">- affiliation détecté</string>
     <string name="mClear_forcedRedirection">- redirection forcée détectée</string>
     <string name="mClear_redirection">- redirection détectée</string>
     <string name="mClear_cleared">- Effacé</string>
     <string name="mClear_noRules">Rien n\'a été trouvé</string>
     <string name="mClear_auto">Appliquer automatiquement</string>
-    <string name="mClear_toggleReferral">"Activer le marketing de parrainage (les paramètres de réferences ne seront pas effacés)"</string>
+    <string name="mClear_toggleReferral">"Activer le marketing de parrainage (les paramètres d'affiliations ne seront pas effacés)"</string>
     <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
     <string name="mClear_error">Une erreur s\'est produite lors de la vérification des règles</string>
     <string name="mClear_updater">Mise à jour</string>
