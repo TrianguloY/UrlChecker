@@ -37,7 +37,8 @@ Traduction: Tiago Carmo, Ilithy, Idris, Metezd."</string>
 * Caractères non-ascii comme les lettres grecques. Cela peut être utilisé pour l'hameçonnage: googĺe.com à la place de google.com
 * liens http, vous devriez utiliser https à la place
 * Schéma http(s) manquant"</string>
-    <string name="mPttrn_fix">Corriger</string>
+    <string name="mPttrn_fix">Appliquer</string>
+    <string name="mPttrn_fixed">Appliqué - %s</string>
     <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés "%s"</string>
     <string name="mPttrn_http">Lien http, pensez à utiliser l\'https</string>
     <string name="mPttrn_noSchemeHttp">Schéma http manquant.</string>
@@ -94,7 +95,7 @@ Le contenu de l'url est obtenu (GET), mais pas évaluée, les redirections basé
     <string name="mInput_desc">"Affiche l'url actuelle, qui peut être modifiée manuellement.
 Ne peut être désactivé."</string>
 
-    <string name="mVT_name">Scanneur d\'Url</string>
+    <string name="mVT_name">Scanneur</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.
 Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us."</string>
     <string name="mVT_apiKey">Clé d\'api</string>
@@ -117,7 +118,7 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mHist_name">Historique</string>
     <string name="mHist_desc">Lorsque l\'url est modifiée, manuellement ou par d\'autres modules, ceci vous permet de visualiser et d\'annuler les modifications.</string>
 
-    <string name="mClear_name">Nettoyeur d\'Url</string>
+    <string name="mClear_name">Nettoyeur</string>
     <string name="mClear_desc">Ce module supprime le suivi, le référent et d\'autres paramètres inutiles de l\'url. Il permet également des redirections d\'URL hors ligne courantes.</string>
     <string name="mClear_tm">Catalogue intégré copié depuis ClearURL: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Appliquer</string>
