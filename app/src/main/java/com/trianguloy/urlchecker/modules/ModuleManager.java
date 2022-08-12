@@ -44,7 +44,7 @@ public class ModuleManager {
      * User defined order of the modules
      */
     public static GenericPref.LstStr ORDER_PREF() {
-        return new GenericPref.LstStr("order", Collections.emptyList());
+        return new GenericPref.LstStr("order", ";", Collections.emptyList());
     }
 
 

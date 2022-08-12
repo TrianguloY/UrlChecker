@@ -174,10 +174,11 @@ public abstract class GenericPref<T> {
      */
     static public class LstStr extends GenericPref<List<String>> {
 
-        static final String SEPARATOR = ";";
+        final String separator;
 
-        public LstStr(String prefName, List<String> defaultValue) {
+        public LstStr(String prefName, String separator, List<String> defaultValue) {
             super(prefName, defaultValue);
+            this.separator = separator;
         }
 
         @Override
@@ -190,18 +191,18 @@ public abstract class GenericPref<T> {
             prefs.edit().putString(prefName, join(value)).apply();
         }
 
-        private static String join(List<String> value) {
+        private String join(List<String> value) {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < value.size(); i++) {
-                if (i != 0) sb.append(SEPARATOR);
+                if (i != 0) sb.append(separator);
                 sb.append(value.get(i));
             }
             return sb.toString();
         }
 
-        private static List<String> split(String value) {
+        private List<String> split(String value) {
             ArrayList<String> list = new ArrayList<>();
-            if (value != null) list.addAll(Arrays.asList(value.split(SEPARATOR)));
+            if (value != null) list.addAll(Arrays.asList(value.split(separator)));
             return list;
         }
     }
