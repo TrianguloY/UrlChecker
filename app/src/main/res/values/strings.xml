@@ -26,6 +26,8 @@ Translations: Tiago Carmo, Ilithy, Idris, Metezd."</string>
     <string name="toast_invalid">Invalid</string>
     <string name="save">Save</string>
     <string name="reset">Reset</string>
+    <string name="close">Close</string>
+    <string name="clear">Clear</string>
 
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
@@ -161,5 +163,13 @@ Thanks to PabloOQ for the idea and original implementation!"</string>
     <string name="mRemove_all">Remove all</string>
     <string name="mRemove_one">Remove %s</string>
     <string name="mRemove_empty">Remove empty</string>
+
+    <string name="mLog_name">Log</string>
+    <string name="mLog_desc">"This module registers all urls that appear, it is recommended that it is the first module in the list (otherwise automatic redirections may not be logged).
+You can view or clear the log here, no visual indication will appear on the main dialog.
+To disable logging, just disable the module."</string>
+    <string name="mLog_view">View log</string>
+    <string name="mLog_edit">Edit log</string>
+    <string name="mLog_empty">No data</string>
 
 </resources>

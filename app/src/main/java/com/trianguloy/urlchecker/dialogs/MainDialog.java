@@ -118,7 +118,6 @@ public class MainDialog extends Activity {
         // add
         final List<AModuleData> middleModules = ModuleManager.getModules(false, this);
         for (AModuleData module : middleModules) {
-            if (ll_mods.getChildCount() != 0) addSeparator();
             initializeModule(module);
         }
     }
@@ -132,24 +131,35 @@ public class MainDialog extends Activity {
         try {
             // enabled, add
             AModuleDialog module = moduleData.getDialog(this);
+            int layoutId = module.getLayoutId();
 
-            ViewGroup parent;
-            // set module block
-            if (moduleData.canBeDisabled()) {
-                // init decorations
-                View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
-                final TextView title = block.findViewById(R.id.title);
-                title.setText(getString(R.string.dd, getString(moduleData.getName())));
-                parent = block.findViewById(R.id.mod);
-            } else {
-                // non-disable modules are considered internal and won't show decorations
-                parent = ll_mods;
+            View child = null;
+
+            // set content if required
+            if (layoutId >= 0) {
+
+                // separator if necessary
+                if (ll_mods.getChildCount() != 0) addSeparator();
+
+                ViewGroup parent;
+                // set module block
+                if (moduleData.canBeDisabled()) {
+                    // init decorations
+                    View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
+                    final TextView title = block.findViewById(R.id.title);
+                    title.setText(getString(R.string.dd, getString(moduleData.getName())));
+                    parent = block.findViewById(R.id.mod);
+                } else {
+                    // non-disable modules are considered internal and won't show decorations
+                    parent = ll_mods;
+                }
+
+                // set module content
+                child = Inflater.inflate(layoutId, parent, this);
             }
 
-            // set module content
-            View child = Inflater.inflate(module.getLayoutId(), parent, this);
+            // init
             module.onInitialize(child);
-
             modules.add(module);
         } catch (Exception e) {
             // can't add module

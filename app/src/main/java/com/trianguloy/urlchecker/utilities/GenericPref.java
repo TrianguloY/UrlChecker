@@ -147,6 +147,13 @@ public abstract class GenericPref<T> {
         }
 
         /**
+         * Adds the value to the existing content
+         */
+        public void add(String value) {
+            set(get() + value);
+        }
+
+        /**
          * This editText will be set to the pref value, and when the editText changes the value will too
          */
         public void attachToEditText(EditText editText) {
