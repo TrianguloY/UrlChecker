@@ -26,6 +26,8 @@ Traduction: Tiago Carmo, Ilithy, Idris, Metezd."</string>
     <string name="toast_invalid">Invalide</string>
     <string name="save">Sauvegarder</string>
     <string name="reset">Réinitialiser</string>
+    <string name="close">Fermer</string>
+    <string name="clear">Effacer</string>
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
     <string name="json_edit">Éditeur avancé</string>
@@ -161,5 +163,13 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
     <string name="mRemove_all">Tout retirer</string>
     <string name="mRemove_one">Retirer %s</string>
     <string name="mRemove_empty">Retirer les vides</string>
+
+    <string name="mLog_name">Registre</string>
+    <string name="mLog_desc">"Ce module enregistre toutes les urls qui apparaissent, il est recommandé qu'il soit le premier module de la liste (dans le cas contraire les redirections automatiques risquent de ne pas être journalisées).
+Vous pouvez afficher ou effacer le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
+Pour désactiver la journalisation, désactivez simplement le module."</string>
+    <string name="mLog_view">Consulter le registre</string>
+    <string name="mLog_edit">Éditer le registre</string>
+    <string name="mLog_empty">Aucune données</string>
 
 </resources>
