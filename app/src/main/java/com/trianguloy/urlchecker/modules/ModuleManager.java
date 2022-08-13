@@ -5,6 +5,7 @@ import android.content.Context;
 import com.trianguloy.urlchecker.modules.list.ClearUrlModule;
 import com.trianguloy.urlchecker.modules.list.DebugModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
+import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.RemoveQueriesModule;
@@ -26,6 +27,7 @@ public class ModuleManager {
 
     static {
         // TODO: auto-load with reflection?
+        modules.add(new LogModule());
         modules.add(new TextInputModule());
 
         modules.add(new HistoryModule());
@@ -44,7 +46,7 @@ public class ModuleManager {
      * User defined order of the modules
      */
     public static GenericPref.LstStr ORDER_PREF() {
-        return new GenericPref.LstStr("order", Collections.emptyList());
+        return new GenericPref.LstStr("order", ";", Collections.emptyList());
     }
 
 

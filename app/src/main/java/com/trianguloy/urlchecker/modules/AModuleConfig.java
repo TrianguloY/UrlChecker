@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules;
 
+import android.app.Activity;
+
 import com.trianguloy.urlchecker.activities.ConfigActivity;
 import com.trianguloy.urlchecker.utilities.Fragment;
 
@@ -36,6 +38,13 @@ public abstract class AModuleConfig implements Fragment {
      */
     public final void disable() {
         if (activity != null) activity.disableModule(this);
+    }
+
+    /**
+     * Returns the config activity. Will be null when initialized with empty constructor
+     */
+    public final Activity getActivity() {
+        return activity;
     }
 
 }

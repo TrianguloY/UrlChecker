@@ -5,8 +5,7 @@
     <!-- Normal button -->
     <item
         android:bottom="7dp"
-        android:right="7dp"
-        android:left="5dp"
+        android:right="2dp"
         android:top="7dp">
         <shape android:shape="rectangle">
             <corners

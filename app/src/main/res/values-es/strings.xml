@@ -26,6 +26,8 @@ Traducciones: Tiago Carmo, Ilithy, Idris, Metezd."</string>
     <string name="toast_invalid">Invalido</string>
     <string name="save">Guardar</string>
     <string name="reset">Reiniciar</string>
+    <string name="close">Cerrar</string>
+    <string name="clear">Borrar</string>
 
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
@@ -37,7 +39,8 @@ Traducciones: Tiago Carmo, Ilithy, Idris, Metezd."</string>
 * Carácteres no-ascii, como letras griegas. Pueden ser usadas para phising: googĺe.com vs google.com
 * Enlaces http, deberías usar https
 * Enlaces sin esquema http(s)"</string>
-    <string name="mPttrn_fix">Arreglar</string>
+    <string name="mPttrn_fix">Aplicar</string>
+    <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">¡Aviso! Carácteres no-ascii encontrados</string>
     <string name="mPttrn_http">Enlace http, considera usar https</string>
     <string name="mPttrn_noSchemeHttp">Falta esquema http.</string>
@@ -160,5 +163,13 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <string name="mRemove_all">Eliminar todos</string>
     <string name="mRemove_one">Eliminar %s</string>
     <string name="mRemove_empty">Eliminar vacío</string>
+
+    <string name="mLog_name">Registro (log)</string>
+    <string name="mLog_desc">"Este módulo registra todas las urls que aparecen, se recomienda que sea el primero de la lista (en caso contrario algunas redirecciones automáticas puede que no se guarden).
+El log puede verse y editarse aquí, no se mostrará nada en la ventana principal.
+Para deshabilitar el registro, deshabilita el módulo."</string>
+    <string name="mLog_view">View log</string>
+    <string name="mLog_edit">Edit log</string>
+    <string name="mLog_empty">No data</string>
 
 </resources>

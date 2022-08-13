@@ -24,8 +24,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/open_left"
+            android:minHeight="60dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="@string/mOpen_open"
-            android:textColor="?android:attr/colorBackground" />
+            android:textColor="?android:attr/colorBackground"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/open_with"
