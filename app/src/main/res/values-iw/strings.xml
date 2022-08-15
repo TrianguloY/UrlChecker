@@ -10,7 +10,7 @@
     <!-- about -->
     <string name="txt_about">"אפליקציה שנוצרה על ידי TrianguloY.
  תרומות לתכנות: PabloOQ.
- תרגומים: טיאגו קארמו, איליתי, אידריס, מטה"</string>
+ תרגומים: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz"</string>
     <string name="btn_blog">"הבלוג של TrianguloY:"</string>
     <string name="btn_shareStore">שתף אפליקציה</string>
 
@@ -148,7 +148,7 @@
     <string name="mClear_hashError">אין אפשרות להביא את ה-hash, ודא שכתובת האתר חוקית ויש לך חיבור פעיל</string>
     <string name="mClear_hashMismatch">הגיבובים אינם תואמים, ייתכן שהקובץ מטופל. אם אתה רוצה לדלג על הסימון, הסר את כתובת ה-hash</string>
     <string name="mClear_restore">שחזר נתיבי ClearURLs</string>
-    <string name="mClear_editor">""כללי קטלוג: עליהם לפעול לפי הפורמט של https://docs.clearurls.xyz/latest/specs/rules/.
+    <string name="mClear_editor">"כללי קטלוג: עליהם לפעול לפי הפורמט של https://docs.clearurls.xyz/latest/specs/rules/.
  שים לב שכל שינוי באובייקט האב 'ספקי' ידרוס אם הקטלוג יתעדכן אוטומטית או ידנית מתיבת הדו-שיח של העדכון.  כדי שהכללים האישיים יקבעו אותם באובייקט אב אחר (כל שם)."</string>
 
     <string name="mRemove_name">מסיר שאילתות</string>
