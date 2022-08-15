@@ -142,7 +142,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     public boolean onLongClick(View v) {
         switch (v.getId()) {
             case R.id.ctabs:
-                Toast.makeText(getActivity(), "Toggle Custom Tabs feature", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.mOpen_tabsDesc, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.share:
                 copyToClipboard();

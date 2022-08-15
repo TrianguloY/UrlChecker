@@ -64,6 +64,7 @@ Este módulo no puede ser deshabilitado."</string>
     <string name="mOpen_share">Compartir</string>
     <string name="mOpen_clipboard">Url copiada al portapapeles</string>
     <string name="mOpen_noapps">Sin aplicaciones</string>
+    <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
 
     <string name="mStatus_name">Código de estado</string>
     <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.

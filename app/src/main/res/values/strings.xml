@@ -64,6 +64,7 @@ This module can't be disabled."</string>
     <string name="mOpen_share">Share</string>
     <string name="mOpen_clipboard">Url copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
+    <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
 
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">"By pressing the check button, a petition will be made to retrieve and display the site status code.
