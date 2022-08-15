@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
                 break;
             case R.id.m_img_icon:
                 // click on the app icon
-                Toast.makeText(this, getString(R.string.app_name) + ", by TrianguloY", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.app_name) + " - TrianguloY", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 AndroidUtils.assertError("Unknown view: " + view);

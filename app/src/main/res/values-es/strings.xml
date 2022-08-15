@@ -10,7 +10,7 @@
     <string name="txt_about">"Aplicación creada por TrianguloY.
 
 Contribuciones de programación: PabloOQ.
-Traducciones: Tiago Carmo, Ilithy, Idris, Metezd."</string>
+Traducciones: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz."</string>
     <string name="btn_blog">Blog de TrianguloY:</string>
     <string name="btn_shareStore">Compartir aplicación</string>
 
@@ -64,6 +64,7 @@ Este módulo no puede ser deshabilitado."</string>
     <string name="mOpen_share">Compartir</string>
     <string name="mOpen_clipboard">Url copiada al portapapeles</string>
     <string name="mOpen_noapps">Sin aplicaciones</string>
+    <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
 
     <string name="mStatus_name">Código de estado</string>
     <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.
@@ -165,8 +166,8 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <string name="mRemove_empty">Eliminar vacío</string>
 
     <string name="mLog_name">Registro (log)</string>
-    <string name="mLog_desc">"Este módulo registra todas las urls que aparecen, se recomienda que sea el primero de la lista (en caso contrario algunas redirecciones automáticas puede que no se guarden).
-El log puede verse y editarse aquí, no se mostrará nada en la ventana principal.
+    <string name="mLog_desc">"Este módulo registra todas las urls analizadas, se recomienda que sea el primero de la lista (en caso contrario algunas redirecciones automáticas puede que no se guarden).
+El log completo puede verse, editarse y borrarse desde aquí, no se mostrará nada en la ventana principal.
 Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mLog_view">View log</string>
     <string name="mLog_edit">Edit log</string>
