@@ -1,0 +1,1 @@
+Te permite analizar (o compartir) enlaces antes de abrirlos.

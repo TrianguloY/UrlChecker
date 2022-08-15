@@ -1,0 +1,46 @@
+V 2.6
+- Colores!
+- Mejorado el módulo de eliminador de parámetros
+- Mejorado el módulo de comprobador de patrones
+- Nuevo módulo: Log
+- Nueva traducción al Turco. ¡Gracias a Metezd!
+- Nueva traducción al Hebreo. ¡Gracias a Nhman Mazuz!
+- Cambios y mejoras menores
+
+V 2.5
+- Editor JSON avanzado para ClearURLs y patrones
+- La base de datos de ClearURLs se puede actualizar
+- Añadida traducción al español
+- Mejoras en los estilos y textos
+
+V 2.4
+- Añadida traducción al francés. ¡Gracias a Ilithy!
+- Añadida traducción al Ucraniano. ¡Gracias a Idris!
+- Tema claro/oscuro automático
+
+V 2.3
+- Los módulos se pueden reordenar
+- El módulo ClearURLs puede ser configurado para auto aplicarse
+- El módulo para eliminar parámetros puede borrar uno a uno
+- Añadida traducción al Portugues. ¡Gracias a Tiago Carmo!
+- Algunas mejoras y arreglos
+
+V 2.2
+- Nuevo módulo 'Eliminar parámetros': elimina los parámetros de la url. ¡Gracias a PabloOQ for la idea e implementación original!
+
+V 2.1
+- Arreglado y mejorado el módulo de ClearURLs
+- Mejorados algunos textos y mensajes
+- Modificado el estilo para ser más compacto
+
+V 2.0
+- Actualización de estilos
+- Actualizado el catálogo de ClearURLs
+
+V 1.1
+- Nuevo módulo 'Limpieza de Urls': Utiliza el catálogo de ClearURLs para limpiar los enlaces de parámetros de seguimiento o inútiles.
+- Nuevo módulo 'Historial': Deshaz cambios realizados por cualquier otro módulo
+- Reemplazado el módulo 'Redirección' con 'Estado': Obten el código de estado de cualquier página, sigue detectando redirecciones.
+- Mejorado el módulo de patrones: Pulsa en 'arreglar' para convertir http a https
+- Nuevo módulo 'debug': Para desarrolladores (muestra el intent uri y mensajes de ctabs)
+- Limpieza de la interfaz

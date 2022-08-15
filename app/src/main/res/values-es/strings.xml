@@ -36,7 +36,7 @@ Traducciones: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz."</string>
     <!-- modules -->
     <string name="mPttrn_name">Comprobador de patrones</string>
     <string name="mPttrn_desc">"Comprueba problemas comunes en la url. Patrones incorporados:
-* Carácteres no-ascii, como letras griegas. Pueden ser usadas para phising: googĺe.com vs google.com
+* Carácteres no-ascii, como letras griegas. Pueden ser usadas para phishing: googĺe.com vs google.com
 * Enlaces http, deberías usar https
 * Enlaces sin esquema http(s)"</string>
     <string name="mPttrn_fix">Aplicar</string>
