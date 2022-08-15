@@ -64,6 +64,7 @@ Ce module ne peut pas être désactivé."</string>
     <string name="mOpen_share">Partager</string>
     <string name="mOpen_clipboard">Url copiée dans le presse-papier</string>
     <string name="mOpen_noapps">Aucune application</string>
+    <string name="mOpen_tabsDesc">Activer la fonction d\'onglets personnalisés</string>
 
     <string name="mStatus_name">Code d\'état</string>
     <string name="mStatus_desc">"En appuyant sur le bouton de vérification, une requête sera faite pour récupérer et afficher le code d'état du site.
@@ -165,8 +166,8 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
     <string name="mRemove_empty">Retirer les vides</string>
 
     <string name="mLog_name">Registre</string>
-    <string name="mLog_desc">"Ce module enregistre toutes les urls en transit, il est recommandé qu'il soit le premier module de la liste (dans le cas contraire les redirections automatiques risquent de ne pas être journalisées).
-Vous pouvez afficher ou effacer le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
+    <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées, il est recommandé qu'il soit le premier module de la liste (dans le cas contraire les redirections automatiques risquent de ne pas être journalisées).
+Vous pouvez consulter, effacer ou modifier le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
 Pour désactiver la journalisation, désactivez simplement le module."</string>
     <string name="mLog_view">Consulter le registre</string>
     <string name="mLog_edit">Éditer le registre</string>
