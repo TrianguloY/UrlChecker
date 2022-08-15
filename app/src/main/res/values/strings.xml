@@ -10,7 +10,7 @@
     <string name="txt_about">"App created by TrianguloY.
 
 Programing contributions: PabloOQ.
-Translations: Tiago Carmo, Ilithy, Idris, Metezd."</string>
+Translations: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz."</string>
     <string name="btn_blog">"TrianguloY's blog:"</string>
     <string name="btn_shareStore">Share App</string>
 
@@ -64,6 +64,7 @@ This module can't be disabled."</string>
     <string name="mOpen_share">Share</string>
     <string name="mOpen_clipboard">Url copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
+    <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
 
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">"By pressing the check button, a petition will be made to retrieve and display the site status code.
@@ -165,8 +166,8 @@ Thanks to PabloOQ for the idea and original implementation!"</string>
     <string name="mRemove_empty">Remove empty</string>
 
     <string name="mLog_name">Log</string>
-    <string name="mLog_desc">"This module registers all urls that appear, it is recommended that it is the first module in the list (otherwise automatic redirections may not be logged).
-You can view or clear the log here, no visual indication will appear on the main dialog.
+    <string name="mLog_desc">"This module logs all checked urls, it is recommended that it is the first module in the list (otherwise automatic redirections may not be logged).
+You can view, clear or edit the full log here, no visual indication will appear on the main dialog.
 To disable logging, just disable the module."</string>
     <string name="mLog_view">View log</string>
     <string name="mLog_edit">Edit log</string>

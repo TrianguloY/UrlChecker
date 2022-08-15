@@ -55,7 +55,7 @@ public class PackageUtilities {
         } catch (PackageManager.NameNotFoundException e) {
             // can't get the label
             e.printStackTrace();
-            return "unknown";
+            return cntx.getString(android.R.string.unknownName);
         }
     }
 
