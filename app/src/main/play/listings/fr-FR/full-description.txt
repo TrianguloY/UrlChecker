@@ -6,6 +6,8 @@ L'application est destinée à un usage personnel, mais peut être partagée ave
 
 Elle a été développé à l'aide d'une configuration modulaire, vous pouvez activer ou désactiver des modules individuels:
 
+* Registre: Ce module sauvegarde toutes les urls vérifiées. Vous pouvez visualiser, modifier ou effacer le registre complet, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
+
 * Texte Saisie: affiche l'URL actuelle, qui peut être modifiée manuellement. Ne peut être désactivé.
 
 * Historique: affichez et annulez toute modification apportée par d'autres modules ou toute modification apportée par l'utilisateur (fonctionnalité typique d'annulation/rétablissement, ainsi qu'une liste)
