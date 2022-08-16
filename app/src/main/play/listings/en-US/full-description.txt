@@ -6,6 +6,8 @@ The app was for personal use, but shared to others can benefit from it. It is fr
 
 It was developed using a modular setup, you can enable or disable individual modules:
 
+* Log: This module logs all checked urls. You can view, edit or clear the full log, no visual indication will appear on the main dialog.
+
 * Input text: Displays the current url, which can be edited manually. Can't be disabled.
 
 * History: View and revert any change from other modules, or edits from the user (typical undo/redo feature, and also a list)
