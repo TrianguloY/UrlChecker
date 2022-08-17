@@ -178,7 +178,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         }
 
         // sort
-        lastOpened.sort(packages);
+        lastOpened.sort(packages, getUrl());
 
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(0), getActivity())));
@@ -207,7 +207,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         // update chosen
         String chosed = packages.get(index);
-        lastOpened.usedPackage(chosed);
+        lastOpened.usedPackage(chosed, getUrl());
 
         // open
         Intent intent = new Intent(getActivity().getIntent());
