@@ -2,6 +2,7 @@ package com.trianguloy.urlchecker.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -32,10 +33,14 @@ public class ConfigActivity extends Activity {
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
     private final GenericPref.LstStr order = ModuleManager.ORDER_PREF();
 
+    // ------------------- listeners -------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         list = findViewById(R.id.list);
         order.init(this);
 
@@ -47,6 +52,18 @@ public class ConfigActivity extends Activity {
         // init buttons
         updateMovableButtons();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // press the 'back' button in the action bar to go back
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // ------------------- actions -------------------
 
     /**
      * Initializes and adds a module to the list
