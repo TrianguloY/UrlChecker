@@ -4,8 +4,10 @@
 <img src="./app/src/main/play/listings/en-US/graphics/feature-graphic/featured.png">
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
-<h1>Url Checker</h1>
-<h3>Android app made by TrianguloY</h3>
+# Url Checker
+### Android app made by TrianguloY
+Acknowledgements: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
+Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
 
 </div>
 
