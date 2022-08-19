@@ -1,22 +1,26 @@
 Esta aplicación actúa como un paso intermedio al abrir enlaces. Cuando haces click en uno y eliges esta aplicación para abrirlo, se mostrará un cuadro de diálogo con información acerca de él. Especialmente útil cuando tienes que abrir un enlace externo de un email, de alguna aplicación de redes sociales, o similar.
 
-La aplicación se desarrolló para uso personal, pero ha sido compartida para que otros puedan beneficiarse de ella. Es gratuita y sin ningún anuncio, tan pequeña como me es posible y con el mínimo número de permisos necesarios (solo el de internet para los módulos que realizan comprobaciones online, y éstas sólo se realizan bajo petición del usuario). El código fuente está disponible en GitHub, en caso de que quieras sugerir o incluso añadir nuevo módulos a la aplicación: https://github.com/TrianguloY/UrlChecker
+La aplicación se desarrolló originalmente para uso personal, pero ha sido compartida para que otros puedan beneficiarse de ella. Es gratuita y sin ningún anuncio, tan pequeña como me es posible y con el mínimo número de permisos necesarios (solo el de internet para los módulos que realizan comprobaciones online, y éstas sólo se realizan bajo petición del usuario). El código fuente está disponible en GitHub, en caso de que quieras sugerir o incluso realizar modificaciones en la aplicación: https://github.com/TrianguloY/UrlChecker
 
-Ha sido desarrollado usando módulos, puedes activar o desactivarlos de forma independiente:
+La aplicación está estructurada con una estructura modular, puedes activar/desactivar u ordenarlos de forma independiente, incluyendo:
 
 * Texto de entrada: Muestra el enlace actual, que puede ser editado manualmente. No se puede desactivar.
 
-* Historial: Muestra cambios realizados a la url desde el resto de módulos, típica característica de deshacer/rehacer, incluye listado.
+* Historial: Muestra cambios realizados a la url desde el resto de módulos, incluyendo ediciones del usuario (típica característica de deshacer/rehacer).
 
-* Código de estado: Al pulsar el botón, se realizará una petición para obtener la url, y se mostrará el código de estado (ok, error de servidor, no encontrado...). Además, si corresponde con una redirección, podrás ver y cambiar al nuevo enlace. La url se pide, pero no se evalúa, las redirecciones basadas en javascript no se detectan.
+* Registro: Mantiene un registro (log) de todas las urls analizadas, que puedes ver, editar, copiar, borrar...
 
-* Análisis por VirusTotal: Cuando este módulo se habilita puedes escanear la url mediante VirusTotal y comprobar el informe. Se necesita una clave personal (gratuita) de la API de VirusTotal. VirusTotal™ es una marca registrada de Google, Inc.
+* Código de estado: Al pulsar el botón, se realizará una petición para obtener la url, y se mostrará el código de estado (ok, error de servidor, no encontrado...). Además, si corresponde con una redirección, podrás ver y analizar el nuevo enlace. La url se pide, pero no se evalúa, las redirecciones basadas en javascript no se detectan.
 
-* Limpieza de enlaces: Utiliza el catálogo de ClearURLs para detectar parámetros de seguimiento o inútiles y 'limpiarlos'. También detecta redirecciones comunes sin conexión. Utiliza el catálogo de ClearURLs de https://docs.clearurls.xyz/latest/specs/rules/
+* Escáner: Permite escanear el enlace mediante VirusTotal, y comprobar el informe. Se necesita una clave personal (gratuita) de la API de VirusTotal para que funcione. VirusTotal™ es una marca registrada de Google, Inc.
+
+* Limpiador: Utiliza el catálogo de ClearURLs para detectar parámetros de seguimiento o inútiles y 'limpiarlos'. También detecta redirecciones comunes sin conexión. Catálogo incorporado de https://docs.clearurls.xyz/latest/specs/rules/
+
+* Eliminador de paŕametros: Muestra los parámetros individuales decodificador, que puedes eliminar o analizar.
 
 * Módulo de patrones: Realiza comprobaciones basadas en patrones:
-    - Si la url es http, permite cambiarla a https.
-    - Comprueba que no haya caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+    - Notifica de enlaces http, permite reemplazarlos por https.
+    - Notifica de caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
 
 * Módulo debug: Diseñado para desarrolladores. Muestra el intent uri, y opcionalmente información sobre el servicio ctabs (custom tabs).
 

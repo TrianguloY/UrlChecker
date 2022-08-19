@@ -1,24 +1,28 @@
 This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Specially useful when you need to open an external link either from an email, from a social network app, or similar.
 
 
-The app was for personal use, but shared to others can benefit from it. It is free and without any ads, as small as possible and using as few permissions as possible (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too, in case you want to suggest or even add new modules to the app: https://github.com/TrianguloY/UrlChecker
+The app was originally developed for personal use, but shared to others can benefit from it. It is free and without any ads, as small as possible and using as few permissions as possible (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too, in case you want to suggest or even make modifications to the app: https://github.com/TrianguloY/UrlChecker
 
 
-It was developed using a modular setup, you can enable or disable individual modules:
+The app is structured with a modular setup, you can enable/disable and reorder individual modules, which include:
 
-* Input text: Displays the current url, which can be edited manually. Can't be disabled.
+* Input text: Displays the current url which can be edited manually. Can't be disabled.
 
-* History: View and revert any change from other modules, or edits from the user (typical undo/redo feature, and also a list)
+* History: View and revert any change from other modules, including edits from the user (typical undo/redo feature)
 
-* Status code: By pressing the button a petition will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to replace with the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
+* Log: Keeps a log of all checked urls, which you can view, edit, copy, clear...
 
-* VirusTotal analysis: When this module is enabled you can scan the url using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
+* Status code: By pressing the button a petition will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to check the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
 
-* Clear Url modules: Uses the Clear Url catalog to detect referral and useless parameters from the url to 'clear' it. It also allows for common offline url redirections. Uses the Clear URL catalog from https://docs.clearurls.xyz/latest/specs/rules/
+* Url Scanner: Allows you to scan the url using VirusTotal, and check the report. A free personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
 
-* Pattern module: Performs checks based on patterns:
-    - If the url is an http one, press the warning message to replace it with https.
-    - Checks and warns for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com.
+* Url Cleaner: Uses the ClearURLs catalog to remove referral and useless parameters from the url. It also allows for common offline url redirections. Built-in catalog from https://docs.clearurls.xyz/latest/specs/rules/
+
+* Queries remover: Displays the decoded individual url queries, which you can remove or check.
+
+* Pattern module: Performs checks based on patterns. Built-in patterns include:
+    - Warns for http links, allow to replace it with https.
+    - Warns for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com.
 
 * Debug module: Displays the intent uri, and optionally info about the ctabs (custom tabs) service. This is intended for developers.
 
