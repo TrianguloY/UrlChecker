@@ -1,24 +1,28 @@
 Cette application agit comme une étape intermédiaire avant l'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l'ouvrir, une boîte de dialogue contenant des informations sur le lien s'affiche. Particulièrement utile lorsque vous devez ouvrir un lien externe à partir d'un e-mail, d'une application de réseau social ou similaire.
 
 
-L'application est destinée à un usage personnel, mais peut être partagée avec d'autres. Elle est gratuit et sans aucune publicité, aussi légère que possible et utilisant le minimum d'autorisation d'accès (uniquement l'autorisation d'accès à Internet, pour les modules de vérifications, uniquement effectuées lorsque l'utilisateur l'exige). Le code source est également disponible sur GitHub, au cas où vous voudriez suggérer ou même ajouter de nouveaux modules à l'application: https://github.com/TrianguloY/UrlChecker
+L'application a été initialement développée pour un usage personnel, mais peut être partagée. Elle est gratuit et sans aucune publicité, aussi légère que possible et utilisant le minimum d'autorisation d'accès (uniquement l'autorisation d'accès à Internet, pour les modules de vérifications et uniquement effectuées lorsque l'utilisateur l'exige). Le code source est également disponible sur GitHub, dans le cas où vous voudriez suggérer ou même apporter des modifications à l'application: https://github.com/TrianguloY/UrlChecker
 
 
-Elle a été développé à l'aide d'une configuration modulaire, vous pouvez activer ou désactiver des modules individuels:
+L'application est constituée d'une structure modulaire, vous pouvez activer, désactiver et réorganiser les modules, qui incluent:
 
-* Texte Saisie: affiche l'URL actuelle, qui peut être modifiée manuellement. Ne peut être désactivé.
+* Texte Saisie: Affiche l'URL actuelle, qui peut être modifiée manuellement. Ne peut être désactivé.
 
-* Historique: affichez et annulez toute modification apportée par d'autres modules ou toute modification apportée par l'utilisateur (fonctionnalité typique d'annulation/rétablissement, ainsi qu'une liste)
+* Historique: Affichez et annulez toute modification apportée par d'autres modules ou toute modification effectuée par l'utilisateur (fonctionnalité typique d'annulation/rétablissement)
 
-* Code d'état: En appuyant sur ce bouton, une requête sera faite pour récupérer cette url, et le code d'état sera affiché (Bon, erreur de serveur, introuvable...). De plus, si cela correspond à une redirection, appuyez sur le message à remplacer par la nouvelle url. L'url est récupérée, mais pas évaluée, les redirections basées sur javascript ne seront donc pas détectées.
+* Registre: Tient un registre de toutes les URL vérifiées, que vous pouvez afficher, modifier, copier, effacer...
 
-* Analyse VirusTotal: lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en consulter le rapport. Une clé pour l'API à usage personnel VirusTotal est nécessaire pour que cela fonctionne. VirusTotal™ est une marque commerciale de Google, Inc.
+* Code d'état: En appuyant sur ce bouton, une requête sera faite pour récupérer cette url, et le code d'état sera affiché (Bon, erreur de serveur, introuvable...). De plus, si cela correspond à une redirection, appuyez sur le message pour vérifier la nouvelle url. L'url est récupérée, mais pas évaluée, les redirections basées sur javascript ne seront donc pas détectées.
 
-* Modules Nettoyer l'Url: Utilise la base de données Clear Url pour détecter les références et les paramètres inutiles de l'url et «les effacer». Il permet également des redirections d'URL hors ligne courantes. Utilise la base de données Clear URL de https://docs.clearurls.xyz/latest/specs/rules/
+* Analyseur d'url: Vous permet d'analyser l'URL à l'aide de VirusTotal et d'en vérifier le rapport. Une clé pour l'API personnelle gratuite de VirusTotal est nécessaire pour que cela fonctionne. VirusTotal™ est une marque commerciale de Google, Inc.
 
-* Module de Style : Effectue des vérifications basées sur des modèles:
-    - Si l'url est en http, appuyez sur le message d'avertissement pour le remplacer par https.
-    - Vérifie et avertit de la présence de caractères non-ascii comme les lettres grecques. Pouvant être utilisé pour l'hameçonnage: googĺe.com au lieu de google.com.
+* Nettoyeur d'Url: Utilise la base de données Clear Url pour supprimer les affiliations et autres paramètres inutiles de l'url. Il permet également des redirections d'URL hors ligne courantes. Utilise la base de données Clear URL de https://docs.clearurls.xyz/latest/specs/rules/
+
+* Suppresseur de requêtes: Affiche les requêtes d'URL individuelles décodées, que vous pouvez supprimer ou vérifier.
+
+* Analyseur de style: Effectue des vérifications basées sur des modèles. Les modèles intégrés incluent:
+     - Avertissement pour les liens http, permet de le remplacer par l'https.
+     - Avertissement pour les caractères non-ascii comme les lettres grecques. Qui peuvent être utilisé pour l'hameçonnage: googĺe.com au lieu de google.com.
 
 * Module de débogage: affiche l'uri d'intention et éventuellement des informations sur le service ctabs (onglets personnalisés). Ceci est destiné aux développeurs.
 
