@@ -16,7 +16,8 @@ Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://gi
 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/TrianguloY/UrlChecker?color=white&label=Latest%20version&sort=semver)](https://github.com/TrianguloY/UrlChecker/blob/master/app/build.gradle)
 [![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-Droid%20version)](https://gitlab.com/fdroid/fdroiddata/-/blob/master/metadata/com.trianguloy.urlchecker.yml)
-[![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+[![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)  
+![App-Code Size](https://img.shields.io/github/languages/code-size/trianguloy/urlchecker.svg)
 [![Patreon](https://img.shields.io/badge/Patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
