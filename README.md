@@ -17,6 +17,7 @@ Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://gi
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/TrianguloY/UrlChecker?color=white&label=Latest%20version&sort=semver)](https://github.com/TrianguloY/UrlChecker/blob/master/app/build.gradle)
 [![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-Droid%20version)](https://gitlab.com/fdroid/fdroiddata/-/blob/master/metadata/com.trianguloy.urlchecker.yml)
 [![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+[![App-Code Size](https://img.shields.io/github/languages/code-size/trianguloy/urlchecker.svg?label=Code%20size)](https://api.github.com/repos/TrianguloY/UrlChecker)
 [![Patreon](https://img.shields.io/badge/Patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
@@ -24,11 +25,13 @@ Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://gi
 <!-- ---------- Download ---------- -->
 <div align="center">
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+alt="Get it on F-Droid"
+height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
 alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-alt="Get it on F-Droid"
-height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker)  </div>
+height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) 
+</div>
 <!-- <details><summary><h4>links</h4></summary>
 
   - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
@@ -53,10 +56,16 @@ facilitating link sharing, protecting against certain phishing techniques and ma
     src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/2-dialog.png" 
     height="400"> 
 <img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/3-modules.png" 
+    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/3-dialog.png" 
     height="400"> 
 <img 
     src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/4-modules.png" 
+    height="400"> 
+<img 
+    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/5-modules.png" 
+    height="400">
+<img 
+    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/6-modules.png" 
     height="400">
 </p>
 </div>
