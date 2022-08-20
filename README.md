@@ -46,21 +46,7 @@ facilitating link sharing, protecting against certain phishing techniques and ma
 </div>
 
 <!-- ---------- Screenshots ---------- -->
-<p align="center">
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/1-title.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/2-dialog.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/3-modules.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/4-modules.png" 
-    height="400">
-</p>
-</div>
+
 
 <!-- ---------- Contribution ---------- -->
 ## Contribution
