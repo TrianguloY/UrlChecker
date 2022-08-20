@@ -1,5 +1,4 @@
-This application acts as an intermediary when opening url links, When you use it to open a link, a window containing information on this one is displayed,
-allowing you to make changes to it as well.
+This application acts as an intermediary when opening url links. When you do so, a window containing information about the url is displayed, allowing you to make changes as well.
 Especially useful when you need to open an external link either from an email, a social network app or others.
 
 
