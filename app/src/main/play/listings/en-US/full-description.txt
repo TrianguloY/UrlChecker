@@ -1,12 +1,10 @@
-This application acts as an intermediary when opening url links, When you use it to open a link, a window containing information on this one is displayed,
-allowing you to make changes to it as well.
-Especially useful when you need to open an external link either from an email, a social network app or others.
+This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Specially useful when you need to open an external link either from an email, from a social network app, or similar.
 
 
-Url Checker is developed by TrianguloY originally for personal use, it is open source (under CC BY 4.0 license), free, without any ads or trackers, light sized and using as few permissions as workable (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too if you want to suggest changes, perform modifications or propose translation: https://github.com/TrianguloY/UrlChecker
+The app was originally developed for personal use, but shared to others can benefit from it. It is free and without any ads, as small as possible and using as few permissions as possible (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too, in case you want to suggest or even make modifications to the app: https://github.com/TrianguloY/UrlChecker
 
 
-This application is modular so you can activate, deactivate and rearrange the different modules, including:
+The app is structured with a modular setup, you can enable/disable and reorder individual modules, which include:
 
 * Input text: Displays the current url which can be edited manually. Can't be disabled.
 
