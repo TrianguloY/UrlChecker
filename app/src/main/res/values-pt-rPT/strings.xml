@@ -28,8 +28,8 @@
     <string name="mPttrn_desc">"Verifica problemas comuns no URL:
 * Caracteres não-ascii como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
 * links http, você deve usar https em vez disso"</string>
-    <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados "%s"</string>
-    <string name="mPttrn_http">link http, considere usar https: [[http|Fix]]</string>
+    <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados</string>
+    <string name="mPttrn_http">link http, considere usar https</string>
     <string name="mPttrn_ok">Nenhum problema encontrado</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>

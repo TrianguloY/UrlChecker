@@ -28,8 +28,8 @@
     <string name="mPttrn_desc">" Перевіряє на поширені проблеми в посиланнях:
 * знаки, які не знаходяться в списку ASCII, такі як грецькі літери. Таке може використовуватись для фішингових атак: googĺe.com vs google.com
 * http посилання, краще використовуйте https "</string>
-    <string name="mPttrn_ascii">Обережно! Знайдені не-ascii знаки "%s"</string>
-    <string name="mPttrn_http">Http посилання, краще використайте https: [[http|Fix]]</string>
+    <string name="mPttrn_ascii">Обережно! Знайдені не-ascii знаки</string>
+    <string name="mPttrn_http">Http посилання, краще використайте https</string>
     <string name="mPttrn_ok">Ніяких проблем не знайдено</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>

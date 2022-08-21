@@ -30,8 +30,8 @@
     <string name="mPttrn_desc">"URL\'deki yaygın sorunları kontrol eder:
 * Yunan harfleri gibi ascii olmayan karakterler. Bu kimlik avı için kullanılabilir: googĺe.com vs google.com
 * http bağlantıları, bunun yerine https kullanmalısınız"</string>
-    <string name="mPttrn_ascii">Uyarı! Ascii dışı karakter bulundu "%s"</string>
-    <string name="mPttrn_http">Http bağlantısı, https kullanmayı unutmayın: [[http|Fix]]</string>
+    <string name="mPttrn_ascii">Uyarı! Ascii dışı karakter bulundu</string>
+    <string name="mPttrn_http">Http bağlantısı, https kullanmayı unutmayın</string>
     <string name="mPttrn_ok">Herhangi bir sorun bulunamadı</string>
 
     <string name="mOpen_name"><![CDATA[Aç & Paylaş]]></string>

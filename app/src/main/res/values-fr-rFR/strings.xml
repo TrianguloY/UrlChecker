@@ -41,7 +41,7 @@ Traduction: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz."</string>
 * Schéma http(s) manquant"</string>
     <string name="mPttrn_fix">Appliquer</string>
     <string name="mPttrn_fixed">Appliqué - %s</string>
-    <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés "%s"</string>
+    <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés</string>
     <string name="mPttrn_http">Lien http, pensez à utiliser l\'https</string>
     <string name="mPttrn_noSchemeHttp">Schéma http manquant.</string>
     <string name="mPttrn_noSchemeHttps">Schéma https manquant.</string>
