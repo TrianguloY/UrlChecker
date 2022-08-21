@@ -28,8 +28,10 @@ public class AboutActivity extends Activity {
         setContentView(R.layout.activity_about);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // append version to the action bar title
-        setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
+        // on release, append version to the action bar title
+        if(!BuildConfig.DEBUG) {
+            setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
+        }
 
         // fill contributors and translators
         this.<TextView>findViewById(R.id.txt_about).setText(
