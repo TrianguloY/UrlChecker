@@ -1,9 +1,6 @@
 ---
-name: Bug report
-about: Create a bug report to help us improve Url Checker
-title: ''
-labels: bug, good first issue
-assignees: ''
+name: Bug report about: Create a bug report to help us improve Url Checker title: ''
+labels: bug assignees: ''
 
 ---
 
