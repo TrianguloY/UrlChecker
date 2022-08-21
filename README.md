@@ -6,7 +6,7 @@
 
 # Url Checker
 ### Android app made by TrianguloY
-Acknowledgements: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
+Contributions: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
 Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
 
 </div>

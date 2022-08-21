@@ -9,8 +9,8 @@
     <!-- about -->
     <string name="txt_about">"Application créée par TrianguloY.
 
-Contribution à la programmation: PabloOQ.
-Traduction: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz."</string>
+Contributions: %s.
+Traduction: %s."</string>
     <string name="btn_blog">"Blog de TrianguloY:"</string>
     <string name="btn_shareStore">Partager l\'application</string>
 

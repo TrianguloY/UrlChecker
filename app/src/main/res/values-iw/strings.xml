@@ -9,8 +9,8 @@
 
     <!-- about -->
     <string name="txt_about">"אפליקציה שנוצרה על ידי TrianguloY.
- תרומות לתכנות: PabloOQ.
- תרגומים: Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz"</string>
+ תרומות: %s.
+ תרגומים: %s."</string>
     <string name="btn_blog">"הבלוג של TrianguloY:"</string>
     <string name="btn_shareStore">שתף אפליקציה</string>
 

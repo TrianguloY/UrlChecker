@@ -7,7 +7,10 @@
     <string name="a_about">Більше</string>
 
     <!-- about -->
-    <string name="txt_about">Програма зроблена TrianguloY\'ом</string>
+    <string name="txt_about">"Програма зроблена TrianguloY'ом
+
+Contributions: %s.
+Translations: %s."</string>
     <string name="btn_blog">Блог, який веде TrianguloY:</string>
     <string name="btn_shareStore">Поділитись додатком</string>
 

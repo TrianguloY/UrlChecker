@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
@@ -29,6 +30,14 @@ public class AboutActivity extends Activity {
 
         // append version to the action bar title
         setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
+
+        // fill contributors and translators
+        this.<TextView>findViewById(R.id.txt_about).setText(
+                getString(R.string.txt_about,
+                        getString(R.string.contributors),
+                        getString(R.string.translators)
+                )
+        );
     }
 
     @Override
