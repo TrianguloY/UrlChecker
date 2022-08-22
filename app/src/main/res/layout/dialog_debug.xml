@@ -4,12 +4,6 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/button"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
