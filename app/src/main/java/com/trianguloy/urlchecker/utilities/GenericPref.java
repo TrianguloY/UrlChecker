@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * A generic type preference
@@ -101,6 +106,81 @@ public abstract class GenericPref<T> {
         }
     }
 
+
+    /**
+     * An Integer preference
+     */
+    static public class Int extends GenericPref<Integer> {
+        public Int(String prefName, Integer defaultValue) {
+            super(prefName, defaultValue);
+        }
+
+        @Override
+        public Integer get() {
+            return prefs.getInt(prefName, defaultValue);
+        }
+
+        @Override
+        public void set(Integer value) {
+            prefs.edit().putInt(prefName, value).apply();
+        }
+
+        /**
+         * Stores a key and the string representation
+         */
+        public static class AdapterPair{
+            public final Integer key;
+            public final String name;
+
+            public AdapterPair(Integer key, String name) {
+                this.key = key;
+                this.name = name;
+            }
+
+            @Override
+            public String toString() {
+                return name;
+            }
+        }
+
+        /**
+         * Uses a List of AdapterPair to populate a spinner
+         */
+        public void attachToSpinner(Spinner spinner, List<AdapterPair> elements){
+            // Put elements in the spinner
+            ArrayAdapter<AdapterPair> adapter =
+                    new ArrayAdapter<>(spinner.getContext(),
+                            android.R.layout.simple_spinner_item,
+                            elements);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            // To select current preference, as Key doesn't necessarily match index
+            // There's probably a better way to do this
+            int selection = get();
+            ListIterator<AdapterPair> it = elements.listIterator();
+            while (it.hasNext()){
+                if (it.next().key == selection){
+                    spinner.setSelection(it.previousIndex());
+                    // Key values should not be repeated
+                    break;
+                }
+            }
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    AdapterPair el = (AdapterPair) adapterView.getItemAtPosition(i);
+                    set(el.key);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+    }
     /**
      * A boolean preference
      */
