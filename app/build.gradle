@@ -9,6 +9,7 @@ android {
         versionCode 15
         versionName "2.6"
     }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -21,6 +22,14 @@ android {
             versionNameSuffix '-ALPHA'
             signingConfig signingConfigs.debug
         }
+    }
+
+    lintOptions{
+        // users are free to update translations whenever
+        // this mean that they are not usually up to date
+        // and that there are usually lots of missing translations
+        // so we ignore missing strings
+        disable 'MissingTranslation'
     }
 }
 
