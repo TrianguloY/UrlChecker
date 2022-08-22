@@ -48,19 +48,21 @@
             android:focusable="true"
             android:gravity="center"
             android:linksClickable="false"
-            android:text="@string/txt_sample" /><TextView
-        android:id="@+id/txt_sample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:linksClickable="false"
-        android:minHeight="48dp"
-        android:onClick="onClick"
-        android:padding="@dimen/smallPadding"
-        android:text="http://www.google.com/?ref=referrer&amp;foo=bar#tag" />
+            android:text="@string/txt_sample" />
+
+        <TextView
+            android:id="@+id/txt_sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:linksClickable="false"
+            android:minHeight="48dp"
+            android:onClick="onClick"
+            android:padding="@dimen/smallPadding"
+            android:text="http://www.google.com/?ref=referrer&amp;foo=bar#tag" />
 
         <Button
             android:id="@+id/modules"

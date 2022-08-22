@@ -75,6 +75,6 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
 
-        </FrameLayout>
+    </FrameLayout>
 
 </LinearLayout>

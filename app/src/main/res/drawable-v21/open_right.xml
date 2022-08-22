@@ -9,8 +9,8 @@
         android:top="7dp">
         <shape android:shape="rectangle">
             <corners
-                android:topRightRadius="8dp"
-                android:bottomRightRadius="8dp" />
+                android:bottomRightRadius="8dp"
+                android:topRightRadius="8dp" />
             <solid android:color="?android:attr/colorBackground" />
         </shape>
     </item>
@@ -18,7 +18,7 @@
     <!-- selection button effect -->
     <item
         android:bottom="7dp"
+        android:drawable="?android:attr/selectableItemBackground"
         android:right="2dp"
-        android:top="7dp"
-        android:drawable="?android:attr/selectableItemBackground" />
+        android:top="7dp" />
 </layer-list>
