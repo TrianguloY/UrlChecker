@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/transparent">
+
+    <!-- Normal button -->
+    <item
+        android:bottom="7dp"
+        android:left="2dp"
+        android:top="7dp">
+        <shape android:shape="rectangle">
+            <corners
+                android:bottomLeftRadius="8dp"
+                android:topLeftRadius="8dp" />
+            <solid android:color="?android:attr/colorBackground" />
+        </shape>
+    </item>
+
+    <!-- selection button effect -->
+    <item
+        android:bottom="7dp"
+        android:drawable="?android:attr/selectableItemBackground"
+        android:left="2dp"
+        android:top="7dp" />
+</layer-list>
