@@ -11,7 +11,7 @@ Url Checker does not contain any advertising sdk, nor tracker of the user, or hi
 Cookies are not stored at any point. Authentication credentials can be stored optionally on the user's local device upon the user's explicit request. developer does not have access to any such information.
 
 All external interactions require user action (to press a button), unless explicitly configured to automatically do so, which is always disabled by default.
-In any case, only the displayed url will be fetched/sent.
+In any case, except Virustotal personal api key (treated as a token) only the displayed url will be fetched/sent.
 
 ## Third party cloud service dependencies
 
