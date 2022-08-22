@@ -23,16 +23,44 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * This module contains an open and share buttons
  */
 public class OpenModule extends AModuleData {
+
+    /**
+     * Values for the config
+     */
+    enum CtabsValues {
+        AUTO(Key.AUTO),
+        ON(Key.ON),
+        OFF(Key.OFF);
+
+        public final int key;
+
+        CtabsValues(int key) {
+            this.key = key;
+        }
+
+        // Values to be stored
+        private static class Key {
+            public static final int AUTO = 2;
+            public static final int ON = 1;
+            public static final int OFF = 0;
+        }
+    }
+
+    public static GenericPref.Int CTABS_PREF() {
+        return new GenericPref.Int("open_ctabs", CtabsValues.AUTO.key);
+    }
 
     @Override
     public String getId() {
@@ -56,7 +84,7 @@ public class OpenModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.mOpen_desc);
+        return new OpenConfig(cntx);
     }
 }
 
@@ -65,6 +93,8 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     private static final String CTABS_EXTRA = "android.support.customtabs.extra.SESSION";
 
     private LastOpened lastOpened;
+
+    private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
     private boolean ctabs = false;
 
     private List<String> packages;
@@ -76,6 +106,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
+        ctabsPref.init(dialog);
     }
 
     @Override
@@ -85,10 +116,15 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     @Override
     public void onInitialize(View views) {
+        Intent intent = getActivity().getIntent();
+
         btn_ctabs = views.findViewById(R.id.ctabs);
         btn_ctabs.setOnClickListener(this);
         btn_ctabs.setOnLongClickListener(this);
-        setCtabs(getActivity().getIntent().hasExtra(CTABS_EXTRA));
+        // If auto we get it from the intent, if not we only check if it is on, if it is not it means is off
+        setCtabs(ctabsPref.get() == OpenModule.CtabsValues.AUTO.key ?
+                intent.hasExtra(CTABS_EXTRA) :
+                ctabsPref.get() == OpenModule.CtabsValues.ON.key);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
             btn_ctabs.setVisibility(View.GONE);
@@ -294,4 +330,40 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         ctabs = state;
     }
 
+}
+
+
+class OpenConfig extends AModuleConfig {
+
+    private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
+
+    public OpenConfig(ConfigActivity activity) {
+        super(activity);
+        ctabsPref.init(activity);
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        return true;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_open;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        Context cntx = views.getContext();
+
+        List<GenericPref.Int.AdapterPair> ctabsElements = new LinkedList<>();
+        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.AUTO.key,
+                cntx.getString(R.string.auto)));
+        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.ON.key,
+                cntx.getString(R.string.enabled)));
+        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.OFF.key,
+                cntx.getString(R.string.disabled)));
+        ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref),
+                ctabsElements);
+    }
 }

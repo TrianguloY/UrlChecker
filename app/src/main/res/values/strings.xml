@@ -28,6 +28,10 @@ Translations: %s."</string>
     <string name="reset">Reset</string>
     <string name="close">Close</string>
     <string name="clear">Clear</string>
+    <string name="auto">Auto</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+
 
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
@@ -59,6 +63,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard.
 This module can't be disabled."</string>
+    <string name="mOpen_ctabsSetting">Custom tabs default state:</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
