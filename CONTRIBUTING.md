@@ -21,5 +21,5 @@ You are free to propose one or more translations, or to update any existing one.
 - **Store strings**: the [`title.txt`](./app/src/main/play/listings/en-US/title.txt) [`short-description.txt`](./app/src/main/play/listings/en-US/short-description.txt) and/or [`full-description.txt`](./app/src/main/play/listings/en-US/full-description.txt) files
   - Place the translated files in the corresponding `./app/src/main/play/listings/{locale}/` folder
   
-Note: if you are unsure the locale prefix of a specific language just use `unknown` and we'll move it accordingly later.  
-Optionally you can also send the files by email to [TrianguloY](https://github.com/TrianguloY)
+Note: if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).  
+Optionally you can also send the files by email to [TrianguloY](https://github.com/TrianguloY) or by opening an [issue](https://github.com/TrianguloY/UrlChecker/issues/new) titled `{locale} Translation proposal`.
