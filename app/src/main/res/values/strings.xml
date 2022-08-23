@@ -59,17 +59,25 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
-- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard.
+Advanced options buttons (left to right):
+- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
+- Open preset button: rotates between different modes to open the url:
+        - Temporal: After opening the url, when you exit the app it will close.
+        - New window: Opens the app independently.
 This module can't be disabled."</string>
     <string name="mOpen_ctabsSetting">Custom tabs default state:</string>
+    <string name="mOpen_presetFlagsSetting">Open presets default state:</string>
+    <string name="mOpen_optionExcludeRecents">New window</string>
+    <string name="mOpen_optionInside">Temporal</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
     <string name="mOpen_clipboard">Url copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
+    <string name="mOpen_rotatePresetFlags">Rotate open presets</string>
 
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">"By pressing the check button, a petition will be made to retrieve and display the site status code.

@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Path;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -58,8 +60,47 @@ public class OpenModule extends AModuleData {
         }
     }
 
+    enum PresetFlagsValues {
+        AUTO(Key.AUTO),
+        EXCLUDE_RECENTS(Key.EXCLUDE_RECENTS),
+        INSIDE(Key.INSIDE);
+
+        public final int key;
+        static private PresetFlagsValues[] values = null;
+
+        PresetFlagsValues(int key) {
+            this.key = key;
+        }
+
+        // Combinations of flags are always unique, this way is easier to read and keep track of
+        private static class Key {
+            public static final int AUTO = 0xFFFFFFFF;  // Will never match
+            public static final int EXCLUDE_RECENTS = Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS;
+            public static final int INSIDE = Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS |
+                    Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
+        }
+
+        // To get enum out of key
+        public static PresetFlagsValues getFlag(int key){
+            if (values == null){    // init if necessary
+                values = PresetFlagsValues.values();
+            }
+            for (PresetFlagsValues e: values) {
+                if (e.key == key){
+                    return e;
+                }
+            }
+            return null;
+        }
+    }
+
     public static GenericPref.Int CTABS_PREF() {
         return new GenericPref.Int("open_ctabs", CtabsValues.AUTO.key);
+    }
+
+    public static GenericPref.Int PRESETFLAGS_PREF() {
+        return new GenericPref.Int("open_presetflags", PresetFlagsValues.AUTO.key);
     }
 
     @Override
@@ -97,16 +138,26 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
     private boolean ctabs = false;
 
+    private final GenericPref.Int presetFlagsPref = OpenModule.PRESETFLAGS_PREF();
+    private OpenModule.PresetFlagsValues presetState;
+    private OpenModule.PresetFlagsValues presetMatch;
+    private final OpenModule.PresetFlagsValues[] presetValues = OpenModule.PresetFlagsValues.values();
+
     private List<String> packages;
     private Button btn_open;
     private ImageButton btn_openWith;
     private Menu menu;
     private PopupMenu popup;
     private ImageButton btn_ctabs;
+    private ImageButton btn_presetflags;
+    private ImageButton expand;
+    private LinearLayout box;
+
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
         ctabsPref.init(dialog);
+        presetFlagsPref.init(dialog);
     }
 
     @Override
@@ -130,9 +181,27 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             btn_ctabs.setVisibility(View.GONE);
         }
 
+        btn_presetflags = views.findViewById(R.id.presetflags);
+        btn_presetflags.setOnClickListener(this);
+        btn_presetflags.setOnLongClickListener(this);
+        // Checks if intent flags match any of the presets
+        final int flags = intent.getFlags();
+        presetMatch = OpenModule.PresetFlagsValues.getFlag(flags);
+        OpenModule.PresetFlagsValues preference = OpenModule.PresetFlagsValues.getFlag(presetFlagsPref.get());
+
+        setPresetState(presetFlagsPref.get() != OpenModule.PresetFlagsValues.AUTO.key ? // if preference is not auto
+                (preference != null ? preference : OpenModule.PresetFlagsValues.AUTO) : // set state as preference if not null
+                (presetMatch != null ? presetMatch : OpenModule.PresetFlagsValues.AUTO));
+
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(this);
         btn_open.setOnLongClickListener(this);
+
+        box = views.findViewById(R.id.advanced);
+        expand = views.findViewById(R.id.expand);
+        expand.setOnClickListener(this);
+        box.setVisibility(View.VISIBLE);
+        toggleAdvancedOpts();
 
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(this);
@@ -162,6 +231,12 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             case R.id.ctabs:
                 toggleCtabs();
                 break;
+            case R.id.presetflags:
+                rotatePresetFlags();
+                break;
+            case R.id.expand:
+                toggleAdvancedOpts();
+                break;
             case R.id.open:
                 openUrl(0);
                 break;
@@ -179,6 +254,9 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         switch (v.getId()) {
             case R.id.ctabs:
                 Toast.makeText(getActivity(), R.string.mOpen_tabsDesc, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.presetflags:
+                Toast.makeText(getActivity(), R.string.mOpen_rotatePresetFlags, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.share:
                 copyToClipboard();
@@ -275,6 +353,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent.removeExtra(CTABS_EXTRA);
         }
 
+        if (presetState != OpenModule.PresetFlagsValues.AUTO) {
+            intent.setFlags(presetState.key);
+        }
+
         PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
     }
 
@@ -330,16 +412,61 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         ctabs = state;
     }
 
+    /**
+     * Rotates the preset flags state
+     */
+    private void rotatePresetFlags() {
+        int index = presetState.ordinal() + 1;  // next state
+        index = presetValues.length <= index ? 0 : index; // OOB check
+        // If a match was found there is no need to iterate through the auto state
+        index = presetMatch == null ? index :
+                presetValues[index] == OpenModule.PresetFlagsValues.AUTO ? index + 1 : index;
+        index = presetValues.length <= index ? 0 : index; // OOB check
+        setPresetState(presetValues[index]);
+    }
+
+    /**
+     * Sets the preset flags state
+     * @param state
+     */
+    private void setPresetState(OpenModule.PresetFlagsValues state) {
+        int image;
+        switch (state){
+            case INSIDE:
+                image = R.drawable.mopen_inside;
+                break;
+            case EXCLUDE_RECENTS:
+                image = R.drawable.mopen_exclude_recents;
+                break;
+            case AUTO:
+            default:
+                image = R.drawable.mopen_inside;
+        }
+        btn_presetflags.setImageResource(image);
+        presetState = state;
+    }
+
+    /**
+     * Shows/hides the advanced options
+     */
+    private void toggleAdvancedOpts(){
+        box.setVisibility(box.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+        expand.setImageResource(box.getVisibility() == View.VISIBLE ?
+                R.drawable.arrow_down :
+                R.drawable.arrow_right);
+    }
 }
 
 
 class OpenConfig extends AModuleConfig {
 
     private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
+    private final GenericPref.Int presetFlagsPref = OpenModule.PRESETFLAGS_PREF();
 
     public OpenConfig(ConfigActivity activity) {
         super(activity);
         ctabsPref.init(activity);
+        presetFlagsPref.init(activity);
     }
 
     @Override
@@ -365,5 +492,15 @@ class OpenConfig extends AModuleConfig {
                 cntx.getString(R.string.disabled)));
         ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref),
                 ctabsElements);
+
+        List<GenericPref.Int.AdapterPair> presetFlagsElements = new LinkedList<>();
+        presetFlagsElements.add(new GenericPref.Int.AdapterPair(OpenModule.PresetFlagsValues.AUTO.key,
+                cntx.getString(R.string.auto)));
+        presetFlagsElements.add(new GenericPref.Int.AdapterPair(OpenModule.PresetFlagsValues.INSIDE.key,
+                cntx.getString(R.string.mOpen_optionInside)));
+        presetFlagsElements.add(new GenericPref.Int.AdapterPair(OpenModule.PresetFlagsValues.EXCLUDE_RECENTS.key,
+                cntx.getString(R.string.mOpen_optionExcludeRecents)));
+        presetFlagsPref.attachToSpinner(views.findViewById(R.id.presetflags_pref),
+                presetFlagsElements);
     }
 }

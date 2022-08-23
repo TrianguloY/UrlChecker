@@ -58,17 +58,26 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
 
     <string name="mOpen_name"><![CDATA[Abrir y compartir]]></string>
     <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
-- Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
 - Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador.
+Botones de las opciones avanzadas (de izquierda a derecha):
+- Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
+- Botón de plantilla al abrir: rota entre los diferentes modos para abrir la url:
+        - Temporal: Después de abrir la url, cuando salga de la app esta se cerrará automáticamente.
+        - Nueva ventana: Abre la app de forma independiente.
 Este módulo no puede ser deshabilitado."</string>
     <string name="mOpen_ctabsSetting">"Estado por defecto de 'Custom tabs':"</string>
+    <string name="mOpen_presetFlagsSetting">Plantilla por defecto:</string>
+    <string name="mOpen_optionExcludeRecents">Nueva ventana</string>
+    <string name="mOpen_optionInside">Temporal</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
     <string name="mOpen_clipboard">Url copiada al portapapeles</string>
     <string name="mOpen_noapps">Sin aplicaciones</string>
     <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
+    <string name="mOpen_rotatePresetFlags">Rota las plantillas</string>
+
 
     <string name="mStatus_name">Código de estado</string>
     <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.
