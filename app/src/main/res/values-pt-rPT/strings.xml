@@ -1,6 +1,5 @@
 <resources>
     <!-- main -->
-    <string name="app_name">Url checker</string>
     <string name="txt_info">Este aplicativo funciona como um intermediário para abrir links de URL. Quando você clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
     <string name="txt_sample">Clique no link abaixo para testá ço:</string>
     <string name="a_modules">Módulos</string>
