@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- main -->
-    <string name="app_name">בודק כתובות אתרים</string>
     <string name="txt_info">אפליקציה זו פועלת כצעד ביניים לקראת פתיחת קישורי url. כאשר תלחץ על קישור ובחר באפליקציה זו כדי לפתוח אותה, היא תציג תיבת דו-שיח עם מידע על הקישור. לחץ על לחצן המודול למטה כדי לבדוק ולהגדיר את כל המודולים הזמינים.</string>
     <string name="txt_sample">לחץ על הקישור למטה כדי לבדוק את זה:</string>
     <string name="a_modules">מודולים</string>
