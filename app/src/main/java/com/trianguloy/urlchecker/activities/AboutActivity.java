@@ -29,7 +29,7 @@ public class AboutActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // on release, append version to the action bar title
-        if(!BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG) {
             setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
         }
 

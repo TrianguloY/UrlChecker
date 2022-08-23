@@ -28,17 +28,24 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"><EditText
-    android:id="@+id/data"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:gravity="start|top"
-    android:inputType="textMultiLine" /></ScrollView><ImageButton
-    android:id="@+id/format"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="right|top|end"
-    android:src="@drawable/format" /></FrameLayout></LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+        </ScrollView>
+
+        <ImageButton
+            android:id="@+id/format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top|end"
+            android:src="@drawable/format" />
+    </FrameLayout>
+</LinearLayout>

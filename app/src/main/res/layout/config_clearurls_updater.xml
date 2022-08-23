@@ -5,29 +5,38 @@
     android:orientation="vertical"
     android:padding="@dimen/smallPadding">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/mClear_sourceDesc" /><EditText
-    android:id="@+id/catalog_URL"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:autofillHints=""
-    android:ems="10"
-    android:hint="@string/mClear_urlHint"
-    android:inputType="textUri|none|text" /><TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/mClear_hashDesc" /><EditText
-    android:id="@+id/hash_URL"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:autofillHints=""
-    android:ems="10"
-    android:hint="@string/mClear_hashHint"
-    android:inputType="textUri|none|text" /><CheckBox
-    android:id="@+id/autoUpdate"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/padding"
-    android:text="@string/mClear_autoUpdate" /></LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_sourceDesc" />
+
+    <EditText
+        android:id="@+id/catalog_URL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/mClear_urlHint"
+        android:inputType="textUri|none|text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mClear_hashDesc" />
+
+    <EditText
+        android:id="@+id/hash_URL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/mClear_hashHint"
+        android:inputType="textUri|none|text" />
+
+    <CheckBox
+        android:id="@+id/autoUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:text="@string/mClear_autoUpdate" />
+</LinearLayout>

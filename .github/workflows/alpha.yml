@@ -1,0 +1,55 @@
+# This action builds the alpha version as apk on a password protected zip,
+# and uploads it to the alpha release.
+# Adapted from https://github.com/amirisback/automated-build-android-app-with-github-action
+name: Build alpha apk
+
+on:
+  # Triggers the workflow on push events for the master branch
+  # push:
+  #   branches:
+  #     - master
+
+  # Run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the repository files
+        uses: actions/checkout@v3
+
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: 'temurin'
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      # - name: Run tests
+      #   run: ./gradlew test
+
+      - name: Build
+        run: ./gradlew build
+
+      - name: Assemble apk
+        run: ./gradlew assembleAlpha
+
+      - name: Zip apk # just remove the password here if you want to build the apk yourself
+        run: zip -j -P ${{ secrets.ALPHA_PASS }} app-alpha.zip app/build/outputs/apk/alpha/app-alpha.apk
+
+      - name: Update alpha tag to latest commit
+        uses: EndBug/latest-tag@latest
+        with:
+          ref: alpha
+
+      - name: Upload zip to release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: alpha
+          files: app-alpha.zip

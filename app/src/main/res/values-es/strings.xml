@@ -105,7 +105,7 @@ Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener 
     <string name="mVT_scan">Escanear</string>
     <string name="mVT_cancel">Cancelar</string>
     <string name="mVT_scanning">Escaneando…</string>
-    <string name="mVT_goodUrl">Ninguno de los antivirus ha detectado la url como maliciosa (a fecha %s)</string>
+    <string name="mVT_goodUrl">Ninguno de los %d antivirus ha detectado la url como maliciosa (a fecha %s)</string>
     <string name="mVT_warningUrl">Aviso, %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
     <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
     <string name="mVT_connectError">No se ha podido conectar con VirusTotal. Comprueba que tienes acceso a internet o prueba mas tarde.</string>

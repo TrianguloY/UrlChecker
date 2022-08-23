@@ -19,6 +19,7 @@
             android:onClick="onClick"
             android:scaleType="fitCenter"
             android:src="@drawable/trianguloy" />
+
         <TextView
             android:id="@+id/txt_about"
             android:layout_width="match_parent"
@@ -144,5 +145,5 @@
                 android:tint="?attr/colorAccent" />
         </LinearLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 </ScrollView>
