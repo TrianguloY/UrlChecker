@@ -13,11 +13,11 @@ You can check existing code to see examples, but be aware that some are not perf
 
 you are free to propose one or more translation(s). Be sure of your work before providing it to the developer, who cannot verify it.
 
-- It is necessary to translate the `strings.xml` file present in the `app/src/main/res/values/` directory
+- It is necessary to translate the `strings.xml` file present in the `app/src/main/res/values/` subdirectory
 
 >- Translate all texts between the `<string>` and `</string>` tags.
 >- Remember to insert a backslash `\` before any apostrophe `'` Or enclose all text in quotes `"`
 
 Optionally you can:
 - Translate the `full-description.txt` and `short-description.txt` files _(presentation for application stores)_
-present in the directory `app/src/main/play/listings/en-US/`
+present in the `app/src/main/play/listings/en-US/` subdirectory
