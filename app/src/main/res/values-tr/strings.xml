@@ -1,6 +1,5 @@
 <resources>
     <!-- main -->
-    <string name="app_name">URL denetleyici</string>
     <string name="txt_info">Bu uygulama bağlantıları açmak için bir tür ara adım görevi görür. Bir bağlantıya tıkladığınızda ve onu açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir. Mevcut bileşenleri ve ne yaptıklarını görmek için aşağıdaki düğmeye tıklayın.</string>
     <string name="txt_sample">Test etmek için aşağıdaki linke tıklayın:</string>
     <string name="a_modules">Bileşenler</string>
