@@ -2,9 +2,7 @@ package com.trianguloy.urlchecker.utilities;
 
 import android.content.Context;
 
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,70 +15,72 @@ public class LastOpened {
      */
     private static final int N = 5;
 
+    /**
+     * The preferences
+     */
+    private final List<GenericPref.Str> list = new ArrayList<>(N);
     private static final String PREFIX = "opened";
-
-    private final Context cntx;
 
     /**
      * Initializes this utility
+     *
+     * @param cntx base context
      */
     public LastOpened(Context cntx) {
-        this.cntx = cntx;
+        for (int i = 0; i < N; i++) {
+            GenericPref.Str gp = new GenericPref.Str(PREFIX + i, null);
+            gp.init(cntx);
+            list.add(gp);
+        }
 
         // debug
 //        System.out.println(list);
     }
 
     /**
-     * Sorts an existing list of packages in-place with the last opened for a given url
+     * Sorts an existing list with the last opened
+     *
+     * @param packs list to sort
      */
-    public void sort(List<String> packs, String url) {
-        List<String> priority = getPriority(url).get();
-
-        // sort list based on priority
-        Collections.sort(packs, (p1, p2) -> Integer.compare(priority.indexOf(p1), priority.indexOf(p2)));
+    public void sort(List<String> packs) {
+        // check if a priority app is in the list
+        for (int i = 0; i < N; i++) {
+            final String pack = list.get(i).get();
+            // and if it is, move to front
+            if (packs.contains(pack)) {
+                packs.remove(pack);
+                packs.add(0, pack);
+            }
+        }
     }
 
     /**
-     * Returns the priority list preferences for a given url.
-     * The most preferred is the last.
+     * Marks a package as used, updating the priority list
+     *
+     * @param pack packagename of the used app
      */
-    private GenericPref.LstStr getPriority(String url) {
-        // get top level domain and first subdomain (if any)
-        String domain;
-        try {
-            List<String> domainParts = Arrays.asList(new URL(url).getHost().split("\\.", 3));
-            domain = String.join(".", domainParts.size() < 2 ? domainParts : domainParts.subList(0, 2));
-        } catch (Exception e) {
-            e.printStackTrace();
-            domain = "";
+    public void usedPackage(String pack) {
+
+        // check if already the most used, and move all one below
+        if (pack.equals(list.get(N - 1).get())) {
+            for (int i = 0; i < N - 3; ++i) {
+                list.get(i).set(list.get(i + 1).get());
+            }
+            list.get(N - 2).set(null);
+            return;
         }
 
-        // init list for that domain
-        GenericPref.LstStr pref = new GenericPref.LstStr(PREFIX + domain, ";", Collections.emptyList());
-        pref.init(cntx);
-        return pref;
-    }
-
-    /**
-     * Marks a package as used for a given url, updating the priority list
-     */
-    public void usedPackage(String pack, String url) {
-        GenericPref<List<String>> pref = getPriority(url);
-        List<String> priority = pref.get();
-
-        // update
-        int i = priority.indexOf(pack);
-        if (i >= 0 && i < priority.size()) {
-            // already present and not most prioritized, shift up
-            Collections.swap(priority, i, i + 1);
-        } else if (i == -1) {
-            // not present, add as last (keep to N max)
-            while (priority.size() >= N) priority.remove(0);
-            priority.add(0, pack);
+        // check intermediate ones, and swap with previous
+        for (int i = N - 2; i >= 0; i--) {
+            if (pack.equals(list.get(i).get())) {
+                String prev = list.get(i).get();
+                list.get(i).set(list.get(i + 1).get());
+                list.get(i + 1).set(prev);
+                return;
+            }
         }
 
-        // save
-        pref.set(priority);
+        // if not in list, set as last
+        list.get(0).set(pack);
     }
 }
