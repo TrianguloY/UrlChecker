@@ -38,7 +38,7 @@ public class LastOpened {
         List<String> priority = getPriority(url).get();
 
         // sort list based on priority
-        Collections.sort(packs, (p1, p2) -> Integer.compare(priority.indexOf(p1), priority.indexOf(p2)));
+        Collections.sort(packs, (p1, p2) -> Integer.compare(priority.indexOf(p2), priority.indexOf(p1)));
     }
 
     /**
@@ -71,7 +71,7 @@ public class LastOpened {
 
         // update
         int i = priority.indexOf(pack);
-        if (i >= 0 && i < priority.size()) {
+        if (i >= 0 && i + 1 < priority.size()) {
             // already present and not most prioritized, shift up
             Collections.swap(priority, i, i + 1);
         } else if (i == -1) {
