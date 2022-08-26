@@ -36,8 +36,8 @@ public class CTabs {
      */
     public enum Config implements TranslatableEnum {
         AUTO(0, R.string.auto),
-        ON(1, R.string.enabled),
-        OFF(2, R.string.disabled),
+        ON(1, R.string.mOpen_ctabsOn),
+        OFF(2, R.string.mOpen_ctabsOff),
         ;
 
         // -----

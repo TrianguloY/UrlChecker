@@ -330,7 +330,11 @@ class OpenConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
+        if (CTabs.isAvailable()) {
+            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
+        } else {
+            views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
+        }
     }
 }
 
