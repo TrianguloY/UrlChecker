@@ -64,6 +64,8 @@ This module can't be disabled."</string>
     <string name="mOpen_ctabsSetting">Custom tabs:</string>
     <string name="mOpen_ctabsOn">Enabled by default</string>
     <string name="mOpen_ctabsOff">Disabled by default</string>
+    <string name="mOpen_ctabsEn">Always on</string>
+    <string name="mOpen_ctabsDis">Always off</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>

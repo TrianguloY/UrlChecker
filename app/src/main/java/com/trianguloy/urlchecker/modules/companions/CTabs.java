@@ -38,6 +38,8 @@ public class CTabs {
         AUTO(0, R.string.auto),
         ON(1, R.string.mOpen_ctabsOn),
         OFF(2, R.string.mOpen_ctabsOff),
+        ENABLED(3, R.string.mOpen_ctabsEn),
+        DISABLED(4, R.string.mOpen_ctabsDis),
         ;
 
         // -----

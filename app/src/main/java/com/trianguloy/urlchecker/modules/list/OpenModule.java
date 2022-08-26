@@ -88,42 +88,58 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     public void onInitialize(View views) {
         Intent intent = getActivity().getIntent();
 
+        // init ctabs
         btn_ctabs = views.findViewById(R.id.ctabs);
-        btn_ctabs.setOnClickListener(this);
-        btn_ctabs.setOnLongClickListener(this);
-        switch (ctabsPref.get()) {
-            case ON:
-                setCtabs(true);
-                break;
-            case OFF:
-                setCtabs(false);
-                break;
-            case AUTO:
-            default:
-                // If auto we get it from the intent
-                setCtabs(intent.hasExtra(CTabs.EXTRA));
-                break;
-        }
-        if (!CTabs.isAvailable()) {
+        if (CTabs.isAvailable()) {
+            btn_ctabs.setOnClickListener(this);
+            btn_ctabs.setOnLongClickListener(this);
+            switch (ctabsPref.get()) {
+                case ON:
+                    setCtabs(true);
+                    break;
+                case OFF:
+                    setCtabs(false);
+                    break;
+                case AUTO:
+                default:
+                    // If auto we get it from the intent
+                    setCtabs(intent.hasExtra(CTabs.EXTRA));
+                    break;
+                case ENABLED:
+                    // enable but hide
+                    setCtabs(true);
+                    btn_ctabs.setVisibility(View.GONE);
+                    break;
+                case DISABLED:
+                    // disable but hide
+                    setCtabs(false);
+                    btn_ctabs.setVisibility(View.GONE);
+                    break;
+            }
+        } else {
             btn_ctabs.setVisibility(View.GONE);
         }
 
+        // init open
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(this);
         btn_open.setOnLongClickListener(this);
 
+        // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(this);
 
+        // init share
         View btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(this);
         btn_share.setOnLongClickListener(this);
 
-
+        // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
         popup.setOnMenuItemClickListener(this);
         menu = popup.getMenu();
 
+        // init lastOpened utility
         lastOpened = new LastOpened(getActivity());
     }
 
