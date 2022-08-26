@@ -21,14 +21,13 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
+import com.trianguloy.urlchecker.utilities.TranslatableEnum;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -36,30 +35,8 @@ import java.util.List;
  */
 public class OpenModule extends AModuleData {
 
-    /**
-     * Values for the config
-     */
-    enum CtabsValues {
-        AUTO(Key.AUTO),
-        ON(Key.ON),
-        OFF(Key.OFF);
-
-        public final int key;
-
-        CtabsValues(int key) {
-            this.key = key;
-        }
-
-        // Values to be stored
-        private static class Key {
-            public static final int AUTO = 2;
-            public static final int ON = 1;
-            public static final int OFF = 0;
-        }
-    }
-
-    public static GenericPref.Int CTABS_PREF() {
-        return new GenericPref.Int("open_ctabs", CtabsValues.AUTO.key);
+    public static GenericPref.Enumeration<CTabsValues> CTABS_PREF() {
+        return new GenericPref.Enumeration<>("open_ctabs", CTabsValues.AUTO, CTabsValues.class);
     }
 
     @Override
@@ -94,7 +71,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     private LastOpened lastOpened;
 
-    private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
+    private final GenericPref.Enumeration<CTabsValues> ctabsPref = OpenModule.CTABS_PREF();
     private boolean ctabs = false;
 
     private List<String> packages;
@@ -121,11 +98,19 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         btn_ctabs = views.findViewById(R.id.ctabs);
         btn_ctabs.setOnClickListener(this);
         btn_ctabs.setOnLongClickListener(this);
-        // If auto we get it from the intent, if not we only check if it is on, if it is not it means is off
-        setCtabs(ctabsPref.get() == OpenModule.CtabsValues.AUTO.key ?
-                intent.hasExtra(CTABS_EXTRA) :
-                ctabsPref.get() == OpenModule.CtabsValues.ON.key);
-
+        switch (ctabsPref.get()) {
+            case ON:
+                setCtabs(true);
+                break;
+            case OFF:
+                setCtabs(false);
+                break;
+            case AUTO:
+            default:
+                // If auto we get it from the intent
+                setCtabs(intent.hasExtra(CTABS_EXTRA));
+                break;
+        }
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
             btn_ctabs.setVisibility(View.GONE);
         }
@@ -335,7 +320,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
 class OpenConfig extends AModuleConfig {
 
-    private final GenericPref.Int ctabsPref = OpenModule.CTABS_PREF();
+    private final GenericPref.Enumeration<CTabsValues> ctabsPref = OpenModule.CTABS_PREF();
 
     public OpenConfig(ConfigActivity activity) {
         super(activity);
@@ -354,16 +339,36 @@ class OpenConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        Context cntx = views.getContext();
+        ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
+    }
+}
 
-        List<GenericPref.Int.AdapterPair> ctabsElements = new LinkedList<>();
-        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.AUTO.key,
-                cntx.getString(R.string.auto)));
-        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.ON.key,
-                cntx.getString(R.string.enabled)));
-        ctabsElements.add(new GenericPref.Int.AdapterPair(OpenModule.CtabsValues.OFF.key,
-                cntx.getString(R.string.disabled)));
-        ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref),
-                ctabsElements);
+/**
+ * CTabs state
+ */
+enum CTabsValues implements TranslatableEnum {
+    AUTO(0, R.string.auto),
+    ON(1, R.string.enabled),
+    OFF(2, R.string.disabled),
+    ;
+
+    //--
+
+    private final int id;
+    private final int stringResource;
+
+    CTabsValues(int id, int stringResource) {
+        this.id = id;
+        this.stringResource = stringResource;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public int getStringResource() {
+        return stringResource;
     }
 }

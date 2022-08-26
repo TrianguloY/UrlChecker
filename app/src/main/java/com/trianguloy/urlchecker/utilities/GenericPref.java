@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * A generic type preference
@@ -106,81 +105,6 @@ public abstract class GenericPref<T> {
         }
     }
 
-
-    /**
-     * An Integer preference
-     */
-    static public class Int extends GenericPref<Integer> {
-        public Int(String prefName, Integer defaultValue) {
-            super(prefName, defaultValue);
-        }
-
-        @Override
-        public Integer get() {
-            return prefs.getInt(prefName, defaultValue);
-        }
-
-        @Override
-        public void set(Integer value) {
-            prefs.edit().putInt(prefName, value).apply();
-        }
-
-        /**
-         * Stores a key and the string representation
-         */
-        public static class AdapterPair{
-            public final Integer key;
-            public final String name;
-
-            public AdapterPair(Integer key, String name) {
-                this.key = key;
-                this.name = name;
-            }
-
-            @Override
-            public String toString() {
-                return name;
-            }
-        }
-
-        /**
-         * Uses a List of AdapterPair to populate a spinner
-         */
-        public void attachToSpinner(Spinner spinner, List<AdapterPair> elements){
-            // Put elements in the spinner
-            ArrayAdapter<AdapterPair> adapter =
-                    new ArrayAdapter<>(spinner.getContext(),
-                            android.R.layout.simple_spinner_item,
-                            elements);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
-
-            // To select current preference, as Key doesn't necessarily match index
-            // There's probably a better way to do this
-            int selection = get();
-            ListIterator<AdapterPair> it = elements.listIterator();
-            while (it.hasNext()){
-                if (it.next().key == selection){
-                    spinner.setSelection(it.previousIndex());
-                    // Key values should not be repeated
-                    break;
-                }
-            }
-
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    AdapterPair el = (AdapterPair) adapterView.getItemAtPosition(i);
-                    set(el.key);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-        }
-    }
     /**
      * A boolean preference
      */
@@ -292,5 +216,69 @@ public abstract class GenericPref<T> {
             if (value != null) list.addAll(Arrays.asList(value.split(separator)));
             return list;
         }
+    }
+
+    /**
+     * A list of options (enumeration) preference
+     */
+    static public class Enumeration<T extends Enum<T> & TranslatableEnum> extends GenericPref<T> {
+        private final Class<T> type;
+
+        public Enumeration(String prefName, T defaultValue, Class<T> type) {
+            super(prefName, defaultValue);
+            this.type = type;
+        }
+
+        @Override
+        public T get() {
+            int value = prefs.getInt(prefName, defaultValue.getId());
+            for (T entry : type.getEnumConstants()) {
+                if (entry.getId() == value) return entry;
+            }
+            return defaultValue;
+        }
+
+        @Override
+        public void set(T value) {
+            prefs.edit().putInt(prefName, value.getId()).apply();
+        }
+
+        /**
+         * Populate a spinner with this preference
+         */
+        public void attachToSpinner(Spinner spinner) {
+            // Put elements in the spinner
+            T[] values = type.getEnumConstants();
+            List<String> names = new ArrayList<>(values.length);
+            for (T value : values) {
+                names.add(spinner.getContext().getString(value.getStringResource()));
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    spinner.getContext(),
+                    android.R.layout.simple_spinner_item,
+                    names
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            // select current option
+            T selection = get();
+            for (int i = 0; i < values.length; i++) {
+                if (values[i] == selection) spinner.setSelection(i);
+            }
+
+            // add listener to auto-change it
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    set(values[i]);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+        }
+
     }
 }
