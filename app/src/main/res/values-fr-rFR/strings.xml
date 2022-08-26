@@ -28,6 +28,7 @@ Traduction: %s."</string>
     <string name="reset">Réinitialiser</string>
     <string name="close">Fermer</string>
     <string name="clear">Effacer</string>
+    <string name="auto">Automatique</string>
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
     <string name="json_edit">Éditeur avancé</string>
