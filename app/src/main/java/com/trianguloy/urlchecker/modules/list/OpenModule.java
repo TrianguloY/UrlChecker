@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +20,9 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -56,15 +56,15 @@ public class OpenModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ConfigActivity cntx) {
-        return new DescriptionConfig(R.string.mOpen_desc);
+        return new OpenConfig(cntx);
     }
 }
 
 class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, View.OnLongClickListener {
 
-    private static final String CTABS_EXTRA = "android.support.customtabs.extra.SESSION";
-
     private LastOpened lastOpened;
+
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
     private boolean ctabs = false;
 
     private List<String> packages;
@@ -76,6 +76,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
+        ctabsPref.init(dialog);
     }
 
     @Override
@@ -85,31 +86,60 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     @Override
     public void onInitialize(View views) {
-        btn_ctabs = views.findViewById(R.id.ctabs);
-        btn_ctabs.setOnClickListener(this);
-        btn_ctabs.setOnLongClickListener(this);
-        setCtabs(getActivity().getIntent().hasExtra(CTABS_EXTRA));
+        Intent intent = getActivity().getIntent();
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+        // init ctabs
+        btn_ctabs = views.findViewById(R.id.ctabs);
+        if (CTabs.isAvailable()) {
+            btn_ctabs.setOnClickListener(this);
+            btn_ctabs.setOnLongClickListener(this);
+            switch (ctabsPref.get()) {
+                case ON:
+                    setCtabs(true);
+                    break;
+                case OFF:
+                    setCtabs(false);
+                    break;
+                case AUTO:
+                default:
+                    // If auto we get it from the intent
+                    setCtabs(intent.hasExtra(CTabs.EXTRA));
+                    break;
+                case ENABLED:
+                    // enable but hide
+                    setCtabs(true);
+                    btn_ctabs.setVisibility(View.GONE);
+                    break;
+                case DISABLED:
+                    // disable but hide
+                    setCtabs(false);
+                    btn_ctabs.setVisibility(View.GONE);
+                    break;
+            }
+        } else {
             btn_ctabs.setVisibility(View.GONE);
         }
 
+        // init open
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(this);
         btn_open.setOnLongClickListener(this);
 
+        // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(this);
 
+        // init share
         View btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(this);
         btn_share.setOnLongClickListener(this);
 
-
+        // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
         popup.setOnMenuItemClickListener(this);
         menu = popup.getMenu();
 
+        // init lastOpened utility
         lastOpened = new LastOpened(getActivity());
     }
 
@@ -223,20 +253,19 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent = UrlUtilities.getViewIntent(getUrl(), chosed);
         }
 
-        if (ctabs && !intent.hasExtra(CTABS_EXTRA)) {
+        if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
             // enable Custom tabs
 
-            // https://developer.chrome.com/multidevice/android/customtabs
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            if (CTabs.isAvailable()) {
                 Bundle extras = new Bundle();
-                extras.putBinder(CTABS_EXTRA, null); //  Set to null for no session
+                extras.putBinder(CTabs.EXTRA, null); //  Set to null for no session
                 intent.putExtras(extras);
             }
         }
 
-        if (!ctabs && intent.hasExtra(CTABS_EXTRA)) {
+        if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
             // disable ctabs
-            intent.removeExtra(CTABS_EXTRA);
+            intent.removeExtra(CTabs.EXTRA);
         }
 
         PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
@@ -295,3 +324,33 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     }
 
 }
+
+class OpenConfig extends AModuleConfig {
+
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
+
+    public OpenConfig(ConfigActivity activity) {
+        super(activity);
+        ctabsPref.init(activity);
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        return true;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_open;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        if (CTabs.isAvailable()) {
+            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
+        } else {
+            views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
+        }
+    }
+}
+

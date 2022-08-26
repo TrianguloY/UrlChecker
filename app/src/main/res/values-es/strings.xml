@@ -28,6 +28,7 @@ Traducciones: %s."</string>
     <string name="reset">Reiniciar</string>
     <string name="close">Cerrar</string>
     <string name="clear">Borrar</string>
+    <string name="auto">Automático</string>
 
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
@@ -59,6 +60,11 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
 - Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador.
 Este módulo no puede ser deshabilitado."</string>
+    <string name="mOpen_ctabsSetting">"'Custom tabs':"</string>
+    <string name="mOpen_ctabsOn">Activado por defecto</string>
+    <string name="mOpen_ctabsOff">Desactivado por defecto</string>
+    <string name="mOpen_ctabsEn">Siempre activado</string>
+    <string name="mOpen_ctabsDis">Siempre desactivado</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
