@@ -1,6 +1,8 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.modules.companions;
 
 import android.content.Context;
+
+import com.trianguloy.urlchecker.utilities.GenericPref;
 
 import java.util.ArrayList;
 import java.util.List;
