@@ -76,7 +76,7 @@ facilitating link sharing, protecting against certain phishing techniques and ma
 Feel free to **suggest changes**, create [**issues**](https://github.com/TrianguloY/UrlChecker/issues/new) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
 Translations are also greatly appreciated.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for code or translation details and tips.
+See [CONTRIBUTING](CONTRIBUTING.md) for code or translation details and tips.
 
 <!-- ---------- License ---------- -->
 
