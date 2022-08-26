@@ -28,6 +28,8 @@ Traduction: %s."</string>
     <string name="reset">Réinitialiser</string>
     <string name="close">Fermer</string>
     <string name="clear">Effacer</string>
+    <string name="auto">Automatique</string>
+
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
     <string name="json_edit">Éditeur avancé</string>
@@ -59,6 +61,11 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
 - Bouton Ouvrir: appuyez sur le nom de l'application pour ouvrir le lien avec. Si un lien peut être ouvert avec plusieurs applications, une flèche s'affiche afin de vous offrir le choix.
 - Bouton Partager: appuyez sur le bouton pour partager le lien. Appuyez longuement pour le copier rapidement dans le presse-papiers.
 Ce module ne peut pas être désactivé."</string>
+    <string name="mOpen_ctabsSetting">Onglets personnalisés:</string>
+    <string name="mOpen_ctabsOn">Activé par défaut</string>
+    <string name="mOpen_ctabsOff">Désactivé par défaut</string>
+    <string name="mOpen_ctabsEn">Toujours activé</string>
+    <string name="mOpen_ctabsDis">Toujours désactivé</string>
     <string name="mOpen_with">Ouvrir avec %s</string>
     <string name="mOpen_open">Ouvrir</string>
     <string name="mOpen_share">Partager</string>
