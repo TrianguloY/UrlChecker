@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,11 +20,11 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
-import com.trianguloy.urlchecker.utilities.TranslatableEnum;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
 import java.util.List;
@@ -34,10 +33,6 @@ import java.util.List;
  * This module contains an open and share buttons
  */
 public class OpenModule extends AModuleData {
-
-    public static GenericPref.Enumeration<CTabsValues> CTABS_PREF() {
-        return new GenericPref.Enumeration<>("open_ctabs", CTabsValues.AUTO, CTabsValues.class);
-    }
 
     @Override
     public String getId() {
@@ -67,11 +62,9 @@ public class OpenModule extends AModuleData {
 
 class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, View.OnLongClickListener {
 
-    private static final String CTABS_EXTRA = "android.support.customtabs.extra.SESSION";
-
     private LastOpened lastOpened;
 
-    private final GenericPref.Enumeration<CTabsValues> ctabsPref = OpenModule.CTABS_PREF();
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
     private boolean ctabs = false;
 
     private List<String> packages;
@@ -108,10 +101,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             case AUTO:
             default:
                 // If auto we get it from the intent
-                setCtabs(intent.hasExtra(CTABS_EXTRA));
+                setCtabs(intent.hasExtra(CTabs.EXTRA));
                 break;
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
+        if (!CTabs.isAvailable()) {
             btn_ctabs.setVisibility(View.GONE);
         }
 
@@ -244,20 +237,19 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent = UrlUtilities.getViewIntent(getUrl(), chosed);
         }
 
-        if (ctabs && !intent.hasExtra(CTABS_EXTRA)) {
+        if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
             // enable Custom tabs
 
-            // https://developer.chrome.com/multidevice/android/customtabs
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            if (CTabs.isAvailable()) {
                 Bundle extras = new Bundle();
-                extras.putBinder(CTABS_EXTRA, null); //  Set to null for no session
+                extras.putBinder(CTabs.EXTRA, null); //  Set to null for no session
                 intent.putExtras(extras);
             }
         }
 
-        if (!ctabs && intent.hasExtra(CTABS_EXTRA)) {
+        if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
             // disable ctabs
-            intent.removeExtra(CTABS_EXTRA);
+            intent.removeExtra(CTabs.EXTRA);
         }
 
         PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
@@ -317,10 +309,9 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
 }
 
-
 class OpenConfig extends AModuleConfig {
 
-    private final GenericPref.Enumeration<CTabsValues> ctabsPref = OpenModule.CTABS_PREF();
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
 
     public OpenConfig(ConfigActivity activity) {
         super(activity);
@@ -343,32 +334,3 @@ class OpenConfig extends AModuleConfig {
     }
 }
 
-/**
- * CTabs state
- */
-enum CTabsValues implements TranslatableEnum {
-    AUTO(0, R.string.auto),
-    ON(1, R.string.enabled),
-    OFF(2, R.string.disabled),
-    ;
-
-    //--
-
-    private final int id;
-    private final int stringResource;
-
-    CTabsValues(int id, int stringResource) {
-        this.id = id;
-        this.stringResource = stringResource;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public int getStringResource() {
-        return stringResource;
-    }
-}
