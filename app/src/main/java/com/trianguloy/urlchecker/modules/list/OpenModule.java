@@ -233,11 +233,12 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
      * @param index index from the packages list of the app to use
      */
     private void openUrl(int index) {
+        // get
         if (index < 0 || index >= packages.size()) return;
+        String chosen = packages.get(index);
 
-        // update chosen
-        String chosed = packages.get(index);
-        lastOpened.usedPackage(chosed);
+        // update as preferred over the rest
+        lastOpened.prefer(chosen, packages);
 
         // open
         Intent intent = new Intent(getActivity().getIntent());
@@ -245,12 +246,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             // preserve original VIEW intent
             intent.setData(Uri.parse(getUrl()));
             intent.setComponent(null);
-            intent.setPackage(chosed);
-
-
+            intent.setPackage(chosen);
         } else {
             // replace with new VIEW intent
-            intent = UrlUtilities.getViewIntent(getUrl(), chosed);
+            intent = UrlUtilities.getViewIntent(getUrl(), chosen);
         }
 
         if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
