@@ -22,11 +22,22 @@ jobs:
         architecture: x64
         cache: gradle
 
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+    - name: Cache gradle and sdk
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gradle-and-sdk
+      with:
+        path: |
+          ${{ github.workspace }}/.opt/cache/gradle/wrapper
+          ${{ github.workspace }}/.opt/cache/gradle/caches
+          ${{ github.workspace }}/.opt/sdk
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/wrapper/gradle-wrapper.properties', '**/build.gradle') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-
     - name: Execute Gradle build
       run: ./gradlew build
