@@ -152,11 +152,10 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
      * Sets the 'more' indicator.
      */
     private void updateMoreIndicator() {
-        info.setCompoundDrawablesWithIntrinsicBounds(
+        AndroidUtils.setStartDrawables(info,
                 box.getChildCount() == 0 ? 0
                         : box.getVisibility() == View.VISIBLE ? R.drawable.arrow_down
-                        : R.drawable.arrow_right,
-                0, 0, 0);
+                        : R.drawable.arrow_right);
     }
 
     /**

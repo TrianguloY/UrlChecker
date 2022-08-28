@@ -5,7 +5,7 @@
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
 # Url Checker
-### Android app made by TrianguloY
+### Android app made by [TrianguloY](https://github.com/TrianguloY)
 Contributions: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
 Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
 
@@ -18,7 +18,6 @@ Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://gi
 [![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-Droid%20version)](https://gitlab.com/fdroid/fdroiddata/-/blob/master/metadata/com.trianguloy.urlchecker.yml)
 [![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
 [![App-Code Size](https://img.shields.io/github/languages/code-size/trianguloy/urlchecker.svg?label=Code%20size)](https://api.github.com/repos/TrianguloY/UrlChecker)
-[![Patreon](https://img.shields.io/badge/Patreon-Donate-orange)](https://www.patreon.com/bePatron?u=24747112)
 
 </div>
 
@@ -77,7 +76,7 @@ facilitating link sharing, protecting against certain phishing techniques and ma
 Feel free to **suggest changes**, create [**issues**](https://github.com/TrianguloY/UrlChecker/issues/new) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
 Translations are also greatly appreciated.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for code or translation details and tips.
+See [CONTRIBUTING](CONTRIBUTING.md) for code or translation details and tips.
 
 <!-- ---------- License ---------- -->
 

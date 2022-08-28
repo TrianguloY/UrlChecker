@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.activities;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -55,7 +54,7 @@ public class MainActivity extends Activity {
                 break;
             case R.id.m_img_icon:
                 // click on the app icon
-                if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (BuildConfig.DEBUG) {
                     chooseLocaleDebug();
                     break;
                 }
@@ -71,13 +70,16 @@ public class MainActivity extends Activity {
      * To be replaced with a proper implementation with issue
      * https://github.com/TrianguloY/UrlChecker/issues/45
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void chooseLocaleDebug() {
         String[] locales = new String[]{"en", "es", "fr-FR", "iw", "pt-PT", "tr", "uk"};
         new AlertDialog.Builder(this)
                 .setItems(locales, (dialog, which) -> {
                     Configuration config = new Configuration();
-                    config.setLocale(Locale.forLanguageTag(locales[which]));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        config.setLocale(Locale.forLanguageTag(locales[which]));
+                    }else{
+                        config.locale = new Locale(locales[which]);
+                    }
                     getBaseContext().getResources()
                             .updateConfiguration(config, null);
                     recreate();

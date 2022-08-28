@@ -20,7 +20,6 @@ android {
             initWith(buildTypes.debug)
             applicationIdSuffix '.alpha'
             versionNameSuffix '-ALPHA'
-            signingConfig signingConfigs.debug
         }
     }
 

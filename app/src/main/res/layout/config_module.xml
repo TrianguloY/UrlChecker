@@ -19,7 +19,8 @@
             android:drawableStart="@drawable/arrow_right"
             android:drawableLeft="@drawable/arrow_right"
             android:drawableTint="?attr/colorAccent"
-            android:gravity="center_vertical"
+            android:textAlignment="viewStart"
+            android:gravity="center_vertical|start"
             android:padding="5dp"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
             android:textStyle="bold" />

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -28,6 +29,26 @@ public class AndroidUtils {
                         ? R.style.DialogThemeLight // explicit light mode
                         : R.style.DialogThemeDark // dark mode or device default
         );
+    }
+
+    /**
+     * Sets the start drawable of a textview
+     * Wrapped for android compatibility
+     */
+    public static void setStartDrawables(TextView txt, int start) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            // we can use the function directly!
+            txt.setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0);
+        } else {
+            // we need to manually adjust
+            if ((txt.getContext().getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_LAYOUTDIR_MASK) == Configuration.SCREENLAYOUT_LAYOUTDIR_RTL) {
+                // rtl
+                txt.setCompoundDrawablesWithIntrinsicBounds(0, 0, start, 0);
+            } else {
+                // ltr
+                txt.setCompoundDrawablesWithIntrinsicBounds(start, 0, 0, 0);
+            }
+        }
     }
 
     /**

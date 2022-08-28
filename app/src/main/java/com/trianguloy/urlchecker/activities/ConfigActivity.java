@@ -17,6 +17,7 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
+import com.trianguloy.urlchecker.utilities.JavaUtilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -115,7 +116,8 @@ public class ConfigActivity extends Activity {
         title.setOnClickListener(v -> {
             boolean checked = child.getVisibility() == View.GONE;
             child.setVisibility(checked ? View.VISIBLE : View.GONE);
-            title.setCompoundDrawablesWithIntrinsicBounds(checked ? R.drawable.arrow_down : R.drawable.arrow_right, 0, 0, 0);
+            AndroidUtils.setStartDrawables(title,
+                    checked ? R.drawable.arrow_down : R.drawable.arrow_right);
         });
         title.performClick(); // initial hide
     }
@@ -126,7 +128,7 @@ public class ConfigActivity extends Activity {
     private void moveModule(View moduleView, int delta) {
         int position = list.indexOfChild(moduleView);
         if (position == -1) return; // no view? impossible
-        int newPosition = Math.min(Math.max(0, position + delta), list.getChildCount() - 1); // clamp
+        int newPosition = JavaUtilities.clamp(0, position + delta, list.getChildCount() - 1);
         if (newPosition == position) return; // same position? just ignore
 
         // swap
