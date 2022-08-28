@@ -1,19 +1,21 @@
-name: Validation
+# This action checks that the store files are valid for Play Store. Current checks:
+# - title and description files must not exceed a maximum number of characters
+# To be replaced with a more powerful (and less manual) one
+name: Validate store files
 
-# Note: this is the second time I'm writting a GitHub action, and the first time I'm using a script.
+# Note: this is the second time I'm writing a GitHub action, and the first time I'm using a script.
 # Most probably there are better ways to do it, if you know one and want to suggest it that'd be wonderful!
 
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
-    branches: 
-    - master
-    
+    branches:
+      - master
+
 jobs:
-  validate:
-    # This action checks that the title and description files don't exceed the maximum number of characters allowed on PlayStore
+  validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,20 +25,20 @@ jobs:
             // import
             const { lstatSync, readdirSync, readFileSync, existsSync } = require('fs');
             const { join } = require('path');
-            
+
             // header
             console.log("Validating files:");
             console.log("");
-            
+
             let error = false;
-            
+
             // for each locale
             const listings = "./app/src/main/play/listings";
             readdirSync(listings)
               .map(locale => [locale, join(listings, locale)])
               .filter(([locale, path]) => lstatSync(path).isDirectory())
               .forEach(([locale, path]) => {
-                console.log(`[     ] - '${locale}'`);
+                console.log(`[      ] - '${locale}'`);
 
                 // check files length
                 ([
@@ -44,7 +46,7 @@ jobs:
                   ["short-description.txt", 80],
                   ["full-description.txt", 4000],
                 ]).forEach(([file, limit]) => {
-                
+
                   // get file
                   const subpath = join(path, file);
                   if(existsSync(subpath)){
@@ -53,31 +55,29 @@ jobs:
                     if(size > limit) {
                       // invalid length, error
                       error = true;
-                      console.log(`[ERROR]     - '${file}' length: ${size}/${limit}`);
-                      console.error("");
-                      console.error("*********");
-                      console.error(`* ERROR : File ${file} from locale ${locale} (${subpath}) must have ${limit} or less chars, and has ${size}. Use synonims or remove less important sentences, otherwise Play Store won't accept it`);
-                      console.error("*********");
-                      console.error("");
+                      console.log(`[ERROR ]     - '${file}' length: ${size}/${limit}`);
+                      console.log("");
+                      // '[ERROR]' is detected on GitHub and the line is displayed on red
+                      console.log(`[ERROR] File ${file} from locale ${locale} (${subpath}) must be ${limit} or less characters long, current length: ${size}. Use synonims or remove less important sentences, otherwise Play Store won't accept it.`);
+                      console.log("");
                     }else{
                       // valid length
-                      console.log(`[ OK  ]     - '${file}' length: ${size}/${limit}`);
+                      console.log(`[  OK  ]     - '${file}' length: ${size}/${limit}`);
                     }
                   }else{
                     // no file
-                    console.log(`[SKIP ]     - '${file}': not found`);
+                    console.log(`[ SKIP ]     - '${file}': not found`);
                   }
                 })
             });
-            
+
             // result
             console.log("");
             if (error) {
               // error, exit
-              console.error("Validation finished. Errors found, check above for their details");
+              console.log("Validation finished. Errors found, check above for their details");
               process.exit(1);
             }else{
               // ok, end
               console.log("Validation finished. No errors found.");
             }
-          
