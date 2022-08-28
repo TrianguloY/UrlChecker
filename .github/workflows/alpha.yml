@@ -28,17 +28,16 @@ jobs:
           java-version: 11
           distribution: 'temurin'
 
-      - name: Change wrapper permissions
+      - name: Set gradlew as executable
+        # for some reason the gradle-build-action doesn't do this automatically
         run: chmod +x ./gradlew
 
-      # - name: Run tests
-      #   run: ./gradlew test
-
-      - name: Build
-        run: ./gradlew build
-
-      - name: Assemble apk
-        run: ./gradlew assembleAlpha
+      - name: Build & assemble with gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: >
+            build
+            assembleAlpha
 
       - name: Zip apk # just remove the password here if you want to build the apk yourself
         run: zip -j -P ${{ secrets.ALPHA_PASS }} app-alpha.zip app/build/outputs/apk/alpha/app-alpha.apk
@@ -48,7 +47,7 @@ jobs:
         with:
           ref: alpha
 
-      - name: Upload zip to release
+      - name: Upload zip to alpha release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: alpha
