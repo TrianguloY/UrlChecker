@@ -87,6 +87,25 @@ public abstract class GenericPref<T> {
     // ------------------- Implementations -------------------
 
     /**
+     * An Int preference
+     */
+    static public class Int extends GenericPref<Integer> {
+        public Int(String prefName, Integer defaultValue) {
+            super(prefName, defaultValue);
+        }
+
+        @Override
+        public Integer get() {
+            return prefs.getInt(prefName, defaultValue);
+        }
+
+        @Override
+        public void set(Integer value) {
+            prefs.edit().putInt(prefName, value).apply();
+        }
+    }
+
+    /**
      * A Long preference
      */
     static public class Lng extends GenericPref<Long> {

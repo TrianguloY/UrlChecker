@@ -35,4 +35,13 @@ public class JavaUtilities {
             return new JSONObject();
         }
     }
+
+    /**
+     * Clamps a value between two other values.
+     */
+    public static int clamp(int min, int value, int max) {
+        return min <= max ? Math.max(min, Math.min(value, max))
+                // just in case
+                : clamp(max, value, min);
+    }
 }

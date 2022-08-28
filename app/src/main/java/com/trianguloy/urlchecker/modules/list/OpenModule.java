@@ -21,9 +21,9 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
+import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.LastOpened;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
 
@@ -208,7 +208,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         }
 
         // sort
-        lastOpened.sort(packages, getUrl());
+        lastOpened.sort(packages);
 
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(0), getActivity())));
@@ -233,11 +233,12 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
      * @param index index from the packages list of the app to use
      */
     private void openUrl(int index) {
+        // get
         if (index < 0 || index >= packages.size()) return;
+        String chosen = packages.get(index);
 
-        // update chosen
-        String chosed = packages.get(index);
-        lastOpened.usedPackage(chosed, getUrl());
+        // update as preferred over the rest
+        lastOpened.prefer(chosen, packages);
 
         // open
         Intent intent = new Intent(getActivity().getIntent());
@@ -245,12 +246,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             // preserve original VIEW intent
             intent.setData(Uri.parse(getUrl()));
             intent.setComponent(null);
-            intent.setPackage(chosed);
-
-
+            intent.setPackage(chosen);
         } else {
             // replace with new VIEW intent
-            intent = UrlUtilities.getViewIntent(getUrl(), chosed);
+            intent = UrlUtilities.getViewIntent(getUrl(), chosen);
         }
 
         if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
