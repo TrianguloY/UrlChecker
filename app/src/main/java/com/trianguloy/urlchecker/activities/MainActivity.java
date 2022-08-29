@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
                     Configuration config = new Configuration();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         config.setLocale(Locale.forLanguageTag(locales[which]));
-                    }else{
+                    } else {
                         config.locale = new Locale(locales[which]);
                     }
                     getBaseContext().getResources()

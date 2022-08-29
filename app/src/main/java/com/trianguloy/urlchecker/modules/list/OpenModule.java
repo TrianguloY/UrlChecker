@@ -94,16 +94,16 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             btn_ctabs.setOnClickListener(this);
             btn_ctabs.setOnLongClickListener(this);
             switch (ctabsPref.get()) {
+                case AUTO:
+                default:
+                    // If auto we get it from the intent
+                    setCtabs(intent.hasExtra(CTabs.EXTRA));
+                    break;
                 case ON:
                     setCtabs(true);
                     break;
                 case OFF:
                     setCtabs(false);
-                    break;
-                case AUTO:
-                default:
-                    // If auto we get it from the intent
-                    setCtabs(intent.hasExtra(CTabs.EXTRA));
                     break;
                 case ENABLED:
                     // enable but hide
@@ -117,6 +117,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                     break;
             }
         } else {
+            // not available, just ignore
             btn_ctabs.setVisibility(View.GONE);
         }
 
