@@ -131,12 +131,21 @@ class LogConfig extends AModuleConfig {
                     .setPositiveButton(R.string.save, (dialog, which) ->
                             log.set(content.getText().toString())
                     )
-                    .setNeutralButton(R.string.clear, (dialog, which) ->
-                            log.set("")
-                    );
+                    .setNeutralButton(R.string.clear, null); // set below
         }
 
         // show
-        builder.show();
+        AlertDialog dialog = builder.show();
+
+        // prepare more dialog
+        // these are configured here to disable automatic auto-closing when they are pressed
+        if (editable) {
+            // editable: configure clear button
+            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v -> {
+                // clear content
+                content.setText("");
+            });
+        }
+
     }
 }
