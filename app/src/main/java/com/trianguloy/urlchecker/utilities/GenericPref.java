@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A generic type preference
@@ -65,23 +66,35 @@ public abstract class GenericPref<T> {
     public abstract T get();
 
     /**
-     * Sets the value of this preference
-     *
-     * @param value the value to save
+     * Sets a [value] for this preference.
+     * Note: if the value is the default, it will be cleared instead.
      */
-    public abstract void set(T value);
-
-    @Override
-    public String toString() {
-        return prefName + " = " + get();
+    public void set(T value) {
+        if (!Objects.equals(value, defaultValue)) {
+            // non-default, save
+            save(value);
+        } else {
+            // default, clear
+            clear();
+        }
     }
+
+    /**
+     * Sets a [value] for this preference.
+     */
+    protected abstract void save(T value);
 
     /**
      * Clears this preference value
      */
     public void clear() {
         prefs.edit().remove(prefName).apply();
+    }
 
+
+    @Override
+    public String toString() {
+        return prefName + " = " + get();
     }
 
     // ------------------- Implementations -------------------
@@ -100,7 +113,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(Integer value) {
+        public void save(Integer value) {
             prefs.edit().putInt(prefName, value).apply();
         }
     }
@@ -119,7 +132,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(Long value) {
+        public void save(Long value) {
             prefs.edit().putLong(prefName, value).apply();
         }
     }
@@ -138,7 +151,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(Boolean value) {
+        public void save(Boolean value) {
             prefs.edit().putBoolean(prefName, value).apply();
         }
 
@@ -165,7 +178,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(String value) {
+        public void save(String value) {
             prefs.edit().putString(prefName, value).apply();
         }
 
@@ -217,7 +230,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(List<String> value) {
+        public void save(List<String> value) {
             prefs.edit().putString(prefName, join(value)).apply();
         }
 
@@ -258,7 +271,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void set(T value) {
+        public void save(T value) {
             prefs.edit().putInt(prefName, value.getId()).apply();
         }
 
