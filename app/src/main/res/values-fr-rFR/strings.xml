@@ -113,7 +113,7 @@ Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionn
     <string name="mVT_scan">Analyse</string>
     <string name="mVT_cancel">Annuler</string>
     <string name="mVT_scanning">Balayage…</string>
-    <string name="mVT_goodUrl">Aucun des moteurs %d n\'a détecté l\'URL (en date du %s)</string>
+    <string name="mVT_goodUrl">Aucun des %d moteurs n\'a détecté l\'URL (en date du %s)</string>
     <string name="mVT_warningUrl">Attention, les moteurs %d/%d ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_badUrl">Prudence! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_connectError">"Connexion à VirusTotal impossible. Assurez-vous de disposez d'une connexion Internet active ou réessayez ultérieurement."</string>
