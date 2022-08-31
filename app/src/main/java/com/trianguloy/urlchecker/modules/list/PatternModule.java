@@ -174,9 +174,7 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                 fix.setOnClickListener(this);
 
                 // autoclick
-                if (message.automatic && onClick(message.pattern, message.newUrl)) {
-                    return;
-                }
+                if (message.automatic) onClick(message.pattern, message.newUrl);
             }
         }
     }
@@ -190,9 +188,8 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
     /**
      * applies a pattern
      */
-    private boolean onClick(String pattern, String url) {
-        if (url == null) return false;
-        return setUrl(new UrlData(url).putData(APPLIED + pattern, APPLIED));
+    private void onClick(String pattern, String url) {
+        if (url != null) setUrl(new UrlData(url).putData(APPLIED + pattern, APPLIED));
     }
 
     /**

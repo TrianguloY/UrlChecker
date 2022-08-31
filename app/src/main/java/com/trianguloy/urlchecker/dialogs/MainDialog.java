@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -40,34 +41,51 @@ public class MainDialog extends Activity {
     private int updating = 0;
 
     /**
-     * A module (null if first change) want to set a new url. Return true if set, false if not.
+     * Data about the next Update to apply
      */
-    public boolean onNewUrl(UrlData urlData, AModuleDialog providerModule) {
-        if (updating > MAX_UPDATES) return false;
+    private Pair<UrlData, AModuleDialog> nextUpdate = null;
 
-        // change url (merge if not the first)
-        if (updating != 0) urlData.mergeData(this.urlData);
-        this.urlData = urlData;
+    /**
+     * A module (null if first change) want to set a new url.
+     */
+    public void onNewUrl(UrlData urlData, AModuleDialog providerModule) {
+        // mark as next if nothing else yet
+        if (nextUpdate == null) nextUpdate = Pair.create(urlData, providerModule);
 
-        // test and mark recursion
-        if (urlData.disableUpdates) updating = MAX_UPDATES;
-        updating++;
-        int updating_current = updating;
-
-        // and notify the other modules
-        for (AModuleDialog module : modules) {
-            // skip own if required
-            if (!urlData.triggerOwn && module == providerModule) continue;
-            try {
-                module.onNewUrl(urlData);
-            } catch (Exception e) {
-                e.printStackTrace();
-                AndroidUtils.assertError("Exception in onNewUrl for module " + (providerModule == null ? "-none-" : providerModule.getClass().getName()));
-            }
-            if (updating_current != updating) return true;
+        // check if already updating
+        if (updating != 0) {
+            // yes, merge
+            urlData.mergeData(this.urlData);
+            // and exit (the main loop will continue)
+            return;
         }
+
+        // fire updates loop
+        while (updating < MAX_UPDATES && nextUpdate != null) {
+            // prepare next update
+            this.urlData = nextUpdate.first;
+            AModuleDialog thisProviderModule = nextUpdate.second;
+            nextUpdate = null;
+
+            // test and mark looping times
+            if (this.urlData.disableUpdates) updating = MAX_UPDATES;
+            else updating++;
+
+            // now notify the other modules
+            for (AModuleDialog module : modules) {
+                // skip own if required
+                if (!this.urlData.triggerOwn && module == thisProviderModule) continue;
+                try {
+                    module.onNewUrl(this.urlData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AndroidUtils.assertError("Exception in onNewUrl for module " + module.getClass().getName());
+                }
+            }
+        }
+        // end, reset
         updating = 0;
-        return true;
+        nextUpdate = null;
     }
 
     /**
