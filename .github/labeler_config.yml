@@ -1,0 +1,27 @@
+version: 1
+
+labels:
+  - label: "gradle"
+    files:
+      - "gradle/.*"
+      - ".*.gradle"
+      - ".*.gradle.kts"
+      - "buildSrc/.*"
+      - "gradle.properties"
+      - "gradlew"
+  - label: "Ongoing translation"
+    files:
+      - ".app/src/main/res/values-uk/*"
+      - ".app/src/main/res/values-tr/*"
+      - ".app/src/main/res/values-pt-rPT/*"
+      - ".app/src/main/res/values-iw/*"
+      - ".app/src/main/res/values-fr-rFR/*"
+      - ".app/src/main/res/values-es/*"   
+  - label: "git"
+    files:
+      - ".gitignore"
+      - ".gitattributes"
+  - label: "wiki"
+    files:
+      - "wiki/.*"
+      - "README.md"
