@@ -27,12 +27,22 @@ import java.util.List;
  */
 public class MainDialog extends Activity {
 
-    // ------------------- module functions -------------------
-
     /**
      * Maximum number of updates to avoid loops
      */
     private static final int MAX_UPDATES = 100;
+
+    // ------------------- data -------------------
+
+    /**
+     * All active modules
+     */
+    private final List<AModuleDialog> modules = new ArrayList<>();
+
+    /**
+     * The current url
+     */
+    private UrlData urlData = new UrlData("");
 
     /**
      * Represents how many url were updated previously.
@@ -45,6 +55,8 @@ public class MainDialog extends Activity {
      */
     private UrlData nextUpdate = null;
 
+    // ------------------- module functions -------------------
+
     /**
      * Something wants to set a new url.
      */
@@ -56,7 +68,7 @@ public class MainDialog extends Activity {
         if (updating != 0) {
             // yes, merge
             urlData.mergeData(this.urlData);
-            // and exit (the main loop will continue)
+            // and exit (the fire updates loop below will take it)
             return;
         }
 
@@ -74,7 +86,9 @@ public class MainDialog extends Activity {
             for (AModuleDialog module : modules) {
                 // skip own if required
                 if (!this.urlData.triggerOwn && module == this.urlData.trigger) continue;
+
                 try {
+                    // notify
                     module.onNewUrl(this.urlData);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -82,27 +96,18 @@ public class MainDialog extends Activity {
                 }
             }
         }
+
         // end, reset
         updating = 0;
         nextUpdate = null;
     }
 
     /**
-     * @return the current url
+     * Return the current url
      */
     public String getUrl() {
         return urlData.url;
     }
-
-    // ------------------- data -------------------
-
-    /**
-     * All active modules
-     */
-    private final List<AModuleDialog> modules = new ArrayList<>();
-
-    // the current url
-    private UrlData urlData = new UrlData("");
 
     // ------------------- initialize -------------------
 
@@ -193,7 +198,7 @@ public class MainDialog extends Activity {
     }
 
     /**
-     * @return the url that this activity was opened with (intent uri or sent text)
+     * Returns the url that this activity was opened with (intent uri or sent text)
      */
     private String getOpenUrl() {
         // get the intent
