@@ -173,7 +173,7 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
     <string name="mRemove_empty">Retirer les vides</string>
 
     <string name="mLog_name">Registre</string>
-    <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées, il est recommandé qu'il soit le premier module de la liste (dans le cas contraire les redirections automatiques risquent de ne pas être journalisées).
+    <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées.
 Vous pouvez consulter, effacer ou modifier le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
 Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_view">Consulter le registre</string>

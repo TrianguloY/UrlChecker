@@ -172,7 +172,7 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <string name="mRemove_empty">Eliminar vacío</string>
 
     <string name="mLog_name">Registro (log)</string>
-    <string name="mLog_desc">"Este módulo registra todas las urls analizadas, se recomienda que sea el primero de la lista (en caso contrario algunas redirecciones automáticas puede que no se guarden).
+    <string name="mLog_desc">"Este módulo registra todas las urls analizadas.
 El log completo puede verse, editarse y borrarse desde aquí, no se mostrará nada en la ventana principal.
 Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mLog_view">View log</string>

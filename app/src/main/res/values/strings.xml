@@ -173,7 +173,7 @@ Thanks to PabloOQ for the idea and original implementation!"</string>
     <string name="mRemove_empty">Remove empty</string>
 
     <string name="mLog_name">Log</string>
-    <string name="mLog_desc">"This module logs all checked urls, it is recommended that it is the first module in the list (otherwise automatic redirections may not be logged).
+    <string name="mLog_desc">"This module logs all checked urls.
 You can view, clear or edit the full log here, no visual indication will appear on the main dialog.
 To disable logging, just disable the module."</string>
     <string name="mLog_view">View log</string>
