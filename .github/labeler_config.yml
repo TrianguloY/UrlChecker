@@ -22,8 +22,6 @@ gradle:
 
 - gradle/.*
 
-- *.gradle
-
 - gradle.properties
 
 - gradlew
