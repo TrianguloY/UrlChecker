@@ -1,27 +1,35 @@
-version: 1
+# version: 1
 
-labels:
-  - label: "gradle"
-    files:
-      - "gradle/.*"
-      - ".*.gradle"
-      - ".*.gradle.kts"
-      - "buildSrc/.*"
-      - "gradle.properties"
-      - "gradlew"
-  - label: "Ongoing translation"
-    files:
-      - ".app/src/main/res/values-uk/*"
-      - ".app/src/main/res/values-tr/*"
-      - ".app/src/main/res/values-pt-rPT/*"
-      - ".app/src/main/res/values-iw/*"
-      - ".app/src/main/res/values-fr-rFR/*"
-      - ".app/src/main/res/values-es/*"   
-  - label: "git"
-    files:
-      - ".gitignore"
-      - ".gitattributes"
-  - label: "wiki"
-    files:
-      - "wiki/.*"
-      - "README.md"
+# Add 'Ongoing translation' label to any change within the 'language' files
+
+Ongoing translation:
+
+- app/src/main/res/values-uk/*
+
+- app/src/main/res/values-tr/*
+
+- app/src/main/res/values-pt-rPT/*
+
+- app/src/main/res/values-iw/*
+
+- app/src/main/res/values-fr-rFR/*
+
+- app/src/main/res/values-es/*
+
+# Add 'gradle' label to any change to *.gradle files within the source dir
+
+gradle:
+
+- gradle/.*
+
+- *.gradle
+
+- gradle.properties
+
+- gradlew
+
+# Add 'wiki' label to any change to files within the source dir
+
+wiki:
+
+- wiki/.*
