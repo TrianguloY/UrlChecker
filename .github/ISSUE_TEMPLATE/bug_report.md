@@ -13,9 +13,12 @@ A clear and concise description of what the bug is.
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+2. Click on '...'
+3. Scroll down to '...'
+4. Look at '...'
+
+**Current behaviour**
+A clear and concise description of what currently happens, and you don't expect it to happen.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
