@@ -61,7 +61,8 @@ public abstract class AModuleDialog implements Fragment {
      * @param urlData new url and data
      */
     protected final void setUrl(UrlData urlData) {
-        dialog.onNewUrl(urlData, this);
+        urlData.trigger = this;
+        dialog.onNewUrl(urlData);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.url;
 
+import com.trianguloy.urlchecker.modules.AModuleDialog;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,11 @@ public class UrlData {
     }
 
     // ------------------- optional data -------------------
+
+    /**
+     * The module that triggered this data (null if internal)
+     */
+    public AModuleDialog trigger;
 
     /**
      * If set, the module that triggers the update will be notified
@@ -67,5 +74,16 @@ public class UrlData {
 
     public void mergeData(UrlData urlData) {
         extraData.putAll(urlData.extraData);
+    }
+
+    @Override
+    public String toString() {
+        return "UrlData{" + "url='" + url + '\'' +
+                ", trigger=" + trigger +
+                ", triggerOwn=" + triggerOwn +
+                ", disableUpdates=" + disableUpdates +
+                ", minorUpdate=" + minorUpdate +
+                ", extraData=" + extraData +
+                '}';
     }
 }

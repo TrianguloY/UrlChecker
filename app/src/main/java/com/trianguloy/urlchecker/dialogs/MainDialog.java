@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -36,21 +35,22 @@ public class MainDialog extends Activity {
     private static final int MAX_UPDATES = 100;
 
     /**
-     * to allow changing url while notifying
+     * Represents how many url were updated previously.
+     * To allow changing url while notifying
      */
     private int updating = 0;
 
     /**
-     * Data about the next Update to apply
+     * Data about the next update to apply
      */
-    private Pair<UrlData, AModuleDialog> nextUpdate = null;
+    private UrlData nextUpdate = null;
 
     /**
-     * A module (null if first change) want to set a new url.
+     * Something wants to set a new url.
      */
-    public void onNewUrl(UrlData urlData, AModuleDialog providerModule) {
+    public void onNewUrl(UrlData urlData) {
         // mark as next if nothing else yet
-        if (nextUpdate == null) nextUpdate = Pair.create(urlData, providerModule);
+        if (nextUpdate == null) nextUpdate = urlData;
 
         // check if already updating
         if (updating != 0) {
@@ -63,8 +63,7 @@ public class MainDialog extends Activity {
         // fire updates loop
         while (updating < MAX_UPDATES && nextUpdate != null) {
             // prepare next update
-            this.urlData = nextUpdate.first;
-            AModuleDialog thisProviderModule = nextUpdate.second;
+            this.urlData = nextUpdate;
             nextUpdate = null;
 
             // test and mark looping times
@@ -74,7 +73,7 @@ public class MainDialog extends Activity {
             // now notify the other modules
             for (AModuleDialog module : modules) {
                 // skip own if required
-                if (!this.urlData.triggerOwn && module == thisProviderModule) continue;
+                if (!this.urlData.triggerOwn && module == this.urlData.trigger) continue;
                 try {
                     module.onNewUrl(this.urlData);
                 } catch (Exception e) {
@@ -124,7 +123,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        onNewUrl(new UrlData(getOpenUrl()), null);
+        onNewUrl(new UrlData(getOpenUrl()));
     }
 
     /**
