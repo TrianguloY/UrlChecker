@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Manages the local catalog with the rules
@@ -69,12 +68,12 @@ public class ClearUrlCatalog {
     /* ------------------- catalog ------------------- */
 
     /**
-     * Returns the catalog content as text
+     * Returns the catalog content
      */
-    public String getCatalog() {
+    public JSONObject getCatalog() {
         // get the updated file first
         String internal = custom.get();
-        if (internal != null) return internal;
+        if (internal != null) return JavaUtilities.toJson(internal);
 
         // no updated file or can't read, use built-in one
         return getBuiltIn();
@@ -83,13 +82,13 @@ public class ClearUrlCatalog {
     /**
      * Returns the built-in catalog
      */
-    public String getBuiltIn() {
+    public JSONObject getBuiltIn() {
         // read internal file
         String builtIn = this.builtIn.get();
-        if (builtIn != null) return builtIn;
+        if (builtIn != null) return JavaUtilities.toJson(builtIn);
 
         // can't read either? panic! return empty
-        return "{\"providers\":{}}";
+        return JavaUtilities.toJson("{\"providers\":{}}");
     }
 
     /**
@@ -101,7 +100,7 @@ public class ClearUrlCatalog {
             // prepare
             List<Pair<String, JSONObject>> rules = new ArrayList<>();
             ClearUrlCatalog clearUrlCatalog = new ClearUrlCatalog(cntx);
-            JSONObject json = JavaUtilities.toJson(clearUrlCatalog.getCatalog());
+            JSONObject json = clearUrlCatalog.getCatalog();
 
             // extract and merge each provider
             for (String provider : JavaUtilities.toList(json.keys())) {
@@ -136,7 +135,7 @@ public class ClearUrlCatalog {
         if (merge) {
             try {
                 // replace only the top objects
-                JSONObject merged = JavaUtilities.toJson(getCatalog());
+                JSONObject merged = getCatalog();
                 for (String key : JavaUtilities.toList(rules.keys())) {
                     merged.put(key, rules.getJSONObject(key));
                 }
@@ -151,17 +150,17 @@ public class ClearUrlCatalog {
         String content = rules.toString();
 
         // nothing changed, nothing to update
-        if (Objects.equals(getCatalog(), content)) {
+        if (content.equals(getCatalog().toString())) {
             return Result.UP_TO_DATE;
         }
 
-        // same as builtin (maybe a reset?), clear custom
-        if (content.equals(getBuiltIn())) {
+        // same as builtin (probably a reset), clear custom
+        if (content.equals(getBuiltIn().toString())) {
             clear();
             return Result.UPDATED;
         }
 
-        // store
+        // something new, save
         return custom.set(content) ? Result.UPDATED : Result.ERROR;
     }
 
@@ -181,7 +180,7 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        JsonEditor.show(JavaUtilities.toJson(getCatalog()), JavaUtilities.toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
+        JsonEditor.show(getCatalog(), getBuiltIn(), R.string.mClear_editor, cntx, content -> {
             if (setRules(content, false) != Result.ERROR) {
                 // saved data, close dialog
                 return true;
