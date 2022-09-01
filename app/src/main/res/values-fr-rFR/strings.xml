@@ -153,7 +153,10 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mClear_hashHint">Pas de vérification du hachage</string>
     <string name="mClear_updateNow">Mettre à jour maintenant</string>
     <string name="mClear_autoUpdate">Mettre à jour périodiquement</string>
+    <string name="mClear_lastCheck">Dernière vérification:</string>
+    <string name="mClear_lastUpdate">Dernière mise à jour:</string>
     <string name="mClear_updated">Catalogue actualisé</string>
+    <string name="mClear_upToDate">Catalogue à jour</string>
     <string name="mClear_urlError">Impossible de récupérer les règles, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
     <string name="mClear_hashError">Impossible de récupérer le hachage, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
     <string name="mClear_hashMismatch">Les hachages ne correspondent pas, le fichier a peut-être été falsifié. Si vous souhaitez ignorer la vérification, supprimez l\'URL de hachage</string>
