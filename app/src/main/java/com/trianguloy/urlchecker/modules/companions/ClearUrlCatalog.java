@@ -6,6 +6,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Manages the local catalog with the rules
@@ -42,7 +44,9 @@ public class ClearUrlCatalog {
     private final GenericPref.Str catalogURL = new GenericPref.Str("clearurl_catalogURL", "https://rules2.clearurls.xyz/data.minify.json");
     private final GenericPref.Str hashURL = new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash");
     private final GenericPref.Bool autoUpdate = new GenericPref.Bool("clearurl_autoUpdate", false);
-    private final GenericPref.Lng lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", 0L);
+    private final GenericPref.Lng lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", -1L);
+    private final GenericPref.Lng lastCheck = new GenericPref.Lng("clearurl_lastCheck", -1L);
+    private final GenericPref.Bool lastAuto = new GenericPref.Bool("clearurl_lastAuto", false);
 
     /* ------------------- constructor ------------------- */
 
@@ -54,6 +58,8 @@ public class ClearUrlCatalog {
         hashURL.init(cntx);
         autoUpdate.init(cntx);
         lastUpdate.init(cntx);
+        lastCheck.init(cntx);
+        lastAuto.init(cntx);
         custom.init(cntx);
         builtIn.init(cntx);
 
@@ -113,10 +119,19 @@ public class ClearUrlCatalog {
     }
 
     /**
-     * Saves a new local catalog. Returns true if it was saved correctly, false on error.
+     * For {@link this#setRules(JSONObject, boolean)} return value
+     */
+    enum Result {
+        UP_TO_DATE,
+        UPDATED,
+        ERROR
+    }
+
+    /**
+     * Saves a new local catalog. Returns if it was up to date, updated or an error happened.
      * When merge is true, only the top-objects with the same key are replaced.
      */
-    public boolean setRules(JSONObject rules, boolean merge) {
+    public Result setRules(JSONObject rules, boolean merge) {
         // merge rules if required
         if (merge) {
             try {
@@ -129,20 +144,25 @@ public class ClearUrlCatalog {
             } catch (JSONException e) {
                 e.printStackTrace();
                 // can't be parsed
-                return false;
+                return Result.ERROR;
             }
         }
         // compact
         String content = rules.toString();
 
+        // nothing changed, nothing to update
+        if (Objects.equals(getCatalog(), content)) {
+            return Result.UP_TO_DATE;
+        }
+
         // same as builtin (maybe a reset?), clear custom
         if (content.equals(getBuiltIn())) {
             clear();
-            return true;
+            return Result.UPDATED;
         }
 
         // store
-        return custom.set(content);
+        return custom.set(content) ? Result.UPDATED : Result.ERROR;
     }
 
     /**
@@ -151,6 +171,8 @@ public class ClearUrlCatalog {
     public void clear() {
         custom.delete();
         lastUpdate.clear();
+        lastCheck.clear();
+        lastAuto.clear();
     }
 
     // ------------------- dialogs -------------------
@@ -160,7 +182,7 @@ public class ClearUrlCatalog {
      */
     public void showEditor() {
         JsonEditor.show(JavaUtilities.toJson(getCatalog()), JavaUtilities.toJson(getBuiltIn()), R.string.mClear_editor, cntx, content -> {
-            if (setRules(content, false)) {
+            if (setRules(content, false) != Result.ERROR) {
                 // saved data, close dialog
                 return true;
             } else {
@@ -183,6 +205,17 @@ public class ClearUrlCatalog {
         hashURL.attachToEditText(views.findViewById(R.id.hash_URL));
         autoUpdate.attachToCheckBox(views.findViewById(R.id.autoUpdate));
 
+        // info
+        TextView txt_check = views.findViewById(R.id.last_check);
+        TextView txt_update = views.findViewById(R.id.last_update);
+        Runnable update = () -> {
+            txt_check.setText(AndroidUtils.formatMillis(lastCheck.get(), cntx)
+                    + (lastAuto.get() ? " [" + cntx.getString(R.string.auto) + "]" : "")
+            );
+            txt_update.setText(AndroidUtils.formatMillis(lastUpdate.get(), cntx));
+        };
+        update.run();
+
         // prepare dialog
         AlertDialog dialog = new AlertDialog.Builder(cntx)
                 .setView(views)
@@ -199,11 +232,13 @@ public class ClearUrlCatalog {
             updateNow.setEnabled(false);
             new Thread(() -> {
                 // run
+                lastAuto.set(false);
                 int toast = _updateCatalog();
 
                 // update
                 cntx.runOnUiThread(() -> {
                     updateNow.setEnabled(true);
+                    update.run();
                     Toast.makeText(cntx, toast, Toast.LENGTH_SHORT).show();
                 });
             }).start();
@@ -226,6 +261,7 @@ public class ClearUrlCatalog {
         if (autoUpdate.get() && lastUpdate.get() + AUTOUPDATE_PERIOD < System.currentTimeMillis()) {
             new Thread(() -> {
                 // run
+                lastAuto.set(true);
                 int toast = _updateCatalog();
 
                 // don't show message to user, but log it
@@ -240,6 +276,9 @@ public class ClearUrlCatalog {
      * Returns the message to display to the user about the result
      */
     private int _updateCatalog() {
+        long now = System.currentTimeMillis();
+        lastCheck.set(now);
+
         // read content
         String rawRules;
         try {
@@ -277,11 +316,15 @@ public class ClearUrlCatalog {
         }
 
         // valid, save and update
-        if (setRules(json, true)) {
-            lastUpdate.set(System.currentTimeMillis());
-            return R.string.mClear_updated;
-        } else {
-            return R.string.toast_invalid;
+        switch (setRules(json, true)) {
+            case UPDATED:
+                lastUpdate.set(now);
+                return R.string.mClear_updated;
+            case UP_TO_DATE:
+                return R.string.mClear_upToDate;
+            case ERROR:
+            default:
+                return R.string.toast_invalid;
         }
 
     }

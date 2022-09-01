@@ -15,6 +15,9 @@ import android.widget.TextView;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  * Generic Android utilities
  */
@@ -91,5 +94,19 @@ public class AndroidUtils {
             }
         }, 0, text.length(), 0);
         textview.setText(text);
+    }
+
+    /**
+     * Returns a formatted date/time from epoch milliseconds according to the context locale.
+     * If the date is invalid (negative), "---" is returned instead
+     */
+    public static String formatMillis(long millis, Context cntx) {
+        if (millis < 0) return "---";
+
+        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT,
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+                        ? cntx.getResources().getConfiguration().getLocales().get(0)
+                        : cntx.getResources().getConfiguration().locale
+        ).format(new Date(millis));
     }
 }

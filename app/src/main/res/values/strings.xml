@@ -153,7 +153,10 @@ If you enable this it will display the received intent as uri, useful for develo
     <string name="mClear_hashHint">No hash check</string>
     <string name="mClear_updateNow">Update now</string>
     <string name="mClear_autoUpdate">Update periodically</string>
+    <string name="mClear_lastCheck">Last check:</string>
+    <string name="mClear_lastUpdate">Last update:</string>
     <string name="mClear_updated">Catalog updated</string>
+    <string name="mClear_upToDate">Catalog up to date</string>
     <string name="mClear_urlError">Unable to fetch the rules, make sure the url is valid and you have an active connection</string>
     <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
     <string name="mClear_hashMismatch">Hashes do not match, the file may have been tampered with. If you want to skip the check remove the hash url</string>
