@@ -1,7 +1,7 @@
 {
   "providers": {
     "amazon": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "p[fd]_rd_[a-z]*",
         "qid",
@@ -36,19 +36,19 @@
         "s"
       ],
       "rawRules": [
-        "\\\/ref=[^\/?]*"
+        "\\/ref=[^/?]*"
       ],
       "referralMarketing": [
         "tag",
         "ascsubtag"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\\/gp\\\/.*?(?:redirector.html|cart\\\/ajax-update.html|video\\\/api\\\/)",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\\/(?:hz\\\/reviews-render\\\/ajax\\\/|message-us\\?|s\\?)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\/gp\\/.*?(?:redirector.html|cart\\/ajax-update.html|video\\/api\\/)",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\/(?:hz\\/reviews-render\\/ajax\\/|message-us\\?|s\\?)"
       ]
     },
     "amazon search": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\\/s\\?",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\/s\\?",
       "rules": [
         "p[fd]_rd_[a-z]*",
         "qid",
@@ -81,7 +81,7 @@
         "creative"
       ],
       "rawRules": [
-        "\\\/ref=[^\/?]*"
+        "\\/ref=[^/?]*"
       ],
       "referralMarketing": [
         "tag"
@@ -89,11 +89,11 @@
     },
     "fls-na.amazon": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?fls-na\\.amazon(?:\\.[a-z]{2,}){1,}"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?fls-na\\.amazon(?:\\.[a-z]{2,}){1,}"
     },
     "google": {
       "forceRedirection": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "ved",
         "bi[a-z]*",
@@ -134,25 +134,25 @@
         "referrer"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/mail\\.google\\.com\\\/mail\\\/u\\\/",
-        "^https?:\\\/\\\/(?:docs|accounts)\\.google(?:\\.[a-z]{2,}){1,}",
-        "^https?:\\\/\\\/([a-z0-9-\\.])*drive\\.google\\.com\\\/videoplayback",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}(?:\\\/upload)?\\\/drive\\\/",
-        "^https?:\\\/\\\/news\\.google\\.com.*\\?hl=.",
-        "^https?:\\\/\\\/hangouts\\.google\\.com\\\/webchat.*?zx=.",
-        "^https?:\\\/\\\/client-channel\\.google\\.com\\\/client-channel.*?zx=.",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/s\\?tbm=map.*?gs_[a-z]*=.",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/(?:complete\\\/search|setprefs|searchbyimage)",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/(?:appsactivity|aclk\\?)"
+        "^https?:\\/\\/mail\\.google\\.com\\/mail\\/u\\/",
+        "^https?:\\/\\/(?:docs|accounts)\\.google(?:\\.[a-z]{2,}){1,}",
+        "^https?:\\/\\/([a-z0-9-\\.])*drive\\.google\\.com\\/videoplayback",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}(?:\\/upload)?\\/drive\\/",
+        "^https?:\\/\\/news\\.google\\.com.*\\?hl=.",
+        "^https?:\\/\\/hangouts\\.google\\.com\\/webchat.*?zx=.",
+        "^https?:\\/\\/client-channel\\.google\\.com\\/client-channel.*?zx=.",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/s\\?tbm=map.*?gs_[a-z]*=.",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/(?:complete\\/search|setprefs|searchbyimage)",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/(?:appsactivity|aclk\\?)"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/url\\?.*?(?:url|q)=(https?[^&]+)",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/.*?adurl=([^&]+)",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/amp\\\/s\\\/([^&]+)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/url\\?.*?(?:url|q)=(https?[^&]+)",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/.*?adurl=([^&]+)",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/amp\\/s\\/([^&]+)"
       ]
     },
     "googleSearch": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\\/search\\?",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/search\\?",
       "rules": [
         "client",
         "sclient"
@@ -160,18 +160,18 @@
     },
     "googlesyndication": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?googlesyndication\\.com"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?googlesyndication\\.com"
     },
     "doubleclick": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}\\\/.*?tag_for_child_directed_treatment=;%3F([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}\\/.*?tag_for_child_directed_treatment=;%3F([^&]*)"
       ]
     },
     "googleadservices": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com\\\/.*?adurl=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com\\/.*?adurl=([^&]*)"
       ]
     },
     "globalRules": {
@@ -208,97 +208,97 @@
         "(?:%3F)?ceneo_spo"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?matrix\\.org\\\/_matrix\\\/",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?(?:cloudflare\\.com|prismic\\.io|tangerine\\.ca|gitlab\\.com)",
-        "^https?:\\\/\\\/myaccount.google(?:\\.[a-z]{2,}){1,}",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gcsip\\.(?:com|nl)[^?]*\\?.*?&?ref_?=.",
-        "^https?:\\\/\\\/[^\/]+\/[^\/]+\/[^\/]+\\\/-\\\/refs\\\/switch[^?]*\\?.*?&?ref_?=.",
-        "^https?:\\\/\\\/bugtracker\\.[^\/]*\\\/[^?]+\\?.*?&?ref_?=[^\/?&]*",
-        "^https?:\\\/\\\/comment-cdn\\.9gag\\.com\\\/.*?comment-list.json\\?",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?battle\\.net\\\/login",
-        "^https?:\\\/\\\/blizzard\\.com\\\/oauth2",
-        "^https?:\\\/\\\/kreditkarten-banking\\.lbb\\.de",
-        "^https?:\\\/\\\/www\\.tinkoff\\.ru",
-        "^https?:\\\/\\\/www\\.cyberport\\.de\\\/adscript\\.php",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tweakers\\.net\\\/ext\\\/lt\\.dsp\\?.*?(?:%3F)?&?ref_?=.",
-        "^https?:\\\/\\\/git(lab)?\\.[^\/]*\\\/[^?]+\\?.*?&?ref_?=[^\/?&]*",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\\/message-us\\?",
-        "^https?:\\\/\\\/authorization\\.td\\.com",
-        "^https?:\\\/\\\/support\\.steampowered\\.com",
-        "^https?:\\\/\\\/privacy\\.vakmedianet\\.nl\\\/.*?ref=",
-        "^https?:\\\/\\\/sso\\.serverplan\\.com\\\/manage2fa\\\/check\\?ref=",
-        "^https?:\\\/\\\/login\\.meijer\\.com\\\/.*?\\?ref=",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/(?:login_alerts|ajax|should_add_browser)\/",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/groups\\\/member_bio\\\/bio_dialog\\\/",
-        "^https?:\\\/\\\/api\\.taiga\\.io",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gog\\.com\\\/click\\.html",
-        "^https?:\\\/\\\/login\\.progressive\\.com",
-        "^https?:\\\/\\\/www\\.sephora\\.com\\\/api\\\/",
-        "^https?:\\\/\\\/www\\.contestgirl\\.com",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?agenciatributaria\\.gob\\.es",
-        "^https?:\\\/\\\/login\\.ingbank\\.pl",
-        "^wss?:\\\/\\\/(?:[a-z0-9-]+\\.)*?zoom\\.us",
-        "^https?:\\\/\\\/api\\.bilibili\\.com",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?onet\\.pl\\\/[^?]*\\?.*?utm_campaign=.",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?stripe\\.com\\\/[^?]+.*?&?referrer=[^\/?&]*",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?lichess\\.org\\\/login.*?&?referrer=.*?",
-        "^https?:\\\/\\\/like.co\\\/api\\\/like\\\/likebutton\\\/[^?]+.*?&?referrer=[^\/?&]*",
-        "^https?:\\\/\\\/button.like.co\\\/in\\\/.*?&?referrer=[^\/?&]*",
-        "^https?:\\\/\\\/www\\.mma\\.go\\.kr",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?github\\.com",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?billiger\\.de\\\/.*?mc="
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?matrix\\.org\\/_matrix\\/",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?(?:cloudflare\\.com|prismic\\.io|tangerine\\.ca|gitlab\\.com)",
+        "^https?:\\/\\/myaccount.google(?:\\.[a-z]{2,}){1,}",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gcsip\\.(?:com|nl)[^?]*\\?.*?&?ref_?=.",
+        "^https?:\\/\\/[^/]+/[^/]+/[^/]+\\/-\\/refs\\/switch[^?]*\\?.*?&?ref_?=.",
+        "^https?:\\/\\/bugtracker\\.[^/]*\\/[^?]+\\?.*?&?ref_?=[^/?&]*",
+        "^https?:\\/\\/comment-cdn\\.9gag\\.com\\/.*?comment-list.json\\?",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?battle\\.net\\/login",
+        "^https?:\\/\\/blizzard\\.com\\/oauth2",
+        "^https?:\\/\\/kreditkarten-banking\\.lbb\\.de",
+        "^https?:\\/\\/www\\.tinkoff\\.ru",
+        "^https?:\\/\\/www\\.cyberport\\.de\\/adscript\\.php",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tweakers\\.net\\/ext\\/lt\\.dsp\\?.*?(?:%3F)?&?ref_?=.",
+        "^https?:\\/\\/git(lab)?\\.[^/]*\\/[^?]+\\?.*?&?ref_?=[^/?&]*",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon(?:\\.[a-z]{2,}){1,}\\/message-us\\?",
+        "^https?:\\/\\/authorization\\.td\\.com",
+        "^https?:\\/\\/support\\.steampowered\\.com",
+        "^https?:\\/\\/privacy\\.vakmedianet\\.nl\\/.*?ref=",
+        "^https?:\\/\\/sso\\.serverplan\\.com\\/manage2fa\\/check\\?ref=",
+        "^https?:\\/\\/login\\.meijer\\.com\\/.*?\\?ref=",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/(?:login_alerts|ajax|should_add_browser)/",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/groups\\/member_bio\\/bio_dialog\\/",
+        "^https?:\\/\\/api\\.taiga\\.io",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gog\\.com\\/click\\.html",
+        "^https?:\\/\\/login\\.progressive\\.com",
+        "^https?:\\/\\/www\\.sephora\\.com\\/api\\/",
+        "^https?:\\/\\/www\\.contestgirl\\.com",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?agenciatributaria\\.gob\\.es",
+        "^https?:\\/\\/login\\.ingbank\\.pl",
+        "^wss?:\\/\\/(?:[a-z0-9-]+\\.)*?zoom\\.us",
+        "^https?:\\/\\/api\\.bilibili\\.com",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?onet\\.pl\\/[^?]*\\?.*?utm_campaign=.",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?stripe\\.com\\/[^?]+.*?&?referrer=[^/?&]*",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?lichess\\.org\\/login.*?&?referrer=.*?",
+        "^https?:\\/\\/like.co\\/api\\/like\\/likebutton\\/[^?]+.*?&?referrer=[^/?&]*",
+        "^https?:\\/\\/button.like.co\\/in\\/.*?&?referrer=[^/?&]*",
+        "^https?:\\/\\/www\\.mma\\.go\\.kr",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?github\\.com",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?billiger\\.de\\/.*?mc="
       ]
     },
     "adtech": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?adtech(?:\\.[a-z]{2,}){1,}"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?adtech(?:\\.[a-z]{2,}){1,}"
     },
     "contentpass": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?contentpass\\.(?:net|de)"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?contentpass\\.(?:net|de)"
     },
     "bf-ad": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bf-ad(?:\\.[a-z]{2,}){1,}"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bf-ad(?:\\.[a-z]{2,}){1,}"
     },
     "amazon-adsystem": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}",
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\\/v3\\\/oor\\?"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\/v3\\/oor\\?"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\\/x\\\/c\\\/.+?\\\/([^&]+)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\/x\\/c\\/.+?\\/([^&]+)"
       ]
     },
     "adsensecustomsearchads": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?adsensecustomsearchads(?:\\.[a-z]{2,}){1,}"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?adsensecustomsearchads(?:\\.[a-z]{2,}){1,}"
     },
     "youtube": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youtube\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com",
       "rules": [
         "feature",
         "gclid",
         "kw"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\\/signin\\?.*?"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/signin\\?.*?"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\\/redirect?.*?q=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/redirect?.*?q=([^&]*)"
       ]
     },
     "youtube_pagead": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\\/pagead"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/pagead"
     },
     "youtube_apiads": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\\/api\\\/stats\\\/ads"
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/api\\/stats\\/ads"
     },
     "facebook": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com",
       "rules": [
         "hc_[a-z_%\\[\\]0-9]*",
         "[a-z]*ref[a-z]*",
@@ -319,19 +319,19 @@
         "referral_story_type"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/.*?(plugins|ajax)\\\/",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/dialog\\\/(?:share|send)",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/groups\\\/member_bio\\\/bio_dialog\\\/",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/photo\\.php\\?",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/privacy\\\/specific_audience_selector_dialog\\\/",
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\\/photo\\\/download\\\/"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/.*?(plugins|ajax)\\/",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/dialog\\/(?:share|send)",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/groups\\/member_bio\\/bio_dialog\\/",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/photo\\.php\\?",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/privacy\\/specific_audience_selector_dialog\\/",
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/photo\\/download\\/"
       ],
       "redirections": [
-        "^https?:\\\/\\\/l[a-z]?\\.facebook\\.com\/l\\.php\\?.*?u=(https?%3A%2F%2F[^&]*)"
+        "^https?:\\/\\/l[a-z]?\\.facebook\\.com/l\\.php\\?.*?u=(https?%3A%2F%2F[^&]*)"
       ]
     },
     "twitter": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?twitter.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?twitter.com",
       "rules": [
         "(?:ref_?)?src",
         "s",
@@ -340,11 +340,11 @@
         "t"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/twitter.com\\\/i\\\/redirect"
+        "^https?:\\/\\/twitter.com\\/i\\/redirect"
       ]
     },
     "reddit": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?reddit.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?reddit.com",
       "rules": [
         "%24deep_link",
         "\\$deep_link",
@@ -358,12 +358,12 @@
         "_branch_match_id"
       ],
       "redirections": [
-        "^https?:\\\/\\\/out\\.reddit\\.com\\\/.*?url=([^&]*)",
-        "^https?:\\\/\\\/click\\.redditmail\\.com\\\/.*?url=([^&]*)"
+        "^https?:\\/\\/out\\.reddit\\.com\\/.*?url=([^&]*)",
+        "^https?:\\/\\/click\\.redditmail\\.com\\/.*?url=([^&]*)"
       ]
     },
     "netflix": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?netflix.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?netflix.com",
       "rules": [
         "trackId",
         "tctx",
@@ -371,7 +371,7 @@
       ]
     },
     "techcrunch": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?techcrunch\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?techcrunch\\.com",
       "rules": [
         "ncid",
         "sr",
@@ -379,7 +379,7 @@
       ]
     },
     "bing": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bing(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bing(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "cvid",
         "form",
@@ -390,43 +390,43 @@
         "qp"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bing(?:\\.[a-z]{2,}){1,}\\\/WS\\\/redirect\\\/"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bing(?:\\.[a-z]{2,}){1,}\\/WS\\/redirect\\/"
       ]
     },
     "tweakers": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tweakers\\.net",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tweakers\\.net",
       "rules": [
         "nb",
         "u"
       ]
     },
     "twitch": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?twitch\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?twitch\\.com",
       "rules": [
         "tt_medium",
         "tt_content"
       ]
     },
     "vivaldi": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?vivaldi\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?vivaldi\\.com",
       "rules": [
         "pk_campaign",
         "pk_kwd"
       ]
     },
     "indeed": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?indeed\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?indeed\\.com",
       "rules": [
         "from",
         "alid",
         "[a-z]*tk"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?indeed\\.com\\\/rc\\\/clk"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?indeed\\.com\\/rc\\/clk"
       ]
     },
     "hhdotru": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?hh\\.ru",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hh\\.ru",
       "rules": [
         "vss",
         "t",
@@ -439,7 +439,7 @@
       ]
     },
     "ebay": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?ebay(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?ebay(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "_trkparms",
         "_trksid",
@@ -447,145 +447,145 @@
         "hash"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?rover\\.ebay(?:\\.[a-z]{2,}){1,}\\\/rover.*mpre=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?rover\\.ebay(?:\\.[a-z]{2,}){1,}\\/rover.*mpre=([^&]*)"
       ]
     },
     "cnet": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?cnet\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?cnet\\.com",
       "rules": [
         "ftag"
       ]
     },
     "imdb.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?imdb\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?imdb\\.com",
       "rules": [
         "ref_",
         "pf_rd_[a-z]*"
       ]
     },
     "govdelivery.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?govdelivery\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?govdelivery\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?links\\.govdelivery\\.com.*\\\/track\\?.*(https?:\\\/\\\/.*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?links\\.govdelivery\\.com.*\\/track\\?.*(https?:\\/\\/.*)"
       ]
     },
     "walmart.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?walmart\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?walmart\\.com",
       "rules": [
         "u1",
         "ath[a-z]*"
       ]
     },
     "net-parade.it": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?net\\-parade\\.it",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?net\\-parade\\.it",
       "rules": [
         "pl"
       ]
     },
     "prvnizpravy.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?prvnizpravy\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?prvnizpravy\\.cz",
       "rules": [
         "xid"
       ]
     },
     "youku.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?youku\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youku\\.com",
       "rules": [
         "tpa"
       ]
     },
     "nytimes.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?nytimes\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?nytimes\\.com",
       "rules": [
         "smid"
       ]
     },
     "tchibo.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tchibo\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tchibo\\.de",
       "rules": [
         "wbdcd"
       ]
     },
     "steampowered": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?steampowered\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?steampowered\\.com",
       "rules": [
         "snr"
       ]
     },
     "steamcommunity": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com\\\/linkfilter\\\/\\?url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com\\/linkfilter\\/\\?url=([^&]*)"
       ]
     },
     "mozaws.net": {
-      "urlPattern": "https?:\\\/\\\/outgoing\\.prod\\.mozaws\\.net\\\/",
+      "urlPattern": "https?:\\/\\/outgoing\\.prod\\.mozaws\\.net\\/",
       "redirections": [
-        "https?:\\\/\\\/[^\/]+\\\/v1\\\/[0-9a-f]{64}\\\/(.*)"
+        "https?:\\/\\/[^/]+\\/v1\\/[0-9a-f]{64}\\/(.*)"
       ]
     },
     "shutterstock.com": {
-      "urlPattern": "https?:\\\/\\\/([a-z0-9-.]*\\.)shutterstock\\.com",
+      "urlPattern": "https?:\\/\\/([a-z0-9-.]*\\.)shutterstock\\.com",
       "rules": [
         "src"
       ]
     },
     "mozilla.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mozilla\\.org",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mozilla\\.org",
       "rules": [
         "src",
         "platform",
         "redirect_source"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mozilla.org\\\/api"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mozilla.org\\/api"
       ]
     },
     "readdc.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?readdc\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?readdc\\.com",
       "rules": [
         "ref"
       ]
     },
     "dailycodingproblem.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?dailycodingproblem\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dailycodingproblem\\.com",
       "rules": [
         "email"
       ]
     },
     "github.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?github\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?github\\.com",
       "rules": [
         "email_token",
         "email_source"
       ]
     },
     "deviantart.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com\\\/.*?\\\/outgoing\\?(.*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com\\/.*?\\/outgoing\\?(.*)"
       ]
     },
     "site2.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site2\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site2\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site2\\.com.*?\\?.*=(.*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site2\\.com.*?\\?.*=(.*)"
       ]
     },
     "site.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site\\.com.*?\\?to=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site\\.com.*?\\?to=([^&]*)"
       ]
     },
     "site3.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site3\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site3\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?site3\\.com.*?\\?r=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site3\\.com.*?\\?r=([^&]*)"
       ]
     },
     "aliexpress": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?aliexpress(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?aliexpress(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "ws_ab_test",
         "btsid",
@@ -603,52 +603,52 @@
       ]
     },
     "mozillazine.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mozillazine\\.org",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mozillazine\\.org",
       "rules": [
         "sid"
       ]
     },
     "9gag.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?9gag\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?9gag\\.com",
       "rules": [
         "ref"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/comment-cdn\\.9gag\\.com\\\/.*?comment-list.json\\?"
+        "^https?:\\/\\/comment-cdn\\.9gag\\.com\\/.*?comment-list.json\\?"
       ]
     },
     "linksynergy.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com\\\/.*?murl=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com\\/.*?murl=([^&]*)"
       ]
     },
     "giphy.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?giphy\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?giphy\\.com",
       "rules": [
         "ref"
       ]
     },
     "gate.sc": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gate\\.sc",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gate\\.sc",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gate\\.sc\\\/.*?url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gate\\.sc\\/.*?url=([^&]*)"
       ]
     },
     "vk.com": {
-      "urlPattern": "^https?:\\\/\\\/vk\\.com",
+      "urlPattern": "^https?:\\/\\/vk\\.com",
       "redirections": [
-        "^https?:\\\/\\\/vk\\.com\\\/away\\.php\\?to=([^&]*)"
+        "^https?:\\/\\/vk\\.com\\/away\\.php\\?to=([^&]*)"
       ]
     },
     "woot.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?woot\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?woot\\.com",
       "rules": [
         "ref_?"
       ]
     },
     "vitamix.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?vitamix\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?vitamix\\.com",
       "rules": [
         "_requestid",
         "cid",
@@ -659,31 +659,31 @@
       ]
     },
     "curseforge.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com\\\/linkout\\?remoteUrl=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com\\/linkout\\?remoteUrl=([^&]*)"
       ]
     },
     "messenger.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?messenger\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?messenger\\.com",
       "redirections": [
-        "^https?:\\\/\\\/l\\.messenger\\.com\\\/l\\.php\\?u=([^&]*)"
+        "^https?:\\/\\/l\\.messenger\\.com\\/l\\.php\\?u=([^&]*)"
       ]
     },
     "nypost.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?nypost\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?nypost\\.com",
       "rules": [
         "__twitter_impression"
       ]
     },
     "ozon.ru": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?ozon\\.ru",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?ozon\\.ru",
       "rules": [
         "partner"
       ]
     },
     "norml.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?norml\\.org",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?norml\\.org",
       "rules": [
         "link_id",
         "can_id",
@@ -693,7 +693,7 @@
       ]
     },
     "LinkedIn": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?linkedin\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linkedin\\.com",
       "rules": [
         "refId",
         "trk",
@@ -701,31 +701,31 @@
       ]
     },
     "LinkedIn Learning": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?linkedin\\.com\\\/learning",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linkedin\\.com\\/learning",
       "rules": [
         "u"
       ]
     },
     "smartredirect.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de.*?url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de.*?url=([^&]*)"
       ]
     },
     "SPIEGEL ONLINE": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?spiegel\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?spiegel\\.de",
       "rules": [
         "b"
       ]
     },
     "rutracker.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?rutracker\\.org",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?rutracker\\.org",
       "redirections": [
         ".*url=([^&]*)"
       ]
     },
     "instagram": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?instagram\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?instagram\\.com",
       "rules": [
         "igshid"
       ],
@@ -734,7 +734,7 @@
       ]
     },
     "lazada.com.my": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?lazada\\.com\\.my",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?lazada\\.com\\.my",
       "rules": [
         "ad_src",
         "did",
@@ -746,52 +746,52 @@
       ]
     },
     "imgsrc.ru": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?imgsrc\\.ru",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?imgsrc\\.ru",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?dlp\\.imgsrc\\.ru\\\/go\\\/\\d+\\\/\\d+\\\/\\d+\\\/([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dlp\\.imgsrc\\.ru\\/go\\/\\d+\\/\\d+\\/\\d+\\/([^&]*)"
       ]
     },
     "boredpanda.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?boredpanda\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?boredpanda\\.com",
       "rules": [
         "h"
       ]
     },
     "awstrack.me": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me\\\/.*\\\/(https?.*?)\\\/"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me\\/.*\\/(https?.*?)\\/"
       ]
     },
     "exactag.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?exactag\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?exactag\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?exactag\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?exactag\\.com.*url=([^&]*)"
       ]
     },
     "bahn.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bahn\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bahn\\.de",
       "rules": [
         "dbkanal_[0-9]{3}"
       ]
     },
     "disq.us": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?disq\\.us",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?disq\\.us",
       "rules": [
         "cuid"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?disq\\.us\\\/.*?url=([^&]*)%3A"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?disq\\.us\\/.*?url=([^&]*)%3A"
       ]
     },
     "anonym.to": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?anonym\\.to",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?anonym\\.to",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?anonym\\.to.*\\?([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?anonym\\.to.*\\?([^&]*)"
       ]
     },
     "moosejaw.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?moosejaw\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?moosejaw\\.com",
       "rules": [
         "cm_lm",
         "cm_mmc",
@@ -803,58 +803,58 @@
       ]
     },
     "spotify.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?spotify\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?spotify\\.com",
       "rules": [
         "si"
       ]
     },
     "yandex": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?(?:yandex(?:\\.[a-z]{2,}){1,}|ya\\.ru)",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?(?:yandex(?:\\.[a-z]{2,}){1,}|ya\\.ru)",
       "rules": [
         "lr",
         "redircnt"
       ]
     },
     "healio.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?healio\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?healio\\.com",
       "rules": [
         "ecp",
         "m_bt"
       ]
     },
     "zoho.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?zoho\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?zoho\\.com",
       "rules": [
         "iref"
       ]
     },
     "snapchat.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?snapchat\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?snapchat\\.com",
       "rules": [
         "sc_referrer",
         "sc_ua"
       ]
     },
     "medium.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?medium\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?medium\\.com",
       "rules": [
         "source"
       ]
     },
     "swp.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?swp\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?swp\\.de",
       "rules": [
         "source"
       ]
     },
     "wps.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?wps\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?wps\\.com",
       "rules": [
         "from"
       ]
     },
     "accounts.firefox.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:accounts\\.)?firefox\\.com",
+      "urlPattern": "^https?:\\/\\/(?:accounts\\.)?firefox\\.com",
       "rules": [
         "context",
         "entrypoint",
@@ -862,39 +862,39 @@
       ]
     },
     "support.mozilla.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:support\\.)?mozilla\\.org",
+      "urlPattern": "^https?:\\/\\/(?:support\\.)?mozilla\\.org",
       "rules": [
         "as"
       ]
     },
     "ClearURLsTest": {
-      "urlPattern": "^https?:\\\/\\\/kevinroebert\\.gitlab\\.io\\\/ClearUrls\\\/void\\\/index\\.html",
+      "urlPattern": "^https?:\\/\\/kevinroebert\\.gitlab\\.io\\/ClearUrls\\/void\\/index\\.html",
       "rules": [
         "test"
       ],
       "redirections": [
-        "^https?:\\\/\\\/kevinroebert\\.gitlab\\.io\\\/ClearUrls\\\/void\\\/index\\.html\\?url=([^&]*)"
+        "^https?:\\/\\/kevinroebert\\.gitlab\\.io\\/ClearUrls\\/void\\/index\\.html\\?url=([^&]*)"
       ]
     },
     "ClearURLsTestBlock": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/kevinroebert\\.gitlab\\.io\\\/ClearUrls\\\/void\\\/block\\.svg"
+      "urlPattern": "^https?:\\/\\/kevinroebert\\.gitlab\\.io\\/ClearUrls\\/void\\/block\\.svg"
     },
     "ClearURLsTest2": {
-      "urlPattern": "^https?:\\\/\\\/test\\.clearurls\\.xyz\\\/void\\\/index\\.html",
+      "urlPattern": "^https?:\\/\\/test\\.clearurls\\.xyz\\/void\\/index\\.html",
       "rules": [
         "test"
       ],
       "redirections": [
-        "^https?:\\\/\\\/test\\.clearurls\\.xyz\\\/void\\\/index\\.html\\?url=([^&]*)"
+        "^https?:\\/\\/test\\.clearurls\\.xyz\\/void\\/index\\.html\\?url=([^&]*)"
       ]
     },
     "ClearURLsTestBlock2": {
       "completeProvider": true,
-      "urlPattern": "^https?:\\\/\\\/test\\.clearurls\\.xyz\\\/void\\\/block\\.svg"
+      "urlPattern": "^https?:\\/\\/test\\.clearurls\\.xyz\\/void\\/block\\.svg"
     },
     "diepresse.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?diepresse\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?diepresse\\.com",
       "rules": [
         "from",
         "xtor",
@@ -902,20 +902,20 @@
       ]
     },
     "newsletter.lidl.com": {
-      "urlPattern": "^https?:\\\/\\\/newsletter\\.lidl(?:\\.[a-z]{2,}){1,}",
+      "urlPattern": "^https?:\\/\\/newsletter\\.lidl(?:\\.[a-z]{2,}){1,}",
       "rules": [
         "x"
       ]
     },
     "allegro.pl": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?allegro\\.pl",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?allegro\\.pl",
       "rules": [
         "reco_id",
         "sid"
       ]
     },
     "backcountry.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?backcountry\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?backcountry\\.com",
       "rules": [
         "CMP_SKU",
         "MER",
@@ -935,27 +935,27 @@
       ]
     },
     "meetup.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?meetup\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?meetup\\.com",
       "rules": [
         "rv",
         "_xtd"
       ]
     },
     "apple.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?apple\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?apple\\.com",
       "rules": [
         "app",
         "ign-itsc[a-z]+"
       ]
     },
     "alabout.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?alabout\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?alabout\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?alabout\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?alabout\\.com.*url=([^&]*)"
       ]
     },
     "newyorker.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?newyorker\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?newyorker\\.com",
       "rules": [
         "source",
         "bxid",
@@ -965,44 +965,44 @@
       ]
     },
     "gog.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gog\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gog\\.com",
       "rules": [
         "track_click",
         "link_id"
       ]
     },
     "tradedoubler.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com.*(?:url|_td_deeplink)=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com.*(?:url|_td_deeplink)=([^&]*)"
       ]
     },
     "theguardian.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?theguardian\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?theguardian\\.com",
       "rules": [
         "CMP"
       ]
     },
     "srvtrck.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com.*url=([^&]*)"
       ]
     },
     "mysku.ru": {
-      "urlPattern": "^https?:\\\/\\\/mysku\\.ru",
+      "urlPattern": "^https?:\\/\\/mysku\\.ru",
       "redirections": [
-        "^https?:\\\/\\\/mysku\\.ru.*r=([^&]*)"
+        "^https?:\\/\\/mysku\\.ru.*r=([^&]*)"
       ]
     },
     "admitad.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?admitad\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?admitad\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?admitad\\.com.*ulp=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?admitad\\.com.*ulp=([^&]*)"
       ]
     },
     "taobao.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?taobao\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?taobao\\.com",
       "rules": [
         "price",
         "sourceType",
@@ -1041,7 +1041,7 @@
       ]
     },
     "tmall.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tmall\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tmall\\.com",
       "rules": [
         "price",
         "sourceType",
@@ -1080,13 +1080,13 @@
       ]
     },
     "tb.cn": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tb\\.cn",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tb\\.cn",
       "rules": [
         "sm"
       ]
     },
     "bilibili.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bilibili\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bilibili\\.com",
       "rules": [
         "callback",
         "spm_id_from",
@@ -1105,18 +1105,18 @@
         "unique_k"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/api\\.bilibili\\.com"
+        "^https?:\\/\\/api\\.bilibili\\.com"
       ]
     },
     "m.bilibili.com": {
-      "urlPattern": "^https?:\\\/\\\/m\\.bilibili\\.com",
+      "urlPattern": "^https?:\\/\\/m\\.bilibili\\.com",
       "rules": [
         "bbid",
         "ts"
       ]
     },
     "live.bilibili.com": {
-      "urlPattern": "^https?:\\\/\\\/live\\.bilibili\\.com",
+      "urlPattern": "^https?:\\/\\/live\\.bilibili\\.com",
       "rules": [
         "visit_id",
         "session_id",
@@ -1125,7 +1125,7 @@
       ]
     },
     "marketscreener.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com",
       "rules": [
         "type_recherche",
         "mots",
@@ -1138,11 +1138,11 @@
         "countview"
       ],
       "exceptions": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com\\\/search\\\/\\?"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com\\/search\\/\\?"
       ]
     },
     "marketscreener.com search": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com\\\/search\\\/\\?",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?marketscreener\\.com\\/search\\/\\?",
       "rules": [
         "type_recherche",
         "noredirect",
@@ -1154,7 +1154,7 @@
       ]
     },
     "bestbuy.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bestbuy\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bestbuy\\.com",
       "rules": [
         "irclickid",
         "irgwc",
@@ -1165,13 +1165,13 @@
       ]
     },
     "digidip.net": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?digidip\\.net",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?digidip\\.net",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?digidip\\.net.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?digidip\\.net.*url=([^&]*)"
       ]
     },
     "tiktok.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tiktok\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tiktok\\.com",
       "rules": [
         "u_code",
         "preview_pb",
@@ -1184,7 +1184,7 @@
       ]
     },
     "autoplus.fr": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?autoplus\\.fr",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?autoplus\\.fr",
       "rules": [
         "idprob",
         "hash",
@@ -1194,7 +1194,7 @@
       ]
     },
     "bigfishgames.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bigfishgames\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bigfishgames\\.com",
       "rules": [
         "pc",
         "npc",
@@ -1206,19 +1206,19 @@
       ]
     },
     "dpbolvw.net": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net.*url=([^&]*)"
       ]
     },
     "humblebundle.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?humblebundle\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?humblebundle\\.com",
       "referralMarketing": [
         "partner"
       ]
     },
     "cafepedagogique.net": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?cafepedagogique\\.net",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?cafepedagogique\\.net",
       "rules": [
         "actId",
         "actCampaignType",
@@ -1226,37 +1226,37 @@
       ]
     },
     "bloculus.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?bloculus\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?bloculus\\.com",
       "rules": [
         "tl_[a-z_]+"
       ]
     },
     "mailpanion.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com.*destination=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com.*destination=([^&]*)"
       ]
     },
     "signtr.website": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?signtr\\.website",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?signtr\\.website",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?signtr\\.website.*redirect=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?signtr\\.website.*redirect=([^&]*)"
       ]
     },
     "mailtrack.io": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io.*url=([^&]*)"
       ]
     },
     "zillow.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?zillow\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?zillow\\.com",
       "rules": [
         "rtoken"
       ]
     },
     "realtor.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?realtor\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?realtor\\.com",
       "rules": [
         "ex",
         "identityID",
@@ -1265,20 +1265,20 @@
       ]
     },
     "redfin.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?redfin\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?redfin\\.com",
       "rules": [
         "riftinfo"
       ]
     },
     "epicgames.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?epicgames\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?epicgames\\.com",
       "rules": [
         "epic_affiliate",
         "epic_gameId"
       ]
     },
     "onet.pl": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?onet\\.pl",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?onet\\.pl",
       "rules": [
         "srcc",
         "utm_v",
@@ -1287,7 +1287,7 @@
       ]
     },
     "allrecipes.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?allrecipes\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?allrecipes\\.com",
       "rules": [
         "internalSource",
         "referringId",
@@ -1296,19 +1296,19 @@
       ]
     },
     "europe1.fr": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?europe1\\.fr",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?europe1\\.fr",
       "rules": [
         "xtor"
       ]
     },
     "effiliation.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com.*url=([^&]*)"
       ]
     },
     "argos.co.uk": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?argos\\.co\\.uk",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?argos\\.co\\.uk",
       "rules": [
         "istCompanyId",
         "istFeedId",
@@ -1318,73 +1318,73 @@
       ]
     },
     "hlserve.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com.*dest=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com.*dest=([^&]*)"
       ]
     },
     "thunderbird.net": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?thunderbird\\.net",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?thunderbird\\.net",
       "rules": [
         "src"
       ]
     },
     "cnbc.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?cnbc\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?cnbc\\.com",
       "rules": [
         "__source"
       ]
     },
     "roblox.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?roblox\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?roblox\\.com",
       "rules": [
         "refPageId"
       ]
     },
     "cell.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?cell\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?cell\\.com",
       "rules": [
         "_returnURL"
       ]
     },
     "academic.oup.com": {
-      "urlPattern": "^https?:\\\/\\\/academic\\.oup\\.com",
+      "urlPattern": "^https?:\\/\\/academic\\.oup\\.com",
       "rules": [
         "redirectedFrom"
       ]
     },
     "flexlinkspro.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com.*url=([^&]*)"
       ]
     },
     "agata88.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?agata88\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?agata88\\.com",
       "rules": [
         "source"
       ]
     },
     "hs.fi": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?hs\\.fi",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hs\\.fi",
       "rules": [
         "share"
       ]
     },
     "yle.fi": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?yle\\.fi",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?yle\\.fi",
       "rules": [
         "origin"
       ]
     },
     "ccbill.com": {
-      "urlPattern": "^https?:\\\/\\\/refer\\.ccbill\\.com",
+      "urlPattern": "^https?:\\/\\/refer\\.ccbill\\.com",
       "redirections": [
-        "^https?:\\\/\\\/refer\\.ccbill\\.com.*HTML=([^&]*)"
+        "^https?:\\/\\/refer\\.ccbill\\.com.*HTML=([^&]*)"
       ]
     },
     "flipkart": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?flipkart\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?flipkart\\.com",
       "rules": [
         "otracker.?",
         "ssid",
@@ -1403,7 +1403,7 @@
       ]
     },
     "idealo.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?idealo\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?idealo\\.de",
       "rules": [
         "sid",
         "src",
@@ -1417,25 +1417,25 @@
       ]
     },
     "idealo-partner.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com.*trg=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com.*trg=([^&]*)"
       ]
     },
     "teletrader.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?teletrader\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?teletrader\\.com",
       "rules": [
         "internal"
       ]
     },
     "webgains.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?webgains\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?webgains\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?webgains\\.com.*wgtarget=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?webgains\\.com.*wgtarget=([^&]*)"
       ]
     },
     "deeplearning.ai": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?deeplearning\\.ai",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?deeplearning\\.ai",
       "rules": [
         "ecid",
         "_hsmi",
@@ -1443,13 +1443,13 @@
       ]
     },
     "getpocket.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com",
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com.*url=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com.*url=([^&]*)"
       ]
     },
     "gamespot.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?gamespot\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gamespot\\.com",
       "rules": [
         "PostType",
         "ServiceType",
@@ -1459,25 +1459,25 @@
       ]
     },
     "tokopedia.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com",
       "rules": [
         "src",
         "trkid",
         "whid"
       ],
       "redirections": [
-        "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com\\\/promo.*r=([^&]*)"
+        "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com\\/promo.*r=([^&]*)"
       ]
     },
     "wkorea.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?wkorea\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?wkorea\\.com",
       "rules": [
         "ddw",
         "ds_ch"
       ]
     },
     "eonline.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?eonline\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?eonline\\.com",
       "rules": [
         "source",
         "medium",
@@ -1485,19 +1485,19 @@
       ]
     },
     "reuters.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?reuters\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?reuters\\.com",
       "rules": [
         "taid"
       ]
     },
     "app.adjust.com": {
-      "urlPattern": "^https?:\\\/\\\/app\\.adjust\\.com",
+      "urlPattern": "^https?:\\/\\/app\\.adjust\\.com",
       "redirections": [
-        "^https?:\\\/\\\/app\\.adjust\\.com.*redirect=([^&]*)"
+        "^https?:\\/\\/app\\.adjust\\.com.*redirect=([^&]*)"
       ]
     },
     "change.org": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?change\\.org",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?change\\.org",
       "rules": [
         "source_location",
         "psf_variant",
@@ -1505,19 +1505,19 @@
       ]
     },
     "ceneo.pl": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?ceneo\\.pl",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?ceneo\\.pl",
       "rules": [
         "tag"
       ]
     },
     "wired.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?wired\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?wired\\.com",
       "rules": [
         "intcid"
       ]
     },
     "alibaba cloud arms": {
-      "urlPattern": "^https?:\\\/\\\/arms-retcode\\.aliyuncs\\.com",
+      "urlPattern": "^https?:\\/\\/arms-retcode\\.aliyuncs\\.com",
       "rules": [
         "pid",
         "uid",
@@ -1549,7 +1549,7 @@
       ]
     },
     "nikkei": {
-      "urlPattern": "^https?:\/\/(?:[a-z0-9-]+\\.)*?nikkei\\.co(?:m|\\.jp)",
+      "urlPattern": "^https?://(?:[a-z0-9-]+\\.)*?nikkei\\.co(?:m|\\.jp)",
       "rules": [
         "adid",
         "i_cid",
@@ -1558,14 +1558,14 @@
       ]
     },
     "weibo": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?weibo\\.(cn|com)",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?weibo\\.(cn|com)",
       "rules": [
         "weibo_id",
         "dt_dapp"
       ]
     },
     "fiverr.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?fiverr\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?fiverr\\.com",
       "rules": [
         "context_referrer",
         "source",
@@ -1574,7 +1574,7 @@
       ]
     },
     "etsy.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?etsy\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?etsy\\.com",
       "rules": [
         "click_key",
         "click_sum",
@@ -1582,7 +1582,7 @@
       ]
     },
     "magento.com": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?magento\\.com",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?magento\\.com",
       "rules": [
         "itm_campaign",
         "itm_medium",
@@ -1591,7 +1591,7 @@
       ]
     },
     "novinky.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?novinky\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?novinky\\.cz",
       "rules": [
         "dop_ab_variant",
         "dop_source_zone_name",
@@ -1602,7 +1602,7 @@
       ]
     },
     "aktualne.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?aktualne\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?aktualne\\.cz",
       "rules": [
         "dop_ab_variant",
         "dop_source_zone_name",
@@ -1611,7 +1611,7 @@
       ]
     },
     "seznamzpravy.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?seznamzpravy\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?seznamzpravy\\.cz",
       "rules": [
         "dop_ab_variant",
         "dop_source_zone_name",
@@ -1622,14 +1622,14 @@
       ]
     },
     "billiger.de": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?billiger\\.de",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?billiger\\.de",
       "rules": [
         "log",
         "p"
       ]
     },
     "respekt.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?respekt\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?respekt\\.cz",
       "rules": [
         "sznclid",
         "dop_ab_variant",
@@ -1639,7 +1639,7 @@
       ]
     },
     "faei.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?faei\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?faei\\.cz",
       "rules": [
         "sznclid",
         "dop_ab_variant",
@@ -1649,7 +1649,7 @@
       ]
     },
     "iprima.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?iprima\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?iprima\\.cz",
       "rules": [
         "sznclid",
         "dop_ab_variant",
@@ -1659,7 +1659,7 @@
       ]
     },
     "nova.cz": {
-      "urlPattern": "^https?:\\\/\\\/(?:[a-z0-9-]+\\.)*?nova\\.cz",
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?nova\\.cz",
       "rules": [
         "sznclid",
         "dop_ab_variant",

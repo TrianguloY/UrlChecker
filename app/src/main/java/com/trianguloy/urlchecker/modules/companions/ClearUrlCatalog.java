@@ -43,7 +43,7 @@ public class ClearUrlCatalog {
     private final GenericPref.Str catalogURL = new GenericPref.Str("clearurl_catalogURL", "https://rules2.clearurls.xyz/data.minify.json");
     private final GenericPref.Str hashURL = new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash");
     private final GenericPref.Bool autoUpdate = new GenericPref.Bool("clearurl_autoUpdate", false);
-    private final GenericPref.Lng lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", -1L);
+    private final GenericPref.Lng lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", 1661990400000L); // time when the data.minify.json asset file was updated (floored to previous UTC day)
     private final GenericPref.Lng lastCheck = new GenericPref.Lng("clearurl_lastCheck", -1L);
     private final GenericPref.Bool lastAuto = new GenericPref.Bool("clearurl_lastAuto", false);
 
