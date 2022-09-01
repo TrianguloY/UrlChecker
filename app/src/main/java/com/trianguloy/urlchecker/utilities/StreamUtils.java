@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,12 +18,15 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class StreamUtils {
     public static final Charset UTF_8 = Charset.forName("UTF-8"); // StandardCharsets.UTF_8 requires api 19
+    public static final int CONNECT_TIMEOUT = 5000;
 
     /**
      * GETs an url and returns the content as string
      */
     public static String readFromUrl(String url) throws IOException {
-        return inputStream2String(new URL(url).openStream());
+        URLConnection connection = new URL(url).openConnection();
+        connection.setConnectTimeout(CONNECT_TIMEOUT);
+        return inputStream2String(connection.getInputStream());
     }
 
     /**
@@ -36,7 +40,7 @@ public class StreamUtils {
         // Send POST data request
         HttpsURLConnection conn = (HttpsURLConnection) urlObject.openConnection();
         conn.setDoOutput(true);
-        conn.setConnectTimeout(5000);
+        conn.setConnectTimeout(CONNECT_TIMEOUT);
         OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
         wr.write(body);
         wr.flush();

@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.ClickableLinks;
+import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -112,6 +113,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
             // perform GET to the url
             conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
+            conn.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
             int responseCode = conn.getResponseCode();
             Log.d("RESPONSE_CODE", url + ": " + responseCode);
 

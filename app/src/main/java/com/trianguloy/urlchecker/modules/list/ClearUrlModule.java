@@ -324,7 +324,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
     }
 
     /**
-     * Matches cas insensitive regexp into an input
+     * Matches case insensitive regexp into an input
      *
      * @param regexp regexp to use
      * @param input  input to use
