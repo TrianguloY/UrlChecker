@@ -112,8 +112,8 @@ Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionn
     <string name="mVT_scan">Analyse</string>
     <string name="mVT_cancel">Annuler</string>
     <string name="mVT_scanning">Balayage…</string>
-    <string name="mVT_goodUrl">Aucun des moteurs %d n\'a détecté l\'URL (en date du %s)</string>
-    <string name="mVT_warningUrl">Attention, les moteurs %d/%d ont détecté l\'URL (en date du %s)</string>
+    <string name="mVT_goodUrl">Aucun des %d moteurs n\'a détecté l\'URL (en date du %s)</string>
+    <string name="mVT_warningUrl">Attention, %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_badUrl">Prudence! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_connectError">"Connexion à VirusTotal impossible. Assurez-vous de disposez d'une connexion Internet active ou réessayez ultérieurement."</string>
     <string name="mVT_jsonError">"Connexion à VirusTotal impossible. Assurez-vous que la clé d'API est valide ou réessayez ultérieurement."</string>
@@ -152,7 +152,10 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mClear_hashHint">Pas de vérification du hachage</string>
     <string name="mClear_updateNow">Mettre à jour maintenant</string>
     <string name="mClear_autoUpdate">Mettre à jour périodiquement</string>
+    <string name="mClear_lastCheck">Dernière vérification:</string>
+    <string name="mClear_lastUpdate">Dernière mise à jour:</string>
     <string name="mClear_updated">Catalogue actualisé</string>
+    <string name="mClear_upToDate">Catalogue à jour</string>
     <string name="mClear_urlError">Impossible de récupérer les règles, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
     <string name="mClear_hashError">Impossible de récupérer le hachage, assurez-vous que l\'URL est valide et que vous disposez d\'une connexion active</string>
     <string name="mClear_hashMismatch">Les hachages ne correspondent pas, le fichier a peut-être été falsifié. Si vous souhaitez ignorer la vérification, supprimez l\'URL de hachage</string>
@@ -172,9 +175,9 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
     <string name="mRemove_empty">Retirer les vides</string>
 
     <string name="mLog_name">Registre</string>
-    <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées, il est recommandé qu'il soit le premier module de la liste (dans le cas contraire les redirections automatiques risquent de ne pas être journalisées).
+    <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées.
 Vous pouvez consulter, effacer ou modifier le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
-Pour désactiver la journalisation, désactivez simplement le module."</string>
+Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_view">Consulter le registre</string>
     <string name="mLog_edit">Éditer le registre</string>
     <string name="mLog_empty">Aucune données</string>

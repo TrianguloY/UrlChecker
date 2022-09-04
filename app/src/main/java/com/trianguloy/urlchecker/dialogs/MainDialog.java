@@ -27,55 +27,10 @@ import java.util.List;
  */
 public class MainDialog extends Activity {
 
-    // ------------------- module functions -------------------
-
     /**
      * Maximum number of updates to avoid loops
      */
     private static final int MAX_UPDATES = 100;
-
-    /**
-     * to allow changing url while notifying
-     */
-    private int updating = 0;
-
-    /**
-     * A module (null if first change) want to set a new url. Return true if set, false if not.
-     */
-    public boolean onNewUrl(UrlData urlData, AModuleDialog providerModule) {
-        if (updating > MAX_UPDATES) return false;
-
-        // change url (merge if not the first)
-        if (updating != 0) urlData.mergeData(this.urlData);
-        this.urlData = urlData;
-
-        // test and mark recursion
-        if (urlData.disableUpdates) updating = MAX_UPDATES;
-        updating++;
-        int updating_current = updating;
-
-        // and notify the other modules
-        for (AModuleDialog module : modules) {
-            // skip own if required
-            if (!urlData.triggerOwn && module == providerModule) continue;
-            try {
-                module.onNewUrl(urlData);
-            } catch (Exception e) {
-                e.printStackTrace();
-                AndroidUtils.assertError("Exception in onNewUrl for module " + (providerModule == null ? "-none-" : providerModule.getClass().getName()));
-            }
-            if (updating_current != updating) return true;
-        }
-        updating = 0;
-        return true;
-    }
-
-    /**
-     * @return the current url
-     */
-    public String getUrl() {
-        return urlData.url;
-    }
 
     // ------------------- data -------------------
 
@@ -84,8 +39,75 @@ public class MainDialog extends Activity {
      */
     private final List<AModuleDialog> modules = new ArrayList<>();
 
-    // the current url
+    /**
+     * The current url
+     */
     private UrlData urlData = new UrlData("");
+
+    /**
+     * Represents how many url were updated previously.
+     * To allow changing url while notifying
+     */
+    private int updating = 0;
+
+    /**
+     * Data about the next update to apply
+     */
+    private UrlData nextUpdate = null;
+
+    // ------------------- module functions -------------------
+
+    /**
+     * Something wants to set a new url.
+     */
+    public void onNewUrl(UrlData urlData) {
+        // mark as next if nothing else yet
+        if (nextUpdate == null) nextUpdate = urlData;
+
+        // check if already updating
+        if (updating != 0) {
+            // yes, merge
+            urlData.mergeData(this.urlData);
+            // and exit (the fire updates loop below will take it)
+            return;
+        }
+
+        // fire updates loop
+        while (updating < MAX_UPDATES && nextUpdate != null) {
+            // prepare next update
+            this.urlData = nextUpdate;
+            nextUpdate = null;
+
+            // test and mark looping times
+            if (this.urlData.disableUpdates) updating = MAX_UPDATES;
+            else updating++;
+
+            // now notify the other modules
+            for (AModuleDialog module : modules) {
+                // skip own if required
+                if (!this.urlData.triggerOwn && module == this.urlData.trigger) continue;
+
+                try {
+                    // notify
+                    module.onNewUrl(this.urlData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AndroidUtils.assertError("Exception in onNewUrl for module " + module.getClass().getName());
+                }
+            }
+        }
+
+        // end, reset
+        updating = 0;
+        nextUpdate = null;
+    }
+
+    /**
+     * Return the current url
+     */
+    public String getUrl() {
+        return urlData.url;
+    }
 
     // ------------------- initialize -------------------
 
@@ -106,7 +128,7 @@ public class MainDialog extends Activity {
         initializeModules();
 
         // load url
-        onNewUrl(new UrlData(getOpenUrl()), null);
+        onNewUrl(new UrlData(getOpenUrl()));
     }
 
     /**
@@ -176,7 +198,7 @@ public class MainDialog extends Activity {
     }
 
     /**
-     * @return the url that this activity was opened with (intent uri or sent text)
+     * Returns the url that this activity was opened with (intent uri or sent text)
      */
     private String getOpenUrl() {
         // get the intent

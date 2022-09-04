@@ -2,12 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/intent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/urlData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:textSize="11sp" />
 
 </LinearLayout>

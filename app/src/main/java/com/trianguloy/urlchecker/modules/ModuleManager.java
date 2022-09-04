@@ -43,10 +43,16 @@ public class ModuleManager {
     }
 
     /**
-     * User defined order of the modules
+     * Order of the modules
      */
     public static GenericPref.LstStr ORDER_PREF() {
-        return new GenericPref.LstStr("order", ";", Collections.emptyList());
+        // default is just the defined order (but in reverse)
+        List<String> ids = new ArrayList<>(modules.size());
+        for (AModuleData module : modules) {
+            ids.add(0, module.getId());
+        }
+        // return
+        return new GenericPref.LstStr("order", ";", ids);
     }
 
 

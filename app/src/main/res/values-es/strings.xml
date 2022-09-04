@@ -151,7 +151,10 @@ Si lo habilitas, mostrará el intent recibido como uri, útil para desarrollador
     <string name="mClear_hashHint">No comprobar hash</string>
     <string name="mClear_updateNow">Actualizar ahora</string>
     <string name="mClear_autoUpdate">Actualizar regularmente</string>
+    <string name="mClear_lastCheck">Última comprobación:</string>
+    <string name="mClear_lastUpdate">Última actualización:</string>
     <string name="mClear_updated">Catálogo actualizado</string>
+    <string name="mClear_upToDate">Sin cambios</string>
     <string name="mClear_urlError">No se han podido descargar las reglas, comprueba que la url es correcta y que tienes acceso a internet</string>
     <string name="mClear_hashError">No se ha podido descargar el hash, comprueba que la url es correcta y que tienes acceso a internet</string>
     <string name="mClear_hashMismatch">Los hashes no coinciden, el catálogo puede haber sido alterado. Si quieres desactivar la comprobación de hash borra la url de hash</string>
@@ -171,7 +174,7 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <string name="mRemove_empty">Eliminar vacío</string>
 
     <string name="mLog_name">Registro (log)</string>
-    <string name="mLog_desc">"Este módulo registra todas las urls analizadas, se recomienda que sea el primero de la lista (en caso contrario algunas redirecciones automáticas puede que no se guarden).
+    <string name="mLog_desc">"Este módulo registra todas las urls analizadas.
 El log completo puede verse, editarse y borrarse desde aquí, no se mostrará nada en la ventana principal.
 Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mLog_view">View log</string>

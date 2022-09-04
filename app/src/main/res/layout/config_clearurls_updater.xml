@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/smallPadding">
+    android:padding="@dimen/padding">
 
     <TextView
         android:layout_width="match_parent"
@@ -33,10 +33,62 @@
         android:hint="@string/mClear_hashHint"
         android:inputType="textUri|none|text" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding" />
+
     <CheckBox
         android:id="@+id/autoUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding"
         android:text="@string/mClear_autoUpdate" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mClear_lastCheck" />
+
+        <Space
+            android:layout_width="@dimen/smallPadding"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <TextView
+            android:id="@+id/last_check"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mClear_lastUpdate" />
+
+        <Space
+            android:layout_width="@dimen/smallPadding"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/last_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 </LinearLayout>

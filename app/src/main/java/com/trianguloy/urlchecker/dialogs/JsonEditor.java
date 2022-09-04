@@ -58,7 +58,7 @@ public class JsonEditor {
                 .show();
 
         // prepare more dialog
-        // these are configured here to allow auto-closing the dialog when they are pressed
+        // these are configured here to disable automatic auto-closing when they are pressed
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             try {
                 if (onSave.onSave(new JSONObject(data.getText().toString()))) {

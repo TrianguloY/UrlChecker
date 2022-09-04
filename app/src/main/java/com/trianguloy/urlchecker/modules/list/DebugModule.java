@@ -51,13 +51,15 @@ public class DebugModule extends AModuleData {
 
 class DebugDialog extends AModuleDialog {
 
+    private TextView txt_urlData;
+
     public DebugDialog(MainDialog dialog) {
         super(dialog);
     }
 
     @Override
     public void onNewUrl(UrlData urlData) {
-        // ignore
+        txt_urlData.setText(urlData.toString());
     }
 
     @Override
@@ -67,9 +69,10 @@ class DebugDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        ((TextView) views.findViewById(R.id.text)).setText(
+        ((TextView) views.findViewById(R.id.intent)).setText(
                 getActivity().getIntent().toUri(0)
         );
+        txt_urlData = views.findViewById(R.id.urlData);
     }
 }
 

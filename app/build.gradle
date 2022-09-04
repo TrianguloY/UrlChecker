@@ -6,8 +6,8 @@ android {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 15
-        versionName "2.6"
+        versionCode 16
+        versionName "2.7"
     }
 
     buildTypes {
@@ -23,7 +23,7 @@ android {
         }
     }
 
-    lintOptions{
+    lintOptions {
         // users are free to update translations whenever
         // this mean that they are not usually up to date
         // and that there are usually lots of missing translations

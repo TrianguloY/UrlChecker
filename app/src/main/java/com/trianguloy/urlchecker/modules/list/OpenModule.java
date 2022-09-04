@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -94,16 +95,16 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             btn_ctabs.setOnClickListener(this);
             btn_ctabs.setOnLongClickListener(this);
             switch (ctabsPref.get()) {
+                case AUTO:
+                default:
+                    // If auto we get it from the intent
+                    setCtabs(intent.hasExtra(CTabs.EXTRA));
+                    break;
                 case ON:
                     setCtabs(true);
                     break;
                 case OFF:
                     setCtabs(false);
-                    break;
-                case AUTO:
-                default:
-                    // If auto we get it from the intent
-                    setCtabs(intent.hasExtra(CTabs.EXTRA));
                     break;
                 case ENABLED:
                     // enable but hide
@@ -117,6 +118,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                     break;
             }
         } else {
+            // not available, just ignore
             btn_ctabs.setVisibility(View.GONE);
         }
 
@@ -300,11 +302,13 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
      */
     private void copyToClipboard() {
         ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("", getUrl());
-        if (clipboard != null) {
-            clipboard.setPrimaryClip(clip);
+        if (clipboard == null) return;
+
+        clipboard.setPrimaryClip(ClipData.newPlainText("", getUrl()));
+
+        // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
+        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
             Toast.makeText(getActivity(), R.string.mOpen_clipboard, Toast.LENGTH_LONG).show();
-        }
     }
 
     /**
