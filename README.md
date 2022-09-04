@@ -4,7 +4,7 @@
 <img src="./app/src/main/play/listings/en-US/graphics/feature-graphic/featured.png">
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
-# Url Checker
+# URLCheck
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 Contributions: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
 Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
@@ -40,7 +40,7 @@ height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlch
 <!-- ---------- Description ---------- -->
 <div align="center">
 
-**Url Checker** acts as an intermediary when opening url links, allowing, among other things:  
+**URLCheck** acts as an intermediary when opening url links, allowing, among other things:  
 to remove trackers, affiliate links, unnecessary elements,  
 facilitating link sharing, protecting against certain phishing techniques and many more...
 

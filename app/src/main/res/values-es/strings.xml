@@ -1,6 +1,5 @@
 <resources>
     <!-- main -->
-    <string name="app_name">Analizador de Urls</string>
     <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Al hacer click en uno y abrirlo en esta aplicación, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
     <string name="a_modules">Módulos</string>

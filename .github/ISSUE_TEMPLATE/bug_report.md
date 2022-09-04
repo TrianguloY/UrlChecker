@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a bug report to help us improve Url Checker
+about: Create a bug report to help us improve URLCheck
 title: ''
 labels: bug
 assignees: ''
@@ -29,7 +29,7 @@ If applicable, add screenshots to help explain your problem.
 **System Info (please complete the following information):**
  - Device: _[e.g. Samsung galaxy S21]_
  - Android OS version: _[e.g. 12]_
- - Url Checker version: _[e.g. 2.5]_
+ - URLCheck version: _[e.g. 2.5]_
  - Browser: _[e.g. Chrome, Opera]_
 
 **Additional context**

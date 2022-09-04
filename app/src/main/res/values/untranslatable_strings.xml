@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">URLCheck</string>
     <string name="btn_playStore" translatable="false">Play Store:</string>
     <string name="btn_fDroid" translatable="false">F-Droid:</string>
 

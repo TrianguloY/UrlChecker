@@ -1,13 +1,13 @@
 ---
 name: Question
-about: Ask a question around Url Checker
+about: Ask a question around URLCheck
 title: ''
 labels: question
 assignees: ''
 
 ---
 
-## Ask a question relating to the functioning or use of Url Checker
+## Ask a question relating to the functioning or use of URLCheck
  <!-- remove this item before asking the question -->
 
 
@@ -15,11 +15,11 @@ assignees: ''
 
 <!-- please remove unnecessary items before asking the question -->
 
-* Related to the operation of Url Checker
+* Related to the operation of URLCheck
 
-* Related to the use of Url Checker
+* Related to the use of URLCheck
 
-* Indirectly related to Url Checker _(readme, license etc)_
+* Indirectly related to URLCheck _(readme, license etc)_
 
 * Others things
 
