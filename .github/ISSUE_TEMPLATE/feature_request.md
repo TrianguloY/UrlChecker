@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a feature for Url Checker
+about: Suggest a feature for URLCheck
 title: ''
 labels: enhancement
 assignees: ''
