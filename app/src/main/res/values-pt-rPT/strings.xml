@@ -1,6 +1,6 @@
 <resources>
     <!-- main -->
-    <string name="txt_info">Este aplicativo funciona como um intermediário para abrir links de URL. Quando você clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
+    <string name="txt_info">Esta aplicação funciona como um intermediário para abrir links de URL. Quando clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
     <string name="txt_sample">Clique no link abaixo para testá ço:</string>
     <string name="a_modules">Módulos</string>
     <string name="a_about">Sobre</string>
@@ -14,7 +14,7 @@ Translations: %s."</string>
     <string name="btn_shareStore">Partilhar app</string>
 
     <!-- configuration -->
-    <string name="txt_conf">Lista de módulos: Você pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
+    <string name="txt_conf">Lista de módulos: pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
     <string name="toast_cantEnable">Não é possível habilitar o módulo, configuração em falta?</string>
     <string name="reset_order">Redefinir ordem</string>
 
@@ -23,31 +23,56 @@ Translations: %s."</string>
     <string name="toast_noBrowser">Não é possível abrir o navegador</string>
     <string name="title_choose">Escolher aplicação</string>
     <string name="toast_invalid">Inválido</string>
+    <string name="save">Salva</string>
+    <string name="reset">Resetar</string>
+    <string name="close">Fechar</string>
+    <string name="clear">Apagar</string>
+    <string name="auto">Automático</string>
 
+    <string name="json_desc">[Função Beta] Isto é um editor avançado, o conteudo tem que estar formatado em JSON válido. Podes pressionar o botão no canto superior direito para formatar e validar.</string>
+    <string name="json_edit">Editor Avançado</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Verificador de padrões</string>
     <string name="mPttrn_desc">"Verifica problemas comuns no URL:
 * Caracteres não-ascii como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
-* links http, você deve usar https em vez disso"</string>
+* links http, deve usar https em vez disso"</string>
+    <string name="mPttrn_fix">Aplicar</string>
+    <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados</string>
     <string name="mPttrn_http">link http, considere usar https</string>
-    <string name="mPttrn_ok">Nenhum problema encontrado</string>
+    <string name="mPttrn_noSchemeHttp">Esquema http em falta.</string>
+    <string name="mPttrn_noSchemeHttps">Esquema https em falta.</string>
+    <string name="mPttrn_ok">Nenhum padrão corresponde</string>
+    <string name="mPttrn_editor">"Aqui podes editar ou adicionar novos padrões. Formato:
+- 'regex': string: regex java válido que será correspondido ao URL.
+- 'substituição': string: se fornecido, o botão 'corrigir' será executado 'url=url.replaceAll(regex,replacement)'.
+- 'automático': boolean: defina como true para aplicar automaticamente o padrão.
+- 'ativado': boolean: defina como false para desativar o padrão.
+Nota: se editar os padrões, novos padrões integrados de atualizações de aplicações não serão adicionados automaticamente (pode restaurá-los com a opção de redefinição)."</string>
 
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Contém os seguintes botões (da esquerda para a direita):
 - Botão de guias personalizadas: alterne para ativar/desativar o recurso de guia personalizada. Quando ativado, o navegador deve ser aberto no modo 'l'.
-- Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que você escolha.
+- Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
 - Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência.
 Este módulo não pode ser desativado."</string>
+    <string name="mOpen_ctabsSetting">Abas personalizadas:</string>
+    <string name="mOpen_ctabsOn">Ativado por padrão</string>
+    <string name="mOpen_ctabsOff">Desativado por padrão</string>
+    <string name="mOpen_ctabsEn">Sempre ativado</string>
+    <string name="mOpen_ctabsDis">Sempre desativado</string>
     <string name="mOpen_with">Abrir com %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Partilhar</string>
     <string name="mOpen_clipboard">url copiado para a área de transferência</string>
-    <string name="mOpen_noapps">Sem aplicação</string>
+    <string name="mOpen_noapps">Sem aplicações</string>
+    <string name="mOpen_tabsDesc">Ativar recurso de abas personalizadas</string>
 
     <string name="mStatus_name">Código de status</string>
-    <string name="mStatus_desc">Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.\nSe o resultado for um redirecionamento, você poderá visualizar a url de destino. A url é buscada, mas não avaliada, então redirecionamentos baseados em javascript não serão detectados.</string>
+    <string name="mStatus_desc">"Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.
+Se o resultado for um redirecionamento, poderá visualizar o URL de destino.
+O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
     <string name="mStatus_check">Verificar</string>
@@ -63,7 +88,7 @@ Este módulo não pode ser desativado."</string>
         <item>403: Proibido</item>
         <item>404: Não encontrado</item>
         <item>410: Desapareceu permanentemente</item>
-        <item>418: Isso é um teapot! :D</item>
+        <item>"418: Isso é um teapot! :D"</item>
         <item>500: Erro de servidor</item>
         <item>503: Temporariamente indisponível</item>
         <item>502: Erro de servidor</item>
@@ -76,7 +101,7 @@ Este módulo não pode ser desativado."</string>
     <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.\Não pode ser desabilitado.</string>
 
     <string name="mVT_name">VirusTotal</string>
-    <string name="mVT_desc">Quando este módulo está ativado, você pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, você pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us.</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ é uma marca comercial da Google, Inc.</string>
     <string name="mVT_scan">Examinar</string>
@@ -85,11 +110,13 @@ Este módulo não pode ser desativado."</string>
     <string name="mVT_goodUrl">Nenhum dos mecanismos %d detectou o URL (na data %s)</string>
     <string name="mVT_warningUrl">Aviso, os mecanismos %d/%d detectaram o URL (na data %s)</string>
     <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detectaram o URL (na data %s)</string>
-    <string name="mVT_connectError">Não é possível conectar ao VirusTotal. Verifique se você tem uma conexão ativa com a Internet ou tente novamente mais tarde.</string>
+    <string name="mVT_connectError">Não é possível conectar ao VirusTotal. Verifique se tem uma conexão ativa com a Internet ou tente novamente mais tarde.</string>
     <string name="mVT_jsonError">Não é possível conectar ao VirusTotal. Verifique se a chave da API é válida ou tente novamente mais tarde.</string>
 
     <string name="mD_name">Módulo de depuração/marcador</string>
-    <string name="mD_desc">Se você reordenar os módulos, novos módulos adicionados em futuras atualizações serão colocados antes disso.\n\nSe você habilitar isso, exibirá a intenção recebida como uri, útil para desenvolvedores.</string>
+    <string name="mD_desc">"Se reordenar os módulos, os novos adicionados em futuras atualizações serão colocados acima deste.
+
+Se habilitar isso, ele exibirá a intenção recebida como uri, útil para desenvolvedores."</string>
     <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de guias personalizadas</string>
 
     <string name="mHist_name">Histórico</string>
@@ -113,13 +140,40 @@ Este módulo não pode ser desativado."</string>
     <string name="mClear_toggleReferral">Ativar o marketing de referência (os parâmetros de referência não serão apagados)</string>
     <string name="mClear_toggleVerbose">Ativar informações detalhadas para o processo de correspondência</string>
     <string name="mClear_error">Ocorreu um erro ao verificar as regras</string>
+    <string name="mClear_updater">Atualizador</string>
+    <string name="mClear_sourceDesc">URL do catálogo de arquivos JSON com as regras:</string>
+    <string name="mClear_urlHint">URL do catálogo</string>
+    <string name="mClear_hashDesc">URL do arquivo hash do catálogo. Se omitido, o download não será verificado para ver se foi adulterado/modificado (não recomendado)</string>
+    <string name="mClear_hashHint">Sem verificação de hash</string>
+    <string name="mClear_updateNow">Atualizar agora</string>
+    <string name="mClear_autoUpdate">Atualizar periodicamente</string>
+    <string name="mClear_lastCheck">Última verificação:</string>
+    <string name="mClear_lastUpdate">Última atualização:</string>
+    <string name="mClear_updated">Catálogo atualizado</string>
+    <string name="mClear_upToDate">Catálogo está atualizado</string>
+    <string name="mClear_urlError">Não foi possível buscar as regras, verifique se o URL é válido e se á uma conexão ativa</string>
+    <string name="mClear_hashError">Não foi possível buscar o hash, verifique se o URL é válido e se á uma conexão ativa</string>
+    <string name="mClear_hashMismatch">Hashes não correspondem, o arquivo pode ter sido adulterado. Se quiser pular a verificação, remova o URL de hash</string>
+    <string name="mClear_restore">Restaurar caminhos de ClearURLs</string>
+    <string name="mClear_editor">"Regras do catálogo: devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
+Observe que qualquer modificação nos 'provedores' do objeto pai será substituída se o catálogo for atualizado automaticamente ou manualmente a partir da caixa de diálogo do atualizador. Para que as regras pessoais as definam em um objeto pai diferente (qualquer nome)."</string>
 
     <string name="mRemove_name">Remover consultas</string>
-    <string name="mRemove_desc">Com este módulo você pode remover as consultas da URL.\nPressione o botão para remover todas as consultas ou pressione a seta para remover as consultas uma de cada vez.\nObrigado PabloOQ pela ideia e implementação original!</string>
+    <string name="mRemove_desc">"Com este módulo pode remover consultas da URL.
+Pressione o botão para removê-los todos ou pressione a seta para remover um de cada vez.
+Obrigado a PabloOQ pela ideia e implementação original!"</string>
     <string name="mRemove_found1">1 consulta encontrada</string>
     <string name="mRemove_found">%d consultas encontradas</string>
     <string name="mRemove_noQueries">Sem consultas</string>
     <string name="mRemove_all">Remover tudo</string>
     <string name="mRemove_one">Remover %s</string>
     <string name="mRemove_empty">Remover vazio</string>
+
+    <string name="mLog_name">Log</string>
+    <string name="mLog_desc">"Este módulo registra todos os URLs verificados.
+Pode visualizar, limpar ou editar o log completo aqui, nenhuma indicação visual aparecerá na caixa de diálogo principal.
+Para desabilitar o log, basta desabilitar o módulo."</string>
+    <string name="mLog_view">Ver log</string>
+    <string name="mLog_edit">Editar log</string>
+    <string name="mLog_empty">Sem data</string>
 </resources>
