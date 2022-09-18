@@ -165,14 +165,14 @@ public class MainDialog extends Activity {
 
                 ViewGroup parent;
                 // set module block
-                if (moduleData.canBeDisabled()) {
+                if (moduleData.showDecorations()) {
                     // init decorations
                     View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
                     final TextView title = block.findViewById(R.id.title);
                     title.setText(getString(R.string.dd, getString(moduleData.getName())));
                     parent = block.findViewById(R.id.mod);
                 } else {
-                    // non-disable modules are considered internal and won't show decorations
+                    // no decorations
                     parent = ll_mods;
                 }
 

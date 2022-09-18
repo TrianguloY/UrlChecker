@@ -23,9 +23,9 @@ public abstract class AModuleData {
     }
 
     /**
-     * @return whether this module can be disabled or not
+     * @return whether this module must show decorations
      */
-    public boolean canBeDisabled() {
+    public boolean showDecorations() {
         return true;
     }
 

@@ -30,8 +30,8 @@ public class TextInputModule extends AModuleData {
     }
 
     @Override
-    public boolean canBeDisabled() {
-        return true;
+    public boolean showDecorations() {
+        return false;
     }
 
     @Override
