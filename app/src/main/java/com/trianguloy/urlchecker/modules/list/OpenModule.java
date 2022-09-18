@@ -47,7 +47,7 @@ public class OpenModule extends AModuleData {
 
     @Override
     public boolean canBeDisabled() {
-        return false;
+        return true;
     }
 
     @Override

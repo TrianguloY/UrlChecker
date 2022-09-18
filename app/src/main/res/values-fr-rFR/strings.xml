@@ -58,8 +58,7 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mOpen_desc">"Contient les boutons suivants (de gauche à droite):
 - Bouton Onglets personnalisés: activez/désactivez la fonction d'onglet personnalisé. Si activé, le navigateur sera ouvert en mode 'alléger'.
 - Bouton Ouvrir: appuyez sur le nom de l'application pour ouvrir le lien avec. Si un lien peut être ouvert avec plusieurs applications, une flèche s'affiche afin de vous offrir le choix.
-- Bouton Partager: appuyez sur le bouton pour partager le lien. Appuyez longuement pour le copier rapidement dans le presse-papiers.
-Ce module ne peut pas être désactivé."</string>
+- Bouton Partager: appuyez sur le bouton pour partager le lien. Appuyez longuement pour le copier rapidement dans le presse-papiers."</string>
     <string name="mOpen_ctabsSetting">Onglets personnalisés:</string>
     <string name="mOpen_ctabsOn">Activé par défaut</string>
     <string name="mOpen_ctabsOff">Désactivé par défaut</string>
@@ -101,8 +100,7 @@ Le contenu de l'url est obtenu (GET), mais pas évaluée, les redirections basé
     <string name="mStatus_redir">Redirection</string>
 
     <string name="mInput_name">Texte d\'entrée</string>
-    <string name="mInput_desc">"Affiche l'url actuelle, qui peut être modifiée manuellement.
-Ne peut être désactivé."</string>
+    <string name="mInput_desc">"Affiche l'url actuelle, qui peut être modifiée manuellement."</string>
 
     <string name="mVT_name">Scanneur</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.

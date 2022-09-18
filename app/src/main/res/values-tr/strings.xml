@@ -40,8 +40,7 @@ Translations: %s."</string>
     <string name="mOpen_desc">"Aşağıdaki düğmeleri içerir (soldan sağa):
 - Özel Sekmeler düğmesi: özel sekme özelliğini etkinleştirmek/devre dışı bırakmak için geçiş. Etkinleştirildiğinde tarayıcı 'hafif' modda açılmalıdır.
 - Aç düğmesi: Bağlantıyı o uygulamada açmak için uygulama adına basın. Bir bağlantı birden fazla uygulama ile açılabiliyorsa, seçim yapmanızı sağlamak için bir ok gösterilecektir.
-- Paylaş düğmesi: Bağlantıyı paylaşmak için düğmeye basın. Panoya hızlıca kopyalamak için uzun basın.
-Bu bileşen devre dışı bırakılamaz."</string>
+- Paylaş düğmesi: Bağlantıyı paylaşmak için düğmeye basın. Panoya hızlıca kopyalamak için uzun basın."</string>
     <string name="mOpen_with">%s ile aç</string>
     <string name="mOpen_open">Aç</string>
     <string name="mOpen_share">Paylaş</string>
@@ -75,7 +74,7 @@ Bu bileşen devre dışı bırakılamaz."</string>
     <string name="mStatus_redir">Yönlendirme</string>
 
     <string name="mInput_name">Giriş metni</string>
-    <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL\'yi görüntüler.\nDevre dışı bırakılamaz.</string>
+    <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL\'yi görüntüler.</string>
 
     <string name="mVT_name">URL\'yi tara</string>
     <string name="mVT_desc">Bu bileşen etkinleştirildiğinde, VirusTotal kullanarak URL\'yi tarayabilir ve raporu inceleyebilirsiniz.\nBunun çalışması için kişisel bir VirusTotal API anahtarı gereklidir, buradan ücretsiz bir hesap için kayıt olduktan sonra bir tane alabilirsiniz: https://www.virustotal.com/gui/join-us.</string>

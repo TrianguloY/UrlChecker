@@ -58,8 +58,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_desc">"Contains the following buttons (left to right):
 - Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
-- Share button: Press the button to share the link. Long press to quickly copy to clipboard.
-This module can't be disabled."</string>
+- Share button: Press the button to share the link. Long press to quickly copy to clipboard."</string>
     <string name="mOpen_ctabsSetting">Custom tabs:</string>
     <string name="mOpen_ctabsOn">Enabled by default</string>
     <string name="mOpen_ctabsOff">Disabled by default</string>
@@ -101,8 +100,7 @@ The url content is obtained (GET), but not evaluated, so redirections based on j
     <string name="mStatus_redir">Redirect</string>
 
     <string name="mInput_name">Input text</string>
-    <string name="mInput_desc">"Displays the current url, which can be edited manually.
-Can't be disabled."</string>
+    <string name="mInput_desc">"Displays the current url, which can be edited manually."</string>
 
     <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"When this module is enabled you can scan the url using VirusTotal and check the report.
