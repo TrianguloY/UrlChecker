@@ -16,7 +16,7 @@ Traduction: %s."</string>
     <!-- configuration -->
     <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
-    <string name="reset_order">Réinitialiser l\'Ordre</string>
+    <string name="reset_order">Réinitialiser l\'ordre</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
@@ -35,7 +35,7 @@ Traduction: %s."</string>
 
 
     <!-- modules -->
-    <string name="mPttrn_name">Analyseur de Style</string>
+    <string name="mPttrn_name">Analyseur de style</string>
     <string name="mPttrn_desc">"Recherche les problèmes courants dans les urls. Modèles intégrés:
 * Caractères non-ascii comme les lettres grecques. Cela peut être utilisé pour l'hameçonnage: googĺe.com à la place de google.com
 * liens http, vous devriez utiliser https à la place
@@ -74,7 +74,7 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mStatus_name">Code d\'état</string>
     <string name="mStatus_desc">"En appuyant sur le bouton de vérification, une requête sera faite pour récupérer et afficher le code d'état du site.
 Si le résultat est une redirection, vous pourrez voir l'url de destination.
-Le contenu de l'url est obtenu (GET), mais pas évaluée, les redirections basées sur javascript ne seront donc pas détectées."</string>
+Le contenu de l'url est obtenu (GET), mais n'est pas évaluée, les redirections basées sur javascript ne seront donc pas détectées."</string>
     <string name="mStatus_ioerror">Erreur réseau lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_error">Erreur interne lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_check">Vérifier</string>
@@ -100,7 +100,7 @@ Le contenu de l'url est obtenu (GET), mais pas évaluée, les redirections basé
     <string name="mStatus_redir">Redirection</string>
 
     <string name="mInput_name">Texte d\'entrée</string>
-    <string name="mInput_desc">"Affiche l'url actuelle, qui peut être modifiée manuellement."</string>
+    <string name="mInput_desc">"Affiche l'url, qui peut être modifiée manuellement."</string>
 
     <string name="mVT_name">Scanneur</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.
@@ -140,10 +140,10 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
     <string name="mClear_cleared">- Effacé</string>
     <string name="mClear_noRules">Rien n\'a été trouvé</string>
     <string name="mClear_auto">Appliquer automatiquement</string>
-    <string name="mClear_toggleReferral">"Activer le marketing de parrainage (les paramètres d'affiliations ne seront pas effacés)"</string>
+    <string name="mClear_toggleReferral">"Autoriser le marketing de parrainage (les paramètres d'affiliations ne seront pas effacés)"</string>
     <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
     <string name="mClear_error">Une erreur s\'est produite lors de la vérification des règles</string>
-    <string name="mClear_updater">Mise à jour</string>
+    <string name="mClear_updater">Actualisation</string>
     <string name="mClear_sourceDesc">URL du fichier de catalogue JSON contenant les règles:</string>
     <string name="mClear_urlHint">URL du catalogue</string>
     <string name="mClear_hashDesc">URL du fichier de hachage du catalogue. S\'il est omis, le téléchargement ne sera pas vérifié pour voir s\'il a été falsifié/modifié (non recommandé)</string>
@@ -174,7 +174,7 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
 
     <string name="mLog_name">Registre</string>
     <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées.
-Vous pouvez consulter, effacer ou modifier le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
+Vous pouvez consulter, modifier ou effacer le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
 Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_view">Consulter le registre</string>
     <string name="mLog_edit">Éditer le registre</string>
