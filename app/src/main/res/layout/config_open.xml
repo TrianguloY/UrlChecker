@@ -31,4 +31,10 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <CheckBox
+        android:id="@+id/closeshare_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mOpen_closeshareSetting" />
+
 </LinearLayout>
