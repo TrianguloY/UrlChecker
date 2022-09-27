@@ -35,6 +35,10 @@ import java.util.List;
  */
 public class OpenModule extends AModuleData {
 
+    public static GenericPref.Bool CLOSEOPEN_PREF() {
+        return new GenericPref.Bool("open_closeopen", true);
+    }
+
     public static GenericPref.Bool CLOSESHARE_PREF() {
         return new GenericPref.Bool("open_closeshare", true);
     }
@@ -69,6 +73,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     private LastOpened lastOpened;
 
+    private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
     private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
 
     private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
@@ -84,6 +89,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     public OpenDialog(MainDialog dialog) {
         super(dialog);
         ctabsPref.init(dialog);
+        closeOpenPref.init(dialog);
         closeSharePref.init(dialog);
     }
 
@@ -277,6 +283,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         }
 
         PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
+
+        if (closeOpenPref.get()){
+            this.getActivity().finish();
+        }
     }
 
     /**
@@ -340,12 +350,14 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
 class OpenConfig extends AModuleConfig {
 
+    private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
     private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
     private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
 
     public OpenConfig(ConfigActivity activity) {
         super(activity);
         ctabsPref.init(activity);
+        closeOpenPref.init(activity);
         closeSharePref.init(activity);
     }
 
@@ -361,6 +373,7 @@ class OpenConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
+        closeOpenPref.attachToCheckBox(views.findViewById(R.id.closeopen_pref));
         closeSharePref.attachToCheckBox(views.findViewById(R.id.closeshare_pref));
         if (CTabs.isAvailable()) {
             ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
