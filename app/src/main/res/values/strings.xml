@@ -59,6 +59,8 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
 - Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard."</string>
+    <string name="mOpen_closeopenSetting">Close dialog after opening</string>
+    <string name="mOpen_closeshareSetting">Close dialog after sharing</string>
     <string name="mOpen_ctabsSetting">Custom tabs:</string>
     <string name="mOpen_ctabsOn">Enabled by default</string>
     <string name="mOpen_ctabsOff">Disabled by default</string>

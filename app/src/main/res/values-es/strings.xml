@@ -58,6 +58,8 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
 - Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
 - Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador."</string>
+    <string name="mOpen_closeopenSetting">Cierra la ventana después de abrir</string>
+    <string name="mOpen_closeshareSetting">Cierra la ventana después de compartir</string>
     <string name="mOpen_ctabsSetting">"'Custom tabs':"</string>
     <string name="mOpen_ctabsOn">Activado por defecto</string>
     <string name="mOpen_ctabsOff">Desactivado por defecto</string>
