@@ -8,6 +8,18 @@
 name: Gradle Package
 
 on:
+
+  # Triggers the workflow on push events for the master branch
+
+  # push:
+
+  #   branches:
+
+  #     - master
+
+  # Run this workflow manually from the Actions tab
+
+  workflow_dispatch:
   release:
     types: [created]
 
