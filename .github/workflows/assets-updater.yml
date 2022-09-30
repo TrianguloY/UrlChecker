@@ -1,0 +1,41 @@
+# This action updates assets files
+name: Assets updater
+
+on:
+  
+permissions:
+  contents: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        # https://github.com/actions/checkout
+        uses: actions/checkout@v3
+
+      - name: ClearURLs catalog
+        continue-on-error: true
+        run: |
+          bash ./.github/scripts/file-updater.sh $fileName $fileURL $filePath $hashURL
+          git add "$filePath$fileName"
+          echo "$fileName added successfully"
+        env:
+          fileName: "data.minify.json"
+          fileURL: "https://rules2.clearurls.xyz/data.minify.json"
+          filePath: "./app/src/main/assets/"
+          hashURL: "https://rules2.clearurls.xyz/rules.minify.hash"
+
+      - name: Commit everything and push
+        run: |
+          # Retrieve finished steps as number value
+          count=($(git diff --staged --name-only | wc))
+          if [[ ${count[0]} -ne 0 ]]; then
+            git config user.name GithubActions
+            git config user.email ""
+            git commit -m "Update assets"
+            git push
+          else
+            echo "None of the files were updated"
+          fi
