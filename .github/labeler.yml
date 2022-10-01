@@ -6,6 +6,11 @@
 Assets:
 - app/src/main/assets/**/*
 
+# Add 'Automation' label to any file changes within scripts or workflows dir
+Automation:
+- .github/scripts/**/*
+- .github/workflows/**/*
+
 # Add 'Github' label to any git file changes within the source dir
 Github:
 - .github/**/*
