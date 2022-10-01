@@ -1,0 +1,27 @@
+# Add 'repo' label to any root file changes
+repo:
+- '*'
+
+# Add '@domain/core' label to any change within the 'core' package
+Core:
+- app/src/main/java/com/trianguloy/urlchecker/
+# - package/core/**/*
+
+# Add 'test' label to any change to *.spec.js files within the source dir
+test:
+- src/**/*.spec.js
+
+# Add 'test' label to any change to *.spec.js files within the source dir
+
+test:
+
+- src/**/*.spec.js
+
+# Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
+source:
+- any: ['src/**/*', '!src/docs/*']
+
+# Add 'frontend` label to any change to *.js files as long as the `main.js` hasn't changed
+frontend:
+- any: ['src/**/*.js']
+  all: ['!src/main.js']
