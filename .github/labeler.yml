@@ -12,7 +12,8 @@ Github:
 
 # Add 'Core' label to any change within the 'core' package
 Core:
-- app/src/main/java/com/trianguloy/urlchecker/**/*
+- app/src/main/java/**/*
+- app/src/main/kotlin/**/*
 
 # Add 'Store file' label to any change within the 'play' folder and subfolder(s)
 Store file:
