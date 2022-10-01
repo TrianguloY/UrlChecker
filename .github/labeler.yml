@@ -1,0 +1,30 @@
+# Made with love
+# see https://github.com/actions/labeler
+# for more informations
+
+# Add 'assets' label to any assets file changes within the source dir
+Assets:
+- app/src/main/assets/**/*
+
+# Add 'Github' label to any git file changes within the source dir
+Github:
+- .github/**/*
+
+# Add 'Core' label to any change within the 'core' package
+Core:
+- app/src/main/java/**/*
+- app/src/main/kotlin/**/*
+
+# Add 'Store file' label to any change within the 'play' folder and subfolder(s)
+Store file:
+- app/src/main/play/**/*
+
+# Add 'Gradle wrapper' label to any change within the 'gradle' folder and subfolder
+Gradle wrapper:
+- gradle/wrapper/**/*
+
+# Add 'Translation` label to any change to strings.xml files as long as the English strings.xml file hasn't changed
+Translation:
+- any: ['app/src/**/strings.xml']
+  all: ['!app/src/main/res/values/strings.xml']
+
