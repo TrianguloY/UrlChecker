@@ -1,27 +1,26 @@
-# Add 'repo' label to any root file changes
-repo:
-- '*'
+# Add 'assets' label to any assets file changes within the source dir
+Assets:
+- app/src/main/assets
 
-# Add '@domain/core' label to any change within the 'core' package
+# Add 'Core' label to any change within the 'core' package
 Core:
 - app/src/main/java/com/trianguloy/urlchecker/
 # - package/core/**/*
 
-# Add 'test' label to any change to *.spec.js files within the source dir
-test:
-- src/**/*.spec.js
+# Add 'Ongoing translation' label to any change to strings.xml files EXCEPT for the en-US sub-folder
+Ongoing translation:
+- any: ['src/**/strings.xml', '!app/src/main/res/values/*']
+# - src/**/strings.xml
 
-# Add 'test' label to any change to *.spec.js files within the source dir
-
-test:
-
-- src/**/*.spec.js
+# Add 'fr-rFR' label to any change to french strings.xml file
+fr-rFR:
+- app/src/main/res/values-fr-rFR/strings.xml
 
 # Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
-source:
-- any: ['src/**/*', '!src/docs/*']
+# source:
+# - any: ['src/**/*', '!src/docs/*']
 
 # Add 'frontend` label to any change to *.js files as long as the `main.js` hasn't changed
-frontend:
-- any: ['src/**/*.js']
-  all: ['!src/main.js']
+# frontend:
+# - any: ['src/**/*.js']
+#  all: ['!src/main.js']
