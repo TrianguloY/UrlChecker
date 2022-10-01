@@ -22,27 +22,8 @@ Store file:
 Gradle wrapper:
 - gradle/wrapper/**/*
 
-# Add 'Ongoing translation` label to any change to strings.xml files as long as the English strings.xml file hasn't changed
-Ongoing translation:
+# Add 'Translation` label to any change to strings.xml files as long as the English strings.xml file hasn't changed
+Translation:
 - any: ['app/src/**/strings.xml']
   all: ['!app/src/main/res/values/strings.xml']
-
-# Add language code label to any change to specific strings.xml files
-es-ES:
-- app/src/main/res/values-es/strings.xml
-
-fr-rFR:
-- app/src/main/res/values-fr-rFR/strings.xml
-
-iw-IL:
-- app/src/main/res/values-iw/strings.xml
-
-pt-rPT:
-- app/src/main/res/values-pt-rPT/strings.xml
-
-tr-TR:
-- app/src/main/res/values-tr/strings.xml
-
-uk-UA:
-- app/src/main/res/values-uk/strings.xml
 
