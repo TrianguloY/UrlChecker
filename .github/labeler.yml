@@ -1,6 +1,16 @@
 # Made with love
-# see https://github.com/actions/labeler
-# for more informations
+#
+# This is the configuration file for the labeler action
+# for more example in setting this file or informations about
+# the labeler action, see:
+# https://github.com/actions/labeler
+#
+# If you want to use it in your project, you will simply need:
+# 1 - commit this config file to your repository into the '.github' folder.
+# 2 - commit the 'labeler.yml' action file into the '.github/workflows' folder.
+#
+# You will probably need to modify the labels, or their targets.
+#
 
 # Add 'assets' label to any assets file changes within the source dir
 Assets:
