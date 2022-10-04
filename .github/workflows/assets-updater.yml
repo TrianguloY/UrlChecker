@@ -2,40 +2,59 @@
 name: Assets updater
 
 on:
-  
+ # weekly
+ schedule:
+   - cron: '0 0 * * Sun'
+    
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   download:
     runs-on: ubuntu-latest
 
+    env:
+      workingBranch: assets-updater-action
     steps:
-      - name: Checkout repository content
-        # https://github.com/actions/checkout
+      - name: Checkout main
         uses: actions/checkout@v3
+
+      - name: Git config
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Check if branch exists
+        run: |
+          count=($(git ls-remote --heads origin "$workingBranch" | wc))
+          if [[ ${count[0]} -ne 0 ]]; then
+            # Exists
+            git fetch
+            git checkout -b $workingBranch "origin/$workingBranch"
+          else
+            # Does not exist
+            git checkout -b $workingBranch
+            git push --set-upstream origin $workingBranch
+          fi
 
       - name: ClearURLs catalog
         continue-on-error: true
         run: |
           bash ./.github/scripts/file-updater.sh $fileName $fileURL $filePath $hashURL
           git add "$filePath$fileName"
-          echo "$fileName added successfully"
+          git commit -m "$message"
+          git push
+          echo "$fileName commited successfully"
         env:
           fileName: "data.minify.json"
-          fileURL: "https://rules2.clearurls.xyz/data.minify.json"
+          fileURL: "https://rules2.clearurls.xyz/data.min.json"
           filePath: "./app/src/main/assets/"
-          hashURL: "https://rules2.clearurls.xyz/rules.minify.hash"
+          hashURL: "https://rules2.clearurls.xyz/rules.min.hash"
+          message: "ClearURLs catalog updated"
 
-      - name: Commit everything and push
-        run: |
-          # Retrieve finished steps as number value
-          count=($(git diff --staged --name-only | wc))
-          if [[ ${count[0]} -ne 0 ]]; then
-            git config user.name GithubActions
-            git config user.email ""
-            git commit -m "Update assets"
-            git push
-          else
-            echo "None of the files were updated"
-          fi
+      - name: Pull request
+        run:
+          gh pr create --title 'Automated assets updater action' --body ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
