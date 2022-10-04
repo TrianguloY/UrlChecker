@@ -1,3 +1,21 @@
+# Made with love
+#
+# This workflow uses actions that are not certified by GitHub.
+#
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# see https://github.com/actions/labeler
+# for more informations
+#
+# For most projects, this workflow file will not need changing; you simply need:
+# 1 - to commit this file to your repository.
+# 2 - to commit the 'labeler.yml' configuration file
+#     created and filled in the '.Github folder'.
+# You probably want to add, replace or delete labels,
+# remember to check this configuration file.
+#
+
 name: "Pull Request Labeler"
 on:
 - pull_request_target
@@ -11,5 +29,8 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
+    # Check if you have enabled tokens for your repository
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    # This removes the label if the change(s) are undone in the PR
         sync-labels: true
+        
