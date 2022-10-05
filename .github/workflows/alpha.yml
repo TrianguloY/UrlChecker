@@ -55,7 +55,8 @@ jobs:
           git push --force origin tag ${{ env.TAG }}
 
       - name: Upload ${{ env.ZIP }} to ${{ env.TAG }} release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ env.TAG }}
-          files: ${{ env.ZIP }}
+        # equivalent to softprops/action-gh-release@v1 but using official cli
+        run: |
+          gh release upload ${{ env.TAG }} ${{ env.ZIP }} --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
