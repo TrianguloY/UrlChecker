@@ -1,13 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.os.Build;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ConfigActivity;
@@ -17,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
@@ -89,10 +85,10 @@ class DebugDialog extends AModuleDialog implements View.OnClickListener ,View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.intent:
-                copyToClipboard(R.string.mD_copyIntent, txt_intent.getText().toString());
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyIntent, txt_intent.getText().toString());
                 break;
             case R.id.urlData:
-                copyToClipboard(R.string.mD_copyUrlData, txt_urlData.getText().toString());
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyUrlData, txt_urlData.getText().toString());
                 break;
         }
     }
@@ -102,26 +98,12 @@ class DebugDialog extends AModuleDialog implements View.OnClickListener ,View.On
         switch (v.getId()) {
             case R.id.intent:
             case R.id.urlData:
-                copyToClipboard(R.string.mD_copyAll, txt_intent.getText() + "\n" + txt_urlData.getText());
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyAll, txt_intent.getText() + "\n" + txt_urlData.getText());
                 break;
             default:
                 return false;
         }
         return true;
-    }
-
-    /**
-     * Copy to the clipboard, retrieves string from id
-     */
-    private void copyToClipboard(int id, String text) {
-        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return;
-
-        clipboard.setPrimaryClip(ClipData.newPlainText("",  text));
-
-        // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
-        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
-            Toast.makeText(getActivity(), id, Toast.LENGTH_LONG).show();
     }
 }
 

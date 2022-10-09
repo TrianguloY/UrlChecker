@@ -1,6 +1,8 @@
 package com.trianguloy.urlchecker.utilities;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
@@ -11,6 +13,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
@@ -108,5 +111,26 @@ public class AndroidUtils {
                         ? cntx.getResources().getConfiguration().getLocales().get(0)
                         : cntx.getResources().getConfiguration().locale
         ).format(new Date(millis));
+    }
+
+    /**
+     * Copy to the clipboard, retrieves string from id
+     */
+    public static void copyToClipboard(Activity activity, int id, String text) {
+        copyToClipboard(activity, activity.getString(id), text);
+    }
+
+    /**
+     * Copy to the clipboard
+     */
+    public static void copyToClipboard(Activity activity, String toast, String text) {
+        ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) return;
+
+        clipboard.setPrimaryClip(ClipData.newPlainText("",  text));
+
+        // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
+        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+            Toast.makeText(activity, toast, Toast.LENGTH_LONG).show();
     }
 }
