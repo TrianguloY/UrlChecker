@@ -2,30 +2,34 @@
 name: Assets updater
 
 on:
- # weekly
- schedule:
-   - cron: '0 0 * * Sun'
-    
+  # weekly
+  schedule:
+    - cron: '0 0 * * SUN'
+
+  # manually
+  workflow_dispatch:
+
 permissions:
   contents: write
   pull-requests: write
 
+env:
+  workingBranch: assets-updater-action
+
 jobs:
-  download:
+  update:
     runs-on: ubuntu-latest
 
-    env:
-      workingBranch: assets-updater-action
     steps:
       - name: Checkout main
         uses: actions/checkout@v3
 
       - name: Git config
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
 
-      - name: Check if branch exists
+      - name: Prepare branch
         run: |
           count=($(git ls-remote --heads origin "$workingBranch" | wc))
           if [[ ${count[0]} -ne 0 ]]; then
@@ -39,22 +43,32 @@ jobs:
           fi
 
       - name: ClearURLs catalog
-        continue-on-error: true
+        continue-on-error: true # just skip the file
         run: |
           bash ./.github/scripts/file-updater.sh $fileName $fileURL $filePath $hashURL
           git add "$filePath$fileName"
-          git commit -m "$message"
+          git commit -m "
+          $message
+          
+          File: $filePath$fileName
+          Url: $fileURL
+          Hash: $hashURL
+          "
+          
           git push
           echo "$fileName commited successfully"
         env:
           fileName: "data.minify.json"
-          fileURL: "https://rules2.clearurls.xyz/data.min.json"
+          fileURL: "https://rules2.clearurls.xyz/data.minify.json"
           filePath: "./app/src/main/assets/"
-          hashURL: "https://rules2.clearurls.xyz/rules.min.hash"
+          hashURL: "https://rules2.clearurls.xyz/rules.minify.hash"
           message: "ClearURLs catalog updated"
 
       - name: Pull request
-        run:
-          gh pr create --title 'Automated assets updater action' --body ''
+        continue-on-error: true # ignore if the pr already exists
+        run: |
+          gh pr create --title 'Assets updated (automatic action)' --body 'One or more assets were updated.
+          
+          This is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
