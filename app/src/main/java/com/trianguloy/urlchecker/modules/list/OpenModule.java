@@ -1,11 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +20,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
 import com.trianguloy.urlchecker.utilities.UrlUtilities;
@@ -190,7 +187,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                 Toast.makeText(getActivity(), R.string.mOpen_tabsDesc, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.share:
-                copyToClipboard();
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
                 break;
             default:
                 return false;
@@ -315,20 +312,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         if (closeSharePref.get()){
             this.getActivity().finish();
         }
-    }
-
-    /**
-     * Copy the url to the clipboard
-     */
-    private void copyToClipboard() {
-        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return;
-
-        clipboard.setPrimaryClip(ClipData.newPlainText("", getUrl()));
-
-        // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
-        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
-            Toast.makeText(getActivity(), R.string.mOpen_clipboard, Toast.LENGTH_LONG).show();
     }
 
     /**

@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
@@ -49,8 +50,9 @@ public class DebugModule extends AModuleData {
     }
 }
 
-class DebugDialog extends AModuleDialog {
+class DebugDialog extends AModuleDialog implements View.OnClickListener ,View.OnLongClickListener{
 
+    private TextView txt_intent;
     private TextView txt_urlData;
 
     public DebugDialog(MainDialog dialog) {
@@ -69,10 +71,39 @@ class DebugDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        ((TextView) views.findViewById(R.id.intent)).setText(
-                getActivity().getIntent().toUri(0)
-        );
+        txt_intent = views.findViewById(R.id.intent);
+        txt_intent.setText(getActivity().getIntent().toUri(0));
+        txt_intent.setOnClickListener(this);
+        txt_intent.setOnLongClickListener(this);
+
         txt_urlData = views.findViewById(R.id.urlData);
+        txt_urlData.setOnClickListener(this);
+        txt_urlData.setOnLongClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.intent:
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyIntent, txt_intent.getText().toString());
+                break;
+            case R.id.urlData:
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyUrlData, txt_urlData.getText().toString());
+                break;
+        }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.intent:
+            case R.id.urlData:
+                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyAll, txt_intent.getText() + "\n" + txt_urlData.getText());
+                break;
+            default:
+                return false;
+        }
+        return true;
     }
 }
 

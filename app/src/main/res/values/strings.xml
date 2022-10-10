@@ -121,8 +121,13 @@ A personal VirusTotal API key is needed for it to work, you can get one after re
     <string name="mD_name">Debug/Marker module</string>
     <string name="mD_desc">"If you reorder the modules, new ones added in future updates will be placed above this one.
 
-If you enable this it will display the received intent as uri, useful for developers."</string>
+If you enable this it will display the received intent as uri, useful for developers.
+
+Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
+    <string name="mD_copyIntent">Intent copied to clipboard</string>
+    <string name="mD_copyUrlData">UrlData copied to clipboard</string>
+    <string name="mD_copyAll">Intent and UrlData copied to clipboard</string>
 
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the url is edited, either manually or by other modules, this one allows you to view and revert changes.</string>

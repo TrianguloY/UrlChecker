@@ -121,8 +121,13 @@ Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionn
     <string name="mD_name">Module de débogage/marqueur</string>
     <string name="mD_desc">"Si vous réorganisez les modules, les nouveaux ajoutés dans les prochaines mises à jour seront placés au-dessus de celui-ci.
 
-Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour les développeurs."</string>
+Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour les développeurs.
+
+Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse-papiers. Effectuez un appui prolongé pour tout copier."</string>
     <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
+    <string name="mD_copyIntent">Intention copiée dans le presse-papiers</string>
+    <string name="mD_copyUrlData">Données d\'URL copiées dans le presse-papiers</string>
+    <string name="mD_copyAll">Intention et données d\'URL copiées dans le presse-papiers</string>
 
     <string name="mHist_name">Historique</string>
     <string name="mHist_desc">"Lorsque l'url est modifiée, manuellement ou par d'autres modules, ceci vous permet de visualiser et d'annuler les modifications."</string>
