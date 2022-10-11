@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
@@ -127,10 +128,26 @@ public class AndroidUtils {
         ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) return;
 
-        clipboard.setPrimaryClip(ClipData.newPlainText("",  text));
+        clipboard.setPrimaryClip(ClipData.newPlainText("", text));
 
         // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
         if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
             Toast.makeText(activity, toast, Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * Get the (possible) referrer activity from an existing one.
+     * Null if can't find
+     */
+    public static String getReferrer(Activity activity) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) return null;
+
+        Uri referrer = activity.getReferrer();
+        if (referrer == null) return null;
+
+        // the scheme must be "android-app"
+        if (!"android-app".equals(referrer.getScheme())) return null;
+        // the host is the package
+        return referrer.getHost();
     }
 }

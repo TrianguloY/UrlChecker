@@ -206,10 +206,13 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     // ------------------- Spinner -------------------
 
     /**
-     * Populates the spinner with the apps that android says that can open it
+     * Populates the spinner with the apps that can open it, in preference order
      */
     private void updateSpinner() {
         packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
+
+        // remove referrer
+        packages.remove(AndroidUtils.getReferrer(getActivity()));
 
         // check no apps
         if (packages.isEmpty()) {
@@ -281,7 +284,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
 
-        if (closeOpenPref.get()){
+        if (closeOpenPref.get()) {
             this.getActivity().finish();
         }
     }
