@@ -6,6 +6,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.InternalFile;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -75,7 +76,10 @@ public class PatternCatalog {
                     )
                     .put("Youtube ➔ Invidious", new JSONObject()
                             .put("regex", "^https?://(?:[a-z0-9-]+\\.)*?youtube.com/(.*)")
-                            .put("replacement", "https://yewtu.be/$1")
+                            .put("replacement", new JSONArray()
+                                    .put("https://yewtu.be/$1")
+                                    .put("https://farside.link/invidious/$1")
+                            )
                             .put("enabled", "false")
                     )
                     ;

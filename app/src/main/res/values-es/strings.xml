@@ -49,7 +49,7 @@ Traducciones: %s."</string>
     <string name="mPttrn_ok">Ningún patron coincide</string>
     <string name="mPttrn_editor">"Aquí puedes editar o añadir nuevos patrones. Formato:
 - 'regex': string: java regex válido con el que se comprobará la url.
-- 'replacement': string: si se incluye, el botón de 'arreglar' ejecutará 'url=url.replaceAll(regex,replacement)'.
+- 'replacement': string|list: si se incluye, el botón de 'arreglar' ejecutará 'url=url.replaceAll(regex,replacement)'. Si es una lista, replacement será un elemento aleatorio de ella.
 - 'automatic': boolean: si se pone a 'true' el patrón será aplicado automáticamente.
 - 'enabled': boolean: ponlo a 'false' para deshabilitar el patrón.
 Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizaciones no serán añadidos automáticamente (puedes recuperarlos con la opción de reset)."</string>

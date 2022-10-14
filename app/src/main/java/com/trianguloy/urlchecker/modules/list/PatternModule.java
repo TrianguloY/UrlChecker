@@ -17,10 +17,12 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.JavaUtilities;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * This module checks for patterns characters in the url
@@ -128,7 +130,21 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                 if (url.matches(".*" + regex + ".*")) {
                     message.matches = true;
                     // check replacements
-                    String replacement = data.has("replacement") ? data.optString("replacement") : null;
+                    String replacement = null;
+
+                    Object replacements = data.opt("replacement");
+                    if (replacements != null) {
+                        // data exists
+                        if (replacements instanceof JSONArray) {
+                            // array, get random
+                            JSONArray replacementsArray = (JSONArray) replacements;
+                            replacement = replacementsArray.getString(new Random().nextInt(replacementsArray.length()));
+                        } else {
+                            // single data, get that one
+                            replacement = replacements.toString();
+                        }
+                    }
+
                     if (replacement != null) {
                         message.newUrl = url.replaceAll(regex, replacement);
                     }

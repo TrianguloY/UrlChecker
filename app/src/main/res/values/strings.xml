@@ -50,7 +50,7 @@ Translations: %s."</string>
     <string name="mPttrn_ok">No patterns match</string>
     <string name="mPttrn_editor">"Here you can edit or add new pattern. Format:
 - 'regex': string: valid java regex that will be matched against the url.
-- 'replacement': string: if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'.
+- 'replacement': string|list: if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'. If list, replacement will be a random element from it.
 - 'automatic': boolean: set to true to automatically apply the pattern.
 - 'enabled': boolean: set to false to disable the pattern.
 Note: if you edit the patterns, new built-in patterns from app updates will not be added automatically (you can restore them with the reset option)."</string>
