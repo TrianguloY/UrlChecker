@@ -10,9 +10,16 @@
         android:text="@string/mPttrn_desc" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/edit"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/json_edit" />
+
+    <TextView
+        android:id="@+id/user_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mPttrn_userContent"
+        android:autoLink="web" />
 </LinearLayout>

@@ -40,6 +40,7 @@ Translations: %s."</string>
 * Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 * http links, you should use https instead
 * Missing http(s) scheme"</string>
+    <string name="mPttrn_userContent">List of other useful user-created patterns: %s</string>
     <string name="mPttrn_fix">Apply</string>
     <string name="mPttrn_fixed">Applied - %s</string>
     <string name="mPttrn_ascii">Warning! Non ascii characters found</string>

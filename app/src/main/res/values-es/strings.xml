@@ -39,6 +39,7 @@ Traducciones: %s."</string>
 * Carácteres no-ascii, como letras griegas. Pueden ser usadas para phishing: googĺe.com vs google.com
 * Enlaces http, deberías usar https
 * Enlaces sin esquema http(s)"</string>
+    <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">¡Aviso! Carácteres no-ascii encontrados</string>

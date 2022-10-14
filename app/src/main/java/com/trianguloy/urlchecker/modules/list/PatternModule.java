@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -49,11 +48,12 @@ public class PatternModule extends AModuleData {
     }
 }
 
-class PatternConfig extends AModuleConfig implements View.OnClickListener {
+class PatternConfig extends AModuleConfig {
 
     private final PatternCatalog catalog;
 
-    public PatternConfig(Activity cntx) {
+    public PatternConfig(ConfigActivity cntx) {
+        super(cntx);
         catalog = new PatternCatalog(cntx);
     }
 
@@ -69,13 +69,14 @@ class PatternConfig extends AModuleConfig implements View.OnClickListener {
 
     @Override
     public void onInitialize(View views) {
-        views.findViewById(R.id.button).setOnClickListener(this);
+        views.findViewById(R.id.edit).setOnClickListener(o -> catalog.showEditor());
+        views.<TextView>findViewById(R.id.user_content)
+                .setText(getActivity().getString(
+                        R.string.mPttrn_userContent,
+                        "https://github.com/TrianguloY/UrlChecker/wiki/Custom-patterns"
+                ));
     }
 
-    @Override
-    public void onClick(View view) {
-        catalog.showEditor();
-    }
 }
 
 class PatternDialog extends AModuleDialog implements View.OnClickListener {
