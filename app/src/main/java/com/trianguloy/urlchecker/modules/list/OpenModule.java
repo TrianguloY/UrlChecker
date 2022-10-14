@@ -223,7 +223,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         }
 
         // sort
-        lastOpened.sort(packages);
+        lastOpened.sort(packages, getUrl());
 
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(0), getActivity())));
@@ -253,7 +253,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         String chosen = packages.get(index);
 
         // update as preferred over the rest
-        lastOpened.prefer(chosen, packages);
+        lastOpened.prefer(chosen, packages, getUrl());
 
         // open
         Intent intent = new Intent(getActivity().getIntent());
@@ -340,11 +340,14 @@ class OpenConfig extends AModuleConfig {
     private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
     private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
 
+    private final GenericPref.Bool perDomainPref = LastOpened.PERDOMAIN_PREF();
+
     public OpenConfig(ConfigActivity activity) {
         super(activity);
         ctabsPref.init(activity);
         closeOpenPref.init(activity);
         closeSharePref.init(activity);
+        perDomainPref.init(activity);
     }
 
     @Override
@@ -366,6 +369,7 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
+        perDomainPref.attachToCheckBox(views.findViewById(R.id.perDomain));
     }
 }
 

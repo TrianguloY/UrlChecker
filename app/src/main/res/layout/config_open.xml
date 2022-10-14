@@ -43,5 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mOpen_closeshareSetting" />
+    <CheckBox
+        android:id="@+id/perDomain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_perDomain" />
 
 </LinearLayout>

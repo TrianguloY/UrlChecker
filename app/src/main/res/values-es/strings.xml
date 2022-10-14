@@ -65,6 +65,7 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
     <string name="mOpen_ctabsOff">Desactivado por defecto</string>
     <string name="mOpen_ctabsEn">Siempre activado</string>
     <string name="mOpen_ctabsDis">Siempre desactivado</string>
+    <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
