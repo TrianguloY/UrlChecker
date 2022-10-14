@@ -40,6 +40,7 @@ Traduction: %s."</string>
 * Caractères non-ascii comme les lettres grecques. Cela peut être utilisé pour l'hameçonnage: googĺe.com à la place de google.com
 * liens http, vous devriez utiliser https à la place
 * Schéma http(s) manquant"</string>
+    <string name="mPttrn_userContent">"Liste d'autres modèles utiles créés par des utilisateur: %s"</string>
     <string name="mPttrn_fix">Appliquer</string>
     <string name="mPttrn_fixed">Appliqué - %s</string>
     <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés</string>
@@ -49,7 +50,7 @@ Traduction: %s."</string>
     <string name="mPttrn_ok">Aucun modèle correspondant</string>
     <string name="mPttrn_editor">"Ici, vous pouvez modifier ou ajouter de nouveaux modèles. Format:
 - 'regex': string: regex java valide qui sera mis en correspondance avec l'url.
-- 'replacement': string: s'il est fourni, le bouton "réparer" s'exécutera 'url=url.replaceAll(regex,replacement)'.
+- 'replacement': string|list: s'il est fourni, le bouton "réparer" exécutera 'url=url.replaceAll(regex,replacement)'. S'il s'agit d'une liste, le remplacement sera un élément aléatoire de celle-ci.
 - 'automatic': boolean: définir sur true pour appliquer automatiquement le modèle.
 - 'enabled': boolean: définir sur false pour désactiver le modèle.
 Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors des mises à jour de l'application ne seront pas automatiquement ajoutés (vous pouvez les restaurer avec l'option de réinitialisation)."</string>
@@ -64,6 +65,7 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mOpen_ctabsOff">Désactivé par défaut</string>
     <string name="mOpen_ctabsEn">Toujours activé</string>
     <string name="mOpen_ctabsDis">Toujours désactivé</string>
+    <string name="mOpen_perDomain">Triez les différents domaines indépendamment</string>
     <string name="mOpen_closeOpen">Fermer la boîte de dialogue après l\'ouverture du lien</string>
     <string name="mOpen_closeShare">Fermer la boîte de dialogue après le partage du lien</string>
     <string name="mOpen_with">Ouvrir avec %s</string>
