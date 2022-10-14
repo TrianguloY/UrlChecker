@@ -43,8 +43,9 @@ public class PatternCatalog {
      */
     public JSONObject getBuiltIn() {
         try {
-            // build from the translated strings
             return new JSONObject()
+
+                    // built from the translated strings
                     .put(cntx.getString(R.string.mPttrn_ascii), new JSONObject()
                             .put("regex", "[^\\p{ASCII}]")
                     )
@@ -59,6 +60,23 @@ public class PatternCatalog {
                     .put(cntx.getString(R.string.mPttrn_noSchemeHttps), new JSONObject()
                             .put("regex", "^(?!.*:)")
                             .put("replacement", "https://$0")
+                    )
+
+                    // privacy redirections samples (see https://github.com/TrianguloY/UrlChecker/discussions/122)
+                    .put("Reddit ➔ Teddit", new JSONObject()
+                            .put("regex", "^https?://(?:[a-z0-9-]+\\.)*?reddit.com/(.*)")
+                            .put("replacement", "https://teddit.net/$1")
+                            .put("enabled", "false")
+                    )
+                    .put("Twitter ➔ Nitter", new JSONObject()
+                            .put("regex", "^https?://(?:[a-z0-9-]+\\.)*?twitter.com/(.*)")
+                            .put("replacement", "https://nitter.net/$1")
+                            .put("enabled", "false")
+                    )
+                    .put("Youtube ➔ Invidious", new JSONObject()
+                            .put("regex", "^https?://(?:[a-z0-9-]+\\.)*?youtube.com/(.*)")
+                            .put("replacement", "https://yewtu.be/$1")
+                            .put("enabled", "false")
                     )
                     ;
         } catch (JSONException e) {
