@@ -56,7 +56,7 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
 - Botão de guias personalizadas: alterne para ativar/desativar o recurso de guia personalizada. Quando ativado, o navegador deve ser aberto no modo 'l'.
 - Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
 - Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência."</string>
-    <string name="mOpen_ctabsSetting">Abas personalizadas:</string>
+    <string name="mOpen_ctabs">Abas personalizadas:</string>
     <string name="mOpen_ctabsOn">Ativado por padrão</string>
     <string name="mOpen_ctabsOff">Desativado por padrão</string>
     <string name="mOpen_ctabsEn">Sempre ativado</string>

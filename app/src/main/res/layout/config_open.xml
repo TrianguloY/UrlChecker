@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="@string/mOpen_ctabsSetting" />
+            android:text="@string/mOpen_ctabs" />
 
         <Spinner
             android:id="@+id/ctabs_pref"
@@ -36,13 +36,16 @@
         android:id="@+id/closeopen_pref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mOpen_closeopenSetting" />
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_closeOpen" />
 
     <CheckBox
         android:id="@+id/closeshare_pref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mOpen_closeshareSetting" />
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_closeShare" />
+
     <CheckBox
         android:id="@+id/perDomain"
         android:layout_width="match_parent"
