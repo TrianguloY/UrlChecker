@@ -1,0 +1,160 @@
+<resources>
+    <!-- main -->
+    <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認し、設定することができます。</string>
+    <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>
+    <string name="a_modules">モジュール</string>
+    <string name="a_about">このアプリについて</string>
+
+    <!-- about -->
+    <string name="txt_about">このアプリは TrianguloY によって開発されました。\n\n貢献者: %s。\n翻訳者: %s.</string>
+    <string name="btn_blog">TrianguloY のブログ:</string>
+    <string name="btn_shareStore">このアプリを友達に自慢する</string>
+
+    <!-- configuration -->
+    <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化することができ、タップすると、その説明と設定も確認できます。</string>
+    <string name="toast_cantEnable">モジュールを有効にできません。設定を忘れていませんか？</string>
+    <string name="reset_order">並び順をリセット</string>
+
+    <!-- generic -->
+    <string name="toast_noApp">アプリを開けません</string>
+    <string name="toast_noBrowser">ブラウザを開けません</string>
+    <string name="title_choose">アプリを選択</string>
+    <string name="toast_invalid">無効です</string>
+    <string name="save">保存</string>
+    <string name="reset">リセット</string>
+    <string name="close">閉じる</string>
+    <string name="clear">クリア</string>
+    <string name="auto">自動</string>
+
+    <string name="json_desc">[ベータ機能] これは上級者向けのエディタです。内容は有効な JSON にフォーマットされている必要があります。右上のボタンをタップすると、フォーマット・検証ができます。</string>
+    <string name="json_edit">上級者向けエディタ</string>
+
+    <!-- modules -->
+    <string name="mPttrn_name">パターンチェッカー</string>
+    <string name="mPttrn_desc">URLの一般的な問題をチェックします。\n組み込みのパターンは以下です:\n- ギリシャ文字などの非 ASCII 文字のチェック。フィッシングに使用されることがあるためです。\n  例: goõgle.com と google.com\n- HTTPリンクを、HTTPSに変更。\n- HTTP(S)スキームがない場合にHTTP(S)スキームを追加。</string>
+    <string name="mPttrn_fix">適用</string>
+    <string name="mPttrn_fixed">適用しました: %s</string>
+    <string name="mPttrn_ascii">警告! 非ASCII文字が見つかりました。</string>
+    <string name="mPttrn_http">HTTPリンクです。HTTPSの使用をおすすめします。</string>
+    <string name="mPttrn_noSchemeHttp">HTTPスキームがありません。</string>
+    <string name="mPttrn_noSchemeHttps">HTTPSスキームがありません。</string>
+    <string name="mPttrn_ok">問題は見つかりませんでした。</string>
+    <string name="mPttrn_editor">ここでは、パターンの編集をしたり、新しいパターンを追加したりできます。\n利用できるフォーマットは以下です:\n- \'regex\': 文字列: Java の正規表現。URLに対して照合されます。 \n- \'replacement\': 文字列: 指定すると、「適用」 ボタンをタップした時に、 \'url=url.replaceAll(regex,replacement)\' が実行されます。\n- \'automatic\': ブール値: true に設定すると、パターンが自動的に適用されます。\n- \'enabled\': ブール値: パターンを無効にするには false に設定します。\n注: パターンを編集した場合、アプリの更新による新しい組み込みパターンは自動的に追加されません (リセットオプションで復元できます)。</string>
+
+    <string name="mOpen_name">
+        <![CDATA[開く・共有する]]>
+    </string>
+    <string name="mOpen_desc">次のボタンが含まれています (左から右へ):\n- 「カスタムタブ」ボタン: カスタムタブ機能を有効化/無効化します。有効にすると、ブラウザは「ライト」モードで開かれます。\n- 「開く」ボタン: アプリ名を押すと、そのアプリのリンクが開きます。複数のアプリでリンクを開くことができる場合は、選択できるように矢印が表示されます。\n- 共有ボタン: ボタンを押してリンクを共有します。長押しすると、クリップボードにすばやくコピーできます。\nこのモジュールを無効にすることはできません。</string>
+    <string name="mOpen_ctabsSetting">カスタムタブ:</string>
+    <string name="mOpen_ctabsOn">デフォルトで有効</string>
+    <string name="mOpen_ctabsOff">デフォルトで無効</string>
+    <string name="mOpen_ctabsEn">常にオン</string>
+    <string name="mOpen_ctabsDis">常にオフ</string>
+    <string name="mOpen_with">%s で開く</string>
+    <string name="mOpen_open">開く</string>
+    <string name="mOpen_share">共有</string>
+    <string name="mOpen_clipboard">URLをクリップボードにコピーしました。</string>
+    <string name="mOpen_noapps">アプリがありません</string>
+    <string name="mOpen_tabsDesc">カスタムタブ機能を切り替えます</string>
+
+    <string name="mStatus_name">ステータス コード</string>
+    <string name="mStatus_desc">チェックボタンを押すと、サイトのステータスコードを取得し表示します。\n結果がリダイレクトの場合は、宛先URLが表示されます。\nURLコンテンツは取得 (GET) されますが、JavaScript に基づくリダイレ​​クトは評価されないため、検出されません。</string>
+    <string name="mStatus_ioerror">URLの確認中にネットワークエラーが発生しました: %s</string>
+    <string name="mStatus_error">URLのチェック中に内部エラーが発生しました: %s</string>
+    <string name="mStatus_check">確認</string>
+    <string name="mStatus_checking">チェック中…</string>
+    <string-array name="mStatus_codes">
+        <item>200: 成功</item>
+        <item>301: 恒久的に移動</item>
+        <item>302: 一時的に移動</item>
+        <item>307: 一時的にリダイレクト</item>
+        <item>308: 恒久的にリダイレクト</item>
+        <item>400: 不正な要求</item>
+        <item>401: 認証が必要</item>
+        <item>403: 拒否</item>
+        <item>404: 要求されたリソースは存在しない</item>
+        <item>410: 恒久的に消滅</item>
+        <item>418: コーヒーを入れましょう! :D</item>
+        <item>500: サーバー内部エラー</item>
+        <item>503: 一時的に利用できません</item>
+        <item>502: 不正なゲートウェイ</item>
+        <item>504: ゲートウェイ タイムアウト</item>
+    </string-array>
+    <string name="mStatus_unknownCode">%d: 不明なステータスコードです</string>
+    <string name="mStatus_redir">リダイレクト</string>
+
+    <string name="mInput_name">URLの表示</string>
+    <string name="mInput_desc">手動で編集できる現在のURLを表示します。\n無効にすることはできません。</string>
+
+    <string name="mVT_name">URLスキャナー</string>
+    <string name="mVT_desc">このモジュールを有効にすると、VirusTotal を使用してURLをスキャンし、レポートを確認できます。\nこれが機能するには、個人用の VirusTotal API キーが必要です。https://www.virustotal.com/gui/join-us で無料アカウントに登録した後に取得できます。</string>
+    <string name="mVT_apiKey">API キー</string>
+    <string name="mVT_tm">VirusTotal™ は Google, Inc. の商標です。</string>
+    <string name="mVT_scan">スキャン</string>
+    <string name="mVT_cancel">キャンセル</string>
+    <string name="mVT_scanning">スキャン中…</string>
+    <string name="mVT_goodUrl">%dつのエンジンのいずれもURLを検出しませんでした (%s 時点データ)</string>
+    <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dつがURLを検出しました (%s 時点データ)</string>
+    <string name="mVT_badUrl">注意! %dつのエンジンの内 %dつがURLを検出しました (%s 時点データ)</string>
+    <string name="mVT_connectError">VirusTotal に接続できません。アクティブなインターネット接続があることを確認するか、後でもう一度試してください。</string>
+    <string name="mVT_jsonError">VirusTotal に接続できません。APIキーが有効であることを確認するか、後でもう一度試してください。</string>
+
+    <string name="mD_name">デバッグ/マーカー モジュール</string>
+    <string name="mD_desc">モジュールの順序を変更すると、将来のアップデートで追加される新しいモジュールがこのモジュールの上に配置されます。\n\nこれを有効にすると、受け取ったインテントをURIとして表示します。\n開発者にとって便利です。\nIntent または URLData をタップすると、クリップボードにコピーされます。長押しすると全てコピーできます。</string>
+
+    <string name="mD_ctabs">カスタムタブ サービスからのデバッグメッセージを表示する</string>
+
+    <string name="mHist_name">履歴</string>
+    <string name="mHist_desc">手動または他のモジュールによってURLが編集されると、このモジュールを使用して変更を表示および元に戻すことができます。</string>
+
+    <string name="mClear_name">URLクリーナー</string>
+    <string name="mClear_desc">このモジュールは、トラッキング、リファラル、およびその他の不要なパラメーターをURLから削除します。また、一般的なURLリダイレクトは、オフラインでも可能です。</string>
+    <string name="mClear_tm">ClearURLs からコピーされた組み込みカタログ: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">適用</string>
+    <string name="mClear_matches">%s に一致</string>
+    <string name="mClear_blocked">- ブロックされました!</string>
+    <string name="mClear_exception">- 例外 %s のため無視されました</string>
+    <string name="mClear_rule">- 不要なパラメータが見つかりました</string>
+    <string name="mClear_rawRule">- 不要なコンテンツが見つかりました</string>
+    <string name="mClear_referral">- リファラルが見つかりました</string>
+    <string name="mClear_forcedRedirection">- 強制リダイレクトが見つかりました</string>
+    <string name="mClear_redirection">- リダイレクトが見つかりました</string>
+    <string name="mClear_cleared">- 適用しました</string>
+    <string name="mClear_noRules">どの条件にも一致しません</string>
+    <string name="mClear_auto">自動的に適用</string>
+    <string name="mClear_toggleReferral">紹介マーケティングを有効にする (紹介パラメーターはクリアされなくなります)</string>
+    <string name="mClear_toggleVerbose">チェックプロセスの詳細情報を有効にする</string>
+    <string name="mClear_error">条件のチェック中にエラーが発生しました</string>
+    <string name="mClear_updater">アップデーター</string>
+    <string name="mClear_sourceDesc">条件が記述されたJSONファイルのURL:</string>
+    <string name="mClear_urlHint">JSONファイルのURL</string>
+    <string name="mClear_hashDesc">JSONファイルのハッシュ値のURL。省略した場合、ダウンロードしたファイルが壊れていないかどうかのチェックを行いません。 (推奨されません)</string>
+    <string name="mClear_hashHint">ハッシュチェックなし</string>
+    <string name="mClear_updateNow">今すぐ更新</string>
+    <string name="mClear_autoUpdate">定期的に更新</string>
+    <string name="mClear_lastCheck">最後の更新チェック:</string>
+    <string name="mClear_lastUpdate">最後の更新:</string>
+    <string name="mClear_updated">データを更新しました。</string>
+    <string name="mClear_upToDate">データは最新です。</string>
+    <string name="mClear_urlError">条件を取得できません。URLが有効で、インターネット接続が有効であることを確認してください。</string>
+    <string name="mClear_hashError">ハッシュを取得できません。URLが有効で、インターネット接続が有効であることを確認してください。</string>
+    <string name="mClear_hashMismatch">ハッシュが一致しません。ファイルが壊れている可能性があります。チェックをスキップしたい場合は、ハッシュURLを削除してください</string>
+    <string name="mClear_restore">URLをリセット</string>
+    <string name="mClear_editor">条件データの形式は\nhttps://docs.clearurls.xyz/latest/specs/rules/ の形式に従う必要があります。\nカタログが自動または手動で更新された場合、親オブジェクト「providers」への変更はすべて上書きされることに注意してください。手動でルールを設定するには、別の親オブジェクト（任意の名前）に設定してください。</string>
+
+    <string name="mRemove_name">クエリの削除</string>
+    <string name="mRemove_desc">このモジュールを使用すると、URLからクエリを削除できます。\nボタンを押すとすべて削除され、矢印を押すと２つずつ削除されます。\nPabloOQさんのアイデアとはじめの実装に感謝します!</string>
+    <string name="mRemove_found1">１つのクエリが見つかりました</string>
+    <string name="mRemove_found">%d 個のクエリが見つかりました</string>
+    <string name="mRemove_noQueries">クエリはありません</string>
+    <string name="mRemove_all">すべて削除</string>
+    <string name="mRemove_one">%s を削除</string>
+    <string name="mRemove_empty">空のクエリを削除</string>
+
+    <string name="mLog_name">ログ</string>
+    <string name="mLog_desc">このモジュールは、チェックされたすべてのURLをログに記録します。\nここで完全なログを表示、消去、または編集できます。メインダイアログには視覚的な表示はありません。\nログの記録を無効にするには、モジュールを無効にしてください。</string>
+    <string name="mLog_view">ログを表示</string>
+    <string name="mLog_edit">ログを編集</string>
+    <string name="mLog_empty">ログはありません</string>
+
+</resources>
