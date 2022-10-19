@@ -7,8 +7,7 @@
 
     <!-- about -->
     <string name="txt_about">このアプリは TrianguloY によって開発されました。\n\n貢献者: %s。\n翻訳者: %s.</string>
-    <string name="btn_blog">TrianguloY のブログ:</string>
-    <string name="btn_shareStore">このアプリを友達に自慢する</string>
+    <string name="link_blog">TrianguloY のブログ</string>
 
     <!-- configuration -->
     <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化することができ、タップすると、その説明と設定も確認できます。</string>
@@ -25,6 +24,7 @@
     <string name="close">閉じる</string>
     <string name="clear">クリア</string>
     <string name="auto">自動</string>
+    <string name="share">このアプリを友達に自慢する</string>
 
     <string name="json_desc">[ベータ機能] これは上級者向けのエディタです。内容は有効な JSON にフォーマットされている必要があります。右上のボタンをタップすると、フォーマット・検証ができます。</string>
     <string name="json_edit">上級者向けエディタ</string>

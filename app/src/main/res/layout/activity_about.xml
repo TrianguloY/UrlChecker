@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:background="@android:color/transparent"
-            android:onClick="onClick"
             android:scaleType="fitCenter"
             android:src="@drawable/trianguloy" />
 
@@ -24,126 +23,44 @@
             android:id="@+id/txt_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/smallPadding"
             android:gravity="center"
-            android:paddingBottom="@dimen/padding"
             android:text="@string/txt_about" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="@dimen/smallPadding"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:id="@+id/links"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"></LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="@dimen/smallPadding"
+            android:background="?android:attr/listDivider" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallPadding"
             android:gravity="center"
             android:text="@string/mVT_tm" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallPadding"
             android:autoLink="web"
             android:gravity="center"
             android:linksClickable="true"
             android:text="@string/mClear_tm" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/smallPadding"
-                android:onClick="onClick"
-                android:text="@string/btn_blog"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
-
-            <ImageButton
-                android:id="@+id/btn_openBlog"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="onClick"
-                android:padding="@dimen/smallPadding"
-                android:src="@android:drawable/ic_menu_view"
-                android:tint="?attr/colorAccent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/smallPadding"
-                android:onClick="onClick"
-                android:text="@string/btn_playStore"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
-
-            <ImageButton
-                android:id="@+id/btn_openPlay"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="onClick"
-                android:padding="@dimen/smallPadding"
-                android:src="@android:drawable/ic_menu_view"
-                android:tint="?attr/colorAccent" />
-
-            <ImageButton
-                android:id="@+id/btn_sharePlay"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="onClick"
-                android:padding="@dimen/smallPadding"
-                android:src="@android:drawable/ic_menu_share"
-                android:tint="?attr/colorAccent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/smallPadding"
-                android:onClick="onClick"
-                android:text="@string/btn_fDroid"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
-
-            <ImageButton
-                android:id="@+id/btn_openDroid"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="onClick"
-                android:padding="@dimen/smallPadding"
-                android:src="@android:drawable/ic_menu_view"
-                android:tint="?attr/colorAccent" />
-
-            <ImageButton
-                android:id="@+id/btn_shareDroid"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="onClick"
-                android:padding="@dimen/smallPadding"
-                android:src="@android:drawable/ic_menu_share"
-                android:tint="?attr/colorAccent" />
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

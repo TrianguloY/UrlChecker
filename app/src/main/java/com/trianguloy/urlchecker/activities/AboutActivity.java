@@ -4,21 +4,32 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.PackageUtilities;
+
+import java.util.List;
 
 public class AboutActivity extends Activity {
 
-    // ------------------- constants -------------------
+    // ------------------- links -------------------
 
-    public static final String BLOG = "https://triangularapps.blogspot.com/";
-    public static final String PLAY_STORE_PREFIX = "https://play.google.com/store/apps/details?id=";
-    public static final String F_DROID_PREFIX = "https://f-droid.org/packages/";
+    private static final List<Pair<Integer, String>> LINKS = List.of(
+            Pair.create(R.string.link_changelog, "https://github.com/TrianguloY/UrlChecker/blob/master/app/src/main/play/release-notes/en-US/default.txt"), // TODO: link to the correct translation
+            Pair.create(R.string.link_source, "https://github.com/TrianguloY/UrlChecker"),
+            Pair.create(R.string.link_privacy, "https://github.com/TrianguloY/UrlChecker/blob/master/PRIVACY%20POLICY.md"),
+            Pair.create(R.string.lnk_fDroid, "https://f-droid.org/packages/{package}"),
+            Pair.create(R.string.lnk_playStore, "https://play.google.com/store/apps/details?id={package}"),
+            Pair.create(R.string.link_blog, "https://triangularapps.blogspot.com/")
+    );
 
     // ------------------- listeners -------------------
 
@@ -40,6 +51,18 @@ public class AboutActivity extends Activity {
                         getString(R.string.translators)
                 )
         );
+
+        // create links
+        ViewGroup v_links = findViewById(R.id.links);
+        for (var link : LINKS) {
+            var v_link = Inflater.<TextView>inflate(R.layout.about_link, v_links, this);
+            v_link.setText(link.first);
+            AndroidUtils.setAsClickable(v_link);
+            v_link.setTag(link.second.replace("{package}", getPackageName()));
+            v_link.setOnClickListener(this::onClick);
+            v_link.setOnLongClickListener(this::onLongClick);
+        }
+
     }
 
     @Override
@@ -53,32 +76,18 @@ public class AboutActivity extends Activity {
     }
 
     /**
-     * Button clicked
+     * Link clicked
      */
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_openBlog:
-                // Open the blog
-                open(BLOG);
-                break;
-            case R.id.btn_openPlay:
-                // Open the Play Store
-                open(PLAY_STORE_PREFIX + getPackageName());
-                break;
-            case R.id.btn_openDroid:
-                // Open F-Droid
-                open(F_DROID_PREFIX + getPackageName());
-                break;
+        open(((String) view.getTag()));
+    }
 
-            case R.id.btn_sharePlay:
-                // Share play store
-                share(PLAY_STORE_PREFIX + getPackageName());
-                break;
-            case R.id.btn_shareDroid:
-                // Share F-droid
-                share(F_DROID_PREFIX + getPackageName());
-                break;
-        }
+    /**
+     * Link long-clicked
+     */
+    public boolean onLongClick(View view) {
+        share(((String) view.getTag()));
+        return true;
     }
 
     // ------------------- actions -------------------
@@ -92,7 +101,6 @@ public class AboutActivity extends Activity {
 
     /**
      * Share an url as plain text
-     * (App name as subject)
      */
     private void share(String url) {
         Intent share = new Intent(android.content.Intent.ACTION_SEND);
@@ -100,9 +108,8 @@ public class AboutActivity extends Activity {
 
         // Add data to the intent, the receiving app will decide what to do with it.
         share.setType("text/plain");
-        share.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
         share.putExtra(Intent.EXTRA_TEXT, url);
 
-        PackageUtilities.startActivity(Intent.createChooser(share, getString(R.string.btn_shareStore)), R.string.toast_noApp, this);
+        PackageUtilities.startActivity(Intent.createChooser(share, getString(R.string.share)), R.string.toast_noApp, this);
     }
 }

@@ -10,8 +10,7 @@
 
 Contributions: %s.
 Translations: %s."</string>
-    <string name="btn_blog">Blog do TrianguloY:</string>
-    <string name="btn_shareStore">Partilhar app</string>
+    <string name="link_blog">Blog do TrianguloY</string>
 
     <!-- configuration -->
     <string name="txt_conf">Lista de módulos: pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
@@ -28,6 +27,7 @@ Translations: %s."</string>
     <string name="close">Fechar</string>
     <string name="clear">Apagar</string>
     <string name="auto">Automático</string>
+    <string name="share">Partilhar app</string>
 
     <string name="json_desc">[Função Beta] Isto é um editor avançado, o conteudo tem que estar formatado em JSON válido. Podes pressionar o botão no canto superior direito para formatar e validar.</string>
     <string name="json_edit">Editor Avançado</string>

@@ -10,8 +10,7 @@
 
 Contributions: %s.
 Translations: %s."</string>
-    <string name="btn_blog">Блог, який веде TrianguloY:</string>
-    <string name="btn_shareStore">Поділитись додатком</string>
+    <string name="link_blog">Блог, який веде TrianguloY</string>
 
     <!-- configuration -->
     <string name="txt_conf">Список модулів: ви можете включити, або відключити їх, також перевірте опис та налаштування модулів.</string>
@@ -23,6 +22,7 @@ Translations: %s."</string>
     <string name="toast_noBrowser">Не можу відкрити браузер</string>
     <string name="title_choose">Виберіть додаток</string>
     <string name="toast_invalid">Не підходить</string>
+    <string name="share">Поділитись додатком</string>
 
 
     <!-- modules -->

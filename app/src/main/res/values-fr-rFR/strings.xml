@@ -10,8 +10,7 @@
 
 Contributions: %s.
 Traduction: %s."</string>
-    <string name="btn_blog">"Blog de TrianguloY:"</string>
-    <string name="btn_shareStore">Partager l\'application</string>
+    <string name="link_blog">Blog de TrianguloY</string>
 
     <!-- configuration -->
     <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
@@ -28,6 +27,7 @@ Traduction: %s."</string>
     <string name="close">Fermer</string>
     <string name="clear">Effacer</string>
     <string name="auto">Automatique</string>
+    <string name="share">"Partager l'application"</string>
 
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>

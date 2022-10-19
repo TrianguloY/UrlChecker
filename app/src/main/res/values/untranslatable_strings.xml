@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">URLCheck</string>
-    <string name="btn_playStore" translatable="false">Play Store:</string>
-    <string name="btn_fDroid" translatable="false">F-Droid:</string>
+    <string name="lnk_playStore" translatable="false">Play Store</string>
+    <string name="lnk_fDroid" translatable="false">F-Droid</string>
 
     <string name="dd" translatable="false">%s:</string>
     <string name="contributors">Ilithy, PabloOQ</string>

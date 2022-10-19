@@ -10,8 +10,10 @@
 
 Contributions: %s.
 Translations: %s."</string>
-    <string name="btn_blog">"TrianguloY's blog:"</string>
-    <string name="btn_shareStore">Share App</string>
+    <string name="link_blog">"TrianguloY's blog"</string>
+    <string name="link_changelog">Changelog</string>
+    <string name="link_source">Source code</string>
+    <string name="link_privacy">Privacy policy</string>
 
     <!-- configuration -->
     <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
@@ -28,6 +30,7 @@ Translations: %s."</string>
     <string name="close">Close</string>
     <string name="clear">Clear</string>
     <string name="auto">Automatic</string>
+    <string name="share">Share</string>
 
 
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>

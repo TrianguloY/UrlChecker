@@ -10,8 +10,7 @@
 
 Contributions: %s.
 Translations: %s."</string>
-    <string name="btn_blog">TrianguloY\'un blog sayfası:</string>
-    <string name="btn_shareStore">Uygulamayı Paylaş</string>
+    <string name="link_blog">TrianguloY\'un blog sayfası</string>
 
     <!-- configuration -->
     <string name="txt_conf">Bileşenlerin listesi: Bunları etkinleştirebilir veya devre dışı bırakabilir, ayrıca açıklamasını ve yapılandırmasını inceleyebilirsiniz.</string>
@@ -25,6 +24,7 @@ Translations: %s."</string>
     <string name="toast_invalid">Geçersiz</string>
     <string name="save">Kaydet</string>
     <string name="reset">Sıfırla</string>
+    <string name="share">Uygulamayı Paylaş</string>
 
 
     <!-- modules -->
