@@ -7,7 +7,7 @@
 # URLCheck
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 Contributions: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
-Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
+Translations: [404potato](https://github.com/404potato), [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz
 
 </div>
 
