@@ -21,8 +21,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main
+      - name: Checkout master
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: master
 
       - name: Git config
         run: |
@@ -34,7 +37,6 @@ jobs:
           count=($(git ls-remote --heads origin "$workingBranch" | wc))
           if [[ ${count[0]} -ne 0 ]]; then
             # Exists
-            git fetch
             git checkout -b $workingBranch "origin/$workingBranch"
           else
             # Does not exist
@@ -65,10 +67,26 @@ jobs:
           message: "ClearURLs catalog updated"
 
       - name: Pull request
-        continue-on-error: true # ignore if the pr already exists
         run: |
-          gh pr create --title 'Assets updated (automatic action)' --body 'One or more assets were updated.
-          
-          This is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)'
+          commitDiff=($(git diff master...$workingBranch --name-only | wc))
+          if [[ ${commitDiff[0]} -ne 0 ]]; then
+            # Any difference
+            prLs=($(gh pr list --head $workingBranch | wc))
+            if [[ ${prLs[0]} -ne 0 ]]; then
+              # PR already exists
+              echo "PR already exists"
+            else
+              # PR does not exist
+              # Note: If a previous PR is closed but the branch is not deleted, those changes will still be here.
+              # It is recommended to delete the branch after closing or merging to keep it clean and up to date.
+              gh pr create --title 'Assets updated (automatic action)' --body "$message"
+              echo "PR created"
+            fi
+          else
+            # No differences
+            git push origin --delete $workingBranch
+            echo "Nothing updated, deleting branch on origin"
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: "One or more assets were updated.\n\nThis is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)"
