@@ -1,15 +1,12 @@
-# This action checks that the store files are valid for Play Store. Current checks:
-# - title and description files must not exceed a maximum number of characters
-# To be replaced with a more powerful (and less manual) one
-name: Validate store files
-
-# Note: this is the second time I'm writing a GitHub action, and the first time I'm using a script.
-# Most probably there are better ways to do it, if you know one and want to suggest it that'd be wonderful!
+name: Validate Triple-T store files
+# use it on your own project: https://github.com/TrianguloY/action-validate-Triple-T
 
 on:
+  # run this workflow on master branch push
   push:
     branches:
       - master
+  # run this workflow on master pull requests
   pull_request:
     branches:
       - master
@@ -18,66 +15,10 @@ jobs:
   validation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/github-script@v6
+      - name: Download project files
+        uses: actions/checkout@v3
+
+      - name: Validate Triple-T files
+        uses: TrianguloY/action-validate-Triple-T@v1
         with:
-          script: |
-            // import
-            const { lstatSync, readdirSync, readFileSync, existsSync } = require('fs');
-            const { join } = require('path');
-
-            // header
-            console.log("Validating files:");
-            console.log("");
-
-            let error = false;
-
-            // for each locale
-            const listings = "./app/src/main/play/listings";
-            readdirSync(listings)
-              .map(locale => [locale, join(listings, locale)])
-              .filter(([locale, path]) => lstatSync(path).isDirectory())
-              .forEach(([locale, path]) => {
-                console.log(`[      ] - '${locale}'`);
-
-                // check files length
-                ([
-                  ["title.txt", 30],
-                  ["short-description.txt", 80],
-                  ["full-description.txt", 4000],
-                ]).forEach(([file, limit]) => {
-
-                  // get file
-                  const subpath = join(path, file);
-                  if(existsSync(subpath)){
-                    // file exists, check content length
-                    const size = readFileSync(subpath).toString().trim().length;
-                    if(size > limit) {
-                      // invalid length, error
-                      error = true;
-                      console.log(`[ERROR ]     - '${file}' length: ${size}/${limit}`);
-                      console.log("");
-                      // '[ERROR]' is detected on GitHub and the line is displayed on red
-                      console.log(`[ERROR] File ${file} from locale ${locale} (${subpath}) must be ${limit} or less characters long, current length: ${size}. Use synonims or remove less important sentences, otherwise Play Store won't accept it.`);
-                      console.log("");
-                    }else{
-                      // valid length
-                      console.log(`[  OK  ]     - '${file}' length: ${size}/${limit}`);
-                    }
-                  }else{
-                    // no file
-                    console.log(`[ SKIP ]     - '${file}': not found`);
-                  }
-                })
-            });
-
-            // result
-            console.log("");
-            if (error) {
-              // error, exit
-              console.log("Validation finished. Errors found, check above for their details");
-              process.exit(1);
-            }else{
-              // ok, end
-              console.log("Validation finished. No errors found.");
-            }
+          ignore: 'Changelog too large'
