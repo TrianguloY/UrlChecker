@@ -12,6 +12,8 @@ env:
   TAG: latest
   SHIELDS: shields.json
 
+permissions:
+  contents: write # need to update tag and release
 
 # Workflow in ubuntu
 jobs:

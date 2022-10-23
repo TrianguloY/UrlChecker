@@ -18,11 +18,12 @@ env:
   TAG: alpha
   ZIP: app-alpha.zip
 
+permissions:
+  contents: write # need to update tag and release
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Get the repository files
         uses: actions/checkout@v3
@@ -45,7 +46,7 @@ jobs:
             assemble${{ env.VARIANT }}
 
       - name: Zip ${{ env.VARIANT }} apk as ${{ env.ZIP }}
-        # just remove the password here if you want to build the apk yourself
+        # just remove the password here if you want to build the apk yourself instead of sponsoring me and getting it as a benefit :(
         run: zip -j -P ${{ secrets.ALPHA_PASS }} ${{ env.ZIP }} app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
 
       - name: Update ${{ env.TAG }} tag to current commit

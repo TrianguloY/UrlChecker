@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write # need to update branches
+  pull-requests: write # need to create PRs
 
 env:
   workingBranch: assets-updater-action
