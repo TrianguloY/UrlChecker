@@ -104,7 +104,7 @@ jobs:
           # create pr if doesn't exists
           if [ "$(gh pr list --head "$BRANCH" --json number --jq length)" = "0" ]; then
             echo "Creating PR..."  
-            gh pr create --title "[action] updated $FILE_NAME" --body "File $FILE_PATH was updated
+            gh pr create --label 'action' --title "updated $FILE_NAME" --body "File $FILE_PATH was updated
           
           This is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)"
           
