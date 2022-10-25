@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.text.util.Linkify;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -105,31 +106,34 @@ class LogConfig extends AModuleConfig {
      * Display the log, editable or clickable
      */
     public void showLog(boolean editable) {
-        // init textview and content
+        // init textview with content
         // on editable: an editText
         // on non-editable: a textview with links
-        TextView content = editable ? new EditText(getActivity()) : new TextView(getActivity());
-        content.setText(
+        TextView textView = editable ? new EditText(getActivity()) : new TextView(getActivity());
+        textView.setText(
                 !log.get().isEmpty() ? log.get()
                         : editable ? ""
                         : getActivity().getString(R.string.mLog_empty)
         );
-        if (!editable) Linkify.addLinks(content, Linkify.WEB_URLS);
+        if (!editable) Linkify.addLinks(textView, Linkify.WEB_URLS);
 
+        // wrap into a padded scrollview for nice scrolling
         int pad = getActivity().getResources().getDimensionPixelSize(R.dimen.smallPadding);
-        content.setPadding(pad, pad, pad, pad);
+        ScrollView scrollView = new ScrollView(getActivity());
+        scrollView.addView(textView);
+        scrollView.setPadding(pad, pad, pad, pad);
 
         // common dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.mLog_name)
-                .setView(content)
+                .setView(scrollView)
                 .setNegativeButton(R.string.close, null);
 
         if (editable) {
             // editable: add save and clear buttons
             builder = builder
                     .setPositiveButton(R.string.save, (dialog, which) ->
-                            log.set(content.getText().toString())
+                            log.set(textView.getText().toString())
                     )
                     .setNeutralButton(R.string.clear, null); // set below
         }
@@ -143,7 +147,7 @@ class LogConfig extends AModuleConfig {
             // editable: configure clear button
             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v -> {
                 // clear content
-                content.setText("");
+                textView.setText("");
             });
         }
 
