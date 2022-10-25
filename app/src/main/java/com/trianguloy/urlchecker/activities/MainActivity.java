@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
      * https://github.com/TrianguloY/UrlChecker/issues/45
      */
     private void chooseLocaleDebug() {
-        String[] locales = new String[]{"en", "es", "fr-FR", "iw", "pt-PT", "tr", "uk"};
+        String[] locales = new String[]{"en", "es", "fr-FR", "iw", "pt-PT", "tr", "uk", "ja"};
         new AlertDialog.Builder(this)
                 .setItems(locales, (dialog, which) -> {
                     Configuration config = new Configuration();
@@ -80,8 +80,7 @@ public class MainActivity extends Activity {
                     } else {
                         config.locale = new Locale(locales[which]);
                     }
-                    getBaseContext().getResources()
-                            .updateConfiguration(config, null);
+                    getBaseContext().getResources().updateConfiguration(config, null);
                     recreate();
                 })
                 .show();
