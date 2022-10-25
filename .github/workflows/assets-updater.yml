@@ -13,80 +13,101 @@ permissions:
   contents: write # need to update branches
   pull-requests: write # need to create PRs
 
-env:
-  workingBranch: assets-updater-action
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+
+          # ClearURL database
+          - fileName: "data.minify.json"
+            fileFolder: "./app/src/main/assets/"
+            fileUrl: "https://rules2.clearurls.xyz/data.minify.json"
+            hashUrl: "https://rules2.clearurls.xyz/rules.minify.hash"
+
+        # - fileName: "..."
+        #   fileFolder: "..."
+        #   fileUrl: "..."
+        #   hashUrl: "..."
 
     steps:
       - name: Checkout master
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-          ref: master
+          fetch-depth: 0 # need to fetch other branches
 
       - name: Git config
         run: |
           git config user.name 'github-actions'
           git config user.email 'github-actions@github.com'
 
-      - name: Prepare branch
-        run: |
-          count=($(git ls-remote --heads origin "$workingBranch" | wc))
-          if [[ ${count[0]} -ne 0 ]]; then
-            # Exists
-            git checkout -b $workingBranch "origin/$workingBranch"
-          else
-            # Does not exist
-            git checkout -b $workingBranch
-            git push --set-upstream origin $workingBranch
-          fi
-
-      - name: ClearURLs catalog
-        continue-on-error: true # just skip the file
-        run: |
-          bash ./.github/scripts/file-updater.sh $fileName $fileURL $filePath $hashURL
-          git add "$filePath$fileName"
-          git commit -m "
-          $message
-          
-          File: $filePath$fileName
-          Url: $fileURL
-          Hash: $hashURL
-          "
-          
-          git push
-          echo "$fileName commited successfully"
-        env:
-          fileName: "data.minify.json"
-          fileURL: "https://rules2.clearurls.xyz/data.minify.json"
-          filePath: "./app/src/main/assets/"
-          hashURL: "https://rules2.clearurls.xyz/rules.minify.hash"
-          message: "ClearURLs catalog updated"
-
-      - name: Pull request
-        run: |
-          commitDiff=($(git diff master...$workingBranch --name-only | wc))
-          if [[ ${commitDiff[0]} -ne 0 ]]; then
-            # Any difference
-            prLs=($(gh pr list --head $workingBranch | wc))
-            if [[ ${prLs[0]} -ne 0 ]]; then
-              # PR already exists
-              echo "PR already exists"
-            else
-              # PR does not exist
-              # Note: If a previous PR is closed but the branch is not deleted, those changes will still be here.
-              # It is recommended to delete the branch after closing or merging to keep it clean and up to date.
-              gh pr create --title 'Assets updated (automatic action)' --body "$message"
-              echo "PR created"
-            fi
-          else
-            # No differences
-            git push origin --delete $workingBranch
-            echo "Nothing updated, deleting branch on origin"
-          fi
+      - name: Run script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          message: "One or more assets were updated.\n\nThis is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)"
+        run: |
+          
+          # inputs
+          FILE_NAME="${{ matrix.fileName }}"
+          FILE_FOLDER="${{ matrix.fileFolder }}"
+          FILE_URL="${{ matrix.fileUrl }}"
+          HASH_URL="${{ matrix.hashUrl }}"
+          
+          # dynamic inputs
+          BRANCH="actions/assets/$FILE_NAME"
+          FILE_PATH="$FILE_FOLDER$FILE_NAME"
+          
+          # checkout branch (create if doesn't exist)
+          git checkout "$BRANCH" || git checkout -b "$BRANCH"
+          
+          # get current hash
+          OLD_HASH=$(sha256sum "$FILE_PATH" | cut -d' ' -f1)
+          echo "Current hash: $OLD_HASH"
+          
+          # get remote hash
+          REMOTE_HASH=$(curl "$HASH_URL")
+          echo "Remote hash: $REMOTE_HASH"
+          
+          # compare hashes
+          if [ "$REMOTE_HASH" = "$OLD_HASH" ]; then
+              echo "Up-to date"
+              exit 0
+          fi
+          
+          # download new file
+          curl "$FILE_URL" -o "$FILE_PATH"
+          
+          # get new hash
+          NEW_HASH=$(sha256sum "$FILE_PATH" | cut -d' ' -f1)
+          echo "New hash: $NEW_HASH"
+          
+          # check downloaded hash
+          if [ "$REMOTE_HASH" != "$NEW_HASH" ]; then
+              echo "[ERROR] Downloaded file hash doesn't match, aborted."
+              exit 1
+          fi
+          
+          # create and push commit with the new file
+          # at this point we know the new file is different from the last because hashes are different (old==remote!=new)
+          git add "$FILE_PATH"
+          git commit -m "
+          [action] Updated $FILE_NAME
+          
+          Url: $FILE_URL
+          Hash url: $HASH_URL
+          
+          Old hash: $OLD_HASH
+          New hash: $NEW_HASH"
+          git push --set-upstream origin "$BRANCH"
+          
+          # create pr if doesn't exists
+          if [ "$(gh pr list --head "$BRANCH" --json number --jq length)" = "0" ]; then
+            echo "Creating PR..."  
+            gh pr create --label 'action' --title "updated $FILE_NAME" --body "File $FILE_PATH was updated
+          
+          This is an automatic PR run from a [github action](../actions/workflows/assets-updater.yml)"
+          
+          else
+            echo "PR already exists"
+          fi
