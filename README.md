@@ -15,11 +15,14 @@ Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://gi
 <div align="center">
 
 [![App-Code Size](https://img.shields.io/github/languages/code-size/trianguloy/urlchecker.svg)](https://api.github.com/repos/TrianguloY/UrlChecker)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/TrianguloY/UrlChecker)](https://github.com/TrianguloY/UrlChecker/pulse/monthly)
-
+[![GitHub last commit](https://img.shields.io/github/last-commit/TrianguloY/UrlChecker)](https://github.com/TrianguloY/UrlChecker/commits)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/TrianguloY/UrlChecker)](https://github.com/TrianguloY/UrlChecker/pulse/monthly) \
 [![GitHub version (gradle versionName)](https://img.shields.io/badge/dynamic/json?label=Latest%20version&color=white&query=version&url=https%3A%2F%2Fgithub.com%2FTrianguloY%2FUrlChecker%2Freleases%2Fdownload%2Flatest%2Fshields.json)](https://github.com/TrianguloY/UrlChecker/blob/master/app/build.gradle)
 [![F-Droid](https://img.shields.io/f-droid/v/com.trianguloy.urlchecker?label=F-Droid%20version)](https://gitlab.com/fdroid/fdroiddata/-/blob/master/metadata/com.trianguloy.urlchecker.yml)
-[![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+[![PlayShields](https://img.shields.io/endpoint?color=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.trianguloy.urlchecker%26l%3DPlay%2520Store%2520version%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) \
+[![Codacy Security Scan](https://github.com/TrianguloY/UrlChecker/actions/workflows/codacy.yml/badge.svg?branch=master)](https://github.com/TrianguloY/UrlChecker/actions/workflows/codacy.yml)
+[![CodeQL](https://github.com/TrianguloY/UrlChecker/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/TrianguloY/UrlChecker/actions/workflows/codeql-analysis.yml)
+[![Validate gradle build test](https://github.com/TrianguloY/UrlChecker/actions/workflows/validate-gradle-build-test.yml/badge.svg?branch=master)](https://github.com/TrianguloY/UrlChecker/actions/workflows/validate-gradle-build-test.yml)
 
 </div>
 
