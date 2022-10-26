@@ -1,3 +1,14 @@
+V 2.8
+- Application renommée de 'Url Checker' à 'URLCheck'
+- Nouvelle traduction japonaise, Merci à 404potato!
+- Nouveaux échantillons et améliorations de l'Analyseur de style
+- Nouveau paramètre pour trier les applications par domaine
+- Nouveau paramètre pour fermer URLCheck après le partage ou l'ouverture d'un lien
+- Ignorer l\'application référente
+- Autoriser la désactivation de tous les modules
+- Amélioration de la page 'À propos'
+- Améliorations des outils interne
+
 V 2.7
 - Amélioration du tri des applications du module "Ouvrir et Partager"
 - Mise à jour du catalogue ClearURL améliorée
