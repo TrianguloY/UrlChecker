@@ -4,7 +4,7 @@ V 2.8
 - Nouveaux échantillons et améliorations de l'Analyseur de style
 - Nouveau paramètre pour trier les applications par domaine
 - Nouveau paramètre pour fermer URLCheck après le partage ou l'ouverture d'un lien
-- Ignorer l\'application référente
+- Ignorer l'application référente
 - Autoriser la désactivation de tous les modules
 - Amélioration de la page 'À propos'
 - Améliorations des outils interne
