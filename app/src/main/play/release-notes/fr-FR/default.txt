@@ -9,7 +9,6 @@ V 2.8
 - Amélioration de la page 'À propos'
 - Améliorations des outils interne
 
-
 V 2.7
 - Amélioration du tri des applications du module "Ouvrir et Partager"
 - Mise à jour du catalogue ClearURL améliorée
