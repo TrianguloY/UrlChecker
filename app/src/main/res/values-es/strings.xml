@@ -70,6 +70,7 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
     <string name="mOpen_closeOpen">Cierra la ventana después de abrir</string>
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
+    <string name="mOpen_noReferrer">Ocultar la aplicación de origen (referrer)</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>

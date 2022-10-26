@@ -40,6 +40,10 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_closeshare", true);
     }
 
+    public static GenericPref.Bool NOREFERRER_PREF() {
+        return new GenericPref.Bool("open_noReferrer", true);
+    }
+
     @Override
     public String getId() {
         return "open";
@@ -72,6 +76,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
     private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
+    private final GenericPref.Bool noReferrerPref = OpenModule.NOREFERRER_PREF();
 
     private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
     private boolean ctabs = false;
@@ -88,6 +93,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         ctabsPref.init(dialog);
         closeOpenPref.init(dialog);
         closeSharePref.init(dialog);
+        noReferrerPref.init(dialog);
     }
 
     @Override
@@ -212,7 +218,9 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
 
         // remove referrer
-        packages.remove(AndroidUtils.getReferrer(getActivity()));
+        if (noReferrerPref.get()) {
+            packages.remove(AndroidUtils.getReferrer(getActivity()));
+        }
 
         // check no apps
         if (packages.isEmpty()) {
@@ -338,6 +346,7 @@ class OpenConfig extends AModuleConfig {
 
     private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
     private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
+    private final GenericPref.Bool noReferrerPref = OpenModule.NOREFERRER_PREF();
     private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
 
     private final GenericPref.Bool perDomainPref = LastOpened.PERDOMAIN_PREF();
@@ -347,6 +356,7 @@ class OpenConfig extends AModuleConfig {
         ctabsPref.init(activity);
         closeOpenPref.init(activity);
         closeSharePref.init(activity);
+        noReferrerPref.init(activity);
         perDomainPref.init(activity);
     }
 
@@ -369,6 +379,7 @@ class OpenConfig extends AModuleConfig {
         }
         closeOpenPref.attachToCheckBox(views.findViewById(R.id.closeopen_pref));
         closeSharePref.attachToCheckBox(views.findViewById(R.id.closeshare_pref));
+        noReferrerPref.attachToCheckBox(views.findViewById(R.id.noReferrer));
         perDomainPref.attachToCheckBox(views.findViewById(R.id.perDomain));
     }
 }

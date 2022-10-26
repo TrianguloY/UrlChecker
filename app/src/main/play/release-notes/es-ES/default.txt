@@ -4,7 +4,7 @@ V 2.8
 - Nuevos ejemplos y mejoras del Comprobador de patrones
 - Nuevo ajuste para activar la ordenación de aplicaciones por dominio
 - Nuevo ajuste para cerrar después de compartir
-- Se ignora la aplicación referida
+- Nuevo ajuste para ocultar la aplicación de origen (referrer)
 - Se permite deshabilitar todos los módulos
 - Mejoras en la pantalla Acerca de
 - Mejoras en las herramientas internas

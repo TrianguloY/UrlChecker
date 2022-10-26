@@ -53,4 +53,11 @@
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_perDomain" />
 
+    <CheckBox
+        android:id="@+id/noReferrer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_noReferrer" />
+
 </LinearLayout>
