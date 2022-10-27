@@ -68,9 +68,10 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mOpen_ctabsOff">Désactivé par défaut</string>
     <string name="mOpen_ctabsEn">Toujours activé</string>
     <string name="mOpen_ctabsDis">Toujours désactivé</string>
-    <string name="mOpen_perDomain">Triez les différents domaines indépendamment</string>
     <string name="mOpen_closeOpen">Fermer la boîte de dialogue après l\'ouverture du lien</string>
     <string name="mOpen_closeShare">Fermer la boîte de dialogue après le partage du lien</string>
+    <string name="mOpen_perDomain">Triez les différents domaines indépendamment</string>
+    <string name="mOpen_noReferrer">Masquer l\'application source (référente)</string>
     <string name="mOpen_with">Ouvrir avec %s</string>
     <string name="mOpen_open">Ouvrir</string>
     <string name="mOpen_share">Partager</string>
