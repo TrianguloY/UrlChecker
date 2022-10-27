@@ -54,6 +54,7 @@
     <string name="mOpen_closeOpen">開いた後にダイアログを閉じる</string>
     <string name="mOpen_closeShare">共有後にダイアログを閉じる</string>
     <string name="mOpen_perDomain">異なるドメインを個別にソートする</string>
+    <string name="mOpen_noReferrer">送信元アプリ(リファラー)を非表示にする</string>
     <string name="mOpen_with">%s で開く</string>
     <string name="mOpen_open">開く</string>
     <string name="mOpen_share">共有</string>
