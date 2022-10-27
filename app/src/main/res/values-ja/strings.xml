@@ -54,15 +54,16 @@
     <string name="mOpen_closeOpen">開いた後にダイアログを閉じる</string>
     <string name="mOpen_closeShare">共有後にダイアログを閉じる</string>
     <string name="mOpen_perDomain">異なるドメインを個別にソートする</string>
+    <string name="mOpen_noReferrer">送信元アプリ(リファラー)を非表示にする</string>
     <string name="mOpen_with">%s で開く</string>
     <string name="mOpen_open">開く</string>
     <string name="mOpen_share">共有</string>
     <string name="mOpen_clipboard">URLをクリップボードにコピーしました。</string>
     <string name="mOpen_noapps">アプリがありません</string>
-    <string name="mOpen_tabsDesc">カスタムタブ機能を切り替えます</string>
+    <string name="mOpen_tabsDesc">カスタムタブ機能の有効化・無効化を切り替えます</string>
 
     <string name="mStatus_name">ステータス コード</string>
-    <string name="mStatus_desc">チェックボタンを押すと、サイトのステータスコードを取得し表示します。\n結果がリダイレクトの場合は、宛先URLが表示されます。\nURLコンテンツは取得 (GET) されますが、JavaScript に基づくリダイレ​​クトは評価されないため、検出されません。</string>
+    <string name="mStatus_desc">チェックボタンを押すと、サイトのステータスコードを取得し表示します。\n結果がリダイレクトの場合は、宛先URLが表示されます。\nURLコンテンツは取得 (GET) されますが、JavaScript によるリダイレ​​クトは評価されないため、検出されません。</string>
     <string name="mStatus_ioerror">URLの確認中にネットワークエラーが発生しました: %s</string>
     <string name="mStatus_error">URLのチェック中に内部エラーが発生しました: %s</string>
     <string name="mStatus_check">確認</string>
@@ -100,7 +101,7 @@
     <string name="mVT_goodUrl">%dつのエンジンのいずれもURLを検出しませんでした (%s 時点データ)</string>
     <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dつがURLを検出しました (%s 時点データ)</string>
     <string name="mVT_badUrl">注意! %dつのエンジンの内 %dつがURLを検出しました (%s 時点データ)</string>
-    <string name="mVT_connectError">VirusTotal に接続できません。アクティブなインターネット接続があることを確認するか、後でもう一度試してください。</string>
+    <string name="mVT_connectError">VirusTotal に接続できません。インターネット接続が有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mVT_jsonError">VirusTotal に接続できません。APIキーが有効であることを確認するか、後でもう一度試してください。</string>
 
     <string name="mD_name">デバッグ/マーカー モジュール</string>
@@ -114,7 +115,7 @@
     <string name="mHist_name">履歴</string>
     <string name="mHist_desc">手動または他のモジュールによってURLが編集されると、このモジュールを使用して変更を表示および元に戻すことができます。</string>
 
-    <string name="mClear_name">URLクリーナー</string>
+    <string name="mClear_name">URL クリーナー</string>
     <string name="mClear_desc">このモジュールは、トラッキング、リファラル、およびその他の不要なパラメーターをURLから削除します。また、一般的なURLリダイレクトは、オフラインでも可能です。</string>
     <string name="mClear_tm">ClearURLs からコピーされた組み込みカタログ: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">適用</string>
