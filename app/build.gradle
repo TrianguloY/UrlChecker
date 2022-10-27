@@ -10,7 +10,7 @@ android {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
         targetSdkVersion 32
-        versionCode 17
+        versionCode 19
         versionName "2.8"
     }
 
@@ -39,6 +39,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+}
+
+play {
+    track.set("beta")
+    releaseName.set(android.defaultConfig.versionName + " (" + android.defaultConfig.versionCode + ")")
 }
 
 dependencies {
