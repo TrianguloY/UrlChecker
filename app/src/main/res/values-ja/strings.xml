@@ -60,7 +60,7 @@
     <string name="mOpen_share">共有</string>
     <string name="mOpen_clipboard">URLをクリップボードにコピーしました。</string>
     <string name="mOpen_noapps">アプリがありません</string>
-    <string name="mOpen_tabsDesc">カスタムタブ機能の有効化・無効化を切り替えます。</string>
+    <string name="mOpen_tabsDesc">カスタムタブ機能の有効化・無効化を切り替えます</string>
 
     <string name="mStatus_name">ステータス コード</string>
     <string name="mStatus_desc">チェックボタンを押すと、サイトのステータスコードを取得し表示します。\n結果がリダイレクトの場合は、宛先URLが表示されます。\nURLコンテンツは取得 (GET) されますが、JavaScript によるリダイレ​​クトは評価されないため、検出されません。</string>
