@@ -1,7 +1,7 @@
 <!-- ---------- Header ---------- -->
 <div align="center">
 
-<img src="./app/src/main/play/listings/en-US/graphics/feature-graphic/featured.png">
+<img src="./.github/featured.png">
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
 # URLCheck
