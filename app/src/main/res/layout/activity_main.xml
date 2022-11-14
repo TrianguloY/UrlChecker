@@ -62,7 +62,7 @@
             android:minHeight="48dp"
             android:onClick="onClick"
             android:padding="@dimen/smallPadding"
-            android:text="http://www.google.com/?ref=referrer&amp;foo=bar#tag" />
+            android:text="@string/sample_url" />
 
         <Button
             android:id="@+id/modules"
