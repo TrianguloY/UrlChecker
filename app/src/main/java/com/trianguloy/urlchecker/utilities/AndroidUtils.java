@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.utilities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -155,5 +156,13 @@ public class AndroidUtils {
         if (!"android-app".equals(referrer.getScheme())) return null;
         // the host is the package
         return referrer.getHost();
+    }
+
+    /**
+     * @see ActionBar#setDisplayHomeAsUpEnabled(boolean)
+     */
+    public static void configureUp(Activity activity) {
+        var actionBar = activity.getActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

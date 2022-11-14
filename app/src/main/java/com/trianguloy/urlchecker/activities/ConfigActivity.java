@@ -40,7 +40,7 @@ public class ConfigActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        AndroidUtils.configureUp(this);
 
         list = findViewById(R.id.list);
         order = ModuleManager.ORDER_PREF(this);
