@@ -356,7 +356,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning)
             return; // keep bad instead of replacing with warning
         info.setTag(color);
-        AndroidUtils.setRoundedColor(color, info, getActivity());
+        AndroidUtils.setRoundedColor(color, info);
     }
 
 }

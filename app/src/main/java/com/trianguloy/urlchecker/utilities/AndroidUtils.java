@@ -6,7 +6,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
@@ -71,11 +70,18 @@ public class AndroidUtils {
     }
 
     /**
-     * Sets the background color of a view using a rounded box drawable
+     * Sets the background color (resource id) of a view using a rounded box drawable
      */
-    public static void setRoundedColor(int color, View view, Context cntx) {
-        Drawable drawable = cntx.getResources().getDrawable(R.drawable.round_box);
-        drawable.setColorFilter(cntx.getResources().getColor(color), PorterDuff.Mode.SRC);
+    public static void setRoundedColor(int color, View view) {
+        setRawRoundedColor(view.getContext().getResources().getColor(color), view);
+    }
+
+    /**
+     * Sets the background color (raw color) of a view using a rounded box drawable
+     */
+    public static void setRawRoundedColor(int color, View view) {
+        var drawable = view.getContext().getResources().getDrawable(R.drawable.round_box);
+        drawable.setColorFilter(color, PorterDuff.Mode.SRC);
         view.setBackgroundDrawable(drawable);
     }
 

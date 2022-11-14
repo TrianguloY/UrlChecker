@@ -181,7 +181,7 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                         ? getActivity().getString(R.string.mPttrn_fixed, message.pattern)
                         : message.pattern
                 );
-                AndroidUtils.setRoundedColor(message.matches ? R.color.warning : R.color.good, text, getActivity());
+                AndroidUtils.setRoundedColor(message.matches ? R.color.warning : R.color.good, text);
 
                 // button
                 Button fix = row.findViewById(R.id.button);

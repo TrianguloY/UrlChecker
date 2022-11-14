@@ -253,7 +253,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     private void setResult(String message, int color) {
         txt_result.setText(message);
         if (color != 0) {
-            AndroidUtils.setRoundedColor(color, txt_result, getActivity());
+            AndroidUtils.setRoundedColor(color, txt_result);
         } else {
             AndroidUtils.clearRoundedColor(txt_result);
         }
