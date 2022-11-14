@@ -1,6 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,8 +27,8 @@ import com.trianguloy.urlchecker.utilities.UrlUtilities;
  */
 public class VirusTotalModule extends AModuleData {
 
-    static GenericPref.Str API_PREF() {
-        return new GenericPref.Str("api_key", "");
+    static GenericPref.Str API_PREF(Context cntx) {
+        return new GenericPref.Str("api_key", "", cntx);
     }
 
     @Override
@@ -58,11 +59,11 @@ public class VirusTotalModule extends AModuleData {
 
 class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 
-    final GenericPref.Str api_key = VirusTotalModule.API_PREF();
+    final GenericPref.Str api_key;
 
     public VirusTotalConfig(ConfigActivity cntx) {
         super(cntx);
-        api_key.init(cntx);
+        api_key = VirusTotalModule.API_PREF(cntx);
     }
 
     @Override
@@ -111,8 +112,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
     public VirusTotalDialog(MainDialog dialog) {
         super(dialog);
-        api_key = VirusTotalModule.API_PREF();
-        api_key.init(dialog);
+        api_key = VirusTotalModule.API_PREF(dialog);
     }
 
     @Override

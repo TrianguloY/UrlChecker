@@ -1,6 +1,7 @@
 package com.trianguloy.urlchecker.services;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
@@ -15,8 +16,8 @@ import com.trianguloy.urlchecker.utilities.GenericPref;
  */
 public class CustomTabs extends Service {
 
-    public static GenericPref.Bool SHOWTOAST_PREF() {
-        return new GenericPref.Bool("ctabs_toast", false);
+    public static GenericPref.Bool SHOWTOAST_PREF(Context cntx) {
+        return new GenericPref.Bool("ctabs_toast", false, cntx);
     }
 
     @Override
@@ -101,7 +102,7 @@ public class CustomTabs extends Service {
 
     private void log(String message) {
         Log.d(TAG, message);
-        if (SHOWTOAST_PREF().init(this).get()) {
+        if (SHOWTOAST_PREF(this).get()) {
             Toast.makeText(this, TAG + ": " + message, Toast.LENGTH_LONG).show();
         }
     }

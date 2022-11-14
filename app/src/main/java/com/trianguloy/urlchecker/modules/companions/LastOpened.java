@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class LastOpened {
 
-    public static GenericPref.Bool PERDOMAIN_PREF() {
-        return new GenericPref.Bool("lastOpen_perDomain", false);
+    public static GenericPref.Bool PERDOMAIN_PREF(Context cntx) {
+        return new GenericPref.Bool("lastOpen_perDomain", false, cntx);
     }
 
     /* ------------------- data ------------------- */
@@ -30,7 +30,7 @@ public class LastOpened {
      * The prefix for the savedPrefs
      */
     private static final String PREFIX = "opened %s %s";
-    private final GenericPref.Bool perDomainPref = PERDOMAIN_PREF();
+    private final GenericPref.Bool perDomainPref;
     private final Context cntx;
 
     /* ------------------- public ------------------- */
@@ -40,7 +40,7 @@ public class LastOpened {
      */
     public LastOpened(Context cntx) {
         this.cntx = cntx;
-        perDomainPref.init(cntx);
+        perDomainPref = PERDOMAIN_PREF(cntx);
     }
 
     /**
@@ -75,7 +75,7 @@ public class LastOpened {
         }
 
         // update preference (we subtract because negative means preferred)
-        GenericPref<Integer> pref = getPref(prefer, other, url);
+        GenericPref.Int pref = getPref(prefer, other, url);
         pref.set(JavaUtilities.clamp(-MAX, pref.get() - amount, MAX));
     }
 
@@ -96,13 +96,13 @@ public class LastOpened {
     /**
      * The preference between two packages. ([left] must be lexicographically less than [right])
      */
-    private GenericPref<Integer> getPref(String left, String right, String url) {
+    private GenericPref.Int getPref(String left, String right, String url) {
         String prefName = String.format(PREFIX, left, right);
         if (perDomainPref.get()) {
             prefName = getDomain(url) + " " + prefName;
         }
 
-        return new GenericPref.Int(prefName, 0).init(cntx);
+        return new GenericPref.Int(prefName, 0, cntx);
     }
 
     /**

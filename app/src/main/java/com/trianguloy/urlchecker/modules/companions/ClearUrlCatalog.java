@@ -33,19 +33,19 @@ public class ClearUrlCatalog {
 
     /* ------------------- constants ------------------- */
 
-    private final InternalFile custom = new InternalFile("clearUrlCatalog");
-    private final AssetFile builtIn = new AssetFile("data.minify.json");
+    private final InternalFile custom;
+    private final AssetFile builtIn;
     private static final int AUTOUPDATE_PERIOD = /* 1 week (in milliseconds) */
             7/*days*/ * 24/*hours*/ * 60/*minutes*/ * 60/*seconds*/ * 1000/*milliseconds*/;
 
     /* ------------------- prefs ------------------- */
 
-    private final GenericPref.Str catalogURL = new GenericPref.Str("clearurl_catalogURL", "https://rules2.clearurls.xyz/data.minify.json");
-    private final GenericPref.Str hashURL = new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash");
-    private final GenericPref.Bool autoUpdate = new GenericPref.Bool("clearurl_autoUpdate", false);
-    private final GenericPref.Lng lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", 1661990400000L); // time when the data.minify.json asset file was updated (floored to previous UTC day)
-    private final GenericPref.Lng lastCheck = new GenericPref.Lng("clearurl_lastCheck", -1L);
-    private final GenericPref.Bool lastAuto = new GenericPref.Bool("clearurl_lastAuto", false);
+    private final GenericPref.Str catalogURL;
+    private final GenericPref.Str hashURL;
+    private final GenericPref.Bool autoUpdate;
+    private final GenericPref.Lng lastUpdate;
+    private final GenericPref.Lng lastCheck;
+    private final GenericPref.Bool lastAuto;
 
     /* ------------------- constructor ------------------- */
 
@@ -53,14 +53,14 @@ public class ClearUrlCatalog {
 
     public ClearUrlCatalog(Activity cntx) {
         this.cntx = cntx;
-        catalogURL.init(cntx);
-        hashURL.init(cntx);
-        autoUpdate.init(cntx);
-        lastUpdate.init(cntx);
-        lastCheck.init(cntx);
-        lastAuto.init(cntx);
-        custom.init(cntx);
-        builtIn.init(cntx);
+        custom = new InternalFile("clearUrlCatalog", cntx);
+        builtIn = new AssetFile("data.minify.json", cntx);
+        catalogURL = new GenericPref.Str("clearurl_catalogURL", "https://rules2.clearurls.xyz/data.minify.json", cntx);
+        hashURL = new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash", cntx);
+        autoUpdate = new GenericPref.Bool("clearurl_autoUpdate", false, cntx);
+        lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", 1661990400000L, cntx); // time when the data.minify.json asset file was updated (floored to previous UTC day)
+        lastCheck = new GenericPref.Lng("clearurl_lastCheck", -1L, cntx);
+        lastAuto = new GenericPref.Bool("clearurl_lastAuto", false, cntx);
 
         updateIfNecessary();
     }

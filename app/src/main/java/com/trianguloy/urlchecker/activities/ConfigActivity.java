@@ -32,7 +32,7 @@ public class ConfigActivity extends Activity {
 
     private LinearLayout list;
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
-    private final GenericPref.LstStr order = ModuleManager.ORDER_PREF();
+    private GenericPref.LstStr order;
 
     // ------------------- listeners -------------------
 
@@ -43,7 +43,7 @@ public class ConfigActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         list = findViewById(R.id.list);
-        order.init(this);
+        order = ModuleManager.ORDER_PREF(this);
 
         // initialize modules
         for (AModuleData module : ModuleManager.getModules(true, this)) {

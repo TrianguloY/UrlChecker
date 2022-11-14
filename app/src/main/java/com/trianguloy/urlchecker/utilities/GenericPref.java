@@ -44,20 +44,10 @@ public abstract class GenericPref<T> {
      * @param prefName     this preference name
      * @param defaultValue this preference default value
      */
-    public GenericPref(String prefName, T defaultValue) {
+    public GenericPref(String prefName, T defaultValue, Context cntx) {
         this.prefName = prefName;
         this.defaultValue = defaultValue;
-    }
-
-    /**
-     * Initializes this preference
-     * Returns itself, but as the subtype (I don't know how to return the correct type)
-     *
-     * @param cntx with this base context
-     */
-    public GenericPref<T> init(Context cntx) {
         prefs = cntx.getSharedPreferences(cntx.getPackageName(), Context.MODE_PRIVATE);
-        return this;
     }
 
     /**
@@ -103,8 +93,8 @@ public abstract class GenericPref<T> {
      * An Int preference
      */
     static public class Int extends GenericPref<Integer> {
-        public Int(String prefName, Integer defaultValue) {
-            super(prefName, defaultValue);
+        public Int(String prefName, Integer defaultValue, Context cntx) {
+            super(prefName, defaultValue, cntx);
         }
 
         @Override
@@ -122,8 +112,8 @@ public abstract class GenericPref<T> {
      * A Long preference
      */
     static public class Lng extends GenericPref<Long> {
-        public Lng(String prefName, Long defaultValue) {
-            super(prefName, defaultValue);
+        public Lng(String prefName, Long defaultValue, Context cntx) {
+            super(prefName, defaultValue, cntx);
         }
 
         @Override
@@ -141,8 +131,8 @@ public abstract class GenericPref<T> {
      * A boolean preference
      */
     static public class Bool extends GenericPref<Boolean> {
-        public Bool(String prefName, Boolean defaultValue) {
-            super(prefName, defaultValue);
+        public Bool(String prefName, Boolean defaultValue, Context cntx) {
+            super(prefName, defaultValue, cntx);
         }
 
         @Override
@@ -168,8 +158,8 @@ public abstract class GenericPref<T> {
      * A string preference
      */
     static public class Str extends GenericPref<String> {
-        public Str(String prefName, String defaultValue) {
-            super(prefName, defaultValue);
+        public Str(String prefName, String defaultValue, Context cntx) {
+            super(prefName, defaultValue, cntx);
         }
 
         @Override
@@ -219,8 +209,8 @@ public abstract class GenericPref<T> {
 
         final String separator;
 
-        public LstStr(String prefName, String separator, List<String> defaultValue) {
-            super(prefName, defaultValue);
+        public LstStr(String prefName, String separator, List<String> defaultValue, Context cntx) {
+            super(prefName, defaultValue, cntx);
             this.separator = separator;
         }
 
@@ -256,8 +246,8 @@ public abstract class GenericPref<T> {
     static public class Enumeration<T extends Enum<T> & TranslatableEnum> extends GenericPref<T> {
         private final Class<T> type;
 
-        public Enumeration(String prefName, T defaultValue, Class<T> type) {
-            super(prefName, defaultValue);
+        public Enumeration(String prefName, T defaultValue, Class<T> type, Context cntx) {
+            super(prefName, defaultValue, cntx);
             this.type = type;
         }
 

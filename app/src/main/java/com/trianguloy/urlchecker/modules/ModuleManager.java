@@ -47,14 +47,14 @@ public class ModuleManager {
     /**
      * Order of the modules
      */
-    public static GenericPref.LstStr ORDER_PREF() {
+    public static GenericPref.LstStr ORDER_PREF(Context cntx) {
         // default is just the defined order (but in reverse)
         List<String> ids = new ArrayList<>(modules.size());
         for (AModuleData module : modules) {
             ids.add(0, module.getId());
         }
         // return
-        return new GenericPref.LstStr("order", ";", ids);
+        return new GenericPref.LstStr("order", ";", ids, cntx);
     }
 
 
@@ -66,9 +66,7 @@ public class ModuleManager {
      * Returns a preference to indicate if a specific module is enabled or not
      */
     public static GenericPref.Bool getEnabledPrefOfModule(AModuleData module, Context cntx) {
-        final GenericPref.Bool enabledPref = new GenericPref.Bool(module.getId() + PREF_SUFFIX, module.isEnabledByDefault());
-        enabledPref.init(cntx);
-        return enabledPref;
+        return new GenericPref.Bool(module.getId() + PREF_SUFFIX, module.isEnabledByDefault(), cntx);
     }
 
     /**
@@ -90,7 +88,7 @@ public class ModuleManager {
         }
 
         // sort modules
-        List<String> order = ORDER_PREF().init(cntx).get();
+        List<String> order = ORDER_PREF(cntx).get();
         int insertion = order.indexOf(DebugModule.ID); // non-present modules will be inserted where the debug module is
         Collections.sort(availableModules, (a, b) -> {
             int posA = order.contains(a.getId()) ? order.indexOf(a.getId()) : insertion;

@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.companions;
 
+import android.content.Context;
 import android.os.Build;
 
 import com.trianguloy.urlchecker.R;
@@ -20,8 +21,8 @@ public class CTabs {
     /**
      * CTabs preference
      */
-    public static GenericPref.Enumeration<Config> PREF() {
-        return new GenericPref.Enumeration<>("open_ctabs", Config.AUTO, Config.class);
+    public static GenericPref.Enumeration<Config> PREF(Context cntx) {
+        return new GenericPref.Enumeration<>("open_ctabs", Config.AUTO, Config.class, cntx);
     }
 
     /**

@@ -20,7 +20,7 @@ public abstract class JsonCatalog {
     public JsonCatalog(Activity cntx, String fileName, int editorDescription) {
         this.cntx = cntx;
         this.editorDescription = editorDescription;
-        custom = new InternalFile(fileName).init(cntx);
+        custom = new InternalFile(fileName, cntx);
     }
 
     /**

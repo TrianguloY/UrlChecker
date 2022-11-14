@@ -50,7 +50,7 @@ public class DebugModule extends AModuleData {
     }
 }
 
-class DebugDialog extends AModuleDialog implements View.OnClickListener ,View.OnLongClickListener{
+class DebugDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
 
     private TextView txt_intent;
     private TextView txt_urlData;
@@ -109,11 +109,11 @@ class DebugDialog extends AModuleDialog implements View.OnClickListener ,View.On
 
 class DebugConfig extends AModuleConfig {
 
-    final GenericPref.Bool show_toasts = CustomTabs.SHOWTOAST_PREF();
+    final GenericPref.Bool show_toasts;
 
     public DebugConfig(ConfigActivity activity) {
         super(activity);
-        show_toasts.init(activity);
+        show_toasts = CustomTabs.SHOWTOAST_PREF(activity);
     }
 
     @Override

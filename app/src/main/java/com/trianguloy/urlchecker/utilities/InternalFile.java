@@ -10,15 +10,11 @@ import java.io.IOException;
  */
 public class InternalFile {
     private final String fileName;
-    private Context cntx;
+    private final Context cntx;
 
-    public InternalFile(String fileName) {
+    public InternalFile(String fileName, Context cntx) {
         this.fileName = fileName;
-    }
-
-    public InternalFile init(Context cntx) {
         this.cntx = cntx;
-        return this;
     }
 
     /**

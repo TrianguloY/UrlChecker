@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -31,16 +32,16 @@ import java.util.regex.Pattern;
  */
 public class ClearUrlModule extends AModuleData {
 
-    public static GenericPref.Bool REFERRAL_PREF() {
-        return new GenericPref.Bool("clearurl_referral", false);
+    public static GenericPref.Bool REFERRAL_PREF(Context cntx) {
+        return new GenericPref.Bool("clearurl_referral", false, cntx);
     }
 
-    public static GenericPref.Bool VERBOSE_PREF() {
-        return new GenericPref.Bool("clearurl_verbose", false);
+    public static GenericPref.Bool VERBOSE_PREF(Context cntx) {
+        return new GenericPref.Bool("clearurl_verbose", false, cntx);
     }
 
-    public static GenericPref.Bool AUTO_PREF() {
-        return new GenericPref.Bool("clearurl_auto", false);
+    public static GenericPref.Bool AUTO_PREF(Context cntx) {
+        return new GenericPref.Bool("clearurl_auto", false, cntx);
     }
 
     @Override
@@ -66,17 +67,17 @@ public class ClearUrlModule extends AModuleData {
 
 class ClearUrlConfig extends AModuleConfig {
 
-    private final GenericPref.Bool referralPref = ClearUrlModule.REFERRAL_PREF();
-    private final GenericPref.Bool verbosePref = ClearUrlModule.VERBOSE_PREF();
-    private final GenericPref.Bool autoPref = ClearUrlModule.AUTO_PREF();
+    private final GenericPref.Bool allowReferral;
+    private final GenericPref.Bool verbose;
+    private final GenericPref.Bool auto;
 
     private final ClearUrlCatalog catalog;
 
     public ClearUrlConfig(ConfigActivity activity) {
         super(activity);
-        referralPref.init(activity);
-        verbosePref.init(activity);
-        autoPref.init(activity);
+        allowReferral = ClearUrlModule.REFERRAL_PREF(activity);
+        verbose = ClearUrlModule.VERBOSE_PREF(activity);
+        auto = ClearUrlModule.AUTO_PREF(activity);
         catalog = new ClearUrlCatalog(activity);
     }
 
@@ -92,9 +93,9 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        referralPref.attachToCheckBox(views.findViewById(R.id.referral));
-        verbosePref.attachToCheckBox(views.findViewById(R.id.verbose));
-        autoPref.attachToCheckBox(views.findViewById(R.id.auto));
+        allowReferral.attachToCheckBox(views.findViewById(R.id.referral));
+        verbose.attachToCheckBox(views.findViewById(R.id.verbose));
+        auto.attachToCheckBox(views.findViewById(R.id.auto));
 
         views.findViewById(R.id.update).setOnClickListener(v -> catalog.showUpdater());
         views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
@@ -106,9 +107,9 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     public static final String CLEARED = "clearUrl.cleared";
 
-    private final GenericPref.Bool allowReferral = ClearUrlModule.REFERRAL_PREF();
-    private final GenericPref.Bool verbose = ClearUrlModule.VERBOSE_PREF();
-    private final GenericPref.Bool auto = ClearUrlModule.AUTO_PREF();
+    private final GenericPref.Bool allowReferral;
+    private final GenericPref.Bool verbose;
+    private final GenericPref.Bool auto;
 
     private final List<Pair<String, JSONObject>> data;
     private TextView info;
@@ -118,9 +119,9 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
 
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
-        allowReferral.init(dialog);
-        verbose.init(dialog);
-        auto.init(dialog);
+        allowReferral = ClearUrlModule.REFERRAL_PREF(dialog);
+        verbose = ClearUrlModule.VERBOSE_PREF(dialog);
+        auto = ClearUrlModule.AUTO_PREF(dialog);
 
         data = ClearUrlCatalog.getRules(getActivity());
     }

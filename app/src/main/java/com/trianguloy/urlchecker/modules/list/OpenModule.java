@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,16 +33,16 @@ import java.util.List;
  */
 public class OpenModule extends AModuleData {
 
-    public static GenericPref.Bool CLOSEOPEN_PREF() {
-        return new GenericPref.Bool("open_closeopen", true);
+    public static GenericPref.Bool CLOSEOPEN_PREF(Context cntx) {
+        return new GenericPref.Bool("open_closeopen", true, cntx);
     }
 
-    public static GenericPref.Bool CLOSESHARE_PREF() {
-        return new GenericPref.Bool("open_closeshare", true);
+    public static GenericPref.Bool CLOSESHARE_PREF(Context cntx) {
+        return new GenericPref.Bool("open_closeshare", true, cntx);
     }
 
-    public static GenericPref.Bool NOREFERRER_PREF() {
-        return new GenericPref.Bool("open_noReferrer", true);
+    public static GenericPref.Bool NOREFERRER_PREF(Context cntx) {
+        return new GenericPref.Bool("open_noReferrer", true, cntx);
     }
 
     @Override
@@ -74,11 +75,11 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     private LastOpened lastOpened;
 
-    private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
-    private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
-    private final GenericPref.Bool noReferrerPref = OpenModule.NOREFERRER_PREF();
+    private final GenericPref.Bool closeOpenPref;
+    private final GenericPref.Bool closeSharePref;
+    private final GenericPref.Bool noReferrerPref;
 
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
     private boolean ctabs = false;
 
     private List<String> packages;
@@ -90,10 +91,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
-        ctabsPref.init(dialog);
-        closeOpenPref.init(dialog);
-        closeSharePref.init(dialog);
-        noReferrerPref.init(dialog);
+        ctabsPref = CTabs.PREF(dialog);
+        closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
+        closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
+        noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
     }
 
     @Override
@@ -320,7 +321,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                 R.string.mOpen_noapps,
                 getActivity()
         );
-        if (closeSharePref.get()){
+        if (closeSharePref.get()) {
             this.getActivity().finish();
         }
     }
@@ -344,20 +345,21 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
 class OpenConfig extends AModuleConfig {
 
-    private final GenericPref.Bool closeOpenPref = OpenModule.CLOSEOPEN_PREF();
-    private final GenericPref.Bool closeSharePref = OpenModule.CLOSESHARE_PREF();
-    private final GenericPref.Bool noReferrerPref = OpenModule.NOREFERRER_PREF();
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref = CTabs.PREF();
+    private final GenericPref.Bool closeOpenPref;
+    private final GenericPref.Bool closeSharePref;
+    private final GenericPref.Bool noReferrerPref;
+    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
 
-    private final GenericPref.Bool perDomainPref = LastOpened.PERDOMAIN_PREF();
+    private final GenericPref.Bool perDomainPref;
 
     public OpenConfig(ConfigActivity activity) {
         super(activity);
-        ctabsPref.init(activity);
-        closeOpenPref.init(activity);
-        closeSharePref.init(activity);
-        noReferrerPref.init(activity);
-        perDomainPref.init(activity);
+        ctabsPref = CTabs.PREF(activity);
+        closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
+        closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
+        noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
+        perDomainPref = LastOpened.PERDOMAIN_PREF(activity);
+
     }
 
     @Override

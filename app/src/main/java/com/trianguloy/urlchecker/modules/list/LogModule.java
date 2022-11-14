@@ -1,6 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.text.util.Linkify;
 import android.view.View;
 import android.widget.EditText;
@@ -23,8 +24,8 @@ import java.util.Date;
  */
 public class LogModule extends AModuleData {
 
-    public static GenericPref.Str LOG_DATA() {
-        return new GenericPref.Str("log_data", "");
+    public static GenericPref.Str LOG_DATA(Context cntx) {
+        return new GenericPref.Str("log_data", "", cntx);
     }
 
     @Override
@@ -50,11 +51,11 @@ public class LogModule extends AModuleData {
 
 class LogDialog extends AModuleDialog {
 
-    private final GenericPref.Str log = LogModule.LOG_DATA();
+    private final GenericPref.Str log;
 
     public LogDialog(MainDialog dialog) {
         super(dialog);
-        log.init(dialog);
+        log = LogModule.LOG_DATA(dialog);
     }
 
     @Override
@@ -79,11 +80,11 @@ class LogDialog extends AModuleDialog {
 
 class LogConfig extends AModuleConfig {
 
-    private final GenericPref.Str log = LogModule.LOG_DATA();
+    private final GenericPref.Str log;
 
     public LogConfig(ConfigActivity activity) {
         super(activity);
-        log.init(activity);
+        log = LogModule.LOG_DATA(activity);
     }
 
     @Override

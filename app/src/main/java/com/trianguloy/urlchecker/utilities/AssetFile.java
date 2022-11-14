@@ -9,13 +9,10 @@ import java.io.IOException;
  */
 public class AssetFile {
     private final String fileName;
-    private Context cntx;
+    private final Context cntx;
 
-    public AssetFile(String fileName) {
+    public AssetFile(String fileName, Context cntx) {
         this.fileName = fileName;
-    }
-
-    public void init(Context cntx) {
         this.cntx = cntx;
     }
 

@@ -129,7 +129,7 @@ public class Hosts {
             progress.increaseProgress();
 
             Log.d("HOSTS", "Creating entries " + bucket.getValue().size());
-            new InternalFile(PREFIX + bucket.getKey()).init(cntx)
+            new InternalFile(PREFIX + bucket.getKey(), cntx)
                     .set(builder.toString());
         }
 
@@ -154,7 +154,7 @@ public class Hosts {
     public Pair<String, String> contains(String host) {
         return getBucket(host, key -> {
             var values = new HashMap<String, Pair<String, String>>();
-            new InternalFile(PREFIX + key).init(cntx).stream(line -> {
+            new InternalFile(PREFIX + key, cntx).stream(line -> {
                 var elements = line.split(" ", 3);
                 if (elements.length == 3) values.put(elements[0], Pair.create(elements[1], elements[2]));
             });
