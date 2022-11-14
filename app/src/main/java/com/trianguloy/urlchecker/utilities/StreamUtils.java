@@ -30,6 +30,15 @@ public class StreamUtils {
     }
 
     /**
+     * GETs an url and streams their lines
+     */
+    public static void streamFromUrl(String url, JavaUtilities.Consumer<String> consumer) throws IOException {
+        URLConnection connection = new URL(url).openConnection();
+        connection.setConnectTimeout(CONNECT_TIMEOUT);
+        consumeLines(connection.getInputStream(), consumer);
+    }
+
+    /**
      * POSTs something (a body) to an url, returns its content as a string
      */
     public static String performPOST(String url, String body) throws IOException {
@@ -67,6 +76,20 @@ public class StreamUtils {
                 sb.append(line);
             }
             return sb.toString();
+        }
+    }
+
+    /**
+     * Reads an input stream and streams its lines
+     */
+    public static void consumeLines(InputStream is, JavaUtilities.Consumer<String> function) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                function.accept(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -193,4 +193,28 @@ To disable logging, just disable the module."</string>
     <string name="mLog_edit">Edit log</string>
     <string name="mLog_empty">No data</string>
 
+    <string name="mHosts_name">Hosts checker</string>
+    <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>
+    <string name="mHosts_malware">adware/malware</string>
+    <string name="mHosts_fakenews">fakenews</string>
+    <string name="mHosts_gambling">gambling</string>
+    <string name="mHosts_adult">adult content</string>
+    <string name="mHosts_build">Build</string>
+    <string name="mHosts_uninitialized">Database uninitialized. Press to build</string>
+    <string name="mHosts_parseError">"Can't parse url host"</string>
+    <string name="mHosts_editor">"Hosts configuration. Format: List of objects where the key is the hosts label and the content includes the following optional values:
+- file: An url of a remote hosts-file to download. All valid hosts present will be added.
+- hosts: List of raw hosts (strings) to add.
+- color: The label's color. An Android color string (#AARRGGBB, #RRGGBB or a valid color name). Defaults to a 'danger' red.
+- replace: if false existing hosts won't be replaced. Note that objects are evaluated from top to bottom. True by default.
+- enabled: if false this whole object will be skipped. True by default."</string>
+    <string name="mHosts_buildTitle">Build hosts database</string>
+    <string name="mHosts_buildDesc">This will clear the current hosts database and build it with the current configuration, downloading hosts files from the internet if required. This action may take a few seconds. Continue?</string>
+    <string name="mHosts_buildProgress">Building catalog</string>
+    <string name="mHosts_buildInit">Initializing</string>
+    <string name="mHosts_buildClear">Clearing…</string>
+    <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
+    <string name="mHosts_buildSave">Saving…</string>
+    <string name="mHosts_built">Database built: %d hosts</string>
+
 </resources>

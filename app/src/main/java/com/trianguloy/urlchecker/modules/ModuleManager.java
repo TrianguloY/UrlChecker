@@ -5,6 +5,7 @@ import android.content.Context;
 import com.trianguloy.urlchecker.modules.list.ClearUrlModule;
 import com.trianguloy.urlchecker.modules.list.DebugModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
+import com.trianguloy.urlchecker.modules.list.HostsModule;
 import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
@@ -36,6 +37,7 @@ public class ModuleManager {
         modules.add(new ClearUrlModule());
         modules.add(new RemoveQueriesModule());
         modules.add(new PatternModule());
+        modules.add(new HostsModule());
         // new modules should preferably be added directly above this line
         modules.add(new DebugModule());
 

@@ -16,8 +16,9 @@ public class InternalFile {
         this.fileName = fileName;
     }
 
-    public void init(Context cntx) {
+    public InternalFile init(Context cntx) {
         this.cntx = cntx;
+        return this;
     }
 
     /**
@@ -28,6 +29,19 @@ public class InternalFile {
             return StreamUtils.inputStream2String(cntx.openFileInput(fileName));
         } catch (IOException ignored) {
             return null;
+        }
+    }
+
+    /**
+     * Streams the lines
+     */
+    public boolean stream(JavaUtilities.Consumer<String> function) {
+        try {
+            StreamUtils.consumeLines(cntx.openFileInput(fileName), function);
+            return true;
+        } catch (IOException ignored) {
+            // do nothing
+            return false;
         }
     }
 

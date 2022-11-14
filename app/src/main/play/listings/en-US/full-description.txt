@@ -25,6 +25,8 @@ The app is structured with a modular setup, you can enable/disable and reorder i
     - Warns for http links, allow to replace it with https.
     - Warns for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com.
 
+* Hosts checker: This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts
+
 * Debug module: Displays the intent uri, and optionally info about the ctabs (custom tabs) service. This is intended for developers.
 
 * Open module: Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. Can't be disabled.

@@ -44,4 +44,21 @@ public class JavaUtilities {
                 // just in case
                 : clamp(max, value, min);
     }
+
+    /**
+     * java.util.function.Consumer requires api 24
+     */
+    @FunctionalInterface
+    public interface Consumer<T> {
+        void accept(T t);
+    }
+
+    /**
+     * java.util.function.Function requires api 24
+     */
+    @FunctionalInterface
+    public interface Function<T, R> {
+        R apply(T t);
+    }
+
 }
