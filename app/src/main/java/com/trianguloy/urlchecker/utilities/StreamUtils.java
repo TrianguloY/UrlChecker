@@ -16,14 +16,14 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Generic utilities related to streams (urls, strings, bytes...)
  */
-public class StreamUtils {
-    public static final Charset UTF_8 = Charset.forName("UTF-8"); // StandardCharsets.UTF_8 requires api 19
-    public static final int CONNECT_TIMEOUT = 5000;
+public interface StreamUtils {
+    Charset UTF_8 = Charset.forName("UTF-8"); // StandardCharsets.UTF_8 requires api 19
+    int CONNECT_TIMEOUT = 5000;
 
     /**
      * GETs an url and returns the content as string
      */
-    public static String readFromUrl(String url) throws IOException {
+    static String readFromUrl(String url) throws IOException {
         URLConnection connection = new URL(url).openConnection();
         connection.setConnectTimeout(CONNECT_TIMEOUT);
         return inputStream2String(connection.getInputStream());
@@ -32,7 +32,7 @@ public class StreamUtils {
     /**
      * GETs an url and streams their lines
      */
-    public static void streamFromUrl(String url, JavaUtilities.Consumer<String> consumer) throws IOException {
+    static void streamFromUrl(String url, JavaUtils.Consumer<String> consumer) throws IOException {
         URLConnection connection = new URL(url).openConnection();
         connection.setConnectTimeout(CONNECT_TIMEOUT);
         consumeLines(connection.getInputStream(), consumer);
@@ -41,7 +41,7 @@ public class StreamUtils {
     /**
      * POSTs something (a body) to an url, returns its content as a string
      */
-    public static String performPOST(String url, String body) throws IOException {
+    static String performPOST(String url, String body) throws IOException {
 
         // Defined URL  where to send data
         URL urlObject = new URL(url);
@@ -67,7 +67,7 @@ public class StreamUtils {
      * Reads an input stream and returns its content as string.
      * The stream is closed afterwards
      */
-    public static String inputStream2String(InputStream is) throws IOException {
+    static String inputStream2String(InputStream is) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
             StringBuilder sb = new StringBuilder();
             String line;
@@ -82,7 +82,7 @@ public class StreamUtils {
     /**
      * Reads an input stream and streams its lines
      */
-    public static void consumeLines(InputStream is, JavaUtilities.Consumer<String> function) {
+    static void consumeLines(InputStream is, JavaUtils.Consumer<String> function) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -96,7 +96,7 @@ public class StreamUtils {
     /**
      * Returns the sha-256 of a string
      */
-    public static String sha256(String string) {
+    static String sha256(String string) {
         try {
             // get byte array
             byte[] digest = MessageDigest.getInstance("SHA-256")

@@ -11,12 +11,12 @@ import java.util.List;
  * Generic Java utils.
  * I prefer smaller and more available apps, even if they require an older API and not using Kotlin
  */
-public class JavaUtilities {
+public interface JavaUtils {
 
     /**
      * Converts an iterator to a list
      */
-    public static <T> List<T> toList(Iterator<T> iterator) {
+    static <T> List<T> toList(Iterator<T> iterator) {
         List<T> list = new ArrayList<>();
         while (iterator.hasNext()) {
             list.add(iterator.next());
@@ -27,7 +27,7 @@ public class JavaUtilities {
     /**
      * Converts a string into a json object, returns empty on failure
      */
-    public static JSONObject toJson(String content) {
+    static JSONObject toJson(String content) {
         try {
             return new JSONObject(content);
         } catch (JSONException e) {
@@ -39,7 +39,7 @@ public class JavaUtilities {
     /**
      * Clamps a value between two other values.
      */
-    public static int clamp(int min, int value, int max) {
+    static int clamp(int min, int value, int max) {
         return min <= max ? Math.max(min, Math.min(value, max))
                 // just in case
                 : clamp(max, value, min);
@@ -49,7 +49,7 @@ public class JavaUtilities {
      * java.util.function.Consumer requires api 24
      */
     @FunctionalInterface
-    public interface Consumer<T> {
+    interface Consumer<T> {
         void accept(T t);
     }
 
@@ -57,7 +57,7 @@ public class JavaUtilities {
      * java.util.function.Function requires api 24
      */
     @FunctionalInterface
-    public interface Function<T, R> {
+    interface Function<T, R> {
         R apply(T t);
     }
 

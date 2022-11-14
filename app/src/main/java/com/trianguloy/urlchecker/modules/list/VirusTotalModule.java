@@ -20,7 +20,7 @@ import com.trianguloy.urlchecker.modules.companions.VirusTotalUtility;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.UrlUtilities;
+import com.trianguloy.urlchecker.utilities.UrlUtils;
 
 /**
  * This module uses the VirusTotal api (https://developers.virustotal.com/reference) for url reports
@@ -268,7 +268,7 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         if (result == null || result.error != null) return;
 
         if (details) {
-            UrlUtilities.openUrlRemoveThis(result.scanUrl, getActivity());
+            UrlUtils.openUrlRemoveThis(result.scanUrl, getActivity());
         } else {
             // TODO: beautify this
             new AlertDialog.Builder(getActivity())

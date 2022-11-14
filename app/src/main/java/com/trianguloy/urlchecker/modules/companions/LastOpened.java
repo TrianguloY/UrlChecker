@@ -3,7 +3,7 @@ package com.trianguloy.urlchecker.modules.companions;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.JavaUtilities;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -76,7 +76,7 @@ public class LastOpened {
 
         // update preference (we subtract because negative means preferred)
         GenericPref.Int pref = getPref(prefer, other, url);
-        pref.set(JavaUtilities.clamp(-MAX, pref.get() - amount, MAX));
+        pref.set(JavaUtils.clamp(-MAX, pref.get() - amount, MAX));
     }
 
     /**

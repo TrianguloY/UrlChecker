@@ -14,7 +14,7 @@ import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
-import com.trianguloy.urlchecker.utilities.PackageUtilities;
+import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.List;
 
@@ -96,7 +96,7 @@ public class AboutActivity extends Activity {
      * Open an url in the browser
      */
     private void open(String url) {
-        PackageUtilities.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)), R.string.toast_noBrowser, this);
+        PackageUtils.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)), R.string.toast_noBrowser, this);
     }
 
     /**
@@ -110,6 +110,6 @@ public class AboutActivity extends Activity {
         share.setType("text/plain");
         share.putExtra(Intent.EXTRA_TEXT, url);
 
-        PackageUtilities.startActivity(Intent.createChooser(share, getString(R.string.share)), R.string.toast_noApp, this);
+        PackageUtils.startActivity(Intent.createChooser(share, getString(R.string.share)), R.string.toast_noApp, this);
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Static utilities related to packages
  */
-public class PackageUtilities {
+public interface PackageUtils {
 
     /**
      * Returns a list of packages that can open an intent, removing this app from the list
@@ -23,7 +23,7 @@ public class PackageUtilities {
      * @param cntx       base context (and the app that will be filtered)
      * @return the list of other packages
      */
-    static public List<String> getOtherPackages(Intent baseIntent, Context cntx) {
+    static List<String> getOtherPackages(Intent baseIntent, Context cntx) {
         List<String> packages = new ArrayList<>();
 
         // get all packages
@@ -47,7 +47,7 @@ public class PackageUtilities {
      * @param cntx base context
      * @return that app name
      */
-    static public String getPackageName(String pack, Context cntx) {
+    static String getPackageName(String pack, Context cntx) {
         final PackageManager pm = cntx.getPackageManager();
         try {
             // try getting the app label
@@ -66,7 +66,7 @@ public class PackageUtilities {
      * @param string toast shown on ActivityNotFoundException
      * @param cntx   base context
      */
-    static public void startActivity(Intent intent, int string, Context cntx) {
+    static void startActivity(Intent intent, int string, Context cntx) {
         try {
             cntx.startActivity(intent);
         } catch (ActivityNotFoundException e) {

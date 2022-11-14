@@ -23,8 +23,8 @@ import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.PackageUtilities;
-import com.trianguloy.urlchecker.utilities.UrlUtilities;
+import com.trianguloy.urlchecker.utilities.PackageUtils;
+import com.trianguloy.urlchecker.utilities.UrlUtils;
 
 import java.util.List;
 
@@ -216,7 +216,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
      * Populates the spinner with the apps that can open it, in preference order
      */
     private void updateSpinner() {
-        packages = PackageUtilities.getOtherPackages(UrlUtilities.getViewIntent(getUrl(), null), getActivity());
+        packages = PackageUtils.getOtherPackages(UrlUtils.getViewIntent(getUrl(), null), getActivity());
 
         // remove referrer
         if (noReferrerPref.get()) {
@@ -235,7 +235,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         lastOpened.sort(packages, getUrl());
 
         // set
-        btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(0), getActivity())));
+        btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(0), getActivity())));
         btn_open.setEnabled(true);
         menu.clear();
         if (packages.size() == 1) {
@@ -243,7 +243,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         } else {
             btn_openWith.setVisibility(View.VISIBLE);
             for (int i = 1; i < packages.size(); i++) {
-                menu.add(Menu.NONE, i, i, getActivity().getString(R.string.mOpen_with, PackageUtilities.getPackageName(packages.get(i), getActivity())));
+                menu.add(Menu.NONE, i, i, getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(i), getActivity())));
             }
         }
 
@@ -273,7 +273,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent.setPackage(chosen);
         } else {
             // replace with new VIEW intent
-            intent = UrlUtilities.getViewIntent(getUrl(), chosen);
+            intent = UrlUtils.getViewIntent(getUrl(), chosen);
         }
 
         if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
@@ -291,7 +291,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
             intent.removeExtra(CTabs.EXTRA);
         }
 
-        PackageUtilities.startActivity(intent, R.string.toast_noApp, getActivity());
+        PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
         if (closeOpenPref.get()) {
             this.getActivity().finish();
@@ -316,7 +316,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         sendIntent.setType("text/plain");
 
         // share intent
-        PackageUtilities.startActivity(
+        PackageUtils.startActivity(
                 Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share)),
                 R.string.mOpen_noapps,
                 getActivity()

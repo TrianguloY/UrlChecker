@@ -25,12 +25,12 @@ import java.util.Date;
 /**
  * Generic Android utilities
  */
-public class AndroidUtils {
+public interface AndroidUtils {
 
     /**
      * Sets the theme (light/dark mode) to an activity
      */
-    public static void setTheme(Activity activity) {
+    static void setTheme(Activity activity) {
         activity.setTheme(
                 (activity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
                         ? R.style.DialogThemeLight // explicit light mode
@@ -42,7 +42,7 @@ public class AndroidUtils {
      * Sets the start drawable of a textview
      * Wrapped for android compatibility
      */
-    public static void setStartDrawables(TextView txt, int start) {
+    static void setStartDrawables(TextView txt, int start) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // we can use the function directly!
             txt.setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0);
@@ -61,7 +61,7 @@ public class AndroidUtils {
     /**
      * In debug mode, throws an AssertionError, in production just logs it and continues.
      */
-    public static void assertError(String detailMessage) {
+    static void assertError(String detailMessage) {
         Log.d("ASSERT_ERROR", detailMessage);
         if (BuildConfig.DEBUG) {
             // in debug mode, throw exception
@@ -73,14 +73,14 @@ public class AndroidUtils {
     /**
      * Sets the background color (resource id) of a view using a rounded box drawable
      */
-    public static void setRoundedColor(int color, View view) {
+    static void setRoundedColor(int color, View view) {
         setRawRoundedColor(view.getContext().getResources().getColor(color), view);
     }
 
     /**
      * Sets the background color (raw color) of a view using a rounded box drawable
      */
-    public static void setRawRoundedColor(int color, View view) {
+    static void setRawRoundedColor(int color, View view) {
         var drawable = view.getContext().getResources().getDrawable(R.drawable.round_box);
         drawable.setColorFilter(color, PorterDuff.Mode.SRC);
         view.setBackgroundDrawable(drawable);
@@ -89,14 +89,14 @@ public class AndroidUtils {
     /**
      * Clears the background color of a view
      */
-    public static void clearRoundedColor(View view) {
+    static void clearRoundedColor(View view) {
         view.setBackgroundDrawable(null);
     }
 
     /**
      * Makes the text of a textview display as a link (which does nothing when clicked)
      */
-    public static void setAsClickable(TextView textview) {
+    static void setAsClickable(TextView textview) {
         SpannableStringBuilder text = new SpannableStringBuilder(textview.getText());
         text.setSpan(new ClickableSpan() {
             @Override
@@ -111,7 +111,7 @@ public class AndroidUtils {
      * Returns a formatted date/time from epoch milliseconds according to the context locale.
      * If the date is invalid (negative), "---" is returned instead
      */
-    public static String formatMillis(long millis, Context cntx) {
+    static String formatMillis(long millis, Context cntx) {
         if (millis < 0) return "---";
 
         return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT,
@@ -124,14 +124,14 @@ public class AndroidUtils {
     /**
      * Copy to the clipboard, retrieves string from id
      */
-    public static void copyToClipboard(Activity activity, int id, String text) {
+    static void copyToClipboard(Activity activity, int id, String text) {
         copyToClipboard(activity, activity.getString(id), text);
     }
 
     /**
      * Copy to the clipboard
      */
-    public static void copyToClipboard(Activity activity, String toast, String text) {
+    static void copyToClipboard(Activity activity, String toast, String text) {
         ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) return;
 
@@ -146,7 +146,7 @@ public class AndroidUtils {
      * Get the (possible) referrer activity from an existing one.
      * Null if can't find
      */
-    public static String getReferrer(Activity activity) {
+    static String getReferrer(Activity activity) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP_MR1) return null;
 
         Uri referrer = activity.getReferrer();
@@ -161,7 +161,7 @@ public class AndroidUtils {
     /**
      * @see ActionBar#setDisplayHomeAsUpEnabled(boolean)
      */
-    public static void configureUp(Activity activity) {
+    static void configureUp(Activity activity) {
         var actionBar = activity.getActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }

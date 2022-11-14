@@ -15,7 +15,7 @@ import com.trianguloy.urlchecker.modules.companions.PatternCatalog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
-import com.trianguloy.urlchecker.utilities.JavaUtilities;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -113,7 +113,7 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
 
         // check each pattern
         JSONObject patterns = catalog.getCatalog();
-        for (String pattern : JavaUtilities.toList(patterns.keys())) {
+        for (String pattern : JavaUtils.toList(patterns.keys())) {
             try {
                 JSONObject data = patterns.optJSONObject(pattern);
                 Message message = new Message(pattern);

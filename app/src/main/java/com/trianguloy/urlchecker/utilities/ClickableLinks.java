@@ -13,12 +13,12 @@ import java.util.regex.Pattern;
 /**
  * Container for {@link #linkify(TextView, OnUrlListener)}
  */
-public class ClickableLinks {
+public interface ClickableLinks {
 
     /**
      * Listener for when a link is clicked. The link's tag specify which link was clicked.
      */
-    public interface OnUrlListener {
+    interface OnUrlListener {
         void onLinkClick(String tag);
     }
 
@@ -35,7 +35,7 @@ public class ClickableLinks {
      * @param textView TextView to convert
      * @param listener Listener for when a link is clicked. The link's tag specify which link was clicked.
      */
-    public static void linkify(TextView textView, final OnUrlListener listener) {
+    static void linkify(TextView textView, final OnUrlListener listener) {
         ArrayDeque<Match> matches = new ArrayDeque<>(); // keeps matches, reverse order
         SpannableStringBuilder text = new SpannableStringBuilder(textView.getText()); // final text
 
@@ -67,12 +67,12 @@ public class ClickableLinks {
     /**
      * Pattern: "[[tag|display text]]" or "[[tag and display text]]" (similar to wikipedia linking)
      */
-    private static final Pattern PATTERN = Pattern.compile("\\[\\[([^|\\]]*)(?:\\|([^]]*))?]]");
+    Pattern PATTERN = Pattern.compile("\\[\\[([^|\\]]*)(?:\\|([^]]*))?]]");
 
     /**
      * Just a container
      */
-    private static class Match {
+    class Match {
         final int start;
         final int end;
         final String tag;

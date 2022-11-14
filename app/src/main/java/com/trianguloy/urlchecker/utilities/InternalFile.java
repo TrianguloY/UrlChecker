@@ -31,7 +31,7 @@ public class InternalFile {
     /**
      * Streams the lines
      */
-    public boolean stream(JavaUtilities.Consumer<String> function) {
+    public boolean stream(JavaUtils.Consumer<String> function) {
         try {
             StreamUtils.consumeLines(cntx.openFileInput(fileName), function);
             return true;

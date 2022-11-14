@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.PackageUtilities;
+import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.Locale;
 
@@ -38,19 +38,19 @@ public class MainActivity extends Activity {
         switch (view.getId()) {
             case R.id.modules:
                 // open setup
-                PackageUtilities.startActivity(new Intent(this, ConfigActivity.class), R.string.toast_noApp, this);
+                PackageUtils.startActivity(new Intent(this, ConfigActivity.class), R.string.toast_noApp, this);
                 break;
             // TODO: add setup activity
             case R.id.about:
                 // open about
-                PackageUtilities.startActivity(new Intent(this, AboutActivity.class), R.string.toast_noApp, this);
+                PackageUtils.startActivity(new Intent(this, AboutActivity.class), R.string.toast_noApp, this);
                 break;
             case R.id.txt_sample:
                 // click on the google url
                 String label = ((TextView) view).getText().toString();
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(label));
                 i.setPackage(getPackageName());
-                PackageUtilities.startActivity(i, R.string.toast_noApp, this);
+                PackageUtils.startActivity(i, R.string.toast_noApp, this);
                 break;
             case R.id.m_img_icon:
                 // click on the app icon

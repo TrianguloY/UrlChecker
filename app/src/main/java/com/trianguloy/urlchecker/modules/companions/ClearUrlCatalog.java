@@ -15,7 +15,7 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.AssetFile;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.InternalFile;
-import com.trianguloy.urlchecker.utilities.JavaUtilities;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import org.json.JSONException;
@@ -73,7 +73,7 @@ public class ClearUrlCatalog {
     public JSONObject getCatalog() {
         // get the updated file first
         String internal = custom.get();
-        if (internal != null) return JavaUtilities.toJson(internal);
+        if (internal != null) return JavaUtils.toJson(internal);
 
         // no updated file or can't read, use built-in one
         return getBuiltIn();
@@ -85,10 +85,10 @@ public class ClearUrlCatalog {
     public JSONObject getBuiltIn() {
         // read internal file
         String builtIn = this.builtIn.get();
-        if (builtIn != null) return JavaUtilities.toJson(builtIn);
+        if (builtIn != null) return JavaUtils.toJson(builtIn);
 
         // can't read either? panic! return empty
-        return JavaUtilities.toJson("{\"providers\":{}}");
+        return JavaUtils.toJson("{\"providers\":{}}");
     }
 
     /**
@@ -103,9 +103,9 @@ public class ClearUrlCatalog {
             JSONObject json = clearUrlCatalog.getCatalog();
 
             // extract and merge each provider
-            for (String provider : JavaUtilities.toList(json.keys())) {
+            for (String provider : JavaUtils.toList(json.keys())) {
                 JSONObject providerData = json.getJSONObject(provider);
-                for (String rule : JavaUtilities.toList(providerData.keys())) {
+                for (String rule : JavaUtils.toList(providerData.keys())) {
                     rules.add(Pair.create(rule, providerData.getJSONObject(rule)));
                 }
             }
@@ -136,7 +136,7 @@ public class ClearUrlCatalog {
             try {
                 // replace only the top objects
                 JSONObject merged = getCatalog();
-                for (String key : JavaUtilities.toList(rules.keys())) {
+                for (String key : JavaUtils.toList(rules.keys())) {
                     merged.put(key, rules.getJSONObject(key));
                 }
                 rules = merged;

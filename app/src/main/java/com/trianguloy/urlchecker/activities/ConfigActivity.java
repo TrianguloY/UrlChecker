@@ -17,7 +17,7 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
-import com.trianguloy.urlchecker.utilities.JavaUtilities;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -121,7 +121,7 @@ public class ConfigActivity extends Activity {
     private void moveModule(View moduleView, int delta) {
         int position = list.indexOfChild(moduleView);
         if (position == -1) return; // no view? impossible
-        int newPosition = JavaUtilities.clamp(0, position + delta, list.getChildCount() - 1);
+        int newPosition = JavaUtils.clamp(0, position + delta, list.getChildCount() - 1);
         if (newPosition == position) return; // same position? just ignore
 
         // swap

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Static utilities related to urls
  */
-public class UrlUtilities {
+public interface UrlUtils {
 
     /**
      * Returns an intent that will open the given url, with an optional package
@@ -23,7 +23,7 @@ public class UrlUtilities {
      * @param packageName the package that will be opened, null to let android choose
      * @return the converted intent
      */
-    static public Intent getViewIntent(String url, String packageName) {
+    static Intent getViewIntent(String url, String packageName) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         if (packageName != null) intent.setPackage(packageName);
         return intent;
@@ -35,11 +35,11 @@ public class UrlUtilities {
      * @param url  url to open
      * @param cntx base context
      */
-    static public void openUrlRemoveThis(String url, Context cntx) {
+    static void openUrlRemoveThis(String url, Context cntx) {
 
         // get packages that can open the url
         List<Intent> intents = new ArrayList<>();
-        for (String pack : PackageUtilities.getOtherPackages(getViewIntent(url, null), cntx)) {
+        for (String pack : PackageUtils.getOtherPackages(getViewIntent(url, null), cntx)) {
             intents.add(getViewIntent(url, pack));
         }
 
@@ -54,6 +54,6 @@ public class UrlUtilities {
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[0]));
 
         // open
-        PackageUtilities.startActivity(chooserIntent, R.string.toast_noBrowser, cntx);
+        PackageUtils.startActivity(chooserIntent, R.string.toast_noBrowser, cntx);
     }
 }

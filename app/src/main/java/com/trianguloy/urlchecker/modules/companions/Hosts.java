@@ -7,7 +7,7 @@ import android.util.Pair;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.InternalFile;
-import com.trianguloy.urlchecker.utilities.JavaUtilities;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 import com.trianguloy.urlchecker.utilities.ProgressDialog;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
@@ -81,7 +81,7 @@ public class Hosts {
         // iterate for each entry
         Log.d("HOSTS", "Building mapping");
         progress.setMax(catalog.length());
-        for (var label : JavaUtilities.toList(catalog.keys())) {
+        for (var label : JavaUtils.toList(catalog.keys())) {
             try {
                 var entry = catalog.getJSONObject(label);
                 if (entry.optBoolean("disabled")) continue;
@@ -199,7 +199,7 @@ public class Hosts {
     /**
      * returns the bucket of a value, if not ready computes it
      */
-    private HashMap<String, Pair<String, String>> getBucket(String value, JavaUtilities.Function<Integer, HashMap<String, Pair<String, String>>> compute) {
+    private HashMap<String, Pair<String, String>> getBucket(String value, JavaUtils.Function<Integer, HashMap<String, Pair<String, String>>> compute) {
         // HASHING
         var hash = Math.floorMod(value.hashCode(), FILES);
 

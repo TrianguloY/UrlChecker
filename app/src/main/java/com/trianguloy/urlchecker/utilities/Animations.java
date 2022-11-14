@@ -5,8 +5,14 @@ import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Animations {
-    public static void enableAnimations(View view) {
+/**
+ * Animations-related functionality
+ */
+public interface Animations {
+    /**
+     * Enables animations for a specific view
+     */
+    static void enableAnimations(View view) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) return;
         if (view instanceof ViewGroup) {
             final LayoutTransition lt = ((ViewGroup) view).getLayoutTransition();
