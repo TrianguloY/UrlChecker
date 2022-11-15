@@ -22,6 +22,8 @@ La aplicación está estructurada con una estructura modular, puedes activar/des
     - Notifica de enlaces http, permite reemplazarlos por https.
     - Notifica de caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
 
+* Módulo de patrones: Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts
+
 * Módulo debug: Diseñado para desarrolladores. Muestra el intent uri, y opcionalmente información sobre el servicio ctabs (custom tabs).
 
 * Módulo para abrir: Contiene el botón de abrir y compartir. Si un enlace puede ser abierto con varias aplicaciones, se mostrará una flecha para permitirte decidir. No se puede desactivar.
