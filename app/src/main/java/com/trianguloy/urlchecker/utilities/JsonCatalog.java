@@ -51,7 +51,7 @@ public abstract class JsonCatalog {
     }
 
     /**
-     * Builds the builtIn cattalog
+     * Builds the builtIn catalog
      */
     abstract public JSONObject buildBuiltIn(Context cntx) throws JSONException;
 
@@ -61,7 +61,7 @@ public abstract class JsonCatalog {
     public boolean save(JSONObject content) {
 
         // same as builtin (maybe a reset?), delete custom
-        if (content.equals(getBuiltIn())) {
+        if (content.toString().equals(getBuiltIn().toString())) {
             custom.delete();
             return true;
         }
