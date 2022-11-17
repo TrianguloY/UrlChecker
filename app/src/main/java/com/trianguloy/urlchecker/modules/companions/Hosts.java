@@ -24,8 +24,9 @@ public class Hosts {
 
     private final HostsCatalog data;
 
+    private static final char SEPARATOR = '\t';
     private static final int FILES = 128;
-    public static final String PREFIX = "hosts_";
+    private static final String PREFIX = "hosts_";
 
     // A custom mapping from a given hash with queryable buckets
     private final HashMap<Integer, HashMap<String, Pair<String, String>>> buckets = new HashMap<>();
@@ -121,9 +122,13 @@ public class Hosts {
         for (var bucket : buckets.entrySet()) {
             var builder = new StringBuilder();
             for (var entry : bucket.getValue().entrySet()) {
-                builder.append(entry.getKey()).append(" ")
-                        .append(entry.getValue().first).append(" ")
-                        .append(entry.getValue().second).append("\n");
+                // each line has <domain,label,color>
+                builder.append(entry.getKey().replace(SEPARATOR, ' '))
+                        .append(SEPARATOR)
+                        .append(entry.getValue().first.replace(SEPARATOR, ' '))
+                        .append(SEPARATOR)
+                        .append(entry.getValue().second.replace(SEPARATOR, ' '))
+                        .append("\n");
             }
 
             progress.increaseProgress();
@@ -155,7 +160,8 @@ public class Hosts {
         return getBucket(host, key -> {
             var values = new HashMap<String, Pair<String, String>>();
             new InternalFile(PREFIX + key, cntx).stream(line -> {
-                var elements = line.split(" ", 3);
+                // each line has <domain,label,color>
+                var elements = line.split(String.valueOf(SEPARATOR), 3);
                 if (elements.length == 3) values.put(elements[0], Pair.create(elements[1], elements[2]));
             });
             return values;
