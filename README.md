@@ -42,9 +42,10 @@ height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlch
 <!-- ---------- Description ---------- -->
 <div align="center">
 
-**URLCheck** acts as an intermediary when opening url links, allowing, among other things:  
-to remove trackers, affiliate links, unnecessary elements,  
-facilitating link sharing, protecting against certain phishing techniques and many more...
+**URLCheck** acts as an amazingly customizable and powerful
+intermediary when opening url links, allowing, among other things:  
+to remove trackers, affiliate links, unnecessary elements, check Hosts,  
+facilitating link holding and sharing, protecting against certain phishing techniques and many more...
 
 </div>
 
