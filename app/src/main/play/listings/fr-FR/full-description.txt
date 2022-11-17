@@ -24,6 +24,8 @@ L'application est constituée d'une structure modulaire, vous pouvez activer, d�
      - Avertissement pour les liens http, permet de le remplacer par l'https.
      - Avertissement pour les caractères non-ascii comme les lettres grecques. Qui peuvent être utilisé pour l'hameçonnage: googĺe.com au lieu de google.com.
 
+* Vérificateur d'hôtes: ce module étiquette les hôtes, configurés soit en les spécifiant manuellement, soit en utilisant un fichier hosts distant. Vous pouvez l'utiliser pour vous avertir de la visite de sites dangereux ou spéciaux. La configuration intégrée spécifie les fichiers hosts de StevenBlack (adware/malware, fakenews, jeu et contenu pour adultes) depuis l'adresse https://github.com/StevenBlack/hosts.
+
 * Module de débogage: affiche l'uri d'intention et éventuellement des informations sur le service ctabs (onglets personnalisés). Ceci est destiné aux développeurs.
 
 * Module d'ouverture: contient les boutons d'ouverture et de partage. Si un lien peut être ouvert avec plusieurs applications, une flèche s'affiche pour vous permettre de choisir. Ne peut pas être désactivé.
