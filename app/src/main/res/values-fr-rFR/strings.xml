@@ -193,4 +193,28 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_edit">Éditer le registre</string>
     <string name="mLog_empty">Aucune données</string>
 
+    <string name="mHosts_name">Vérificateur d\'hôtes</string>
+    <string name="mHosts_desc">"Ce module étiquette les hôtes, configurés soit en les spécifiant manuellement, soit en utilisant un fichier 'Hosts' distants. Vous pouvez l'utiliser pour vous avertir à propos des sites dangereux ou spéciaux. La configuration intégrée utilise les fichiers hosts de StevenBlack (publicitaires/malveillants, fakenews, jeu et contenu pour adultes) à l'adresse https://github.com/StevenBlack/hosts"</string>
+    <string name="mHosts_malware">publicitaires/malveillants</string>
+    <string name="mHosts_fakenews">fakenews</string>
+    <string name="mHosts_gambling">jeux d\'argent</string>
+    <string name="mHosts_adult">contenu réservé aux adultes</string>
+    <string name="mHosts_build">Construire</string>
+    <string name="mHosts_uninitialized">Base de données non initialisée. Touchez pour construire</string>
+    <string name="mHosts_parseError">"Impossible d'analyser l'hôte de l'url"</string>
+    <string name="mHosts_editor">"Paramétrage des hôtes. Format : liste d'objets où la clé est l'étiquette des hôtes et le contenu inclut les valeurs facultatives suivantes :
+- file: une URL d'un fichier d'hôtes distants à télécharger. Toutes les entrées d'hôtes valides présentes seront ajoutées.
+- hosts: Liste des hosts bruts à ajouter.
+- color: Une chaîne Android représentant une couleur (#AARRGGBB, #RRGGBB ou un nom de couleur valide). La valeur par défaut est un rouge «danger».
+- replace: si faux (false) les hôtes existants ne seront pas remplacés. Notez que les objets sont évalués de haut en bas. Vrai (true) par défaut.
+- enabled: si faux (false), l'entrée entière ne sera pas évaluée."</string>
+    <string name="mHosts_buildTitle">Construire la base de données des hôtes (Hosts)</string>
+    <string name="mHosts_buildDesc">Cela effacera la base de données des hôtes actuels et la construira avec les hôtes configurés, en les téléchargeant depuis Internet si nécessaire. Cette action peut prendre quelques secondes. Continuer?</string>
+    <string name="mHosts_buildProgress">Construction du fichier d\'hôtes</string>
+    <string name="mHosts_buildInit">Initialisation</string>
+    <string name="mHosts_buildClear">Nettoyage…</string>
+    <string name="mHosts_buildDownload">"Téléchargement de '%s' hôtes depuis %s…"</string>
+    <string name="mHosts_buildSave">Enregistrement…</string>
+    <string name="mHosts_built">Base de données construite: %d hôtes</string>
+
 </resources>

@@ -205,7 +205,7 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
 - file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
 - color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo 'peligro' por defecto.
 - replace: si es 'false' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. 'true' por defecto.
--enabled: si es 'false' el objeto entero se ignorará. 'true' por defecto."</string>
+- enabled: si es 'false' el objeto entero se ignorará. 'true' por defecto."</string>
     <string name="mHosts_buildTitle">Generar catálogo de hosts</string>
     <string name="mHosts_buildDesc">Esto eliminará el catálogo actual y lo generará con la configuración actual, descargando ficheros de hosts de internet si es necesario. Esta acción puede durar varios segundos. ¿Continuar?</string>
     <string name="mHosts_buildProgress">Generando base de datos</string>
