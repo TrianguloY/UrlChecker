@@ -41,6 +41,7 @@ public class ConfigActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
+        setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);
 
         list = findViewById(R.id.list);

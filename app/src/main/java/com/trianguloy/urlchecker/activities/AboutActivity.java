@@ -37,6 +37,7 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        setTitle(R.string.a_about);
         AndroidUtils.configureUp(this);
 
         // on release, append version to the action bar title
