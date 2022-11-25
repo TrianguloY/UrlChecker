@@ -116,6 +116,7 @@ public class MainDialog extends Activity {
     // ------------------- initialize -------------------
 
     private LinearLayout ll_mods;
+    private boolean showDecorations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +130,7 @@ public class MainDialog extends Activity {
         ll_mods = findViewById(R.id.middle_modules);
 
         // initialize
+        showDecorations = ModuleManager.DECORATIONS_PREF(this).get();
         initializeModules();
 
         // load url
@@ -175,7 +177,7 @@ public class MainDialog extends Activity {
 
                 ViewGroup parent;
                 // set module block
-                if (moduleData.showDecorations()) {
+                if (showDecorations) {
                     // init decorations
                     View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
                     final TextView title = block.findViewById(R.id.title);

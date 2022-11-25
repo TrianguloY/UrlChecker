@@ -68,14 +68,21 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/box"
+    <LinearLayout
+        android:id="@+id/details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
+            <FrameLayout
+                android:id="@+id/box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
 
-    </FrameLayout>
+                </FrameLayout>
+        <include layout="@layout/separator" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -33,6 +33,7 @@ public class ConfigActivity extends Activity {
     private LinearLayout list;
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
     private GenericPref.LstStr order;
+    private GenericPref.Bool showDecorations;
 
     // ------------------- listeners -------------------
 
@@ -44,6 +45,9 @@ public class ConfigActivity extends Activity {
 
         list = findViewById(R.id.list);
         order = ModuleManager.ORDER_PREF(this);
+        showDecorations = ModuleManager.DECORATIONS_PREF(this);
+
+        initConfig();
 
         // initialize modules
         for (AModuleData module : ModuleManager.getModules(true, this)) {
@@ -65,6 +69,10 @@ public class ConfigActivity extends Activity {
     }
 
     // ------------------- actions -------------------
+
+    private void initConfig() {
+        showDecorations.attachToCheckBox(findViewById(R.id.showDecorations));
+    }
 
     /**
      * Initializes and adds a module to the list
@@ -102,13 +110,14 @@ public class ConfigActivity extends Activity {
         AndroidUtils.setAsClickable(title);
 
         // configuration of the module
-        final View child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
+        var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
         config.onInitialize(child);
 
         // configure toggleable description
+        final var description = parent.findViewById(R.id.details);
         title.setOnClickListener(v -> {
-            boolean checked = child.getVisibility() == View.GONE;
-            child.setVisibility(checked ? View.VISIBLE : View.GONE);
+            boolean checked = description.getVisibility() == View.GONE;
+            description.setVisibility(checked ? View.VISIBLE : View.GONE);
             AndroidUtils.setStartDrawables(title,
                     checked ? R.drawable.arrow_down : R.drawable.arrow_right);
         });

@@ -24,6 +24,8 @@ import java.util.List;
  */
 public class ModuleManager {
 
+    /* ------------------- list ------------------- */
+
     private final static List<AModuleData> modules = new ArrayList<>();
 
     static {
@@ -44,6 +46,8 @@ public class ModuleManager {
         modules.add(new OpenModule());
     }
 
+    /* ------------------- order ------------------- */
+
     /**
      * Order of the modules
      */
@@ -58,7 +62,7 @@ public class ModuleManager {
     }
 
 
-    // ------------------- class -------------------
+    // ------------------- enabled/disabled -------------------
 
     private static final String PREF_SUFFIX = "_en";
 
@@ -68,6 +72,18 @@ public class ModuleManager {
     public static GenericPref.Bool getEnabledPrefOfModule(AModuleData module, Context cntx) {
         return new GenericPref.Bool(module.getId() + PREF_SUFFIX, module.isEnabledByDefault(), cntx);
     }
+
+
+    // ------------------- decorations -------------------
+
+    /**
+     * Returns a preference to indicate if decorations are shown or not
+     */
+    public static GenericPref.Bool DECORATIONS_PREF(Context cntx) {
+        return new GenericPref.Bool("showDecorations", false, cntx);
+    }
+
+    /* ------------------- getter ------------------- */
 
     /**
      * Returns the uninitialized modules based on the user order.
