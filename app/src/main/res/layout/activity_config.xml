@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="@dimen/smallPadding"
     tools:context=".activities.ConfigActivity">
 
     <LinearLayout
@@ -15,7 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/smallPadding"
+            android:paddingTop="@dimen/padding"
+            android:paddingRight="@dimen/smallPadding"
+            android:paddingBottom="@dimen/padding"
             android:text="@string/txt_conf" />
+        <include layout="@layout/separator" />
 
         <CheckBox
             android:id="@+id/showDecorations"
@@ -33,9 +38,13 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginEnd="@dimen/padding"
+            android:layout_marginRight="@dimen/padding"
             android:onClick="resetOrder"
             android:text="@string/reset_order" />
-
+        <include layout="@layout/separator" />
         <LinearLayout
             android:id="@+id/list"
             android:layout_width="match_parent"

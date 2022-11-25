@@ -8,15 +8,18 @@
         <item name="android:navigationBarColor">?android:attr/colorBackground</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
 
     <style name="DialogThemeDark" parent="android:Theme.DeviceDefault.Dialog">
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
 
     <style name="DialogThemeLight" parent="android:Theme.DeviceDefault.Light.Dialog">
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
 </resources>
