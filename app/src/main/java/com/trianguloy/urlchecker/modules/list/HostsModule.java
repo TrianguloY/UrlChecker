@@ -136,7 +136,7 @@ class HostsDialog extends AModuleDialog {
                 AndroidUtils.setRoundedColor(R.color.bad, text);
             }
         } else {
-            text.setText(android.R.string.ok);
+            text.setText(R.string.mHosts_noLabel);
             AndroidUtils.clearRoundedColor(text);
         }
     }

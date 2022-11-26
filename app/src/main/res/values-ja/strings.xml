@@ -67,6 +67,7 @@
     <string name="mStatus_ioerror">URLの確認中にネットワークエラーが発生しました: %s</string>
     <string name="mStatus_error">URLのチェック中に内部エラーが発生しました: %s</string>
     <string name="mStatus_check">確認</string>
+    <string name="mStatus_recheck">確認</string>
     <string name="mStatus_checking">チェック中…</string>
     <string-array name="mStatus_codes">
         <item>200: 成功</item>

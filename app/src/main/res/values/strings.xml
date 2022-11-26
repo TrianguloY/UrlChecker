@@ -86,7 +86,8 @@ If the result is a redirection, you will be able to view the destination url.
 The url content is obtained (GET), but not evaluated, so redirections based on javascript won't be detected."</string>
     <string name="mStatus_ioerror">Network error while trying to check the url: %s</string>
     <string name="mStatus_error">Internal error while trying to check the url: %s</string>
-    <string name="mStatus_check">Check</string>
+    <string name="mStatus_check">Check status</string>
+    <string name="mStatus_recheck">Check</string>
     <string name="mStatus_checking">Checking…</string>
     <string-array name="mStatus_codes">
         <item>200: OK</item>
@@ -152,7 +153,7 @@ Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</st
     <string name="mClear_forcedRedirection">- forced redirection found</string>
     <string name="mClear_redirection">- redirection found</string>
     <string name="mClear_cleared">- Cleared</string>
-    <string name="mClear_noRules">Nothing found</string>
+    <string name="mClear_noRules">No rules match</string>
     <string name="mClear_auto">Apply automatically</string>
     <string name="mClear_toggleReferral">"Enable referral marketing (referral parameters won't be cleared)"</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
@@ -194,14 +195,16 @@ To disable logging, just disable the module."</string>
     <string name="mLog_edit">Edit log</string>
     <string name="mLog_empty">No data</string>
 
-    <string name="mHosts_name">Hosts checker</string>
+    <string name="mHosts_name">Hosts labeler</string>
     <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_noLabel">no label</string>
     <string name="mHosts_fakenews">fakenews</string>
     <string name="mHosts_gambling">gambling</string>
     <string name="mHosts_adult">adult content</string>
     <string name="mHosts_build">Build</string>
-    <string name="mHosts_uninitialized">Database uninitialized. Press to build</string>
+    <string name="mHosts_uninitialized">Hosts database uninitialized. Press to build</string>
     <string name="mHosts_parseError">"Can't parse url host"</string>
     <string name="mHosts_editor">"Hosts configuration. Format: List of objects where the key is the hosts label and the content includes the following optional values:
 - file: An url of a remote hosts-file to download. All valid hosts present will be added.

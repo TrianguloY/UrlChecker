@@ -85,7 +85,8 @@ Si el resultado es una redirección, podrás ver la url destino.
 El contenido de la url se pide (GET), pero no se evalúa, con lo que redirecciones basadas en javascript no serán detectadas.</string>
     <string name="mStatus_ioerror">Error de red al intentar comprobar la url: %s</string>
     <string name="mStatus_error">Error interno al intentar comprobar la url: %s</string>
-    <string name="mStatus_check">Comprobar</string>
+    <string name="mStatus_check">Comprobar código de estado</string>
+    <string name="mStatus_recheck">Comprobar</string>
     <string name="mStatus_checking">Comprobando…</string>
     <string-array name="mStatus_codes">
         <item>200: OK</item>
@@ -151,7 +152,7 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_forcedRedirection">- contiene redirección forzada</string>
     <string name="mClear_redirection">- contiene redirección</string>
     <string name="mClear_cleared">- Limpiado</string>
-    <string name="mClear_noRules">No se ha encontrado nada</string>
+    <string name="mClear_noRules">Sin reglas que aplicar</string>
     <string name="mClear_auto">Aplicar automáticamente</string>
     <string name="mClear_toggleReferral">Permitir parámetros de referencia de marketing (no serán limpiados)</string>
     <string name="mClear_toggleVerbose">Mostrar información detallada del proceso de limpieza</string>
@@ -193,14 +194,16 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mLog_edit">Edit log</string>
     <string name="mLog_empty">No data</string>
 
-    <string name="mHosts_name">Comprobador de hosts</string>
+    <string name="mHosts_name">Etiquetador de hosts</string>
     <string name="mHosts_desc">Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts</string>
     <string name="mHosts_malware">software dañino</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_noLabel">sin etiqueta</string>
     <string name="mHosts_fakenews">noticias falsas</string>
     <string name="mHosts_gambling">juego/apuestas</string>
     <string name="mHosts_adult">contenido de adulto</string>
     <string name="mHosts_build">Generar</string>
-    <string name="mHosts_uninitialized">Catálogo sin inicializar. Pulsa para generarlo</string>
+    <string name="mHosts_uninitialized">Catálogo de hosts sin inicializar. Pulsa para generarlo</string>
     <string name="mHosts_parseError">No se ha podido obtener el host</string>
     <string name="mHosts_editor">"Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
 - file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.

@@ -75,6 +75,7 @@ O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos 
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
     <string name="mStatus_check">Verificar</string>
+    <string name="mStatus_recheck">Verificar</string>
     <string name="mStatus_checking">Verificando…</string>
     <string-array name="mStatus_codes">
         <item>200: OK</item>

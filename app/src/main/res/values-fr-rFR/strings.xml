@@ -86,6 +86,7 @@ Le contenu de l'url est obtenu (GET), mais n'est pas évaluée, les redirections
     <string name="mStatus_ioerror">Erreur réseau lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_error">Erreur interne lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_check">Vérifier</string>
+    <string name="mStatus_recheck">Vérifier</string>
     <string name="mStatus_checking">Vérification…</string>
     <string-array name="mStatus_codes">
         <item>200: Bon</item>

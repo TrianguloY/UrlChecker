@@ -68,6 +68,7 @@
     <string name="mStatus_ioerror">שגיאת רשת בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_error">שגיאה פנימית בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_check">חשבון</string>
+    <string name="mStatus_recheck">חשבון</string>
     <string name="mStatus_checking">בודק…</string>
     <string-array name="mStatus_codes">
         <item>200: אוקיי</item>

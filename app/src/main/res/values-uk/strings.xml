@@ -50,6 +50,7 @@ Translations: %s."</string>
     <string name="mStatus_ioerror">Відбулась проблема з підключенням під час перевірки посилання: %s</string>
     <string name="mStatus_error">Внутрішня проблема під час перевірки посилання: %s</string>
     <string name="mStatus_check">Перевірити</string>
+    <string name="mStatus_recheck">Перевірити</string>
     <string name="mStatus_checking">Перевіряємо…</string>
     <string-array name="mStatus_codes">
         <item>200: OK</item>

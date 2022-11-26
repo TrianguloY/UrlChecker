@@ -67,7 +67,6 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     @Override
     public void onInitialize(View views) {
         check = views.findViewById(R.id.button);
-        check.setText(R.string.mStatus_check);
         check.setOnClickListener(this);
         info = views.findViewById(R.id.text);
     }
@@ -76,6 +75,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     public void onNewUrl(UrlData urlData) {
         // reset all
         check.setEnabled(true);
+        check.setText(R.string.mStatus_check);
         info.setText("");
     }
 
@@ -94,6 +94,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     private void check() {
         // disable button and run in background
         check.setEnabled(false);
+        check.setText(R.string.mStatus_recheck);
         info.setText(R.string.mStatus_checking);
 
         new Thread(this::_check).start();

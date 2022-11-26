@@ -52,6 +52,7 @@ Translations: %s."</string>
     <string name="mStatus_ioerror">URL\'yi kontrol etmeye çalışırken ağ hatası: %s</string>
     <string name="mStatus_error">URL\'yi kontrol etmeye çalışırken dahili hata: %s</string>
     <string name="mStatus_check">Kontrol et</string>
+    <string name="mStatus_recheck">Kontrol et</string>
     <string name="mStatus_checking">Kontrol ediliyor...</string>
     <string-array name="mStatus_codes">
         <item>200: Tamam</item>
