@@ -1,18 +1,19 @@
 <resources>
     <!-- main -->
-    <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認し、設定することができます。</string>
+    <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認・設定することができます。</string>
     <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>
     <string name="a_modules">モジュール</string>
     <string name="a_about">このアプリについて</string>
 
     <!-- about -->
-    <string name="txt_about">このアプリは TrianguloY によって開発されました。\n\n貢献者: %s。\n翻訳者: %s.</string>
+    <string name="txt_about">このアプリは TrianguloY によって開発されました。\n\n貢献者: %s。\n翻訳者: %s</string>
     <string name="link_blog">TrianguloY のブログ</string>
 
     <!-- configuration -->
     <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化することができ、タップすると、その説明と設定も確認できます。</string>
     <string name="toast_cantEnable">モジュールを有効にできません。設定を忘れていませんか？</string>
     <string name="reset_order">並び順をリセット</string>
+    <string name="chk_decorations">モジュールの名を表示する</string>
 
     <!-- generic -->
     <string name="toast_noApp">アプリを開けません</string>
@@ -54,7 +55,7 @@
     <string name="mOpen_closeOpen">開いた後にダイアログを閉じる</string>
     <string name="mOpen_closeShare">共有後にダイアログを閉じる</string>
     <string name="mOpen_perDomain">異なるドメインを個別にソートする</string>
-    <string name="mOpen_noReferrer">送信元アプリ(リファラー)を非表示にする</string>
+    <string name="mOpen_noReferrer">「開く」オプションで呼び出し元のアプリを非表示にする</string>
     <string name="mOpen_with">%s で開く</string>
     <string name="mOpen_open">開く</string>
     <string name="mOpen_share">共有</string>
@@ -66,8 +67,8 @@
     <string name="mStatus_desc">チェックボタンを押すと、サイトのステータスコードを取得し表示します。\n結果がリダイレクトの場合は、宛先URLが表示されます。\nURLコンテンツは取得 (GET) されますが、JavaScript によるリダイレ​​クトは評価されないため、検出されません。</string>
     <string name="mStatus_ioerror">URLの確認中にネットワークエラーが発生しました: %s</string>
     <string name="mStatus_error">URLのチェック中に内部エラーが発生しました: %s</string>
-    <string name="mStatus_check">確認</string>
-    <string name="mStatus_recheck">確認</string>
+    <string name="mStatus_check">ステータスコードを確認</string>
+    <string name="mStatus_recheck">チェック</string>
     <string name="mStatus_checking">チェック中…</string>
     <string-array name="mStatus_codes">
         <item>200: 成功</item>
@@ -92,7 +93,7 @@
     <string name="mInput_name">URLの表示</string>
     <string name="mInput_desc">手動で編集できる現在のURLを表示します。\n無効にすることはできません。</string>
 
-    <string name="mVT_name">URLスキャナー</string>
+    <string name="mVT_name">URL スキャナー</string>
     <string name="mVT_desc">このモジュールを有効にすると、VirusTotal を使用してURLをスキャンし、レポートを確認できます。\nこれが機能するには、個人用の VirusTotal API キーが必要です。https://www.virustotal.com/gui/join-us で無料アカウントに登録した後に取得できます。</string>
     <string name="mVT_apiKey">API キー</string>
     <string name="mVT_tm">VirusTotal™ は Google, Inc. の商標です。</string>
@@ -165,5 +166,26 @@
     <string name="mLog_view">ログを表示</string>
     <string name="mLog_edit">ログを編集</string>
     <string name="mLog_empty">ログはありません</string>
+
+    <string name="mHosts_name">ホスト ラベラー</string>
+    <string name="mHosts_desc">"このモジュールは、手動で指定するか、リモートホストのようなファイルを使って設定されたホストにラベル付けします。危険なサイトや特殊なサイトについて警告するために使用することができます。デフォルトの設定では、StevenBlack のホスト (アドウェア/マルウェア、fakenews、ギャンブル、アダルトコンテンツ) を https://github.com/StevenBlack/hosts から取得します。"</string>
+    <string name="mHosts_malware">アドウェア/マルウェア</string>
+    <string name="mHosts_info">ホスト:</string>
+    <string name="mHosts_noLabel">ラベルなし</string>
+    <string name="mHosts_fakenews">フェイクニュース</string>
+    <string name="mHosts_gambling">ギャンブル</string>
+    <string name="mHosts_adult">アダルトコンテンツ</string>
+    <string name="mHosts_build">データベースを作成</string>
+    <string name="mHosts_uninitialized">ホストデータベースが初期化されていません。\n「データベースを作成」を押してください。</string>
+    <string name="mHosts_parseError">"URLのホストファイルを解析できませんでした"</string>
+    <string name="mHosts_editor">"ホストの設定 です。\n形式: hosts ラベルをキーとした、オブジェクトのリスト。以下の値を含むことができます。\n- file: ダウンロードするリモートホストファイルのURL。ファイルに含まれるすべての有効なホストが追加されます。\n- hosts: 追加する生(raw)ホストのリスト(文字列)。\n- color: ラベルの色。Androidの色文字列 (#AARRGGBB, #RRGGBB または有効な色名)。デフォルトは「危険な」赤です。\n- replace: false の場合、既存のホストは置き換えられません。オブジェクトは上から下へ評価されることに注意してください。デフォルトでは true です。\n- enabled: false の場合、このオブジェクト全体がスキップされます。デフォルトでは true です。"</string>
+    <string name="mHosts_buildTitle">ホストデータベースの作成</string>
+    <string name="mHosts_buildDesc">この操作は、既存のホストデータベースを削除し、新しい設定でデータベースを作成します。必要であればインターネットからホストファイルをダウンロードします。この操作には数秒かかることがあります。続行しますか？</string>
+    <string name="mHosts_buildProgress">データベースを作成中…</string>
+    <string name="mHosts_buildInit">準備中…</string>
+    <string name="mHosts_buildClear">初期化中…</string>
+    <string name="mHosts_buildDownload">"%s個のホストを %s からダウンロード中…"</string>
+    <string name="mHosts_buildSave">保存中…</string>
+    <string name="mHosts_built">データベースが作成されました: %d個のホスト</string>
 
 </resources>
