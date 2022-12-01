@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         switch (view.getId()) {
             case R.id.modules:
                 // open setup
-                PackageUtils.startActivity(new Intent(this, ConfigActivity.class), R.string.toast_noApp, this);
+                PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
                 break;
             // TODO: add setup activity
             case R.id.about:

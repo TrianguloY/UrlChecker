@@ -22,7 +22,7 @@
         android:theme="@style/ActivityTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.AboutActivity" />
-        <activity android:name=".activities.ConfigActivity" />
+        <activity android:name=".activities.ModulesActivity" />
         <activity
             android:name=".dialogs.MainDialog"
             android:excludeFromRecents="true"

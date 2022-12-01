@@ -1,6 +1,6 @@
 package com.trianguloy.urlchecker.modules;
 
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 
 public abstract class AModuleData {
@@ -36,5 +36,5 @@ public abstract class AModuleData {
      * @param cntx for the fragment
      * @return the initialized module configuration class
      */
-    public abstract AModuleConfig getConfig(ConfigActivity cntx);
+    public abstract AModuleConfig getConfig(ModulesActivity cntx);
 }
