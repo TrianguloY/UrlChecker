@@ -160,6 +160,7 @@ public interface AndroidUtils {
 
     /**
      * @see ActionBar#setDisplayHomeAsUpEnabled(boolean)
+     * And don't forget to override onOptionsItemSelected!
      */
     static void configureUp(Activity activity) {
         var actionBar = activity.getActionBar();
