@@ -163,8 +163,7 @@ Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse
     <string name="mClear_forcedRedirection">- redirection forcée détectée</string>
     <string name="mClear_redirection">- redirection détectée</string>
     <string name="mClear_cleared">- Effacé</string>
-    <string name="mClear_noRules">Aucune règle correspondant</string>
-    <string name="mClear_noRules">Rien n\'a été trouvé</string>
+    <string name="mClear_noRules">Aucune règle correspondante</string>
     <string name="mClear_auto">Appliquer automatiquement</string>
     <string name="mClear_toggleReferral">"Autoriser le marketing de parrainage (les paramètres d'affiliations ne seront pas effacés)"</string>
     <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
