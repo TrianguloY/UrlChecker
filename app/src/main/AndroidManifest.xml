@@ -22,7 +22,8 @@
         android:theme="@style/ActivityTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.AboutActivity" />
-        <activity android:name=".activities.ConfigActivity" />
+        <activity android:name=".activities.ModulesActivity" />
+        <activity android:name=".activities.SettingsActivity" />
         <activity
             android:name=".dialogs.MainDialog"
             android:excludeFromRecents="true"
@@ -55,7 +56,8 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity"
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

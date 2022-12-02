@@ -13,7 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -61,7 +61,7 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new OpenConfig(cntx);
     }
 }
@@ -347,7 +347,7 @@ class OpenConfig extends AModuleConfig {
 
     private final GenericPref.Bool perDomainPref;
 
-    public OpenConfig(ConfigActivity activity) {
+    public OpenConfig(ModulesActivity activity) {
         super(activity);
         ctabsPref = CTabs.PREF(activity);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);

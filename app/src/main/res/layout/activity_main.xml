@@ -70,8 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding"
             android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_manage"
-            android:drawableLeft="@android:drawable/ic_menu_manage"
+            android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
             android:drawablePadding="@dimen/smallPadding"
             android:onClick="onClick"
             android:paddingLeft="@dimen/padding"
@@ -79,11 +79,26 @@
             android:text="@string/a_modules" />
 
         <Button
+            android:id="@+id/settings"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:layout_weight="1"
+            android:drawableStart="@android:drawable/ic_menu_preferences"
+            android:drawableLeft="@android:drawable/ic_menu_preferences"
+            android:drawablePadding="@dimen/smallPadding"
+            android:onClick="onClick"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:text="@string/a_settings" />
+
+        <Button
             android:id="@+id/about"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding"
+            android:layout_marginTop="@dimen/smallPadding"
             android:layout_weight="1"
             android:drawableStart="@android:drawable/ic_menu_info_details"
             android:drawableLeft="@android:drawable/ic_menu_info_details"

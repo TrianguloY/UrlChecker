@@ -2,7 +2,7 @@ package com.trianguloy.urlchecker.modules;
 
 import android.app.Activity;
 
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.utilities.Fragment;
 
 /**
@@ -12,7 +12,7 @@ public abstract class AModuleConfig implements Fragment {
 
     // ------------------- private data -------------------
 
-    private final ConfigActivity activity;
+    private final ModulesActivity activity;
 
     // ------------------- initialization -------------------
 
@@ -20,7 +20,7 @@ public abstract class AModuleConfig implements Fragment {
         this.activity = null;
     }
 
-    public AModuleConfig(ConfigActivity activity) {
+    public AModuleConfig(ModulesActivity activity) {
         this.activity = activity;
     }
 

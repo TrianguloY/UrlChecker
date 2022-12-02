@@ -1,5 +1,6 @@
 package com.trianguloy.urlchecker.utilities;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -69,6 +70,22 @@ public interface PackageUtils {
     static void startActivity(Intent intent, int string, Context cntx) {
         try {
             cntx.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(cntx, string, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Wrapper for startActivityForResult to catch ActivityNotFoundException
+     *
+     * @param intent      intent to open
+     * @param requestCode the request code to use
+     * @param string      toast shown on ActivityNotFoundException
+     * @param cntx        base context
+     */
+    static void startActivityForResult(Intent intent, int requestCode, int string, Activity cntx) {
+        try {
+            cntx.startActivityForResult(intent, requestCode);
         } catch (ActivityNotFoundException e) {
             Toast.makeText(cntx, string, Toast.LENGTH_SHORT).show();
         }

@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -60,7 +60,7 @@ public class ClearUrlModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new ClearUrlConfig(cntx);
     }
 }
@@ -73,7 +73,7 @@ class ClearUrlConfig extends AModuleConfig {
 
     private final ClearUrlCatalog catalog;
 
-    public ClearUrlConfig(ConfigActivity activity) {
+    public ClearUrlConfig(ModulesActivity activity) {
         super(activity);
         allowReferral = ClearUrlModule.REFERRAL_PREF(activity);
         verbose = ClearUrlModule.VERBOSE_PREF(activity);

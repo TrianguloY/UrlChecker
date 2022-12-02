@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -45,7 +45,7 @@ public class PatternModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new PatternConfig(cntx);
     }
 }
@@ -54,7 +54,7 @@ class PatternConfig extends AModuleConfig {
 
     private final PatternCatalog catalog;
 
-    public PatternConfig(ConfigActivity cntx) {
+    public PatternConfig(ModulesActivity cntx) {
         super(cntx);
         catalog = new PatternCatalog(cntx);
     }

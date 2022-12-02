@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * An activity that shows the list of modules that can be enabled/disabled
  */
-public class ConfigActivity extends Activity {
+public class ModulesActivity extends Activity {
 
     private LinearLayout list;
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
@@ -40,7 +40,7 @@ public class ConfigActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_config);
+        setContentView(R.layout.activity_modules);
         setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);
 
@@ -92,7 +92,7 @@ public class ConfigActivity extends Activity {
         toggleEnable.setChecked(enabled_pref.get());
         toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked && !config.canBeEnabled()) {
-                Toast.makeText(ConfigActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
+                Toast.makeText(ModulesActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
                 buttonView.setChecked(false);
             } else {
                 enabled_pref.set(isChecked);
