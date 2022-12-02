@@ -3,6 +3,7 @@
     <string name="txt_info">Cette application agit comme une étape intermédiaire pour l\'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l\'ouvrir, une boîte de dialogue contenant des informations sur le lien s\'affiche. Appuyez sur le bouton Module ci-dessous pour vérifier et configurer tous les modules disponibles.</string>
     <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:</string>
     <string name="a_modules">Modules</string>
+    <string name="a_settings">Paramètres</string>
     <string name="a_about">À Propos</string>
 
     <!-- about -->
@@ -15,10 +16,19 @@ Traduction: %s."</string>
     <string name="link_source">Code source</string>
     <string name="link_privacy">Politique de confidentialité</string>
 
-    <!-- configuration -->
+    <!-- modules -->
     <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
     <string name="reset_order">Réinitialiser l\'ordre</string>
+    <string name="chk_decorations">Afficher le titres des modules</string>
+
+    <!-- settings -->
+    <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci correctement et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour votre appareil, si les liens ne fonctionnent pas, essayez-les tous.</string>
+    <string name="btn_setBrowser">Définir comme navigateur par défaut</string>
+    <string name="toast_defaultSet">L\'application est définie en tant que navigateur par défaut</string>
+    <string name="btn_configureBrowser">Configurer le navigateur par défaut</string>
+    <string name="btn_linksSettings">Ouvrir les liens compatibles</string>
+    <string name="btn_androidSettings">Ouvrir les paramètres Android de l\'application</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
@@ -31,6 +41,7 @@ Traduction: %s."</string>
     <string name="clear">Effacer</string>
     <string name="auto">Automatique</string>
     <string name="share">Partager</string>
+    <string name="canceled">Annulé</string>
 
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
@@ -85,7 +96,7 @@ Si le résultat est une redirection, vous pourrez voir l'url de destination.
 Le contenu de l'url est obtenu (GET), mais n'est pas évaluée, les redirections basées sur javascript ne seront donc pas détectées."</string>
     <string name="mStatus_ioerror">Erreur réseau lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_error">Erreur interne lors de la tentative de vérification de l\'URL: %s</string>
-    <string name="mStatus_check">Vérifier</string>
+    <string name="mStatus_check">Vérifier le statut</string>
     <string name="mStatus_recheck">Vérifier</string>
     <string name="mStatus_checking">Vérification…</string>
     <string-array name="mStatus_codes">
@@ -152,7 +163,7 @@ Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse
     <string name="mClear_forcedRedirection">- redirection forcée détectée</string>
     <string name="mClear_redirection">- redirection détectée</string>
     <string name="mClear_cleared">- Effacé</string>
-    <string name="mClear_noRules">Rien n\'a été trouvé</string>
+    <string name="mClear_noRules">Aucune règle correspondante</string>
     <string name="mClear_auto">Appliquer automatiquement</string>
     <string name="mClear_toggleReferral">"Autoriser le marketing de parrainage (les paramètres d'affiliations ne seront pas effacés)"</string>
     <string name="mClear_toggleVerbose">Activer les informations détaillées pour le processus de correspondance</string>
@@ -194,14 +205,16 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_edit">Éditer le registre</string>
     <string name="mLog_empty">Aucune données</string>
 
-    <string name="mHosts_name">Vérificateur d\'hôtes</string>
+    <string name="mHosts_name">Étiqueteur d\'hôtes</string>
     <string name="mHosts_desc">"Ce module étiquette les hôtes, configurés soit en les spécifiant manuellement, soit en utilisant un fichier 'Hosts' distants. Vous pouvez l'utiliser pour vous avertir à propos des sites dangereux ou spéciaux. La configuration intégrée utilise les fichiers hosts de StevenBlack (publicitaires/malveillants, fakenews, jeu et contenu pour adultes) à l'adresse https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">publicitaires/malveillants</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_noLabel">pas d\'étiquette</string>
     <string name="mHosts_fakenews">fakenews</string>
     <string name="mHosts_gambling">jeux d\'argent</string>
     <string name="mHosts_adult">contenu réservé aux adultes</string>
     <string name="mHosts_build">Construire</string>
-    <string name="mHosts_uninitialized">Base de données non initialisée. Touchez pour construire</string>
+    <string name="mHosts_uninitialized">Base de données d\'hôtes non initialisée. Touchez pour la construire</string>
     <string name="mHosts_parseError">"Impossible d'analyser l'hôte de l'url"</string>
     <string name="mHosts_editor">"Paramétrage des hôtes. Format : liste d'objets où la clé est l'étiquette des hôtes et le contenu inclut les valeurs facultatives suivantes :
 - file: une URL d'un fichier d'hôtes distants à télécharger. Toutes les entrées d'hôtes valides présentes seront ajoutées.
