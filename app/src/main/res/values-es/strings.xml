@@ -3,6 +3,7 @@
     <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Al hacer click en uno y abrirlo en esta aplicación, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
     <string name="a_modules">Módulos</string>
+    <string name="a_settings">Ajustes</string>
     <string name="a_about">Acerca de</string>
 
     <!-- about -->
@@ -15,11 +16,24 @@ Traducciones: %s."</string>
     <string name="link_source">Código fuente</string>
     <string name="link_privacy">Política de privacidad</string>
 
-    <!-- configuration -->
+    <!-- modules -->
     <string name="txt_conf">Lista de módulos: puedes habilitarlos o deshabilitarlos, ver su descripción y configurarlos.</string>
     <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
     <string name="reset_order">Reiniciar orden</string>
     <string name="chk_decorations">Mostrar el título de los módulos</string>
+
+
+    <!-- settings -->
+    <string name="txt_openLinks">Abrir enlaces en esta app: A lo largo de los años Android ha cambiado la forma de configurarlo, y varía entre versiones. Debajo se muestran los diversos ajustes disponibles en tu dispositivo, si los enlaces no se abren en esta aplicación pruébalos todos.</string>
+    <string name="btn_setBrowser">Usar como navegador por defecto</string>
+    <string name="toast_defaultSet">La aplicación se ha configurado como el navegador por defecto</string>
+    <string name="btn_configureBrowser">Navegador por defecto</string>
+    <string name="btn_linksSettings">Abrir enlaces soportados</string>
+    <string name="btn_androidSettings">Ajustes de Android de la aplicación</string>
+    <string name="txt_theme">Tema de la aplicación:</string>
+    <string name="spin_defaultTheme">Por defecto del dispositivo</string>
+    <string name="spin_darkTheme">Oscuro</string>
+    <string name="spin_lightTheme">Claro</string>
 
     <!-- generic -->
     <string name="toast_noApp">No se puede abrir la aplicación</string>
@@ -32,6 +46,7 @@ Traducciones: %s."</string>
     <string name="clear">Borrar</string>
     <string name="auto">Automático</string>
     <string name="share">Compartir</string>
+    <string name="canceled">Cancelado</string>
 
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
