@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
@@ -27,11 +28,13 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, false);
         setContentView(R.layout.activity_settings);
         setTitle(R.string.a_settings);
         AndroidUtils.configureUp(this);
 
         configureBrowserButtons();
+        configureDayNight();
     }
 
 
@@ -133,5 +136,17 @@ public class SettingsActivity extends Activity {
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                 Uri.parse("package:" + getPackageName())
         ), R.string.toast_noApp, this);
+    }
+
+    /* ------------------- day/night ------------------- */
+
+    /**
+     * init dayNight spinner
+     */
+    private void configureDayNight() {
+        AndroidSettings.THEME_PREF(this).attachToSpinner(
+                this.findViewById(R.id.theme),
+                o -> AndroidSettings.reload(SettingsActivity.this)
+        );
     }
 }

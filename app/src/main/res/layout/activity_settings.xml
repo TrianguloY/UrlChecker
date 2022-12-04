@@ -57,7 +57,29 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openAppDetails"
-                android:text="@string/btn_androidSettings" /></LinearLayout>
+                android:text="@string/btn_androidSettings" />
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/smallPadding"
+            android:paddingBottom="@dimen/smallPadding">
+            <include layout="@layout/separator" />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_theme" />
+            <Spinner
+                android:id="@+id/theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
@@ -36,6 +37,7 @@ public class AboutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, false);
         setContentView(R.layout.activity_about);
         setTitle(R.string.a_about);
         AndroidUtils.configureUp(this);

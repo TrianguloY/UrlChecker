@@ -20,6 +20,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
@@ -120,8 +121,8 @@ public class MainDialog extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AndroidUtils.setTheme(this);
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, true);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
         setFinishOnTouchOutside(true);

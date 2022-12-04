@@ -13,6 +13,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -40,6 +41,7 @@ public class ModulesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, false);
         setContentView(R.layout.activity_modules);
         setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);

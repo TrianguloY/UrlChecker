@@ -28,17 +28,6 @@ import java.util.Date;
 public interface AndroidUtils {
 
     /**
-     * Sets the theme (light/dark mode) to an activity
-     */
-    static void setTheme(Activity activity) {
-        activity.setTheme(
-                (activity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
-                        ? R.style.DialogThemeLight // explicit light mode
-                        : R.style.DialogThemeDark // dark mode or device default
-        );
-    }
-
-    /**
      * Sets the start drawable of a textview
      * Wrapped for android compatibility
      */

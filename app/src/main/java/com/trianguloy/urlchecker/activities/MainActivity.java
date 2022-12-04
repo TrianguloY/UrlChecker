@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
@@ -23,9 +24,12 @@ import java.util.Locale;
  */
 public class MainActivity extends Activity {
 
+    private AndroidSettings.Theme previousTheme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, false);
         setContentView(R.layout.activity_main);
     }
 
@@ -66,6 +70,15 @@ public class MainActivity extends Activity {
             default:
                 AndroidUtils.assertError("Unknown view: " + view);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // check if the theme was changed, if so reload to apply
+        var currentTheme = AndroidSettings.THEME_PREF(this).get();
+        if (previousTheme == null) previousTheme = currentTheme;
+        if (previousTheme != currentTheme) AndroidSettings.reload(this);
     }
 
     /**

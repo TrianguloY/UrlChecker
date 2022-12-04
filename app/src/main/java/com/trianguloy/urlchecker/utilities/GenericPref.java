@@ -268,7 +268,7 @@ public abstract class GenericPref<T> {
         /**
          * Populate a spinner with this preference
          */
-        public void attachToSpinner(Spinner spinner) {
+        public void attachToSpinner(Spinner spinner, JavaUtils.Consumer<T> listener) {
             // Put elements in the spinner
             T[] values = type.getEnumConstants();
             List<String> names = new ArrayList<>(values.length);
@@ -293,11 +293,20 @@ public abstract class GenericPref<T> {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    set(values[i]);
+                    update(values[i]);
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
+                    update(defaultValue);
+                }
+
+                private void update(T newValue) {
+                    // set+notify if changed
+                    if (get() != newValue) {
+                        set(newValue);
+                        if (listener != null) listener.accept(newValue);
+                    }
                 }
             });
         }

@@ -23,12 +23,16 @@ Translations: %s."</string>
     <string name="chk_decorations">Show modules titles</string>
 
     <!-- settings -->
-    <string name="txt_openLinks">Open links on this app: Over the years Android has changed the way to correctly configure it, and differs between versions. Find below all available settings for your device, if links are not working try them all.</string>
+    <string name="txt_openLinks">Open links on this app: Over the years Android has changed the way to configure it, and differs between versions. Find below all available settings for your device, if links are not being opened on this app try them all.</string>
     <string name="btn_setBrowser">Set as default browser</string>
     <string name="toast_defaultSet">The app is set as the default browser</string>
-    <string name="btn_configureBrowser">Configure default browser</string>
+    <string name="btn_configureBrowser">Default browser</string>
     <string name="btn_linksSettings">Open supported links</string>
-    <string name="btn_androidSettings">Open android app settings</string>
+    <string name="btn_androidSettings">Android app settings</string>
+    <string name="txt_theme">App theme:</string>
+    <string name="spin_defaultTheme">Device default</string>
+    <string name="spin_darkTheme">Dark</string>
+    <string name="spin_lightTheme">Light</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Can't open application"</string>
