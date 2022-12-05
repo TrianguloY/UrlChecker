@@ -51,26 +51,17 @@ facilitating link holding and sharing, protecting against certain phishing techn
 
 <!-- ---------- Screenshots ---------- -->
 <p align="center">
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/1-title.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/2-dialog.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/3-dialog.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/4-modules.png" 
-    height="400"> 
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/5-modules.png" 
-    height="400">
-<img 
-    src="./app/src/main/play/listings/en-US/graphics/phone-screenshots/6-modules.png" 
-    height="400">
-</p>
+
+<div style="display: flex;">
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/1-title.png" width=30%>
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/2-dialog.png" width=30%>
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/3-dialog.png" width=30%>
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/4-modules.png" width=30%>
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/5-modules.png" width=30%>
+  <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/6-modules.png" width=30%>
 </div>
+
+</p>
 
 <!-- ---------- Contribution ---------- -->
 ## Contribution
