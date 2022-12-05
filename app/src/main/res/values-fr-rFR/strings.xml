@@ -23,12 +23,16 @@ Traduction: %s."</string>
     <string name="chk_decorations">Afficher le titres des modules</string>
 
     <!-- settings -->
-    <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci correctement et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour votre appareil, si les liens ne fonctionnent pas, essayez-les tous.</string>
+    <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour votre appareil, si les liens ne sont pas ouverts via URLCheck, essayez-les tous.</string>
     <string name="btn_setBrowser">Définir comme navigateur par défaut</string>
     <string name="toast_defaultSet">L\'application est définie en tant que navigateur par défaut</string>
-    <string name="btn_configureBrowser">Configurer le navigateur par défaut</string>
+    <string name="btn_configureBrowser">Navigateur par défaut</string>
     <string name="btn_linksSettings">Ouvrir les liens compatibles</string>
-    <string name="btn_androidSettings">Ouvrir les paramètres Android de l\'application</string>
+    <string name="btn_androidSettings">Paramètres Android de l\'application</string>
+    <string name="txt_theme">Thème de l\'application:</string>
+    <string name="spin_defaultTheme">Identique au système</string>
+    <string name="spin_darkTheme">Obscur</string>
+    <string name="spin_lightTheme">Clair</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
