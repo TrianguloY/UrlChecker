@@ -1,23 +1,18 @@
 package com.trianguloy.urlchecker.activities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
-import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -64,10 +59,6 @@ public class MainActivity extends Activity {
                 break;
             case R.id.m_img_icon:
                 // click on the app icon
-                if (BuildConfig.DEBUG) {
-                    chooseLocaleDebug();
-                    break;
-                }
                 Toast.makeText(this, getString(R.string.app_name) + " - TrianguloY", Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -86,27 +77,6 @@ public class MainActivity extends Activity {
         var currentLocale = AndroidSettings.LOCALE_PREF(this).get();
         if (previousLocale == null) previousLocale = currentLocale;
         if (!Objects.equals(previousLocale, currentLocale)) AndroidSettings.reload(this);
-    }
-
-    /**
-     * Debug-only way to change locale.
-     * To be replaced with a proper implementation with issue
-     * https://github.com/TrianguloY/UrlChecker/issues/45
-     */
-    private void chooseLocaleDebug() {
-        String[] locales = new String[]{"en", "es", "fr-FR", "iw", "pt-PT", "tr", "uk", "ja"};
-        new AlertDialog.Builder(this)
-                .setItems(locales, (dialog, which) -> {
-                    Configuration config = new Configuration();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        config.setLocale(Locale.forLanguageTag(locales[which]));
-                    } else {
-                        config.locale = new Locale(locales[which]);
-                    }
-                    getBaseContext().getResources().updateConfiguration(config, null);
-                    recreate();
-                })
-                .show();
     }
 
 }
