@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        <translator name>
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">English</string>
+
     <!-- main -->
     <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to check and configure all available modules.</string>
     <string name="txt_sample">Press the link below to test it:</string>
@@ -30,9 +38,9 @@ Translations: %s."</string>
     <string name="btn_linksSettings">Open supported links</string>
     <string name="btn_androidSettings">Android app settings</string>
     <string name="txt_theme">Theme:</string>
-    <string name="spin_defaultTheme">Device default</string>
     <string name="spin_darkTheme">Dark</string>
     <string name="spin_lightTheme">Light</string>
+    <string name="txt_locale">Locale:</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Can't open application"</string>
@@ -46,6 +54,7 @@ Translations: %s."</string>
     <string name="auto">Automatic</string>
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
+    <string name="deviceDefault">Device default</string>
 
 
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>

@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        404potato
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">日本語</string>
+
     <!-- main -->
     <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認・設定することができます。</string>
     <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>

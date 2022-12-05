@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Idris
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Українські</string>
+
     <!-- main -->
     <string name="txt_info">Ця програма виконує роль проміжного кроку відкриття посилань. Коли ви натискаєте на посилання та вибираєте цю програму для її відкриття, вона показує вам діалогове вікно з певною  інформацією про посилання. Натисніть на кнопку модулі нижче, щоб побачити доступні модул   і та те, що вони.</string>
     <string name="txt_sample">:Натисніть на посилання нижче, щоб перевірити:</string>

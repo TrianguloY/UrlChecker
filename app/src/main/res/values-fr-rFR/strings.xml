@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Ilithy
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Français</string>
+
     <!-- main -->
     <string name="txt_info">Cette application agit comme une étape intermédiaire pour l\'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l\'ouvrir, une boîte de dialogue contenant des informations sur le lien s\'affiche. Appuyez sur le bouton Module ci-dessous pour vérifier et configurer tous les modules disponibles.</string>
     <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:</string>
@@ -30,7 +38,6 @@ Traduction: %s."</string>
     <string name="btn_linksSettings">Ouvrir les liens compatibles</string>
     <string name="btn_androidSettings">Paramètres Android de l\'application</string>
     <string name="txt_theme">Thème de l\'application:</string>
-    <string name="spin_defaultTheme">Identique au système</string>
     <string name="spin_darkTheme">Obscur</string>
     <string name="spin_lightTheme">Clair</string>
 
@@ -46,6 +53,7 @@ Traduction: %s."</string>
     <string name="auto">Automatique</string>
     <string name="share">Partager</string>
     <string name="canceled">Annulé</string>
+    <string name="deviceDefault">Identique au système</string>
 
 
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>

@@ -18,6 +18,7 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * The activity to show when clicking the desktop shortcut (when 'opening' the app)
@@ -25,11 +26,13 @@ import java.util.Locale;
 public class MainActivity extends Activity {
 
     private AndroidSettings.Theme previousTheme;
+    private String previousLocale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
+        AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_main);
     }
 
@@ -79,6 +82,10 @@ public class MainActivity extends Activity {
         var currentTheme = AndroidSettings.THEME_PREF(this).get();
         if (previousTheme == null) previousTheme = currentTheme;
         if (previousTheme != currentTheme) AndroidSettings.reload(this);
+        // check if the locale was changed, if so reload to apply
+        var currentLocale = AndroidSettings.LOCALE_PREF(this).get();
+        if (previousLocale == null) previousLocale = currentLocale;
+        if (!Objects.equals(previousLocale, currentLocale)) AndroidSettings.reload(this);
     }
 
     /**

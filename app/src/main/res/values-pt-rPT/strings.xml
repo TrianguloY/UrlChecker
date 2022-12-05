@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Tiago Carmo
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Português de Portugal</string>
+
     <!-- main -->
     <string name="txt_info">Esta aplicação funciona como um intermediário para abrir links de URL. Quando clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
     <string name="txt_sample">Clique no link abaixo para testá ço:</string>

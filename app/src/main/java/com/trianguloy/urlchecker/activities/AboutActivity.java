@@ -38,6 +38,7 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
+        AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_about);
         setTitle(R.string.a_about);
         AndroidUtils.configureUp(this);

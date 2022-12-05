@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        TrianguloY and PabloOQ
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Español</string>
+
     <!-- main -->
     <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Al hacer click en uno y abrirlo en esta aplicación, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
@@ -31,9 +39,9 @@ Traducciones: %s."</string>
     <string name="btn_linksSettings">Abrir enlaces soportados</string>
     <string name="btn_androidSettings">Ajustes de Android de la aplicación</string>
     <string name="txt_theme">Tema:</string>
-    <string name="spin_defaultTheme">Por defecto del dispositivo</string>
     <string name="spin_darkTheme">Oscuro</string>
     <string name="spin_lightTheme">Claro</string>
+    <string name="txt_locale">Idioma:</string>
 
     <!-- generic -->
     <string name="toast_noApp">No se puede abrir la aplicación</string>
@@ -47,6 +55,7 @@ Traducciones: %s."</string>
     <string name="auto">Automático</string>
     <string name="share">Compartir</string>
     <string name="canceled">Cancelado</string>
+    <string name="deviceDefault">Por defecto del dispositivo</string>
 
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
