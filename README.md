@@ -67,8 +67,8 @@ facilitating link holding and sharing, protecting against certain phishing techn
 ## Contribution
 
 **All help is greatly welcomed!**  
-Feel free to **suggest changes**, create [**issues**](https://github.com/TrianguloY/UrlChecker/issues/new) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
-Translations are also greatly appreciated.
+Feel free to [**suggest changes**](https://github.com/TrianguloY/UrlChecker/issues/new), [**request a new feature**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=), create [**bug report**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=bug&template=bug_report.md&title=) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
+**Translations are also greatly appreciated.**
 
 See [CONTRIBUTING](docs/CONTRIBUTING.md) for code or translation details and tips.
 
