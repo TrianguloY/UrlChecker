@@ -50,7 +50,7 @@ public interface AndroidSettings {
     /**
      * Sets the theme (light/dark mode) to an activity
      */
-    static void setTheme(Activity activity, boolean dialog) {
+    static void setTheme(Context activity, boolean dialog) {
         int style;
         switch (THEME_PREF(activity).get()) {
             case DEFAULT:
@@ -78,6 +78,11 @@ public interface AndroidSettings {
         activity.setTheme(style);
     }
 
+    /* ------------------- general ------------------- */
+
+    /**
+     * destroys and recreates the activity (to apply changes)
+     */
     static void reload(Activity cntx) {
         Log.d("SETTINGS", "reloading");
         cntx.recreate();

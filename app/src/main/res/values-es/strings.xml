@@ -30,7 +30,7 @@ Traducciones: %s."</string>
     <string name="btn_configureBrowser">Navegador por defecto</string>
     <string name="btn_linksSettings">Abrir enlaces soportados</string>
     <string name="btn_androidSettings">Ajustes de Android de la aplicación</string>
-    <string name="txt_theme">Tema de la aplicación:</string>
+    <string name="txt_theme">Tema:</string>
     <string name="spin_defaultTheme">Por defecto del dispositivo</string>
     <string name="spin_darkTheme">Oscuro</string>
     <string name="spin_lightTheme">Claro</string>

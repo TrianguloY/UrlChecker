@@ -103,7 +103,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Integer value) {
+        protected void save(Integer value) {
             prefs.edit().putInt(prefName, value).apply();
         }
     }
@@ -122,7 +122,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Long value) {
+        protected void save(Long value) {
             prefs.edit().putLong(prefName, value).apply();
         }
     }
@@ -141,7 +141,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Boolean value) {
+        protected void save(Boolean value) {
             prefs.edit().putBoolean(prefName, value).apply();
         }
 
@@ -168,7 +168,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(String value) {
+        protected void save(String value) {
             prefs.edit().putString(prefName, value).apply();
         }
 
@@ -220,7 +220,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(List<String> value) {
+        protected void save(List<String> value) {
             prefs.edit().putString(prefName, join(value)).apply();
         }
 
@@ -261,7 +261,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(T value) {
+        protected void save(T value) {
             prefs.edit().putInt(prefName, value.getId()).apply();
         }
 
@@ -293,20 +293,15 @@ public abstract class GenericPref<T> {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    update(values[i]);
+                    // set+notify if changed
+                    if (get() != values[i]) {
+                        set(values[i]);
+                        if (listener != null) listener.accept(values[i]);
+                    }
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
-                    update(defaultValue);
-                }
-
-                private void update(T newValue) {
-                    // set+notify if changed
-                    if (get() != newValue) {
-                        set(newValue);
-                        if (listener != null) listener.accept(newValue);
-                    }
                 }
             });
         }
