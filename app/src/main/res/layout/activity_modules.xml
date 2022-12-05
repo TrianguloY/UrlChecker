@@ -20,20 +20,7 @@
             android:paddingRight="@dimen/smallPadding"
             android:paddingBottom="@dimen/padding"
             android:text="@string/txt_conf" />
-        <include layout="@layout/separator" />
 
-        <CheckBox
-            android:id="@+id/showDecorations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding"
-            android:layout_marginLeft="@dimen/padding"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:layout_marginEnd="@dimen/padding"
-            android:layout_marginRight="@dimen/padding"
-            android:layout_marginBottom="@dimen/smallPadding"
-            android:paddingRight="@dimen/padding"
-            android:text="@string/chk_decorations" />
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
@@ -44,7 +31,6 @@
             android:layout_marginRight="@dimen/padding"
             android:onClick="resetOrder"
             android:text="@string/reset_order" />
-        <include layout="@layout/separator" />
         <LinearLayout
             android:id="@+id/list"
             android:layout_width="match_parent"

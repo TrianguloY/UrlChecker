@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:animateLayoutChanges="true"
+    android:background="@drawable/round_border"
     android:orientation="vertical"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
@@ -10,8 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:paddingBottom="5dp">
+        android:animateLayoutChanges="true">
 
         <TextView
             android:id="@+id/label"
@@ -74,17 +76,27 @@
         android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
-            <FrameLayout
-                android:id="@+id/box"
+        android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/decorations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:paddingRight="25dp"
+                android:text="@string/chk_decorations" />
+        <include
+            layout="@layout/separator"
+            android:layout_height="wrap_content" />
+        <FrameLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
                 </FrameLayout>
-        <include layout="@layout/separator" />
-    </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>

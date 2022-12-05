@@ -28,7 +28,7 @@ Translations: %s."</string>
     <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
     <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
     <string name="reset_order">Reset Order</string>
-    <string name="chk_decorations">Show modules titles</string>
+    <string name="chk_decorations">Show module title</string>
 
     <!-- settings -->
     <string name="txt_openLinks">Open links on this app: Over the years Android has changed the way to configure it, and differs between versions. Find below all available settings for your device, if links are not being opened on this app try them all.</string>

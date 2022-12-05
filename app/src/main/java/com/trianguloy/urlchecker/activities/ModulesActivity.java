@@ -34,7 +34,6 @@ public class ModulesActivity extends Activity {
     private LinearLayout list;
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
     private GenericPref.LstStr order;
-    private GenericPref.Bool showDecorations;
 
     // ------------------- listeners -------------------
 
@@ -49,9 +48,6 @@ public class ModulesActivity extends Activity {
 
         list = findViewById(R.id.list);
         order = ModuleManager.ORDER_PREF(this);
-        showDecorations = ModuleManager.DECORATIONS_PREF(this);
-
-        initConfig();
 
         // initialize modules
         for (AModuleData module : ModuleManager.getModules(true, this)) {
@@ -73,10 +69,6 @@ public class ModulesActivity extends Activity {
     }
 
     // ------------------- actions -------------------
-
-    private void initConfig() {
-        showDecorations.attachToCheckBox(findViewById(R.id.showDecorations));
-    }
 
     /**
      * Initializes and adds a module to the list
@@ -112,6 +104,9 @@ public class ModulesActivity extends Activity {
         final TextView title = parent.findViewById(R.id.label);
         title.setText(getString(R.string.dd, getString(module.getName())));
         AndroidUtils.setAsClickable(title);
+
+        // configure generic settings
+        ModuleManager.getDecorationsPrefOfModule(module, this).attachToCheckBox(parent.findViewById(R.id.decorations));
 
         // configuration of the module
         var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
