@@ -43,8 +43,8 @@ height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlch
 <div align="center">
 
 **URLCheck** acts as an amazingly customizable and powerful
-intermediary when opening url links, allowing, among other things:  
-to remove trackers, affiliate links, unnecessary elements, check Hosts,  
+intermediary when opening url links, allowing, among other things:
+to remove trackers, affiliate links, unnecessary elements, check Hosts,
 facilitating link holding and sharing, protecting against certain phishing techniques and many more...
 
 </div>
@@ -67,7 +67,7 @@ facilitating link holding and sharing, protecting against certain phishing techn
 ## Contribution
 
 **All help is greatly welcomed!**  
-Feel free to [**suggest changes**](https://github.com/TrianguloY/UrlChecker/issues/new), [**request a new feature**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=), create [**bug report**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=bug&template=bug_report.md&title=) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
+Feel free to [**suggest changes**](https://github.com/TrianguloY/UrlChecker/issues/new), request a [**new feature**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=), create [**bug report**](https://github.com/TrianguloY/UrlChecker/issues/new?assignees=&labels=bug&template=bug_report.md&title=) or even [**pull request**](https://help.github.com/articles/about-pull-requests/). _(from a simple typo fix to a full new module or even more!)_  
 **Translations are also greatly appreciated.**
 
 See [CONTRIBUTING](docs/CONTRIBUTING.md) for code or translation details and tips.
@@ -88,5 +88,5 @@ You can use parts of this project in your own ones, or upload modified versions 
 
 **How to credit:**
 
-- You must add my nick [TrianguloY](https://github.com/TrianguloY/) in an `about` or `acknowledgments` section visible to the user.
-- You must add a link to this GitHub main page **https://github.com/TrianguloY/UrlChecker** or subpage (if you used a part of the code or an asset) in an `about` or `acknowledgments` section visible to the user.
+- You must add my nick [**TrianguloY**](https://github.com/TrianguloY/) in an `about` or `acknowledgments` section visible to the user.
+- You must add a link to this [**GitHub main page**](https://github.com/TrianguloY/UrlChecker) or subpage (if you used a part of the code or an asset) in an `about` or `acknowledgments` section visible to the user.
