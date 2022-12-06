@@ -123,6 +123,7 @@ class LogConfig extends AModuleConfig {
         ScrollView scrollView = new ScrollView(getActivity());
         scrollView.addView(textView);
         scrollView.setPadding(pad, pad, pad, pad);
+        scrollView.post(() -> scrollView.scrollTo(0, textView.getHeight())); // start at bottom (new)
 
         // common dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
