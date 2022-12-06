@@ -7,9 +7,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -146,11 +146,11 @@ public abstract class GenericPref<T> {
         }
 
         /**
-         * This checkbox will be set to the pref value, and when the checkbox changes the value will too
+         * This switch will be set to the pref value, and when the switch changes the value will too
          */
-        public void attachToCheckBox(CheckBox checkBox) {
-            checkBox.setChecked(get());
-            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
+        public void attachToSwitch(Switch vSwitch) {
+            vSwitch.setChecked(get());
+            vSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
         }
     }
 

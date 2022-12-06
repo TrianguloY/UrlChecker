@@ -374,10 +374,10 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        closeOpenPref.attachToCheckBox(views.findViewById(R.id.closeopen_pref));
-        closeSharePref.attachToCheckBox(views.findViewById(R.id.closeshare_pref));
-        noReferrerPref.attachToCheckBox(views.findViewById(R.id.noReferrer));
-        perDomainPref.attachToCheckBox(views.findViewById(R.id.perDomain));
+        closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
+        closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
+        noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
+        perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
     }
 }
 

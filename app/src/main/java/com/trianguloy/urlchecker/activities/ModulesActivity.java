@@ -106,7 +106,7 @@ public class ModulesActivity extends Activity {
         AndroidUtils.setAsClickable(title);
 
         // configure generic settings
-        ModuleManager.getDecorationsPrefOfModule(module, this).attachToCheckBox(parent.findViewById(R.id.decorations));
+        ModuleManager.getDecorationsPrefOfModule(module, this).attachToSwitch(parent.findViewById(R.id.decorations));
 
         // configuration of the module
         var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);

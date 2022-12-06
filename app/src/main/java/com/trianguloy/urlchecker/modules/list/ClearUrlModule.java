@@ -93,9 +93,9 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        allowReferral.attachToCheckBox(views.findViewById(R.id.referral));
-        verbose.attachToCheckBox(views.findViewById(R.id.verbose));
-        auto.attachToCheckBox(views.findViewById(R.id.auto));
+        allowReferral.attachToSwitch(views.findViewById(R.id.referral));
+        verbose.attachToSwitch(views.findViewById(R.id.verbose));
+        auto.attachToSwitch(views.findViewById(R.id.auto));
 
         views.findViewById(R.id.update).setOnClickListener(v -> catalog.showUpdater());
         views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());

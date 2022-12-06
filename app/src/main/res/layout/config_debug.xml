@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mD_desc" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/chk_ctabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

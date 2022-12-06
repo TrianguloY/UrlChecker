@@ -1,7 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -13,7 +12,6 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.GenericPref;
 
 /**
  * This modules marks the insertion point of new modules
@@ -109,11 +107,9 @@ class DebugDialog extends AModuleDialog implements View.OnClickListener, View.On
 
 class DebugConfig extends AModuleConfig {
 
-    final GenericPref.Bool show_toasts;
 
     public DebugConfig(ModulesActivity activity) {
         super(activity);
-        show_toasts = CustomTabs.SHOWTOAST_PREF(activity);
     }
 
     @Override
@@ -128,8 +124,7 @@ class DebugConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        CheckBox chk_ctabs = views.findViewById(R.id.chk_ctabs);
-        chk_ctabs.setChecked(show_toasts.get());
-        chk_ctabs.setOnCheckedChangeListener((buttonView, isChecked) -> show_toasts.set(isChecked));
+        CustomTabs.SHOWTOAST_PREF(getActivity())
+                .attachToSwitch(views.findViewById(R.id.chk_ctabs));
     }
 }
