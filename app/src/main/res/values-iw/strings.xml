@@ -23,7 +23,7 @@
     <!-- configuration -->
     <string name="txt_conf">רשימת מודולים: אתה יכול להפעיל או לבטל אותם, גם לבדוק את התיאור והתצורה שלו.</string>
     <string name="toast_cantEnable">"לא ניתן להפעיל את המודול, חסרה תצורה?"</string>
-    <string name="reset_order">אפס סדר</string>
+    <string name="menu_resetOrder">אפס סדר</string>
 
     <!-- generic -->
     <string name="toast_noApp">"לא ניתן לפתוח את האפליקציה"</string>

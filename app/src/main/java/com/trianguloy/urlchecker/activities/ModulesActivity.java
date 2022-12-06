@@ -2,6 +2,7 @@ package com.trianguloy.urlchecker.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -58,13 +59,32 @@ public class ModulesActivity extends Activity {
         updateMovableButtons();
     }
 
+    // method to inflate the options menu when
+    // the user opens the menu for the first time
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_modules, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            // press the 'back' button in the action bar to go back
-            onBackPressed();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // press the 'back' button in the action bar to go back
+                onBackPressed();
+                return true;
+            case R.id.menu_reset:
+                // reset order entry
+                resetOrder();
+                return true;
+            case R.id.menu_decorations:
+                // toggle decorations entry
+                toggleDecorations();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -174,7 +194,7 @@ public class ModulesActivity extends Activity {
     /**
      * Resets the order of the modules
      */
-    public void resetOrder(View button) {
+    private void resetOrder() {
         // updates preference
         order.clear();
 
@@ -194,6 +214,14 @@ public class ModulesActivity extends Activity {
             list.addView(view);
         }
         updateMovableButtons();
+    }
 
+    /**
+     * Clicks all the decorations switches (effectively toggling them)
+     */
+    private void toggleDecorations() {
+        for (int i = 0; i < list.getChildCount(); i++) {
+            list.getChildAt(i).findViewById(R.id.decorations).performClick();
+        }
     }
 }

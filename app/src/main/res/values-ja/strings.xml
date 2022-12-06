@@ -20,7 +20,7 @@
     <!-- configuration -->
     <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化することができ、タップすると、その説明と設定も確認できます。</string>
     <string name="toast_cantEnable">モジュールを有効にできません。設定を忘れていませんか？</string>
-    <string name="reset_order">並び順をリセット</string>
+    <string name="menu_resetOrder">並び順をリセット</string>
     <string name="chk_decorations">モジュールの名を表示する</string>
 
     <!-- generic -->

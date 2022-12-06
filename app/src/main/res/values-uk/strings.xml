@@ -23,7 +23,7 @@ Translations: %s."</string>
     <!-- configuration -->
     <string name="txt_conf">Список модулів: ви можете включити, або відключити їх, також перевірте опис та налаштування модулів.</string>
     <string name="toast_cantEnable">Неможливо активувати модуль, немає конфігураціЇ.</string>
-    <string name="reset_order">Відновити початковий порядок</string>
+    <string name="menu_resetOrder">Відновити початковий порядок</string>
 
     <!-- generic -->
     <string name="toast_noApp">Не можу відкрити діяльність</string>
