@@ -37,9 +37,10 @@ Traduction: %s."</string>
     <string name="btn_configureBrowser">Navigateur par défaut</string>
     <string name="btn_linksSettings">Ouvrir les liens compatibles</string>
     <string name="btn_androidSettings">Paramètres Android de l\'application</string>
-    <string name="txt_theme">Thème de l\'application:</string>
+    <string name="txt_theme">Thème:</string>
     <string name="spin_darkTheme">Obscur</string>
     <string name="spin_lightTheme">Clair</string>
+    <string name="txt_locale">Langue:</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
