@@ -152,6 +152,13 @@ public abstract class GenericPref<T> {
             vSwitch.setChecked(get());
             vSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
         }
+
+        /**
+         * Toggles this setting
+         */
+        public void toggle() {
+            set(!get());
+        }
     }
 
     /**

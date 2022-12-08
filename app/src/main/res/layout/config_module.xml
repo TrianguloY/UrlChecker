@@ -65,6 +65,13 @@
             android:background="@android:color/darker_gray"
             android:scaleType="centerInside" />
 
+        <ImageButton
+            android:id="@+id/decorations"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/t" />
         <Switch
             android:id="@+id/enable"
             android:layout_width="wrap_content"
@@ -77,24 +84,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-            <Switch
-                android:id="@+id/decorations"
+            <FrameLayout
+                android:id="@+id/box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
-                android:paddingRight="25dp"
-                android:text="@string/chk_decorations" />
-        <include
-            layout="@layout/separator"
-            android:layout_height="wrap_content" />
-        <FrameLayout
-            android:id="@+id/box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp">
+                android:animateLayoutChanges="true"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 </FrameLayout>
         </LinearLayout>

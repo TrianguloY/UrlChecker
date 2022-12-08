@@ -155,4 +155,18 @@ public interface AndroidUtils {
         var actionBar = activity.getActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
+    /**
+     * Sets an onClickListener to a [view] so that:
+     * [toggle] will be called when clicked (to change something).
+     * [listener] will be called now and when clicked (to update state).
+     * If you need to initialize things, do them before calling this.
+     */
+    static <V extends View> void toggleableListener(V view, JavaUtils.Consumer<V> toggle, JavaUtils.Consumer<V> listener) {
+        view.setOnClickListener(v -> {
+            toggle.accept(view);
+            listener.accept(view);
+        });
+        listener.accept(view);
+    }
 }

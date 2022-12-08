@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -81,7 +82,7 @@ public class ModulesActivity extends Activity {
                 return true;
             case R.id.menu_decorations:
                 // toggle decorations entry
-                toggleDecorations();
+                toggleAllDecorations();
                 return true;
         }
 
@@ -125,8 +126,13 @@ public class ModulesActivity extends Activity {
         title.setText(getString(R.string.dd, getString(module.getName())));
         AndroidUtils.setAsClickable(title);
 
-        // configure generic settings
-        ModuleManager.getDecorationsPrefOfModule(module, this).attachToSwitch(parent.findViewById(R.id.decorations));
+        // configure decorations toggle
+        var decorationsPref = ModuleManager.getDecorationsPrefOfModule(module, this);
+        AndroidUtils.toggleableListener(
+                parent.<ImageView>findViewById(R.id.decorations),
+                o -> decorationsPref.toggle(),
+                imageView -> imageView.setImageResource(decorationsPref.get() ? R.drawable.t : R.drawable.t_slash)
+        );
 
         // configuration of the module
         var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
@@ -219,7 +225,7 @@ public class ModulesActivity extends Activity {
     /**
      * Clicks all the decorations switches (effectively toggling them)
      */
-    private void toggleDecorations() {
+    private void toggleAllDecorations() {
         for (int i = 0; i < list.getChildCount(); i++) {
             list.getChildAt(i).findViewById(R.id.decorations).performClick();
         }
