@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
@@ -58,7 +58,7 @@
             android:tint="?attr/colorAccent" />
 
         <ImageView
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"

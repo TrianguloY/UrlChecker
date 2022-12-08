@@ -139,14 +139,15 @@ public class ModulesActivity extends Activity {
         config.onInitialize(child);
 
         // configure toggleable description
-        final var description = parent.findViewById(R.id.details);
-        title.setOnClickListener(v -> {
-            boolean checked = description.getVisibility() == View.GONE;
-            description.setVisibility(checked ? View.VISIBLE : View.GONE);
-            AndroidUtils.setStartDrawables(title,
-                    checked ? R.drawable.arrow_down : R.drawable.arrow_right);
-        });
-        title.performClick(); // initial hide
+        var description = parent.findViewById(R.id.details);
+        description.setVisibility(View.GONE); // initially hidden
+        AndroidUtils.toggleableListener(
+                title,
+                o -> description.setVisibility(description.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
+                o -> AndroidUtils.setStartDrawables(title,
+                        description.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right
+                )
+        );
     }
 
     /**
