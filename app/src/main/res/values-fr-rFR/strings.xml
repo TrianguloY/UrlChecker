@@ -28,7 +28,7 @@ Traduction: %s."</string>
     <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
     <string name="menu_resetOrder">Réinitialiser l\'ordre</string>
-    <string name="chk_decorations">Afficher le titres des modules</string>
+    <string name="desc_decorations">Afficher le titres des modules</string>
 
     <!-- settings -->
     <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour la configuration de votre appareil, si les liens ne sont pas ouverts par URLCheck, essayez-les tous.</string>

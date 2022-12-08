@@ -104,6 +104,7 @@ public class ModulesActivity extends Activity {
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);
+        AndroidUtils.longTapForDescription(toggleEnable);
         final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
         toggleEnable.setChecked(enabled_pref.get());
         toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -117,8 +118,12 @@ public class ModulesActivity extends Activity {
         switches.put(config, toggleEnable);
 
         // configure up/down buttons
-        parent.findViewById(R.id.move_up).setOnClickListener(v -> moveModule(parent, -1));
-        parent.findViewById(R.id.move_down).setOnClickListener(v -> moveModule(parent, 1));
+        var move_up = parent.findViewById(R.id.move_up);
+        move_up.setOnClickListener(v -> moveModule(parent, -1));
+        AndroidUtils.longTapForDescription(move_up);
+        var move_down = parent.findViewById(R.id.move_down);
+        move_down.setOnClickListener(v -> moveModule(parent, 1));
+        AndroidUtils.longTapForDescription(move_down);
         // the enable/disable status will be set later with {@link this#updateMovableButtons()}
 
         // configure label
@@ -128,11 +133,13 @@ public class ModulesActivity extends Activity {
 
         // configure decorations toggle
         var decorationsPref = ModuleManager.getDecorationsPrefOfModule(module, this);
+        var toggleDecorations = parent.<ImageView>findViewById(R.id.decorations);
         AndroidUtils.toggleableListener(
-                parent.<ImageView>findViewById(R.id.decorations),
+                toggleDecorations,
                 o -> decorationsPref.toggle(),
                 imageView -> imageView.setImageResource(decorationsPref.get() ? R.drawable.t : R.drawable.t_slash)
         );
+        AndroidUtils.longTapForDescription(toggleDecorations);
 
         // configuration of the module
         var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);

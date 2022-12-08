@@ -25,11 +25,14 @@ Translations: %s."</string>
     <string name="link_privacy">Privacy policy</string>
 
     <!-- modules -->
-    <string name="txt_conf">List of modules: You can enable or disable them, also check its description and configuration.</string>
+    <string name="txt_conf">Here are all the available modules, where you can check their description and settings. You can also reorder, toggle the title visibility and enable/disable them.</string>
     <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
-    <string name="menu_resetOrder">Reset Order</string>
-    <string name="menu_toggleDecorations">Toggle titles</string>
-    <string name="chk_decorations">Show module title</string>
+    <string name="menu_resetOrder">Reset order</string>
+    <string name="menu_toggleDecorations">Toggle all titles</string>
+    <string name="desc_up">Move up</string>
+    <string name="desc_down">Move down</string>
+    <string name="desc_decorations">Show/hide title</string>
+    <string name="desc_enable">Enable/disable module</string>
 
     <!-- settings -->
     <string name="txt_openLinks">Open links on this app: Over the years Android has changed the way to configure it, and differs between versions. Find below all available settings for your device, if links are not being opened on this app try them all.</string>

@@ -169,4 +169,16 @@ public interface AndroidUtils {
         });
         listener.accept(view);
     }
+
+    /**
+     * Adds an onLongClickListener that will show a toast with the contentdescription
+     */
+    static void longTapForDescription(View view) {
+        view.setOnLongClickListener(v -> {
+            var contentDescription = v.getContentDescription();
+            if (contentDescription == null) AndroidUtils.assertError("No content description for view " + view);
+            Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            return true;
+        });
+    }
 }

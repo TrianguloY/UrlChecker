@@ -44,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_up"
             android:rotation="180"
             android:src="@drawable/arrow_down"
             android:tint="?attr/colorAccent" />
@@ -54,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_down"
             android:src="@drawable/arrow_down"
             android:tint="?attr/colorAccent" />
 
@@ -71,11 +73,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_decorations"
             android:src="@drawable/t" />
         <Switch
             android:id="@+id/enable"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:contentDescription="@string/desc_enable" />
 
     </LinearLayout>
 

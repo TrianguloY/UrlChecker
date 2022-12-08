@@ -25,10 +25,14 @@ Traducciones: %s."</string>
     <string name="link_privacy">Política de privacidad</string>
 
     <!-- modules -->
-    <string name="txt_conf">Lista de módulos: puedes habilitarlos o deshabilitarlos, ver su descripción y configurarlos.</string>
+    <string name="txt_conf">Aquí se encuentran todos los módulos disponibles, con su descripción y configuración. También los puedes reordenar, mostrar/ocultar los títulos y activarlos o desactivarlos.</string>
     <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
     <string name="menu_resetOrder">Reiniciar orden</string>
-    <string name="chk_decorations">Mostrar el título del módulo</string>
+    <string name="menu_toggleDecorations">Alternar los títulos</string>
+    <string name="desc_up">Subir</string>
+    <string name="desc_down">Bajar</string>
+    <string name="desc_decorations">Mostrar/ocultar título</string>
+    <string name="desc_enable">Activar/desactivar módulo</string>
 
 
     <!-- settings -->
