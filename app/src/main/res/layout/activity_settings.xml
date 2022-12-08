@@ -51,7 +51,6 @@
                 android:onClick="openAppLinks"
                 android:text="@string/btn_linksSettings" />
             <Button
-                android:id="@+id/b4"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

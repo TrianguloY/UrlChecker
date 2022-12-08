@@ -71,7 +71,7 @@ class PatternConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        views.findViewById(R.id.edit).setOnClickListener(o -> catalog.showEditor());
+        views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
         views.<TextView>findViewById(R.id.user_content)
                 .setText(getActivity().getString(
                         R.string.mPttrn_userContent,

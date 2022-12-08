@@ -136,8 +136,8 @@ public class ModulesActivity extends Activity {
         var toggleDecorations = parent.<ImageView>findViewById(R.id.decorations);
         AndroidUtils.toggleableListener(
                 toggleDecorations,
-                o -> decorationsPref.toggle(),
-                imageView -> imageView.setImageResource(decorationsPref.get() ? R.drawable.t : R.drawable.t_slash)
+                v -> decorationsPref.toggle(),
+                v -> v.setImageResource(decorationsPref.get() ? R.drawable.t : R.drawable.t_slash)
         );
         AndroidUtils.longTapForDescription(toggleDecorations);
 
@@ -150,8 +150,8 @@ public class ModulesActivity extends Activity {
         description.setVisibility(View.GONE); // initially hidden
         AndroidUtils.toggleableListener(
                 title,
-                o -> description.setVisibility(description.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
-                o -> AndroidUtils.setStartDrawables(title,
+                v -> description.setVisibility(description.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
+                v -> AndroidUtils.setStartDrawables(title,
                         description.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right
                 )
         );

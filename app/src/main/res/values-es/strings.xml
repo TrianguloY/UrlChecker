@@ -160,9 +160,6 @@ Si lo habilitas, mostrará el intent recibido como uri, útil para desarrollador
 
 Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado para copiarlo todo."</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
-    <string name="mD_copyIntent">Intent copiado al portapapeles</string>
-    <string name="mD_copyUrlData">UrlData copiado al portapapeles</string>
-    <string name="mD_copyAll">Intent y UrlData copiados al portapapeles</string>
 
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la url cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>

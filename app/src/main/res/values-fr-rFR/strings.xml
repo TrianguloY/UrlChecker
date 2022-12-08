@@ -160,9 +160,6 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
 
 Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse-papiers. Effectuez un appui prolongé pour tout copier."</string>
     <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
-    <string name="mD_copyIntent">Intention copiée dans le presse-papiers</string>
-    <string name="mD_copyUrlData">Données d\'URL copiées dans le presse-papiers</string>
-    <string name="mD_copyAll">Intention et données d\'URL copiées dans le presse-papiers</string>
 
     <string name="mHist_name">Historique</string>
     <string name="mHist_desc">"Lorsque l'url est modifiée, manuellement ou par d'autres modules, ceci vous permet de visualiser et d'annuler les modifications."</string>

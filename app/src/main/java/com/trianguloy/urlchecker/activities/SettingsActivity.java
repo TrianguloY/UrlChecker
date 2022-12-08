@@ -153,7 +153,7 @@ public class SettingsActivity extends Activity {
     private void configureDayNight() {
         AndroidSettings.THEME_PREF(this).attachToSpinner(
                 this.findViewById(R.id.theme),
-                o -> AndroidSettings.reload(SettingsActivity.this)
+                v -> AndroidSettings.reload(SettingsActivity.this)
         );
     }
 

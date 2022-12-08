@@ -97,7 +97,7 @@ class HostsDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         text = views.findViewById(R.id.text);
-        text.setOnClickListener(o -> {
+        text.setOnClickListener(v -> {
             if (hosts.isUninitialized()) hosts.build(true, () -> onNewUrl(getUrl()));
         });
     }

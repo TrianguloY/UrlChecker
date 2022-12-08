@@ -118,9 +118,6 @@
     <string name="mD_desc">モジュールの順序を変更すると、将来のアップデートで追加される新しいモジュールがこのモジュールの上に配置されます。\n\nこれを有効にすると、受け取ったインテントをURIとして表示します。\n開発者にとって便利です。\nIntent または URLData をタップすると、クリップボードにコピーされます。長押しすると全てコピーできます。</string>
 
     <string name="mD_ctabs">カスタムタブ サービスからのデバッグメッセージを表示する</string>
-    <string name="mD_copyIntent">インテントをクリップボードにコピーしました。</string>
-    <string name="mD_copyUrlData">UrlData をクリップボードにコピーしました。</string>
-    <string name="mD_copyAll">インテントと UrlData をクリップボードにコピーしました。</string>
 
     <string name="mHist_name">履歴</string>
     <string name="mHist_desc">手動または他のモジュールによってURLが編集されると、このモジュールを使用して変更を表示および元に戻すことができます。</string>
