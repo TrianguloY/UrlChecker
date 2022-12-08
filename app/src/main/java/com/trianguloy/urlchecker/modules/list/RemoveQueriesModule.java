@@ -48,7 +48,7 @@ public class RemoveQueriesModule extends AModuleData {
     }
 }
 
-class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener {
+class RemoveQueriesDialog extends AModuleDialog {
 
     private TextView info;
     private Button remove;
@@ -76,7 +76,13 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
             updateMoreIndicator();
         });
 
-        remove.setOnClickListener(this);
+        remove.setOnClickListener(v -> {
+            var parts = new UrlParts(getUrl());
+            // remove all queries
+            parts.removeAllQueries();
+            // join and set
+            setUrl(parts.getUrl());
+        });
     }
 
     @Override
@@ -102,50 +108,38 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
 
             // for each query, create a button
             for (int i = 0; i < parts.getQueries(); i++) {
-                View button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
-                button_text.setTag(i); // to mark the query this button/text must act on
+                var button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
 
                 // button that removes the query
-                Button button = button_text.findViewById(R.id.button);
-                String queryName = parts.getQueryName(i);
+                var queryName = parts.getQueryName(i);
+                var button = button_text.<Button>findViewById(R.id.button);
                 button.setText(queryName.isEmpty()
                         // if no name
                         ? getActivity().getString(R.string.mRemove_empty)
                         // with name
                         : getActivity().getString(R.string.mRemove_one, queryName)
                 );
-                button.setOnClickListener(this);
+                var finalI = i;
+                button.setOnClickListener(v1 -> {
+                    // remove specific query
+                    // NOTE: this will modify the 'parts' variable, although it should be recreated by the 'setUrl' call
+                    // TODO: make parts immutable
+                    parts.removeQuery(finalI);
+                    // join and set
+                    setUrl(parts.getUrl());
+                });
 
                 // text that displays the query value and sets it
-                TextView text = button_text.findViewById(R.id.text);
-                text.setText(parts.getQueryValue(i));
+                var queryValue = parts.getQueryValue(i);
+                var text = button_text.<TextView>findViewById(R.id.text);
+                text.setText(queryValue);
                 AndroidUtils.setAsClickable(text);
-                text.setOnClickListener(this);
+                text.setOnClickListener(v -> setUrl(queryValue));
             }
         }
 
         // update
         updateMoreIndicator();
-    }
-
-    @Override
-    public void onClick(View v) {
-        UrlParts parts = new UrlParts(getUrl());
-        Integer tag = (Integer) ((View) v.getParent()).getTag();
-
-        if (v instanceof Button) {
-            // remove all queries (no tag) or a specific one
-            parts.removeQuery(tag == null ? -1 : tag);
-            // join and set
-            setUrl(parts.getUrl());
-        } else if (v instanceof TextView) {
-            // replace the query url
-            setUrl(parts.getQueryValue(tag));
-        } else {
-            AndroidUtils.assertError("Invalid view " + v.getClass().getName());
-        }
-
-
     }
 
     /**
@@ -228,16 +222,17 @@ class RemoveQueriesDialog extends AModuleDialog implements View.OnClickListener 
         }
 
         /**
-         * Removes a query by its index i, or all if -1
+         * Removes a query by its index i
          */
         public void removeQuery(int i) {
-            if (i == -1) {
-                // remove all queries
-                queries.clear();
-            } else {
-                // remove that query
-                queries.remove(i);
-            }
+            queries.remove(i);
+        }
+
+        /**
+         * Removes all queries
+         */
+        public void removeAllQueries() {
+            queries.clear();
         }
     }
 

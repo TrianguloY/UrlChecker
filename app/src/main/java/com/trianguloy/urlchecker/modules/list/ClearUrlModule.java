@@ -103,7 +103,7 @@ class ClearUrlConfig extends AModuleConfig {
 
 }
 
-class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
+class ClearUrlDialog extends AModuleDialog {
 
     public static final String CLEARED = "clearUrl.cleared";
 
@@ -136,7 +136,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         info = views.findViewById(R.id.text);
         fix = views.findViewById(R.id.button);
         fix.setText(R.string.mClear_clear);
-        fix.setOnClickListener(this);
+        fix.setOnClickListener(v -> clear());
     }
 
     @Override
@@ -293,7 +293,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
             fix.setEnabled(true);
             if (verbose.get()) info.append("\n\n -> " + cleared);
             // and apply automatically if required
-            if (auto.get()) onClick(null);
+            if (auto.get()) clear();
         }
 
         // nothing found
@@ -302,9 +302,10 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        // pressed the fix button
+    /**
+     * Clear the url
+     */
+    private void clear() {
         if (cleared != null) setUrl(new UrlData(cleared).putData(CLEARED, CLEARED));
     }
 

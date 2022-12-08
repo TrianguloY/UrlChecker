@@ -42,7 +42,7 @@ public class HistoryModule extends AModuleData {
     }
 }
 
-class HistoryDialog extends AModuleDialog implements View.OnClickListener {
+class HistoryDialog extends AModuleDialog {
 
     // views
     private ImageButton first;
@@ -77,11 +77,23 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
         last = views.findViewById(R.id.last);
 
         // set listeners
-        first.setOnClickListener(this);
-        back.setOnClickListener(this);
-        list.setOnClickListener(this);
-        forward.setOnClickListener(this);
-        last.setOnClickListener(this);
+        first.setOnClickListener(v -> {
+            removeDuplicates(true);// partial cleanup
+            setIndex(0);
+        });
+        back.setOnClickListener(v -> {
+            removeDuplicates(true);// partial cleanup
+            setIndex(index - 1);
+        });
+        list.setOnClickListener(v -> showList());
+        forward.setOnClickListener(v -> {
+            removeDuplicates(true);// partial cleanup
+            setIndex(index + 1);
+        });
+        last.setOnClickListener(v -> {
+            removeDuplicates(true);// partial cleanup
+            setIndex(history.size() - 1);
+        });
 
         // update
         updateUI();
@@ -117,46 +129,28 @@ class HistoryDialog extends AModuleDialog implements View.OnClickListener {
         updateUI();
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.list) {
-            // cleanup
-            removeDuplicates(false);
-            // prepare elements (inverted because they look nicer top=newer)
-            List<String> items = new ArrayList<>(history);
-            Collections.reverse(items);
+    /* ------------------- internal ------------------- */
 
-            // show list
-            new AlertDialog.Builder(getActivity())
-                    .setSingleChoiceItems(
-                            items.toArray(new CharSequence[0]),
-                            index == -1 ? -1 : items.size() - 1 - index,
-                            (dialog, which) -> {
-                                setIndex(history.size() - 1 - which);
-                                dialog.dismiss();
-                            })
-                    .show();
-            updateUI();
-            return;
-        }
+    private void showList() {
+        // cleanup
+        removeDuplicates(false);
+        // prepare elements (inverted because they look nicer top=newer)
+        List<String> items = new ArrayList<>(history);
+        Collections.reverse(items);
 
-        // partial cleanup
-        removeDuplicates(true);
-        switch (v.getId()) {
-            case R.id.first:
-                setIndex(0);
-                break;
-            case R.id.back:
-                setIndex(index - 1);
-                break;
-            case R.id.forward:
-                setIndex(index + 1);
-                break;
-            case R.id.last:
-                setIndex(history.size() - 1);
-                break;
-        }
+        // show list
+        new AlertDialog.Builder(getActivity())
+                .setSingleChoiceItems(
+                        items.toArray(new CharSequence[0]),
+                        index == -1 ? -1 : items.size() - 1 - index,
+                        (dialog, which) -> {
+                            setIndex(history.size() - 1 - which);
+                            dialog.dismiss();
+                        })
+                .show();
+        updateUI();
     }
+
 
     /**
      * Removes duplicated entries, also empty ones

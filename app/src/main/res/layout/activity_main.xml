@@ -20,7 +20,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:background="@android:color/transparent"
-            android:onClick="onClick"
+            android:onClick="aboutToast"
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_launcher" />
 
@@ -59,7 +59,7 @@
             android:gravity="center"
             android:linksClickable="false"
             android:minHeight="48dp"
-            android:onClick="onClick"
+            android:onClick="openSample"
             android:padding="@dimen/smallPadding"
             android:text="@string/sample_url" />
 
@@ -73,7 +73,7 @@
             android:drawableStart="@android:drawable/ic_menu_sort_by_size"
             android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
             android:drawablePadding="@dimen/smallPadding"
-            android:onClick="onClick"
+            android:onClick="openModulesActivity"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
             android:text="@string/a_modules" />
@@ -88,7 +88,7 @@
             android:drawableStart="@android:drawable/ic_menu_preferences"
             android:drawableLeft="@android:drawable/ic_menu_preferences"
             android:drawablePadding="@dimen/smallPadding"
-            android:onClick="onClick"
+            android:onClick="openSettings"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
             android:text="@string/a_settings" />
@@ -103,7 +103,7 @@
             android:drawableStart="@android:drawable/ic_menu_info_details"
             android:drawableLeft="@android:drawable/ic_menu_info_details"
             android:drawablePadding="@dimen/smallPadding"
-            android:onClick="onClick"
+            android:onClick="openAbout"
             android:paddingLeft="@dimen/padding"
             android:paddingRight="@dimen/padding"
             android:text="@string/a_about" />

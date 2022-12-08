@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -65,7 +64,7 @@ public class OpenModule extends AModuleData {
     }
 }
 
-class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+class OpenDialog extends AModuleDialog {
 
     private LastOpened lastOpened;
 
@@ -103,7 +102,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         // init ctabs
         btn_ctabs = views.findViewById(R.id.ctabs);
         if (CTabs.isAvailable()) {
-            btn_ctabs.setOnClickListener(this);
+            btn_ctabs.setOnClickListener(v -> toggleCtabs());
             AndroidUtils.longTapForDescription(btn_ctabs);
             switch (ctabsPref.get()) {
                 case AUTO:
@@ -135,15 +134,15 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         // init open
         btn_open = views.findViewById(R.id.open);
-        btn_open.setOnClickListener(this);
+        btn_open.setOnClickListener(v -> openUrl(0));
 
         // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
-        btn_openWith.setOnClickListener(this);
+        btn_openWith.setOnClickListener(v -> showList());
 
         // init share
         View btn_share = views.findViewById(R.id.share);
-        btn_share.setOnClickListener(this);
+        btn_share.setOnClickListener(v -> shareUrl());
         btn_share.setOnLongClickListener(v -> {
             AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
             return true;
@@ -151,7 +150,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
-        popup.setOnMenuItemClickListener(this);
+        popup.setOnMenuItemClickListener(item -> {
+            openUrl(item.getItemId());
+            return false;
+        });
         menu = popup.getMenu();
 
         // init lastOpened utility
@@ -161,34 +163,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     @Override
     public void onNewUrl(UrlData urlData) {
         updateSpinner();
-    }
-
-    // ------------------- Button listener -------------------
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ctabs:
-                toggleCtabs();
-                break;
-            case R.id.open:
-                openUrl(0);
-                break;
-            case R.id.share:
-                shareUrl();
-                break;
-            case R.id.open_with:
-                showList();
-                break;
-        }
-    }
-
-    // ------------------- PopupMenu.OnMenuItemClickListener -------------------
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        openUrl(item.getItemId());
-        return false;
     }
 
     // ------------------- Spinner -------------------

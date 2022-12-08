@@ -81,7 +81,7 @@ class PatternConfig extends AModuleConfig {
 
 }
 
-class PatternDialog extends AModuleDialog implements View.OnClickListener {
+class PatternDialog extends AModuleDialog {
     public static final String APPLIED = "pattern.applied";
 
     private TextView txt_noPatterns;
@@ -187,19 +187,12 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                 Button fix = row.findViewById(R.id.button);
                 fix.setText(R.string.mPttrn_fix);
                 fix.setEnabled(message.newUrl != null);
-                fix.setTag(new String[]{message.pattern, message.newUrl}); // data for the onCLick
-                fix.setOnClickListener(this);
+                fix.setOnClickListener(v -> onClick(message.pattern, message.newUrl));
 
                 // autoclick
                 if (message.automatic) onClick(message.pattern, message.newUrl);
             }
         }
-    }
-
-    @Override
-    public void onClick(View view) {
-        String[] tag = (String[]) view.getTag();
-        if (tag != null) onClick(tag[0], tag[1]);
     }
 
     /**

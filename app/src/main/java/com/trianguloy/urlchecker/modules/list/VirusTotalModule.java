@@ -99,7 +99,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
     }
 }
 
-class VirusTotalDialog extends AModuleDialog implements View.OnClickListener {
+class VirusTotalDialog extends AModuleDialog {
 
     private static final int RETRY_TIMEOUT = 5000;
     private Button btn_scan;
@@ -124,10 +124,10 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener {
     public void onInitialize(View views) {
         btn_scan = views.findViewById(R.id.button);
         btn_scan.setText(R.string.mVT_scan);
-        btn_scan.setOnClickListener(this);
+        btn_scan.setOnClickListener(v -> scanOrCancel());
 
         txt_result = views.findViewById(R.id.text);
-        txt_result.setOnClickListener(this);
+        txt_result.setOnClickListener(v -> showInfo(false));
         txt_result.setOnLongClickListener(v -> {
             showInfo(true);
             return true;
@@ -140,19 +140,6 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener {
         result = null;
         updateUI();
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button:
-                scanOrCancel();
-                break;
-            case R.id.text:
-                showInfo(false);
-                break;
-        }
-    }
-
 
     /**
      * Performs a scan of the current url, in background.
