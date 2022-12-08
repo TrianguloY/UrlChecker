@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
@@ -66,7 +65,7 @@ public class OpenModule extends AModuleData {
     }
 }
 
-class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, View.OnLongClickListener {
+class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
     private LastOpened lastOpened;
 
@@ -105,7 +104,7 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         btn_ctabs = views.findViewById(R.id.ctabs);
         if (CTabs.isAvailable()) {
             btn_ctabs.setOnClickListener(this);
-            btn_ctabs.setOnLongClickListener(this);
+            AndroidUtils.longTapForDescription(btn_ctabs);
             switch (ctabsPref.get()) {
                 case AUTO:
                 default:
@@ -137,7 +136,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         // init open
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(this);
-        btn_open.setOnLongClickListener(this);
 
         // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
@@ -146,7 +144,10 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         // init share
         View btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(this);
-        btn_share.setOnLongClickListener(this);
+        btn_share.setOnLongClickListener(v -> {
+            AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
+            return true;
+        });
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
@@ -180,21 +181,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
                 showList();
                 break;
         }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        switch (v.getId()) {
-            case R.id.ctabs:
-                Toast.makeText(getActivity(), R.string.mOpen_tabsDesc, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.share:
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
-                break;
-            default:
-                return false;
-        }
-        return true;
     }
 
     // ------------------- PopupMenu.OnMenuItemClickListener -------------------

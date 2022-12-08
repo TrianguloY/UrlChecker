@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -63,8 +62,12 @@ public class AboutActivity extends Activity {
             v_link.setText(link.first);
             AndroidUtils.setAsClickable(v_link);
             v_link.setTag(link.second.replace("{package}", getPackageName()));
-            v_link.setOnClickListener(this::onClick);
-            v_link.setOnLongClickListener(this::onLongClick);
+            // click to open, longclick to share
+            v_link.setOnClickListener(v -> open(((String) v.getTag())));
+            v_link.setOnLongClickListener(v -> {
+                share(((String) v.getTag()));
+                return true;
+            });
         }
 
     }
@@ -77,21 +80,6 @@ public class AboutActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Link clicked
-     */
-    public void onClick(View view) {
-        open(((String) view.getTag()));
-    }
-
-    /**
-     * Link long-clicked
-     */
-    public boolean onLongClick(View view) {
-        share(((String) view.getTag()));
-        return true;
     }
 
     // ------------------- actions -------------------

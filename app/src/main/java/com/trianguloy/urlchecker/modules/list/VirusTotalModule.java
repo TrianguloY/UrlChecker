@@ -99,7 +99,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
     }
 }
 
-class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
+class VirusTotalDialog extends AModuleDialog implements View.OnClickListener {
 
     private static final int RETRY_TIMEOUT = 5000;
     private Button btn_scan;
@@ -128,7 +128,10 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
 
         txt_result = views.findViewById(R.id.text);
         txt_result.setOnClickListener(this);
-        txt_result.setOnLongClickListener(this);
+        txt_result.setOnLongClickListener(v -> {
+            showInfo(true);
+            return true;
+        });
     }
 
     @Override
@@ -148,15 +151,6 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
                 showInfo(false);
                 break;
         }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        if (v.getId() == R.id.text) {
-            showInfo(true);
-            return true;
-        }
-        return false;
     }
 
 
