@@ -76,13 +76,8 @@ class RemoveQueriesDialog extends AModuleDialog {
             updateMoreIndicator();
         });
 
-        remove.setOnClickListener(v -> {
-            var parts = new UrlParts(getUrl());
-            // remove all queries
-            parts.removeAllQueries();
-            // join and set
-            setUrl(parts.getUrl());
-        });
+        // remove all queries
+        remove.setOnClickListener(v -> setUrl(new UrlParts(getUrl()).getUrlWithoutQueries()));
     }
 
     @Override
@@ -93,21 +88,21 @@ class RemoveQueriesDialog extends AModuleDialog {
         // parse
         UrlParts parts = new UrlParts(urlData.url);
 
-        if (parts.getQueries() == 0) {
+        if (parts.queriesSize() == 0) {
             // no queries present, nothing to notify
             info.setText(R.string.mRemove_noQueries);
             remove.setEnabled(false); // disable the remove button
         } else {
             // queries present, notify
-            info.setText(parts.getQueries() == 1
+            info.setText(parts.queriesSize() == 1
                     ? getActivity().getString(R.string.mRemove_found1) // 1 query
-                    : getActivity().getString(R.string.mRemove_found, parts.getQueries()) // 2+ queries
+                    : getActivity().getString(R.string.mRemove_found, parts.queriesSize()) // 2+ queries
             );
             AndroidUtils.setAsClickable(info);
             remove.setEnabled(true); // enable the remove all button
 
             // for each query, create a button
-            for (int i = 0; i < parts.getQueries(); i++) {
+            for (int i = 0; i < parts.queriesSize(); i++) {
                 var button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
 
                 // button that removes the query
@@ -120,14 +115,7 @@ class RemoveQueriesDialog extends AModuleDialog {
                         : getActivity().getString(R.string.mRemove_one, queryName)
                 );
                 var finalI = i;
-                button.setOnClickListener(v1 -> {
-                    // remove specific query
-                    // NOTE: this will modify the 'parts' variable, although it should be recreated by the 'setUrl' call
-                    // TODO: make parts immutable
-                    parts.removeQuery(finalI);
-                    // join and set
-                    setUrl(parts.getUrl());
-                });
+                button.setOnClickListener(v -> setUrl(parts.getUrlWithoutQuery(finalI)));
 
                 // text that displays the query value and sets it
                 var queryValue = parts.getQueryValue(i);
@@ -182,36 +170,24 @@ class RemoveQueriesDialog extends AModuleDialog {
         }
 
         /**
-         * Joins the url back into a full string
-         */
-        public String getUrl() {
-            StringBuilder sb = new StringBuilder(preQuery);
-            // first query after '?', the rest after '&'
-            for (int i = 0; i < queries.size(); ++i)
-                sb.append(i == 0 ? "?" : "&").append(queries.get(i));
-            sb.append(postQuery);
-            return sb.toString();
-        }
-
-        /**
          * returns the number of queries present
          */
-        public int getQueries() {
+        public int queriesSize() {
             return queries.size();
         }
 
         /**
-         * Returns the name of the query
+         * Returns the name of a query (by index)
          */
-        public String getQueryName(int i) {
-            return queries.get(i).split("=")[0];
+        public String getQueryName(int index) {
+            return queries.get(index).split("=")[0];
         }
 
         /**
-         * Returns the decoded value of the query
+         * Returns the decoded value of a query (by index)
          */
-        public String getQueryValue(int i) {
-            String[] split = queries.get(i).split("=");
+        public String getQueryValue(int index) {
+            String[] split = queries.get(index).split("=");
             if (split.length == 1) return "";
             try {
                 return URLDecoder.decode(split[1]);
@@ -222,17 +198,36 @@ class RemoveQueriesDialog extends AModuleDialog {
         }
 
         /**
-         * Removes a query by its index i
+         * Returns the full url
          */
-        public void removeQuery(int i) {
-            queries.remove(i);
+        public String getUrl() {
+            return getUrlWithoutQuery(-1);
         }
 
         /**
-         * Removes all queries
+         * Returns the url without one query (by index)
          */
-        public void removeAllQueries() {
-            queries.clear();
+        public String getUrlWithoutQuery(int index) {
+            var sb = new StringBuilder();
+
+            // concatenate queries
+            for (int i = 0; i < queries.size(); ++i)
+                // excluding the required one
+                if (i != index)
+                    // first after '?', the rest after '&'
+                    sb.append(sb.length() == 0 ? "?" : "&").append(queries.get(i));
+
+            // finish building
+            sb.insert(0, preQuery);
+            sb.append(postQuery);
+            return sb.toString();
+        }
+
+        /**
+         * Returns the url without queries
+         */
+        public String getUrlWithoutQueries() {
+            return preQuery + postQuery;
         }
     }
 
