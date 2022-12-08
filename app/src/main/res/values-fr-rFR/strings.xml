@@ -25,10 +25,14 @@ Traduction: %s."</string>
     <string name="link_privacy">Politique de confidentialité</string>
 
     <!-- modules -->
-    <string name="txt_conf">Liste des modules: Vous pouvez les activer ou les désactiver, vérifiez également leurs descriptions et configuration.</string>
+    <string name="txt_conf">Voici tous les modules disponibles, vous pouvez vérifier ici leur descriptions et leurs paramètres. Vous pouvez également les réorganiser, basculer la visibilité des titres de ceci et les activer/désactiver</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
     <string name="menu_resetOrder">Réinitialiser l\'ordre</string>
-    <string name="desc_decorations">Afficher le titres des modules</string>
+    <string name="menu_toggleDecorations">Afficher tous les titres</string>
+    <string name="desc_up">Monter</string>
+    <string name="desc_down">Descendre</string>
+    <string name="desc_decorations">Afficher/masquer le titre</string>
+    <string name="desc_enable">Activer/désactiver le module</string>
 
     <!-- settings -->
     <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour la configuration de votre appareil, si les liens ne sont pas ouverts par URLCheck, essayez-les tous.</string>
