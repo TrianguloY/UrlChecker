@@ -1,3 +1,12 @@
+V 2.9
+- Nuevo módulo: Etiquetador de hosts
+- Ocultados los títulos de los módulos (se pueden reactivar)
+- Nueva pantalla de ajustes
+    - Configurar como navegador por defecto
+    - Cambiar tema
+    - Cambiar idioma
+- Estilos y código mejorados
+
 V 2.8
 - Renombrada aplicación de 'Analizador de Urls' a 'URLCheck'
 - Nueva traducción al Japonés. ¡Gracias a 404potato!
