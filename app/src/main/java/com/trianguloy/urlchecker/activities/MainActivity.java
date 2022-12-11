@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
     }
 
     public void aboutToast(View view) {
-        Toast.makeText(this, getString(R.string.app_name) + " - TrianguloY", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.app_name) + " - " + getString(R.string.trianguloy), Toast.LENGTH_SHORT).show();
     }
 
 }
