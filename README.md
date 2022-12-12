@@ -58,6 +58,8 @@ facilitating link holding and sharing, protecting against certain phishing techn
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/7-modules.png" width=30%>
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/8-settings.png" width=30%>
 </div>
+ 
+ </div>
 
 
 
