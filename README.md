@@ -4,6 +4,7 @@
 <img src="./docs/featured.png">
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
+# URLCheck
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 
 </div>
