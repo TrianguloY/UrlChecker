@@ -46,7 +46,7 @@ facilitating link holding and sharing, protecting against certain phishing techn
 </div>
 
 <!-- ---------- Screenshots ---------- -->
-<p align="center">
+<div align="center">
 
 <div style="display: flex;">
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/1-title.png" width=30%>
@@ -59,7 +59,7 @@ facilitating link holding and sharing, protecting against certain phishing techn
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/8-settings.png" width=30%>
 </div>
 
-</p>
+
 
 <!-- ---------- Contribution & contributors ---------- -->
 ## Contribution
