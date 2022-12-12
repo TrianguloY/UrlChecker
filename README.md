@@ -7,7 +7,7 @@
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 
 </div>
-
+<br>
 <!-- ---------- Badges ---------- -->
 <div align="center">
 
