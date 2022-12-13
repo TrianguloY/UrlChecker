@@ -70,7 +70,8 @@ Translations: %s."</string>
     <string name="mPttrn_desc">"Checks for common issues in the url. Built-in patterns:
 * Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 * http links, you should use https instead
-* Missing http(s) scheme"</string>
+* Missing http(s) scheme
+* Allows user-defined configurations, like custom redirects, link replacement"</string>
     <string name="mPttrn_userContent">List of other useful user-created patterns: %s</string>
     <string name="mPttrn_fix">Apply</string>
     <string name="mPttrn_fixed">Applied - %s</string>
