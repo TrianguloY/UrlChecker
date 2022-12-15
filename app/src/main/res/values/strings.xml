@@ -67,11 +67,11 @@ Translations: %s."</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>
-    <string name="mPttrn_desc">"Checks for common issues in the url. Built-in patterns:
-* Non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
-* http links, you should use https instead
-* Missing http(s) scheme
-* Allows user-defined configurations, like custom redirects, link replacement"</string>
+    <string name="mPttrn_desc">"This module checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
+Built-in patterns include:
+* Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
+* Suggest replacing 'http' with 'https'
+* Suggest replacing Youtube, Reddit or Twitter with privacy-friendly alternatives [disabled by default]"</string>
     <string name="mPttrn_userContent">List of other useful user-created patterns: %s</string>
     <string name="mPttrn_fix">Apply</string>
     <string name="mPttrn_fixed">Applied - %s</string>
