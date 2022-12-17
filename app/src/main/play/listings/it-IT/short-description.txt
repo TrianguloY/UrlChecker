@@ -1,1 +1,1 @@
-URLChecker è un'app che ti permette di analizzare (o condividere) urls prima di aprirli.
+URLChecker è un'app che permette di analizzare urls prima di aprirli.
