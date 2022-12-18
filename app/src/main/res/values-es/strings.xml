@@ -68,9 +68,9 @@ Traducciones: %s."</string>
     <!-- modules -->
     <string name="mPttrn_name">Comprobador de patrones</string>
     <string name="mPttrn_desc">"Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
-* Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
-* Sugiere reemplazar 'http' por 'https'
-* Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]"</string>
+- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+- Sugiere reemplazar 'http' por 'https'
+- Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]"</string>
     <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
