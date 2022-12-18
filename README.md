@@ -25,16 +25,16 @@
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 alt="Get it on F-Droid"
-height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker)
+height="65">](https://f-droid.org/packages/com.trianguloy.urlchecker)
 [<img src="https://github.com/Ilithy/Ilithy/blob/f22b1faadd6d673d1c37cb36d6f338ca2c01a564/Art/get-it-on-github.png"
 alt="Get it on Github"
-height="80">](https://github.com/TrianguloY/UrlChecker/releases)
+height="65">](https://github.com/TrianguloY/UrlChecker/releases)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
 alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
+height="65">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
 [<img src="https://github.com/Ilithy/Ilithy/blob/f22b1faadd6d673d1c37cb36d6f338ca2c01a564/Art/get-it-on-APK_Pure.png"
 alt="Get it on APKPure"
-height="80">](https://m.apkpure.com/urlcheck/com.trianguloy.urlchecker)
+height="65">](https://m.apkpure.com/urlcheck/com.trianguloy.urlchecker)
 
 
 </div>
