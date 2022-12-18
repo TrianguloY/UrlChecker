@@ -20,9 +20,10 @@ L'application est constituée d'une structure modulaire, vous pouvez activer, d�
 
 * Suppresseur de requêtes: Affiche les requêtes d'URL individuelles décodées, que vous pouvez supprimer ou vérifier.
 
-* Analyseur de style: Effectue des vérifications basées sur des modèles. Les modèles intégrés incluent:
-     - Avertissement pour les liens http, permet de le remplacer par l'https.
-     - Avertissement pour les caractères non-ascii comme les lettres grecques. Qui peuvent être utilisé pour l'hameçonnage: googĺe.com au lieu de google.com.
+* Analyseur de style: Ce module vérifie l'URL avec des modèles d'expression régulière (regex) qui avertissent, suggèrent et/ou appliquent des remplacements. Vous pouvez modifier ou créer vos propres modèles, ou même utiliser ceux créés par d'autres utilisateurs.
+     - Avertissement de la présence de caractères non-ascii comme les lettres grecques. Cela peut être utilisé pour l'hameçonnage: googĺe.com au lieu de google.com.
+     - suggestion de remplacement des liens http par l'https.
+     - suggestion de remplacement de Youtube, Reddit ou Twitter par des alternatives respectueuses de la vie privée [désactivé par défaut]
 
 * Vérificateur d'hôtes: ce module étiquette les hôtes, configurés soit en les spécifiant manuellement, soit en utilisant un fichier hosts distant. Vous pouvez l'utiliser pour vous avertir de la visite de sites dangereux ou spéciaux. La configuration intégrée spécifie les fichiers hosts de StevenBlack (adware/malware, fakenews, jeu et contenu pour adultes) depuis l'adresse https://github.com/StevenBlack/hosts.
 
