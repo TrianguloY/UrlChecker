@@ -20,16 +20,6 @@ public interface AndroidSettings {
     /* ------------------- locale ------------------- */
 
     /**
-     * List of locales available in the app.
-     */
-    List<String> LOCALES = List.of(
-            // First one must be the default.
-            "en",
-            // TODO: auto-generate from gradle/reflection
-            "es", "fr-FR", "iw", "pt-PT", "tr", "uk", "ja"
-    );
-
-    /**
      * The locale pref
      */
     static GenericPref.Str LOCALE_PREF(Context cntx) {
@@ -78,7 +68,7 @@ public interface AndroidSettings {
     static List<AvailableLocale> getLocales(Context cntx) {
         // check each locale
         var available = new ArrayList<AvailableLocale>();
-        for (var tag : LOCALES) {
+        for (var tag : BuildConfig.LOCALES) {
             var locale = parseLocale(tag);
 
             // check if available on this device (with split apks the device may not have the translation downloaded)

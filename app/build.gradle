@@ -12,6 +12,20 @@ android {
         targetSdkVersion 32
         versionCode 20
         versionName "2.9"
+
+
+        // generate field with all locales
+        def folder = file("src/main/res") // from this folder
+        def prefix = "values-" // with this prefix
+        def nonEnglish = folder.list().toList().stream() // from all files in the folder
+                .filter { it.startsWith(prefix) } // keep those starting with the prefix
+                .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
+                .map { it.substring(prefix.length()).replace('-r', '-') } // extract the locale code
+                .collect { '"' + it + '"' } // convert as 'string'
+                .join(',') // and concatenate with commas
+        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$nonEnglish)" // create field
+
+
     }
 
     buildTypes {
