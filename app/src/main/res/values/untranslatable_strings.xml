@@ -13,8 +13,6 @@
     <string name="trianguloy">TrianguloY</string>
     <string name="contributors"
         translatable="false">Ilithy, PabloOQ</string>
-    <string name="translators"
-        translatable="false">Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz, 404potato</string>
 
     <string name="sample_url"><![CDATA[http://www.google.com/?ref=referrer&foo=bar#tag]]></string>
 </resources>
