@@ -29,19 +29,19 @@ Traduzioni: %s."</string>
     <string name="txt_conf">Qui puoi vedere tutti i moduli disponibili, la loro descrizione, ed impostazioni. Puoi anche re-ordinarli, ed abilitarli o disabilitarli.</string>
     <string name="toast_cantEnable">"Impossibile abilitare il modulo, configurazione mancante?"</string>
     <string name="menu_resetOrder">Ripristina ordine</string>
-    <string name="menu_toggleDecorations">Seleziona tutti i titoli</string>
+    <string name="menu_toggleDecorations">Inverti tutti</string>
     <string name="desc_up">Muovi su</string>
     <string name="desc_down">Muovi giù</string>
     <string name="desc_decorations">Mostra/nascondi titoli</string>
     <string name="desc_enable">Attiva/disattiva modulo</string>
 
     <!-- settings -->
-    <string name="txt_openLinks">"Apri link in quest'app: Durante gli anni, il modo per configurare quest'impostazione è cambiato. Trovi qui in basso tutte le impostazioni disponibili al riguardo per il tuo dispositivo, se i link non vengono aperti in quest'app, provali tutti."</string>
+    <string name="txt_openLinks">"Durante gli anni, il modo per configurare l'apertura dei link nelle app è cambiato. Trovi qui in basso tutte le impostazioni disponibili al riguardo per il tuo dispositivo, se i link non vengono aperti in quest'app, dai un'occhiata a tutti."</string>
     <string name="btn_setBrowser">Imposta come browser di default</string>
     <string name="toast_defaultSet">"L'app è impostata come browser di default"</string>
     <string name="btn_configureBrowser">Browser di default</string>
     <string name="btn_linksSettings">Apri link supportati</string>
-    <string name="btn_androidSettings">Impostazioni app</string>
+    <string name="btn_androidSettings">Informazioni app</string>
     <string name="txt_theme">Tema:</string>
     <string name="spin_darkTheme">Scuro</string>
     <string name="spin_lightTheme">Chiaro</string>
@@ -55,7 +55,7 @@ Traduzioni: %s."</string>
     <string name="save">Salva</string>
     <string name="reset">Reset</string>
     <string name="close">Chiudi</string>
-    <string name="clear">Chiudo</string>
+    <string name="clear">Pulisci</string>
     <string name="auto">Automatico</string>
     <string name="share">Condividi</string>
     <string name="canceled">Cancellato</string>
@@ -91,7 +91,7 @@ Nota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiorname
     <string name="mOpen_name"><![CDATA[Apri e condividi]]></string>
     <string name="mOpen_desc">"Continene i seguenti pulsanti (da sinistra a destra):
 - Schede custom: premi per attivare o disattivare le schede custom. Quando abilitato il browser dovrebbe essere aperto in modalità "light".
-- Pulsante apri: Premi il nome dell'app per aprire il link in quell'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere.
+- Pulsante apri: Premi il nome dell'app per aprire il link in quell'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere tra le app disponibili.
 - Pulsante condividi: Premi il pulsante per condividere il link. Tienilo premuto per copiare nella clipboard."</string>
 
     <string name="mOpen_ctabs">Schede custom:</string>
@@ -138,12 +138,12 @@ Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
     <string name="mStatus_redir">Re-indirizzazione</string>
 
-    <string name="mInput_name">Inserisci testo</string>
+    <string name="mInput_name">Modifica link</string>
     <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>
 
     <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"Quando questo modulo è abilitato puoi scansionare l'url utilizzando VirusTotal e visualizzare il report.
-Una chaive API perosonale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us."</string>
+Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us."</string>
 
     <string name="mVT_apiKey">chiave api</string>
     <string name="mVT_tm">VirusTotal™ è un trademark di Google, Inc.</string>
@@ -204,7 +204,7 @@ Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiar
 Tieni conto che qualsiasi modifica ai 'providers' verrà sovrscaritta se la lista viene aggiornata automaticamente o manualmente dalla finestra degli aggiornamenti. Per avere regole custom impostale in un parent object diverso."</string>
 
 
-    <string name="mRemove_name">Pulitore di queries</string>
+    <string name="mRemove_name">Pulitore queries</string>
     <string name="mRemove_desc">"Con questo modulo puoi rimuovere queries dall'URL.
 Premi il pulsante per rimuoverle tutte o premi la freccia per rimuoverne una alla volta.
 Grazie a PabloOQ per l'idea originale!"</string>
@@ -223,8 +223,8 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mLog_edit">Modifica log</string>
     <string name="mLog_empty">Nessun dato</string>
 
-    <string name="mHosts_name">Etichetta hosts</string>
-    <string name="mHosts_desc">"    Questo modulo etichetta gli hosts, configurato o manualmente od utilizzando un file remoto hosts-like.
+    <string name="mHosts_name">Categorie hosts</string>
+    <string name="mHosts_desc">"Questo modulo etichetta gli hosts, e può essere configurato manualmente od utilizzando un file remoto hosts-like.
     Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
