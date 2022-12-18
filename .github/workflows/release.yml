@@ -1,0 +1,32 @@
+name: Build & Publish Release APK
+
+on:
+  push:
+    tags:
+      - '*'
+
+  workflow_dispatch:
+
+jobs:
+  Gradle:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v3
+    - name: setup jdk
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Make Gradle executable
+      run: chmod +x ./gradlew
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+    - name: Release to GitHub
+      uses: Ilithy/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./app/build/outputs/apk/release/app-release-unsigned.apk
+        asset_name: URLCheck.apk
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "URLCheck app release"
