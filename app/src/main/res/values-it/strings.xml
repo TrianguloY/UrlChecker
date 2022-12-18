@@ -241,7 +241,7 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
 - replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall'alto al basso. Attivato di defualt.
 - enabled: se falso questo intero oggetto sarà saltato. Attivato di default."</string>
     <string name="mHosts_buildTitle">Riempi database hosts</string>
-    <string name="mHosts_buildDesc">"Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest'azione potrebbe richiedere qualche secondo. Continuare?"</string>
+    <string name="mHosts_buildDesc">Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest'azione potrebbe richiedere qualche secondo. Continuare?</string>
     <string name="mHosts_buildProgress">Preparando lista</string>
     <string name="mHosts_buildInit">Inizializzazione</string>
     <string name="mHosts_buildClear">Pulizia…</string>
