@@ -1,7 +1,8 @@
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here:
-        TrianguloY and PabloOQ
+        Translator: <TrianguloY>
+        Translator: <PabloOQ>
 
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -67,10 +68,10 @@ Traducciones: %s."</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Comprobador de patrones</string>
-    <string name="mPttrn_desc">"Comprueba problemas comunes en la url. Patrones incorporados:
-* Carácteres no-ascii, como letras griegas. Pueden ser usadas para phishing: googĺe.com vs google.com
-* Enlaces http, deberías usar https
-* Enlaces sin esquema http(s)"</string>
+    <string name="mPttrn_desc">"Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
+- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+- Sugiere reemplazar 'http' por 'https'
+- Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]"</string>
     <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>

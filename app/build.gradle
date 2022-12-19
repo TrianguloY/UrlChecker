@@ -14,18 +14,30 @@ android {
         versionName "2.9"
 
 
-        // generate field with all locales
+        // generate buildconfig field with all locales
         def folder = file("src/main/res") // from this folder
         def prefix = "values-" // with this prefix
-        def nonEnglish = folder.list().toList().stream() // from all files in the folder
+        def translations = folder.list().toList().stream() // from all files in the folder
                 .filter { it.startsWith(prefix) } // keep those starting with the prefix
                 .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
+                .collect { it }
+        def constructor = translations.stream()
                 .map { it.substring(prefix.length()).replace('-r', '-') } // extract the locale code
                 .collect { '"' + it + '"' } // convert as 'string'
                 .join(',') // and concatenate with commas
-        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$nonEnglish)" // create field
+        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$constructor)" // create field
 
-
+        // generate string resource with all translators
+        def translators = translations.stream()
+                .map { file("$folder.path/$it/strings.xml") } // get translation files
+                .flatMap { it.readLines().stream() } // extract all lines
+                .filter { it.matches("[ \t]*Translator:.*") } // keep only the translators ones
+                .map { it.split(":", 2)[1].trim() } // extract the name
+                .filter { !it.startsWith("<") } // remove 'internal' ones
+                .distinct().sorted() // keep distinct and sort them
+                .collect { it }
+                .join(', ') // join with commas
+        resValue "string", "translators", translators // create resource
     }
 
     buildTypes {
