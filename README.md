@@ -7,6 +7,9 @@
 # URLCheck
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 
+With contributions from: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
+And translations by: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz, [404potato](https://github.com/404potato)
+
 </div>
 <br>
 <!-- ---------- Badges ---------- -->
@@ -72,11 +75,6 @@ Feel free to [**suggest changes**](https://github.com/TrianguloY/UrlChecker/issu
 **Translations are also greatly appreciated.**
 
 See [CONTRIBUTING](docs/CONTRIBUTING.md) for code or translation details and tips.
-
-### Contributors
-
-Contributions: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
-Translations: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz, [404potato](https://github.com/404potato)
 
 
 <!-- ---------- License ---------- -->
