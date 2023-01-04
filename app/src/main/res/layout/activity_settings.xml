@@ -50,6 +50,7 @@
                 android:layout_weight="1"
                 android:onClick="openAppLinks"
                 android:text="@string/btn_linksSettings" />
+
             <Button
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
@@ -98,6 +99,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/padding"
+            android:paddingBottom="@dimen/padding">
+
+            <include layout="@layout/separator" />
+
+        </FrameLayout>
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="openTutorial"
+            android:text="@string/btn_tutorialSettings" />
 
     </LinearLayout>
 

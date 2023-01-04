@@ -45,6 +45,26 @@ Translations: %s."</string>
     <string name="spin_darkTheme">Dark</string>
     <string name="spin_lightTheme">Light</string>
     <string name="txt_locale">Locale:</string>
+    <string name="btn_tutorialSettings">Repeat tutorial</string>
+
+    <!-- tutorial -->
+    <string name="tutorial">Tutorial</string>
+    <string name="tutorial_txt_intro">Thanks for downloading the app!
+
+This is the tutorial, if you want to skip it you can do so with the button below. You can always come back to this tutorial from the settings menu."</string>
+    <string name="tutorial_txt_app">"The app acts as an intermediary when opening or sharing url links. Once an url is sent to the app you can interact with it via the modules. After that you can open the link (in the app you want), share it or copy it to the clipboard.
+
+For the app to intercept the urls when opening them we need to set it up as a browser first. This is not needed if you intent to pass the urls using the share functionality."</string>
+    <string name="tutorial_txt_modules">"The modules are the way the app interacts with the urls. There are multiple modules, each of them have a specific function, usually they either give you information about the url, or modify it. It is recommended you check them in the modules menu as each one is explained there and you can also change their behaviour.
+
+If you want you can go to the modules menu by tapping the button below."</string>
+    <string name="tutorial_txt_tips">"That's all. Here are some tips that can be useful.
+
+When an app doesn't give you a way to open or share a url, but it gives you a way to do the other you can solve the issue using this app. You can also copy the url to the clipboard.
+
+There are some urls which its only purpose is redirecting you to another url. If the final url can be opened in an app, then you can avoid opening it in a browser."</string>
+    <string name="tutorial_button_skip">Skip tutorial</string>
+    <string name="tutorial_button_end">Finish tutorial</string>
 
     <!-- generic -->
     <string name="toast_noApp">"Can't open application"</string>
@@ -64,6 +84,9 @@ Translations: %s."</string>
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
 
+
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>

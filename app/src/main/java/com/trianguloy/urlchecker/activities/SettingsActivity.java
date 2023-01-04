@@ -198,4 +198,9 @@ public class SettingsActivity extends Activity {
             }
         });
     }
+
+    /* ------------------- tutorial ------------------- */
+    public void openTutorial(View view){
+        PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
+    }
 }

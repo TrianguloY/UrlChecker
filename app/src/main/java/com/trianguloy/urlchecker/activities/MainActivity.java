@@ -27,6 +27,9 @@ public class MainActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_main);
+        if (!TutorialActivity.TUTORIAL(this).get()){
+            openTutorial(this.getCurrentFocus());
+        }
     }
 
     @Override
@@ -64,6 +67,10 @@ public class MainActivity extends Activity {
 
     public void aboutToast(View view) {
         Toast.makeText(this, getString(R.string.app_name) + " - " + getString(R.string.trianguloy), Toast.LENGTH_SHORT).show();
+    }
+
+    public void openTutorial(View view){
+        PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }
 
 }
