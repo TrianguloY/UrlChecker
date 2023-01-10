@@ -18,9 +18,10 @@ La aplicación está estructurada con una estructura modular, puedes activar/des
 
 * Eliminador de paŕametros: Muestra los parámetros individuales decodificador, que puedes eliminar o analizar.
 
-* Módulo de patrones: Realiza comprobaciones basadas en patrones:
-    - Notifica de enlaces http, permite reemplazarlos por https.
-    - Notifica de caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+* Módulo de patrones: Comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
+    - Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+    - Sugiere reemplazar 'http' por 'https'
+    - Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]
 
 * Módulo de patrones: Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts
 

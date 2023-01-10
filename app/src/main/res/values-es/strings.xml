@@ -1,8 +1,18 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Translator: <TrianguloY>
+        Translator: <PabloOQ>
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Español</string>
+
     <!-- main -->
     <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Al hacer click en uno y abrirlo en esta aplicación, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
     <string name="a_modules">Módulos</string>
+    <string name="a_settings">Ajustes</string>
     <string name="a_about">Acerca de</string>
 
     <!-- about -->
@@ -15,11 +25,28 @@ Traducciones: %s."</string>
     <string name="link_source">Código fuente</string>
     <string name="link_privacy">Política de privacidad</string>
 
-    <!-- configuration -->
-    <string name="txt_conf">Lista de módulos: puedes habilitarlos o deshabilitarlos, ver su descripción y configurarlos.</string>
+    <!-- modules -->
+    <string name="txt_conf">Aquí se encuentran todos los módulos disponibles, con su descripción y configuración. También los puedes reordenar, mostrar/ocultar los títulos y activarlos o desactivarlos.</string>
     <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
-    <string name="reset_order">Reiniciar orden</string>
-    <string name="chk_decorations">Mostrar el título de los módulos</string>
+    <string name="menu_resetOrder">Reiniciar orden</string>
+    <string name="menu_toggleDecorations">Alternar los títulos</string>
+    <string name="desc_up">Subir</string>
+    <string name="desc_down">Bajar</string>
+    <string name="desc_decorations">Mostrar/ocultar título</string>
+    <string name="desc_enable">Activar/desactivar módulo</string>
+
+
+    <!-- settings -->
+    <string name="txt_openLinks">Abrir enlaces en esta app: A lo largo de los años Android ha cambiado la forma de configurarlo, y varía entre versiones. Debajo se muestran los diversos ajustes disponibles en tu dispositivo, si los enlaces no se abren en esta aplicación pruébalos todos.</string>
+    <string name="btn_setBrowser">Usar como navegador por defecto</string>
+    <string name="toast_defaultSet">La aplicación se ha configurado como el navegador por defecto</string>
+    <string name="btn_configureBrowser">Navegador por defecto</string>
+    <string name="btn_linksSettings">Abrir enlaces soportados</string>
+    <string name="btn_androidSettings">Ajustes de Android de la aplicación</string>
+    <string name="txt_theme">Tema:</string>
+    <string name="spin_darkTheme">Oscuro</string>
+    <string name="spin_lightTheme">Claro</string>
+    <string name="txt_locale">Idioma:</string>
 
     <!-- generic -->
     <string name="toast_noApp">No se puede abrir la aplicación</string>
@@ -32,6 +59,8 @@ Traducciones: %s."</string>
     <string name="clear">Borrar</string>
     <string name="auto">Automático</string>
     <string name="share">Compartir</string>
+    <string name="canceled">Cancelado</string>
+    <string name="deviceDefault">Por defecto del dispositivo</string>
 
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
@@ -39,10 +68,10 @@ Traducciones: %s."</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Comprobador de patrones</string>
-    <string name="mPttrn_desc">"Comprueba problemas comunes en la url. Patrones incorporados:
-* Carácteres no-ascii, como letras griegas. Pueden ser usadas para phishing: googĺe.com vs google.com
-* Enlaces http, deberías usar https
-* Enlaces sin esquema http(s)"</string>
+    <string name="mPttrn_desc">"Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
+- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+- Sugiere reemplazar 'http' por 'https'
+- Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]"</string>
     <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
@@ -132,9 +161,6 @@ Si lo habilitas, mostrará el intent recibido como uri, útil para desarrollador
 
 Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado para copiarlo todo."</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
-    <string name="mD_copyIntent">Intent copiado al portapapeles</string>
-    <string name="mD_copyUrlData">UrlData copiado al portapapeles</string>
-    <string name="mD_copyAll">Intent y UrlData copiados al portapapeles</string>
 
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la url cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>

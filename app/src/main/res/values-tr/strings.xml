@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Translator: Metezd
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">Türkçe</string>
+
     <!-- main -->
     <string name="txt_info">Bu uygulama bağlantıları açmak için bir tür ara adım görevi görür. Bir bağlantıya tıkladığınızda ve onu açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir. Mevcut bileşenleri ve ne yaptıklarını görmek için aşağıdaki düğmeye tıklayın.</string>
     <string name="txt_sample">Test etmek için aşağıdaki linke tıklayın:</string>
@@ -15,7 +23,7 @@ Translations: %s."</string>
     <!-- configuration -->
     <string name="txt_conf">Bileşenlerin listesi: Bunları etkinleştirebilir veya devre dışı bırakabilir, ayrıca açıklamasını ve yapılandırmasını inceleyebilirsiniz.</string>
     <string name="toast_cantEnable">Bileşen etkinleştirilemiyor, eksik yapılandırma olabilir mi?</string>
-    <string name="reset_order">Düzeni Sıfırla</string>
+    <string name="menu_resetOrder">Düzeni Sıfırla</string>
 
     <!-- generic -->
     <string name="toast_noApp">Faaliyet başlatamıyor</string>

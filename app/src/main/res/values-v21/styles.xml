@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ActivityTheme" parent="android:Theme.DeviceDefault">
+    <style name="ActivityThemeDark"
+        parent="android:Theme.DeviceDefault">
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
 
-    <style name="DialogThemeDark" parent="android:Theme.DeviceDefault.Dialog">
+    <style name="ActivityThemeLight"
+        parent="android:Theme.DeviceDefault.Light">
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>
     </style>
 
-    <style name="DialogThemeLight" parent="android:Theme.DeviceDefault.Light.Dialog">
+    <style name="DialogThemeDark"
+        parent="android:Theme.DeviceDefault.Dialog">
+        <item name="colorAccent">?android:attr/colorAccent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+    </style>
+
+    <style name="DialogThemeLight"
+        parent="android:Theme.DeviceDefault.Light.Dialog">
         <item name="colorAccent">?android:attr/colorAccent</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>

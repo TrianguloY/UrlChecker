@@ -10,19 +10,19 @@
         android:layout_height="wrap_content"
         android:text="@string/mClear_desc" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mClear_auto" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/referral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mClear_toggleReferral" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/verbose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

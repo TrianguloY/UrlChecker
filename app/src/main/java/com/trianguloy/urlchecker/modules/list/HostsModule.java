@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -39,7 +39,7 @@ public class HostsModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new HostsConfig(cntx);
     }
 }
@@ -47,7 +47,7 @@ public class HostsModule extends AModuleData {
 class HostsConfig extends AModuleConfig {
     private final Hosts hosts;
 
-    public HostsConfig(ConfigActivity cntx) {
+    public HostsConfig(ModulesActivity cntx) {
         super(cntx);
         hosts = new Hosts(cntx);
     }
@@ -97,7 +97,7 @@ class HostsDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         text = views.findViewById(R.id.text);
-        text.setOnClickListener(o -> {
+        text.setOnClickListener(v -> {
             if (hosts.isUninitialized()) hosts.build(true, () -> onNewUrl(getUrl()));
         });
     }

@@ -7,9 +7,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,7 +103,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Integer value) {
+        protected void save(Integer value) {
             prefs.edit().putInt(prefName, value).apply();
         }
     }
@@ -122,7 +122,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Long value) {
+        protected void save(Long value) {
             prefs.edit().putLong(prefName, value).apply();
         }
     }
@@ -141,16 +141,23 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(Boolean value) {
+        protected void save(Boolean value) {
             prefs.edit().putBoolean(prefName, value).apply();
         }
 
         /**
-         * This checkbox will be set to the pref value, and when the checkbox changes the value will too
+         * This switch will be set to the pref value, and when the switch changes the value will too
          */
-        public void attachToCheckBox(CheckBox checkBox) {
-            checkBox.setChecked(get());
-            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
+        public void attachToSwitch(Switch vSwitch) {
+            vSwitch.setChecked(get());
+            vSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> set(isChecked));
+        }
+
+        /**
+         * Toggles this setting
+         */
+        public void toggle() {
+            set(!get());
         }
     }
 
@@ -168,7 +175,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(String value) {
+        protected void save(String value) {
             prefs.edit().putString(prefName, value).apply();
         }
 
@@ -220,7 +227,7 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(List<String> value) {
+        protected void save(List<String> value) {
             prefs.edit().putString(prefName, join(value)).apply();
         }
 
@@ -261,14 +268,14 @@ public abstract class GenericPref<T> {
         }
 
         @Override
-        public void save(T value) {
+        protected void save(T value) {
             prefs.edit().putInt(prefName, value.getId()).apply();
         }
 
         /**
          * Populate a spinner with this preference
          */
-        public void attachToSpinner(Spinner spinner) {
+        public void attachToSpinner(Spinner spinner, JavaUtils.Consumer<T> listener) {
             // Put elements in the spinner
             T[] values = type.getEnumConstants();
             List<String> names = new ArrayList<>(values.length);
@@ -293,7 +300,11 @@ public abstract class GenericPref<T> {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    set(values[i]);
+                    // set+notify if changed
+                    if (get() != values[i]) {
+                        set(values[i]);
+                        if (listener != null) listener.accept(values[i]);
+                    }
                 }
 
                 @Override

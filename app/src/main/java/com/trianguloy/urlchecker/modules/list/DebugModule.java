@@ -1,19 +1,18 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.GenericPref;
+
+import java.util.List;
 
 /**
  * This modules marks the insertion point of new modules
@@ -45,23 +44,18 @@ public class DebugModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new DebugConfig(cntx);
     }
 }
 
-class DebugDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
+class DebugDialog extends AModuleDialog {
 
-    private TextView txt_intent;
-    private TextView txt_urlData;
+    private TextView textView;
+    private String intentUri;
 
     public DebugDialog(MainDialog dialog) {
         super(dialog);
-    }
-
-    @Override
-    public void onNewUrl(UrlData urlData) {
-        txt_urlData.setText(urlData.toString());
     }
 
     @Override
@@ -71,49 +65,28 @@ class DebugDialog extends AModuleDialog implements View.OnClickListener, View.On
 
     @Override
     public void onInitialize(View views) {
-        txt_intent = views.findViewById(R.id.intent);
-        txt_intent.setText(getActivity().getIntent().toUri(0));
-        txt_intent.setOnClickListener(this);
-        txt_intent.setOnLongClickListener(this);
+        textView = views.findViewById(R.id.data);
 
-        txt_urlData = views.findViewById(R.id.urlData);
-        txt_urlData.setOnClickListener(this);
-        txt_urlData.setOnLongClickListener(this);
+        // cached
+        intentUri = getActivity().getIntent().toUri(0);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.intent:
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyIntent, txt_intent.getText().toString());
-                break;
-            case R.id.urlData:
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyUrlData, txt_urlData.getText().toString());
-                break;
-        }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        switch (v.getId()) {
-            case R.id.intent:
-            case R.id.urlData:
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mD_copyAll, txt_intent.getText() + "\n" + txt_urlData.getText());
-                break;
-            default:
-                return false;
-        }
-        return true;
+    public void onNewUrl(UrlData urlData) {
+        textView.setText(String.join("\n\n", List.of(
+                // show activity uri
+                intentUri,
+                // show current url data
+                urlData.toString())
+        ));
     }
 }
 
 class DebugConfig extends AModuleConfig {
 
-    final GenericPref.Bool show_toasts;
 
-    public DebugConfig(ConfigActivity activity) {
+    public DebugConfig(ModulesActivity activity) {
         super(activity);
-        show_toasts = CustomTabs.SHOWTOAST_PREF(activity);
     }
 
     @Override
@@ -128,8 +101,7 @@ class DebugConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        CheckBox chk_ctabs = views.findViewById(R.id.chk_ctabs);
-        chk_ctabs.setChecked(show_toasts.get());
-        chk_ctabs.setOnCheckedChangeListener((buttonView, isChecked) -> show_toasts.set(isChecked));
+        CustomTabs.SHOWTOAST_PREF(getActivity())
+                .attachToSwitch(views.findViewById(R.id.chk_ctabs));
     }
 }

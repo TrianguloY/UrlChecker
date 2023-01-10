@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/padding" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/autoUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -85,7 +85,7 @@ public class Hosts {
         for (var label : JavaUtils.toList(catalog.keys())) {
             try {
                 var entry = catalog.getJSONObject(label);
-                if (entry.optBoolean("disabled")) continue;
+                if (!entry.optBoolean("enabled", true)) continue;
                 var color = entry.optString("color", "-");
                 var replace = entry.optBoolean("replace", true);
                 if (entry.has("file")) {

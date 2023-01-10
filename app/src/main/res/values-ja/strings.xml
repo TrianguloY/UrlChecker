@@ -1,4 +1,12 @@
 <resources>
+    <!-- Translator(s) name:
+        If you create or update a translation, add how you want to be credited here:
+        Translator: 404potato
+
+        Locale name:
+        Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
+    <string name="locale">日本語</string>
+
     <!-- main -->
     <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認・設定することができます。</string>
     <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>
@@ -12,8 +20,8 @@
     <!-- configuration -->
     <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化することができ、タップすると、その説明と設定も確認できます。</string>
     <string name="toast_cantEnable">モジュールを有効にできません。設定を忘れていませんか？</string>
-    <string name="reset_order">並び順をリセット</string>
-    <string name="chk_decorations">モジュールの名を表示する</string>
+    <string name="menu_resetOrder">並び順をリセット</string>
+    <string name="desc_decorations">モジュールの名を表示する</string>
 
     <!-- generic -->
     <string name="toast_noApp">アプリを開けません</string>
@@ -110,9 +118,6 @@
     <string name="mD_desc">モジュールの順序を変更すると、将来のアップデートで追加される新しいモジュールがこのモジュールの上に配置されます。\n\nこれを有効にすると、受け取ったインテントをURIとして表示します。\n開発者にとって便利です。\nIntent または URLData をタップすると、クリップボードにコピーされます。長押しすると全てコピーできます。</string>
 
     <string name="mD_ctabs">カスタムタブ サービスからのデバッグメッセージを表示する</string>
-    <string name="mD_copyIntent">インテントをクリップボードにコピーしました。</string>
-    <string name="mD_copyUrlData">UrlData をクリップボードにコピーしました。</string>
-    <string name="mD_copyAll">インテントと UrlData をクリップボードにコピーしました。</string>
 
     <string name="mHist_name">履歴</string>
     <string name="mHist_desc">手動または他のモジュールによってURLが編集されると、このモジュールを使用して変更を表示および元に戻すことができます。</string>

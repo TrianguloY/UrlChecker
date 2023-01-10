@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -52,7 +52,7 @@ public class VirusTotalModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new VirusTotalConfig(cntx);
     }
 }
@@ -61,7 +61,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 
     final GenericPref.Str api_key;
 
-    public VirusTotalConfig(ConfigActivity cntx) {
+    public VirusTotalConfig(ModulesActivity cntx) {
         super(cntx);
         api_key = VirusTotalModule.API_PREF(cntx);
     }
@@ -99,7 +99,7 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
     }
 }
 
-class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, View.OnLongClickListener {
+class VirusTotalDialog extends AModuleDialog {
 
     private static final int RETRY_TIMEOUT = 5000;
     private Button btn_scan;
@@ -124,11 +124,14 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
     public void onInitialize(View views) {
         btn_scan = views.findViewById(R.id.button);
         btn_scan.setText(R.string.mVT_scan);
-        btn_scan.setOnClickListener(this);
+        btn_scan.setOnClickListener(v -> scanOrCancel());
 
         txt_result = views.findViewById(R.id.text);
-        txt_result.setOnClickListener(this);
-        txt_result.setOnLongClickListener(this);
+        txt_result.setOnClickListener(v -> showInfo(false));
+        txt_result.setOnLongClickListener(v -> {
+            showInfo(true);
+            return true;
+        });
     }
 
     @Override
@@ -137,28 +140,6 @@ class VirusTotalDialog extends AModuleDialog implements View.OnClickListener, Vi
         result = null;
         updateUI();
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button:
-                scanOrCancel();
-                break;
-            case R.id.text:
-                showInfo(false);
-                break;
-        }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        if (v.getId() == R.id.text) {
-            showInfo(true);
-            return true;
-        }
-        return false;
-    }
-
 
     /**
      * Performs a scan of the current url, in background.

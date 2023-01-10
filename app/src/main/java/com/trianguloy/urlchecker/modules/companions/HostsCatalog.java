@@ -43,10 +43,11 @@ public class HostsCatalog extends JsonCatalog {
                         .put("file", "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts")
                         .put("replace", false)
                 )
-                .put(cntx.getString(R.string.link_blog), new JSONObject()
+                .put(cntx.getString(R.string.trianguloy), new JSONObject()
                         .put("color", "#FCDABA")
                         .put("hosts", new JSONArray()
-                                .put("triangularapps.blogspot.com"))
+                                .put("triangularapps.blogspot.com")
+                                .put("trianguloy.github.io"))
                         .put("enabled", "false")
                 )
                 ;

@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:animateLayoutChanges="true"
+    android:background="@drawable/round_border"
     android:orientation="vertical"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
@@ -10,8 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:paddingBottom="5dp">
+        android:animateLayoutChanges="true">
 
         <TextView
             android:id="@+id/label"
@@ -28,7 +30,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
@@ -42,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_up"
             android:rotation="180"
             android:src="@drawable/arrow_down"
             android:tint="?attr/colorAccent" />
@@ -52,21 +55,31 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_down"
             android:src="@drawable/arrow_down"
             android:tint="?attr/colorAccent" />
 
         <ImageView
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:background="@android:color/darker_gray"
             android:scaleType="centerInside" />
 
+        <ImageButton
+            android:id="@+id/decorations"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_decorations"
+            android:src="@drawable/t" />
         <Switch
             android:id="@+id/enable"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:contentDescription="@string/desc_enable" />
 
     </LinearLayout>
 
@@ -74,17 +87,16 @@
         android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
+        android:orientation="vertical">
             <FrameLayout
                 android:id="@+id/box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true">
+                android:animateLayoutChanges="true"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 </FrameLayout>
-        <include layout="@layout/separator" />
-    </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>

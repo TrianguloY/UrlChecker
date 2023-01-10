@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -45,7 +45,7 @@ public class PatternModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new PatternConfig(cntx);
     }
 }
@@ -54,7 +54,7 @@ class PatternConfig extends AModuleConfig {
 
     private final PatternCatalog catalog;
 
-    public PatternConfig(ConfigActivity cntx) {
+    public PatternConfig(ModulesActivity cntx) {
         super(cntx);
         catalog = new PatternCatalog(cntx);
     }
@@ -71,7 +71,7 @@ class PatternConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        views.findViewById(R.id.edit).setOnClickListener(o -> catalog.showEditor());
+        views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
         views.<TextView>findViewById(R.id.user_content)
                 .setText(getActivity().getString(
                         R.string.mPttrn_userContent,
@@ -81,7 +81,7 @@ class PatternConfig extends AModuleConfig {
 
 }
 
-class PatternDialog extends AModuleDialog implements View.OnClickListener {
+class PatternDialog extends AModuleDialog {
     public static final String APPLIED = "pattern.applied";
 
     private TextView txt_noPatterns;
@@ -187,19 +187,12 @@ class PatternDialog extends AModuleDialog implements View.OnClickListener {
                 Button fix = row.findViewById(R.id.button);
                 fix.setText(R.string.mPttrn_fix);
                 fix.setEnabled(message.newUrl != null);
-                fix.setTag(new String[]{message.pattern, message.newUrl}); // data for the onCLick
-                fix.setOnClickListener(this);
+                fix.setOnClickListener(v -> onClick(message.pattern, message.newUrl));
 
                 // autoclick
                 if (message.automatic) onClick(message.pattern, message.newUrl);
             }
         }
-    }
-
-    @Override
-    public void onClick(View view) {
-        String[] tag = (String[]) view.getTag();
-        if (tag != null) onClick(tag[0], tag[1]);
     }
 
     /**

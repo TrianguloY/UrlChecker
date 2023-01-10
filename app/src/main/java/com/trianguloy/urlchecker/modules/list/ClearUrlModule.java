@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -60,7 +60,7 @@ public class ClearUrlModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new ClearUrlConfig(cntx);
     }
 }
@@ -73,7 +73,7 @@ class ClearUrlConfig extends AModuleConfig {
 
     private final ClearUrlCatalog catalog;
 
-    public ClearUrlConfig(ConfigActivity activity) {
+    public ClearUrlConfig(ModulesActivity activity) {
         super(activity);
         allowReferral = ClearUrlModule.REFERRAL_PREF(activity);
         verbose = ClearUrlModule.VERBOSE_PREF(activity);
@@ -93,9 +93,9 @@ class ClearUrlConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        allowReferral.attachToCheckBox(views.findViewById(R.id.referral));
-        verbose.attachToCheckBox(views.findViewById(R.id.verbose));
-        auto.attachToCheckBox(views.findViewById(R.id.auto));
+        allowReferral.attachToSwitch(views.findViewById(R.id.referral));
+        verbose.attachToSwitch(views.findViewById(R.id.verbose));
+        auto.attachToSwitch(views.findViewById(R.id.auto));
 
         views.findViewById(R.id.update).setOnClickListener(v -> catalog.showUpdater());
         views.findViewById(R.id.edit).setOnClickListener(v -> catalog.showEditor());
@@ -103,7 +103,7 @@ class ClearUrlConfig extends AModuleConfig {
 
 }
 
-class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
+class ClearUrlDialog extends AModuleDialog {
 
     public static final String CLEARED = "clearUrl.cleared";
 
@@ -136,7 +136,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         info = views.findViewById(R.id.text);
         fix = views.findViewById(R.id.button);
         fix.setText(R.string.mClear_clear);
-        fix.setOnClickListener(this);
+        fix.setOnClickListener(v -> clear());
     }
 
     @Override
@@ -293,7 +293,7 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
             fix.setEnabled(true);
             if (verbose.get()) info.append("\n\n -> " + cleared);
             // and apply automatically if required
-            if (auto.get()) onClick(null);
+            if (auto.get()) clear();
         }
 
         // nothing found
@@ -302,9 +302,10 @@ class ClearUrlDialog extends AModuleDialog implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        // pressed the fix button
+    /**
+     * Clear the url
+     */
+    private void clear() {
         if (cleared != null) setUrl(new UrlData(cleared).putData(CLEARED, CLEARED));
     }
 

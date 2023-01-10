@@ -21,9 +21,11 @@ The app is structured with a modular setup, you can enable/disable and reorder i
 
 * Queries remover: Displays the decoded individual url queries, which you can remove or check.
 
-* Pattern module: Performs checks based on patterns. Built-in patterns include:
-    - Warns for http links, allow to replace it with https.
-    - Warns for non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com.
+* Pattern module: Checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
+Built-in patterns include:
+    - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
+    - Suggest replacing 'http' with 'https'
+    - Suggest replacing Youtube, Reddit or Twitter with privacy-friendly alternatives [disabled by default]
 
 * Hosts checker: This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts
 

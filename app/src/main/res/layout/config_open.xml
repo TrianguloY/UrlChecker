@@ -30,28 +30,28 @@
 
     </LinearLayout>
 
-    <CheckBox
+    <Switch
         android:id="@+id/closeopen_pref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_closeOpen" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/closeshare_pref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_closeShare" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/perDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_perDomain" />
 
-    <CheckBox
+    <Switch
         android:id="@+id/noReferrer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

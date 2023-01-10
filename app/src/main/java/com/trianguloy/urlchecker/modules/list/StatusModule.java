@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -43,12 +43,12 @@ public class StatusModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new DescriptionConfig(R.string.mStatus_desc);
     }
 }
 
-class StatusDialog extends AModuleDialog implements View.OnClickListener, ClickableLinks.OnUrlListener {
+class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener {
 
     private Button check;
     private TextView info;
@@ -67,7 +67,7 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
     @Override
     public void onInitialize(View views) {
         check = views.findViewById(R.id.button);
-        check.setOnClickListener(this);
+        check.setOnClickListener(v -> check());
         info = views.findViewById(R.id.text);
     }
 
@@ -77,15 +77,6 @@ class StatusDialog extends AModuleDialog implements View.OnClickListener, Clicka
         check.setEnabled(true);
         check.setText(R.string.mStatus_check);
         info.setText("");
-    }
-
-    @Override
-    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.check:
-        check(); // only one button
-//                break;
-//        }
     }
 
     /**

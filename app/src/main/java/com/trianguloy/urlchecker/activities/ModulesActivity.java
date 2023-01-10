@@ -2,8 +2,10 @@ package com.trianguloy.urlchecker.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Animations;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -28,27 +31,25 @@ import java.util.Map;
 /**
  * An activity that shows the list of modules that can be enabled/disabled
  */
-public class ConfigActivity extends Activity {
+public class ModulesActivity extends Activity {
 
     private LinearLayout list;
     private final Map<AModuleConfig, Switch> switches = new HashMap<>();
     private GenericPref.LstStr order;
-    private GenericPref.Bool showDecorations;
 
     // ------------------- listeners -------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_config);
+        AndroidSettings.setTheme(this, false);
+        AndroidSettings.setLocale(this);
+        setContentView(R.layout.activity_modules);
         setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);
 
         list = findViewById(R.id.list);
         order = ModuleManager.ORDER_PREF(this);
-        showDecorations = ModuleManager.DECORATIONS_PREF(this);
-
-        initConfig();
 
         // initialize modules
         for (AModuleData module : ModuleManager.getModules(true, this)) {
@@ -59,21 +60,36 @@ public class ConfigActivity extends Activity {
         updateMovableButtons();
     }
 
+    // method to inflate the options menu when
+    // the user opens the menu for the first time
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_modules, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            // press the 'back' button in the action bar to go back
-            onBackPressed();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // press the 'back' button in the action bar to go back
+                onBackPressed();
+                return true;
+            case R.id.menu_reset:
+                // reset order entry
+                resetOrder();
+                return true;
+            case R.id.menu_decorations:
+                // toggle decorations entry
+                toggleAllDecorations();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     // ------------------- actions -------------------
-
-    private void initConfig() {
-        showDecorations.attachToCheckBox(findViewById(R.id.showDecorations));
-    }
 
     /**
      * Initializes and adds a module to the list
@@ -88,11 +104,12 @@ public class ConfigActivity extends Activity {
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);
+        AndroidUtils.longTapForDescription(toggleEnable);
         final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
         toggleEnable.setChecked(enabled_pref.get());
         toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked && !config.canBeEnabled()) {
-                Toast.makeText(ConfigActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
+                Toast.makeText(ModulesActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
                 buttonView.setChecked(false);
             } else {
                 enabled_pref.set(isChecked);
@@ -101,8 +118,12 @@ public class ConfigActivity extends Activity {
         switches.put(config, toggleEnable);
 
         // configure up/down buttons
-        parent.findViewById(R.id.move_up).setOnClickListener(v -> moveModule(parent, -1));
-        parent.findViewById(R.id.move_down).setOnClickListener(v -> moveModule(parent, 1));
+        var move_up = parent.findViewById(R.id.move_up);
+        move_up.setOnClickListener(v -> moveModule(parent, -1));
+        AndroidUtils.longTapForDescription(move_up);
+        var move_down = parent.findViewById(R.id.move_down);
+        move_down.setOnClickListener(v -> moveModule(parent, 1));
+        AndroidUtils.longTapForDescription(move_down);
         // the enable/disable status will be set later with {@link this#updateMovableButtons()}
 
         // configure label
@@ -110,19 +131,30 @@ public class ConfigActivity extends Activity {
         title.setText(getString(R.string.dd, getString(module.getName())));
         AndroidUtils.setAsClickable(title);
 
+        // configure decorations toggle
+        var decorationsPref = ModuleManager.getDecorationsPrefOfModule(module, this);
+        var toggleDecorations = parent.<ImageView>findViewById(R.id.decorations);
+        AndroidUtils.toggleableListener(
+                toggleDecorations,
+                v -> decorationsPref.toggle(),
+                v -> v.setImageResource(decorationsPref.get() ? R.drawable.t : R.drawable.t_slash)
+        );
+        AndroidUtils.longTapForDescription(toggleDecorations);
+
         // configuration of the module
         var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
         config.onInitialize(child);
 
         // configure toggleable description
-        final var description = parent.findViewById(R.id.details);
-        title.setOnClickListener(v -> {
-            boolean checked = description.getVisibility() == View.GONE;
-            description.setVisibility(checked ? View.VISIBLE : View.GONE);
-            AndroidUtils.setStartDrawables(title,
-                    checked ? R.drawable.arrow_down : R.drawable.arrow_right);
-        });
-        title.performClick(); // initial hide
+        var description = parent.findViewById(R.id.details);
+        description.setVisibility(View.GONE); // initially hidden
+        AndroidUtils.toggleableListener(
+                title,
+                v -> description.setVisibility(description.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
+                v -> AndroidUtils.setStartDrawables(title,
+                        description.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right
+                )
+        );
     }
 
     /**
@@ -176,7 +208,7 @@ public class ConfigActivity extends Activity {
     /**
      * Resets the order of the modules
      */
-    public void resetOrder(View button) {
+    private void resetOrder() {
         // updates preference
         order.clear();
 
@@ -196,6 +228,14 @@ public class ConfigActivity extends Activity {
             list.addView(view);
         }
         updateMovableButtons();
+    }
 
+    /**
+     * Clicks all the decorations switches (effectively toggling them)
+     */
+    private void toggleAllDecorations() {
+        for (int i = 0; i < list.getChildCount(); i++) {
+            list.getChildAt(i).findViewById(R.id.decorations).performClick();
+        }
     }
 }

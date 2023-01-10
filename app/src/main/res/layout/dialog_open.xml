@@ -9,6 +9,7 @@
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:contentDescription="@string/mOpen_tabsDesc"
         android:src="@drawable/ctabs_off" />
 
     <LinearLayout

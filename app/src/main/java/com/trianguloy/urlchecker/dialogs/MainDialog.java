@@ -20,6 +20,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
@@ -116,12 +117,12 @@ public class MainDialog extends Activity {
     // ------------------- initialize -------------------
 
     private LinearLayout ll_mods;
-    private boolean showDecorations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AndroidUtils.setTheme(this);
         super.onCreate(savedInstanceState);
+        AndroidSettings.setTheme(this, true);
+        AndroidSettings.setLocale(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
         setFinishOnTouchOutside(true);
@@ -130,7 +131,6 @@ public class MainDialog extends Activity {
         ll_mods = findViewById(R.id.middle_modules);
 
         // initialize
-        showDecorations = ModuleManager.DECORATIONS_PREF(this).get();
         initializeModules();
 
         // load url
@@ -177,7 +177,7 @@ public class MainDialog extends Activity {
 
                 ViewGroup parent;
                 // set module block
-                if (showDecorations) {
+                if (ModuleManager.getDecorationsPrefOfModule(moduleData, this).get()) {
                     // init decorations
                     View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
                     final TextView title = block.findViewById(R.id.title);

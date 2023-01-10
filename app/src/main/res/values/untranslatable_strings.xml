@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">URLCheck</string>
-    <string name="lnk_playStore" translatable="false">Play Store</string>
-    <string name="lnk_fDroid" translatable="false">F-Droid</string>
 
-    <string name="dd" translatable="false">%s:</string>
-    <string name="contributors">Ilithy, PabloOQ</string>
-    <string name="translators">Tiago Carmo, Ilithy, Idris, Metezd, Nhman Mazuz, 404potato</string>
+    <string name="lnk_playStore"
+        translatable="false">Play Store</string>
+    <string name="lnk_fDroid"
+        translatable="false">F-Droid</string>
+
+
+    <string name="dd"
+        translatable="false">%s:</string>
+
+    <string name="trianguloy">TrianguloY</string>
+    <string name="contributors"
+        translatable="false">Ilithy, PabloOQ</string>
+
     <string name="sample_url"><![CDATA[http://www.google.com/?ref=referrer&foo=bar#tag]]></string>
 </resources>

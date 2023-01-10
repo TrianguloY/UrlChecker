@@ -202,7 +202,7 @@ public class ClearUrlCatalog {
         // configure
         catalogURL.attachToEditText(views.findViewById(R.id.catalog_URL));
         hashURL.attachToEditText(views.findViewById(R.id.hash_URL));
-        autoUpdate.attachToCheckBox(views.findViewById(R.id.autoUpdate));
+        autoUpdate.attachToSwitch(views.findViewById(R.id.autoUpdate));
 
         // info
         TextView txt_check = views.findViewById(R.id.last_check);

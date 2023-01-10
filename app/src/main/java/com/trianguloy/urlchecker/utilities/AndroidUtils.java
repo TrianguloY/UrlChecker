@@ -28,17 +28,6 @@ import java.util.Date;
 public interface AndroidUtils {
 
     /**
-     * Sets the theme (light/dark mode) to an activity
-     */
-    static void setTheme(Activity activity) {
-        activity.setTheme(
-                (activity.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
-                        ? R.style.DialogThemeLight // explicit light mode
-                        : R.style.DialogThemeDark // dark mode or device default
-        );
-    }
-
-    /**
      * Sets the start drawable of a textview
      * Wrapped for android compatibility
      */
@@ -160,9 +149,36 @@ public interface AndroidUtils {
 
     /**
      * @see ActionBar#setDisplayHomeAsUpEnabled(boolean)
+     * And don't forget to override onOptionsItemSelected!
      */
     static void configureUp(Activity activity) {
         var actionBar = activity.getActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    /**
+     * Sets an onClickListener to a [view] so that:
+     * [toggle] will be called when clicked (to change something).
+     * [listener] will be called now and when clicked (to update state).
+     * If you need to initialize things, do them before calling this.
+     */
+    static <V extends View> void toggleableListener(V view, JavaUtils.Consumer<V> toggle, JavaUtils.Consumer<V> listener) {
+        view.setOnClickListener(v -> {
+            toggle.accept(view);
+            listener.accept(view);
+        });
+        listener.accept(view);
+    }
+
+    /**
+     * Adds an onLongClickListener that will show a toast with the contentdescription
+     */
+    static void longTapForDescription(View view) {
+        view.setOnLongClickListener(v -> {
+            var contentDescription = v.getContentDescription();
+            if (contentDescription == null) AndroidUtils.assertError("No content description for view " + view);
+            Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            return true;
+        });
     }
 }

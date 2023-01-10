@@ -5,15 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.activities.ConfigActivity;
+import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
@@ -61,12 +59,12 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public AModuleConfig getConfig(ConfigActivity cntx) {
+    public AModuleConfig getConfig(ModulesActivity cntx) {
         return new OpenConfig(cntx);
     }
 }
 
-class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, View.OnLongClickListener {
+class OpenDialog extends AModuleDialog {
 
     private LastOpened lastOpened;
 
@@ -104,8 +102,8 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
         // init ctabs
         btn_ctabs = views.findViewById(R.id.ctabs);
         if (CTabs.isAvailable()) {
-            btn_ctabs.setOnClickListener(this);
-            btn_ctabs.setOnLongClickListener(this);
+            btn_ctabs.setOnClickListener(v -> toggleCtabs());
+            AndroidUtils.longTapForDescription(btn_ctabs);
             switch (ctabsPref.get()) {
                 case AUTO:
                 default:
@@ -136,21 +134,26 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
 
         // init open
         btn_open = views.findViewById(R.id.open);
-        btn_open.setOnClickListener(this);
-        btn_open.setOnLongClickListener(this);
+        btn_open.setOnClickListener(v -> openUrl(0));
 
         // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
-        btn_openWith.setOnClickListener(this);
+        btn_openWith.setOnClickListener(v -> showList());
 
         // init share
         View btn_share = views.findViewById(R.id.share);
-        btn_share.setOnClickListener(this);
-        btn_share.setOnLongClickListener(this);
+        btn_share.setOnClickListener(v -> shareUrl());
+        btn_share.setOnLongClickListener(v -> {
+            AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
+            return true;
+        });
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
-        popup.setOnMenuItemClickListener(this);
+        popup.setOnMenuItemClickListener(item -> {
+            openUrl(item.getItemId());
+            return false;
+        });
         menu = popup.getMenu();
 
         // init lastOpened utility
@@ -160,49 +163,6 @@ class OpenDialog extends AModuleDialog implements View.OnClickListener, PopupMen
     @Override
     public void onNewUrl(UrlData urlData) {
         updateSpinner();
-    }
-
-    // ------------------- Button listener -------------------
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ctabs:
-                toggleCtabs();
-                break;
-            case R.id.open:
-                openUrl(0);
-                break;
-            case R.id.share:
-                shareUrl();
-                break;
-            case R.id.open_with:
-                showList();
-                break;
-        }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        switch (v.getId()) {
-            case R.id.ctabs:
-                Toast.makeText(getActivity(), R.string.mOpen_tabsDesc, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.share:
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
-                break;
-            default:
-                return false;
-        }
-        return true;
-    }
-
-    // ------------------- PopupMenu.OnMenuItemClickListener -------------------
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        openUrl(item.getItemId());
-        return false;
     }
 
     // ------------------- Spinner -------------------
@@ -347,7 +307,7 @@ class OpenConfig extends AModuleConfig {
 
     private final GenericPref.Bool perDomainPref;
 
-    public OpenConfig(ConfigActivity activity) {
+    public OpenConfig(ModulesActivity activity) {
         super(activity);
         ctabsPref = CTabs.PREF(activity);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
@@ -370,14 +330,14 @@ class OpenConfig extends AModuleConfig {
     @Override
     public void onInitialize(View views) {
         if (CTabs.isAvailable()) {
-            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref));
+            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        closeOpenPref.attachToCheckBox(views.findViewById(R.id.closeopen_pref));
-        closeSharePref.attachToCheckBox(views.findViewById(R.id.closeshare_pref));
-        noReferrerPref.attachToCheckBox(views.findViewById(R.id.noReferrer));
-        perDomainPref.attachToCheckBox(views.findViewById(R.id.perDomain));
+        closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
+        closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
+        noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
+        perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
     }
 }
 

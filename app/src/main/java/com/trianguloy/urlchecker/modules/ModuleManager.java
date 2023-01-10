@@ -64,23 +64,25 @@ public class ModuleManager {
 
     // ------------------- enabled/disabled -------------------
 
-    private static final String PREF_SUFFIX = "_en";
+    private static final String ENABLED_PREF_SUFFIX = "_en";
 
     /**
      * Returns a preference to indicate if a specific module is enabled or not
      */
     public static GenericPref.Bool getEnabledPrefOfModule(AModuleData module, Context cntx) {
-        return new GenericPref.Bool(module.getId() + PREF_SUFFIX, module.isEnabledByDefault(), cntx);
+        return new GenericPref.Bool(module.getId() + ENABLED_PREF_SUFFIX, module.isEnabledByDefault(), cntx);
     }
 
 
     // ------------------- decorations -------------------
 
+    private static final String DECORATIONS_PREF_SUFFIX = "_decorate";
+
     /**
-     * Returns a preference to indicate if decorations are shown or not
+     * Returns a preference to indicate if decorations are shown or not for a specific module
      */
-    public static GenericPref.Bool DECORATIONS_PREF(Context cntx) {
-        return new GenericPref.Bool("showDecorations", false, cntx);
+    public static GenericPref.Bool getDecorationsPrefOfModule(AModuleData module, Context cntx) {
+        return new GenericPref.Bool(module.getId() + DECORATIONS_PREF_SUFFIX, false, cntx);
     }
 
     /* ------------------- getter ------------------- */
