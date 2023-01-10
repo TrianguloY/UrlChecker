@@ -70,7 +70,7 @@
     <string name="mPttrn_desc">正規表現パターンで URL をチェックし、警告・提案・置換をします。パターンは変更したり、独自に作成したり、あるいは他のユーザーが作成したものを使用することもできます。
 内蔵のパターンは以下の通りです。
 - ギリシャ文字のような非ASCII文字が含まれている場合に警告します。これはフィッシング詐欺に使われることがあるためです。例: Goõgle.com と Google.com など。
-- http'を'https'に置き換えることを提案します。
+- http\'を\'https\'に置き換えることを提案します。
 - Youtube、Reddit、Twitter をプライバシーに配慮したフロントエンドに置き換えるよう提案します。 [デフォルトでは無効]</string>
     <string name="mPttrn_userContent">その他のユーザーが作成した便利なパターンのリスト: %s</string>
     <string name="mPttrn_fix">適用</string>
@@ -198,7 +198,7 @@ Intent または URLData をタップすると、クリップボードにコピ�
     <string name="mClear_hashError">ハッシュを取得できません。URLが有効で、インターネット接続が有効であることを確認してください。</string>
     <string name="mClear_hashMismatch">ハッシュが一致しません。ファイルが壊れている可能性があります。チェックをスキップしたい場合は、ハッシュURLを削除してください</string>
     <string name="mClear_restore">URLをリセット</string>
-    <string name="mClear_editor">パターンデータの形式は\nhttps://docs.clearurls.xyz/latest/specs/rules/\nの形式に従う必要があります。
+    <string name="mClear_editor">パターンデータの形式は\nhttps://docs.clearurls.xyz/latest/specs/rules/ \nの形式に従う必要があります。
 - カタログが自動または手動で更新された場合、親オブジェクト「providers」への変更はすべて上書きされることに注意してください。手動でルールを設定するには、別の親オブジェクト（任意の名前）に設定してください。</string>
 
     <string name="mRemove_name">クエリの削除</string>
