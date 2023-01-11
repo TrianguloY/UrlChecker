@@ -16,6 +16,18 @@
             android:layout_height="wrap_content"
             android:text="@string/tutorial_txt_app" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallPadding"
+            android:text="@string/txt_openLinks" />
+
+        <fragment
+            android:id="@+id/browser_buttons"
+            class="com.trianguloy.urlchecker.fragments.BrowserButtonsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_browser_buttons" />
     </LinearLayout>
 
 

@@ -16,49 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_openLinks" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/b1"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="chooseBrowserPopup"
-                android:text="@string/btn_setBrowser" /><Button
-            android:id="@+id/b2"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="openBrowserSettings"
-            android:text="@string/btn_configureBrowser" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/b3"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="openAppLinks"
-                android:text="@string/btn_linksSettings" />
 
-            <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="openAppDetails"
-                android:text="@string/btn_androidSettings" />
-        </LinearLayout>
+        <fragment
+            android:id="@+id/browser_buttons"
+            class="com.trianguloy.urlchecker.fragments.BrowserButtonsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_browser_buttons" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
