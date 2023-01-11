@@ -149,7 +149,7 @@ URLコンテンツは取得 (GET) されますが、JavaScript によるリダ�
     <string name="mVT_cancel">キャンセル</string>
     <string name="mVT_scanning">スキャン中…</string>
     <string name="mVT_goodUrl">%dつのエンジンのいずれもURLを検出しませんでした (%s 時点データ)</string>
-    <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dつがURLを検出しました (%s 時点データ)</string>
+    <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dのエンジンがURLを検出しました (%s 時点データ)</string>
     <string name="mVT_badUrl">注意! %dつのエンジンの内 %dつがURLを検出しました (%s 時点データ)</string>
     <string name="mVT_connectError">VirusTotal に接続できません。インターネット接続が有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mVT_jsonError">VirusTotal に接続できません。APIキーが有効であることを確認するか、後でもう一度試してください。</string>
