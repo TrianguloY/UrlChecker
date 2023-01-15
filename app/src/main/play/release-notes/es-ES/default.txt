@@ -1,3 +1,7 @@
+V 2.9.1
+- Nueva traducción al italiano. ¡Gracias a dperruso!
+- Arreglados algunos errores poco comunes al abrir enlaces
+
 V 2.9
 - Nuevo módulo: Etiquetador de hosts
 - Ocultados los títulos de los módulos (se pueden reactivar)
