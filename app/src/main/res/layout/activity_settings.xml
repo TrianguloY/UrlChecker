@@ -12,10 +12,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_openLinks" />
+            android:onClick="openTutorial"
+            android:text="@string/btn_tutorialSettings" /><FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/padding">
+
+            <include layout="@layout/separator" />
+
+        </FrameLayout><TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_openLinks" />
 
         <fragment
             android:id="@+id/browser_buttons"
@@ -65,23 +77,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="@dimen/padding"
-            android:paddingBottom="@dimen/padding">
-
-            <include layout="@layout/separator" />
-
-        </FrameLayout>
-
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="openTutorial"
-            android:text="@string/btn_tutorialSettings" />
-
-    </LinearLayout>
+        </LinearLayout>
 
 </ScrollView>

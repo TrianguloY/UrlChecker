@@ -11,33 +11,150 @@
         android:id="@+id/flipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:autoStart="false">
 
-        <include
-            android:id="@+id/tutorial_flipper_intro"
-            layout="@layout/view_tutorial_intro"
+        <ScrollView
+            android:id="@+id/p1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/tutorial_flipper_app"
-            layout="@layout/view_tutorial_app"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <include
-            android:id="@+id/tutorial_flipper_modules"
-            layout="@layout/view_tutorial_modules"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+<ImageButton
+    android:id="@+id/imageButton"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@android:color/transparent"
+    android:scaleType="fitCenter"
+    android:src="@mipmap/ic_launcher" /><TextView
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:text="@string/app_name"
+    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" /><TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/padding"
+    android:gravity="center"
+    android:text="@string/tutorial_txt_intro" />
 
-        <include
-            android:id="@+id/tutorial_flipper_tips"
-            layout="@layout/view_tutorial_tips"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        </LinearLayout>
 
-    </ViewFlipper>
+</ScrollView><ScrollView
+        android:id="@+id/p2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:gravity="center"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:text="@string/tutorial_txt_app" />
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="@dimen/padding"
+                                                    android:gravity="center"
+                                                    android:text="@string/txt_openLinks" />
+
+                                                <fragment
+                            android:id="@+id/browser_buttons"
+                            class="com.trianguloy.urlchecker.fragments.BrowserButtonsFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools: layout="@layout/fragment_browser_buttons" />
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="@dimen/padding"
+                                                    android:autoLink="web"
+                                                    android:clickable="true"
+                                                    android:focusable="true"
+                                                    android:gravity="center"
+                                                    android:linksClickable="false"
+                                                    android:text="@string/txt_sample" />
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:autoLink="web"
+                                                    android:gravity="center"
+                                                    android:minHeight="48dp"
+                                                    android:padding="@dimen/smallPadding"
+                                                    android:text="@string/sample_url" />
+                                            </LinearLayout>
+
+
+                                        </ScrollView><ScrollView
+        android:id="@+id/p3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/tutorial_txt_modules" />
+
+                <Button
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/padding"
+                    android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+                    android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
+                    android:drawablePadding="@dimen/smallPadding"
+                    android:onClick="openModulesActivity"
+                    android:paddingLeft="@dimen/padding"
+                    android:paddingRight="@dimen/padding"
+                    android:text="@string/a_modules" />
+            </LinearLayout>
+
+        </ScrollView><ScrollView
+        android:id="@+id/p4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/tutorial_txt_tips" />
+
+                </LinearLayout>
+
+        </ScrollView>
+
+        </ViewFlipper>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,15 +167,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="previousSlide"
-            android:text="@string/back" />
+            android:onClick="prev"
+            android:text="&lt;" />
 
         <TextView
             android:id="@+id/pageIndex"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical" />
+            android:gravity="center_horizontal|center_vertical"
+            android:text="/" />
 
         <Button
             android:id="@+id/bNext"
@@ -66,8 +184,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="nextSlide"
-            android:text="@string/next" />
+            android:onClick="next"
+            android:text="&gt;" />
     </LinearLayout>
 
 </LinearLayout>

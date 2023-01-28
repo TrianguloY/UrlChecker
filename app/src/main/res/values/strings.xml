@@ -54,15 +54,19 @@ Translations: %s."</string>
 This is the tutorial, if you want to skip it you can do so with the button below. You can always come back to this tutorial from the settings menu."</string>
     <string name="tutorial_txt_app">"The app acts as an intermediary when opening or sharing url links. Once an url is sent to the app you can interact with it via the modules. After that you can open the link (in the app you want), share it or copy it to the clipboard.
 
-For the app to intercept the urls when opening them we need to set it up as a browser first. This is not needed if you intent to pass the urls using the share functionality."</string>
-    <string name="tutorial_txt_modules">"The modules are the way the app interacts with the urls. There are multiple modules, each of them have a specific function, usually they either give you information about the url, or modify it. It is recommended you check them in the modules menu as each one is explained there and you can also change their behaviour.
+For the app to intercept the urls when opening them we need to set it up as the default browser first. This is not needed if you intent to pass the urls using the share functionality."</string>
+    <string name="tutorial_txt_modules">"The modules are the way the app interacts with the urls. There are multiple modules, each of them with a specific function, usually they either give you information about the url, or allow to modify it. They are quite configurable so it is recommended you check them and adapt as needed. Each one is explained there.
 
-If you want you can go to the modules menu by tapping the button below."</string>
-    <string name="tutorial_txt_tips">"That's all. Here are some tips that can be useful.
+Important: all the actions are manual by default, the app won't modify anything nor connect to the Internet unless you specifically allow it, but some actions can be configured to apply automatically if desired.
 
-When an app doesn't give you a way to open or share a url, but it gives you a way to do the other you can solve the issue using this app. You can also copy the url to the clipboard.
+You can open the list of modules from the main screen, or by tapping the button below."</string>
+    <string name="tutorial_txt_tips">"That's all. Here are some tips that can be useful:
 
-There are some urls which its only purpose is redirecting you to another url. If the final url can be opened in an app, then you can avoid opening it in a browser."</string>
+When an app doesn't give you a way to open or share a url, but it gives you a way to do the other you can solve the issue using this app. You can also copy the url to the clipboard by long pressing the share button.
+
+There are some urls which its only purpose is redirecting you to another url. If the final url can be opened in an app, then you can avoid opening it in a browser.
+
+Hope you find the app useful! And don't hesitate to suggest features, report bugs or even propose changes. Find all relevant links on the about screen."</string>
     <string name="tutorial_button_skip">Skip tutorial</string>
     <string name="tutorial_button_end">Finish tutorial</string>
 
@@ -79,14 +83,13 @@ There are some urls which its only purpose is redirecting you to another url. If
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
     <string name="deviceDefault">Device default</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 
 
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
 
-
-    <string name="next">Next</string>
-    <string name="back">Back</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>

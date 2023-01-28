@@ -1,19 +1,13 @@
 package com.trianguloy.urlchecker.activities;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.role.RoleManager;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
@@ -106,6 +100,7 @@ public class SettingsActivity extends Activity {
     }
 
     /* ------------------- tutorial ------------------- */
+
     public void openTutorial(View view){
         PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }

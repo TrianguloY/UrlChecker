@@ -14,16 +14,18 @@ import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
+import java.util.Locale;
+
 public class TutorialActivity extends Activity {
 
-    private Button backButton;
+    private Button prevButton;
     private Button nextButton;
     private GenericPref.Bool tutorialDone;
     private ViewFlipper flipper;
     private TextView pageIndexText;
 
-    public static GenericPref.Bool TUTORIAL(Context cntx) {
-        return new GenericPref.Bool("tutorial_done", true, cntx);
+    public static GenericPref.Bool DONE(Context cntx) {
+        return new GenericPref.Bool("tutorial_done", false, cntx);
     }
 
     @Override
@@ -34,51 +36,72 @@ public class TutorialActivity extends Activity {
         setContentView(R.layout.activity_tutorial);
         setTitle(R.string.tutorial);
 
-        flipper = findViewById(R.id.flipper);
-        
-        backButton = findViewById(R.id.bBack);
-        nextButton = findViewById(R.id.bNext);
+        tutorialDone = DONE(this);
 
+        flipper = findViewById(R.id.flipper);
+        prevButton = findViewById(R.id.bBack);
+        nextButton = findViewById(R.id.bNext);
         pageIndexText = findViewById(R.id.pageIndex);
 
-        checkEnabled();
+        updateButtons();
 
-        tutorialDone = TUTORIAL(this);
     }
 
+    /* ------------------- buttons ------------------- */
 
-    // ------------------- buttons -------------------
-    public void nextSlide(View view){
-        flipper.showNext();
-        checkEnabled();
+    @Override
+    public void onBackPressed() {
+        prev(null);
     }
 
-    public void previousSlide(View view){
-        flipper.showPrevious();
-        checkEnabled();
+    public void prev(View view) {
+        if (flipper.getDisplayedChild() == 0) {
+            // first page, exit
+            exit();
+        } else {
+            // show prev
+            flipper.showPrevious();
+            updateButtons();
+        }
     }
+
+    public void next(View view) {
+        if (flipper.getDisplayedChild() == flipper.getChildCount() - 1) {
+            // last page, exit
+            exit();
+        } else {
+            // show next
+            flipper.showNext();
+            updateButtons();
+        }
+    }
+
+    /* ------------------- actions ------------------- */
 
     /**
-     * Checks if the buttons should be enabled depending on the current page
-     * If on last page "next" will be disabled, if on first page "back" will be disabled
-     * Also sets index text
+     * Updates the buttons and index texts
      */
-    private void checkEnabled(){
+    private void updateButtons() {
         int current = flipper.getDisplayedChild();
         int max = flipper.getChildCount();
 
-        backButton.setEnabled(current != 0);
-        nextButton.setEnabled(current != max - 1);
+        prevButton.setText(current == 0 ? R.string.tutorial_button_skip : R.string.back);
+        nextButton.setText(current != max - 1 ? R.string.next : R.string.tutorial_button_end);
 
-        pageIndexText.setText(String.format("%d/%d", current + 1, max));
+        pageIndexText.setText(String.format(Locale.getDefault(), "%d/%d", current + 1, max));
     }
 
-    public void openModulesActivity(View view) {
-        PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
-    }
-
-    public void finishTutorial(View view){
+    /**
+     * Marks the tutorial as completed and exits
+     */
+    private void exit() {
         tutorialDone.set(true);
         this.finish();
+    }
+
+
+    // TODO: replace with 'fragment' listener
+    public void openModulesActivity(View view) {
+        PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
     }
 }

@@ -27,8 +27,10 @@ public class MainActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_main);
-        if (!TutorialActivity.TUTORIAL(this).get()){
-            openTutorial(this.getCurrentFocus());
+
+        // open tutorial if not done yet
+        if (!TutorialActivity.DONE(this).get()) {
+            PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
         }
     }
 
@@ -67,10 +69,6 @@ public class MainActivity extends Activity {
 
     public void aboutToast(View view) {
         Toast.makeText(this, getString(R.string.app_name) + " - " + getString(R.string.trianguloy), Toast.LENGTH_SHORT).show();
-    }
-
-    public void openTutorial(View view){
-        PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }
 
 }
