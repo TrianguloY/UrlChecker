@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:clipToPadding="false"
-    android:padding="@dimen/padding"
     tools:context=".activities.AboutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/smallPadding"
         android:orientation="vertical">
 
         <ImageButton
