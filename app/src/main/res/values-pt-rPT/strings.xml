@@ -1,7 +1,7 @@
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here:
-        Translator: Tiago Carmo
+        Translator: Tiago Carmo (ReduxFlakes)
 
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -11,6 +11,7 @@
     <string name="txt_info">Esta aplicação funciona como um intermediário para abrir links de URL. Quando clica em um link e escolhe este aplicativo para abri-lo, ele mostrará uma caixa de diálogo com algumas informações sobre o link. Pressione o botão do módulo abaixo para ver os módulos disponíveis e o que eles fazem.</string>
     <string name="txt_sample">Clique no link abaixo para testá ço:</string>
     <string name="a_modules">Módulos</string>
+    <string name="a_settings">Definições</string>
     <string name="a_about">Sobre</string>
 
     <!-- about -->
@@ -18,12 +19,32 @@
 
 Contributions: %s.
 Translations: %s."</string>
-    <string name="link_blog">Blog do TrianguloY</string>
+    <string name="link_blog">"Blog do TrianguloY"</string>
+    <string name="link_changelog">Log de alterações</string>
+    <string name="link_source">Código fonte</string>
+    <string name="link_privacy">Política de privacidade</string>
 
-    <!-- configuration -->
+    <!-- modules -->
     <string name="txt_conf">Lista de módulos: pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
     <string name="toast_cantEnable">Não é possível habilitar o módulo, configuração em falta?</string>
     <string name="menu_resetOrder">Redefinir ordem</string>
+    <string name="menu_toggleDecorations">Alternar todos os títulos</string>
+    <string name="desc_up">Subir</string>
+    <string name="desc_down">Descer</string>
+    <string name="desc_decorations">Mostrar/esconder título</string>
+    <string name="desc_enable">Ativar/desativar módulo</string>
+
+    <!-- settings -->
+    <string name="txt_openLinks">Abrir links neste app: Ao longo dos anos o Android mudou a forma de configurá-lo, e difere entre as versões. Encontre abaixo todas as configurações disponíveis para o seu dispositivo, se os links não estiverem sendo abertos neste aplicativo, experimente todos.</string>
+    <string name="btn_setBrowser">Definir como navegador padrão</string>
+    <string name="toast_defaultSet">O aplicativo é definido como o navegador padrão</string>
+    <string name="btn_configureBrowser">Navegador pre-definidio</string>
+    <string name="btn_linksSettings">Abrir links supportados</string>
+    <string name="btn_androidSettings">Configurações do Android da aplicação</string>
+    <string name="txt_theme">Tema:</string>
+    <string name="spin_darkTheme">Escuro</string>
+    <string name="spin_lightTheme">Claro</string>
+    <string name="txt_locale">Localização:</string>
 
     <!-- generic -->
     <string name="toast_noApp">Não é possível abrir a atividade</string>
@@ -48,7 +69,7 @@ Translations: %s."</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados</string>
-    <string name="mPttrn_http">link http, considere usar https</string>
+    <string name="mPttrn_http">link http, considere utilizar https</string>
     <string name="mPttrn_noSchemeHttp">Esquema http em falta.</string>
     <string name="mPttrn_noSchemeHttps">Esquema https em falta.</string>
     <string name="mPttrn_ok">Nenhum padrão corresponde</string>
@@ -134,7 +155,7 @@ Se habilitar isso, ele exibirá a intenção recebida como uri, útil para desen
     <string name="mClear_desc">Este módulo remove rastreamento, referenciador e outros parâmetros inúteis da url. Também permite redirecionamentos de URL offline comuns.</string>
     <string name="mClear_tm">Usa o banco de dados ClearURLs de https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Aplicar</string>
-    <string name="mClear_matches">Correspondências %s</string>
+    <string name="mClear_matches">Corresponde %s</string>
     <string name="mClear_blocked">- BLOQUEADO!</string>
     <string name="mClear_exception">- ignorado por exceção %s</string>
     <string name="mClear_rule">- parâmetro inútil encontrado</string>
@@ -166,7 +187,7 @@ Se habilitar isso, ele exibirá a intenção recebida como uri, útil para desen
     <string name="mClear_editor">"Regras do catálogo: devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
 Observe que qualquer modificação nos 'provedores' do objeto pai será substituída se o catálogo for atualizado automaticamente ou manualmente a partir da caixa de diálogo do atualizador. Para que as regras pessoais as definam em um objeto pai diferente (qualquer nome)."</string>
 
-    <string name="mRemove_name">Remover consultas</string>
+    <string name="mRemove_name">Removedor de Consultas</string>
     <string name="mRemove_desc">"Com este módulo pode remover consultas da URL.
 Pressione o botão para removê-los todos ou pressione a seta para remover um de cada vez.
 Obrigado a PabloOQ pela ideia e implementação original!"</string>
@@ -184,4 +205,28 @@ Para desabilitar o log, basta desabilitar o módulo."</string>
     <string name="mLog_view">Ver log</string>
     <string name="mLog_edit">Editar log</string>
     <string name="mLog_empty">Sem data</string>
+    <string name="canceled">Cancelado</string>
+    <string name="deviceDefault">Padrão do dispositivo</string>
+    <string name="mPttrn_userContent">Lista de outros padrões úteis criados pelo usuário: %s</string>
+    <string name="mOpen_closeOpen">Fechar caixa de diálogo após abrir</string>
+    <string name="mOpen_closeShare">Fechar caixa de diálogo após partilhar</string>
+    <string name="mOpen_perDomain">Ordene domínios diferentes independentemente</string>
+    <string name="mOpen_noReferrer">Ocultar o aplicativo de origem (referenciador)</string>
+    <string name="mHosts_name">Rotulador de hosts</string>
+    <string name="mHosts_desc">Este módulo rotula hosts, configurados especificando-os manualmente ou usando um arquivo semelhante a hosts remotos. Você pode usá-lo para alertar sobre sites perigosos ou especiais. A configuração interna especifica os hosts de StevenBlack (adware/malware, fakenews, jogos de azar e conteúdo adulto) em https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_info">Anfitrião:</string>
+    <string name="mHosts_noLabel">sem rótulo</string>
+    <string name="mHosts_adult">conteúdo adulto</string>
+    <string name="mHosts_build">Construir</string>
+    <string name="mHosts_uninitialized">Banco de dados de hosts não inicializado. Pressione para construir</string>
+    <string name="mHosts_parseError">Não é possível analisar o host do URL</string>
+    <string name="mHosts_editor">Configuração de hosts. Formato: Lista de objetos onde a chave é o rótulo de hosts e o conteúdo inclui os seguintes valores opcionais: - arquivo: Uma url de um arquivo de hosts remoto para download. Todos os hosts válidos presentes serão adicionados. - hosts: Lista de hosts brutos (strings) a serem adicionados. - cor: A cor da etiqueta. Uma sequência de cores do Android (#AARRGGBB, #RRGGBB ou um nome de cor válido). O padrão é um vermelho \'perigo\'. - replace: se os hosts existentes falsos não forem substituídos. Observe que os objetos são avaliados de cima para baixo. Verdadeiro por padrão. - habilitado: se falso, todo o objeto será ignorado. Verdadeiro por padrão.</string>
+    <string name="mHosts_buildTitle">Criar banco de dados de hosts</string>
+    <string name="mHosts_buildDesc">Isso limpará o banco de dados de hosts atual e o construirá com a configuração atual, baixando arquivos de hosts da Internet, se necessário. Esta ação pode levar alguns segundos. Continuar?</string>
+    <string name="mHosts_buildProgress">Catálogo de construção</string>
+    <string name="mHosts_buildInit">Inicializando</string>
+    <string name="mHosts_buildClear">Limpando…</string>
+    <string name="mHosts_buildDownload">Fazendo download de hosts \'%s\' de %s…</string>
+    <string name="mHosts_buildSave">Salvando…</string>
+    <string name="mHosts_built">Banco de dados construído: %d hosts</string>
 </resources>
