@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
+import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
@@ -30,6 +32,7 @@ public class SettingsActivity extends Activity {
         setTitle(R.string.a_settings);
         AndroidUtils.configureUp(this);
 
+        configureBrowserButtons();
         configureDayNight();
         configureLocale();
     }
@@ -43,6 +46,21 @@ public class SettingsActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /* ------------------- configure browser ------------------- */
+
+    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
+    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, activityResultInjector);
+
+    private void configureBrowserButtons() {
+        browserButtons.onInitialize(findViewById(browserButtons.getLayoutId()));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+            super.onActivityResult(requestCode, resultCode, data);
     }
 
     /* ------------------- day/night ------------------- */
@@ -101,7 +119,7 @@ public class SettingsActivity extends Activity {
 
     /* ------------------- tutorial ------------------- */
 
-    public void openTutorial(View view){
+    public void openTutorial(View view) {
         PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }
 }

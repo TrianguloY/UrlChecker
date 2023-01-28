@@ -19,12 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
 
 <ImageButton
     android:id="@+id/imageButton"
@@ -45,40 +45,35 @@
     android:gravity="center"
     android:text="@string/tutorial_txt_intro" />
 
-        </LinearLayout>
+</LinearLayout>
 
 </ScrollView><ScrollView
         android:id="@+id/p2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:gravity="center"
-                                                android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:gravity="center"
-                                                    android:text="@string/tutorial_txt_app" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/tutorial_txt_app" />
 
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginTop="@dimen/padding"
-                                                    android:gravity="center"
-                                                    android:text="@string/txt_openLinks" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/padding"
+                                    android:gravity="center"
+                                    android:text="@string/txt_openLinks" />
 
-                                                <fragment
-                            android:id="@+id/browser_buttons"
-                            class="com.trianguloy.urlchecker.fragments.BrowserButtonsFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools: layout="@layout/fragment_browser_buttons" />
-                                                <TextView
+                                <include layout="@layout/fragment_browser_buttons" />
+                            <TextView
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginTop="@dimen/padding"
@@ -99,7 +94,7 @@
                                             </LinearLayout>
 
 
-                                        </ScrollView><ScrollView
+                        </ScrollView><ScrollView
         android:id="@+id/p3"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

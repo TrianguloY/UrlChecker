@@ -3,8 +3,8 @@ package com.trianguloy.urlchecker.modules;
 import android.app.Activity;
 
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.fragments.Fragment;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.Fragment;
 
 /**
  * Base class for a module's dialog fragment.
