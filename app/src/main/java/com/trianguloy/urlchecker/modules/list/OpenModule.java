@@ -78,6 +78,7 @@ class OpenDialog extends AModuleDialog {
     private List<String> packages;
     private Button btn_open;
     private ImageButton btn_openWith;
+    private View openParent;
     private Menu menu;
     private PopupMenu popup;
     private ImageButton btn_ctabs;
@@ -133,6 +134,7 @@ class OpenDialog extends AModuleDialog {
         }
 
         // init open
+        openParent = views.findViewById(R.id.open_parent);
         btn_open = views.findViewById(R.id.open);
         btn_open.setOnClickListener(v -> openUrl(0));
 
@@ -182,6 +184,7 @@ class OpenDialog extends AModuleDialog {
         if (packages.isEmpty()) {
             btn_open.setText(R.string.mOpen_noapps);
             btn_open.setEnabled(false);
+            openParent.setAlpha(0.35f);
             btn_openWith.setVisibility(View.GONE);
             return;
         }
@@ -192,6 +195,7 @@ class OpenDialog extends AModuleDialog {
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(0), getActivity())));
         btn_open.setEnabled(true);
+        openParent.setAlpha(1);
         menu.clear();
         if (packages.size() == 1) {
             btn_openWith.setVisibility(View.GONE);
