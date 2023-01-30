@@ -101,17 +101,21 @@ public class TutorialActivity extends Activity {
         }
     }
 
+    public void openModulesActivity(View view) {
+        PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
+    }
+
     /* ------------------- actions ------------------- */
 
     /**
      * Updates the buttons and index texts
      */
     private void updateButtons() {
-        int current = flipper.getDisplayedChild();
-        int max = flipper.getChildCount();
+        var current = flipper.getDisplayedChild();
+        var max = flipper.getChildCount();
 
-        prevButton.setText(current == 0 ? R.string.tutorial_button_skip : R.string.back);
-        nextButton.setText(current != max - 1 ? R.string.next : R.string.tutorial_button_end);
+        prevButton.setText(current == 0 ? R.string.btn_tutorialSkip : R.string.back);
+        nextButton.setText(current != max - 1 ? R.string.next : R.string.btn_tutorialEnd);
 
         pageIndexText.setText(String.format(Locale.getDefault(), "%d/%d", current + 1, max));
     }
@@ -124,9 +128,4 @@ public class TutorialActivity extends Activity {
         this.finish();
     }
 
-
-    // TODO: replace with 'fragment' listener
-    public void openModulesActivity(View view) {
-        PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
-    }
 }
