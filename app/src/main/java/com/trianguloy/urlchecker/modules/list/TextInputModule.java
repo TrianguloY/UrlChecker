@@ -13,6 +13,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.DoubleEvent;
 
 /**
  * This module shows the current url and allows manual editing
@@ -42,9 +43,8 @@ public class TextInputModule extends AModuleData {
 
 class TextInputDialog extends AModuleDialog implements TextWatcher {
 
-    private static final int SAME_UPDATE_TIMEOUT = 1000; // if two updates happens in less than this milliseconds, they are considered as the same
+    private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
 
-    private long lastUpdateTimeMillis = -1; // previous edittext update time
     private EditText edtxt_url;
 
     public TextInputDialog(MainDialog dialog) {
@@ -68,7 +68,7 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
         edtxt_url.removeTextChangedListener(this);
         edtxt_url.setText(urlData.url);
         edtxt_url.addTextChangedListener(this);
-        lastUpdateTimeMillis = -1; // next user update, even if immediately after, will be considered new
+        doubleEdit.reset(); // next user update, even if immediately after, will be considered new
     }
 
     // ------------------- TextWatcher -------------------
@@ -84,16 +84,12 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         // new url by the user
-        UrlData newUrlData = new UrlData(s.toString())
+        var newUrlData = new UrlData(s.toString())
                 .dontTriggerOwn()
                 .disableUpdates();
 
         // mark as minor if too quick
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastUpdateTimeMillis < SAME_UPDATE_TIMEOUT) {
-            newUrlData.asMinorUpdate();
-        }
-        lastUpdateTimeMillis = currentTime;
+        if (doubleEdit.checkAndTrigger()) newUrlData.asMinorUpdate();
 
         // set
         setUrl(newUrlData);

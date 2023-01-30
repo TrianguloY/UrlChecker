@@ -13,12 +13,15 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
+import com.trianguloy.urlchecker.utilities.DoubleEvent;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.Locale;
 
 public class TutorialActivity extends Activity {
+
+    private final DoubleEvent doubleClick = new DoubleEvent(500); // to avoid exiting when pressing next/prev very fast
 
     private Button prevButton;
     private Button nextButton;
@@ -75,10 +78,12 @@ public class TutorialActivity extends Activity {
     public void prev(View view) {
         if (flipper.getDisplayedChild() == 0) {
             // first page, exit
+            if (view != null && doubleClick.checkAndTrigger()) return; // unless clicked too fast
             exit();
         } else {
             // show prev
             flipper.showPrevious();
+            doubleClick.trigger();
             updateButtons();
         }
     }
@@ -86,10 +91,12 @@ public class TutorialActivity extends Activity {
     public void next(View view) {
         if (flipper.getDisplayedChild() == flipper.getChildCount() - 1) {
             // last page, exit
+            if (doubleClick.checkAndTrigger()) return; // unless clicked too fast
             exit();
         } else {
             // show next
             flipper.showNext();
+            doubleClick.trigger();
             updateButtons();
         }
     }
