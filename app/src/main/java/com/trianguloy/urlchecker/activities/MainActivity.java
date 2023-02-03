@@ -27,6 +27,11 @@ public class MainActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_main);
+
+        // open tutorial if not done yet
+        if (!TutorialActivity.DONE(this).get()) {
+            PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
+        }
     }
 
     @Override

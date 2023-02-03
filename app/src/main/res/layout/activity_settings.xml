@@ -12,52 +12,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_openLinks" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/b1"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="chooseBrowserPopup"
-                android:text="@string/btn_setBrowser" /><Button
-            android:id="@+id/b2"
+        <Button
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="openBrowserSettings"
-            android:text="@string/btn_configureBrowser" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/b3"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="openAppLinks"
-                android:text="@string/btn_linksSettings" />
-            <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="openAppDetails"
-                android:text="@string/btn_androidSettings" />
-        </LinearLayout>
+            android:onClick="openTutorial"
+            android:text="@string/btn_tutorialSettings" /><FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/padding">
+
+            <include layout="@layout/separator" />
+
+        </FrameLayout><TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_openLinks" />
+
+        <include layout="@layout/fragment_browser_buttons" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,6 +72,6 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
 </ScrollView>

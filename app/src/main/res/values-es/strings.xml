@@ -49,6 +49,26 @@ Traducciones: %s."</string>
     <string name="txt_locale">Idioma:</string>
 
     <!-- generic -->
+    <string name="tutorial">Tutorial</string>
+    <string name="txt_tutorial1">"¡Gracias por descargar la aplicación!
+
+Este es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo. Puedes volver a este tutorial siempre que quieras desde el menú de ajustes."</string>
+    <string name="txt_tutorial2">La aplicación actúa como intermediaria cuando se abre o comparte un enlace. Una vez se envía un enlace a la aplicación puedes interactuar con él mediante los módulos. Tras ello puedes abrir el enlace (en la aplicación que quieras), compartirlo o copiarlo al portapapeles.</string>
+    <string name="txt_tutorial3">Para que la aplicación pueda interceptar enlaces necesitamos configurarla como navegador por defecto. Esto no es necesario si piensas pasar los enlaces usando la opción de compartirlos.</string>
+    <string name="txt_tutorial4">"Los módulos son la forma en la que la app interactúa con los enlaces. Hay múltiples módulos, cada uno de ellos tiene una función específica, normalmente o te dan información del enlace, o te permiten modificarlo. Se pueden modificar bastante por lo que es recomendable que les eches un vistazo y los cambies como sea necesario. Cada uno está explicado allí.
+
+Importante: todas las opciones son manuales por defecto, la aplicación no modificará nada ni se conectará a Internet a menos que lo permitas específicamente, pero algunas acciones se pueden configurar para actuar automáticamente si quieres.
+
+Puedes abrir la lista de módulos desde la ventana principal, o pulsando el botón de debajo."</string>
+    <string name="txt_tutorial5">"Eso es todo. Aquí tienes algunos consejos que pueden ser útiles:
+
+Cuando una app no te da una forma de abrir o compartir un enlace, pero sí te una forma para hacer la otra puedes solventar este problema usando esta aplicación. También puedes copiar el enlace al portapapeles al mantener el botón de compartir.
+
+Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el enlace final puede ser abierto en una aplicación, entonces puedes evitar abrirlo en un navegador.
+
+¡Esperamos que la aplicación te resulte útil! No dudes en sugerir funcionalidades, reportar errores o proponer cambios. Puedes encontrar los todos los enlaces importantes en la pantalla 'Acerca de'."</string>
+    <string name="btn_tutorialSkip">Saltar tutorial</string>
+    <string name="btn_tutorialEnd">Terminar tutorial</string>
     <string name="toast_noApp">No se puede abrir la aplicación</string>
     <string name="toast_noBrowser">No se puede abrir el navegador</string>
     <string name="title_choose">Elige aplicación</string>
@@ -244,5 +264,8 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mHosts_buildDownload">"Descargando '%s' hosts de %s…"</string>
     <string name="mHosts_buildSave">Guardando…</string>
     <string name="mHosts_built">Base de datos construida: %d hosts</string>
+    <string name="btn_tutorialSettings">Repetir tutorial</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Anterior</string>
 
 </resources>

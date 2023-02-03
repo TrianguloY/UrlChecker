@@ -3,7 +3,7 @@ package com.trianguloy.urlchecker.modules;
 import android.app.Activity;
 
 import com.trianguloy.urlchecker.activities.ModulesActivity;
-import com.trianguloy.urlchecker.utilities.Fragment;
+import com.trianguloy.urlchecker.fragments.Fragment;
 
 /**
  * Base class for a module configuration fragment

@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.fragments;
 
 import android.view.View;
 

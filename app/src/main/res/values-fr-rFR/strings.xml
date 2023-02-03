@@ -46,6 +46,28 @@ Traduction: %s."</string>
     <string name="spin_lightTheme">Clair</string>
     <string name="txt_locale">Langue:</string>
 
+    <!-- tutorial -->
+    <string name="tutorial">Didacticiel</string>
+    <string name="txt_tutorial1">"Merci d'avoir téléchargé l'application!
+
+Ceci est le didacticiel, si vous souhaitez l'ignorer vous pouvez le faire en utilisant le bouton ci-dessous. Vous pourrez toujours revenir à ce didacticiel à partir du menu paramètres."</string>
+    <string name="txt_tutorial2">"L'application agit comme intermédiaire lors de l'ouverture ou du partage de liens URL. Une fois qu'une URL est envoyée à l'application, vous pouvez interagir avec elle via les modules. Après cela vous pouvez ouvrir le lien (dans l'application de votre choix), le partager ou le copier dans le presse-papiers."</string>
+    <string name="txt_tutorial3">"Pour que l'application intercepte les URL lors de leur ouverture, nous devons d'abord la configurer comme navigateur par défaut. Cela n'est pas nécessaire si vous avez l'intention de transmettre les URL à l'aide de la fonctionnalité Partager."</string>
+    <string name="txt_tutorial4">"Les modules sont la façon dont l'application interagit avec les URL. Il existe plusieurs modules, chacun d'eux avec une fonction spécifique, généralement ils vous fournissent des informations sur l'url, ou permettent de la modifier. Chacun dispose d'options, il est donc recommandé de vérifier et d'adapter leurs configurations au besoin. Les fonctionnalités de chaque modules y est expliqué.
+
+Important: toutes les actions sont manuelles par défaut, l'application ne modifiera rien et ne se connectera pas à Internet à moins que vous ne l'y autorisiez explicitement, mais certaines actions peuvent être configurées pour s'appliquer automatiquement si vous le souhaitez.
+
+Vous pouvez ouvrir la liste des modules depuis l'écran principal ou en appuyant sur le bouton ci-dessous."</string>
+    <string name="txt_tutorial5">"C'est presque tout. Voici quelques conseils qui peuvent être utiles:
+
+Lorsqu'une application ne vous permet pas d'ouvrir ou de partager une URL, mais qu'elle vous permet autre chose, vous pouvez résoudre le problème à l'aide de cette application. Vous pouvez également copier l'url dans le presse-papiers en appuyant longuement sur le bouton Partager.
+
+Certaines URL ont pour seul but de vous rediriger vers une autre URL. Si l'url finale peut être ouverte dans une application, alors vous pouvez éviter de l'ouvrir dans un navigateur.
+
+J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer des fonctionnalités, à signaler des bugs ou même à proposer des changements. Trouvez des liens pertinents sur l'écran À propos."</string>
+    <string name="btn_tutorialSkip">Ignorer le didacticiel</string>
+    <string name="btn_tutorialEnd">Clore le didacticiel</string>
+
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
     <string name="toast_noBrowser">"Impossible d'ouvrir le navigateur"</string>
