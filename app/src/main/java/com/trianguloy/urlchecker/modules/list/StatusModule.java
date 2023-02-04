@@ -22,7 +22,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 
 /**
- * A module that checks the page status code by using a local browser
+ * A module that checks the page status code by performing a HEAD petition
  * Allows checking for redirection
  */
 public class StatusModule extends AModuleData {
@@ -102,8 +102,9 @@ class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener
 
         HttpURLConnection conn = null;
         try {
-            // perform GET to the url
+            // perform HEAD to the url
             conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("HEAD");
             conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
             conn.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
             int responseCode = conn.getResponseCode();

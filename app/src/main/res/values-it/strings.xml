@@ -112,7 +112,7 @@ Nota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiorname
 
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">"Premendo il pulsante di check, una richiesta verrà inviata per recuperare lo status code del sito. Se il risultato è una re-indirizzazione, ti verrà mostrato l'url di destinazione.
-Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati."</string>
+Il contenuto viene recuperato (HEAD) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati."</string>
     <string name="mStatus_ioerror">"Errore di rete durante il controllo dell'url: %s"</string>
     <string name="mStatus_error">"Errore interno durante il controllo dell'url: %s"</string>
     <string name="mStatus_check">Controlla stato</string>

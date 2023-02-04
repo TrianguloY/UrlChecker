@@ -131,7 +131,7 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
     <string name="mStatus_name">Código de estado</string>
     <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.
 Si el resultado es una redirección, podrás ver la url destino.
-El contenido de la url se pide (GET), pero no se evalúa, con lo que redirecciones basadas en javascript no serán detectadas.</string>
+El contenido de la url se pide (HEAD), pero no se evalúa, con lo que redirecciones basadas en javascript no serán detectadas.</string>
     <string name="mStatus_ioerror">Error de red al intentar comprobar la url: %s</string>
     <string name="mStatus_error">Error interno al intentar comprobar la url: %s</string>
     <string name="mStatus_check">Comprobar código de estado</string>

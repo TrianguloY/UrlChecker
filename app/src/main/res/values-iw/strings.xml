@@ -72,7 +72,7 @@
     <string name="mStatus_name">קוד סטטוס</string>
     <string name="mStatus_desc">"בלחיצה על כפתור הסימון, תוגש עצומה לאחזור והצגת קוד סטטוס האתר.
  אם התוצאה היא הפניה מחדש, תוכל לראות את כתובת אתר היעד.
- תוכן ה-URL מתקבל (GET), אך לא מוערך, כך שהפניות מחדש המבוססות על javascript לא יזוהו.."</string>
+ תוכן ה-URL מתקבל (HEAD), אך לא מוערך, כך שהפניות מחדש המבוססות על javascript לא יזוהו.."</string>
     <string name="mStatus_ioerror">שגיאת רשת בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_error">שגיאה פנימית בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_check">חשבון</string>
