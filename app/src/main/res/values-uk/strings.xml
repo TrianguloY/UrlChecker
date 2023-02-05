@@ -78,7 +78,7 @@ Translations: %s."</string>
         <item>504: Час на підключення з сервером вийшов</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Невідомий код статусу</string>
-    <string name="mStatus_redir">Перенаправлення</string>
+    <string name="mStatus_redir">Перенаправлення: %s</string>
 
     <string name="mInput_name">Вхідний текст</string>
     <string name="mInput_desc">Показує поточне посилання, яке може бути змінене власноруч.</string>

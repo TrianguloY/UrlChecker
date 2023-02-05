@@ -156,7 +156,7 @@ Le contenu de l'url est obtenu (HEAD), mais n'est pas évaluée, les redirection
         <item>504: Délai du serveur dépassé</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Code d\'état inconnu</string>
-    <string name="mStatus_redir">Redirection</string>
+    <string name="mStatus_redir">Redirection: %s</string>
 
     <string name="mInput_name">Texte d\'entrée</string>
     <string name="mInput_desc">"Affiche l'url, qui peut être modifiée manuellement."</string>

@@ -96,7 +96,7 @@
         <item>504: פסק זמן של שרת</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: קוד סטטוס לא ידוע</string>
-    <string name="mStatus_redir">הפניה מחדש</string>
+    <string name="mStatus_redir">הפניה מחדש: %s</string>
 
     <string name="mInput_name">הקלד טקסט</string>
     <string name="mInput_desc">"מציג את כתובת האתר הנוכחית, אותה ניתן לערוך באופן ידני."</string>

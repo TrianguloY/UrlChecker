@@ -80,7 +80,7 @@ Translations: %s."</string>
         <item>504: Sunucu zaman aşımı</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Bilinmeyen durum kodu</string>
-    <string name="mStatus_redir">Yönlendirme</string>
+    <string name="mStatus_redir">Yönlendirme: %s</string>
 
     <string name="mInput_name">Giriş metni</string>
     <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL\'yi görüntüler.</string>

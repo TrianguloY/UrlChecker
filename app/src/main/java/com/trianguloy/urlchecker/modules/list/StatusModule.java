@@ -1,5 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +14,9 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.ClickableLinks;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.StreamUtils;
 
 import java.io.IOException;
@@ -26,6 +29,15 @@ import java.net.URLDecoder;
  * Allows checking for redirection
  */
 public class StatusModule extends AModuleData {
+
+    public static GenericPref.Bool AUTOREDIR_PREF(Context cntx) {
+        return new GenericPref.Bool("statusCode_autoRedir", false, cntx);
+    }
+
+    public static GenericPref.Str AUTOCHECK_PREF(Context cntx) {
+        return new GenericPref.Str("statusCode_autoCheck", "", cntx);
+    }
+
 
     @Override
     public String getId() {
@@ -44,16 +56,47 @@ public class StatusModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ModulesActivity cntx) {
-        return new DescriptionConfig(R.string.mStatus_desc);
+        return new StatusConfig(cntx);
     }
 }
 
-class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener {
+class StatusConfig extends AModuleConfig {
+
+    public StatusConfig(ModulesActivity cntx) {
+        super(cntx);
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.config_status;
+    }
+
+    @Override
+    public void onInitialize(View views) {
+        StatusModule.AUTOREDIR_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.autoredirect));
+        StatusModule.AUTOCHECK_PREF(getActivity()).attachToEditText(views.findViewById(R.id.autoCheck));
+    }
+
+    @Override
+    public boolean canBeEnabled() {
+        return true;
+    }
+}
+
+class StatusDialog extends AModuleDialog {
+    private static final String PREVIOUS = "redirected.redirected";
+
 
     private Button check;
+    private TextView previous;
     private TextView info;
+    private TextView redirect;
 
     private String redirectionUrl = null;
+    private Thread thread = null;
+
+    private GenericPref.Bool autoRedir;
+    private GenericPref.Str autoCheck;
 
     public StatusDialog(MainDialog dialog) {
         super(dialog);
@@ -61,34 +104,71 @@ class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener
 
     @Override
     public int getLayoutId() {
-        return R.layout.button_text;
+        return R.layout.dialog_status;
     }
 
     @Override
     public void onInitialize(View views) {
-        check = views.findViewById(R.id.button);
-        check.setOnClickListener(v -> check());
-        info = views.findViewById(R.id.text);
+        check = views.findViewById(R.id.check);
+        check.setOnClickListener(v -> {
+            AndroidUtils.setHideableText(previous, null);
+            check();
+        });
+
+        previous = views.findViewById(R.id.previous);
+        AndroidUtils.setRoundedColor(R.color.good, previous);
+
+        info = views.findViewById(R.id.info);
+
+        redirect = views.findViewById(R.id.redirect);
+        redirect.setOnClickListener(v -> {
+            // replace url
+            if (redirectionUrl != null) {
+                setUrl(redirectionUrl);
+                redirectionUrl = null;
+            }
+        });
+
+        autoRedir = StatusModule.AUTOREDIR_PREF(getActivity());
+        autoCheck = StatusModule.AUTOCHECK_PREF(getActivity());
     }
 
     @Override
     public void onNewUrl(UrlData urlData) {
+        // cancel previous check if pending
+        if (thread != null) {
+            thread.interrupt();
+            thread = null;
+        }
+
         // reset all
         check.setEnabled(true);
         check.setText(R.string.mStatus_check);
-        info.setText("");
+        AndroidUtils.setHideableText(previous, urlData.getData(PREVIOUS));
+        AndroidUtils.setHideableText(info, null);
+        redirectionUrl = null;
+        updateRedirect();
+
+        if (!urlData.disableUpdates && urlData.url.matches(autoCheck.get())) {
+            // autocheck
+            check();
+        }
     }
 
     /**
      * Starts the checking process
      */
     private void check() {
-        // disable button and run in background
+        // disable button
         check.setEnabled(false);
         check.setText(R.string.mStatus_recheck);
-        info.setText(R.string.mStatus_checking);
+        AndroidUtils.setHideableText(info, getActivity().getString(R.string.mStatus_checking));
+        redirectionUrl = null;
+        updateRedirect();
 
-        new Thread(this::_check).start();
+        // check in background
+        thread = new Thread(this::_check);
+        thread.start();
     }
 
     /**
@@ -97,7 +177,8 @@ class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener
      */
     private void _check() {
         // get url
-        String url = getUrl();
+        var url = getUrl();
+        Log.d("STATUS", "Checking: " + url);
         String message;
 
         HttpURLConnection conn = null;
@@ -107,32 +188,30 @@ class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener
             conn.setRequestMethod("HEAD");
             conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
             conn.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
-            int responseCode = conn.getResponseCode();
+            var responseCode = conn.getResponseCode();
             Log.d("RESPONSE_CODE", url + ": " + responseCode);
 
             // prepare message
             message = null;
-            String[] codesArray = getActivity().getResources().getStringArray(R.array.mStatus_codes);
-            for (String s : codesArray) {
+            var codesArray = getActivity().getResources().getStringArray(R.array.mStatus_codes);
+            for (var s : codesArray) {
                 if (s.startsWith(String.valueOf(responseCode))) {
-                    // known message
+                    // known status code
                     message = s;
                     break;
                 }
             }
             if (message == null) {
-                // unknown message
+                // unknown status code
                 message = getActivity().getString(R.string.mStatus_unknownCode, responseCode);
             }
 
             // redirection
-            String location = conn.getHeaderField("Location");
+            var location = conn.getHeaderField("Location");
             if (location != null) {
                 location = URLDecoder.decode(location, "UTF-8");
                 redirectionUrl = new URL(new URL(url), location).toExternalForm(); // Deal with relative URLs
-                message += " - [[" + getActivity().getString(R.string.mStatus_redir) + "]]";
             }
-
         } catch (IOException e) {
             // io error
             e.printStackTrace();
@@ -147,20 +226,61 @@ class StatusDialog extends AModuleDialog implements ClickableLinks.OnUrlListener
             }
         }
 
+        // exit if was canceled
+        if (Thread.currentThread().isInterrupted()) {
+            Log.d("THREAD", "Interrupted");
+            return;
+        }
+
         // notify
-        final String finalMessage = message;
+        final var finalMessage = message;
         getActivity().runOnUiThread(() -> {
             info.setText(finalMessage);
-            ClickableLinks.linkify(info, StatusDialog.this);
             check.setEnabled(true);
+
+            if (autoRedir.get() && redirectionUrl != null) {
+                // autoredirect, replace url
+                var previousMessage = previous.getText().toString() + (previous.length() == 0 ? "" : "\n") + "--> " + finalMessage;
+                setUrl(new UrlData(redirectionUrl).putData(PREVIOUS, previousMessage));
+                redirectionUrl = null;
+            } else {
+                updateRedirect();
+            }
+
         });
     }
 
-    @Override
-    public void onLinkClick(String tag) {
-        // if(tag=="redir") // only redirection tag
-        if (redirectionUrl != null) {
-            setUrl(redirectionUrl);
+    /**
+     * Updates the redirect textview based on the redirect variable
+     */
+    private void updateRedirect() {
+        if (redirectionUrl == null) {
+            AndroidUtils.setHideableText(redirect, null);
+            return;
         }
+
+        // this code sets the redirect text to "Redirects to _{redirectionUrl}_" with url underscored.
+        // it does so by using a marker to underline exactly the parameter (wherever it is) and later replace it with the final url
+        // all underlined looks bad, and auto-underline may not work with some malformed urls
+
+        // "Redirects to %s" -> "Redirects to {marker}"
+        var marker = "%S%";
+        var string = getActivity().getString(R.string.mStatus_redir, marker);
+
+        // "Redirects to {marker}" -> "Redirects to _{marker}_"
+        var start = string.indexOf(marker);
+        var end = start + marker.length();
+        SpannableStringBuilder text = new SpannableStringBuilder(string);
+        text.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View ignored) {
+                // do nothing, the whole view is clickable
+            }
+        }, start, end, 0);
+
+        // "Redirects to _{marker}_" -> "Redirects to _{redirectionUrl}_"
+        text.replace(start, end, redirectionUrl);
+
+        AndroidUtils.setHideableText(redirect, text);
     }
 }

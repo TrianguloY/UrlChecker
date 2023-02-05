@@ -135,7 +135,7 @@ URLコンテンツは取得 (HEAD) されますが、JavaScript によるリダ�
         <item>504: ゲートウェイ タイムアウト</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: 不明なステータスコードです</string>
-    <string name="mStatus_redir">リダイレクト</string>
+    <string name="mStatus_redir">リダイレクト: %s</string>
 
     <string name="mInput_name">URLの表示</string>
     <string name="mInput_desc">手動で編集できる現在のURLを表示します。</string>

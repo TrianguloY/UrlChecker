@@ -136,7 +136,7 @@ Il contenuto viene recuperato (HEAD) ma non controllato, quindi re-indirizzament
         <item>504: Server timeout</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
-    <string name="mStatus_redir">Re-indirizzazione</string>
+    <string name="mStatus_redir">Re-indirizzazione: %s</string>
 
     <string name="mInput_name">Modifica link</string>
     <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>

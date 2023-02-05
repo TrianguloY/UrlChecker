@@ -181,4 +181,12 @@ public interface AndroidUtils {
             return true;
         });
     }
+
+    /**
+     * Sets the text and the visibility of a textview (visible iff there is text)
+     */
+    static void setHideableText(TextView view, CharSequence text) {
+        view.setText(text);
+        view.setVisibility(text == null || text.length() == 0 ? View.GONE : View.VISIBLE);
+    }
 }

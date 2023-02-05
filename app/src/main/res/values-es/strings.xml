@@ -155,7 +155,7 @@ El contenido de la url se pide (HEAD), pero no se evalúa, con lo que redireccio
         <item>504: Servidor no responde</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
-    <string name="mStatus_redir">Redirigir</string>
+    <string name="mStatus_redir">Redirige a %s</string>
 
     <string name="mInput_name">Texto de entrada</string>
     <string name="mInput_desc">"Muestra la url actual, que puede ser modificada manualmente."</string>

@@ -78,6 +78,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="reset">Reset</string>
     <string name="close">Close</string>
     <string name="clear">Clear</string>
+    <string name="none">None</string>
     <string name="auto">Automatic</string>
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
@@ -160,7 +161,9 @@ The url content is obtained (HEAD), but not evaluated, so redirections based on 
         <item>504: Server timeout</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Unknown status code</string>
-    <string name="mStatus_redir">Redirect</string>
+    <string name="mStatus_redir">Redirects to %s</string>
+    <string name="mStatus_autoRedirect">Automatically replace redirection urls</string>
+    <string name="mStatus_autoCheck">Automatically check urls that match the following regexp pattern. Warning! It is advised to specify a restrictive pattern (and not ".*" for all) otherwise malicious servers may log your IP.</string>
 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">"Displays the current url, which can be edited manually."</string>

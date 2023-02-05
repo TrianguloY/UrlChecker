@@ -124,7 +124,7 @@ O conteúdo da url é obtido (HEAD), mas não avaliado, então redirecionamentos
         <item>504: Tempo limite do servidor</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Código de status desconhecido</string>
-    <string name="mStatus_redir">Redirecionar</string>
+    <string name="mStatus_redir">Redirecionar: %s</string>
 
     <string name="mInput_name">Entrada de texto</string>
     <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.</string>
