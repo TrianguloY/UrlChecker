@@ -77,6 +77,7 @@ J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer
     <string name="reset">Réinitialiser</string>
     <string name="close">Fermer</string>
     <string name="clear">Effacer</string>
+    <string name="none">Aucune</string>
     <string name="auto">Automatique</string>
     <string name="share">Partager</string>
     <string name="canceled">Annulé</string>
@@ -156,7 +157,9 @@ Le contenu de l'url est obtenu (HEAD), mais n'est pas évaluée, les redirection
         <item>504: Délai du serveur dépassé</item>
     </string-array>
     <string name="mStatus_unknownCode">%d: Code d\'état inconnu</string>
-    <string name="mStatus_redir">Redirection: %s</string>
+    <string name="mStatus_redir">Redirige vers %s</string>
+    <string name="mStatus_autoRedirect">Remplacer automatiquement les URL de redirection</string>
+    <string name="mStatus_autoCheck">Vérifie automatiquement les URL qui correspondent au modèle d\'expression régulière suivant. Avertissement! Il est conseillé de spécifier un modèle restrictif (et non ".*" pour tous) sinon des serveurs malveillants pourraient enregistrer votre adresse IP.</string>
 
     <string name="mInput_name">Texte d\'entrée</string>
     <string name="mInput_desc">"Affiche l'url, qui peut être modifiée manuellement."</string>
