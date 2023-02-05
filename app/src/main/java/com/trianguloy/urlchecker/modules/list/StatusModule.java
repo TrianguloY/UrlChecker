@@ -76,11 +76,6 @@ class StatusConfig extends AModuleConfig {
         StatusModule.AUTOREDIR_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.autoredirect));
         StatusModule.AUTOCHECK_PREF(getActivity()).attachToEditText(views.findViewById(R.id.autoCheck));
     }
-
-    @Override
-    public boolean canBeEnabled() {
-        return true;
-    }
 }
 
 class StatusDialog extends AModuleDialog {

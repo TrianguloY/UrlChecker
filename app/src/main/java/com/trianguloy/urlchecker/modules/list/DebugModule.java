@@ -90,11 +90,6 @@ class DebugConfig extends AModuleConfig {
     }
 
     @Override
-    public boolean canBeEnabled() {
-        return true;
-    }
-
-    @Override
     public int getLayoutId() {
         return R.layout.config_debug;
     }
