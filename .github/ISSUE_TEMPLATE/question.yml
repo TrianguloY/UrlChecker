@@ -1,40 +1,31 @@
 name: Question
-description: Ask a question around, relating to the functioning or use of URLCheck
+description: Ask a question, related to the functioning or use of URLCheck
 labels: [question]
 body:
 
-  - type: textarea
-    id: operation_related-question
+  - type: dropdown
+    id: question_type
     attributes:
-      label: Please state your question related to the operation of URLCheck.
-      description: How work URLCheck
-      placeholder: |
-        Example:
-          "How work the URL Cleaner updater?"
+      label: Is your question related to...
+      options:
+        - how something works?
+        - how to use something?
+        - other?
     validations:
-      required: false
-
+      required: true
+      
   - type: textarea
-    id: use_related-question
+    id: question
     attributes:
-      label: Please state your question related to the use of URLCheck.
-      description: How use URLCheck
+      label: Please state your question related to URLCheck.
+      description: Question around URLCheck
       placeholder: |
-        Example:
+        Examples:
+          "How does the URL Cleaner updater works?"
           "How can I use the pattern checker module?"
+          "I have a question about your privacy policy..."
     validations:
-      required: false
-
-  - type: textarea
-    id: others-question
-    attributes:
-      label: Please state your question indirectly related to URLCheck.
-      description: Question around URLCheck _(readme, license etc)_
-      placeholder: |
-        Example:
-          "I have a question about your privacy policy"
-    validations:
-      required: false
+      required: true
 
   - type: textarea
     id: other
