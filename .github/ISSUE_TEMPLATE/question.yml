@@ -1,0 +1,65 @@
+name: Question
+description: Ask a question around, relating to the functioning or use of URLCheck
+labels: [question]
+body:
+
+  - type: textarea
+    id: operation_related-question
+    attributes:
+      label: Please state your question related to the operation of URLCheck.
+      description: How work URLCheck
+      placeholder: |
+        Example:
+          "How work the URL Cleaner updater?"
+    validations:
+      required: false
+
+  - type: textarea
+    id: use_related-question
+    attributes:
+      label: Please state your question related to the use of URLCheck.
+      description: How use URLCheck
+      placeholder: |
+        Example:
+          "How to use the pattern checker module?"
+    validations:
+      required: false
+
+  - type: textarea
+    id: others-question
+    attributes:
+      label: Please state your question indirectly related to URLCheck.
+      description: Question around URLCheck _(readme, license etc)_
+      placeholder: |
+        Example:
+          "I have a question about your privacy policy"
+    validations:
+      required: false
+
+  - type: textarea
+    id: other
+    attributes:
+      label: Others things
+      placeholder: |
+       "[...]"
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshots
+      placeholder: |
+       If needed, provide one or more screenshot(s)
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      description: Your issue will be closed if you haven't done these steps.
+      options:
+        - label: I have searched the existing issues and this is a new ticket, **NOT** a duplicate or related to another open issue.
+          required: true
+        - label: I have written a short but informative title.
+          required: true
+        - label: I will fill out all of the requested information in this form.
+          required: true
+
