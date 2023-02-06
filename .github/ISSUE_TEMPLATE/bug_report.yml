@@ -61,11 +61,12 @@ body:
   - type: input
     id: android-rom
     attributes:
-      label: Android Custom/Specific ROM
+      label: Android Custom/Specific ROM or Device
       description: |
-        You can find this somewhere in **About** section of your Android settings.
+        You can find this somewhere in **About** section of your Android settings. If you are not sure or you don't know what a ROM is, just specify your device model.
       placeholder: |
-        Example: "EMUI, MIUI, GrapheneOS, LineageOS, CalyxOS etc..."
+        Examples: "Stock, One UI, EMUI, MIUI, GrapheneOS, LineageOS, CalyxOS, etc..."
+        If unsure: "Google Pixel 7, Samsung Galaxy S22, OnePlus 10, etc..."
     validations:
       required: true
 
