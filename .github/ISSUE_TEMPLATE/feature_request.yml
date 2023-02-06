@@ -6,8 +6,8 @@ body:
   - type: textarea
     id: feature_problem_related-description
     attributes:
-      label: Your feature request related to a problem in URLCheck? Please describe.
-      description: A clear description of what the problem is.
+      label: Describe a related problem (optional)
+      description: Is your feature request related to a problem in URLCheck?
       placeholder: |
         Example:
           "I'm always frustrated when [...]"
@@ -18,7 +18,7 @@ body:
     id: feature-description
     attributes:
       label: Describe your suggested feature
-      description: How can URLCheck could be improved?
+      description: How could URLCheck be improved?
       placeholder: |
         Example:
           "It should work like this..."
