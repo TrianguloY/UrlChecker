@@ -21,7 +21,7 @@ body:
       description: How use URLCheck
       placeholder: |
         Example:
-          "How to use the pattern checker module?"
+          "How can I use the pattern checker module?"
     validations:
       required: false
 
