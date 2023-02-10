@@ -83,6 +83,18 @@
                 <action android:name="android.support.customtabs.action.CustomTabsService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".activities.ShortcutsActivity$ShortcutsTile"
+            android:icon="@drawable/ic_clipboard_white"
+            android:label="@string/shortcut_openClipboard"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

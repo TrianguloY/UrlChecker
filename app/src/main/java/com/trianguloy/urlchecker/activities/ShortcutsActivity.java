@@ -1,10 +1,13 @@
 package com.trianguloy.urlchecker.activities;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.service.quicksettings.TileService;
 import android.util.Patterns;
 import android.view.Window;
 import android.widget.Toast;
@@ -113,5 +116,19 @@ public class ShortcutsActivity extends Activity {
         while (matcher.find()) links.add(matcher.group());
 
         return links;
+    }
+
+    /**
+     * The tile, just a shortcut to the activity above
+     */
+    @TargetApi(Build.VERSION_CODES.N)
+    public static class ShortcutsTile extends TileService {
+
+        @Override
+        public void onClick() {
+            super.onClick();
+            // just call the activity to handle it
+            startActivityAndCollapse(new Intent(this, ShortcutsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        }
     }
 }
