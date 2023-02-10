@@ -273,5 +273,6 @@ To disable logging, just disable the module."</string>
     <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
+    <string name="shortcut_openClipboard">Check urls from clipboard</string>
 
 </resources>
