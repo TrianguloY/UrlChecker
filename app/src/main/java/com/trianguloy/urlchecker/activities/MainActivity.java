@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +33,22 @@ public class MainActivity extends Activity {
         if (!TutorialActivity.DONE(this).get()) {
             PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // option for the open in clipboard shortcut
+        menu.add(R.string.shortcut_openClipboard)
+                .setIcon(R.drawable.ic_clipboard)
+                .setOnMenuItemClickListener(o -> {
+                    PackageUtils.startActivity(
+                            new Intent(this, ShortcutsActivity.class),
+                            R.string.toast_noApp,
+                            this
+                    );
+                    return true;
+                });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
