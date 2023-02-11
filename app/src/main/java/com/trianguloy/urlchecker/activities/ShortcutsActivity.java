@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -103,7 +104,7 @@ public class ShortcutsActivity extends Activity {
      */
     private List<String> getLinksFromClipboard() {
 
-        var clipboard = getSystemService(ClipboardManager.class);
+        var clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) return Collections.emptyList();
 
         var primaryClip = clipboard.getPrimaryClip();
