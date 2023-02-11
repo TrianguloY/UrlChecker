@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // option for the open in clipboard shortcut
-        menu.add(R.string.shortcut_openClipboard)
+        menu.add(R.string.shortcut_checkClipboard)
                 .setIcon(R.drawable.ic_clipboard)
                 .setOnMenuItemClickListener(o -> {
                     PackageUtils.startActivity(

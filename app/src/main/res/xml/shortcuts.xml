@@ -4,7 +4,7 @@
         android:shortcutId="openClipboard"
         android:enabled="true"
         android:icon="@drawable/ic_clipboard"
-        android:shortcutShortLabel="@string/shortcut_openClipboard">
+        android:shortcutShortLabel="@string/shortcut_checkClipboard">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.trianguloy.urlchecker"

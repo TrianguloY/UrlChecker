@@ -82,9 +82,12 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="canceled">Cancelado</string>
     <string name="deviceDefault">Por defecto del dispositivo</string>
 
+    <!-- json -->
     <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
     <string name="json_edit">Editor avanzado</string>
 
+    <!-- shortcuts -->
+    <string name="shortcut_checkClipboard">Comprobar enlaces del portapapeles</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Comprobador de patrones</string>

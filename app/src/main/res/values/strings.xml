@@ -86,10 +86,12 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="next">Next</string>
     <string name="back">Back</string>
 
-
+    <!-- json -->
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
 
+    <!-- shortcuts -->
+    <string name="shortcut_checkClipboard">Check urls from clipboard</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Patterns checker</string>
@@ -273,6 +275,5 @@ To disable logging, just disable the module."</string>
     <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
-    <string name="shortcut_openClipboard">Check urls from clipboard</string>
 
 </resources>
