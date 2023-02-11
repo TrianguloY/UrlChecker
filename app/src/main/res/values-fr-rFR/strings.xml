@@ -83,10 +83,13 @@ J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer
     <string name="canceled">Annulé</string>
     <string name="deviceDefault">Identique au système</string>
 
-
+    
+    <!-- json -->
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
     <string name="json_edit">Éditeur avancé</string>
 
+    <!-- shortcuts -->
+    <string name="shortcut_checkClipboard">Vérifier les urls du presse-papiers</string>
 
     <!-- modules -->
     <string name="mPttrn_name">Analyseur de style</string>
