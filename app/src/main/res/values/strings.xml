@@ -276,4 +276,14 @@ To disable logging, just disable the module."</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
 
+    <string name="mUnshort_name">Unshortener</string>
+    <string name="mUnshort_unshort">Unshort</string>
+    <string name="mUnshort_desc">"This module will unshort links by sending them to https://unshorten.me/, which evaluates them on their servers and save the redirection for future petitions. Avoid unshortening links with private or sensitive data.
+Their api is rate limited to 10 requests per hour for new checks. The module response will show how many petitions you have pending."</string>
+    <string name="mUnshort_checking">Checking…</string>
+    <string name="mUnshort_error">Server error: %s</string>
+    <string name="mUnshort_internal">Internal error (%s)</string>
+    <string name="mUnshort_notFound">No redirection found (pending: %s/%s)</string>
+    <string name="mUnshort_ok">Unshorted (pending: %s/%s)</string>
+
 </resources>
