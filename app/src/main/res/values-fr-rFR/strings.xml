@@ -28,10 +28,10 @@ Traduction: %s."</string>
     <string name="txt_conf">Voici tous les modules disponibles, vous pouvez vérifier ici leur descriptions et leurs paramètres. Vous pouvez également les réorganiser, basculer la visibilité des titres de ceci et les activer/désactiver</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
     <string name="menu_resetOrder">Réinitialiser l\'ordre</string>
-    <string name="menu_toggleDecorations">Afficher tous les tîtres</string>
+    <string name="menu_toggleDecorations">Inverser l\'état d\'affichage du tîtres de tout les modules</string>
     <string name="desc_up">Monter</string>
     <string name="desc_down">Descendre</string>
-    <string name="desc_decorations">Basculer l\'état d\'affichage du tîtres des modules</string>
+    <string name="desc_decorations">Bascule l\'état d\'affichage du tîtres du module</string>
     <string name="desc_enable">Activer/désactiver le module</string>
 
     <!-- settings -->
