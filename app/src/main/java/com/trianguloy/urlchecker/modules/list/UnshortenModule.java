@@ -134,6 +134,8 @@ class UnshortenDialog extends AModuleDialog {
                 getActivity().runOnUiThread(() -> {
                     info.setText(getActivity().getString(R.string.mUnshort_error, error));
                     AndroidUtils.setRoundedColor(R.color.warning, info);
+                    // allow retries
+                    unshort.setEnabled(true);
                 });
             } else if (Objects.equals(resolved_url, getUrl())) {
                 // same, nothing to replace
@@ -148,6 +150,8 @@ class UnshortenDialog extends AModuleDialog {
 
                     info.setText(getActivity().getString(R.string.mUnshort_ok, ref.remaining_calls, ref.usage_limit));
                     AndroidUtils.setRoundedColor(R.color.good, info);
+                    // a short url can redirect to another short url
+                    unshort.setEnabled(true);
                 });
             }
 
