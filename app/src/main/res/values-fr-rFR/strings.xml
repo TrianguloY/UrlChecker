@@ -280,7 +280,7 @@ Leur API est limitée à 10 requêtes par heure pour les nouveaux contrôles. L
     <string name="mUnshort_checking">Vérification…</string>
     <string name="mUnshort_error">Erreur de serveur: %s</string>
     <string name="mUnshort_internal">Erreur interne (%s)</string>
-    <string name="mUnshort_notFound">Aucune redirection n\'a été trouvée (en attente: %s/%s)</string>
+    <string name="mUnshort_notFound">"Aucune redirection n'a été trouvée (en attente: %s/%s)"</string>
     <string name="mUnshort_ok">Déraccourci (en attente: %s/%s)</string>
 
 </resources>
