@@ -10,6 +10,8 @@ URLCheck does not contain any advertising sdk, nor tracker of the user or his de
 
 Cookies are not stored at any point. VirusTotal authentication credentials can be stored optionally on the user's local device upon the user's explicit request. Developer does not have access to any such information.
 
+URLCheck has the ability, at the user's request, to retrieve the URLs passing through the app by relying on the logging module. This is done without storing any identifiable user information, the data is only stored locally on the user's device;
+
 All external interactions require user action (pressing a button) unless explicitly configured to automatically do so, which is always disabled by default.
 
 ## Third party cloud service dependencies
@@ -17,9 +19,9 @@ All external interactions require user action (pressing a button) unless explici
 Note that URLCheck:
 
 * Relies on The ClearUrl Database (https://docs.clearurls.xyz/1.23.0/specs/rules/) to retrieve information required for the operation of the url cleanup module, only if the user accepts it explicitly. Used directly on the user's device. For this purpose only, processed without sending any data related to the user, their device or their use of these;
-* has the ability, at the user's request, to retrieve the URLs passing through the app by relying on the logging module. This is done without storing any identifiable user information, the data is only stored locally on the user's device;
-* allows online url scanning, upon user activation, relying on VirusTotal cloud service. VirusTotal user credentials are stored locally on the user’s device (API key) and are only used for authentication with the official endpoints. Optionally, this service may store user information and data allowing identification; Please refer to VirusTotal's privacy policy (https://support.virustotal.com/hc/en-us/articles/115002168385-Privacy-Policy) for details on how they handle user data.
- 
+* allows online url scanning, upon user activation, relying on VirusTotal cloud service. VirusTotal user credentials (API key) are stored locally on the user’s device and are only used for authentication with the official endpoints. Optionally, this service may store user information and data allowing identification; Please refer to VirusTotal's privacy policy (https://support.virustotal.com/hc/en-us/articles/115002168385-Privacy-Policy) for details on how they handle user data.
+* allows online url unshortening, upon user activation, relying on Unshorten cloud service. Unshorten user credentials (API key) is not required. Optionally, this service may store user information and data allowing identification; Please refer to Unshorten's privacy policy (https://unshorten.it/privacy-policy) for details on how they handle user data.
+
  <!-- URLCheck specific licenses of libraries used in the application can be accessed from About section. - Not useful actually -->
 
 ## Android permissions requested by the application
