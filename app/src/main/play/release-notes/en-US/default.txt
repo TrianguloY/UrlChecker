@@ -1,3 +1,11 @@
+V 2.10
+- New tutorial screen
+- New module: Unshortener
+- New features and improvements to status module
+- New shortcut & tile to open clipboard links
+- New chinese translation. Many thanks to Seviche CC!
+- Visual fixes
+
 V 2.9.1
 - New Italian translation. Thanks to dperruso!
 - Fixed some uncommon errors when opening links
