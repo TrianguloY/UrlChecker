@@ -1,3 +1,15 @@
+V 2.10
+- Nouvel écran didactique
+- Nouveau module: Déraccourcisseur
+- Nouvelles fonctionnalités et améliorations apportées au module de statut
+- Nouveau raccourci et tuile pour ouvrir les liens du presse-papiers
+- Nouvelle traduction en chinois. Un grand merci à Seviche CC !
+- Correctifs visuels
+
+Version 2.9.1
+- Nouvelle traduction en italien. Merci à dperruso!
+- Correction de quelques erreurs rares lors de l'ouverture de liens
+
 V 2.9
 - Nouveau module: Étiqueteur d'hôtes
 - Masquer le titre des modules (peut être activé)
