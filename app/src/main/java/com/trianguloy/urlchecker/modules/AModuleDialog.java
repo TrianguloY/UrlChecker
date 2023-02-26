@@ -101,4 +101,11 @@ public abstract class AModuleDialog implements Fragment {
         return dialog.globalData;
     }
 
+    /**
+     * Changes this module visibility
+     */
+    protected final void setVisibility(boolean visible) {
+        dialog.setModuleVisibility(this, visible);
+    }
+
 }

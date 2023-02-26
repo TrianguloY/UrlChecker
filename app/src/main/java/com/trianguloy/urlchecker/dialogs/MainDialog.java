@@ -44,7 +44,7 @@ public class MainDialog extends Activity {
     /**
      * All active modules
      */
-    private final List<AModuleDialog> modules = new ArrayList<>();
+    private final Map<AModuleDialog, List<View>> modules = new HashMap<>();
 
     /**
      * Global data to keep even if the url changes
@@ -83,7 +83,7 @@ public class MainDialog extends Activity {
             else updating++;
 
             // first notify modules
-            for (var module : modules) {
+            for (var module : modules.keySet()) {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
@@ -95,7 +95,7 @@ public class MainDialog extends Activity {
             }
 
             // second ask for modifications
-            for (var module : modules) {
+            for (var module : modules.keySet()) {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
@@ -113,7 +113,7 @@ public class MainDialog extends Activity {
             }
 
             // third notify for final changes
-            for (var module : modules) {
+            for (var module : modules.keySet()) {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
@@ -136,6 +136,20 @@ public class MainDialog extends Activity {
      */
     public String getUrl() {
         return urlData.url;
+    }
+
+    /**
+     * Changes a module visibility
+     */
+    public void setModuleVisibility(AModuleDialog module, boolean visible) {
+        var views = modules.get(module);
+        if (views == null) {
+            AndroidUtils.assertError("Module " + module + " is not found in the list.");
+            return;
+        }
+        for (var view : views) {
+            view.setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
     }
 
     // ------------------- initialize -------------------
@@ -194,10 +208,11 @@ public class MainDialog extends Activity {
             View child = null;
 
             // set content if required
+            var views = new ArrayList<View>();
             if (layoutId >= 0) {
 
                 // separator if necessary
-                if (ll_mods.getChildCount() != 0) addSeparator();
+                if (ll_mods.getChildCount() != 0) views.add(addSeparator());
 
                 ViewGroup parent;
                 // set module block
@@ -214,11 +229,18 @@ public class MainDialog extends Activity {
 
                 // set module content
                 child = Inflater.inflate(layoutId, parent, this);
+                views.add(child);
+            }
+
+            // remove views when decorator pref is enabled, to avoid setting the visibility
+            // consider changing to a different flag
+            if (ModuleManager.getDecorationsPrefOfModule(moduleData, this).get()) {
+                views.clear();
             }
 
             // init
             module.onInitialize(child);
-            modules.add(module);
+            modules.put(module, views);
         } catch (Exception e) {
             // can't add module
             e.printStackTrace();
@@ -229,8 +251,8 @@ public class MainDialog extends Activity {
     /**
      * Adds a separator component to the list of mods
      */
-    private void addSeparator() {
-        Inflater.inflate(R.layout.separator, ll_mods, this);
+    private View addSeparator() {
+        return Inflater.inflate(R.layout.separator, ll_mods, this);
     }
 
     /**

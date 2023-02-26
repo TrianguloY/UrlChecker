@@ -95,9 +95,6 @@ class HistoryDialog extends AModuleDialog {
             removeDuplicates(true);// partial cleanup
             setIndex(history.size() - 1);
         });
-
-        // update
-        updateUI();
     }
 
     @Override
@@ -133,6 +130,8 @@ class HistoryDialog extends AModuleDialog {
         list.setEnabled(!history.isEmpty()); // at least something
         AndroidUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
         AndroidUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
+
+        setVisibility(history.size() > 1); // show if there is another element (other than the current one)
     }
 
     private void showList() {

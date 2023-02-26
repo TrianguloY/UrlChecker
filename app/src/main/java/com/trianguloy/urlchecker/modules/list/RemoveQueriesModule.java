@@ -92,6 +92,7 @@ class RemoveQueriesDialog extends AModuleDialog {
             // no queries present, nothing to notify
             info.setText(R.string.mRemove_noQueries);
             remove.setEnabled(false); // disable the remove button
+            setVisibility(false);
         } else {
             // queries present, notify
             info.setText(parts.queriesSize() == 1
@@ -100,6 +101,7 @@ class RemoveQueriesDialog extends AModuleDialog {
             );
             AndroidUtils.setAsClickable(info);
             remove.setEnabled(true); // enable the remove all button
+            setVisibility(true);
 
             // for each query, create a button
             for (int i = 0; i < parts.queriesSize(); i++) {

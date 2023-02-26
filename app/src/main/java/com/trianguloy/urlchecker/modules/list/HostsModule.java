@@ -103,6 +103,7 @@ class HostsDialog extends AModuleDialog {
             // check built
             text.setText(R.string.mHosts_uninitialized);
             AndroidUtils.setRoundedColor(R.color.warning, text);
+            setVisibility(true);
             return;
         }
         onNewUrl(urlData.url);
@@ -118,6 +119,7 @@ class HostsDialog extends AModuleDialog {
             e.printStackTrace();
             text.setText(R.string.mHosts_parseError);
             AndroidUtils.setRoundedColor(R.color.warning, text);
+            setVisibility(true);
             return;
         }
 
@@ -130,9 +132,11 @@ class HostsDialog extends AModuleDialog {
                 e.printStackTrace();
                 AndroidUtils.setRoundedColor(R.color.bad, text);
             }
+            setVisibility(true);
         } else {
             text.setText(R.string.mHosts_noLabel);
             AndroidUtils.clearRoundedColor(text);
+            setVisibility(false);
         }
     }
 

@@ -174,9 +174,11 @@ class PatternDialog extends AModuleDialog {
         if (messages.isEmpty()) {
             // no messages, all good
             txt_noPatterns.setVisibility(View.VISIBLE);
+            setVisibility(false);
         } else {
             // messages to show, set them
             txt_noPatterns.setVisibility(View.GONE);
+            setVisibility(true);
 
             for (Message message : messages) {
                 // either matches and/or applied is true
