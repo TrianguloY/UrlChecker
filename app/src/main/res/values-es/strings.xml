@@ -278,6 +278,7 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mUnshort_unshort">Desacortar</string>
     <string name="mUnshort_desc">"Este módulo desacorta enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para peticiones futuras. Evita desacortar enlaces con datos privados o sensibles.
 El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La respuesta del módulo muestra cuantas peticiones quedan pendientes."</string>
+    <string name="mUnshort_tm">unshorten.me api gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>

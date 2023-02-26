@@ -280,6 +280,7 @@ To disable logging, just disable the module."</string>
     <string name="mUnshort_unshort">Unshort</string>
     <string name="mUnshort_desc">"This module will unshort links by sending them to https://unshorten.me/, which evaluates them on their servers and save the redirection for future petitions. Avoid unshortening links with private or sensitive data.
 Their api is rate limited to 10 requests per hour for new checks. The module response will show how many petitions you have pending."</string>
+    <string name="mUnshort_tm">unshorten.me free api by Unshorten.me</string>
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
