@@ -5,10 +5,11 @@
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
 # URLCheck
+
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 
 With contributions from: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ) \
-And translations by: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz, [404potato](https://github.com/404potato), [dperruso](https://github.com/dperruso)
+And translations by: [Tiago Carmo](https://github.com/ReduxFlakes), [Ilithy](https://github.com/Ilithy), Idris, [Metezd](https://github.com/metezd), Nhman Mazuz, [404potato](https://github.com/404potato), [dperruso](https://github.com/dperruso), [Seviche CC](https://github.com/Sevichecc)
 
 </div>
 <br>
@@ -31,21 +32,20 @@ alt="Get it on F-Droid"
 height="80">](https://f-droid.org/packages/com.trianguloy.urlchecker)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
 alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker) 
+height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker)
 </div>
 <!-- <details><summary><h4>links</h4></summary>
 
-  - Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker  
-  - FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
+- Google Play: https://play.google.com/store/apps/details?id=com.trianguloy.urlchecker
+- FDroid: https://f-droid.org/packages/com.trianguloy.urlchecker/
+
 </details> -->
 
 <!-- ---------- Description ---------- -->
 <div align="center">
 
-**URLCheck** acts as an amazingly customizable and powerful
-intermediary when opening url links, allowing, among other things:
-to remove trackers, affiliate links, unnecessary elements, check Hosts,
-facilitating link holding and sharing, protecting against certain phishing techniques and many more...
+**URLCheck** acts as an amazingly customizable and powerful intermediary when opening url links, allowing, among other things:
+to remove trackers, affiliate links, unnecessary elements, check Hosts, facilitating link holding and sharing, protecting against certain phishing techniques and many more...
 
 </div>
 
@@ -62,12 +62,13 @@ facilitating link holding and sharing, protecting against certain phishing techn
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/7-modules.png" width=30%>
   <img src="app/src/main/play/listings/en-US/graphics/phone-screenshots/8-settings.png" width=30%>
 </div>
- 
+
  </div>
 
 
 
 <!-- ---------- Contribution & contributors ---------- -->
+
 ## Contribution
 
 **All help is greatly welcomed!**  
