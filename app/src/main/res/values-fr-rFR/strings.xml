@@ -277,6 +277,7 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mUnshort_unshort">Déraccourcir</string>
     <string name="mUnshort_desc">"Ce module déraccourcira les liens en les envoyant à https://unshorten.me/, qui les évaluera sur leurs serveurs et enregistrera la redirection pour les pétitions futures. Évitez de transmettre les liens contenant des données privées ou sensibles.
 Leur API est limitée à 10 requêtes par heure pour les nouveaux contrôles. La réponse du module indiquera le nombre de pétitions que vous avez en attente."</string>
+    <string name="mUnshort_tm">API gratuite fournie par Unshorten.me</string>
     <string name="mUnshort_checking">Vérification…</string>
     <string name="mUnshort_error">Erreur de serveur: %s</string>
     <string name="mUnshort_internal">Erreur interne (%s)</string>

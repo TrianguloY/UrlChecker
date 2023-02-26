@@ -18,6 +18,8 @@ L'application est constituée d'une structure modulaire, vous pouvez activer, d�
 
 * Nettoyeur d'Url: Utilise la base de données Clear Url pour supprimer les affiliations et autres paramètres inutiles de l'url. Il permet également des redirections d'URL hors ligne courantes. Utilise la base de données Clear URL de https://docs.clearurls.xyz/latest/specs/rules/
 
+* déraccourcisseur: utilise le service à distance https://unshorten.me/ pour déraccourcir les URL.
+
 * Suppresseur de requêtes: Affiche les requêtes d'URL individuelles décodées, que vous pouvez supprimer ou vérifier.
 
 * Analyseur de style: Ce module vérifie l'URL avec des modèles d'expression régulière (regex) qui avertissent, suggèrent et/ou appliquent des remplacements. Vous pouvez modifier ou créer vos propres modèles, ou même utiliser ceux créés par d'autres utilisateurs.
