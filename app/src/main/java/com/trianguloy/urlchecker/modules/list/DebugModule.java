@@ -72,7 +72,7 @@ class DebugDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onDisplayUrl(UrlData urlData) {
         textView.setText(String.join("\n\n", List.of(
                 // show activity uri
                 intentUri,

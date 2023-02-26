@@ -75,13 +75,16 @@ class UnshortenDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onPrepareUrl(UrlData urlData) {
         // cancel previous check if pending
         if (thread != null) {
             thread.interrupt();
             thread = null;
         }
+    }
 
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
         // reset all
         unshort.setEnabled(true);
         info.setText("");

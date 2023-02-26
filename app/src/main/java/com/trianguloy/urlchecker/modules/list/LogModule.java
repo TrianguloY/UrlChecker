@@ -72,7 +72,7 @@ class LogDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onPrepareUrl(UrlData urlData) {
         // new url, log it
         log.add("> " + urlData.url + "\n");
     }

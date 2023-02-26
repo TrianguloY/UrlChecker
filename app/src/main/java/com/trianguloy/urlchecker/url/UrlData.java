@@ -27,7 +27,7 @@ public class UrlData {
     public AModuleDialog trigger;
 
     /**
-     * If set, the module that triggers the update will be notified
+     * If set, the module that triggers the update will be notified (all callbacks)
      */
     public boolean triggerOwn = true;
 
@@ -58,20 +58,26 @@ public class UrlData {
 
     // ------------------- extra data -------------------
 
-    /**
-     * Any key-value modules can set, will be kept with automatic updates
-     */
     private final Map<String, String> extraData = new HashMap<>();
 
+    /**
+     * saves a key-value data, will be kept with automatic updates (but not with manual ones)
+     */
     public UrlData putData(String key, String value) {
         extraData.put(key, value);
         return this;
     }
 
+    /**
+     * gets a key-value data, those set on this update or previous automatic ones
+     */
     public String getData(String key) {
         return extraData.get(key);
     }
 
+    /**
+     * adds all data from the parameter into this object
+     */
     public void mergeData(UrlData urlData) {
         extraData.putAll(urlData.extraData);
     }

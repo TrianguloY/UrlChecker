@@ -57,15 +57,9 @@ public class MainDialog extends Activity {
     private UrlData urlData = new UrlData("");
 
     /**
-     * Represents how many url were updated previously.
-     * To allow changing url while notifying
+     * Currently in the process of updating.
      */
     private int updating = 0;
-
-    /**
-     * Data about the next update to apply
-     */
-    private UrlData nextUpdate = null;
 
     // ------------------- module functions -------------------
 
@@ -74,44 +68,67 @@ public class MainDialog extends Activity {
      */
     public void onNewUrl(UrlData urlData) {
         // mark as next if nothing else yet
-        if (nextUpdate == null) nextUpdate = urlData;
-
-        // check if already updating
         if (updating != 0) {
-            // yes, merge
-            urlData.mergeData(this.urlData);
-            // and exit (the fire updates loop below will take it)
+            AndroidUtils.assertError("Don't call onNewUrl while updating, use the onModifyUrl return value");
             return;
         }
+        this.urlData = urlData;
 
         // fire updates loop
-        while (updating < MAX_UPDATES && nextUpdate != null) {
-            // prepare next update
-            this.urlData = nextUpdate;
-            nextUpdate = null;
+        main_loop:
+        while (updating < MAX_UPDATES) {
 
             // test and mark looping times
-            if (this.urlData.disableUpdates) updating = MAX_UPDATES;
+            if (urlData.disableUpdates) updating = MAX_UPDATES;
             else updating++;
 
-            // now notify the other modules
-            for (AModuleDialog module : modules) {
+            // first notify modules
+            for (var module : modules) {
                 // skip own if required
-                if (!this.urlData.triggerOwn && module == this.urlData.trigger) continue;
-
+                if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
-                    // notify
-                    module.onNewUrl(this.urlData);
+                    module.onPrepareUrl(urlData);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onNewUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onPrepareUrl for module " + module.getClass().getName());
                 }
             }
+
+            // second ask for modifications
+            for (var module : modules) {
+                // skip own if required
+                if (!urlData.triggerOwn && module == urlData.trigger) continue;
+                try {
+                    var newUrlData = module.onModifyUrl(urlData);
+                    if (newUrlData != null) {
+                        // modified, restart
+                        newUrlData.mergeData(urlData);
+                        urlData = newUrlData;
+                        continue main_loop;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AndroidUtils.assertError("Exception in onModifyUrl for module " + module.getClass().getName());
+                }
+            }
+
+            // third notify for final changes
+            for (var module : modules) {
+                // skip own if required
+                if (!urlData.triggerOwn && module == urlData.trigger) continue;
+                try {
+                    module.onDisplayUrl(urlData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AndroidUtils.assertError("Exception in onDisplayUrl for module " + module.getClass().getName());
+                }
+            }
+
+            break;
         }
 
         // end, reset
         updating = 0;
-        nextUpdate = null;
     }
 
     /**

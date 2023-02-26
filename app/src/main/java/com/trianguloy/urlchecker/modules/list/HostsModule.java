@@ -98,7 +98,7 @@ class HostsDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onDisplayUrl(UrlData urlData) {
         if (hosts.isUninitialized()) {
             // check built
             text.setText(R.string.mHosts_uninitialized);

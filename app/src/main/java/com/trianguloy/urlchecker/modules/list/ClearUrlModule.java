@@ -106,11 +106,12 @@ class ClearUrlDialog extends AModuleDialog {
     private final GenericPref.Bool verbose;
     private final GenericPref.Bool auto;
 
-    private final List<Pair<String, JSONObject>> data;
+    private final List<Pair<String, JSONObject>> rules;
     private TextView info;
     private Button fix;
 
     private String cleared = null;
+    private Data data = null;
 
     public ClearUrlDialog(MainDialog dialog) {
         super(dialog);
@@ -118,7 +119,7 @@ class ClearUrlDialog extends AModuleDialog {
         verbose = ClearUrlModule.VERBOSE_PREF(dialog);
         auto = ClearUrlModule.AUTO_PREF(dialog);
 
-        data = ClearUrlCatalog.getRules(getActivity());
+        rules = ClearUrlCatalog.getRules(getActivity());
     }
 
     @Override
@@ -135,37 +136,34 @@ class ClearUrlDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public UrlData onModifyUrl(UrlData urlData) {
         cleared = urlData.url;
+        data = new Data();
+
         if (urlData.getData(CLEARED) != null) {
             // was cleared
-            info.setText(R.string.mClear_cleared);
-            setColor(R.color.good);
-        } else {
-            // was not cleared
-            info.setText("");
-            setColor(R.color.transparent);
+            data.addInfo(R.string.mClear_cleared);
+            data.setColor(R.color.good);
         }
-        fix.setEnabled(false);
 
         whileProvider:
-        for (Pair<String, JSONObject> pair : data) {
+        for (Pair<String, JSONObject> rule : rules) {
             // evaluate each provider
-            String provider = pair.first;
-            JSONObject providerData = pair.second;
+            String provider = rule.first;
+            JSONObject providerData = rule.second;
             try {
                 if (!matcher(providerData.getString("urlPattern"), cleared).find()) {
                     continue;
                 }
 
                 // info
-                if (verbose.get()) append(R.string.mClear_matches, provider);
+                if (verbose.get()) data.addInfo(R.string.mClear_matches, provider);
 
                 // check blocked completeProvider
                 if (providerData.optBoolean("completeProvider", false)) {
                     // provider blocked
-                    append(R.string.mClear_blocked);
-                    setColor(R.color.bad);
+                    data.addInfo(R.string.mClear_blocked);
+                    data.setColor(R.color.bad);
                     continue;
                 }
 
@@ -176,7 +174,7 @@ class ClearUrlDialog extends AModuleDialog {
                         String exception = exceptions.getString(i);
                         if (matcher(exception, cleared).find()) {
                             // exception matches, ignore provider
-                            if (verbose.get()) append(R.string.mClear_exception, exception);
+                            if (verbose.get()) data.addInfo(R.string.mClear_exception, exception);
                             continue whileProvider;
                         }
                     }
@@ -192,13 +190,13 @@ class ClearUrlDialog extends AModuleDialog {
                             // redirection found
                             if (providerData.optBoolean("forceRedirection", false)) {
                                 // maybe do something special?
-                                append(R.string.mClear_forcedRedirection);
+                                data.addInfo(R.string.mClear_forcedRedirection);
                             } else {
-                                append(R.string.mClear_redirection);
+                                data.addInfo(R.string.mClear_redirection);
                             }
-                            if (verbose.get()) details(redirection);
+                            if (verbose.get()) data.addDetails(redirection);
                             cleared = decodeURIComponent(matcher.group(1)); // can't be null, checked in the if
-                            setColor(R.color.warning);
+                            data.setColor(R.color.warning);
                             continue whileProvider;
                         }
                     }
@@ -213,26 +211,26 @@ class ClearUrlDialog extends AModuleDialog {
                         if (matcher.find()) {
                             // rawrule matches, apply
                             cleared = matcher.replaceAll("");
-                            append(R.string.mClear_rawRule);
-                            if (verbose.get()) details(rawRule);
-                            setColor(R.color.warning);
+                            data.addInfo(R.string.mClear_rawRule);
+                            if (verbose.get()) data.addDetails(rawRule);
+                            data.setColor(R.color.warning);
                         }
                     }
                 }
 
                 // apply rules
                 if (providerData.has("rules")) {
-                    JSONArray rules = providerData.getJSONArray("rules");
-                    for (int i = 0; i < rules.length(); i++) {
-                        String rule = "([?&#])" + rules.getString(i) + "=[^&#]*";
-                        Matcher matcher = matcher(rule, cleared);
+                    JSONArray paths = providerData.getJSONArray("rules");
+                    for (int i = 0; i < paths.length(); i++) {
+                        String path = "([?&#])" + paths.getString(i) + "=[^&#]*";
+                        Matcher matcher = matcher(path, cleared);
                         while (matcher.find()) {
                             // rule applies
                             cleared = matcher.replaceFirst("$1");
                             matcher.reset(cleared);
-                            append(R.string.mClear_rule);
-                            if (verbose.get()) details(rules.getString(i));
-                            setColor(R.color.warning);
+                            data.addInfo(R.string.mClear_rule);
+                            if (verbose.get()) data.addDetails(paths.getString(i));
+                            data.setColor(R.color.warning);
                         }
                     }
                 }
@@ -247,9 +245,9 @@ class ClearUrlDialog extends AModuleDialog {
                             // raw rule applies
                             cleared = matcher.replaceFirst("$1");
                             matcher.reset(cleared);
-                            append(R.string.mClear_referral);
-                            if (verbose.get()) details(referrals.getString(i));
-                            setColor(R.color.warning);
+                            data.addInfo(R.string.mClear_referral);
+                            if (verbose.get()) data.addDetails(referrals.getString(i));
+                            data.setColor(R.color.warning);
                         }
                     }
                 }
@@ -277,24 +275,72 @@ class ClearUrlDialog extends AModuleDialog {
             } catch (JSONException | UnsupportedEncodingException e) {
                 e.printStackTrace();
                 if (verbose.get()) {
-                    append(R.string.mClear_error);
-                    details(provider);
+                    data.addInfo(R.string.mClear_error);
+                    data.addDetails(provider);
                 }
             }
         }
 
-        // url changed, enable button
+        // url changed
         if (!cleared.equals(urlData.url)) {
-            fix.setEnabled(true);
-            if (verbose.get()) info.append("\n\n -> " + cleared);
-            // and apply automatically if required
-            if (auto.get()) clear();
+            // apply automatically if required
+            if (auto.get()) return new UrlData(cleared).putData(CLEARED, CLEARED);
+
+            // enable button
+            data.enabled = true;
+            if (verbose.get()) {
+                data.info += "\n\n -> " + cleared;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
+        if (data.info.isEmpty()) {
+            // nothing found
+            info.setText(R.string.mClear_noRules);
+        } else {
+            info.setText(data.info);
         }
 
-        // nothing found
-        if (info.getText().length() == 0) {
-            info.setText(R.string.mClear_noRules);
+        if (data.color != 0) AndroidUtils.setRoundedColor(data.color, info);
+        else AndroidUtils.clearRoundedColor(info);
+    }
+
+    /* ------------------- internal ------------------- */
+
+    /**
+     * Dataclass for transferring data
+     */
+    private class Data {
+        public boolean enabled = false;
+        String info = "";
+        int color = 0;
+
+        /**
+         * Changes the color, managing importance
+         */
+        void setColor(int newColor) {
+            if (color == R.color.bad && newColor == R.color.warning) return; // keep bad instead of replacing with warning
+            color = newColor;
         }
+
+        /**
+         * Appends a line to the info textview, manages linebreaks
+         */
+        void addInfo(int line, Object... formatArgs) {
+            if (!info.isEmpty()) info += "\n";
+            info += getActivity().getString(line, formatArgs);
+        }
+
+        /**
+         * utility to append details to the info textview, after calling append
+         */
+        void addDetails(String data) {
+            info += ": " + data;
+        }
+
     }
 
     /**
@@ -329,31 +375,6 @@ class ClearUrlDialog extends AModuleDialog {
      */
     private static Matcher matcher(String regexp, String input) {
         return Pattern.compile(regexp, Pattern.CASE_INSENSITIVE).matcher(input);
-    }
-
-    /**
-     * Utility to append a line to the info textview, manages linebreaks
-     */
-    private void append(int line, Object... formatArgs) {
-        if (info.getText().length() != 0) info.append("\n");
-        info.append(getActivity().getString(line, formatArgs));
-    }
-
-    /**
-     * utility to append data to the info textview, after calling append
-     */
-    private void details(String data) {
-        info.append(": " + data);
-    }
-
-    /**
-     * Utility to set the info background color. Manages color importance
-     */
-    private void setColor(int color) {
-        if (info.getTag() != null && info.getTag().equals(R.color.bad) && color == R.color.warning)
-            return; // keep bad instead of replacing with warning
-        info.setTag(color);
-        AndroidUtils.setRoundedColor(color, info);
     }
 
 }

@@ -63,7 +63,7 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onDisplayUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to remove it
         edtxt_url.removeTextChangedListener(this);
         edtxt_url.setText(urlData.url);

@@ -84,6 +84,8 @@ class PatternDialog extends AModuleDialog {
 
     private final PatternCatalog catalog;
 
+    private final List<Message> messages = new ArrayList<>();
+
     public PatternDialog(MainDialog dialog) {
         super(dialog);
         catalog = new PatternCatalog(dialog);
@@ -101,9 +103,9 @@ class PatternDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public UrlData onModifyUrl(UrlData urlData) {
         // init
-        List<Message> messages = new ArrayList<>();
+        messages.clear();
         String url = urlData.url;
 
         // check each pattern
@@ -141,12 +143,16 @@ class PatternDialog extends AModuleDialog {
                     }
 
                     if (replacement != null) {
+                        // replace url
                         message.newUrl = url.replaceAll(regex, replacement);
+
+                        // automatic? apply
+                        if (data.optBoolean("automatic")) {
+                            return new UrlData(message.newUrl).putData(APPLIED + pattern, APPLIED);
+                        }
                     }
                 }
 
-                // automatic?
-                message.automatic = data.optBoolean("automatic");
 
                 // add
                 if (message.applied || message.matches) messages.add(message);
@@ -157,6 +163,12 @@ class PatternDialog extends AModuleDialog {
             }
         }
 
+        // nothing to replace
+        return null;
+    }
+
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
         // visualize
         box.removeAllViews();
         if (messages.isEmpty()) {
@@ -182,19 +194,9 @@ class PatternDialog extends AModuleDialog {
                 Button fix = row.findViewById(R.id.button);
                 fix.setText(R.string.mPttrn_fix);
                 fix.setEnabled(message.newUrl != null);
-                fix.setOnClickListener(v -> onClick(message.pattern, message.newUrl));
-
-                // autoclick
-                if (message.automatic) onClick(message.pattern, message.newUrl);
+                if (message.newUrl != null) fix.setOnClickListener(v -> setUrl(new UrlData(message.newUrl).putData(APPLIED + message.pattern, APPLIED)));
             }
         }
-    }
-
-    /**
-     * applies a pattern
-     */
-    private void onClick(String pattern, String url) {
-        if (url != null) setUrl(new UrlData(url).putData(APPLIED + pattern, APPLIED));
     }
 
     /**
@@ -202,7 +204,6 @@ class PatternDialog extends AModuleDialog {
      */
     private static class Message {
         final String pattern;
-        public boolean automatic;
         boolean applied;
         public boolean matches;
         String newUrl;

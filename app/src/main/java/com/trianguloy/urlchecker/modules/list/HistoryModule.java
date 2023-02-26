@@ -100,19 +100,8 @@ class HistoryDialog extends AModuleDialog {
         updateUI();
     }
 
-    /**
-     * updated the UI with the internal data (buttons visibility)
-     */
-    private void updateUI() {
-        AndroidUtils.setEnabled(first, index > 0); // at least something to go back
-        AndroidUtils.setEnabled(back, index > 0); // at least something to go back
-        list.setEnabled(!history.isEmpty()); // at least something
-        AndroidUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
-        AndroidUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
-    }
-
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onPrepareUrl(UrlData urlData) {
         // clear newer entries
         if (index + 1 < history.size())
             history.subList(index + 1, history.size()).clear();
@@ -125,12 +114,26 @@ class HistoryDialog extends AModuleDialog {
             history.add(urlData.url);
             index++;
         }
+    }
 
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
         // update
         updateUI();
     }
 
     /* ------------------- internal ------------------- */
+
+    /**
+     * updated the UI with the internal data (buttons visibility)
+     */
+    private void updateUI() {
+        AndroidUtils.setEnabled(first, index > 0); // at least something to go back
+        AndroidUtils.setEnabled(back, index > 0); // at least something to go back
+        list.setEnabled(!history.isEmpty()); // at least something
+        AndroidUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
+        AndroidUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
+    }
 
     private void showList() {
         // cleanup

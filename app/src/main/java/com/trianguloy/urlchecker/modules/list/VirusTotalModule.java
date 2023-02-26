@@ -135,7 +135,8 @@ class VirusTotalDialog extends AModuleDialog {
     }
 
     @Override
-    public void onNewUrl(UrlData urlData) {
+    public void onDisplayUrl(UrlData urlData) {
+        // TODO: cancel on onPrepare
         scanning = false;
         result = null;
         updateUI();

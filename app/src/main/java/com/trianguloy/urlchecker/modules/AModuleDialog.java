@@ -26,11 +26,24 @@ public abstract class AModuleDialog implements Fragment {
     // ------------------- abstract functions -------------------
 
     /**
-     * Notification of a new url.
-     *
-     * @param urlData the new url
+     * Prepare a new url. This will always be called for each new module.
      */
-    public abstract void onNewUrl(UrlData urlData);
+    public void onPrepareUrl(UrlData urlData) {
+    }
+
+    /**
+     * Analyze and optionally modify an url. This may not be called for new modules.
+     * Return the new url if needed, null for no changes.
+     */
+    public UrlData onModifyUrl(UrlData urlData) {
+        return null;
+    }
+
+    /**
+     * Update UI and all needed for this final url. This will only be called for the final shown url.
+     */
+    public void onDisplayUrl(UrlData urlData) {
+    }
 
     // ------------------- utilities -------------------
 
