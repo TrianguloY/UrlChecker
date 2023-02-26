@@ -19,6 +19,8 @@ The app is structured with a modular setup, you can enable/disable and reorder i
 
 * Url Cleaner: Uses the ClearURLs catalog to remove referral and useless parameters from the url. It also allows for common offline url redirections. Built-in catalog from https://docs.clearurls.xyz/latest/specs/rules/
 
+* Unshortener: Uses https://unshorten.me/ to unshorten urls remotely.
+
 * Queries remover: Displays the decoded individual url queries, which you can remove or check.
 
 * Pattern module: Checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.

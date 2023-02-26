@@ -16,6 +16,8 @@ La aplicación está estructurada con una estructura modular, puedes activar/des
 
 * Limpiador: Utiliza el catálogo de ClearURLs para detectar parámetros de seguimiento o inútiles y 'limpiarlos'. También detecta redirecciones comunes sin conexión. Catálogo incorporado de https://docs.clearurls.xyz/latest/specs/rules/
 
+* Desacortador: Usa https://unshorten.me/ para desacortar enlaces remotamente.
+
 * Eliminador de paŕametros: Muestra los parámetros individuales decodificador, que puedes eliminar o analizar.
 
 * Módulo de patrones: Comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
