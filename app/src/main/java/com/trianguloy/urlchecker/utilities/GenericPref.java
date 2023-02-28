@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 /**
  * A generic type preference
@@ -165,8 +166,13 @@ public abstract class GenericPref<T> {
      * A string preference
      */
     static public class Str extends GenericPref<String> {
+        private UnaryOperator<String> loadMod;
+        private UnaryOperator<String> storeMod;
+
         public Str(String prefName, String defaultValue, Context cntx) {
             super(prefName, defaultValue, cntx);
+            loadMod = str -> str;
+            storeMod = str -> str;
         }
 
         @Override
@@ -190,7 +196,7 @@ public abstract class GenericPref<T> {
          * This editText will be set to the pref value, and when the editText changes the value will too
          */
         public void attachToEditText(EditText editText) {
-            editText.setText(get());
+            editText.setText(loadMod.apply(get()));
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -202,9 +208,25 @@ public abstract class GenericPref<T> {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    set(s.toString());
+                    set(storeMod.apply(s.toString()));
                 }
             });
+        }
+
+        /**
+         * Will be executed when loading pref into EditText
+         */
+        public Str setLoadMod(UnaryOperator<String> loadMod) {
+            this.loadMod = loadMod;
+            return this;
+        }
+
+        /**
+         * Will be executed when storing pref from EditText
+         */
+        public Str setStoreMod(UnaryOperator<String> storeMod) {
+            this.storeMod = storeMod;
+            return this;
         }
     }
 

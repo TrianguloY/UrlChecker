@@ -16,7 +16,9 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
+import com.trianguloy.urlchecker.modules.companions.GlobalData;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
@@ -248,6 +250,14 @@ class OpenDialog extends AModuleDialog {
         if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
             // disable ctabs
             intent.removeExtra(CTabs.EXTRA);
+        }
+
+        if (ModuleManager.getEnabledPrefOfModule(new FlagsModule(), getActivity()).get()){
+            // Get flags from flags module
+            Integer flags = FlagsDialog.getFlags();
+            if (flags != null){
+                intent.setFlags(flags);
+            }
         }
 
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());

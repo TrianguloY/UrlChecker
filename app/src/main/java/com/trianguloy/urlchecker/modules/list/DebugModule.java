@@ -9,6 +9,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.companions.GlobalData;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
 
@@ -77,7 +78,9 @@ class DebugDialog extends AModuleDialog {
                 // show activity uri
                 intentUri,
                 // show current url data
-                urlData.toString())
+                urlData.toString(),
+                // show global data
+                GlobalData.getInstance().toString())
         ));
     }
 }
