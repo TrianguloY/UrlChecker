@@ -290,7 +290,9 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="remove">Remove</string>
     <string name="edit">Edit</string>
     <string name="add">Add</string>
-    <string name="mFlag_desc">[Beta feature] This is an advanced module, it allows you to edit the intent flags when opening another app. In the field below you can put flags that will overwrite the default ones, those are taken from the intent that was used to open this app. While using the module you can hold the edit button to set the flags to the default flags. You can add flags by writing their name in the flags field</string>
+    <string name="mFlag_desc">"[Beta feature] This is an advanced module, it allows you to edit the intent flags when opening another app.
+In the field below you can put flags that will overwrite the default ones, those are taken from the intent that was used to open this app.
+While using the module you can hold the edit button to set the flags to the default flags. You can add flags by writing their name in the flags field</string>
     <string name="mFlag_flagHint" translatable="false">FLAG_NAME</string>
 
 </resources>
