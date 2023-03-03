@@ -6,26 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GlobalData {
-    // FIXME kill on finish? or even before calling main dialog
-    private static GlobalData instance = null;
-
-    private GlobalData(){
-    }
-
-    public static GlobalData getInstance(){
-        instance = instance == null ? new GlobalData() : instance;
-        return instance;
-    }
-
-
-    // FIXME if URLCheck shares to itself it will reset the previous instance
-    // maybe create an ID based on the activity object id/memory address
-    public static void resetInstance(){
-        instance = null;
-    }
-
-    // ------------------- extra data -------------------
-
     /**
      * Any key-value modules can set, will be kept with automatic updates
      */
@@ -42,7 +22,7 @@ public class GlobalData {
 
     @Override
     public String toString() {
-        return "GlobalData{" + extraData + '}';
+        return super.toString()+"{" + extraData + '}';
     }
 
 }

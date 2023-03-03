@@ -23,6 +23,7 @@ import com.trianguloy.urlchecker.modules.companions.GlobalData;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import java.util.List;
 /**
  * The main dialog, when opening a url
  */
-public class MainDialog extends Activity {
+public class MainDialog extends Activity implements GlobalDataContainer {
 
     /**
      * Maximum number of updates to avoid loops
@@ -122,8 +123,6 @@ public class MainDialog extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        GlobalData.resetInstance();
 
         AndroidSettings.setTheme(this, true);
         AndroidSettings.setLocale(this);
@@ -247,6 +246,12 @@ public class MainDialog extends Activity {
         Toast.makeText(this, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
         finish();
         return null;
+    }
+
+    private final GlobalData gd = new GlobalData();
+    @Override
+    public GlobalData getGlobalData() {
+        return gd;
     }
 
     /* ------------------- its a secret! ------------------- */

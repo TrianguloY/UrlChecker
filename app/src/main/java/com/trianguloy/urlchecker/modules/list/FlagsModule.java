@@ -2,7 +2,6 @@ package com.trianguloy.urlchecker.modules.list;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,10 +18,10 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.companions.GlobalData;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.DrawableButtonUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.lang.reflect.Field;
@@ -107,7 +106,6 @@ class FlagsDialog extends AModuleDialog {
 
     private Collection<String> getDeclaredFlags(){
         Collection<String> manualFlags = new ArrayList<>();
-
         // https://github.com/MuntashirAkon/AppManager/blob/19782da4c8556c817ba5795554a1cc21f38af13a/app/src/main/java/io/github/muntashirakon/AppManager/intercept/ActivityInterceptor.java#L92
         manualFlags.add("FLAG_GRANT_READ_URI_PERMISSION");
         manualFlags.add("FLAG_GRANT_WRITE_URI_PERMISSION");
@@ -168,7 +166,7 @@ class FlagsDialog extends AModuleDialog {
         flagNameText.setDropDownAnchor(R.id.addFlagLayout);
         // FIXME better search, currently it is an autofill, not a search
         // FIXME sometimes its hidden behind keyboard
-
+        
         String defaultFlagsStr = defaultFlagsPref.get();
         if (defaultFlagsStr != null){
             setFlags(toInteger(defaultFlagsStr));
@@ -178,7 +176,7 @@ class FlagsDialog extends AModuleDialog {
         add.setOnClickListener(v -> {
             Integer flag = flagMap.get(flagNameText.getText().toString());
             if (flag != null){
-                setFlags(getParsedFlags() | flag);
+                setFlags(getFlagsNonNull() | flag);
             } else {
                 Toast.makeText(getActivity(), R.string.mFlags_invalid, Toast.LENGTH_LONG).show();
             }
@@ -205,7 +203,7 @@ class FlagsDialog extends AModuleDialog {
         });
         edit.setOnLongClickListener(v -> {
             // Resets the flags
-            setFlags(getActivity().getIntent().getFlags());
+            setFlags(null);
             // Update views
             setUrl(getUrl());
             return true;
@@ -220,7 +218,7 @@ class FlagsDialog extends AModuleDialog {
 
     private void updateLayout(){
         box.removeAllViews();
-        int flags = getParsedFlags();
+        int flags = getFlagsNonNull();
         flagsHexText.setText(toHexString(flags));
 
         List<String> decodedFlags = decodeFlags(flags);
@@ -240,7 +238,7 @@ class FlagsDialog extends AModuleDialog {
                 button.setText(R.string.remove);
                 // Apply mask to remove flag
                 button.setOnClickListener(v -> {
-                    setFlags(getParsedFlags() & ~flagMap.get(flag));
+                    setFlags(getFlagsNonNull() & ~flagMap.get(flag));
                     // Update views
                     setUrl(getUrl());
                 });
@@ -289,26 +287,34 @@ class FlagsDialog extends AModuleDialog {
      * Retrieves the flags from GlobalData, if it is not defined it will return null
      * Intended for use in other modules
      */
-    public static Integer getFlags(){
-        return toInteger(GlobalData.getInstance().getData(FlagsDialog.FLAGS));
+    public static Integer getFlagsNullable(GlobalDataContainer instance){
+        return toInteger(instance.getGlobalData().getData(FlagsDialog.FLAGS));
     }
 
     /**
      * Loads the flags from GlobalData, if none were found it gets the flags from the intent that
      * started this activity
      */
-    private int getParsedFlags(){
-        Integer flags = toInteger(GlobalData.getInstance().getData(FLAGS));
+    private int getFlagsNonNull(){
+        return getFlagsOrDefault((GlobalDataContainer) getActivity(), getActivity().getIntent().getFlags());
+    }
+
+    /**
+     * Loads the flags from GlobalData, if none were found it gets the flags from default
+     * Can be used by other modules
+     */
+    public static int getFlagsOrDefault(GlobalDataContainer instance, int defaultFlags){
+        Integer flags = toInteger(instance.getGlobalData().getData(FLAGS));
         return flags == null?
-                getActivity().getIntent().getFlags() :
+                defaultFlags :
                 flags;
     }
 
     /**
      * Stores the flags in GlobalData
      */
-    private void setFlags(int flags){
-        GlobalData.getInstance().putData(FLAGS, toHexString(flags));
+    private void setFlags(Integer flags){
+        ((GlobalDataContainer) getActivity()).getGlobalData().putData(FLAGS, flags == null ? null : toHexString(flags));
     }
 
 }
