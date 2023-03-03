@@ -71,9 +71,18 @@
         </activity>
         <activity
             android:name=".activities.ShortcutsActivity"
+            android:label="@string/shortcut_checkClipboard"
+            android:icon="@mipmap/clipboard_launcher"
+            android:exported="true"
+            android:documentLaunchMode="always"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".services.CustomTabs"
@@ -85,7 +94,7 @@
 
         <service
             android:name=".activities.ShortcutsActivity$ShortcutsTile"
-            android:icon="@drawable/ic_clipboard_white"
+            android:icon="@drawable/ic_clipboard"
             android:label="@string/shortcut_checkClipboard"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             android:exported="true">
