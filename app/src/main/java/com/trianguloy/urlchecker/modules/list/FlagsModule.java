@@ -19,9 +19,8 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.DrawableButtonUtils;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.lang.reflect.Field;
@@ -37,10 +36,8 @@ import java.util.Map;
  */
 public class FlagsModule extends AModuleData {
 
-    public static GenericPref.Str DEFAULTFLAGS_PREF(Context cntx){
-        String defaultValue = null;
-        return new GenericPref.Str("flagsEditor_defaultFlags", defaultValue, cntx)
-                .setStoreMod(str -> str.matches(FlagsDialog.REGEX) ? str : defaultValue);
+    public static GenericPref.Str DEFAULTFLAGS_PREF(Context cntx) {
+        return new GenericPref.Str("flagsEditor_defaultFlags", null, cntx);
     }
 
     @Override
@@ -87,24 +84,24 @@ class FlagsDialog extends AModuleDialog {
     public FlagsDialog(MainDialog dialog) {
         super(dialog);
 
-        try{
+        try {
             flagMap = new HashMap<>();
             Collection<String> manualFlags = getDeclaredFlags();
 
             // Only get flags that are present
             for (Field field : Intent.class.getFields()) {
-                if (manualFlags.contains(field.getName())){
+                if (manualFlags.contains(field.getName())) {
                     flagMap.put(field.getName(), (Integer) field.get(null));
                 }
             }
-        }catch (IllegalAccessException e){
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
         defaultFlagsPref = FlagsModule.DEFAULTFLAGS_PREF(dialog);
     }
 
-    private Collection<String> getDeclaredFlags(){
+    private Collection<String> getDeclaredFlags() {
         Collection<String> manualFlags = new ArrayList<>();
         // https://github.com/MuntashirAkon/AppManager/blob/19782da4c8556c817ba5795554a1cc21f38af13a/app/src/main/java/io/github/muntashirakon/AppManager/intercept/ActivityInterceptor.java#L92
         manualFlags.add("FLAG_GRANT_READ_URI_PERMISSION");
@@ -166,16 +163,16 @@ class FlagsDialog extends AModuleDialog {
         flagNameText.setDropDownAnchor(R.id.addFlagLayout);
         // FIXME better search, currently it is an autofill, not a search
         // FIXME sometimes its hidden behind keyboard
-        
+
         String defaultFlagsStr = defaultFlagsPref.get();
-        if (defaultFlagsStr != null){
+        if (defaultFlagsStr != null) {
             setFlags(toInteger(defaultFlagsStr));
         }
 
         // Listeners
         add.setOnClickListener(v -> {
             Integer flag = flagMap.get(flagNameText.getText().toString());
-            if (flag != null){
+            if (flag != null) {
                 setFlags(getFlagsNonNull() | flag);
             } else {
                 Toast.makeText(getActivity(), R.string.mFlags_invalid, Toast.LENGTH_LONG).show();
@@ -190,9 +187,9 @@ class FlagsDialog extends AModuleDialog {
             setUrl(getUrl());
         });
         edit.setOnClickListener(v -> {
-            if (flagsHexText.isEnabled()){
+            if (flagsHexText.isEnabled()) {
                 Integer flags = toInteger(flagsHexText.getText().toString());
-                if (flags != null){
+                if (flags != null) {
                     // Extract flags
                     setFlags(flags);
                 }
@@ -216,7 +213,7 @@ class FlagsDialog extends AModuleDialog {
         updateLayout();
     }
 
-    private void updateLayout(){
+    private void updateLayout() {
         box.removeAllViews();
         int flags = getFlagsNonNull();
         flagsHexText.setText(toHexString(flags));
@@ -226,9 +223,9 @@ class FlagsDialog extends AModuleDialog {
         Collections.sort(decodedFlags, (o1, o2) -> flagMap.get(o1).compareTo(flagMap.get(o2)));
 
         if (decodedFlags.size() == 0) {
-            DrawableButtonUtils.setEnabled(more,false);
+            AndroidUtils.setEnabled(more, false);
         } else {
-            DrawableButtonUtils.setEnabled(more,true);
+            AndroidUtils.setEnabled(more, true);
             // For each flag, create a button
             for (String flag : decodedFlags) {
                 var button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
@@ -253,11 +250,11 @@ class FlagsDialog extends AModuleDialog {
     }
 
     // ------------------- utils -------------------
-    private List<String> decodeFlags(int hex){
+    private List<String> decodeFlags(int hex) {
         List<String> foundFlags = new ArrayList<>();
         for (String flagName : flagMap.keySet()) {
             // check if flag is present
-            if ((hex & flagMap.get(flagName)) != 0){
+            if ((hex & flagMap.get(flagName)) != 0) {
                 foundFlags.add(flagName);
             }
         }
@@ -271,15 +268,15 @@ class FlagsDialog extends AModuleDialog {
     private static final int BASE = 16;
     protected static final String REGEX = "0x[a-fA-F\\d]{1,8}";
 
-    public static Integer toInteger(String text){
-        if (text != null && text.matches(REGEX)){
+    public static Integer toInteger(String text) {
+        if (text != null && text.matches(REGEX)) {
             return Integer.parseInt(text.substring(2), BASE);
         } else {
             return null;
         }
     }
 
-    public static String toHexString(int flags){
+    public static String toHexString(int flags) {
         return "0x" + Integer.toHexString(flags);
     }
 
@@ -287,25 +284,25 @@ class FlagsDialog extends AModuleDialog {
      * Retrieves the flags from GlobalData, if it is not defined it will return null
      * Intended for use in other modules
      */
-    public static Integer getFlagsNullable(GlobalDataContainer instance){
-        return toInteger(instance.getGlobalData().getData(FlagsDialog.FLAGS));
+    public static Integer getFlagsNullable(AModuleDialog instance) {
+        return toInteger(instance.getData(FlagsDialog.FLAGS));
     }
 
     /**
      * Loads the flags from GlobalData, if none were found it gets the flags from the intent that
      * started this activity
      */
-    private int getFlagsNonNull(){
-        return getFlagsOrDefault((GlobalDataContainer) getActivity(), getActivity().getIntent().getFlags());
+    private int getFlagsNonNull() {
+        return getFlagsOrDefault(this, getActivity().getIntent().getFlags());
     }
 
     /**
      * Loads the flags from GlobalData, if none were found it gets the flags from default
      * Can be used by other modules
      */
-    public static int getFlagsOrDefault(GlobalDataContainer instance, int defaultFlags){
-        Integer flags = toInteger(instance.getGlobalData().getData(FLAGS));
-        return flags == null?
+    public static int getFlagsOrDefault(AModuleDialog instance, int defaultFlags) {
+        Integer flags = toInteger(instance.getData(FLAGS));
+        return flags == null ?
                 defaultFlags :
                 flags;
     }
@@ -313,8 +310,8 @@ class FlagsDialog extends AModuleDialog {
     /**
      * Stores the flags in GlobalData
      */
-    private void setFlags(Integer flags){
-        ((GlobalDataContainer) getActivity()).getGlobalData().putData(FLAGS, flags == null ? null : toHexString(flags));
+    private void setFlags(Integer flags) {
+        putData(FLAGS, flags == null ? null : toHexString(flags));
     }
 
 }
@@ -322,7 +319,7 @@ class FlagsDialog extends AModuleDialog {
 class FlagsConfig extends AModuleConfig {
     private final GenericPref.Str defaultFlagsPref;
 
-    public FlagsConfig(ModulesActivity activity){
+    public FlagsConfig(ModulesActivity activity) {
         super(activity);
         defaultFlagsPref = FlagsModule.DEFAULTFLAGS_PREF(activity);
     }
@@ -334,6 +331,6 @@ class FlagsConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        defaultFlagsPref.attachToEditText(views.findViewById(R.id.flags));
+        defaultFlagsPref.attachToEditText(views.findViewById(R.id.flags), str -> str, str -> str.matches(FlagsDialog.REGEX) ? str : defaultFlagsPref.defaultValue);
     }
 }

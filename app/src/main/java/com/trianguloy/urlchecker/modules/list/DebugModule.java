@@ -11,7 +11,6 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 
 import java.util.List;
 
@@ -80,8 +79,8 @@ class DebugDialog extends AModuleDialog {
                 // show current url data
                 urlData.toString(),
                 // show global data
-                ((GlobalDataContainer) getActivity()).getGlobalData().toString())
-        ));
+                getGlobalData().toString()
+        )));
     }
 }
 

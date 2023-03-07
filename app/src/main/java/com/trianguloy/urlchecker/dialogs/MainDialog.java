@@ -19,20 +19,20 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
-import com.trianguloy.urlchecker.modules.companions.GlobalData;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The main dialog, when opening a url
  */
-public class MainDialog extends Activity implements GlobalDataContainer {
+public class MainDialog extends Activity {
 
     /**
      * Maximum number of updates to avoid loops
@@ -45,6 +45,11 @@ public class MainDialog extends Activity implements GlobalDataContainer {
      * All active modules
      */
     private final List<AModuleDialog> modules = new ArrayList<>();
+
+    /**
+     * Global data to keep even if the url changes
+     */
+    public final Map<String, String> globalData = new HashMap<>();
 
     /**
      * The current url
@@ -123,7 +128,6 @@ public class MainDialog extends Activity implements GlobalDataContainer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         AndroidSettings.setTheme(this, true);
         AndroidSettings.setLocale(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -246,12 +250,6 @@ public class MainDialog extends Activity implements GlobalDataContainer {
         Toast.makeText(this, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
         finish();
         return null;
-    }
-
-    private final GlobalData gd = new GlobalData();
-    @Override
-    public GlobalData getGlobalData() {
-        return gd;
     }
 
     /* ------------------- its a secret! ------------------- */

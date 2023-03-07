@@ -12,7 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.DrawableButtonUtils;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -104,11 +104,11 @@ class HistoryDialog extends AModuleDialog {
      * updated the UI with the internal data (buttons visibility)
      */
     private void updateUI() {
-        DrawableButtonUtils.setEnabled(first, index > 0); // at least something to go back
-        DrawableButtonUtils.setEnabled(back, index > 0); // at least something to go back
+        AndroidUtils.setEnabled(first, index > 0); // at least something to go back
+        AndroidUtils.setEnabled(back, index > 0); // at least something to go back
         list.setEnabled(!history.isEmpty()); // at least something
-        DrawableButtonUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
-        DrawableButtonUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
+        AndroidUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
+        AndroidUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
     }
 
     @Override

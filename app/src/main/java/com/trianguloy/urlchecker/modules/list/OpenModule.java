@@ -16,13 +16,11 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
-import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.GlobalDataContainer;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 import com.trianguloy.urlchecker.utilities.UrlUtils;
 
@@ -185,8 +183,8 @@ class OpenDialog extends AModuleDialog {
         // check no apps
         if (packages.isEmpty()) {
             btn_open.setText(R.string.mOpen_noapps);
+            AndroidUtils.setEnabled(openParent, false);
             btn_open.setEnabled(false);
-            openParent.setAlpha(0.35f);
             btn_openWith.setVisibility(View.GONE);
             return;
         }
@@ -196,8 +194,8 @@ class OpenDialog extends AModuleDialog {
 
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(0), getActivity())));
+        AndroidUtils.setEnabled(openParent, true);
         btn_open.setEnabled(true);
-        openParent.setAlpha(1);
         menu.clear();
         if (packages.size() == 1) {
             btn_openWith.setVisibility(View.GONE);
@@ -252,12 +250,10 @@ class OpenDialog extends AModuleDialog {
             intent.removeExtra(CTabs.EXTRA);
         }
 
-        if (ModuleManager.getEnabledPrefOfModule(new FlagsModule(), getActivity()).get()){
-            // Get flags from flags module
-            Integer flags = FlagsDialog.getFlagsNullable((GlobalDataContainer) getActivity());
-            if (flags != null){
-                intent.setFlags(flags);
-            }
+        // Get flags from global data (probably set by flags module, if active)
+        Integer flags = FlagsDialog.getFlagsNullable(this);
+        if (flags != null) {
+            intent.setFlags(flags);
         }
 
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());

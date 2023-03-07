@@ -6,6 +6,8 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.fragments.Fragment;
 import com.trianguloy.urlchecker.url.UrlData;
 
+import java.util.Map;
+
 /**
  * Base class for a module's dialog fragment.
  */
@@ -63,6 +65,27 @@ public abstract class AModuleDialog implements Fragment {
     protected final void setUrl(UrlData urlData) {
         urlData.trigger = this;
         dialog.onNewUrl(urlData);
+    }
+
+    /**
+     * saves global data
+     */
+    public void putData(String key, String value) {
+        dialog.globalData.put(key, value);
+    }
+
+    /**
+     * gets global data
+     */
+    public String getData(String key) {
+        return dialog.globalData.get(key);
+    }
+
+    /**
+     * returns the global data map, for advanced uses
+     */
+    public Map<String, String> getGlobalData() {
+        return dialog.globalData;
     }
 
 }

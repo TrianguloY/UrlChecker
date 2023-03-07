@@ -48,6 +48,15 @@ public interface AndroidUtils {
     }
 
     /**
+     * For some reason some drawable buttons are displayed the same when enabled and disabled.
+     * This method also sets an alpha as a workaround
+     */
+    static void setEnabled(View view, boolean enabled) {
+        view.setEnabled(enabled);
+        view.setAlpha(enabled ? 1f : 0.35f);
+    }
+
+    /**
      * In debug mode, throws an AssertionError, in production just logs it and continues.
      */
     static void assertError(String detailMessage) {

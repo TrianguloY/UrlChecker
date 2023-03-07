@@ -36,7 +36,7 @@ public abstract class GenericPref<T> {
     /**
      * This preference default value
      */
-    protected final T defaultValue;
+    public final T defaultValue;
 
     /**
      * Constructs a generic pref with name and default value, uninitialized
@@ -165,13 +165,8 @@ public abstract class GenericPref<T> {
      * A string preference
      */
     static public class Str extends GenericPref<String> {
-        private UnaryOperator<String> loadMod;
-        private UnaryOperator<String> storeMod;
-
         public Str(String prefName, String defaultValue, Context cntx) {
             super(prefName, defaultValue, cntx);
-            loadMod = str -> str;
-            storeMod = str -> str;
         }
 
         @Override
@@ -195,6 +190,13 @@ public abstract class GenericPref<T> {
          * This editText will be set to the pref value, and when the editText changes the value will too
          */
         public void attachToEditText(EditText editText) {
+            this.attachToEditText(editText, str -> str, str -> str);
+        }
+
+        /**
+         * This editText will be set to the pref value modified by loadMod, and when the editText changes the value will be modified by storeMod and saved
+         */
+        public void attachToEditText(EditText editText, JavaUtils.UnaryOperator<String> loadMod, JavaUtils.UnaryOperator<String> storeMod) {
             editText.setText(loadMod.apply(get()));
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -210,22 +212,6 @@ public abstract class GenericPref<T> {
                     set(storeMod.apply(s.toString()));
                 }
             });
-        }
-
-        /**
-         * Will be executed when loading pref into EditText
-         */
-        public Str setLoadMod(UnaryOperator<String> loadMod) {
-            this.loadMod = loadMod;
-            return this;
-        }
-
-        /**
-         * Will be executed when storing pref from EditText
-         */
-        public Str setStoreMod(UnaryOperator<String> storeMod) {
-            this.storeMod = storeMod;
-            return this;
         }
     }
 
