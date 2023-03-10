@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here:
@@ -6,14 +7,12 @@
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">Français</string>
-
     <!-- main -->
     <string name="txt_info">Cette application agit comme une étape intermédiaire pour l\'ouverture de liens URL. Lorsque vous cliquez sur un lien et choisissez cette application pour l\'ouvrir, une boîte de dialogue contenant des informations sur le lien s\'affiche. Appuyez sur le bouton Module ci-dessous pour vérifier et configurer tous les modules disponibles.</string>
     <string name="txt_sample">Appuyez sur le lien ci-dessous pour la tester:</string>
     <string name="a_modules">Modules</string>
     <string name="a_settings">Paramètres</string>
     <string name="a_about">À Propos</string>
-
     <!-- about -->
     <string name="txt_about">"Application créée par TrianguloY.
 
@@ -23,7 +22,6 @@ Traduction: %s."</string>
     <string name="link_changelog">Journal des modifications</string>
     <string name="link_source">Code source</string>
     <string name="link_privacy">Politique de confidentialité</string>
-
     <!-- modules -->
     <string name="txt_conf">Voici tous les modules disponibles, vous pouvez vérifier ici leur descriptions et leurs paramètres. Vous pouvez également les réorganiser, basculer la visibilité des titres de ceci et les activer/désactiver</string>
     <string name="toast_cantEnable">"Impossible d'activer le module, configuration manquante?"</string>
@@ -33,7 +31,6 @@ Traduction: %s."</string>
     <string name="desc_down">Descendre</string>
     <string name="desc_decorations">Bascule l\'état d\'affichage du tîtres du module</string>
     <string name="desc_enable">Activer/désactiver le module</string>
-
     <!-- settings -->
     <string name="txt_openLinks">Ouvrir le lien via cette application: au fil des ans, Android a changé la façon de configurer ceci et cela diffère selon les versions. Retrouvez ci-dessous tous les paramètres disponibles pour la configuration de votre appareil, si les liens ne sont pas ouverts par URLCheck, essayez-les tous.</string>
     <string name="btn_setBrowser">Définir comme navigateur par défaut</string>
@@ -45,7 +42,6 @@ Traduction: %s."</string>
     <string name="spin_darkTheme">Obscur</string>
     <string name="spin_lightTheme">Clair</string>
     <string name="txt_locale">Langue:</string>
-
     <!-- tutorial -->
     <string name="tutorial">Didacticiel</string>
     <string name="txt_tutorial1">"Merci d'avoir téléchargé l'application!
@@ -67,7 +63,6 @@ Certaines URL ont pour seul but de vous rediriger vers une autre URL. Si l'url f
 J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer des fonctionnalités, à signaler des bugs ou même à proposer des changements. Trouvez des liens pertinents sur l'écran À propos."</string>
     <string name="btn_tutorialSkip">Ignorer le didacticiel</string>
     <string name="btn_tutorialEnd">Clore le didacticiel</string>
-
     <!-- generic -->
     <string name="toast_noApp">"Impossible d'ouvrir l'application"</string>
     <string name="toast_noBrowser">"Impossible d'ouvrir le navigateur"</string>
@@ -82,15 +77,11 @@ J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer
     <string name="share">Partager</string>
     <string name="canceled">Annulé</string>
     <string name="deviceDefault">Identique au système</string>
-
-    
     <!-- json -->
     <string name="json_desc">[Fonctionnalité bêta] Il s\'agit d\'un éditeur avancé, le contenu doit être formaté en JSON valide. Vous pouvez appuyer sur le bouton en haut à droite pour le formater et le valider.</string>
     <string name="json_edit">Éditeur avancé</string>
-
     <!-- shortcuts -->
     <string name="shortcut_checkClipboard">Vérifier les urls du presse-papiers</string>
-
     <!-- modules -->
     <string name="mPttrn_name">Analyseur de style</string>
     <string name="mPttrn_desc">"Ce module vérifie l'URL avec des modèles d'expression régulière (regex) qui avertissent, suggèrent et/ou appliquent des remplacements. Vous pouvez modifier ou créer vos propres modèles, ou même utiliser ceux créés par d'autres utilisateurs.
@@ -101,8 +92,8 @@ J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer
     <string name="mPttrn_fix">Appliquer</string>
     <string name="mPttrn_fixed">Appliqué - %s</string>
     <string name="mPttrn_ascii">Avertissement! Caractères non ascii détectés</string>
-    <string name="mPttrn_http">Lien http, pensez à utiliser l\'https</string>
-    <string name="mPttrn_noSchemeHttp">Schéma http manquant.</string>
+    <string name="mPttrn_http">Lien HTTP. Pensez à utiliser l\'HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">Schéma HTTP manquant.</string>
     <string name="mPttrn_noSchemeHttps">Schéma https manquant.</string>
     <string name="mPttrn_ok">Aucun modèle correspondant</string>
     <string name="mPttrn_editor">"Ici, vous pouvez modifier ou ajouter de nouveaux modèles. Format:
@@ -111,7 +102,6 @@ J'espère que vous trouverez l'application utile! Et n'hésitez pas à suggérer
 - 'automatic': boolean: définir sur true pour appliquer automatiquement le modèle.
 - 'enabled': boolean: définir sur false pour désactiver le modèle.
 Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors des mises à jour de l'application ne seront pas automatiquement ajoutés (vous pouvez les restaurer avec l'option de réinitialisation)."</string>
-
     <string name="mOpen_name"><![CDATA[Ouvrir & Partager]]></string>
     <string name="mOpen_desc">"Contient les boutons suivants (de gauche à droite):
 - Bouton Onglets personnalisés: activez/désactivez la fonction d'onglet personnalisé. Si activé, le navigateur sera ouvert en mode 'alléger'.
@@ -132,7 +122,6 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mOpen_clipboard">Url copiée dans le presse-papier</string>
     <string name="mOpen_noapps">Aucune application</string>
     <string name="mOpen_tabsDesc">Activer la fonction d\'onglets personnalisés</string>
-
     <string name="mStatus_name">Code d\'état</string>
     <string name="mStatus_desc">"En appuyant sur le bouton de vérification, une requête sera faite pour récupérer et afficher le code d'état du site.
 Si le résultat est une redirection, vous pourrez voir l'url de destination.
@@ -163,10 +152,8 @@ Le contenu de l'url est obtenu (HEAD), mais n'est pas évaluée, les redirection
     <string name="mStatus_redir">Redirige vers %s</string>
     <string name="mStatus_autoRedirect">Remplacer automatiquement les URL de redirection</string>
     <string name="mStatus_autoCheck">Vérifie automatiquement les URL qui correspondent au modèle d\'expression régulière suivant. Avertissement! Il est conseillé de spécifier un modèle restrictif (et non ".*" pour tous) sinon des serveurs malveillants pourraient enregistrer votre adresse IP.</string>
-
     <string name="mInput_name">Texte d\'entrée</string>
     <string name="mInput_desc">"Affiche l'url, qui peut être modifiée manuellement."</string>
-
     <string name="mVT_name">Scanneur</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.
 Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us."</string>
@@ -180,7 +167,6 @@ Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionn
     <string name="mVT_badUrl">Prudence! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
     <string name="mVT_connectError">"Connexion à VirusTotal impossible. Assurez-vous de disposez d'une connexion Internet active ou réessayez ultérieurement."</string>
     <string name="mVT_jsonError">"Connexion à VirusTotal impossible. Assurez-vous que la clé d'API est valide ou réessayez ultérieurement."</string>
-
     <string name="mD_name">Module de débogage/marqueur</string>
     <string name="mD_desc">"Si vous réorganisez les modules, les nouveaux ajoutés dans les prochaines mises à jour seront placés au-dessus de celui-ci.
 
@@ -188,10 +174,8 @@ Si vous l'activez, il affichera l'intention reçue sous forme d'URI, utile pour 
 
 Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse-papiers. Effectuez un appui prolongé pour tout copier."</string>
     <string name="mD_ctabs">Afficher les messages de débogage provenant du service d\'onglets personnalisés</string>
-
     <string name="mHist_name">Historique</string>
     <string name="mHist_desc">"Lorsque l'url est modifiée, manuellement ou par d'autres modules, ceci vous permet de visualiser et d'annuler les modifications."</string>
-
     <string name="mClear_name">Nettoyeur</string>
     <string name="mClear_desc">"Ce module supprime les paramètres de suivi, d'affiliation ainsi que d'autres paramètres inutiles de l'url. Il permet également des redirections d'URL hors-ligne courantes."</string>
     <string name="mClear_tm">Catalogue intégré copié depuis ClearURL: https://docs.clearurls.xyz/latest/specs/rules/</string>
@@ -227,7 +211,6 @@ Appuyez sur l'intention ou sur les données d'URL pour les copier dans le presse
     <string name="mClear_restore">Restaurer les chemins d\'accès de ClearURLs</string>
     <string name="mClear_editor">"Règles du catalogue: elles doivent suivre le format de https://docs.clearurls.xyz/latest/specs/rules/.
 Notez que toute modification apportée à l'objet parent 'fournisseurs' sera écrasée si le catalogue est mis à jour automatiquement ou manuellement depuis la boîte de dialogue de mise à jour. Pour que des règles personnelles soient définies dans un objet parent différent (n'importe quel nom)."</string>
-
     <string name="mRemove_name">Suppresseur de requêtes</string>
     <string name="mRemove_desc">"Avec ce module, vous pouvez supprimer des requêtes d'une URL.
 Appuyez sur le bouton pour les supprimer toute ou appuyez sur la flèche pour les supprimer une par une.
@@ -238,7 +221,6 @@ Merci à PabloOQ pour l'idée et la mise en œuvre d'origine!"</string>
     <string name="mRemove_all">Tout retirer</string>
     <string name="mRemove_one">Retirer %s</string>
     <string name="mRemove_empty">Retirer les vides</string>
-
     <string name="mLog_name">Registre</string>
     <string name="mLog_desc">"Ce module sauve toutes les urls vérifiées.
 Vous pouvez consulter, modifier ou effacer le journal ici, aucune indication visuelle n'apparaîtra dans la boîte de dialogue principale.
@@ -246,7 +228,6 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mLog_view">Consulter le registre</string>
     <string name="mLog_edit">Éditer le registre</string>
     <string name="mLog_empty">Aucune données</string>
-
     <string name="mHosts_name">Étiqueteur d\'hôtes</string>
     <string name="mHosts_desc">"Ce module étiquette les hôtes, configurés soit en les spécifiant manuellement, soit en utilisant un fichier 'Hosts' distants. Vous pouvez l'utiliser pour vous avertir à propos des sites dangereux ou spéciaux. La configuration intégrée utilise les fichiers hosts de StevenBlack (publicitaires/malveillants, fakenews, jeu et contenu pour adultes) à l'adresse https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">publicitaires/malveillants</string>
@@ -272,7 +253,6 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mHosts_buildDownload">"Téléchargement de '%s' hôtes depuis %s…"</string>
     <string name="mHosts_buildSave">Enregistrement…</string>
     <string name="mHosts_built">Base de données construite: %d hôtes</string>
-
     <string name="mUnshort_name">Déraccourcisseur</string>
     <string name="mUnshort_unshort">Déraccourcir</string>
     <string name="mUnshort_desc">"Ce module déraccourcira les liens en les envoyant à https://unshorten.me/, qui les évaluera sur leurs serveurs et enregistrera la redirection pour les pétitions futures. Évitez de transmettre les liens contenant des données privées ou sensibles.
@@ -283,5 +263,4 @@ Leur API est limitée à 10 requêtes par heure pour les nouveaux contrôles. L
     <string name="mUnshort_internal">Erreur interne (%s)</string>
     <string name="mUnshort_notFound">"Aucune redirection n'a été trouvée (en attente: %d/%d)"</string>
     <string name="mUnshort_ok">Déraccourci (en attente: %d/%d)</string>
-
 </resources>
