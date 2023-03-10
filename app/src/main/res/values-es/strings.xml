@@ -91,9 +91,9 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">¡Aviso! Carácteres no-ascii encontrados</string>
-    <string name="mPttrn_http">Enlace http, considera usar https</string>
-    <string name="mPttrn_noSchemeHttp">Falta esquema http.</string>
-    <string name="mPttrn_noSchemeHttps">Falta esquema https.</string>
+    <string name="mPttrn_http">Enlace HTTP. Considera usar HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">Falta esquema HTTP.</string>
+    <string name="mPttrn_noSchemeHttps">Falta esquema HTTPS.</string>
     <string name="mPttrn_ok">Ningún patron coincide</string>
     <string name="mPttrn_editor">"Aquí puedes editar o añadir nuevos patrones. Formato:
 - 'regex': string: java regex válido con el que se comprobará la url.
