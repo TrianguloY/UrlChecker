@@ -25,7 +25,9 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The main dialog, when opening a url
@@ -43,6 +45,11 @@ public class MainDialog extends Activity {
      * All active modules
      */
     private final List<AModuleDialog> modules = new ArrayList<>();
+
+    /**
+     * Global data to keep even if the url changes
+     */
+    public final Map<String, String> globalData = new HashMap<>();
 
     /**
      * The current url

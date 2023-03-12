@@ -183,8 +183,8 @@ class OpenDialog extends AModuleDialog {
         // check no apps
         if (packages.isEmpty()) {
             btn_open.setText(R.string.mOpen_noapps);
+            AndroidUtils.setEnabled(openParent, false);
             btn_open.setEnabled(false);
-            openParent.setAlpha(0.35f);
             btn_openWith.setVisibility(View.GONE);
             return;
         }
@@ -194,8 +194,8 @@ class OpenDialog extends AModuleDialog {
 
         // set
         btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(0), getActivity())));
+        AndroidUtils.setEnabled(openParent, true);
         btn_open.setEnabled(true);
-        openParent.setAlpha(1);
         menu.clear();
         if (packages.size() == 1) {
             btn_openWith.setVisibility(View.GONE);
@@ -248,6 +248,12 @@ class OpenDialog extends AModuleDialog {
         if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
             // disable ctabs
             intent.removeExtra(CTabs.EXTRA);
+        }
+
+        // Get flags from global data (probably set by flags module, if active)
+        Integer flags = FlagsDialog.getFlagsNullable(this);
+        if (flags != null) {
+            intent.setFlags(flags);
         }
 
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());

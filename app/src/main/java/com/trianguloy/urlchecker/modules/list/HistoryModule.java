@@ -12,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -103,11 +104,11 @@ class HistoryDialog extends AModuleDialog {
      * updated the UI with the internal data (buttons visibility)
      */
     private void updateUI() {
-        setEnabled(first, index > 0); // at least something to go back
-        setEnabled(back, index > 0); // at least something to go back
+        AndroidUtils.setEnabled(first, index > 0); // at least something to go back
+        AndroidUtils.setEnabled(back, index > 0); // at least something to go back
         list.setEnabled(!history.isEmpty()); // at least something
-        setEnabled(forward, index < history.size() - 1); // at least something to go forward
-        setEnabled(last, index < history.size() - 1); // at least something to go forward
+        AndroidUtils.setEnabled(forward, index < history.size() - 1); // at least something to go forward
+        AndroidUtils.setEnabled(last, index < history.size() - 1); // at least something to go forward
     }
 
     @Override
@@ -201,17 +202,5 @@ class HistoryDialog extends AModuleDialog {
             );
         }
         updateUI();
-    }
-
-    /**
-     * For some reason some drawable buttons are displayed the same when enabled and disabled.
-     * This method also sets an alpha as a workaround
-     *
-     * @param view    view to enable/disable
-     * @param enabled new state
-     */
-    private void setEnabled(View view, boolean enabled) {
-        view.setEnabled(enabled);
-        view.setAlpha(enabled ? 1f : 0.35f);
     }
 }

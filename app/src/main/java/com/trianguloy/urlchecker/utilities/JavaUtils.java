@@ -61,4 +61,10 @@ public interface JavaUtils {
         R apply(T t);
     }
 
+    /**
+     * java.util.function.UnaryOperator requires api 24
+     */
+    @FunctionalInterface
+    interface UnaryOperator<T> extends Function<T, T> {
+    }
 }

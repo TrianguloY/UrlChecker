@@ -77,8 +77,10 @@ class DebugDialog extends AModuleDialog {
                 // show activity uri
                 intentUri,
                 // show current url data
-                urlData.toString())
-        ));
+                urlData.toString(),
+                // show global data
+                getGlobalData().toString()
+        )));
     }
 }
 

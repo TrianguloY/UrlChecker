@@ -36,7 +36,7 @@ public abstract class GenericPref<T> {
     /**
      * This preference default value
      */
-    protected final T defaultValue;
+    public final T defaultValue;
 
     /**
      * Constructs a generic pref with name and default value, uninitialized
@@ -190,7 +190,14 @@ public abstract class GenericPref<T> {
          * This editText will be set to the pref value, and when the editText changes the value will too
          */
         public void attachToEditText(EditText editText) {
-            editText.setText(get());
+            this.attachToEditText(editText, str -> str, str -> str);
+        }
+
+        /**
+         * This editText will be set to the pref value modified by loadMod, and when the editText changes the value will be modified by storeMod and saved
+         */
+        public void attachToEditText(EditText editText, JavaUtils.UnaryOperator<String> loadMod, JavaUtils.UnaryOperator<String> storeMod) {
+            editText.setText(loadMod.apply(get()));
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -202,7 +209,7 @@ public abstract class GenericPref<T> {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    set(s.toString());
+                    set(storeMod.apply(s.toString()));
                 }
             });
         }
