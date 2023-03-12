@@ -27,7 +27,6 @@
         <activity android:name=".activities.TutorialActivity" />
         <activity
             android:name=".dialogs.MainDialog"
-            android:excludeFromRecents="true"
             android:exported="true"
             android:noHistory="true"
             android:theme="@android:style/Theme.DeviceDefault.Dialog">
