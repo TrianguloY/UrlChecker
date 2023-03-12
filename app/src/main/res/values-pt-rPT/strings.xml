@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translator(s) name:
-        If you create or update a translation, add how you want to be credited here:
-        Translator: Tiago Carmo (ReduxFlakes)
-
+        If you create or update a translation, add how you want to be credited here.
+        For multiple translators, separate them by semicolon.
+        Example: <string name="translators">John Doe; Jane Doe</string> -->
+    <string name="translators">Tiago Carmo (ReduxFlakes)</string>
+    <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">Português de Portugal</string>

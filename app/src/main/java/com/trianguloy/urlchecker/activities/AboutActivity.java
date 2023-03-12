@@ -51,7 +51,7 @@ public class AboutActivity extends Activity {
         this.<TextView>findViewById(R.id.txt_about).setText(
                 getString(R.string.txt_about,
                         getString(R.string.contributors),
-                        getString(R.string.translators)
+                        getString(R.string.all_translators)
                 )
         );
 

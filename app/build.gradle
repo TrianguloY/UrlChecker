@@ -28,16 +28,17 @@ android {
         buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$constructor)" // create field
 
         // generate string resource with all translators
-        def translators = translations.stream()
-                .map { file("$folder.path/$it/strings.xml") } // get translation files
-                .flatMap { it.readLines().stream() } // extract all lines
-                .filter { it.matches("[ \t]*Translator:.*") } // keep only the translators ones
-                .map { it.split(":", 2)[1].trim() } // extract the name
-                .filter { !it.startsWith("<") } // remove 'internal' ones
+        def translators = translations.stream() // for all translations
+                .map { file("$folder.path/$it/strings.xml") } // get the xml file
+                .map { new XmlParser().parse(it).find { it.@name == "translators" }?.text() ?: "" } // extract translators
+                .filter { it != "" } // filter empty
+                .flatMap { it.split(';').stream() } // split multiple
+                .map { it.strip() } // trim
+                .filter { it != "TrianguloY" } // remove myself
                 .distinct().sorted() // keep distinct and sort them
-                .collect { it }
-                .join(', ') // join with commas
-        resValue "string", "translators", translators // create resource
+                .collect { it }.join(', ') // join with commas
+        print "Extracted translators: $translators"
+        resValue "string", "all_translators", translators // create resource
     }
 
     buildTypes {
