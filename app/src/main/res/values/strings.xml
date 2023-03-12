@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here:
@@ -6,15 +7,17 @@
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">English</string>
-
-    <!-- main -->
-    <string name="txt_info">This app acts as an intermediate step towards opening url links. When you click on a link and choose this app to open it, it will show a dialog with some information about the link. Press the module button below to check and configure all available modules.</string>
+    <!--
+        main
+    -->
+    <string name="txt_info">This app acts as an intermediary when opening clicked URL links. A dialog with some info about the link is shown when choosing this app to open it. Press the module button below to check and configure all available modules.</string>
     <string name="txt_sample">Press the link below to test it:</string>
     <string name="a_modules">Modules</string>
     <string name="a_settings">Settings</string>
     <string name="a_about">About</string>
-
-    <!-- about -->
+    <!--
+        about
+    -->
     <string name="txt_about">"App created by TrianguloY.
 
 Contributions: %s.
@@ -23,8 +26,9 @@ Translations: %s."</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Source code</string>
     <string name="link_privacy">Privacy policy</string>
-
-    <!-- modules -->
+    <!--
+        modules
+    -->
     <string name="txt_conf">Here are all the available modules, where you can check their description and settings. You can also reorder, toggle the title visibility and enable/disable them.</string>
     <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
     <string name="menu_resetOrder">Reset order</string>
@@ -33,12 +37,13 @@ Translations: %s."</string>
     <string name="desc_down">Move down</string>
     <string name="desc_decorations">Show/hide title</string>
     <string name="desc_enable">Enable/disable module</string>
-
-    <!-- settings -->
+    <!--
+        settings
+    -->
     <string name="txt_openLinks">Open links on this app: Over the years Android has changed the way to configure it, and differs between versions. Find below all available settings for your device, if links are not being opened on this app try them all.</string>
     <string name="btn_setBrowser">Set as default browser</string>
-    <string name="toast_defaultSet">The app is set as the default browser</string>
-    <string name="btn_configureBrowser">Default browser</string>
+    <string name="toast_defaultSet">The app is now the default web browser</string>
+    <string name="btn_configureBrowser">Default web browser</string>
     <string name="btn_linksSettings">Open supported links</string>
     <string name="btn_androidSettings">Android app settings</string>
     <string name="txt_theme">Theme:</string>
@@ -46,19 +51,23 @@ Translations: %s."</string>
     <string name="spin_lightTheme">Light</string>
     <string name="txt_locale">Locale:</string>
     <string name="btn_tutorialSettings">Repeat tutorial</string>
-
-    <!-- tutorial -->
+    <!--
+        tutorial
+    -->
     <string name="tutorial">Tutorial</string>
     <string name="txt_tutorial1">"Thanks for downloading the app!
 
 This is the tutorial, if you want to skip it you can do so with the button below. You can always come back to this tutorial from the settings menu."</string>
     <string name="txt_tutorial2">The app acts as an intermediary when opening or sharing url links. Once an url is sent to the app you can interact with it via the modules. After that you can open the link (in the app you want), share it or copy it to the clipboard.</string>
-    <string name="txt_tutorial3">For the app to intercept the urls when opening them we need to set it up as the default browser first. This is not needed if you intent to pass the urls using the share functionality.</string>
-    <string name="txt_tutorial4">"The modules are the way the app interacts with the urls. There are multiple modules, each of them with a specific function, usually they either give you information about the url, or allow to modify it. They are quite configurable so it is recommended you check them and adapt as needed. Each one is explained there.
-
-Important: all the actions are manual by default, the app won't modify anything nor connect to the Internet unless you specifically allow it, but some actions can be configured to apply automatically if desired.
-
-You can open the list of modules from the main screen, or by tapping the button below."</string>
+    <string name="txt_tutorial3">Set the app as the default web browser to intercept URLs when opening them.
+\n(Not needed if URLs are redirected using the “Share” functionality.)</string>
+    <string name="txt_tutorial4">Modules is how the app interacts with the URLs.
+\nEach of the modules has a specific function. Usually to present info about the URL, or allowing it to be modified.
+\nRead about them and set them up as needed.
+\n
+\nImportant: All the actions are manual by default. The app won\'t modify anything nor connect to the Internet unless you specifically allow it, but some actions can be auto-applied if desired.
+\n
+\nOpen the list of modules from the main screen, or by tapping the button below.</string>
     <string name="txt_tutorial5">"That's all. Here are some tips that can be useful:
 
 When an app doesn't give you a way to open or share a url, but it gives you a way to do the other you can solve the issue using this app. You can also copy the url to the clipboard by long pressing the share button.
@@ -68,10 +77,11 @@ There are some urls which its only purpose is redirecting you to another url. If
 Hope you find the app useful! And don't hesitate to suggest features, report bugs or even propose changes. Find all relevant links on the about screen."</string>
     <string name="btn_tutorialSkip">Skip tutorial</string>
     <string name="btn_tutorialEnd">Finish tutorial</string>
-
-    <!-- generic -->
-    <string name="toast_noApp">"Can't open application"</string>
-    <string name="toast_noBrowser">"Can't open the browser"</string>
+    <!--
+        generic
+    -->
+    <string name="toast_noApp">Can not open the app</string>
+    <string name="toast_noBrowser">Can not open the web browser</string>
     <string name="title_choose">Choose app</string>
     <string name="toast_invalid">Invalid</string>
     <string name="save">Save</string>
@@ -85,16 +95,19 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="deviceDefault">Device default</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
-
-    <!-- json -->
+    <!--
+        json
+    -->
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
-
-    <!-- shortcuts -->
-    <string name="shortcut_checkClipboard">Check urls from clipboard</string>
-
-    <!-- modules -->
-    <string name="mPttrn_name">Patterns checker</string>
+    <!--
+        shortcuts
+    -->
+    <string name="shortcut_checkClipboard">Check URLs from the clipboard</string>
+    <!--
+        modules
+    -->
+    <string name="mPttrn_name">Pattern checker</string>
     <string name="mPttrn_desc">"This module checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
 Built-in patterns include:
 - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
@@ -103,19 +116,19 @@ Built-in patterns include:
     <string name="mPttrn_userContent">List of other useful user-created patterns: %s</string>
     <string name="mPttrn_fix">Apply</string>
     <string name="mPttrn_fixed">Applied - %s</string>
-    <string name="mPttrn_ascii">Warning! Non ascii characters found</string>
-    <string name="mPttrn_http">Http link, consider using https</string>
-    <string name="mPttrn_noSchemeHttp">Missing http scheme.</string>
-    <string name="mPttrn_noSchemeHttps">Missing https scheme.</string>
-    <string name="mPttrn_ok">No patterns match</string>
+    <string name="mPttrn_ascii">Warning! Non-ASCII characters found.</string>
+    <string name="mPttrn_http">HTTP link. Consider using HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">Missing HTTP scheme.</string>
+    <string name="mPttrn_noSchemeHttps">Missing HTTPS scheme.</string>
+    <string name="mPttrn_ok">No matching patterns</string>
     <string name="mPttrn_editor">"Here you can edit or add new pattern. Format:
 - 'regex': string: valid java regex that will be matched against the url.
 - 'replacement': string|list: if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'. If list, replacement will be a random element from it.
 - 'automatic': boolean: set to true to automatically apply the pattern.
 - 'enabled': boolean: set to false to disable the pattern.
 Note: if you edit the patterns, new built-in patterns from app updates will not be added automatically (you can restore them with the reset option)."</string>
-
-    <string name="mOpen_name"><![CDATA[Open & Share]]></string>
+    <!-- -->
+    <string name="mOpen_name">Open and share</string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
 - Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
@@ -132,16 +145,14 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
-    <string name="mOpen_clipboard">Url copied to clipboard</string>
+    <string name="mOpen_clipboard">URL copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
-
+    <!-- -->
     <string name="mStatus_name">Status code</string>
-    <string name="mStatus_desc">"By pressing the check button, a petition will be made to retrieve and display the site status code.
-If the result is a redirection, you will be able to view the destination url.
-The url content is obtained (HEAD), but not evaluated, so redirections based on javascript won't be detected."</string>
-    <string name="mStatus_ioerror">Network error while trying to check the url: %s</string>
-    <string name="mStatus_error">Internal error while trying to check the url: %s</string>
+    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (HEAD), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
+    <string name="mStatus_ioerror">Network error while trying to check the URL: %s</string>
+    <string name="mStatus_error">Internal error while trying to check the URL: %s</string>
     <string name="mStatus_check">Check status</string>
     <string name="mStatus_recheck">Check</string>
     <string name="mStatus_checking">Checking…</string>
@@ -164,26 +175,24 @@ The url content is obtained (HEAD), but not evaluated, so redirections based on 
     </string-array>
     <string name="mStatus_unknownCode">%d: Unknown status code</string>
     <string name="mStatus_redir">Redirects to %s</string>
-    <string name="mStatus_autoRedirect">Automatically replace redirection urls</string>
-    <string name="mStatus_autoCheck">Automatically check urls that match the following regexp pattern. Warning! It is advised to specify a restrictive pattern (and not ".*" for all) otherwise malicious servers may log your IP.</string>
-
+    <string name="mStatus_autoRedirect">Automatically replace redirection URLs</string>
+    <string name="mStatus_autoCheck">Automatically check URLs that match the following regexp pattern. Warning! It is advised to specify a restrictive pattern (and not .* for all) otherwise malicious servers may log your IP.</string>
+    <!-- -->
     <string name="mInput_name">Input text</string>
-    <string name="mInput_desc">"Displays the current url, which can be edited manually."</string>
-
-    <string name="mVT_name">Url Scanner</string>
-    <string name="mVT_desc">"When this module is enabled you can scan the url using VirusTotal and check the report.
-A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us."</string>
-    <string name="mVT_apiKey">api key</string>
+    <string name="mInput_desc">Displays the current URL, which can be edited manually.</string>
+    <string name="mVT_name">URL Scanner</string>
+    <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_apiKey">API key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>
     <string name="mVT_cancel">Cancel</string>
     <string name="mVT_scanning">Scanning…</string>
-    <string name="mVT_goodUrl">None of the %d engines detected the url (as of date %s)</string>
-    <string name="mVT_warningUrl">Warning, %d/%d engines detected the url (as of date %s)</string>
-    <string name="mVT_badUrl">Careful! %d/%d engines detected the url (as of date %s)</string>
-    <string name="mVT_connectError">"Can't connect to VirusTotal. Make sure you have an active internet connection or try again later."</string>
-    <string name="mVT_jsonError">"Can't connect to VirusTotal. Make sure the api key is valid or try again later."</string>
-
+    <string name="mVT_goodUrl">None of the %d engines detected the URL (as of date %s)</string>
+    <string name="mVT_warningUrl">Warning, %d/%d engines detected the URL (as of date %s)</string>
+    <string name="mVT_badUrl">Careful! %d/%d engines detected the URL (as of date %s)</string>
+    <string name="mVT_connectError">Can not connect to VirusTotal. Ensure you are connected to the Internet, or try again later.</string>
+    <string name="mVT_jsonError">Can not connect to VirusTotal. Ensure the API key is valid, or try again later.</string>
+    <!-- -->
     <string name="mD_name">Debug/Marker module</string>
     <string name="mD_desc">"If you reorder the modules, new ones added in future updates will be placed above this one.
 
@@ -191,12 +200,12 @@ If you enable this it will display the received intent as uri, useful for develo
 
 Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
-
+    <!-- -->
     <string name="mHist_name">History</string>
-    <string name="mHist_desc">When the url is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
-
-    <string name="mClear_name">Url Cleaner</string>
-    <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the url. It also allows for common offline url redirections.</string>
+    <string name="mHist_desc">When the URL is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
+    <!-- -->
+    <string name="mClear_name">URL Cleaner</string>
+    <string name="mClear_desc">This module removes tracking, referrer and other useless parameters from the URL. It also allows for common offline URL redirections.</string>
     <string name="mClear_tm">Built-in catalog copied from ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Apply</string>
     <string name="mClear_matches">Matches %s</string>
@@ -208,14 +217,14 @@ Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</st
     <string name="mClear_forcedRedirection">- forced redirection found</string>
     <string name="mClear_redirection">- redirection found</string>
     <string name="mClear_cleared">- Cleared</string>
-    <string name="mClear_noRules">No rules match</string>
-    <string name="mClear_auto">Apply automatically</string>
+    <string name="mClear_noRules">No matching rules</string>
+    <string name="mClear_auto">Auto-apply</string>
     <string name="mClear_toggleReferral">"Enable referral marketing (referral parameters won't be cleared)"</string>
     <string name="mClear_toggleVerbose">Enable verbose info for the matching process</string>
-    <string name="mClear_error">An error occurred while checking rule</string>
+    <string name="mClear_error">Could not check rule</string>
     <string name="mClear_updater">Updater</string>
     <string name="mClear_sourceDesc">URL of the JSON file catalog with the rules:</string>
-    <string name="mClear_urlHint">Catalog url</string>
+    <string name="mClear_urlHint">Catalog URL</string>
     <string name="mClear_hashDesc">URL of the catalog hash file. If omitted, the download will not be checked to see if it was tampered/modified (not recommended)</string>
     <string name="mClear_hashHint">No hash check</string>
     <string name="mClear_updateNow">Update now</string>
@@ -224,13 +233,13 @@ Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</st
     <string name="mClear_lastUpdate">Last update:</string>
     <string name="mClear_updated">Catalog updated</string>
     <string name="mClear_upToDate">Catalog up to date</string>
-    <string name="mClear_urlError">Unable to fetch the rules, make sure the url is valid and you have an active connection</string>
+    <string name="mClear_urlError">Unable to fetch the rules, make sure the URL is valid and you have an active connection</string>
     <string name="mClear_hashError">Unable to fetch the hash, make sure the url is valid and you have an active connection</string>
-    <string name="mClear_hashMismatch">Hashes do not match, the file may have been tampered with. If you want to skip the check remove the hash url</string>
+    <string name="mClear_hashMismatch">Hashes do not match, the file may have been tampered with. If you want to skip the check remove the hash URL</string>
     <string name="mClear_restore">Restore ClearURLs paths</string>
     <string name="mClear_editor">"Catalog rules: They must follow the format from https://docs.clearurls.xyz/latest/specs/rules/.
 Note that any modification to the parent object 'providers' will be overwritten if the catalog is updated automatically or manually from the updater dialog. To have personal rules set them in a different parent object (any name)."</string>
-
+    <!-- -->
     <string name="mRemove_name">Queries Remover</string>
     <string name="mRemove_desc">"With this module you can remove queries from the URL.
 Press the button to remove them all or press the arrow to remove one at a time.
@@ -241,15 +250,13 @@ Thanks to PabloOQ for the idea and original implementation!"</string>
     <string name="mRemove_all">Remove all</string>
     <string name="mRemove_one">Remove %s</string>
     <string name="mRemove_empty">Remove empty</string>
-
+    <!-- -->
     <string name="mLog_name">Log</string>
-    <string name="mLog_desc">"This module logs all checked urls.
-You can view, clear or edit the full log here, no visual indication will appear on the main dialog.
-To disable logging, just disable the module."</string>
+    <string name="mLog_desc">This module logs all checked URLs. You can view, clear or edit the full log here, no visual indication will appear on the main dialog. To disable logging, just disable the module.</string>
     <string name="mLog_view">View log</string>
     <string name="mLog_edit">Edit log</string>
     <string name="mLog_empty">No data</string>
-
+    <!-- -->
     <string name="mHosts_name">Hosts labeler</string>
     <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
@@ -260,7 +267,7 @@ To disable logging, just disable the module."</string>
     <string name="mHosts_adult">adult content</string>
     <string name="mHosts_build">Build</string>
     <string name="mHosts_uninitialized">Hosts database uninitialized. Press to build</string>
-    <string name="mHosts_parseError">"Can't parse url host"</string>
+    <string name="mHosts_parseError">Can not parse URL host</string>
     <string name="mHosts_editor">"Hosts configuration. Format: List of objects where the key is the hosts label and the content includes the following optional values:
 - file: An url of a remote hosts-file to download. All valid hosts present will be added.
 - hosts: List of raw hosts (strings) to add.
@@ -275,12 +282,12 @@ To disable logging, just disable the module."</string>
     <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
-
+    <!-- -->
     <string name="mUnshort_name">Unshortener</string>
     <string name="mUnshort_unshort">Unshort</string>
     <string name="mUnshort_desc">"This module will unshort links by sending them to https://unshorten.me/, which evaluates them on their servers and save the redirection for future petitions. Avoid unshortening links with private or sensitive data.
 Their api is rate limited to 10 requests per hour for new checks. The module response will show how many petitions you have pending."</string>
-    <string name="mUnshort_tm">unshorten.me free api by Unshorten.me</string>
+    <string name="mUnshort_tm">unshorten.me free API by Unshorten.me</string>
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>

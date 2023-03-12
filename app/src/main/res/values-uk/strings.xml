@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here:
@@ -6,42 +7,45 @@
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">Українські</string>
-
-    <!-- main -->
+    <!--
+        main
+    -->
     <string name="txt_info">Ця програма виконує роль проміжного кроку відкриття посилань. Коли ви натискаєте на посилання та вибираєте цю програму для її відкриття, вона показує вам діалогове вікно з певною  інформацією про посилання. Натисніть на кнопку модулі нижче, щоб побачити доступні модул   і та те, що вони.</string>
     <string name="txt_sample">:Натисніть на посилання нижче, щоб перевірити:</string>
     <string name="a_modules">Модулі</string>
     <string name="a_about">Більше</string>
-
-    <!-- about -->
+    <!--
+        about
+    -->
     <string name="txt_about">"Програма зроблена TrianguloY'ом
 
 Contributions: %s.
 Translations: %s."</string>
     <string name="link_blog">Блог, який веде TrianguloY</string>
-
-    <!-- configuration -->
+    <!--
+        configuration
+    -->
     <string name="txt_conf">Список модулів: ви можете включити, або відключити їх, також перевірте опис та налаштування модулів.</string>
     <string name="toast_cantEnable">Неможливо активувати модуль, немає конфігураціЇ.</string>
     <string name="menu_resetOrder">Відновити початковий порядок</string>
-
-    <!-- generic -->
+    <!--
+        generic
+    -->
     <string name="toast_noApp">Не можу відкрити діяльність</string>
     <string name="toast_noBrowser">Не можу відкрити браузер</string>
     <string name="title_choose">Виберіть додаток</string>
     <string name="toast_invalid">Не підходить</string>
     <string name="share">Поділитись додатком</string>
-
-
-    <!-- modules -->
+    <!--
+        modules
+    -->
     <string name="mPttrn_name">Перевірка по шаблону</string>
     <string name="mPttrn_desc">" Перевіряє на поширені проблеми в посиланнях:
 * знаки, які не знаходяться в списку ASCII, такі як грецькі літери. Таке може використовуватись для фішингових атак: googĺe.com vs google.com
 * http посилання, краще використовуйте https "</string>
     <string name="mPttrn_ascii">Обережно! Знайдені не-ascii знаки</string>
-    <string name="mPttrn_http">Http посилання, краще використайте https</string>
+    <string name="mPttrn_http">HTTP посилання. Краще використайте HTTPS.</string>
     <string name="mPttrn_ok">Ніяких проблем не знайдено</string>
-
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"Має наступні кнопки (зліва направо):
 - Кнопка Custom Tabs: натисніть, аби включити/виключити функцію custom tab. Коли включена, браузер має бути відкритим в 'легкому' режимі.
@@ -52,7 +56,7 @@ Translations: %s."</string>
     <string name="mOpen_share">Поділитись</string>
     <string name="mOpen_clipboard">Посилання скопійовано до буферу обміну</string>
     <string name="mOpen_noapps">Немає відповідних програм</string>
-
+    <!-- -->
     <string name="mStatus_name">Код статусу</string>
     <string name="mStatus_desc">Натискаючи на кнопку перевірки, буде створено запит, щоб отримати та відобразити вам статус сайту(код статусу).\nЯкщо результатом буде перенаправлення, то ви зможете переглянути та змінити нове посилання. Посилання отримуються, але не оцінюється їх зміст, тому перенаправлення за допомогою JavaScript не можуть бути поміченими.</string>
     <string name="mStatus_ioerror">Відбулась проблема з підключенням під час перевірки посилання: %s</string>
@@ -79,10 +83,10 @@ Translations: %s."</string>
     </string-array>
     <string name="mStatus_unknownCode">%d: Невідомий код статусу</string>
     <string name="mStatus_redir">Перенаправлення: %s</string>
-
+    <!-- -->
     <string name="mInput_name">Вхідний текст</string>
     <string name="mInput_desc">Показує поточне посилання, яке може бути змінене власноруч.</string>
-
+    <!-- -->
     <string name="mVT_name">VirusTotal</string>
     <string name="mVT_desc">Коли цей модуль активний, ви можете сканувати посилання використовуючи VirusTotal та перевірити звіт.\nОсобистий ключ VirusTotal API необхідний, необхідний для роботи цього модуля. Ви можете отримати такий, зареєструвавши безкоштовний акаунт за цим посиланням: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">api key</string>
@@ -95,15 +99,15 @@ Translations: %s."</string>
     <string name="mVT_badUrl">Обережно! %d/%d сканерів знають це посилання (на час %s)</string>
     <string name="mVT_connectError">Не можу під\'єднатись до VirusTotal. Впевніться, що у вас є активне інтернет з\'єднання, або попробуйте пізніше</string>
     <string name="mVT_jsonError"> Не можу під\'єднатись до VirusTotal. Впевніться, що ключ api дійсний, або спробуйте пізніше</string>
-
+    <!-- -->
     <string name="mD_name">Debug/Маркер модуль</string>
     <string name="mD_desc">Якщо ви змінюєте порядок модулів, то нові модулі, які додаватимуться в майбутньому, будуть ставитись перед цим модулем.\n\nЯкщо ви включите це, то буде відображено наміри в форматі URI, корисно для розробників.
 </string>
     <string name="mD_ctabs">Показувати debug повідомлення від custom tabs service</string>
-
+    <!-- -->
     <string name="mHist_name">Історія</string>
     <string name="mHist_desc">Коли посилання змінене, власноруч або іншими модулями, цей модуль дозволяє подивитись та скасувати зміни.</string>
-
+    <!-- -->
     <string name="mClear_name">Почистити URL</string>
     <string name="mClear_desc">Цей модуль прибирає слідкуючі, реферальні та інші непотрібні параметри з посилання. Також він дозволяє  переходити за посиланнями, на які вас перенаправили, без справжнього переходу користувача на сайт.</string>
     <string name="mClear_tm">Програма використовує базу данних з ClearURLs https://docs.clearurls.xyz/latest/specs/rules/</string>
@@ -122,7 +126,7 @@ Translations: %s."</string>
     <string name="mClear_toggleReferral">Дозволити реферальний маркетинг(реферальні параметри не буде прибрано)</string>
     <string name="mClear_toggleVerbose">Включити детальний вивід інформації про співпадіння</string>
     <string name="mClear_error">Сталася помилка під час перевірки правил</string>
-
+    <!-- -->
     <string name="mRemove_name">Прибирання запитів</string>
     <string name="mRemove_desc">Цей модуль дозволить прибрати запити(певні парметри,які стоять після знаку питання в посиланні).\nНатисніть на кнопку щоб прибрати всі запити, або натисніть на стрілочку, аби прибирати певні, вибрані вами, запити.\nДякую PabloQQ за ідею та оригінальне виконання!</string>
     <string name="mRemove_found1">1 запит знайдено</string>
