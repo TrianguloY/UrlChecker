@@ -1,0 +1,89 @@
+V 2.10
+- New tutorial screen
+- New module: Unshortener
+- New features and improvements to status module
+- New shortcut & tile to open clipboard links
+- New chinese translation. Many thanks to Seviche CC!
+- Visual fixes
+
+V 2.9.1
+- New Italian translation. Thanks to dperruso!
+- Fixed some uncommon errors when opening links
+
+V 2.9
+- New module: Hosts labeler
+- Hide module titles (can be toggled)
+- New settings activity
+    - Setup as default browser
+    - Change theme
+    - Change locale
+- Tweaked and cleaned styles and code
+
+V 2.8
+- Renamed app from 'Url Checker' to 'URLCheck'
+- New japanese translation. Thanks to 404potato!
+- New Pattern Checker samples and improvements
+- New setting to sort apps per-domain
+- New setting to close after sharing
+- New setting to hide the source app (referrer)
+- Allow disabling all modules
+- Improved About activity
+- Internal tooling improvements
+
+V 2.7
+- Improved Open module apps sorting
+- Improved ClearURL catalog updater
+- Added CTabs settings
+- Some Android 13 improvements
+- Fixed issues with module sorting
+- Fixed some links not opening
+- Fixes and tweaks to strings
+- Fixes and tweaks to styles
+- Several internal improvements
+
+V 2.6
+- Colors!
+- Improved Queries remover module
+- Improved Patterns checker module
+- New module: Log
+- New Turkish translation. Thanks to Metezd!
+- New Hebrew translation. Thanks to Nhman Mazuz!
+- Minor tweaks and fixes
+
+V 2.5
+- Advanced JSON editor for ClearURLs and Patterns
+- The ClearURLs database can now be updated
+- Added Spanish translation
+- Styles and texts improvements
+
+V 2.4
+- Added French translation. Thanks to Ilithy!
+- Added Ukrainian translation. Thanks to Idris!
+- Automatic dark/white theme
+
+V 2.3
+- Allow reordering modules
+- Clear urls module can be configured to auto-apply
+- Remove queries module can remove individual queries
+- Added European Portuguese translation. Thanks to Tiago Carmo!
+- Some tweaks and fixes
+
+V 2.2
+- New module 'Remove queries module': removes all queries from the url. Thanks to PabloOQ for the idea and original implementation!
+
+V 2.1
+- Fixed and improved ClearUrl module
+- Improved some texts and messages
+- Tweaked style to be more compact
+
+V 2.0
+- Style update
+- Updated Clear Url catalog
+
+V 1.1
+- New module 'Clear Url': Uses the Clear Url dictionary to clear urls from referral and other useless url parameters.
+- New module 'History': Revert changes from any module.
+- Replaced module 'Redirect' with 'Status': Fetch the status code of the page, still allows for redirection.
+- Improved 'Pattern' module: Press 'Fix' to convert http to https
+- New module 'Debug': For developers (display the intent uri and ctabs messages)
+- UI cleanup.
