@@ -8,10 +8,11 @@ We don't have a coding style, but try to keep it similar to existing code, with 
 
 You can check existing code to see examples, but be aware that some are not perfect. In doubt, just ask.
 
+### For translator:
 
-### For translator: 
+You are free to propose one or more translations, or to update any existing one. Be sure of your work before providing it to the developers, who cannot verify it. You can translate it using [Weblate](https://hosted.weblate.org/engage/urlcheck/), as a [pull request](https://github.com/TrianguloY/UrlChecker/pulls)/[issue](https://github.com/TrianguloY/UrlChecker/issues/new) titled `{locale} Translation proposal` or by sending the files by email to [TrianguloY](https://github.com/TrianguloY).
 
-You are free to propose one or more translations, or to update any existing one. Be sure of your work before providing it to the developers, who cannot verify it. There are two independent things to translate:
+For manual translation, there are two independent things to translate:
 
 - **App strings**: the [`strings.xml`](../app/src/main/res/values/strings.xml) file
   - Translate all texts between the `<string>` and `</string>` tags.
@@ -20,6 +21,5 @@ You are free to propose one or more translations, or to update any existing one.
 
 - **Store strings**: the [`title.txt`](../app/src/main/play/listings/en-US/title.txt) [`short-description.txt`](../app/src/main/play/listings/en-US/short-description.txt) and/or [`full-description.txt`](../app/src/main/play/listings/en-US/full-description.txt) files
   - Place the translated files in the corresponding `./app/src/main/play/listings/{locale}/` folder
-  
-Note: if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).  
-Optionally you can also send the files by email to [TrianguloY](https://github.com/TrianguloY) or by opening an [issue](https://github.com/TrianguloY/UrlChecker/issues/new) titled `{locale} Translation proposal`.
+
+Note: if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).
