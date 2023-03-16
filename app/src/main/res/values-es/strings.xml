@@ -12,7 +12,7 @@
     <!--
         main
     -->
-    <string name="txt_info">"Esta aplicación actúa como un paso intermedio al abrir enlaces. Al hacer click en uno y abrirlo en esta aplicación, se mostrará una ventana con información acerca del enlace. Pulsa el botón 'Módulos' de debajo para ver y configurar los módulos disponibles."</string>
+    <string name="txt_info">Esta aplicación actúa como intermediario al abrir enlaces URL. Se muestra un diálogo con información sobre el enlace cuando se elige esta aplicación para abrirlo. Pulse el botón \'Módulos\' de abajo para comprobar y configurar todos los módulos disponibles.</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
     <string name="a_modules">Módulos</string>
     <string name="a_settings">Ajustes</string>
@@ -44,8 +44,8 @@ Traducciones: %s."</string>
     -->
     <string name="txt_openLinks">Abrir enlaces en esta app: A lo largo de los años Android ha cambiado la forma de configurarlo, y varía entre versiones. Debajo se muestran los diversos ajustes disponibles en tu dispositivo, si los enlaces no se abren en esta aplicación pruébalos todos.</string>
     <string name="btn_setBrowser">Usar como navegador por defecto</string>
-    <string name="toast_defaultSet">La aplicación se ha configurado como el navegador por defecto</string>
-    <string name="btn_configureBrowser">Navegador por defecto</string>
+    <string name="toast_defaultSet">La aplicación es ahora el navegador web por defecto</string>
+    <string name="btn_configureBrowser">Navegador web predeterminado</string>
     <string name="btn_linksSettings">Abrir enlaces soportados</string>
     <string name="btn_androidSettings">Ajustes de Android de la aplicación</string>
     <string name="txt_theme">Tema:</string>
@@ -60,12 +60,15 @@ Traducciones: %s."</string>
 
 Este es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo. Puedes volver a este tutorial siempre que quieras desde el menú de ajustes."</string>
     <string name="txt_tutorial2">La aplicación actúa como intermediaria cuando se abre o comparte un enlace. Una vez se envía un enlace a la aplicación puedes interactuar con él mediante los módulos. Tras ello puedes abrir el enlace (en la aplicación que quieras), compartirlo o copiarlo al portapapeles.</string>
-    <string name="txt_tutorial3">Para que la aplicación pueda interceptar enlaces necesitamos configurarla como navegador por defecto. Esto no es necesario si piensas pasar los enlaces usando la opción de compartirlos.</string>
-    <string name="txt_tutorial4">"Los módulos son la forma en la que la app interactúa con los enlaces. Hay múltiples módulos, cada uno de ellos tiene una función específica, normalmente o te dan información del enlace, o te permiten modificarlo. Se pueden modificar bastante por lo que es recomendable que les eches un vistazo y los cambies como sea necesario. Cada uno está explicado allí.
-
-Importante: todas las opciones son manuales por defecto, la aplicación no modificará nada ni se conectará a Internet a menos que lo permitas específicamente, pero algunas acciones se pueden configurar para actuar automáticamente si quieres.
-
-Puedes abrir la lista de módulos desde la ventana principal, o pulsando el botón de debajo."</string>
+    <string name="txt_tutorial3">Configura la aplicación como navegador web predeterminado para interceptar las URL al abrirlas.
+\n(No es necesario si las URL se abren utilizando la funcionalidad \"Compartir\".)</string>
+    <string name="txt_tutorial4">Los módulos son la forma en que la aplicación interactúa con las URL.
+\nCada uno de los módulos tiene una función específica. Por lo general, presentan información sobre la URL, o permiten su modificación.
+\nLee sobre ellos y configúralos según sea necesario.
+\n
+\nImportante: Todas las acciones son manuales por defecto. La aplicación no modificará nada ni se conectará a Internet a menos que usted lo permita específicamente, pero algunas acciones pueden aplicarse automáticamente si lo desea.
+\n
+\nAbre la lista de módulos desde la pantalla principal, o pulsando el botón de abajo.</string>
     <string name="txt_tutorial5">"Eso es todo. Aquí tienes algunos consejos que pueden ser útiles:
 
 Cuando una app no te da una forma de abrir o compartir un enlace, pero sí te una forma para hacer la otra puedes solventar este problema usando esta aplicación. También puedes copiar el enlace al portapapeles al mantener el botón de compartir.
@@ -96,11 +99,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!--
         shortcuts
     -->
-    <string name="shortcut_checkClipboard">Comprobar enlaces del portapapeles</string>
+    <string name="shortcut_checkClipboard">Comprobar las URL desde el portapapeles</string>
     <!--
         modules
     -->
-    <string name="mPttrn_name">Comprobador de patrones</string>
+    <string name="mPttrn_name">Verificador de patrones</string>
     <string name="mPttrn_desc">"Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
 - Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
 - Sugiere reemplazar 'http' por 'https'
@@ -108,11 +111,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
-    <string name="mPttrn_ascii">¡Aviso! Carácteres no-ascii encontrados</string>
+    <string name="mPttrn_ascii">¡Peligro! Se encontraron caracteres que no son ASCII.</string>
     <string name="mPttrn_http">Enlace HTTP. Considera usar HTTPS.</string>
     <string name="mPttrn_noSchemeHttp">Falta esquema HTTP.</string>
     <string name="mPttrn_noSchemeHttps">Falta esquema HTTPS.</string>
-    <string name="mPttrn_ok">Ningún patron coincide</string>
+    <string name="mPttrn_ok">No hay patrones coincidentes</string>
     <string name="mPttrn_editor">"Aquí puedes editar o añadir nuevos patrones. Formato:
 - 'regex': string: java regex válido con el que se comprobará la url.
 - 'replacement': string|list: si se incluye, el botón de 'arreglar' ejecutará 'url=url.replaceAll(regex,replacement)'. Si es una lista, replacement será un elemento aleatorio de ella.
@@ -120,7 +123,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 - 'enabled': boolean: ponlo a 'false' para deshabilitar el patrón.
 Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizaciones no serán añadidos automáticamente (puedes recuperarlos con la opción de reset)."</string>
     <!-- -->
-    <string name="mOpen_name"><![CDATA[Abrir y compartir]]></string>
+    <string name="mOpen_name">Abrir y compartir</string>
     <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
 - Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
@@ -137,16 +140,14 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
-    <string name="mOpen_clipboard">Url copiada al portapapeles</string>
+    <string name="mOpen_clipboard">URL copiada en el portapapeles</string>
     <string name="mOpen_noapps">Sin aplicaciones</string>
     <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
     <!-- -->
     <string name="mStatus_name">Código de estado</string>
-    <string name="mStatus_desc">"Al pulsar el botón de comprobar, se realizará una peticion para obtener y mostrar el código de estado de la url.
-Si el resultado es una redirección, podrás ver la url destino.
-El contenido de la url se pide (HEAD), pero no se evalúa, con lo que redirecciones basadas en javascript no serán detectadas.</string>
-    <string name="mStatus_ioerror">Error de red al intentar comprobar la url: %s</string>
-    <string name="mStatus_error">Error interno al intentar comprobar la url: %s</string>
+    <string name="mStatus_desc">Al presionar el botón de verificación, se realizará una petición para recuperar y mostrar el código de estado del sitio. Si el resultado es una redirección, podrá ver la URL de destino. El contenido de la URL se obtiene (HEAD), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
+    <string name="mStatus_ioerror">Error de red al intentar comprobar la URL: %s</string>
+    <string name="mStatus_error">Error interno al intentar comprobar la URL: %s</string>
     <string name="mStatus_check">Comprobar código de estado</string>
     <string name="mStatus_recheck">Comprobar</string>
     <string name="mStatus_checking">Comprobando…</string>
@@ -169,25 +170,24 @@ El contenido de la url se pide (HEAD), pero no se evalúa, con lo que redireccio
     </string-array>
     <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
     <string name="mStatus_redir">Redirige a %s</string>
-    <string name="mStatus_autoRedirect">Reemplaza redirecciones automáticamente</string>
-    <string name="mStatus_autoCheck">Comprueba automáticamente los enlaces que coinciden con el siguiente regexp. ¡Cuidado! Se aconseja usar un patrón restrictivo (en lugar de ".*" para todos) ya que servidores maliciosos podrían registrar tu IP.</string>
+    <string name="mStatus_autoRedirect">Sustituir automáticamente las URL de redireccionamiento</string>
+    <string name="mStatus_autoCheck">Verifique automáticamente las URL que coincidan con el siguiente patrón de expresión regular. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar su IP.</string>
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
-    <string name="mInput_desc">"Muestra la url actual, que puede ser modificada manualmente."</string>
+    <string name="mInput_desc">Muestra la URL actual, que puede ser modificada manualmente.</string>
     <!-- -->
-    <string name="mVT_name">Escáner</string>
-    <string name="mVT_desc">"Cuando este módulo se habilita puedes escanear la url mediante VirusTotal y comprobar el informe.
-Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us."</string>
+    <string name="mVT_name">Escáneador de la URL</string>
+    <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us.</string>
     <string name="mVT_apiKey">Clave de la API</string>
     <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
     <string name="mVT_scan">Escanear</string>
     <string name="mVT_cancel">Cancelar</string>
     <string name="mVT_scanning">Escaneando…</string>
-    <string name="mVT_goodUrl">Ninguno de los %d antivirus ha detectado la url como maliciosa (a fecha %s)</string>
-    <string name="mVT_warningUrl">Aviso, %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
-    <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus han detectado la url como maliciosa (a fecha %s)</string>
-    <string name="mVT_connectError">No se ha podido conectar con VirusTotal. Comprueba que tienes acceso a internet o prueba mas tarde.</string>
-    <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la api es correcta o prueba mas tarde.</string>
+    <string name="mVT_goodUrl">Ninguno de los antivirus %d detectó la URL (a fecha %s)</string>
+    <string name="mVT_warningUrl">Advertencia, %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
+    <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
+    <string name="mVT_connectError">No se puede conectar a VirusTotal. Asegúrese de que está conectado a Internet o inténtelo más tarde.</string>
+    <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la clave api es correcta o prueba mas tarde.</string>
     <!-- -->
     <string name="mD_name">Módulo debug/marcador</string>
     <string name="mD_desc">"Si reordenas los módulos, los que se añadan en futuras actualizaciones serán colocados encima de este.
@@ -198,10 +198,10 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
     <!-- -->
     <string name="mHist_name">Historial</string>
-    <string name="mHist_desc">Cuando la url cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
+    <string name="mHist_desc">Cuando la URL cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
     <!-- -->
-    <string name="mClear_name">Limpiador</string>
-    <string name="mClear_desc">Este módulo elimina parámetros innecesarios de la url como seguimiento o de referencia. También detecta redirecciones comúnes sin necesidad de pedirla al servidor.</string>
+    <string name="mClear_name">Limpiador de URLs</string>
+    <string name="mClear_desc">Este módulo elimina el seguimiento, la referencia y otros parámetros inútiles de la URL. También permite redirecciones de URL sin conexión comunes.</string>
     <string name="mClear_tm">Catálogo incluido copiado de ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Aplicar</string>
     <string name="mClear_matches">%s detectado</string>
@@ -213,14 +213,14 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_forcedRedirection">- contiene redirección forzada</string>
     <string name="mClear_redirection">- contiene redirección</string>
     <string name="mClear_cleared">- Limpiado</string>
-    <string name="mClear_noRules">Sin reglas que aplicar</string>
+    <string name="mClear_noRules">Sin reglas coincidentes</string>
     <string name="mClear_auto">Aplicar automáticamente</string>
     <string name="mClear_toggleReferral">Permitir parámetros de referencia de marketing (no serán limpiados)</string>
     <string name="mClear_toggleVerbose">Mostrar información detallada del proceso de limpieza</string>
-    <string name="mClear_error">Ha ocurrido un error mientras se comprobaban las reglas</string>
+    <string name="mClear_error">No se pudo comprobar la regla</string>
     <string name="mClear_updater">Actualizador</string>
-    <string name="mClear_sourceDesc">Url del fichero JSON con el ctálogo de reglas:</string>
-    <string name="mClear_urlHint">Url del catálogo</string>
+    <string name="mClear_sourceDesc">Url del fichero JSON con el catálogo de reglas:</string>
+    <string name="mClear_urlHint">URL del catálogo</string>
     <string name="mClear_hashDesc">Url del hash del fichero del catálogo. Si se omite, la descarga no será comprobada por si ha sido alterada/modificada (no se recomienda)</string>
     <string name="mClear_hashHint">No comprobar hash</string>
     <string name="mClear_updateNow">Actualizar ahora</string>
@@ -229,12 +229,11 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_lastUpdate">Última actualización:</string>
     <string name="mClear_updated">Catálogo actualizado</string>
     <string name="mClear_upToDate">Sin cambios</string>
-    <string name="mClear_urlError">No se han podido descargar las reglas, comprueba que la url es correcta y que tienes acceso a internet</string>
+    <string name="mClear_urlError">No se pueden obtener las reglas, asegúrese de que la URL sea válida y de que tenga una conexión activa</string>
     <string name="mClear_hashError">No se ha podido descargar el hash, comprueba que la url es correcta y que tienes acceso a internet</string>
-    <string name="mClear_hashMismatch">Los hashes no coinciden, el catálogo puede haber sido alterado. Si quieres desactivar la comprobación de hash borra la url de hash</string>
+    <string name="mClear_hashMismatch">Los hash no coinciden, el archivo puede haber sido manipulado. Si desea omitir la comprobación, elimine la URL del hash</string>
     <string name="mClear_restore">Restaurar direcciones de ClearURLs</string>
-    <string name="mClear_editor">"Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/.
-Ten en cuenta que las modificaciones del objeto principal 'providers' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre)"</string>
+    <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/. Ten en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
     <string name="mRemove_desc">"Con este módulo puedes eliminar los parámetros de la URL.
@@ -248,12 +247,10 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <string name="mRemove_empty">Eliminar vacío</string>
     <!-- -->
     <string name="mLog_name">Registro (log)</string>
-    <string name="mLog_desc">"Este módulo registra todas las urls analizadas.
-El log completo puede verse, editarse y borrarse desde aquí, no se mostrará nada en la ventana principal.
-Para deshabilitar el registro, deshabilita el módulo."</string>
-    <string name="mLog_view">View log</string>
-    <string name="mLog_edit">Edit log</string>
-    <string name="mLog_empty">No data</string>
+    <string name="mLog_desc">Este módulo registra todas las URLs comprobadas. Puede ver, borrar o editar el registro completo aquí, no aparecerá ninguna indicación visual en el diálogo principal. Para desactivar el registro, basta con desactivar el módulo.</string>
+    <string name="mLog_view">Ver el registro</string>
+    <string name="mLog_edit">Editar el registro</string>
+    <string name="mLog_empty">Sin datos</string>
     <!-- -->
     <string name="mHosts_name">Etiquetador de hosts</string>
     <string name="mHosts_desc">Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts</string>
@@ -265,7 +262,7 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mHosts_adult">contenido de adulto</string>
     <string name="mHosts_build">Generar</string>
     <string name="mHosts_uninitialized">Catálogo de hosts sin inicializar. Pulsa para generarlo</string>
-    <string name="mHosts_parseError">No se ha podido obtener el host</string>
+    <string name="mHosts_parseError">No se puede analizar la URL del host</string>
     <string name="mHosts_editor">"Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
 - file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
 - color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo 'peligro' por defecto.
@@ -287,7 +284,7 @@ Para deshabilitar el registro, deshabilita el módulo."</string>
     <string name="mUnshort_unshort">Desacortar</string>
     <string name="mUnshort_desc">"Este módulo desacorta enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para peticiones futuras. Evita desacortar enlaces con datos privados o sensibles.
 El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La respuesta del módulo muestra cuantas peticiones quedan pendientes."</string>
-    <string name="mUnshort_tm">unshorten.me api gratuita de Unshorten.me</string>
+    <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
@@ -296,8 +293,9 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
     <string name="mFlags_invalid">Flag inválida</string>
-    <string name="mFlag_desc">"[Funcionalidad beta] Este módulo avanzado te permite editar las flags del intent cuando abres una aplicación.
-En el cuadro de texto de debajo puedes marcar flags que sobreescribirán a las de por defecto, aquellas obtenidas del intent que se usó para abrir esta aplicación.
-Al usar el módulo puedes mantener pulsado el botón de editar para guardar las flags como valor por defecto. Puedes añadir flags escribiendo su nombre en el cuadro de entrada."</string>
+    <string name="mFlag_desc">[Funcionalidad beta] Este módulo avanzado te permite editar las flags del intent cuando abres una aplicación. En el cuadro de texto de debajo puedes marcar flags que sobreescribirán a las de por defecto, aquellas obtenidas del intent que se usó para abrir esta aplicación. Al usar el módulo puedes mantener pulsado el botón de editar para guardar las flags como valor por defecto. Puedes añadir flags escribiendo su nombre en el cuadro de entrada</string>
     <string name="mFlag_flagHint">Nombre de flag</string>
+    <string name="remove">Eliminar</string>
+    <string name="edit">Editar</string>
+    <string name="add">Añadir</string>
 </resources>

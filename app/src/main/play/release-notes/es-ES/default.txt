@@ -86,4 +86,4 @@ V 1.1
 - Reemplazado el módulo 'Redirección' con 'Estado': Obten el código de estado de cualquier página, sigue detectando redirecciones.
 - Mejorado el módulo de patrones: Pulsa en 'arreglar' para convertir http a https
 - Nuevo módulo 'debug': Para desarrolladores (muestra el intent uri y mensajes de ctabs)
-- Limpieza de la interfaz
+- Limpieza de la interfaz.
