@@ -66,13 +66,13 @@ public class MainDialog extends Activity {
     /**
      * Something wants to set a new url.
      */
-    public void onNewUrl(UrlData urlData) {
+    public void onNewUrl(UrlData newUrlData) {
         // mark as next if nothing else yet
         if (updating != 0) {
             AndroidUtils.assertError("Don't call onNewUrl while updating, use the onModifyUrl return value");
             return;
         }
-        this.urlData = urlData;
+        urlData = newUrlData;
 
         // fire updates loop
         main_loop:
@@ -99,11 +99,11 @@ public class MainDialog extends Activity {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
-                    var newUrlData = module.onModifyUrl(urlData);
-                    if (newUrlData != null) {
+                    var modifiedUrlData = module.onModifyUrl(urlData);
+                    if (modifiedUrlData != null) {
                         // modified, restart
-                        newUrlData.mergeData(urlData);
-                        urlData = newUrlData;
+                        modifiedUrlData.mergeData(urlData);
+                        urlData = modifiedUrlData;
                         continue main_loop;
                     }
                 } catch (Exception e) {

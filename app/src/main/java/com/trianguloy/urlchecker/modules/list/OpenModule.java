@@ -164,7 +164,7 @@ class OpenDialog extends AModuleDialog {
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
-        updateSpinner();
+        updateSpinner(urlData.url);
     }
 
     // ------------------- Spinner -------------------
@@ -172,8 +172,8 @@ class OpenDialog extends AModuleDialog {
     /**
      * Populates the spinner with the apps that can open it, in preference order
      */
-    private void updateSpinner() {
-        packages = PackageUtils.getOtherPackages(UrlUtils.getViewIntent(getUrl(), null), getActivity());
+    private void updateSpinner(String url) {
+        packages = PackageUtils.getOtherPackages(UrlUtils.getViewIntent(url, null), getActivity());
 
         // remove referrer
         if (noReferrerPref.get()) {
