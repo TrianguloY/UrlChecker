@@ -12,7 +12,7 @@
     <!--
         main
     -->
-    <string name="txt_info">Esta aplicación actúa como intermediario al abrir enlaces URL. Se muestra un diálogo con información sobre el enlace cuando se elige esta aplicación para abrirlo. Pulse el botón del módulo de abajo para comprobar y configurar todos los módulos disponibles.</string>
+    <string name="txt_info">Esta aplicación actúa como intermediario al abrir enlaces URL. Se muestra un diálogo con información sobre el enlace cuando se elige esta aplicación para abrirlo. Pulse el botón \'Módulos\' de abajo para comprobar y configurar todos los módulos disponibles.</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
     <string name="a_modules">Módulos</string>
     <string name="a_settings">Ajustes</string>
@@ -61,9 +61,9 @@ Traducciones: %s."</string>
 Este es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo. Puedes volver a este tutorial siempre que quieras desde el menú de ajustes."</string>
     <string name="txt_tutorial2">La aplicación actúa como intermediaria cuando se abre o comparte un enlace. Una vez se envía un enlace a la aplicación puedes interactuar con él mediante los módulos. Tras ello puedes abrir el enlace (en la aplicación que quieras), compartirlo o copiarlo al portapapeles.</string>
     <string name="txt_tutorial3">Configura la aplicación como navegador web predeterminado para interceptar las URL al abrirlas.
-\n(No es necesario si las URL se redirigen utilizando la funcionalidad \"Compartir\".)</string>
+\n(No es necesario si las URL se abren utilizando la funcionalidad \"Compartir\".)</string>
     <string name="txt_tutorial4">Los módulos son la forma en que la aplicación interactúa con las URL.
-\nCada uno de los módulos tiene una función específica. Por lo general, presentar información sobre la URL, o permitir su modificación.
+\nCada uno de los módulos tiene una función específica. Por lo general, presentan información sobre la URL, o permiten su modificación.
 \nLee sobre ellos y configúralos según sea necesario.
 \n
 \nImportante: Todas las acciones son manuales por defecto. La aplicación no modificará nada ni se conectará a Internet a menos que usted lo permita específicamente, pero algunas acciones pueden aplicarse automáticamente si lo desea.
@@ -183,9 +183,9 @@ Nota: si editas los patrones, nuevos patrones incorporados en futuras actualizac
     <string name="mVT_scan">Escanear</string>
     <string name="mVT_cancel">Cancelar</string>
     <string name="mVT_scanning">Escaneando…</string>
-    <string name="mVT_goodUrl">Ninguno de los motores %d detectó la URL (a fecha %s)</string>
-    <string name="mVT_warningUrl">Advertencia, %d/%d motores detectaron la URL (a partir de la fecha %s)</string>
-    <string name="mVT_badUrl">¡Cuidado! Los motores %d/%d detectaron la URL (a partir de la fecha %s)</string>
+    <string name="mVT_goodUrl">Ninguno de los antivirus %d detectó la URL (a fecha %s)</string>
+    <string name="mVT_warningUrl">Advertencia, %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
+    <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
     <string name="mVT_connectError">No se puede conectar a VirusTotal. Asegúrese de que está conectado a Internet o inténtelo más tarde.</string>
     <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la clave api es correcta o prueba mas tarde.</string>
     <!-- -->
@@ -219,8 +219,8 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_toggleVerbose">Mostrar información detallada del proceso de limpieza</string>
     <string name="mClear_error">No se pudo comprobar la regla</string>
     <string name="mClear_updater">Actualizador</string>
-    <string name="mClear_sourceDesc">Url del fichero JSON con el ctálogo de reglas:</string>
-    <string name="mClear_urlHint">Catálogo de la URL</string>
+    <string name="mClear_sourceDesc">Url del fichero JSON con el catálogo de reglas:</string>
+    <string name="mClear_urlHint">URL del catálogo</string>
     <string name="mClear_hashDesc">Url del hash del fichero del catálogo. Si se omite, la descarga no será comprobada por si ha sido alterada/modificada (no se recomienda)</string>
     <string name="mClear_hashHint">No comprobar hash</string>
     <string name="mClear_updateNow">Actualizar ahora</string>
@@ -248,9 +248,9 @@ Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
     <!-- -->
     <string name="mLog_name">Registro (log)</string>
     <string name="mLog_desc">Este módulo registra todas las URLs comprobadas. Puede ver, borrar o editar el registro completo aquí, no aparecerá ninguna indicación visual en el diálogo principal. Para desactivar el registro, basta con desactivar el módulo.</string>
-    <string name="mLog_view">View log</string>
+    <string name="mLog_view">Ver el registro</string>
     <string name="mLog_edit">Editar el registro</string>
-    <string name="mLog_empty">No data</string>
+    <string name="mLog_empty">Sin datos</string>
     <!-- -->
     <string name="mHosts_name">Etiquetador de hosts</string>
     <string name="mHosts_desc">Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts</string>

@@ -42,7 +42,9 @@ Translations: %s."</string>
         modules
     -->
     <string name="mPttrn_name">Перевірка по шаблону</string>
-    <string name="mPttrn_desc">Перевіряє на поширені проблеми в посиланнях: * знаки, які не знаходяться в списку ASCII, такі як грецькі літери. Таке може використовуватись для фішингових атак: googĺe.com vs google.com * http посилання, краще використовуйте https</string>
+    <string name="mPttrn_desc">Перевіряє на поширені проблеми в посиланнях: 
+\n* знаки, які не знаходяться в списку ASCII, такі як грецькі літери. Таке може використовуватись для фішингових атак: googĺe.com vs google.com 
+\n* http посилання, краще використовуйте https</string>
     <string name="mPttrn_ascii">Обережно! Знайдені не-ascii знаки</string>
     <string name="mPttrn_http">HTTP посилання. Краще використайте HTTPS.</string>
     <string name="mPttrn_ok">Ніяких проблем не знайдено</string>

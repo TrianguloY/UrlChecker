@@ -80,10 +80,10 @@ V 2.0
 - Actualización de estilos
 - Actualizado el catálogo de ClearURLs
 
-En la 1.1
-- Nuevo módulo 'Limpiar las URLs': utiliza el diccionario de Clear Url para borrar URLs de referencia y otros parámetros de las URL inútiles.
-- Nuevo módulo 'Historial': Revierte cambios de cualquier módulo.
-- Se reemplazó el módulo 'Redirigir' por 'Estado': Obtiene el código de estado de la página, aún permite la redirección.
-- Módulo 'Patrón' mejorado: Presione 'Fijar' para convertir http a https
-- Nuevo módulo 'Depuración': para desarrolladores (muestra los mensajes de intent uri y ctabs)
-- Limpieza de la interfaz de usuario.
+V 1.1
+- Nuevo módulo 'Limpieza de Urls': Utiliza el catálogo de ClearURLs para limpiar los enlaces de parámetros de seguimiento o inútiles.
+- Nuevo módulo 'Historial': Deshaz cambios realizados por cualquier otro módulo
+- Reemplazado el módulo 'Redirección' con 'Estado': Obten el código de estado de cualquier página, sigue detectando redirecciones.
+- Mejorado el módulo de patrones: Pulsa en 'arreglar' para convertir http a https
+- Nuevo módulo 'debug': Para desarrolladores (muestra el intent uri y mensajes de ctabs)
+- Limpieza de la interfaz.
