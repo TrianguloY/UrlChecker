@@ -1,2 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="btn_tutorialSettings">Repetir tutorial</string>
+    <string name="btn_tutorialEnd">Terminar tutorial</string>
+    <string name="link_source">Código fonte</string>
+    <string name="link_changelog">Histórico de mudanças</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="canceled">Cancelado</string>
+    <string name="next">Próximo</string>
+    <string name="add">Adicionar</string>
+    <string name="json_edit">Editor avançado</string>
+    <string name="mOpen_ctabsOff">Desabilitado por padrão</string>
+    <string name="mClear_clear">Aplicar</string>
+    <string name="mLog_empty">Sem dados</string>
+    <string name="btn_tutorialSkip">Pular tutorial</string>
+    <string name="title_choose">Escolher aplicativo</string>
+    <string name="a_modules">Módulos</string>
+    <string name="close">Fechar</string>
+    <string name="mOpen_share">Compartilhar</string>
+    <string name="a_about">Sobre</string>
+    <string name="a_settings">Configurações</string>
+    <string name="link_privacy">Política de privacidade</string>
+    <string name="locale">Português Brasileiro</string>
+    <string name="txt_about">Aplicativo criado por TrianguloY.
+\n
+\nContribuições: %s. Traduções: %s.</string>
+    <string name="desc_down">Mover para baixo</string>
+    <string name="none">Nenhum</string>
+    <string name="share">Compartilhar</string>
+    <string name="deviceDefault">Dispositivo padrão</string>
+    <string name="mPttrn_fix">Aplicar</string>
+    <string name="mStatus_checking">Verificando…</string>
+    <string name="desc_enable">Habilitar/desabilitar módulo</string>
+    <string name="mClear_autoUpdate">Atualizar periodicamente</string>
+    <string name="mClear_lastUpdate">Última atualização:</string>
+    <string name="menu_resetOrder">Redefinir ordem</string>
+    <string name="btn_configureBrowser">Navegador web padrão</string>
+    <string name="btn_setBrowser">Definir como navegador padrão</string>
+    <string name="save">Salvar</string>
+    <string name="back">Voltar</string>
+    <string name="mOpen_ctabsEn">Sempre ligado</string>
+    <string name="desc_decorations">Exibir/ocultar título</string>
+    <string name="desc_up">Mover para cima</string>
+    <string name="reset">Redefinir</string>
+    <string name="clear">Limpar</string>
+    <string name="toast_invalid">Inválido</string>
+    <string name="auto">Automático</string>
+    <string name="mHist_name">Histórico</string>
+    <string name="mLog_name">Log</string>
+    <string name="remove">Remover</string>
+    <string name="edit">Editar</string>
+    <string name="mOpen_ctabsDis">Sempre desligado</string>
+    <string name="mOpen_with">Abrir com %s</string>
+    <string name="mOpen_open">Abrir</string>
+    <string name="mStatus_check">Verificar status</string>
+    <string name="mStatus_recheck">Verificar</string>
+    <string name="mOpen_clipboard">URL copiada para área de transferência</string>
+    <string name="mOpen_noapps">Sem aplicativos</string>
+    <string name="mStatus_redir">Redirecionar para %s</string>
+    <string name="mVT_cancel">Cancelar</string>
+    <string name="mInput_name">Texto de entrada</string>
+    <string name="mVT_scanning">Escaneando…</string>
+    <string name="mVT_scan">Escanear</string>
+    <string name="mClear_updated">Catálogo atualizado</string>
+    <string name="mLog_view">Visualizar log</string>
+    <string name="mClear_updateNow">Atualizar agora</string>
+    <string name="mClear_lastCheck">Última verificação:</string>
+</resources>
