@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 /**
  * This module checks for patterns characters in the url
@@ -119,12 +120,20 @@ class PatternDialog extends AModuleDialog {
                 if (data == null) continue;
                 if (!data.optBoolean("enabled", true)) continue;
 
+                String regex = data.optString("regex", null);
+                String excludeRegex = data.optString("excludeRegex", null);
+                // properly formed?
+                if (regex == null) continue;
+
                 // applied?
                 message.applied = urlData.getData(APPLIED + pattern) != null;
 
-                // check regexp
-                String regex = data.optString("regex", "(?!)");
-                if (url.matches(".*" + regex + ".*")) {
+                // check pattern
+                boolean matches = Pattern.compile(regex).matcher(url).find();
+                if (matches && excludeRegex != null) {
+                    matches = !Pattern.compile(excludeRegex).matcher(url).find();
+                }
+                if (matches) {
                     message.matches = true;
                     // check replacements
                     String replacement = null;
