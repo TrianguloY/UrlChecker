@@ -120,21 +120,26 @@ class PatternDialog extends AModuleDialog {
                 if (data == null) continue;
                 if (!data.optBoolean("enabled", true)) continue;
 
-                String regex = data.optString("regex", null);
-                String excludeRegex = data.optString("excludeRegex", null);
-                // properly formed?
-                if (regex == null) continue;
+                // get regex (must exists)
+                if (!data.has("regex")) continue;
+                var regex = data.getString("regex");
 
                 // applied?
                 message.applied = urlData.getData(APPLIED + pattern) != null;
 
-                // check pattern
-                boolean matches = Pattern.compile(regex).matcher(url).find();
-                if (matches && excludeRegex != null) {
-                    matches = !Pattern.compile(excludeRegex).matcher(url).find();
+                // check matches
+                // if 'regexp' matches, the pattern can match
+                // if 'regexp' doesn't match, the patter doesn't match
+                var matches = Pattern.compile(regex).matcher(url).find();
+                if (matches && data.has("excludeRegex")) {
+                    // if 'excludeRegex' doesn't exist, the pattern can match
+                    // if 'excludeRegex' matches, the pattern doesn't matches
+                    // if 'excludeRegex' doesn't match, the pattern can match
+                    matches = !Pattern.compile(data.getString("excludeRegex")).matcher(url).find();
                 }
                 if (matches) {
                     message.matches = true;
+
                     // check replacements
                     String replacement = null;
 
