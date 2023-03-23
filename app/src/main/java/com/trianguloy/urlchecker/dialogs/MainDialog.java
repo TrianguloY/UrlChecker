@@ -76,11 +76,8 @@ public class MainDialog extends Activity {
 
         // fire updates loop
         main_loop:
-        while (updating < MAX_UPDATES) {
-
-            // test and mark looping times
-            if (urlData.disableUpdates) updating = MAX_UPDATES;
-            else updating++;
+        while (true) {
+            updating++;
 
             // first notify modules
             for (var module : modules.keySet()) {
@@ -99,11 +96,23 @@ public class MainDialog extends Activity {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
-                    var modifiedUrlData = module.onModifyUrl(urlData);
-                    if (modifiedUrlData != null) {
+                    var modifiedUrlData = new UrlData[]{null};
+                    module.onModifyUrl(urlData, newUrl -> {
+                        // callback to replace the url. Alternative to throwing an exception and catch it here.
+                        // can't use a return value directly because the caller needs to know if it should continue or not.
+                        if (!urlData.disableUpdates && updating < MAX_UPDATES) {
+                            // new url accepted
+                            modifiedUrlData[0] = newUrl;
+                            return true;
+                        } else {
+                            // a new url is not accepted
+                            return false;
+                        }
+                    });
+                    if (modifiedUrlData[0] != null) {
                         // modified, restart
-                        modifiedUrlData.mergeData(urlData);
-                        urlData = modifiedUrlData;
+                        modifiedUrlData[0].mergeData(urlData);
+                        urlData = modifiedUrlData[0];
                         continue main_loop;
                     }
                 } catch (Exception e) {

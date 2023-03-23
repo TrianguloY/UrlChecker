@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.fragments.Fragment;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.util.Map;
 
@@ -33,10 +34,10 @@ public abstract class AModuleDialog implements Fragment {
 
     /**
      * Analyze and optionally modify an url. This may not be called for new modules.
-     * Return the new url if needed, null for no changes.
+     * To modify the url call the setNewUrl callback. It will return true iff you can stop processing changes (false if you need to continue).
+     * > if(setNewUrl.apply(new UrlData(""))) return;
      */
-    public UrlData onModifyUrl(UrlData urlData) {
-        return null;
+    public void onModifyUrl(UrlData urlData, JavaUtils.Function<UrlData, Boolean> setNewUrl) {
     }
 
     /**

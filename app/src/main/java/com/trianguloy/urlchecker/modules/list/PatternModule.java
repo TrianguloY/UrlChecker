@@ -103,7 +103,7 @@ class PatternDialog extends AModuleDialog {
     }
 
     @Override
-    public UrlData onModifyUrl(UrlData urlData) {
+    public void onModifyUrl(UrlData urlData, JavaUtils.Function<UrlData, Boolean> setNewUrl) {
         // init
         messages.clear();
         String url = urlData.url;
@@ -148,7 +148,7 @@ class PatternDialog extends AModuleDialog {
 
                         // automatic? apply
                         if (data.optBoolean("automatic")) {
-                            return new UrlData(message.newUrl).putData(APPLIED + pattern, APPLIED);
+                            if (setNewUrl.apply(new UrlData(message.newUrl).putData(APPLIED + pattern, APPLIED))) return;
                         }
                     }
                 }
@@ -162,9 +162,6 @@ class PatternDialog extends AModuleDialog {
                 e.printStackTrace();
             }
         }
-
-        // nothing to replace
-        return null;
     }
 
     @Override

@@ -16,6 +16,7 @@ import com.trianguloy.urlchecker.modules.companions.ClearUrlCatalog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,7 +136,7 @@ class ClearUrlDialog extends AModuleDialog {
     }
 
     @Override
-    public UrlData onModifyUrl(UrlData urlData) {
+    public void onModifyUrl(UrlData urlData, JavaUtils.Function<UrlData, Boolean> setNewUrl) {
         cleared = urlData.url;
         data = new Data();
 
@@ -283,7 +284,8 @@ class ClearUrlDialog extends AModuleDialog {
         // url changed
         if (!cleared.equals(urlData.url)) {
             // apply automatically if required
-            if (auto.get()) return new UrlData(cleared).putData(CLEARED, CLEARED);
+            if (auto.get())
+                if (setNewUrl.apply(new UrlData(cleared).putData(CLEARED, CLEARED))) return;
 
             // enable button
             data.enabled = true;
@@ -291,7 +293,6 @@ class ClearUrlDialog extends AModuleDialog {
                 data.info += "\n\n -> " + cleared;
             }
         }
-        return null;
     }
 
     @Override
