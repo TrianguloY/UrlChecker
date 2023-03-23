@@ -109,6 +109,7 @@ class ClearUrlDialog extends AModuleDialog {
 
     private final List<Pair<String, JSONObject>> rules;
     private TextView info;
+    private Button fix;
 
     private String cleared = null;
     private Data data = null;
@@ -130,7 +131,7 @@ class ClearUrlDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         info = views.findViewById(R.id.text);
-        var fix = views.<Button>findViewById(R.id.button);
+        fix = views.findViewById(R.id.button);
         fix.setText(R.string.mClear_clear);
         fix.setOnClickListener(v -> clear());
     }
@@ -297,15 +298,19 @@ class ClearUrlDialog extends AModuleDialog {
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
+        // update button
+        fix.setEnabled(data.enabled);
+
+        // update text
         if (data.info.isEmpty()) {
             // nothing found
             info.setText(R.string.mClear_noRules);
             setVisibility(false);
         } else {
+            // something found
             info.setText(data.info);
             setVisibility(true);
         }
-
         if (data.color != 0) AndroidUtils.setRoundedColor(data.color, info);
         else AndroidUtils.clearRoundedColor(info);
     }

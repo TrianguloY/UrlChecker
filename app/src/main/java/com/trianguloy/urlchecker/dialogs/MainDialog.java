@@ -69,7 +69,7 @@ public class MainDialog extends Activity {
     public void onNewUrl(UrlData newUrlData) {
         // mark as next if nothing else yet
         if (updating != 0) {
-            AndroidUtils.assertError("Don't call onNewUrl while updating, use the onModifyUrl return value");
+            AndroidUtils.assertError("Don't call onNewUrl while updating, use the onModifyUrl 'setNewUrl' callback");
             return;
         }
         urlData = newUrlData;
