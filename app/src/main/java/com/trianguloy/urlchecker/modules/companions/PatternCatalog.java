@@ -59,12 +59,6 @@ public class PatternCatalog extends JsonCatalog {
                         )
                         .put("enabled", "false")
                 )
-                .put("Fandom ➔ BreezeWiki", new JSONObject()
-                        .put("regex", "^https?://([a-z0-9-]+)\\.fandom\\.com/(.*)")
-                        .put("excludeRegex", "^https?://www\\.fandom\\.com/")
-                        .put("replacement", "https://breezewiki.com/$1/$2")
-                        .put("enabled", "false")
-                )
                 ;
     }
 
