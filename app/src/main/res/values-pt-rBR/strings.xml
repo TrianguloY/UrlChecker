@@ -74,4 +74,7 @@
     <string name="mOpen_name">Abrir e compartilhar</string>
     <string name="mOpen_ctabsOn">Habilitado por padrão</string>
     <string name="mVT_apiKey">Chave de API</string>
+    <string name="btn_androidSettings">Configurações Android do aplicativo</string>
+    <string name="txt_locale">Localização:</string>
+    <string name="btn_linksSettings">Abrir links suportados</string>
 </resources>
