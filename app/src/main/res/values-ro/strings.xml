@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toast_cantEnable">Nu se poate activa modulul, lipsesc de configurare\?</string>
+    <string name="locale">Engleză</string>
+    <string name="txt_info">Această aplicație acționează ca un intermediar la deschiderea linkurilor URL accesate. Când alegeți această aplicație pentru a deschide un link, este afișată o fereastră de dialog cu informații despre acesta. Apăsați butonul modul de mai jos pentru a verifica și configura toate modulele disponibile.</string>
+    <string name="txt_sample">Apasă linkul de mai jos pentru a-l testa:</string>
+    <string name="a_modules">Module</string>
+    <string name="a_settings">Setări</string>
+    <string name="a_about">Despre</string>
+    <string name="link_changelog">Changelog</string>
+    <string name="link_source">Cod sursa</string>
+    <string name="link_privacy">Politica de confidențialitate</string>
+    <string name="menu_resetOrder">Resetează ordinea</string>
+    <string name="txt_openLinks">Deschideți linkuri în această aplicație: De-a lungul anilor, Android a schimbat modul de configurare și diferă de la o versiune la alta. Găsiți mai jos toate setările disponibile pentru dispozitivul dvs., dacă nu se deschid linkuri pe această aplicație încercați-le pe toate.</string>
+    <string name="btn_setBrowser">Setează ca browser implicit</string>
+    <string name="toast_defaultSet">Aplicația este acum browserul web implicit</string>
+    <string name="btn_configureBrowser">Browser web implicit</string>
+    <string name="btn_androidSettings">Setările aplicației Android</string>
+    <string name="txt_theme">Temă:</string>
+    <string name="spin_darkTheme">Întunecat</string>
+    <string name="spin_lightTheme">Luminat</string>
+    <string name="link_blog">Blogul lui TrianguloY</string>
+    <string name="txt_conf">Aici sunt prezentate toate modulele disponibile, unde puteți verifica descrierea și setările acestora. De asemenea, puteți să le reordonați, să comutați vizibilitatea titlului și să le activați/dezactivați.</string>
+    <string name="txt_about">Aplicație creată de TrianguloY.
+\n
+\nContribuții: %s. Traduceri: %s.</string>
+    <string name="txt_locale">Localitate:</string>
+    <string name="txt_tutorial1">Mulțumim pentru descărcarea aplicației!
+\n
+\nAcesta este tutorialul, dacă vrei să-l sări, o poți face cu butonul de mai jos. Puteți reveni oricând la acest tutorial din meniul de setări.</string>
+    <string name="tutorial">Tutorial</string>
+</resources>
