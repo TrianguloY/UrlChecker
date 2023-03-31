@@ -120,7 +120,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n- \'regex\': cadena: un regex de java válido que debe coincidir para que coincida todo el patrón. 
 \n- \'excludeRegex\': cadena: si se proporciona, un regex java válido que no debe coincidir para que coincida todo el patrón. 
 \n- \'replacement\': cadena|lista: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma. 
-\n- \'automático\': booleano: se establece en true para aplicar automáticamente el patrón. 
+\n- \'automatic\': booleano: se establece en true para aplicar automáticamente el patrón. 
 \n- \'enabled\': booleano: establece false para desactivar el patrón. 
 \nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la aplicación no se añadirán automáticamente (puedes restaurarlos con la opción restaurar).</string>
     <!-- -->
