@@ -251,7 +251,7 @@ class OpenDialog extends AModuleDialog {
         }
 
         // Get flags from global data (probably set by flags module, if active)
-        Integer flags = FlagsDialog.getFlagsNullable(this);
+        Integer flags = FlagsDialog.getGlobalFlagsNullable(this);
         if (flags != null) {
             intent.setFlags(flags);
         }

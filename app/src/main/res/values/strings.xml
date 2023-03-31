@@ -100,6 +100,9 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="remove">Remove</string>
     <string name="edit">Edit</string>
     <string name="add">Add</string>
+    <string name="on">Enabled</string>
+    <string name="off">Disabled</string>
+
     <!--
         json
     -->
@@ -303,8 +306,10 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mFlags_name">Flags editor</string>
     <string name="mFlags_invalid">Invalid flag</string>
     <string name="mFlag_desc">"[Beta feature] This is an advanced module, it allows you to edit the intent flags when opening another app.
-In the field below you can put flags that will overwrite the default ones, those are taken from the intent that was used to open this app.
-While using the module you can hold the edit button to set the flags to the default flags. You can add flags by writing their name in the flags field"</string>
+\nThis module will show a list of flags, you can change if the flag is set or not by taping the checkbox. There is also an overflow menu to hide flags in there, to avoid cluttering.
+\nThe flags will have two color indicators next to the checkbox. The left one shows the value received from the intent, the right one indicates the state set by the module itself. Red means the flag is not set and green means the flag is set. Additionally the preference indicator can be grey, this means that the state was set to auto.
+\nWith the button below you can edit the default state of the flags."</string>
     <string name="mFlag_flagHint">Flag name</string>
+    <string name="mFlag_editFlags">Edit default flag values</string>
 
 </resources>
