@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.trianguloy.urlchecker'
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 22
         versionName "2.10"
 
