@@ -103,12 +103,12 @@
     <string name="mPttrn_noSchemeHttp">缺少 http 协议</string>
     <string name="mPttrn_noSchemeHttps">缺少 https 协议</string>
     <string name="mPttrn_ok">无匹配的模式</string>
-    <string name="mPttrn_editor">"您可以在这里编辑或添加新的模式。格式:
-- 'regex': string：有效的 Java 正则表达式，将与 URL 进行匹配。
-- 'replacement': string|list：如果提供，则“修复”按钮将运行'url=url.replaceAll(regex,replacement)。如果是 list ，replacement 将从中随机选择一个元素。
-- 'automatic'：boolean：将其设置为 true，以自动应用该模式。
-- 'enabled'：boolean：将其设置为 false，以禁用该模式。
-注意：如果你编辑了这些模式，新的内置模式将不会自动添加到应用程序更新中（你可以使用重置选项恢复它们）。"</string>
+    <string name="mPttrn_editor">您可以在这里编辑或添加新的模式。格式: 
+\n- \'regex\': string：有效的 Java 正则表达式，将与 URL 进行匹配。 
+\n- \'replacement\': string|list：如果提供，则“修复”按钮将运行\'url=url.replaceAll(regex,replacement)。如果是 list ，replacement 将从中随机选择一个元素。 
+\n- \'automatic\'：boolean：将其设置为 true，以自动应用该模式。 
+\n- \'enabled\'：boolean：将其设置为 false，以禁用该模式。 
+\n注意：如果你编辑了这些模式，新的内置模式将不会自动添加到应用程序更新中（你可以使用重置选项恢复它们）。</string>
     <string name="mOpen_name"><![CDATA[Open & Share]]></string>
     <string name="mOpen_desc">"包含以下按钮（从左到右）：
 

@@ -73,7 +73,13 @@ Traduzioni: %s."</string>
     <string name="mPttrn_noSchemeHttp">Schema HTTP mancante.</string>
     <string name="mPttrn_noSchemeHttps">Schema HTTPS mancante.</string>
     <string name="mPttrn_ok">Nessun pattern combaciante</string>
-    <string name="mPttrn_editor">Qui puoi modificare od aggiungere altri patterns. Formato: - \'regex\': stringa: una regex java valida che deve combaciare con l\'intero pattern. - \'excludeRegex\': stringa: se fornita, una regex java valida che non deve combaciare con l\'intero pattern. - \'replacement\': stringa|lista: se configurato, il pulsante fix eseguirà \'url=url.replaceAll(regex,replacement)\'. Se viene configurata una lista, verrà preso un elemento a random da essa. - \'automatic\': booleana: settala a true per applicare il pattern automaticamente. - \'enabled\' booleana: settala a false per disabilitare il pattern. Nota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiornamenti, non verranno aggiunti. (puoi ripristinarli con l\'opzione di reset).</string>
+    <string name="mPttrn_editor">Qui puoi modificare od aggiungere altri patterns. Formato: 
+\n- \'regex\': stringa: una regex java valida che deve combaciare con l\'intero pattern. 
+\n- \'excludeRegex\': stringa: se fornita, una regex java valida che non deve combaciare con l\'intero pattern. 
+\n- \'replacement\': stringa|lista: se configurato, il pulsante fix eseguirà \'url=url.replaceAll(regex,replacement)\'. Se viene configurata una lista, verrà preso un elemento a random da essa. 
+\n- \'automatic\': booleana: settala a true per applicare il pattern automaticamente. 
+\n- \'enabled\' booleana: settala a false per disabilitare il pattern. 
+\nNota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiornamenti, non verranno aggiunti. (puoi ripristinarli con l\'opzione di reset).</string>
     <string name="mOpen_name">Apri e condividi</string>
     <string name="mOpen_desc">"Continene i seguenti pulsanti (da sinistra a destra):
 - Schede custom: premi per attivare o disattivare le schede custom. Quando abilitato il browser dovrebbe essere aperto in modalità "light".
