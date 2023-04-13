@@ -116,13 +116,13 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_noSchemeHttp">Falta esquema HTTP.</string>
     <string name="mPttrn_noSchemeHttps">Falta esquema HTTPS.</string>
     <string name="mPttrn_ok">No hay patrones coincidentes</string>
-    <string name="mPttrn_editor">Aquí puede editar o añadir un nuevo patrón. Formato: 
+    <string name="mPttrn_editor">Aquí puedes editar o añadir un nuevo patrón. Formato: 
 \n- \'regex\': cadena: un regex de java válido que debe coincidir para que coincida todo el patrón. 
 \n- \'excludeRegex\': cadena: si se proporciona, un regex java válido que no debe coincidir para que coincida todo el patrón. 
-\n- \'replacement\': cadena|lista: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma. 
+\n- \'replacement\': string|list: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma. 
 \n- \'automatic\': booleano: se establece en true para aplicar automáticamente el patrón. 
-\n- \'enabled\': booleano: establece false para desactivar el patrón. 
-\nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la aplicación no se añadirán automáticamente (puedes restaurarlos con la opción restaurar).</string>
+\n- \'enabled\': booleano: establecido en false para desactivar el patrón. 
+\nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la app no se añadirán automáticamente (puedes restaurarlos con la opción reset).</string>
     <!-- -->
     <string name="mOpen_name">Abrir y compartir</string>
     <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
