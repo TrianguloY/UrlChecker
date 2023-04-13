@@ -4,7 +4,7 @@
         If you create or update a translation, add how you want to be credited here.
         For multiple translators, separate them by semicolon.
         Example: <string name="translators">John Doe; Jane Doe</string> -->
-    <string name="translators">Metezd</string>
+    <string name="translators">Metezd;symbuzzer</string>
     <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -15,21 +15,70 @@
     <string name="txt_info">Bu uygulama bağlantıları açmak için bir tür ara adım görevi görür. Bir bağlantıya tıkladığınızda ve onu açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir. Mevcut bileşenleri ve ne yaptıklarını görmek için aşağıdaki düğmeye tıklayın.</string>
     <string name="txt_sample">Test etmek için aşağıdaki linke tıklayın:</string>
     <string name="a_modules">Bileşenler</string>
+    <string name="a_settings">Ayarlar</string>
     <string name="a_about">Hakkında</string>
     <!--
         about
     -->
     <string name="txt_about">"Uygulama TrianguloY tarafından geliştirilmiştir.
 
-Contributions: %s.
-Translations: %s."</string>
+Geliştiriciler: %s.
+Çeviriler: %s."</string>
     <string name="link_blog">TrianguloY\'un blog sayfası</string>
+    <string name="link_changelog">Değişiklikler</string>
+    <string name="link_source">Kaynak kodu</string>
+    <string name="link_privacy">Gizlilik politikası</string>
     <!--
         configuration
     -->
     <string name="txt_conf">Bileşenlerin listesi: Bunları etkinleştirebilir veya devre dışı bırakabilir, ayrıca açıklamasını ve yapılandırmasını inceleyebilirsiniz.</string>
     <string name="toast_cantEnable">Bileşen etkinleştirilemiyor, eksik yapılandırma olabilir mi?</string>
     <string name="menu_resetOrder">Düzeni Sıfırla</string>
+    <string name="menu_toggleDecorations">Bütün başlıkları aç</string>
+    <string name="desc_up">Yukarı taşı</string>
+    <string name="desc_down">Aşağı taşı</string>
+    <string name="desc_decorations">Başlığı göster/gizle</string>
+    <string name="desc_enable">Modülü aç/kapat</string>
+    <!--
+        settings
+    -->
+    <string name="txt_openLinks">Bağlantıları bu uygulamada açma: Yıllar geçtikçe Android onu yapılandırma şeklini değiştirdi ve sürümler arasında farklılıklar var. Aşağıda cihazınız için mevcut tüm ayarları bulun, bağlantılar halen bu uygulamada açılmıyorsa hepsini deneyin.</string>
+    <string name="btn_setBrowser">Varsayılan tarayıcı olarak ayarla</string>
+    <string name="toast_defaultSet">Bu uygulama artık varsayılan web tarayıcı</string>
+    <string name="btn_configureBrowser">Varsayılan web tarayıcı</string>
+    <string name="btn_linksSettings">Desteklenen linkleri aç</string>
+    <string name="btn_androidSettings">Android uygulama ayarları</string>
+    <string name="txt_theme">Tema:</string>
+    <string name="spin_darkTheme">Karanlık</string>
+    <string name="spin_lightTheme">Aydınlık</string>
+    <string name="txt_locale">Yerel:</string>
+    <string name="btn_tutorialSettings">Öğreticiyi tekrarla</string>
+    <!--
+        tutorial
+    -->
+    <string name="tutorial">Öğretici</string>
+    <string name="txt_tutorial1">"Uygylamayı indirdiğiniz için teşekkürler!
+
+Bu öğreticiyi aşağıdaki butonu kullanarak atlayabilirsiniz. Bu öğreticiye istediğiniz zaman ayarlar menüsünden geri dönebilirsiniz."</string>
+    <string name="txt_tutorial2">Uygulama, url bağlantılarını açarken veya paylaşırken aracı görevi görür. Uygulamaya bir url gönderildiğinde, modüller aracılığıyla onunla etkileşim kurabilirsiniz. Bundan sonra bağlantıyı (istediğiniz uygulamada) açabilir, paylaşabilir veya panoya kopyalayabilirsiniz.</string>
+    <string name="txt_tutorial3">Uygulamayı, URL\'leri açarken engellemek için varsayılan web tarayıcısı olarak ayarlayın.
+\n(“Paylaş” işlevi kullanılarak URL\'ler yeniden yönlendiriliyorsa gerekli değildir.)</string>
+    <string name="txt_tutorial4">Modüller, uygulamanın URL\'lerle nasıl etkileşime girdiğine ilişkindir.
+\nModüllerin her birinin belirli bir işlevi vardır. Genellikle URL hakkında bilgi sunmak veya değiştirilmesine izin vermek için kullanılır.
+\nOnlar hakkında bilgi edinin ve gerektiği gibi ayarlayın.
+\n
+\nÖnemli: Varsayılan olarak tüm eylemler manueldir. Özellikle izin vermediğiniz sürece uygulama hiçbir şeyi değiştirmeyecek veya İnternet\'e bağlanmayacaktır, ancak istenirse bazı işlemler otomatik olarak uygulanabilir.
+\n
+\nAna ekrandan veya aşağıdaki butona dokunarak modül listesini açın.</string>
+    <string name="txt_tutorial5">"Hepsi bu kadar. Yararlı olabilecek bazı ipuçları:
+
+Bir uygulama size bir url'yi açma veya paylaşma yolu sunmuyorsa, ancak diğerini yapmanız için bir yol veriyorsa, bu uygulamayı kullanarak sorunu çözebilirsiniz. Ayrıca, paylaş butonuna uzun basarak URL'yi panoya kopyalayabilirsiniz.
+
+Tek amacı sizi başka bir url'ye yönlendirmek olan bazı url'ler vardır. Nihai url bir uygulamada açılabiliyorsa, onu bir tarayıcıda açmaktan kaçınabilirsiniz.
+
+Umarım uygulamayı yararlı bulursunuz! Ve özellikler önermekten, hataları bildirmekten ve hatta değişiklik önermekten çekinmeyin. Hakkında ekranında ilgili tüm bağlantıları bulabilirsiniz."</string>
+    <string name="btn_tutorialSkip">Öğreticiyi geç</string>
+    <string name="btn_tutorialEnd">Öğreticiyi bitir</string>
     <!--
         generic
     -->
@@ -39,28 +88,72 @@ Translations: %s."</string>
     <string name="toast_invalid">Geçersiz</string>
     <string name="save">Kaydet</string>
     <string name="reset">Sıfırla</string>
-    <string name="share">Uygulamayı Paylaş</string>
+    <string name="close">Kapat</string>
+    <string name="clear">Temizle</string>
+    <string name="none">Hiçbiri</string>
+    <string name="auto">Otomatik</string>
+    <string name="share">Paylaş</string>
+    <string name="canceled">İptal edildi</string>
+    <string name="deviceDefault">Cihaz varsayılanı</string>
+    <string name="next">Sonraki</string>
+    <string name="back">Geri</string>
+    <string name="remove">Kaldır</string>
+    <string name="edit">Değiştir</string>
+    <string name="add">Ekle</string>
+    <!--
+        json
+    -->
+    <string name="json_desc">[Beta özelliği] Bu gelişmiş bir düzenleyicidir, içerik geçerli JSON olarak biçimlendirilmelidir. Biçimlendirmek ve doğrulamak için sağ üstteki butona basabilirsiniz.</string>
+    <string name="json_edit">Gelişmiş düzenleyici</string>
+    <!--
+        shortcuts
+    -->
+    <string name="shortcut_checkClipboard">Kopyalanan URL\'leri kontrol et</string>
     <!--
         modules
     -->
     <string name="mPttrn_name">Kalıp denetleyicisi</string>
-    <string name="mPttrn_desc">"URL\'deki yaygın sorunları kontrol eder:
-* Yunan harfleri gibi ascii olmayan karakterler. Bu kimlik avı için kullanılabilir: googĺe.com vs google.com
-* http bağlantıları, bunun yerine https kullanmalısınız"</string>
+    <string name="mPttrn_desc">"Bu modül, değiştirmeleri uyaran, öneren veya uygulayan normal ifade kalıplarıyla url'yi kontrol eder. Kendi kalıplarınızı değiştirebilir veya oluşturabilir, hatta kullanıcılar tarafından oluşturulanları kullanabilirsiniz.
+Dahili modeller şunları içerir:
+- Yunan harfleri gibi ascii olmayan karakterler içerdiğinde uyarı. Bu, kimlik avı için kullanılabilir: googĺe.com vs google.com
+- 'http'nin 'https' ile değiştirilmesini öner
+- Youtube, Reddit veya Twitter'ı gizlilik dostu alternatiflerle değiştirmeyi öner [varsayılan olarak devre dışıdır]"</string>
+    <string name="mPttrn_userContent">Kullanıcılar tarafından oluşturulan diğer faydalı modellerin listesi: %s</string>
+    <string name="mPttrn_fix">Uygula</string>
+    <string name="mPttrn_fixed">Uygulandı - %s</string>
     <string name="mPttrn_ascii">Uyarı! Ascii dışı karakter bulundu</string>
     <string name="mPttrn_http">HTTP bağlantısı. HTTPS kullanmayı unutmayın.</string>
-    <string name="mPttrn_ok">Herhangi bir sorun bulunamadı</string>
+    <string name="mPttrn_noSchemeHttp">Eksik HTTP şeması.</string>
+    <string name="mPttrn_noSchemeHttps">Eksik HTTPS şeması.</string>
+    <string name="mPttrn_ok">Eşleşen kalıp yok</string>
+    <string name="mPttrn_editor">"Burada yeni kalıpları düzenleyebilir veya ekleyebilirsiniz. Biçim:
+- 'regex': string: tüm kalıbın eşleşmesi için eşleşmesi gereken geçerli bir java regex'i.
+- 'excludeRegex': string: sağlanırsa, tüm kalıbın eşleşmesi için eşleşmemesi gereken geçerli bir java normal ifadesi.
+- 'replacement': string|list: sağlanırsa, 'düzelt' butonu 'url=url.replaceAll(regex,replacement)' işlevini çalıştırır. Eğer listeyse, değiştirme ondan rastgele bir öğe olacaktır.
+- 'automatic': boolean: kalıbı otomatik olarak uygulamak için true değerine ayarlayın.
+- 'enabled': boolean: kalıbı devre dışı bırakmak için false değerine ayarlayın.
+Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kalıplar otomatik olarak eklenmeyecektir (sıfırlama seçeneğiyle bunları geri yükleyebilirsiniz)."</string>
     <!-- -->
     <string name="mOpen_name"><![CDATA[Aç & Paylaş]]></string>
     <string name="mOpen_desc">"Aşağıdaki düğmeleri içerir (soldan sağa):
 - Özel Sekmeler düğmesi: özel sekme özelliğini etkinleştirmek/devre dışı bırakmak için geçiş. Etkinleştirildiğinde tarayıcı 'hafif' modda açılmalıdır.
 - Aç düğmesi: Bağlantıyı o uygulamada açmak için uygulama adına basın. Bir bağlantı birden fazla uygulama ile açılabiliyorsa, seçim yapmanızı sağlamak için bir ok gösterilecektir.
 - Paylaş düğmesi: Bağlantıyı paylaşmak için düğmeye basın. Panoya hızlıca kopyalamak için uzun basın."</string>
+    <string name="mOpen_ctabs">Özel sekmeler:</string>
+    <string name="mOpen_ctabsOn">Varsayılan olarak etkin</string>
+    <string name="mOpen_ctabsOff">Varsayılan olarak devre dışı bırakıldı</string>
+    <string name="mOpen_ctabsEn">Her zaman açık</string>
+    <string name="mOpen_ctabsDis">Her zaman kapalı</string>
+    <string name="mOpen_closeOpen">Açtıktan sonra iletişim kutusunu kapat</string>
+    <string name="mOpen_closeShare">Paylaştıktan sonra iletişim kutusunu kapat</string>
+    <string name="mOpen_perDomain">Farklı domainleri bağımsız olarak sıralama</string>
+    <string name="mOpen_noReferrer">Kaynak uygulamayı gizle (yönlendiren)</string>
     <string name="mOpen_with">%s ile aç</string>
     <string name="mOpen_open">Aç</string>
     <string name="mOpen_share">Paylaş</string>
-    <string name="mOpen_clipboard">Url panoya kopyalandı</string>
+    <string name="mOpen_clipboard">Url kopyalandı</string>
     <string name="mOpen_noapps">Uygulama yok</string>
+    <string name="mOpen_tabsDesc">Özel Sekmeler özelliğini değiştir</string>
     <!-- -->
     <string name="mStatus_name">Durum kodu</string>
     <string name="mStatus_desc">Kontrol düğmesine basarak, site durum kodunu almak ve görüntülemek için bir istekte bulunulacaktır.\nSonuç bir yeniden yönlendirme ise, hedef URL\'yi görüntüleyebileceksiniz. URL alınır, ancak değerlendirilmez, bu nedenle JavaScript\'e dayalı yönlendirmeler algılanmaz.</string>
@@ -68,7 +161,7 @@ Translations: %s."</string>
     <string name="mStatus_error">URL\'yi kontrol etmeye çalışırken dahili hata: %s</string>
     <string name="mStatus_check">Kontrol et</string>
     <string name="mStatus_recheck">Kontrol et</string>
-    <string name="mStatus_checking">Kontrol ediliyor...</string>
+    <string name="mStatus_checking">Kontrol ediliyor…</string>
     <string-array name="mStatus_codes">
         <item>200: Tamam</item>
         <item>301: Kalıcı olarak taşınmış</item>
@@ -88,13 +181,15 @@ Translations: %s."</string>
     </string-array>
     <string name="mStatus_unknownCode">%d: Bilinmeyen durum kodu</string>
     <string name="mStatus_redir">Yönlendirme: %s</string>
+    <string name="mStatus_autoRedirect">Yönlendirme URL\'lerini otomatik olarak değiştir</string>
+    <string name="mStatus_autoCheck">Aşağıdaki normal ifade kalıbıyla eşleşen URL\'leri otomatik olarak kontrol edin. Dikkat! Kısıtlayıcı bir model belirtmeniz önerilir (tümü için *. değil), aksi takdirde kötü niyetli sunucular IP\'nizi günlüğe kaydedebilir.</string>
     <!-- -->
     <string name="mInput_name">Giriş metni</string>
     <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL\'yi görüntüler.</string>
     <!-- -->
     <string name="mVT_name">URL\'yi tara</string>
-    <string name="mVT_desc">Bu bileşen etkinleştirildiğinde, VirusTotal kullanarak URL\'yi tarayabilir ve raporu inceleyebilirsiniz.\nBunun çalışması için kişisel bir VirusTotal API anahtarı gereklidir, buradan ücretsiz bir hesap için kayıt olduktan sonra bir tane alabilirsiniz: https://www.virustotal.com/gui/join-us.</string>
-    <string name="mVT_apiKey">api anahtarı</string>
+    <string name="mVT_desc">Bu bileşen etkinleştirildiğinde, VirusTotal kullanarak URL\'yi tarayabilir ve raporu inceleyebilirsiniz. Bunun çalışması için kişisel bir VirusTotal API anahtarı gereklidir, buradan ücretsiz bir hesap için kayıt olduktan sonra bir tane alabilirsiniz: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mVT_apiKey">API anahtarı</string>
     <string name="mVT_tm">VirusTotal™ Google, Inc. şirketinin ticari markasıdır.</string>
     <string name="mVT_scan">Tara</string>
     <string name="mVT_cancel">İptal et</string>
@@ -106,7 +201,11 @@ Translations: %s."</string>
     <string name="mVT_jsonError">VirusTotal\'a bağlanılamıyor. API anahtarının geçerli olduğundan emin olun veya daha sonra tekrar deneyin.</string>
     <!-- -->
     <string name="mD_name">Hata Ayıklama/İşaretleyici modülü</string>
-    <string name="mD_desc">Bileşenleri yeniden sıralarsanız, gelecekteki güncellemelerde eklenen yenileri bundan önce yerleştirilecektir.\n\nBunu etkinleştirirseniz, alınan amacı uri olarak görüntüler, geliştiriciler için yararlıdır.</string>
+    <string name="mD_desc">"Modülleri yeniden sıralarsanız, ilerideki güncellemelerde eklenen yeni modüller bunun üzerine yerleştirilecektir.
+
+Bunu etkinleştirirseniz, 'recieved intent' geliştiriciler için yararlı olan uri olarak görüntüler.
+
+Panoya kopyalamak için 'Intent' veya UrlData üzerine dokunun. Her şeyi kopyalamak için basılı tutun."</string>
     <string name="mD_ctabs">Özelleştirilmiş sekmeler hizmetinden gelen hata ayıklama mesajlarını göster</string>
     <!-- -->
     <string name="mHist_name">Geçmiş</string>
@@ -137,19 +236,75 @@ Translations: %s."</string>
     <string name="mClear_hashHint">Sağlama kontrolü yok</string>
     <string name="mClear_updateNow">Şimdi güncelle</string>
     <string name="mClear_autoUpdate">Periyodik olarak güncelle</string>
+    <string name="mClear_lastCheck">Son kontrol:</string>
+    <string name="mClear_lastUpdate">Son güncelleme:</string>
     <string name="mClear_updated">Katalog güncellendi</string>
+    <string name="mClear_upToDate">Güncel katalog</string>
     <string name="mClear_urlError">Kurallar alınamıyor, URL\'nin geçerli olduğundan ve aktif bir bağlantınız olduğundan emin olun</string>
     <string name="mClear_hashError">Sağlama öğesi alınamıyor, URL\'nin geçerli olduğundan ve etkin bir bağlantınız olduğundan emin olun</string>
     <string name="mClear_hashMismatch">Sağlamalar eşleşmiyor, kontrolü atlamak istiyorsanız sağlama URL\'sini kaldırın</string>
     <string name="mClear_restore">ClearUrl dosyalarını geri yükle</string>
-    <string name="mClear_editor">Bu gelişmiş bir özelliktir. Burada katalog kurallarını doğrudan düzenleyebilirsiniz. Bunlar https://docs.clearurls.xyz/latest/specs/rules/ adresindeki formata uygun olmalıdır.\nBurada yapılan herhangi bir değişikliğin, katalog manuel olarak veya güncelleyici iletişim kutusundan otomatik olarak güncellendiğinde üzerine yazılacağını unutmayın.</string>
+    <string name="mClear_editor">"Katalog kuralları: Şu formatı takip etmelidirler: https://docs.clearurls.xyz/latest/specs/rules/.
+Katalog, güncelleyici iletişim kutusundan otomatik veya manuel olarak güncellenirse, 'sağlayıcılar' üst nesnesinde yapılan tüm değişikliklerin üzerine yazılacağını unutmayın. Kişisel kurallara sahip olmak için onları farklı bir üst nesneye (herhangi bir ad) ayarlayın."</string>
     <!-- -->
     <string name="mRemove_name">Sorguları Kaldır</string>
-    <string name="mRemove_desc">Bu bileşen ile URL\'den sorguları kaldırabilirsiniz.\nTüm sorguları kaldırmak için düğmeye basın veya sorguları birer birer kaldırmak için oka tıklayın.\nFikir ve orijinal uygulama için PabloOQ\'ya teşekkürler!</string>
+    <string name="mRemove_desc">"Bu modül ile URL'den sorguları kaldırabilirsiniz.
+Hepsini kaldırmak için butona basın veya birer birer kaldırmak için oka basın.
+Fikir ve orijinal uygulama için PabloOQ'a teşekkürler!"</string>
     <string name="mRemove_found1">1 sorgu bulundu</string>
     <string name="mRemove_found">%d sorgu bulundu</string>
     <string name="mRemove_noQueries">Sorgu yok</string>
     <string name="mRemove_all">Tümünü kaldır</string>
     <string name="mRemove_one">Kaldır %s</string>
     <string name="mRemove_empty">Boşluğu kaldır</string>
+    <!-- -->
+    <string name="mLog_name">Kayıt</string>
+    <string name="mLog_desc">Bu modül, kontrol edilen tüm URL\'leri günlüğe kaydeder. Tüm günlüğü burada görüntüleyebilir, temizleyebilir veya düzenleyebilirsiniz, ana iletişim kutusunda hiçbir görsel gösterge görünmez. Günlüğe kaydetmeyi devre dışı bırakmak için modülü devre dışı bırakmanız yeterlidir.</string>
+    <string name="mLog_view">Kayda bak</string>
+    <string name="mLog_edit">Kaydı değiştir</string>
+    <string name="mLog_empty">Veri yok</string>
+    <!-- -->
+    <string name="mHosts_name">Hosts etiketleyici</string>
+    <string name="mHosts_desc">"Bu modül, host'ları manuel olarak belirterek veya uzak hosts benzeri bir dosya kullanarak yapılandırarak etiketler. Tehlikeli veya özel siteler hakkında uyarmak için kullanabilirsiniz. Yerleşik yapılandırma, https://github.com/StevenBlack/hosts adresinden StevenBlack'in barındırıcılarını (reklam yazılımı/kötü amaçlı yazılım, sahte haberler, kumar ve yetişkinlere uygun içerik) belirtir."</string>
+    <string name="mHosts_malware">reklam yazılımı/kötü amaçlı yazılım</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_noLabel">etiket yok</string>
+    <string name="mHosts_fakenews">yalan haber</string>
+    <string name="mHosts_gambling">kumar</string>
+    <string name="mHosts_adult">yetişkin içerik</string>
+    <string name="mHosts_build">Yapı</string>
+    <string name="mHosts_uninitialized">Hosts veritabanı başlatılmamış. oluşturmak için basın</string>
+    <string name="mHosts_parseError">URL host ayrıştırılamıyor</string>
+    <string name="mHosts_editor">"Host yapılandırması. Format: Anahtarın hosts etiketi olduğu ve içeriğin aşağıdaki isteğe bağlı değerleri içerdiği nesnelerin listesi:
+- dosya: İndirilecek bir hosts dosyasının url'si. Mevcut tüm geçerli hosts dosyası eklenecektir.
+- hosts: Eklenecek ham hosts (dizeler) listesi.
+- renk: Etiketin rengi. Bir Android renk dizisi (#AARRGGBB, #RRGGBB veya geçerli bir renk adı). Varsayılan olarak 'tehlike' kırmızısına döner.
+- değiştir: yanlışsa mevcut hosts değiştirilmez. Nesnelerin yukarıdan aşağıya değerlendirildiğini unutmayın. Varsayılan olarak açıktır.
+- etkin: kapalı ise, bu nesnenin tamamı atlanacaktır. Varsayılan olarak açıktır."</string>
+    <string name="mHosts_buildTitle">Hosts veritabanı oluşturun</string>
+    <string name="mHosts_buildDesc">Bu, mevcut hosts veritabanını temizleyecek ve mevcut yapılandırmayla oluşturacak ve gerekirse hosts dosyalarını internetten indirecektir. Bu işlem birkaç saniye sürebilir. Devam?</string>
+    <string name="mHosts_buildProgress">Katalog oluşturuluyor</string>
+    <string name="mHosts_buildInit">Başlatılıyor</string>
+    <string name="mHosts_buildClear">Temizleniyor…</string>
+    <string name="mHosts_buildDownload">"'%s' hosts dosyası şuradan indiriliyor: %s…"</string>
+    <string name="mHosts_buildSave">Saving…</string>
+    <string name="mHosts_built">Veritabanı oluşturuldu: %d hosts</string>
+    <!-- -->
+    <string name="mUnshort_name">Kısaltma giderici</string>
+    <string name="mUnshort_unshort">Kısaltmayı gider</string>
+    <string name="mUnshort_desc">"Bu modül, bağlantıları kendi sunucularında değerlendiren https://unshorten.me/ adresine göndererek kısaltmayı kaldırır ve yönlendirmeyi gelecekteki istekler için kaydeder. Özel veya hassas veriler içeren bağlantıların kısaltmasını kaldırmaktan kaçının.
+API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanıtı, bekleyen kaç tane isteğiniz olduğunu gösterecektir."</string>
+    <string name="mUnshort_tm">Unshorten.me tarafından unshorten.me ücretsiz API</string>
+    <string name="mUnshort_checking">Kontrol ediliyor…</string>
+    <string name="mUnshort_error">Sunucu hatası: %s</string>
+    <string name="mUnshort_internal">Internal error (%s)</string>
+    <string name="mUnshort_notFound">Yönlendirme bulunamadı (beklemede: %d/%d)</string>
+    <string name="mUnshort_ok">Kısaltma giderildi (beklemede: %d/%d)</string>
+    <!-- -->
+    <string name="mFlags_name">İşaretler düzenleyici</string>
+    <string name="mFlags_invalid">Geçersiz işaret</string>
+    <string name="mFlag_desc">"[Beta özelliği] Bu gelişmiş bir modüldür, başka bir uygulamayı açarken 'intent' işaretlerini düzenlemenize olanak tanır.
+Aşağıdaki alana, varsayılanların üzerine yazacak işaretler koyabilirsiniz; bunlar, bu uygulamayı açmak için kullanılan 'intent'ten alınmıştır.
+Modülü kullanırken, işaretleri varsayılana ayarlamak için düzenleme butonuna basılı tutabilirsiniz. İşaretler alanına isimlerini yazarak bayrak ekleyebilirsiniz."</string>
+    <string name="mFlag_flagHint">İşaret adı</string>
 </resources>
