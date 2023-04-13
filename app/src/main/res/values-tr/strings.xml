@@ -4,7 +4,7 @@
         If you create or update a translation, add how you want to be credited here.
         For multiple translators, separate them by semicolon.
         Example: <string name="translators">John Doe; Jane Doe</string> -->
-    <string name="translators">Metezd, symbuzzer</string>
+    <string name="translators">Metezd;symbuzzer</string>
     <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -15,7 +15,7 @@
     <string name="txt_info">Bu uygulama bağlantıları açmak için bir tür ara adım görevi görür. Bir bağlantıya tıkladığınızda ve onu açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir. Mevcut bileşenleri ve ne yaptıklarını görmek için aşağıdaki düğmeye tıklayın.</string>
     <string name="txt_sample">Test etmek için aşağıdaki linke tıklayın:</string>
     <string name="a_modules">Bileşenler</string>
-     <string name="a_settings">Ayarlar</string>
+    <string name="a_settings">Ayarlar</string>
     <string name="a_about">Hakkında</string>
     <!--
         about
@@ -61,13 +61,13 @@ Geliştiriciler: %s.
 
 Bu öğreticiyi aşağıdaki butonu kullanarak atlayabilirsiniz. Bu öğreticiye istediğiniz zaman ayarlar menüsünden geri dönebilirsiniz."</string>
     <string name="txt_tutorial2">Uygulama, url bağlantılarını açarken veya paylaşırken aracı görevi görür. Uygulamaya bir url gönderildiğinde, modüller aracılığıyla onunla etkileşim kurabilirsiniz. Bundan sonra bağlantıyı (istediğiniz uygulamada) açabilir, paylaşabilir veya panoya kopyalayabilirsiniz.</string>
-    <string name="txt_tutorial3">Uygulamayı, URL'leri açarken engellemek için varsayılan web tarayıcısı olarak ayarlayın.
-\n(“Paylaş” işlevi kullanılarak URL'ler yeniden yönlendiriliyorsa gerekli değildir.)</string>
-    <string name="txt_tutorial4">Modüller, uygulamanın URL'lerle nasıl etkileşime girdiğine ilişkindir.
+    <string name="txt_tutorial3">Uygulamayı, URL\'leri açarken engellemek için varsayılan web tarayıcısı olarak ayarlayın.
+\n(“Paylaş” işlevi kullanılarak URL\'ler yeniden yönlendiriliyorsa gerekli değildir.)</string>
+    <string name="txt_tutorial4">Modüller, uygulamanın URL\'lerle nasıl etkileşime girdiğine ilişkindir.
 \nModüllerin her birinin belirli bir işlevi vardır. Genellikle URL hakkında bilgi sunmak veya değiştirilmesine izin vermek için kullanılır.
 \nOnlar hakkında bilgi edinin ve gerektiği gibi ayarlayın.
 \n
-\nÖnemli: Varsayılan olarak tüm eylemler manueldir. Özellikle izin vermediğiniz sürece uygulama hiçbir şeyi değiştirmeyecek veya İnternet'e bağlanmayacaktır, ancak istenirse bazı işlemler otomatik olarak uygulanabilir.
+\nÖnemli: Varsayılan olarak tüm eylemler manueldir. Özellikle izin vermediğiniz sürece uygulama hiçbir şeyi değiştirmeyecek veya İnternet\'e bağlanmayacaktır, ancak istenirse bazı işlemler otomatik olarak uygulanabilir.
 \n
 \nAna ekrandan veya aşağıdaki butona dokunarak modül listesini açın.</string>
     <string name="txt_tutorial5">"Hepsi bu kadar. Yararlı olabilecek bazı ipuçları:
@@ -108,7 +108,7 @@ Umarım uygulamayı yararlı bulursunuz! Ve özellikler önermekten, hataları b
     <!--
         shortcuts
     -->
-    <string name="shortcut_checkClipboard">Kopyalanan URL'leri kontrol et</string>
+    <string name="shortcut_checkClipboard">Kopyalanan URL\'leri kontrol et</string>
     <!--
         modules
     -->
@@ -134,7 +134,7 @@ Dahili modeller şunları içerir:
 - 'enabled': boolean: kalıbı devre dışı bırakmak için false değerine ayarlayın.
 Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kalıplar otomatik olarak eklenmeyecektir (sıfırlama seçeneğiyle bunları geri yükleyebilirsiniz)."</string>
     <!-- -->
-    <string name="mOpen_name">Aç & Paylaş</string>
+    <string name="mOpen_name"><![CDATA[Aç & Paylaş]]></string>
     <string name="mOpen_desc">"Aşağıdaki düğmeleri içerir (soldan sağa):
 - Özel Sekmeler düğmesi: özel sekme özelliğini etkinleştirmek/devre dışı bırakmak için geçiş. Etkinleştirildiğinde tarayıcı 'hafif' modda açılmalıdır.
 - Aç düğmesi: Bağlantıyı o uygulamada açmak için uygulama adına basın. Bir bağlantı birden fazla uygulama ile açılabiliyorsa, seçim yapmanızı sağlamak için bir ok gösterilecektir.
@@ -161,7 +161,7 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
     <string name="mStatus_error">URL\'yi kontrol etmeye çalışırken dahili hata: %s</string>
     <string name="mStatus_check">Kontrol et</string>
     <string name="mStatus_recheck">Kontrol et</string>
-    <string name="mStatus_checking">Kontrol ediliyor...</string>
+    <string name="mStatus_checking">Kontrol ediliyor…</string>
     <string-array name="mStatus_codes">
         <item>200: Tamam</item>
         <item>301: Kalıcı olarak taşınmış</item>
@@ -173,7 +173,7 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
         <item>403: Yasaklandı</item>
         <item>404: Sayfa bulunamadı</item>
         <item>410: Kalıcı olarak gitmiş</item>
-        <item>"418: Bu bir bal küpü! :D"</item>
+        <item>418: Bu bir bal küpü! :D</item>
         <item>500: Sunucu hatası</item>
         <item>503: Geçici olarak mevcut değil</item>
         <item>502: Sunucu hatası</item>
@@ -181,23 +181,24 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
     </string-array>
     <string name="mStatus_unknownCode">%d: Bilinmeyen durum kodu</string>
     <string name="mStatus_redir">Yönlendirme: %s</string>
-    <string name="mStatus_autoRedirect">Yönlendirme URL'lerini otomatik olarak değiştir</string>
-    <string name="mStatus_autoCheck">Aşağıdaki normal ifade kalıbıyla eşleşen URL'leri otomatik olarak kontrol edin. Dikkat! Kısıtlayıcı bir model belirtmeniz önerilir (tümü için *. değil), aksi takdirde kötü niyetli sunucular IP'nizi günlüğe kaydedebilir.</string>
-   <!-- -->
+    <string name="mStatus_autoRedirect">Yönlendirme URL\'lerini otomatik olarak değiştir</string>
+    <string name="mStatus_autoCheck">Aşağıdaki normal ifade kalıbıyla eşleşen URL\'leri otomatik olarak kontrol edin. Dikkat! Kısıtlayıcı bir model belirtmeniz önerilir (tümü için *. değil), aksi takdirde kötü niyetli sunucular IP\'nizi günlüğe kaydedebilir.</string>
+    <!-- -->
     <string name="mInput_name">Giriş metni</string>
-    <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL'yi görüntüler.</string>
-    <string name="mVT_name">URL'yi tara</string>
-    <string name="mVT_desc">Bu bileşen etkinleştirildiğinde, VirusTotal kullanarak URL'yi tarayabilir ve raporu inceleyebilirsiniz. Bunun çalışması için kişisel bir VirusTotal API anahtarı gereklidir, buradan ücretsiz bir hesap için kayıt olduktan sonra bir tane alabilirsiniz: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mInput_desc">Manuel olarak düzenlenebilen geçerli URL\'yi görüntüler.</string>
+    <!-- -->
+    <string name="mVT_name">URL\'yi tara</string>
+    <string name="mVT_desc">Bu bileşen etkinleştirildiğinde, VirusTotal kullanarak URL\'yi tarayabilir ve raporu inceleyebilirsiniz. Bunun çalışması için kişisel bir VirusTotal API anahtarı gereklidir, buradan ücretsiz bir hesap için kayıt olduktan sonra bir tane alabilirsiniz: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API anahtarı</string>
     <string name="mVT_tm">VirusTotal™ Google, Inc. şirketinin ticari markasıdır.</string>
     <string name="mVT_scan">Tara</string>
     <string name="mVT_cancel">İptal et</string>
     <string name="mVT_scanning">Taranıyor…</string>
-    <string name="mVT_goodUrl">Hiçbir %d motoru URL'yi algılamadı (%s tarihi itibariyle)</string>
-    <string name="mVT_warningUrl">Uyarı, %d/%d motorları URL'yi algıladı (%s tarihi itibariyle)</string>
-    <string name="mVT_badUrl">Dikkat! %d/%d motorları URL'yi algıladı (%s tarihi itibariyle)</string>
-    <string name="mVT_connectError">VirusTotal'a bağlanılamıyor. Aktif bir internet bağlantınız olduğundan emin olun veya daha sonra tekrar deneyin.</string>
-    <string name="mVT_jsonError">VirusTotal'a bağlanılamıyor. API anahtarının geçerli olduğundan emin olun veya daha sonra tekrar deneyin.</string>
+    <string name="mVT_goodUrl">Hiçbir %d motoru URL\'yi algılamadı (%s tarihi itibariyle)</string>
+    <string name="mVT_warningUrl">Uyarı, %d/%d motorları URL\'yi algıladı (%s tarihi itibariyle)</string>
+    <string name="mVT_badUrl">Dikkat! %d/%d motorları URL\'yi algıladı (%s tarihi itibariyle)</string>
+    <string name="mVT_connectError">VirusTotal\'a bağlanılamıyor. Aktif bir internet bağlantınız olduğundan emin olun veya daha sonra tekrar deneyin.</string>
+    <string name="mVT_jsonError">VirusTotal\'a bağlanılamıyor. API anahtarının geçerli olduğundan emin olun veya daha sonra tekrar deneyin.</string>
     <!-- -->
     <string name="mD_name">Hata Ayıklama/İşaretleyici modülü</string>
     <string name="mD_desc">"Modülleri yeniden sıralarsanız, ilerideki güncellemelerde eklenen yeni modüller bunun üzerine yerleştirilecektir.
@@ -245,7 +246,7 @@ Panoya kopyalamak için 'Intent' veya UrlData üzerine dokunun. Her şeyi kopyal
     <string name="mClear_restore">ClearUrl dosyalarını geri yükle</string>
     <string name="mClear_editor">"Katalog kuralları: Şu formatı takip etmelidirler: https://docs.clearurls.xyz/latest/specs/rules/.
 Katalog, güncelleyici iletişim kutusundan otomatik veya manuel olarak güncellenirse, 'sağlayıcılar' üst nesnesinde yapılan tüm değişikliklerin üzerine yazılacağını unutmayın. Kişisel kurallara sahip olmak için onları farklı bir üst nesneye (herhangi bir ad) ayarlayın."</string>
-   <!-- -->
+    <!-- -->
     <string name="mRemove_name">Sorguları Kaldır</string>
     <string name="mRemove_desc">"Bu modül ile URL'den sorguları kaldırabilirsiniz.
 Hepsini kaldırmak için butona basın veya birer birer kaldırmak için oka basın.
@@ -256,9 +257,9 @@ Fikir ve orijinal uygulama için PabloOQ'a teşekkürler!"</string>
     <string name="mRemove_all">Tümünü kaldır</string>
     <string name="mRemove_one">Kaldır %s</string>
     <string name="mRemove_empty">Boşluğu kaldır</string>
-     <!-- -->
+    <!-- -->
     <string name="mLog_name">Kayıt</string>
-    <string name="mLog_desc">Bu modül, kontrol edilen tüm URL'leri günlüğe kaydeder. Tüm günlüğü burada görüntüleyebilir, temizleyebilir veya düzenleyebilirsiniz, ana iletişim kutusunda hiçbir görsel gösterge görünmez. Günlüğe kaydetmeyi devre dışı bırakmak için modülü devre dışı bırakmanız yeterlidir.</string>
+    <string name="mLog_desc">Bu modül, kontrol edilen tüm URL\'leri günlüğe kaydeder. Tüm günlüğü burada görüntüleyebilir, temizleyebilir veya düzenleyebilirsiniz, ana iletişim kutusunda hiçbir görsel gösterge görünmez. Günlüğe kaydetmeyi devre dışı bırakmak için modülü devre dışı bırakmanız yeterlidir.</string>
     <string name="mLog_view">Kayda bak</string>
     <string name="mLog_edit">Kaydı değiştir</string>
     <string name="mLog_empty">Veri yok</string>
@@ -284,7 +285,7 @@ Fikir ve orijinal uygulama için PabloOQ'a teşekkürler!"</string>
     <string name="mHosts_buildDesc">Bu, mevcut hosts veritabanını temizleyecek ve mevcut yapılandırmayla oluşturacak ve gerekirse hosts dosyalarını internetten indirecektir. Bu işlem birkaç saniye sürebilir. Devam?</string>
     <string name="mHosts_buildProgress">Katalog oluşturuluyor</string>
     <string name="mHosts_buildInit">Başlatılıyor</string>
-    <string name="mHosts_buildClear">Temizleniyor...</string>
+    <string name="mHosts_buildClear">Temizleniyor…</string>
     <string name="mHosts_buildDownload">"'%s' hosts dosyası şuradan indiriliyor: %s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Veritabanı oluşturuldu: %d hosts</string>
