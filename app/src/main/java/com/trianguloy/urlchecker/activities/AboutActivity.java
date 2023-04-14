@@ -42,9 +42,12 @@ public class AboutActivity extends Activity {
         setTitle(R.string.a_about);
         AndroidUtils.configureUp(this);
 
-        // on release, append version to the action bar title
         if (!BuildConfig.DEBUG) {
+            // on release, append version to the action bar title
             setTitle(getTitle() + " (V" + BuildConfig.VERSION_NAME + ")");
+        } else if (!"alpha".equals(BuildConfig.BUILD_TYPE)) {
+            // on no-alpha, append type
+            setTitle(getTitle() + " (" + BuildConfig.BUILD_TYPE + ")");
         }
 
         // fill contributors and translators

@@ -52,6 +52,11 @@ android {
             applicationIdSuffix '.alpha'
             versionNameSuffix '-ALPHA'
         }
+        evaluation {
+            initWith(buildTypes.debug)
+            applicationIdSuffix '.test'
+            versionNameSuffix '-TEST'
+        }
     }
 
     lint {

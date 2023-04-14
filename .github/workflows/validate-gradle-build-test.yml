@@ -1,4 +1,5 @@
 # This actions validates the gradle files and runs a build test to ensure the app is not corrupted
+# if succeeded and the source is a pull request, builds an evaluation apk
 name: Validate gradle build test
 
 on:
@@ -8,6 +9,11 @@ on:
   pull_request:
     branches:
       - master
+
+# parameters
+env:
+  VARIANT: evaluation
+  NAME: URLCheck_evaluation.apk
 
 jobs:
   build:
@@ -35,3 +41,20 @@ jobs:
           arguments: >
             build
             test
+
+      # the following steps will only run for PRs
+
+      - name: Generate apk
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: >
+            build
+            assemble${{ env.VARIANT }}
+
+      - name: Upload apk as artifact
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
+          name: ${{ env.NAME }}
