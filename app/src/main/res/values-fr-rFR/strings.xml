@@ -180,7 +180,7 @@ Le contenu de l'url est obtenu (HEAD), mais n'est pas évaluée, les redirection
     <!-- -->
     <string name="mVT_name">Scanneur</string>
     <string name="mVT_desc">"Lorsque ce module est activé, vous pouvez analyser l'URL à l'aide de VirusTotal et en vérifier le rapport.
-Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal. com/gui/join-us."</string>
+Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionne, vous pouvez en obtenir une après vous être inscrit gratuitement ici: https://www.virustotal.com/gui/join-us ."</string>
     <string name="mVT_apiKey">Clé d\'api</string>
     <string name="mVT_tm">VirusTotal™ est une marque de Google, Inc.</string>
     <string name="mVT_scan">Analyse</string>

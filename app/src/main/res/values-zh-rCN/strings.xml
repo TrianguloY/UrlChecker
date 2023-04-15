@@ -161,7 +161,7 @@
     <string name="mInput_name">输入文本</string>
     <string name="mInput_desc">"显示当前的网址，可以用于手动编辑。"</string>
     <string name="mVT_name">链接扫描器</string>
-    <string name="mVT_desc">"当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us."</string>
+    <string name="mVT_desc">"当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us ."</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ 是 Google, Inc. 的商标。</string>
     <string name="mVT_scan">扫描</string>

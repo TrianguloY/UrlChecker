@@ -187,7 +187,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current URL, which can be edited manually.</string>
     <string name="mVT_name">URL Scanner</string>
-    <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>

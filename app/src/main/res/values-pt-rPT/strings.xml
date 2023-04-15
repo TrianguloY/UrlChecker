@@ -141,7 +141,7 @@ O conteúdo da url é obtido (HEAD), mas não avaliado, então redirecionamentos
     <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.</string>
     <!-- -->
     <string name="mVT_name">VirusTotal</string>
-    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ é uma marca comercial da Google, Inc.</string>
     <string name="mVT_scan">Examinar</string>

@@ -105,7 +105,7 @@
 
     <string name="mVT_name">סורק כתובות אתרים</string>
     <string name="mVT_desc">"כאשר מודול זה מופעל אתה יכול לסרוק את כתובת האתר באמצעות וירוס טוטאל ולבדוק את הדוח.
- יש צורך במפתח API אישי של וירוס טוטאל כדי שזה יעבוד, אתה יכול לקבל אחד לאחר הרשמה לחשבון בחינם כאן: https://www.virustotal.com/gui/join-us."</string>
+ יש צורך במפתח API אישי של וירוס טוטאל כדי שזה יעבוד, אתה יכול לקבל אחד לאחר הרשמה לחשבון בחינם כאן: https://www.virustotal.com/gui/join-us ."</string>
     <string name="mVT_apiKey">מפתח api</string>
     <string name="mVT_tm">VirusTotal™ הוא סימן מסחרי של Google, Inc.</string>
     <string name="mVT_scan">לִסְרוֹק</string>

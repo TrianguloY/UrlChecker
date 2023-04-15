@@ -178,7 +178,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mInput_desc">Muestra la URL actual, que puede ser modificada manualmente.</string>
     <!-- -->
     <string name="mVT_name">Escáneador de la URL</string>
-    <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">Clave de la API</string>
     <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
     <string name="mVT_scan">Escanear</string>
