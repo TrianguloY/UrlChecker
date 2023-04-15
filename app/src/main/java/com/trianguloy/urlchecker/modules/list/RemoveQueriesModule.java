@@ -38,6 +38,11 @@ public class RemoveQueriesModule extends AModuleData {
     }
 
     @Override
+    public boolean isEnabledByDefault() {
+        return false;
+    }
+
+    @Override
     public AModuleDialog getDialog(MainDialog cntx) {
         return new RemoveQueriesDialog(cntx);
     }

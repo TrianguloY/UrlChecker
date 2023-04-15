@@ -250,9 +250,11 @@ Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</st
 Note that any modification to the parent object 'providers' will be overwritten if the catalog is updated automatically or manually from the updater dialog. To have personal rules set them in a different parent object (any name)."</string>
     <!-- -->
     <string name="mRemove_name">Queries Remover</string>
-    <string name="mRemove_desc">"With this module you can remove queries from the URL.
+    <string name="mRemove_desc">"[DEPRECATED] With this module you can remove queries from the URL.
 Press the button to remove them all or press the arrow to remove one at a time.
-Thanks to PabloOQ for the idea and original implementation!"</string>
+Thanks to PabloOQ for the idea and original implementation!
+
+This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mRemove_found1">1 query found</string>
     <string name="mRemove_found">%d queries found</string>
     <string name="mRemove_noQueries">No queries</string>
@@ -312,5 +314,11 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
 \nWith the button below you can edit the default state and the visibility of the flags."</string>
     <string name="mFlag_flagHint">Flag name</string>
     <string name="mFlag_editFlags">Edit default flag values</string>
+    <!-- -->
+    <string name="mParts_name">Uri parts</string>
+    <string name="mParts_desc">"This module shows all parts of the url decoded: scheme, authority, paths, queries and fragment.
+By clicking a part it will be set as the new url, useful for example if one of the queries or paths was an encoded redirection url.
+You can also click the 'X' button to remove some of them.
+This is an advanced version of the 'Queries Remover' module."</string>
 
 </resources>
