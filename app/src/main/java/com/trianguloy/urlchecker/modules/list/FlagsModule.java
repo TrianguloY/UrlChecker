@@ -230,7 +230,7 @@ class FlagsDialog extends AModuleDialog {
         vg.removeAllViews();
 
         for (String flag : flags) {
-            var checkbox_text = Inflater.inflate(R.layout.dialog_flags_entry, vg, getActivity());
+            var checkbox_text = Inflater.inflate(R.layout.dialog_flags_entry, vg);
 
             // Checkbox
             var checkBox = checkbox_text.<ImageView>findViewById(R.id.state);
@@ -368,7 +368,7 @@ class FlagsConfig extends AModuleConfig {
 
         // Fill the box
         for (String flag : Flags.getCompatibleFlags().keySet()) {
-            var entryView = Inflater.inflate(R.layout.flags_editor_entry, vg, getActivity());
+            var entryView = Inflater.inflate(R.layout.flags_editor_entry, vg);
 
             TextView textView = entryView.findViewById(R.id.text);
             textView.setText(flag);

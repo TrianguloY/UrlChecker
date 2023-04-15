@@ -193,7 +193,7 @@ class PatternDialog extends AModuleDialog {
 
             for (Message message : messages) {
                 // either matches and/or applied is true
-                View row = Inflater.inflate(R.layout.button_text, box, getActivity());
+                View row = Inflater.inflate(R.layout.button_text, box);
 
                 // text
                 TextView text = row.findViewById(R.id.text);

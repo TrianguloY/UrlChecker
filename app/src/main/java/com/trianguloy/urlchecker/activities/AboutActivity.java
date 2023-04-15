@@ -61,7 +61,7 @@ public class AboutActivity extends Activity {
         // create links
         ViewGroup v_links = findViewById(R.id.links);
         for (var link : LINKS) {
-            var v_link = Inflater.<TextView>inflate(R.layout.about_link, v_links, this);
+            var v_link = Inflater.<TextView>inflate(R.layout.about_link, v_links);
             v_link.setText(link.first);
             AndroidUtils.setAsClickable(v_link);
             v_link.setTag(link.second.replace("{package}", getPackageName()));

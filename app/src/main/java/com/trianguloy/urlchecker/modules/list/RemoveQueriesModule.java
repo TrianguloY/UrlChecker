@@ -105,7 +105,7 @@ class RemoveQueriesDialog extends AModuleDialog {
 
             // for each query, create a button
             for (int i = 0; i < parts.queriesSize(); i++) {
-                var button_text = Inflater.inflate(R.layout.button_text, box, getActivity());
+                var button_text = Inflater.inflate(R.layout.button_text, box);
 
                 // button that removes the query
                 var queryName = parts.getQueryName(i);
