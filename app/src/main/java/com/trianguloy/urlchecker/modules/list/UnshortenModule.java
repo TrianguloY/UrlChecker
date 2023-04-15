@@ -143,7 +143,10 @@ class UnshortenDialog extends AModuleDialog {
             } else if (Objects.equals(resolved_url, getUrl())) {
                 // same, nothing to replace
                 getActivity().runOnUiThread(() -> {
-                    info.setText(getActivity().getString(R.string.mUnshort_notFound, ref.remaining_calls, ref.usage_limit));
+                    var pending = ref.remaining_calls <= ref.usage_limit / 2
+                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
+                            : "";
+                    info.setText(getActivity().getString(R.string.mUnshort_notFound) + pending);
                     AndroidUtils.clearRoundedColor(info);
                 });
             } else {
@@ -151,7 +154,10 @@ class UnshortenDialog extends AModuleDialog {
                 getActivity().runOnUiThread(() -> {
                     setUrl(new UrlData(resolved_url).dontTriggerOwn());
 
-                    info.setText(getActivity().getString(R.string.mUnshort_ok, ref.remaining_calls, ref.usage_limit));
+                    var pending = ref.remaining_calls <= ref.usage_limit / 2
+                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
+                            : "";
+                    info.setText(getActivity().getString(R.string.mUnshort_ok) + pending);
                     AndroidUtils.setRoundedColor(R.color.good, info);
                     // a short url can redirect to another short url
                     unshort.setEnabled(true);

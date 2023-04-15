@@ -289,8 +289,9 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
-    <string name="mUnshort_notFound">No se ha encontrado redirección (quedan: %d/%d)</string>
-    <string name="mUnshort_ok">Desacortado (quedan: %d/%d)</string>
+    <string name="mUnshort_notFound">No se ha encontrado redirección</string>
+    <string name="mUnshort_pending">quedan: %d/%d</string>
+    <string name="mUnshort_ok">Desacortado</string>
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
     <string name="mFlags_invalid">Flag inválida</string>

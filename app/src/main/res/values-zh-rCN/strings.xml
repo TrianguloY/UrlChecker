@@ -264,6 +264,7 @@
     <string name="mUnshort_checking">检查中</string>
     <string name="mUnshort_error">服务器错误: %s</string>
     <string name="mUnshort_internal">内部错误 (%s)</string>
-    <string name="mUnshort_notFound">未发现重定向 (待处理: %d/%d)</string>
-    <string name="mUnshort_ok">已解析短链接 (待处理: %d/%d)</string>
+    <string name="mUnshort_notFound">未发现重定向</string>
+    <string name="mUnshort_pending">待处理: %d/%d</string>
+    <string name="mUnshort_ok">已解析短链接</string>
 </resources>

@@ -297,8 +297,9 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
-    <string name="mUnshort_notFound">No redirection found (pending: %d/%d)</string>
-    <string name="mUnshort_ok">Unshorted (pending: %d/%d)</string>
+    <string name="mUnshort_notFound">No redirection found</string>
+    <string name="mUnshort_pending">pending: %d/%d</string>
+    <string name="mUnshort_ok">Unshorted</string>
     <!-- -->
     <string name="mFlags_name">Flags editor</string>
     <string name="mFlags_invalid">Invalid flag</string>

@@ -298,8 +298,9 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mUnshort_checking">Kontrol ediliyor…</string>
     <string name="mUnshort_error">Sunucu hatası: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
-    <string name="mUnshort_notFound">Yönlendirme bulunamadı (beklemede: %d/%d)</string>
-    <string name="mUnshort_ok">Kısaltma giderildi (beklemede: %d/%d)</string>
+    <string name="mUnshort_notFound">Yönlendirme bulunamadı</string>
+    <string name="mUnshort_pending">beklemede: %d/%d</string>
+    <string name="mUnshort_ok">Kısaltma giderildi</string>
     <!-- -->
     <string name="mFlags_name">İşaretler düzenleyici</string>
     <string name="mFlags_invalid">Geçersiz işaret</string>
