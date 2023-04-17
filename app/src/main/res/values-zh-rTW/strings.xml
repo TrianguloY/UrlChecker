@@ -1,4 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="locale">Traditional Chinese</string>
+    <string name="link_privacy">隱私政策</string>
+    <string name="txt_conf">以下為所有可用的模組，你可以個別確認敘述和設定。你也可以個別重新排序、切換是否顯示標題和是否啟用。</string>
+    <string name="txt_openLinks">用這個 APP 開啟連結：從古至今以來 Android 多次改變了設定開啟鏈結的方式，因版本而異。下面列出您裝置上可用的所有可能的方式，若其中有不能用的，請試試其他的。</string>
+    <string name="txt_info">這個 APP 會在點開 URL 連結時介入，跳出關於連結的一些資訊。點選下面的「模組」按鈕以了解和設定所有可用的模組。</string>
+    <string name="txt_sample">點擊下面的連結來測試功能：</string>
+    <string name="a_modules">模組</string>
+    <string name="a_settings">設定</string>
+    <string name="a_about">關於</string>
+    <string name="txt_about">本 APP 由 TrianguloY 建立
+\n
+\n貢獻者：%s
+\n翻譯者：%s</string>
+    <string name="link_blog">TrianguloY 的部落格</string>
+    <string name="link_changelog">更新記錄</string>
+    <string name="link_source">原始碼</string>
+    <string name="toast_cantEnable">無法啟用模組，缺少設定？</string>
+    <string name="menu_resetOrder">重置順序</string>
+    <string name="menu_toggleDecorations">切換所有標題顯示</string>
+    <string name="desc_up">上移</string>
+    <string name="desc_down">下移</string>
+    <string name="desc_decorations">開/關 標題</string>
+    <string name="desc_enable">開/關 模組</string>
+    <string name="btn_setBrowser">設為預設瀏覽器</string>
+    <string name="toast_defaultSet">此 APP 現在是預設瀏覽器了</string>
+    <string name="btn_configureBrowser">預設瀏覽器</string>
+    <string name="btn_linksSettings">開啟支援的鏈結</string>
+    <string name="btn_androidSettings">Android APP 設定</string>
+    <string name="txt_theme">主題：</string>
+    <string name="spin_darkTheme">暗</string>
+    <string name="spin_lightTheme">亮</string>
+    <string name="txt_locale">語言：</string>
+    <string name="tutorial">導覽</string>
+    <string name="btn_tutorialSettings">重啟導覽</string>
+    <string name="txt_tutorial1">謝謝您下載此 APP！
+\n
+\n您現在看到的是教學導覽，若您想要跳過可以點擊下面的按鈕。您可以隨時從設定選單回到這個導覽。</string>
+    <string name="txt_tutorial2">這個 APP 可以作為點擊或分享鏈結時的中介，當 URL 被送到 APP 時您可以透過各模組進行處理，最後再用對應 APP 開啟、分享處理後的鏈結或將其複製到剪貼簿上。</string>
+    <string name="txt_tutorial3">設定本 APP 為預設瀏覽器可在點擊鏈結時直接啟動攔截處理。
+\n（若僅想使用分享功能來傳送鏈結，可以略過此設定）</string>
+    <string name="txt_tutorial4">模組就是此 APP 如何處理鏈結的關鍵。
+\n每個模組都有其對應的功能，有些可能提供資訊，有的可能對鏈結進行調整。
+\n依照需求，閱讀並設定他們。
+\n
+\n重要：所有動作預設均為手動。除非您有特別指定，否則此 APP 不會自動更動或傳送任何資訊。然而若您有需要，部分模組的部分動作是可以設為自動的。
+\n
+\n
+\n從主畫面開啟模組清單，或是點擊下面的按鈕。</string>
 </resources>
