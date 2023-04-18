@@ -49,7 +49,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: >
-            build
             assemble${{ env.VARIANT }}
 
       - name: Upload apk as artifact
@@ -58,3 +57,10 @@ jobs:
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
           name: ${{ env.NAME }}
+
+      - name: Upload PR id as artifact
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v3
+        with:
+          path: /dev/null
+          name: ${{ github.event.number }}
