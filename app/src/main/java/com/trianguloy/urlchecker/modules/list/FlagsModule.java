@@ -88,7 +88,8 @@ class FlagsDialog extends AModuleDialog {
     private Map<String, FlagsConfig.FlagState> flagsStatePref;
 
     private ViewGroup shownFlagsVG;
-    private ViewGroup hiddenFlagsAndSearchVG;
+
+    private EditText searchInput;
 
     private ViewGroup hiddenFlagsVG;
 
@@ -112,23 +113,24 @@ class FlagsDialog extends AModuleDialog {
         initGroups();
 
         shownFlagsVG = views.findViewById(R.id.shownFlags);
-        hiddenFlagsAndSearchVG = views.findViewById(R.id.hiddenFlagsAndSearch);
+        searchInput = views.findViewById(R.id.search);
         hiddenFlagsVG = views.findViewById(R.id.hiddenFlags);
 
         // Button to open the `box` with the hidden flags (more indicator)
         overflowButton = views.findViewById(R.id.overflowButton);
-        overflowButton.setOnClickListener(v -> {
-            hiddenFlagsAndSearchVG.setVisibility(
-                    hiddenFlagsAndSearchVG.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+
+        // Hide hidden flags
+        hiddenFlagsVG.setVisibility(View.GONE);
+        AndroidUtils.toggleableListener(overflowButton, v -> {
+            hiddenFlagsVG.setVisibility(hiddenFlagsVG.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+        }, v -> {
+            searchInput.setVisibility(hiddenFlagsVG.getVisibility());
             updateMoreIndicator();
         });
 
-        // Hide hidden flags
-        hiddenFlagsAndSearchVG.setVisibility(View.GONE);
-
         // SEARCH
         // Set up search text
-        ((EditText) views.findViewById(R.id.search)).addTextChangedListener(new TextWatcher() {
+        searchInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -140,7 +142,7 @@ class FlagsDialog extends AModuleDialog {
             @Override
             public void afterTextChanged(Editable text) {
                 for (int i = 0; i < hiddenFlagsVG.getChildCount(); i++) {
-                    var checkbox_text  = hiddenFlagsVG.getChildAt(i);
+                    var checkbox_text = hiddenFlagsVG.getChildAt(i);
                     String flag = ((TextView) checkbox_text.findViewById(R.id.text)).getText().toString();
                     String search = text.toString();
                     // Set visibility based on search text
@@ -154,32 +156,32 @@ class FlagsDialog extends AModuleDialog {
         loadGroup("default");
     }
 
-    private void initGroups(){
+    private void initGroups() {
         String fileString = new InternalFile(FlagsConfig.CONF_FILE, getActivity()).get();
         groups = null;
         if (fileString != null){
             try {
-            groups = new JSONObject(fileString).getJSONObject("groups");
+                groups = new JSONObject(fileString).getJSONObject("groups");
             } catch (JSONException ignore) {
             }
         }
     }
 
     // To get all the groups names
-    private List<String> getGroups(){
+    private List<String> getGroups() {
         List<String> res = new ArrayList<>();
         // Always add "default" first, even if it doesn't exist
         res.add("default");
         for (Iterator<String> it = groups.keys(); it.hasNext(); ) {
             String group = it.next();
-            if (!group.equals("default")){
+            if (!group.equals("default")) {
                 res.add(group);
             }
         }
         return res;
     }
 
-    void loadGroup(String group){
+    void loadGroup(String group) {
         currentFlags.setFlags(0);
 
         // Load json
@@ -246,7 +248,7 @@ class FlagsDialog extends AModuleDialog {
      * @param flags flags to add
      * @param vg    ViewGroup to fill with flags
      */
-    private void fillWithFlags(Set<String> flags, ViewGroup vg){
+    private void fillWithFlags(Set<String> flags, ViewGroup vg) {
         vg.removeAllViews();
 
         // Checkbox listener
@@ -267,7 +269,7 @@ class FlagsDialog extends AModuleDialog {
             // Checkbox
             CheckBox checkBox = checkbox_text.findViewById(R.id.checkbox);
             boolean bool;
-            switch (valueOrDefault(flagsStatePref.get(flag), FlagsConfig.FlagState.AUTO)){
+            switch (valueOrDefault(flagsStatePref.get(flag), FlagsConfig.FlagState.AUTO)) {
                 case ON:
                     bool = true;
                     break;
@@ -279,7 +281,7 @@ class FlagsDialog extends AModuleDialog {
                     bool = defaultFlags.isSet(flag);
             }
             checkBox.setChecked(bool);
-            currentFlags.setFlag(flag ,bool);
+            currentFlags.setFlag(flag, bool);
 
             checkBox.setTag(R.id.text, flag);
             checkBox.setOnCheckedChangeListener(l);
@@ -299,11 +301,11 @@ class FlagsDialog extends AModuleDialog {
 
     }
 
-    void setColors(String flag, View defaultIndicator, View preferenceIndicator){
-        AndroidUtils.setRoundedColor(defaultFlags.isSet(flag) ? R.color.good : R.color.bad , defaultIndicator);
+    void setColors(String flag, View defaultIndicator, View preferenceIndicator) {
+        AndroidUtils.setRoundedColor(defaultFlags.isSet(flag) ? R.color.good : R.color.bad, defaultIndicator);
 
         int color;
-        switch (valueOrDefault(flagsStatePref.get(flag), FlagsConfig.FlagState.AUTO)){
+        switch (valueOrDefault(flagsStatePref.get(flag), FlagsConfig.FlagState.AUTO)) {
             case ON:
                 color = R.color.good;
                 break;
@@ -432,7 +434,7 @@ class FlagsConfig extends AModuleConfig {
                 @Override
                 public void afterTextChanged(Editable text) {
                     for (int i = 0; i < box.getChildCount(); i++) {
-                        var text_spinner_checkbox  = box.getChildAt(i);
+                        var text_spinner_checkbox = box.getChildAt(i);
                         String flag = ((TextView) text_spinner_checkbox.findViewById(R.id.text)).getText().toString();
                         String search = text.toString();
                         // Set visibility based on search text
@@ -448,7 +450,7 @@ class FlagsConfig extends AModuleConfig {
     }
 
     // FIXME spinner gfx bug
-    private void fillBoxViewGroup(ViewGroup vg, InternalFile file, String group){
+    private void fillBoxViewGroup(ViewGroup vg, InternalFile file, String group) {
         // Set spinner items
         FlagState[] spinnerItems = FlagState.class.getEnumConstants();
         List<String> spinnerItemsList = new ArrayList<>(spinnerItems.length);
@@ -502,12 +504,12 @@ class FlagsConfig extends AModuleConfig {
         }
     }
 
-    private void storePreferences(ViewGroup vg, InternalFile file, String group){
+    private void storePreferences(ViewGroup vg, InternalFile file, String group) {
         // Retrieve previous config, to keep other groups
         JSONObject oldSettings = null;
         String content = file.get();
         // It's ok if there is no file yet
-        if (content != null){
+        if (content != null) {
             try {
                 oldSettings = new JSONObject(content);
             } catch (JSONException ignore) {
@@ -543,14 +545,14 @@ class FlagsConfig extends AModuleConfig {
         }
     }
 
-    private void resetFlags(ViewGroup vg){
+    private void resetFlags(ViewGroup vg) {
         // Retrieve order of spinner
         FlagState[] spinnerItems = (FlagState[]) vg.getTag();
 
         // Index of default
         int def;
-        for (def = 0; def < spinnerItems.length; def++){
-            if (spinnerItems[def] == FlagState.AUTO){
+        for (def = 0; def < spinnerItems.length; def++) {
+            if (spinnerItems[def] == FlagState.AUTO) {
                 break;
             }
         }
