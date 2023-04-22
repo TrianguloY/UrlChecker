@@ -158,8 +158,8 @@ class FlagsDialog extends AModuleDialog {
 
     private void initGroups() {
         String fileString = new InternalFile(FlagsConfig.CONF_FILE, getActivity()).get();
-        groups = null;
-        if (fileString != null){
+        groups = new JSONObject();
+        if (fileString != null) {
             try {
                 groups = new JSONObject(fileString).getJSONObject("groups");
             } catch (JSONException ignore) {
@@ -235,10 +235,12 @@ class FlagsDialog extends AModuleDialog {
         updateMoreIndicator();
     }
 
-    void updateMoreIndicator(){
-        overflowButton.setImageResource(hiddenFlagsVG.getChildCount() == 0 ? 0
-                : hiddenFlagsAndSearchVG.getVisibility() == View.VISIBLE ? R.drawable.arrow_down
-                : R.drawable.arrow_right);
+    void updateMoreIndicator() {
+        if (hiddenFlagsVG.getChildCount() == 0) {
+            overflowButton.setImageDrawable(null);
+        } else {
+            overflowButton.setImageResource(hiddenFlagsVG.getVisibility() == View.VISIBLE ? R.drawable.arrow_down : R.drawable.arrow_right);
+        }
     }
 
     /**
