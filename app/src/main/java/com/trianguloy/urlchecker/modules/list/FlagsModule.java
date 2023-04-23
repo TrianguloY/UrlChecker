@@ -454,7 +454,6 @@ class FlagsConfig extends AModuleConfig {
 
     }
 
-    // FIXME spinner gfx bug
     private void fillBoxViewGroup(ViewGroup vg, InternalFile file, String group) {
         // Set spinner items
         FlagState[] spinnerItems = FlagState.class.getEnumConstants();
