@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.text.util.Linkify;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -137,6 +138,8 @@ class LogConfig extends AModuleConfig {
 
         // show
         AlertDialog dialog = builder.show();
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         // prepare more dialog
         // these are configured here to disable automatic auto-closing when they are pressed

@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -411,6 +412,8 @@ class FlagsConfig extends AModuleConfig {
                     .setNegativeButton(views.getContext().getText(android.R.string.cancel), null)
                     .setNeutralButton(views.getContext().getText(R.string.reset), null)
                     .show();
+
+            alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(listener -> {
                 // Save the settings
