@@ -53,6 +53,8 @@ public class FlagsModule extends AModuleData {
         return new GenericPref.Str("flagsEditor_defaultFlags", null, cntx);
     }
 
+    public static final String DEFAULT_GROUP = "default";
+
     @Override
     public String getId() {
         return "flagsEditor";
@@ -87,11 +89,8 @@ class FlagsDialog extends AModuleDialog {
     private Map<String, FlagsConfig.FlagState> flagsStatePref;
 
     private ViewGroup shownFlagsVG;
-
     private EditText searchInput;
-
     private ViewGroup hiddenFlagsVG;
-
     private ImageView overflowButton;
 
     private JSONObject groups;
@@ -120,12 +119,12 @@ class FlagsDialog extends AModuleDialog {
 
         // Hide hidden flags
         hiddenFlagsVG.setVisibility(View.GONE);
-        AndroidUtils.toggleableListener(overflowButton, v -> {
-            hiddenFlagsVG.setVisibility(hiddenFlagsVG.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
-        }, v -> {
-            searchInput.setVisibility(hiddenFlagsVG.getVisibility());
-            updateMoreIndicator();
-        });
+        AndroidUtils.toggleableListener(overflowButton,
+                v -> hiddenFlagsVG.setVisibility(hiddenFlagsVG.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
+                v -> {
+                    searchInput.setVisibility(hiddenFlagsVG.getVisibility());
+                    updateMoreIndicator();
+                });
 
         // SEARCH
         // Set up search text
@@ -137,14 +136,13 @@ class FlagsDialog extends AModuleDialog {
                     String flag = ((TextView) checkbox_text.findViewById(R.id.text)).getText().toString();
                     String search = text.toString();
                     // Set visibility based on search text
-                    checkbox_text.setVisibility(
-                            JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
+                    checkbox_text.setVisibility(JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
                 }
             }
         });
 
         // TODO spinner with groups
-        loadGroup("default");
+        loadGroup(FlagsModule.DEFAULT_GROUP);
     }
 
     private void initGroups() {
@@ -161,11 +159,11 @@ class FlagsDialog extends AModuleDialog {
     // To get all the groups names
     private List<String> getGroups() {
         List<String> res = new ArrayList<>();
-        // Always add "default" first, even if it doesn't exist
-        res.add("default");
+        // Always add FlagsModule.DEFAULT_GROUP first, even if it doesn't exist
+        res.add(FlagsModule.DEFAULT_GROUP);
         for (Iterator<String> it = groups.keys(); it.hasNext(); ) {
             String group = it.next();
-            if (!group.equals("default")) {
+            if (!group.equals(FlagsModule.DEFAULT_GROUP)) {
                 res.add(group);
             }
         }
@@ -187,13 +185,13 @@ class FlagsDialog extends AModuleDialog {
         // Get state preference of flag from json and then store it in a map
         flagsStatePref = new HashMap<>();
         if (groupPref != null) {
-            try {
-                Map<Integer, FlagsConfig.FlagState> flagsStateMap = TranslatableEnum.toEnumMap(FlagsConfig.FlagState.class);
-                for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
-                    String flag = it.next();
+            Map<Integer, FlagsConfig.FlagState> flagsStateMap = TranslatableEnum.toEnumMap(FlagsConfig.FlagState.class);
+            for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
+                String flag = it.next();
+                try {
                     flagsStatePref.put(flag, flagsStateMap.get(groupPref.getJSONObject(flag).getInt("state")));
+                } catch (JSONException ignored) {
                 }
-            } catch (JSONException ignored) {
             }
         }
 
@@ -201,14 +199,14 @@ class FlagsDialog extends AModuleDialog {
         // Put shown flags
         Set<String> shownFlagsSet = new TreeSet<>();
         if (groupPref != null) {
-            try {
-                for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
-                    String flag = it.next();
+            for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
+                String flag = it.next();
+                try {
                     if (groupPref.getJSONObject(flag).getBoolean("show")) {
                         shownFlagsSet.add(flag);
                     }
+                } catch (JSONException ignored) {
                 }
-            } catch (JSONException ignored) {
             }
         }
 
@@ -334,30 +332,25 @@ class FlagsConfig extends AModuleConfig {
         views.findViewById(R.id.button).setOnClickListener(showDialog -> {
             View flagsDialogLayout = getActivity().getLayoutInflater().inflate(R.layout.flags_editor, null);
             ViewGroup box = flagsDialogLayout.findViewById(R.id.box);
-            InternalFile file = new InternalFile(CONF_FILE, flagsDialogLayout.getContext());
+            InternalFile file = new InternalFile(CONF_FILE, getActivity());
 
             // Get all flags
-            fillBoxViewGroup(box, file, "default");
+            fillBoxViewGroup(box, file, FlagsModule.DEFAULT_GROUP);
 
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                     .setView(flagsDialogLayout)
-                    .setPositiveButton(views.getContext().getText(R.string.save), null)
-                    .setNegativeButton(views.getContext().getText(android.R.string.cancel), null)
+                    .setPositiveButton(views.getContext().getText(R.string.save), (dialog, which) -> {
+                        // Save the settings
+                        storePreferences(box, file, FlagsModule.DEFAULT_GROUP);
+                    })
+                    .setNegativeButton(views.getContext().getText(android.R.string.cancel), (dialog, which) -> {
+                        // Reset current group flags (does not save)
+                        resetFlags(box);
+                    })
                     .setNeutralButton(views.getContext().getText(R.string.reset), null)
                     .show();
 
             alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(listener -> {
-                // Save the settings
-                storePreferences(box, file, "default");
-            });
-
-            alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(listener -> {
-                // Reset current group flags (does not save)
-                resetFlags(box);
-            });
-
 
             // Search
             ((EditText) flagsDialogLayout.findViewById(R.id.search)).addTextChangedListener(new DefaultTextWatcher() {
@@ -368,8 +361,7 @@ class FlagsConfig extends AModuleConfig {
                         String flag = ((TextView) text_spinner_checkbox.findViewById(R.id.text)).getText().toString();
                         String search = text.toString();
                         // Set visibility based on search text
-                        text_spinner_checkbox.setVisibility(
-                                JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
+                        text_spinner_checkbox.setVisibility(JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
                     }
                 }
             });
