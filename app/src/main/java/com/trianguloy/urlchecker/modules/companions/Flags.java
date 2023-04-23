@@ -1,6 +1,11 @@
 package com.trianguloy.urlchecker.modules.companions;
 
+import static com.trianguloy.urlchecker.utilities.JavaUtils.valueOrDefault;
+
+import android.app.Activity;
 import android.content.Intent;
+
+import com.trianguloy.urlchecker.modules.AModuleDialog;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -202,5 +207,63 @@ public class Flags {
             }
         }
         return hex;
+    }
+
+
+    // ------------------- store/load flags -------------------
+    // this handles the store and load of the flags, if something wants to get the flags
+    // it should always use these methods.
+
+    private static final String DATA_FLAGS = "flagsEditor.flags";
+    private static final String REGEX = "(0x)?[a-fA-F\\d]{1,8}";
+    private static final int BASE = 16;
+
+    /**
+     * parses a text as an hexadecimal flags string.
+     * Returns null if invalid
+     */
+    public static Integer toInteger(String text) {
+        if (text != null && text.matches(REGEX)) {
+            return Integer.parseInt(text.replaceAll("^0x", ""), BASE);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Converts an int flags to string
+     */
+    public static String toHexString(int flags) {
+        return "0x" + Integer.toString(flags, BASE);
+    }
+
+    /**
+     * Retrieves the flags from GlobalData, if it is not defined it will return null
+     */
+    public static Integer getGlobalFlagsNullable(AModuleDialog instance) {
+        return toInteger(instance.getData(DATA_FLAGS));
+    }
+
+    /**
+     * Loads the flags from GlobalData, if none were found it gets the flags from the intent that
+     * started this activity
+     */
+    public static int getGlobalFlagsNonNull(AModuleDialog instance, Activity cntx) {
+        return getGlobalFlagsOrDefault(instance, cntx.getIntent().getFlags());
+    }
+
+    /**
+     * Loads the flags from GlobalData, if none were found it gets the flags from default
+     * Can be used by other modules
+     */
+    public static int getGlobalFlagsOrDefault(AModuleDialog instance, int defaultFlags) {
+        return valueOrDefault(toInteger(instance.getData(DATA_FLAGS)), defaultFlags);
+    }
+
+    /**
+     * Stores the flags in GlobalData
+     */
+    public static void setGlobalFlags(Flags flags, AModuleDialog instance) {
+        instance.putData(DATA_FLAGS, flags == null ? null : toHexString(flags.getFlagsAsInt()));
     }
 }
