@@ -104,7 +104,7 @@ class FlagsDialog extends AModuleDialog {
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_flagseditor;
+        return R.layout.dialog_flags;
     }
 
     @Override
@@ -265,7 +265,7 @@ class FlagsDialog extends AModuleDialog {
         };
 
         for (String flag : flags) {
-            var checkbox_text = Inflater.inflate(R.layout.checkbox_text, vg, getActivity());
+            var checkbox_text = Inflater.inflate(R.layout.dialog_flags_entry, vg, getActivity());
 
             // Checkbox
             CheckBox checkBox = checkbox_text.findViewById(R.id.checkbox);
@@ -334,13 +334,13 @@ class FlagsConfig extends AModuleConfig {
 
     @Override
     public int getLayoutId() {
-        return R.layout.config_flagseditor;
+        return R.layout.config_flags;
     }
 
     @Override
     public void onInitialize(View views) {
         views.findViewById(R.id.button).setOnClickListener(showDialog -> {
-            View flagsDialogLayout = getActivity().getLayoutInflater().inflate(R.layout.flagseditor_groupeditor, null);
+            View flagsDialogLayout = getActivity().getLayoutInflater().inflate(R.layout.flags_editor, null);
             ViewGroup box = flagsDialogLayout.findViewById(R.id.box);
             InternalFile file = new InternalFile(CONF_FILE, flagsDialogLayout.getContext());
 
@@ -424,7 +424,7 @@ class FlagsConfig extends AModuleConfig {
 
         // Fill the box
         for (String flag : Flags.getCompatibleFlags().keySet()) {
-            var text_spinner_checkbox = Inflater.inflate(R.layout.text_spinner_checkbox, vg, getActivity());
+            var text_spinner_checkbox = Inflater.inflate(R.layout.flags_editor_entry, vg, getActivity());
             TextView textView = text_spinner_checkbox.findViewById(R.id.text);
             textView.setText(flag);
 
