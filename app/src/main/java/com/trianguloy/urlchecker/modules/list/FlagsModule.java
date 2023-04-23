@@ -5,7 +5,6 @@ import static com.trianguloy.urlchecker.utilities.JavaUtils.valueOrDefault;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -27,6 +26,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.InternalFile;
@@ -129,15 +129,7 @@ class FlagsDialog extends AModuleDialog {
 
         // SEARCH
         // Set up search text
-        searchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
+        searchInput.addTextChangedListener(new DefaultTextWatcher() {
             @Override
             public void afterTextChanged(Editable text) {
                 for (int i = 0; i < hiddenFlagsVG.getChildCount(); i++) {
@@ -368,15 +360,7 @@ class FlagsConfig extends AModuleConfig {
 
 
             // Search
-            ((EditText) flagsDialogLayout.findViewById(R.id.search)).addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-
+            ((EditText) flagsDialogLayout.findViewById(R.id.search)).addTextChangedListener(new DefaultTextWatcher() {
                 @Override
                 public void afterTextChanged(Editable text) {
                     for (int i = 0; i < box.getChildCount(); i++) {

@@ -3,7 +3,6 @@ package com.trianguloy.urlchecker.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -198,15 +197,7 @@ public abstract class GenericPref<T> {
          */
         public void attachToEditText(EditText editText, JavaUtils.UnaryOperator<String> loadMod, JavaUtils.UnaryOperator<String> storeMod) {
             editText.setText(loadMod.apply(get()));
-            editText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-
+            editText.addTextChangedListener(new DefaultTextWatcher() {
                 @Override
                 public void afterTextChanged(Editable s) {
                     set(storeMod.apply(s.toString()));
