@@ -4,7 +4,7 @@
         If you create or update a translation, add how you want to be credited here.
         For multiple translators, separate them by semicolon.
         Example: <string name="translators">John Doe; Jane Doe</string> -->
-    <string name="translators"></string>
+    <string name="translators">TrianguloY</string>
     <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -307,5 +307,4 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
 In the field below you can put flags that will overwrite the default ones, those are taken from the intent that was used to open this app.
 While using the module you can hold the edit button to set the flags to the default flags. You can add flags by writing their name in the flags field"</string>
     <string name="mFlag_flagHint">Flag name</string>
-
 </resources>

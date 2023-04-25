@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="link_privacy">ଗୋପନୀୟତା ନୀତି</string>
+    <string name="spin_darkTheme">ଗାଢ଼</string>
+    <string name="tutorial">ଅନୁଶିକ୍ଷଣ</string>
+    <string name="mOpen_ctabsOff">ଡିଫଲ୍ଟ ଭାଵରେ ଅକ୍ଷମ</string>
+    <string name="mOpen_ctabsEn">ସର୍ଵଦା ଚାଲୁ</string>
+    <string name="mOpen_ctabsDis">ସର୍ଵଦା ବନ୍ଦ</string>
+    <string name="mStatus_recheck">ଯାଞ୍ଚ କର</string>
+    <string name="a_settings">ସେଟିଂ</string>
+    <string name="a_about">ଵିଷୟରେ</string>
+    <string name="txt_theme">ଥିମ୍:</string>
+    <string name="spin_lightTheme">ହାଲୁକା</string>
+    <string name="auto">ସ୍ୱଚାଳିତ</string>
+    <string name="deviceDefault">ଡିଵାଇସ୍ ଡିଫଲ୍ଟ</string>
+    <string name="toast_invalid">ଅଵୈଧ</string>
+    <string name="edit">ସମ୍ପାଦନା</string>
+    <string name="mStatus_checking">ଯାଞ୍ଚ ଚାଲିଛି…</string>
+    <string name="mStatus_check">ସ୍ଥିତି ଯାଞ୍ଚ</string>
+    <string name="mHist_name">ଇତିଵୃତ୍ତି</string>
+    <string name="mClear_updateNow">ଏବେ ଅଦ୍ୟତନ କରିବା</string>
+    <string name="mClear_autoUpdate">ସମୟ ସମୟରେ ଅଦ୍ୟତନ କରିବା</string>
+    <string name="mClear_lastCheck">ଗତ ଯାଞ୍ଚ:</string>
+    <string name="mClear_lastUpdate">ଗତ ଅଦ୍ୟତନ:</string>
+    <string name="add">ଯୋଡ଼ନ୍ତୁ</string>
+    <string name="mOpen_ctabsOn">ଡିଫଲ୍ଟ ଭାଵରେ ସକ୍ଷମ</string>
+</resources>
