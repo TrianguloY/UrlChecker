@@ -4,7 +4,7 @@
         If you create or update a translation, add how you want to be credited here.
         For multiple translators, separate them by semicolon.
         Example: <string name="translators">John Doe; Jane Doe</string> -->
-    <string name="translators"></string>
+    <string name="translators">TrianguloY</string>
     <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -320,5 +320,4 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
 By clicking a part it will be set as the new url, useful for example if one of the queries or paths was an encoded redirection url.
 You can also click the 'X' button to remove some of them.
 This is an advanced version of the 'Queries Remover' module."</string>
-
 </resources>

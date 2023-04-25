@@ -12,31 +12,30 @@
     <!--
         main
     -->
-    <string name="txt_info">Ця програма виконує роль проміжного кроку відкриття посилань. Коли ви натискаєте на посилання та вибираєте цю програму для її відкриття, вона показує вам діалогове вікно з певною  інформацією про посилання. Натисніть на кнопку модулі нижче, щоб побачити доступні модул   і та те, що вони.</string>
-    <string name="txt_sample">:Натисніть на посилання нижче, щоб перевірити:</string>
+    <string name="txt_info">Ця програма діє як посередник під час відкриття посилань. Коли ви натискаєте на посилання та вибираєте її, з\'являється діалогове вікно з певною інформацією про посилання. Натисніть на кнопку Модулі нижче, щоб побачити доступні модулі та налаштувати їх.</string>
+    <string name="txt_sample">Натисніть на посилання нижче, щоб перевірити його:</string>
     <string name="a_modules">Модулі</string>
-    <string name="a_about">Більше</string>
+    <string name="a_about">Про програму</string>
     <!--
         about
     -->
-    <string name="txt_about">"Програма зроблена TrianguloY'ом
-
-Contributions: %s.
-Translations: %s."</string>
-    <string name="link_blog">Блог, який веде TrianguloY</string>
+    <string name="txt_about">Програму розробив TrianguloY.
+\n
+\nContributions: %s. Translations: %s.</string>
+    <string name="link_blog">Блог TrianguloY</string>
     <!--
         configuration
     -->
-    <string name="txt_conf">Список модулів: ви можете включити, або відключити їх, також перевірте опис та налаштування модулів.</string>
-    <string name="toast_cantEnable">Неможливо активувати модуль, немає конфігураціЇ.</string>
+    <string name="txt_conf">Ось усі доступні модулі, де ви можете глянути їх опис і налаштування. Ви також можете змінити порядок відображення, видимість та увімкнути/вимкнути кожен.</string>
+    <string name="toast_cantEnable">Неможливо активувати модуль, відсутня конфігурація\?</string>
     <string name="menu_resetOrder">Відновити початковий порядок</string>
     <!--
         generic
     -->
-    <string name="toast_noApp">Не можу відкрити діяльність</string>
-    <string name="toast_noBrowser">Не можу відкрити браузер</string>
-    <string name="title_choose">Виберіть додаток</string>
-    <string name="toast_invalid">Не підходить</string>
+    <string name="toast_noApp">Неможливо відкрити програму</string>
+    <string name="toast_noBrowser">Неможливо відкрити переглядач</string>
+    <string name="title_choose">Виберіть програму</string>
+    <string name="toast_invalid">Невірний</string>
     <string name="share">Поділитись додатком</string>
     <!--
         modules
@@ -60,7 +59,7 @@ Translations: %s."</string>
     <string name="mOpen_noapps">Немає відповідних програм</string>
     <!-- -->
     <string name="mStatus_name">Код статусу</string>
-    <string name="mStatus_desc">Натискаючи на кнопку перевірки, буде створено запит, щоб отримати та відобразити вам статус сайту(код статусу).\nЯкщо результатом буде перенаправлення, то ви зможете переглянути та змінити нове посилання. Посилання отримуються, але не оцінюється їх зміст, тому перенаправлення за допомогою JavaScript не можуть бути поміченими.</string>
+    <string name="mStatus_desc">Натискаючи на кнопку перевірки, буде створено запит, щоб отримати та відобразити вам статус сайту(код статусу). Якщо результатом буде перенаправлення, то ви зможете переглянути та змінити нове посилання. Посилання отримуються, але не оцінюється їх зміст, тому перенаправлення за допомогою JavaScript не можуть бути поміченими.</string>
     <string name="mStatus_ioerror">Відбулась проблема з підключенням під час перевірки посилання: %s</string>
     <string name="mStatus_error">Внутрішня проблема під час перевірки посилання: %s</string>
     <string name="mStatus_check">Перевірити</string>
@@ -137,4 +136,26 @@ Translations: %s."</string>
     <string name="mRemove_all">Прибрати всі</string>
     <string name="mRemove_one">Прибрати %s</string>
     <string name="mRemove_empty">Прибрати пусте</string>
+    <string name="txt_openLinks">Відкриття посилань у цій програмі: Протягом багатьох років Android змінював способи налаштування відкриття посилань, тому вони різняться між версіями. Нижче ви можете знайти всі доступні налаштування для свого пристрою. Якщо посилання не відкриваються в цій програмі, перепробуйте всі ці налаштування.</string>
+    <string name="a_settings">Налаштування</string>
+    <string name="link_changelog">Список змін</string>
+    <string name="link_source">Вихідний код</string>
+    <string name="link_privacy">Політика конфіденційності</string>
+    <string name="desc_up">Вгору</string>
+    <string name="close">Закрити</string>
+    <string name="save">Зберегти</string>
+    <string name="reset">Скинути</string>
+    <string name="desc_down">Вниз</string>
+    <string name="desc_decorations">Показати/приховати заголовок</string>
+    <string name="desc_enable">Увімкнути/вимкнути модуль</string>
+    <string name="btn_setBrowser">Встановити як переглядач за умовчанням</string>
+    <string name="toast_defaultSet">Тепер програма є переглядачем за умовчанням</string>
+    <string name="btn_configureBrowser">Переглядач за умовчанням</string>
+    <string name="btn_linksSettings">Відкривати підтримувані посилання</string>
+    <string name="txt_theme">Тема:</string>
+    <string name="spin_darkTheme">Темна</string>
+    <string name="spin_lightTheme">Світла</string>
+    <string name="txt_locale">Мова:</string>
+    <string name="clear">Очистити</string>
+    <string name="mOpen_tabsDesc">Перемкнути функцію Custom Tabs</string>
 </resources>
