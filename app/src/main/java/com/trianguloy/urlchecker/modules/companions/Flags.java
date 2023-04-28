@@ -24,56 +24,56 @@ public class Flags {
 
     // https://github.com/MuntashirAkon/AppManager/blob/19782da4c8556c817ba5795554a1cc21f38af13a/app/src/main/java/io/github/muntashirakon/AppManager/intercept/ActivityInterceptor.java#L92
     private static final Set<String> ALL_FLAGS = Set.of(
-            "FLAG_GRANT_READ_URI_PERMISSION",
-            "FLAG_GRANT_WRITE_URI_PERMISSION",
-            "FLAG_FROM_BACKGROUND",
-            "FLAG_DEBUG_LOG_RESOLUTION",
-            "FLAG_EXCLUDE_STOPPED_PACKAGES",
-            "FLAG_INCLUDE_STOPPED_PACKAGES",
-            "FLAG_GRANT_PERSISTABLE_URI_PERMISSION",
-            "FLAG_GRANT_PREFIX_URI_PERMISSION",
-            "FLAG_DIRECT_BOOT_AUTO",
-            "FLAG_IGNORE_EPHEMERAL",
-            "FLAG_ACTIVITY_NO_HISTORY",
-            "FLAG_ACTIVITY_SINGLE_TOP",
-            "FLAG_ACTIVITY_NEW_TASK",
-            "FLAG_ACTIVITY_MULTIPLE_TASK",
-            "FLAG_ACTIVITY_CLEAR_TOP",
-            "FLAG_ACTIVITY_FORWARD_RESULT",
-            "FLAG_ACTIVITY_PREVIOUS_IS_TOP",
-            "FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS",
-            "FLAG_ACTIVITY_BROUGHT_TO_FRONT",
-            "FLAG_ACTIVITY_RESET_TASK_IF_NEEDED",
-            "FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY",
-            "FLAG_ACTIVITY_NEW_DOCUMENT",
-            "FLAG_ACTIVITY_NO_USER_ACTION",
-            "FLAG_ACTIVITY_REORDER_TO_FRONT",
-            "FLAG_ACTIVITY_NO_ANIMATION",
-            "FLAG_ACTIVITY_CLEAR_TASK",
-            "FLAG_ACTIVITY_TASK_ON_HOME",
-            "FLAG_ACTIVITY_RETAIN_IN_RECENTS",
-            "FLAG_ACTIVITY_LAUNCH_ADJACENT",
-            "FLAG_ACTIVITY_MATCH_EXTERNAL",
-            "FLAG_ACTIVITY_REQUIRE_NON_BROWSER",
-            "FLAG_ACTIVITY_REQUIRE_DEFAULT"
+            // all have a 'FLAG_' prefix
+            "GRANT_READ_URI_PERMISSION",
+            "GRANT_WRITE_URI_PERMISSION",
+            "FROM_BACKGROUND",
+            "DEBUG_LOG_RESOLUTION",
+            "EXCLUDE_STOPPED_PACKAGES",
+            "INCLUDE_STOPPED_PACKAGES",
+            "GRANT_PERSISTABLE_URI_PERMISSION",
+            "GRANT_PREFIX_URI_PERMISSION",
+            "DIRECT_BOOT_AUTO",
+            "IGNORE_EPHEMERAL",
+            "ACTIVITY_NO_HISTORY",
+            "ACTIVITY_SINGLE_TOP",
+            "ACTIVITY_NEW_TASK",
+            "ACTIVITY_MULTIPLE_TASK",
+            "ACTIVITY_CLEAR_TOP",
+            "ACTIVITY_FORWARD_RESULT",
+            "ACTIVITY_PREVIOUS_IS_TOP",
+            "ACTIVITY_EXCLUDE_FROM_RECENTS",
+            "ACTIVITY_BROUGHT_TO_FRONT",
+            "ACTIVITY_RESET_TASK_IF_NEEDED",
+            "ACTIVITY_LAUNCHED_FROM_HISTORY",
+            "ACTIVITY_NEW_DOCUMENT",
+            "ACTIVITY_NO_USER_ACTION",
+            "ACTIVITY_REORDER_TO_FRONT",
+            "ACTIVITY_NO_ANIMATION",
+            "ACTIVITY_CLEAR_TASK",
+            "ACTIVITY_TASK_ON_HOME",
+            "ACTIVITY_RETAIN_IN_RECENTS",
+            "ACTIVITY_LAUNCH_ADJACENT",
+            "ACTIVITY_MATCH_EXTERNAL",
+            "ACTIVITY_REQUIRE_NON_BROWSER",
+            "ACTIVITY_REQUIRE_DEFAULT"
     );
 
     private static final Map<String, Integer> compatibleFlags = new TreeMap<>(); // TreeMap to have the entries sorted by key
 
     static {
-        try {
-            // Only get flags that are present in the current Android version
-            for (var field : Intent.class.getFields()) {
-                if (ALL_FLAGS.contains(field.getName())) {
-                    compatibleFlags.put(field.getName(), (Integer) field.get(null));
-                }
+        // Only get flags that are present in the current Android version
+        for (var flag : ALL_FLAGS) {
+            try {
+                compatibleFlags.put(flag, (Integer) Intent.class.getField("FLAG_" + flag).get(null));
+            } catch (NoSuchFieldException ignored) {
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
     }
 
-    public static Map<String, Integer> getCompatibleFlags(){
+    public static Map<String, Integer> getCompatibleFlags() {
         return new TreeMap<>(compatibleFlags);
     }
 
@@ -83,19 +83,19 @@ public class Flags {
 
     // TODO store non-compatible flags? as String "0x001000", int 0x001000
 
-    public Flags(){
+    public Flags() {
         this(0x00000000);
     }
 
-    public Flags(int hex){
+    public Flags(int hex) {
         setFlags(hex);
     }
 
-    public boolean isSet(String flag){
+    public boolean isSet(String flag) {
         return flags.contains(flag);
     }
 
-    public int getFlagsAsInt(){
+    public int getFlagsAsInt() {
         return flagsSetToHex(flags);
     }
 
@@ -106,14 +106,14 @@ public class Flags {
     /**
      * Replaces the stored flags with the received hex
      */
-    public void setFlags(int hex){
+    public void setFlags(int hex) {
         this.flags = hexFlagsToSet(hex);
     }
 
     /**
      * Replaces the stored flags with the received list
      */
-    public void setFlags(Set<String> names){
+    public void setFlags(Set<String> names) {
         Set<String> res = new HashSet<>(names);
         res.retainAll(compatibleFlags.keySet());
         this.flags = res;
@@ -122,9 +122,9 @@ public class Flags {
     /**
      * Sets the flag to the received boolean
      */
-    public boolean setFlag(String flag, boolean bool){
-        if (compatibleFlags.containsKey(flag)){
-            if (bool){
+    public boolean setFlag(String flag, boolean bool) {
+        if (compatibleFlags.containsKey(flag)) {
+            if (bool) {
                 return flags.add(flag);
             } else {
                 return flags.remove(flag);
@@ -137,14 +137,14 @@ public class Flags {
     /**
      * Add flags by applying a mask
      */
-    public void addFlags(int hex){
+    public void addFlags(int hex) {
         flags.addAll(hexFlagsToSet(hex));
     }
 
     /**
      * Add a list of flags based on its name
      */
-    public void addFlags(Set<String> flags){
+    public void addFlags(Set<String> flags) {
         this.flags.addAll(flags);
     }
 
@@ -162,21 +162,21 @@ public class Flags {
     /**
      * Remove flags by applying a mask
      */
-    public boolean removeFlags(int hex){
+    public boolean removeFlags(int hex) {
         return flags.removeAll(hexFlagsToSet(hex));
     }
 
     /**
      * Remove a list of flags based on its name
      */
-    public boolean removeFlags(Set<String> flags){
+    public boolean removeFlags(Set<String> flags) {
         return this.flags.removeAll(flags);
     }
 
     /**
      * Remove a flag based on its name
      */
-    public boolean removeFlag(String name){
+    public boolean removeFlag(String name) {
         return flags.remove(name);
     }
 
@@ -201,7 +201,7 @@ public class Flags {
      */
     private static int flagsSetToHex(Set<String> set) {
         int hex = 0x00000000;
-        for (var flag : set){
+        for (var flag : set) {
             if (compatibleFlags.containsKey(flag)) {
                 hex = hex | compatibleFlags.get(flag);
             }
