@@ -128,7 +128,7 @@ public interface AndroidSettings {
     /**
      * The theme setting
      */
-    enum Theme implements TranslatableEnum {
+    enum Theme implements Enums.IdEnum, Enums.StringEnum {
         DEFAULT(0, R.string.deviceDefault),
         DARK(1, R.string.spin_darkTheme),
         LIGHT(2, R.string.spin_lightTheme),

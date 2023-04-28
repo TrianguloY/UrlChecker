@@ -3,28 +3,33 @@ package com.trianguloy.urlchecker.utilities;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * On java, an enum can't be extended :(
- * This is the best I can do...unless I discover how to create annotations!
- */
-public interface TranslatableEnum {
-    /**
-     * The id of the saved preference. Must never change
-     */
-    int getId();
+public interface Enums {
 
-    /**
-     * This must return the string resourced associated with this enum value
-     */
-    int getStringResource();
+    interface StringEnum {
+        /**
+         * This must return the string resourced associated with this enum value
+         */
+        int getStringResource();
+    }
+
+    interface IdEnum {
+        /**
+         * The id of the saved preference. Must never change
+         */
+        int getId();
+    }
+
+    interface ImageEnum {
+        int getImageResource();
+    }
 
     /**
      * Get an enum from an id
      */
-    static <TE extends TranslatableEnum> TE toEnum(Class<TE> te, int id) {
+    static <TE extends IdEnum> TE toEnum(Class<TE> te, int id) {
         TE[] enumConstants = te.getEnumConstants();
         for (TE constant : enumConstants) {
-            if (constant.getId() == id){
+            if (constant.getId() == id) {
                 return constant;
             }
         }
@@ -34,7 +39,7 @@ public interface TranslatableEnum {
     /**
      * Get a map of id and enum
      */
-    static <TE extends TranslatableEnum> Map<Integer, TE> toEnumMap(Class<TE> te) {
+    static <TE extends IdEnum> Map<Integer, TE> toEnumMap(Class<TE> te) {
         Map<Integer, TE> res = new HashMap<>();
         TE[] enumConstants = te.getEnumConstants();
         for (TE constant : enumConstants) {

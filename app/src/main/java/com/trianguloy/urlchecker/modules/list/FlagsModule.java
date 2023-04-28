@@ -486,20 +486,20 @@ class FlagsConfig extends AModuleConfig {
         }
     }
 
-    public enum FlagState implements TranslatableEnum {
-        AUTO(0, R.string.auto),
-        ON(1, R.string.on),
-        OFF(2, R.string.off),
+    public enum FlagState implements Enums.IdEnum, Enums.ImageEnum {
+        AUTO(0, R.drawable.flag_auto),
+        ON(1, R.drawable.flag_on),
+        OFF(2, R.drawable.flag_off),
         ;
 
         // -----
 
         private final int id;
-        private final int stringResource;
+        private final int imageResource;
 
-        FlagState(int id, int stringResource) {
+        FlagState(int id, int imageResource) {
             this.id = id;
-            this.stringResource = stringResource;
+            this.imageResource = imageResource;
         }
 
         @Override
@@ -508,8 +508,8 @@ class FlagsConfig extends AModuleConfig {
         }
 
         @Override
-        public int getStringResource() {
-            return stringResource;
+        public int getImageResource() {
+            return imageResource;
         }
     }
 }

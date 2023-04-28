@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Build;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.Enums;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.TranslatableEnum;
 
 /**
  * Static elements related to CTabs
@@ -35,7 +35,7 @@ public class CTabs {
     /**
      * CTabs configuration
      */
-    public enum Config implements TranslatableEnum {
+    public enum Config implements Enums.IdEnum, Enums.StringEnum {
         AUTO(0, R.string.auto),
         ON(1, R.string.mOpen_ctabsOn),
         OFF(2, R.string.mOpen_ctabsOff),

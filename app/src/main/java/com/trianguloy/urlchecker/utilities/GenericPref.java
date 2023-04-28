@@ -248,7 +248,7 @@ public abstract class GenericPref<T> {
     /**
      * A list of options (enumeration) preference
      */
-    static public class Enumeration<T extends Enum<T> & TranslatableEnum> extends GenericPref<T> {
+    static public class Enumeration<T extends Enum<T> & Enums.IdEnum & Enums.StringEnum> extends GenericPref<T> {
         private final Class<T> type;
 
         public Enumeration(String prefName, T defaultValue, Class<T> type, Context cntx) {
