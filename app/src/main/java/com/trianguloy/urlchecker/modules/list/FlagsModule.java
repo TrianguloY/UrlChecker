@@ -8,12 +8,9 @@ import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +24,12 @@ import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
+import com.trianguloy.urlchecker.utilities.Enums;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.InternalFile;
 import com.trianguloy.urlchecker.utilities.JavaUtils;
-import com.trianguloy.urlchecker.utilities.TranslatableEnum;
+import com.trianguloy.urlchecker.views.CycleImageButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -185,7 +183,7 @@ class FlagsDialog extends AModuleDialog {
         // Get state preference of flag from json and then store it in a map
         flagsStatePref = new HashMap<>();
         if (groupPref != null) {
-            Map<Integer, FlagsConfig.FlagState> flagsStateMap = TranslatableEnum.toEnumMap(FlagsConfig.FlagState.class);
+            Map<Integer, FlagsConfig.FlagState> flagsStateMap = Enums.toEnumMap(FlagsConfig.FlagState.class);
             for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
                 String flag = it.next();
                 try {
@@ -242,23 +240,11 @@ class FlagsDialog extends AModuleDialog {
     private void fillWithFlags(Set<String> flags, ViewGroup vg) {
         vg.removeAllViews();
 
-        // Checkbox listener
-        CompoundButton.OnCheckedChangeListener l = (v, isChecked) -> {
-            // Store flag
-            String flag = (String) v.getTag(R.id.text);
-            currentFlags.setFlag(flag, isChecked);
-            // Update global
-            Flags.setGlobalFlags(currentFlags, this);
-
-            // To update debug module view of GlobalData
-            setUrl(new UrlData(getUrl()).dontTriggerOwn().asMinorUpdate());
-        };
-
         for (String flag : flags) {
             var checkbox_text = Inflater.inflate(R.layout.dialog_flags_entry, vg, getActivity());
 
             // Checkbox
-            CheckBox checkBox = checkbox_text.findViewById(R.id.checkbox);
+            var checkBox = checkbox_text.<ImageView>findViewById(R.id.state);
             boolean bool;
             switch (valueOrDefault(flagsStatePref.get(flag), FlagsConfig.FlagState.AUTO)) {
                 case ON:
@@ -271,11 +257,21 @@ class FlagsDialog extends AModuleDialog {
                 default:
                     bool = defaultFlags.isSet(flag);
             }
-            checkBox.setChecked(bool);
             currentFlags.setFlag(flag, bool);
 
             checkBox.setTag(R.id.text, flag);
-            checkBox.setOnCheckedChangeListener(l);
+            AndroidUtils.toggleableListener(checkBox,
+                    v -> {
+                        currentFlags.setFlag(flag, !currentFlags.isSet(flag));
+
+                        // Update global
+                        Flags.setGlobalFlags(currentFlags, this);
+
+                        // To update debug module view of GlobalData
+                        setUrl(new UrlData(getUrl()).dontTriggerOwn().asMinorUpdate());
+                    },
+                    v -> checkBox.setImageResource(currentFlags.isSet(flag) ? R.drawable.flag_on : R.drawable.flag_off)
+            );
 
             // Text
             ((TextView) checkbox_text.findViewById(R.id.text)).setText(flag);
@@ -316,7 +312,6 @@ class FlagsDialog extends AModuleDialog {
 class FlagsConfig extends AModuleConfig {
 
     protected static final String CONF_FILE = "flags_editor_settings";
-    private Map<Integer, Integer> stateToIndex;
 
     public FlagsConfig(ModulesActivity activity) {
         super(activity);
@@ -343,14 +338,16 @@ class FlagsConfig extends AModuleConfig {
                         // Save the settings
                         storePreferences(box, file, FlagsModule.DEFAULT_GROUP);
                     })
-                    .setNegativeButton(views.getContext().getText(android.R.string.cancel), (dialog, which) -> {
-                        // Reset current group flags (does not save)
-                        resetFlags(box);
-                    })
+                    .setNegativeButton(views.getContext().getText(android.R.string.cancel), null)
                     .setNeutralButton(views.getContext().getText(R.string.reset), null)
                     .show();
 
             alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+            alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(listener -> {
+                // Reset current group flags (does not save)
+                resetFlags(box);
+            });
 
             // Search
             ((EditText) flagsDialogLayout.findViewById(R.id.search)).addTextChangedListener(new DefaultTextWatcher() {
@@ -372,23 +369,6 @@ class FlagsConfig extends AModuleConfig {
     }
 
     private void fillBoxViewGroup(ViewGroup vg, InternalFile file, String group) {
-        // Set spinner items
-        FlagState[] spinnerItems = FlagState.class.getEnumConstants();
-        List<String> spinnerItemsList = new ArrayList<>(spinnerItems.length);
-        stateToIndex = new HashMap<>();
-        for (int i = 0; i < spinnerItems.length; i++) {
-            spinnerItemsList.add(vg.getContext().getString(spinnerItems[i].getStringResource()));
-            // Map state to index
-            stateToIndex.put(spinnerItems[i].getId(), i);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                vg.getContext(),
-                android.R.layout.simple_spinner_item,
-                spinnerItemsList
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Store order info in vg
-        vg.setTag(spinnerItems);
 
         String prefString = file.get();
         JSONObject oldPref = null; // Null if there is no file or fails to parse
@@ -401,12 +381,12 @@ class FlagsConfig extends AModuleConfig {
         // Fill the box
         for (String flag : Flags.getCompatibleFlags().keySet()) {
             var text_spinner_checkbox = Inflater.inflate(R.layout.flags_editor_entry, vg, getActivity());
+
             TextView textView = text_spinner_checkbox.findViewById(R.id.text);
             textView.setText(flag);
 
-            Spinner spinner = text_spinner_checkbox.findViewById(R.id.spinner);
-            spinner.setAdapter(adapter);
-            spinner.setTag(spinnerItems);
+            var flagState = text_spinner_checkbox.<CycleImageButton<FlagState>>findViewById(R.id.state);
+            flagState.setStates(List.of(FlagState.values()));
 
             // Load preferences from settings
             if (oldPref != null) {
@@ -415,10 +395,14 @@ class FlagsConfig extends AModuleConfig {
                     flagPref = oldPref.getJSONObject(flag);
 
                     // select current option
-                    spinner.setSelection(valueOrDefault(stateToIndex.get(flagPref.getInt("state")),
-                            FlagState.AUTO.getId()));
-
-                    ((CheckBox) text_spinner_checkbox.findViewById(R.id.checkbox)).setChecked(flagPref.getBoolean("show"));
+                    flagState.setCurrentState(valueOrDefault(Enums.toEnum(FlagState.class, flagPref.getInt("state")),
+                            FlagState.AUTO));
+                    var show = text_spinner_checkbox.<ImageButton>findViewById(R.id.show);
+                    show.setTag(flagPref.getBoolean("show"));
+                    AndroidUtils.toggleableListener(show,
+                            v -> v.setTag(v.getTag() == Boolean.FALSE),
+                            v -> v.setImageResource(v.getTag() == Boolean.TRUE ? R.drawable.show : R.drawable.hide)
+                    );
                 } catch (JSONException ignored) {
                 }
             }
@@ -437,8 +421,6 @@ class FlagsConfig extends AModuleConfig {
                 // If the json fails to parse then we will create a new file
             }
         }
-        // Retrieve order of spinner
-        FlagState[] spinnerItems = (FlagState[]) vg.getTag();
 
         try {
             // Collect all the settings of the vg
@@ -446,8 +428,8 @@ class FlagsConfig extends AModuleConfig {
             for (int i = 0; i < vg.getChildCount(); i++) {
                 View v = vg.getChildAt(i);
 
-                FlagState state = spinnerItems[((Spinner) v.findViewById(R.id.spinner)).getSelectedItemPosition()];
-                boolean show = ((CheckBox) v.findViewById(R.id.checkbox)).isChecked();
+                FlagState state = v.<CycleImageButton<FlagState>>findViewById(R.id.state).getCurrentState();
+                boolean show = v.findViewById(R.id.show).getTag() == Boolean.TRUE;
                 newSettings.put(((TextView) v.findViewById(R.id.text)).getText().toString(),
                         new JSONObject()
                                 .put("state", state.getId())
@@ -467,22 +449,13 @@ class FlagsConfig extends AModuleConfig {
     }
 
     private void resetFlags(ViewGroup vg) {
-        // Retrieve order of spinner
-        FlagState[] spinnerItems = (FlagState[]) vg.getTag();
-
-        // Index of default
-        int def;
-        for (def = 0; def < spinnerItems.length; def++) {
-            if (spinnerItems[def] == FlagState.AUTO) {
-                break;
-            }
-        }
-
         // Set everything to default values
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
-            ((Spinner) v.findViewById(R.id.spinner)).setSelection(def);
-            ((CheckBox) v.findViewById(R.id.checkbox)).setChecked(false);
+            v.<CycleImageButton<FlagState>>findViewById(R.id.state).setCurrentState(FlagState.AUTO);
+            var visible = v.<ImageButton>findViewById(R.id.show);
+            visible.setImageResource(R.drawable.hide);
+            visible.setTag(Boolean.FALSE);
         }
     }
 
