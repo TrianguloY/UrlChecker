@@ -46,6 +46,33 @@ public interface JavaUtils {
     }
 
     /**
+     * Applies a filter to both strings to check if all words of keywords are in body.
+     * The order does not matter.
+     */
+    static boolean containsWords(String body, String keywords){
+        JavaUtils.Function<String, String> filter = s -> s.toUpperCase().replaceAll("[\\s-_]+", " ");
+        // Match all words
+        String[] words = filter.apply(keywords).split(" ");
+        body = filter.apply(body);
+        boolean match = true;
+        for (String str : words) {
+            if (!body.contains(str)){
+                match = false;
+                break;
+            }
+        }
+        return match;
+    }
+
+    /**
+     * Returns the object, or default if null
+     * java.util.Optional requires api 24
+     */
+    static <T> T valueOrDefault(T value, T defaultValue){
+        return value == null ? defaultValue : value;
+    }
+
+    /**
      * java.util.function.Consumer requires api 24
      */
     @FunctionalInterface

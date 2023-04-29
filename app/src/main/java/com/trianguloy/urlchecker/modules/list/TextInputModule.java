@@ -1,7 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
@@ -13,6 +12,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
 import com.trianguloy.urlchecker.utilities.DoubleEvent;
 
 /**
@@ -41,9 +41,10 @@ public class TextInputModule extends AModuleData {
     }
 }
 
-class TextInputDialog extends AModuleDialog implements TextWatcher {
+class TextInputDialog extends AModuleDialog {
 
     private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
+    private boolean skipUpdate = false;
 
     private EditText edtxt_url;
 
@@ -59,39 +60,31 @@ class TextInputDialog extends AModuleDialog implements TextWatcher {
     @Override
     public void onInitialize(View views) {
         edtxt_url = views.findViewById(R.id.url);
-        edtxt_url.addTextChangedListener(this);
+        edtxt_url.addTextChangedListener(new DefaultTextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (skipUpdate) return;
+
+                // new url by the user
+                var newUrlData = new UrlData(s.toString())
+                        .dontTriggerOwn()
+                        .disableUpdates();
+
+                // mark as minor if too quick
+                if (doubleEdit.checkAndTrigger()) newUrlData.asMinorUpdate();
+
+                // set
+                setUrl(newUrlData);
+            }
+        });
     }
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
-        // setText fires the afterTextChanged listener, so we need to remove it
-        edtxt_url.removeTextChangedListener(this);
+        // setText fires the afterTextChanged listener, so we need to skip it
+        skipUpdate = true;
         edtxt_url.setText(urlData.url);
-        edtxt_url.addTextChangedListener(this);
+        skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new
-    }
-
-    // ------------------- TextWatcher -------------------
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        // new url by the user
-        var newUrlData = new UrlData(s.toString())
-                .dontTriggerOwn()
-                .disableUpdates();
-
-        // mark as minor if too quick
-        if (doubleEdit.checkAndTrigger()) newUrlData.asMinorUpdate();
-
-        // set
-        setUrl(newUrlData);
     }
 }

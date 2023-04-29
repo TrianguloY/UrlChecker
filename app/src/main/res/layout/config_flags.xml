@@ -10,11 +10,11 @@
         android:layout_height="wrap_content"
         android:text="@string/mFlag_desc" />
 
-    <EditText
-        android:id="@+id/flags"
+    <Button
+        android:id="@+id/button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="0xFFFFFFFF"
-        android:inputType="textPersonName" />
+        android:text="@string/mFlag_editFlags" />
+
 </LinearLayout>
