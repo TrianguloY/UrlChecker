@@ -179,27 +179,16 @@ class FlagsDialog extends AModuleDialog {
         }
 
 
-        // STATE
+        // Put shown flags
+        Set<String> shownFlagsSet = new TreeSet<>();
         // Get state preference of flag from json and then store it in a map
         flagsStatePref = new HashMap<>();
         if (groupPref != null) {
-            Map<Integer, FlagsConfig.FlagState> flagsStateMap = Enums.toEnumMap(FlagsConfig.FlagState.class);
             for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
                 String flag = it.next();
                 try {
-                    flagsStatePref.put(flag, flagsStateMap.get(groupPref.getJSONObject(flag).getInt("state")));
-                } catch (JSONException ignored) {
-                }
-            }
-        }
-
-        // SHOW
-        // Put shown flags
-        Set<String> shownFlagsSet = new TreeSet<>();
-        if (groupPref != null) {
-            for (Iterator<String> it = groupPref.keys(); it.hasNext(); ) {
-                String flag = it.next();
-                try {
+                    flagsStatePref.put(flag, Enums.toEnum(FlagsConfig.FlagState.class,
+                            groupPref.getJSONObject(flag).getInt("state")));
                     if (groupPref.getJSONObject(flag).getBoolean("show")) {
                         shownFlagsSet.add(flag);
                     }
@@ -354,11 +343,11 @@ class FlagsConfig extends AModuleConfig {
                 @Override
                 public void afterTextChanged(Editable text) {
                     for (int i = 0; i < box.getChildCount(); i++) {
-                        var text_spinner_checkbox = box.getChildAt(i);
-                        String flag = ((TextView) text_spinner_checkbox.findViewById(R.id.text)).getText().toString();
+                        var entryView = box.getChildAt(i);
+                        String flag = ((TextView) entryView.findViewById(R.id.text)).getText().toString();
                         String search = text.toString();
                         // Set visibility based on search text
-                        text_spinner_checkbox.setVisibility(JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
+                        entryView.setVisibility(JavaUtils.containsWords(flag, search) ? View.VISIBLE : View.GONE);
                     }
                 }
             });
@@ -377,35 +366,36 @@ class FlagsConfig extends AModuleConfig {
         } catch (JSONException ignored) {
         }
 
-
         // Fill the box
         for (String flag : Flags.getCompatibleFlags().keySet()) {
-            var text_spinner_checkbox = Inflater.inflate(R.layout.flags_editor_entry, vg, getActivity());
+            var entryView = Inflater.inflate(R.layout.flags_editor_entry, vg, getActivity());
 
-            TextView textView = text_spinner_checkbox.findViewById(R.id.text);
+            TextView textView = entryView.findViewById(R.id.text);
             textView.setText(flag);
 
-            var flagState = text_spinner_checkbox.<CycleImageButton<FlagState>>findViewById(R.id.state);
+            var flagState = entryView.<CycleImageButton<FlagState>>findViewById(R.id.state);
             flagState.setStates(List.of(FlagState.values()));
 
             // Load preferences from settings
+            Boolean showValue = null;
+            Integer stateValue = null;
+            // Get current preferences
             if (oldPref != null) {
                 JSONObject flagPref;
                 try {
                     flagPref = oldPref.getJSONObject(flag);
-
-                    // select current option
-                    flagState.setCurrentState(valueOrDefault(Enums.toEnum(FlagState.class, flagPref.getInt("state")),
-                            FlagState.AUTO));
-                    var show = text_spinner_checkbox.<ImageButton>findViewById(R.id.show);
-                    show.setTag(flagPref.getBoolean("show"));
-                    AndroidUtils.toggleableListener(show,
-                            v -> v.setTag(v.getTag() == Boolean.FALSE),
-                            v -> v.setImageResource(v.getTag() == Boolean.TRUE ? R.drawable.show : R.drawable.hide)
-                    );
+                    showValue = flagPref.getBoolean("show");
+                    stateValue = flagPref.getInt("state");
                 } catch (JSONException ignored) {
                 }
             }
+            flagState.setCurrentState(Enums.toEnum(FlagState.class, valueOrDefault(stateValue, FlagState.AUTO.id)));
+            var show = entryView.<ImageButton>findViewById(R.id.show);
+            show.setTag(valueOrDefault(showValue, false));
+            AndroidUtils.toggleableListener(show,
+                    v -> v.setTag(v.getTag() == Boolean.FALSE),
+                    v -> v.setImageResource(v.getTag() == Boolean.TRUE ? R.drawable.show : R.drawable.hide)
+            );
         }
     }
 
