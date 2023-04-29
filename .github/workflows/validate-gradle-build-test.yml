@@ -57,6 +57,7 @@ jobs:
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
           name: ${{ env.NAME }}
+          retention-days: 14
 
       - name: Upload PR id as artifact
         if: ${{ github.event_name == 'pull_request' }}
@@ -64,3 +65,4 @@ jobs:
         with:
           path: /dev/null
           name: ${{ github.event.number }}
+          retention-days: 2

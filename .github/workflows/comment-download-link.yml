@@ -41,10 +41,14 @@ jobs:
 
           # post link comment
           gh api "/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments" -F body=@- <<EOF
+          This PR builds correctly, here is the generated apk.
+          This unsigned version can be installed alongside the original app and should only be used for testing the changes, not for daily usage.
+          
           | [Download testing apk](https://github.com/$OWNER/$REPO/suites/$PREVIOUS_SUITE_ID/artifacts/$ARTIFACT_ID) |
           | - |
           
-          This unsigned apk can be installed alongside the original app and should only be used for testing the changes, not for normal usage.
+          
+          You must be logged in for the link to work.
           The link will expire at $EXPIRES_AT.
           
           <hr>
