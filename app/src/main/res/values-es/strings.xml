@@ -296,18 +296,12 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mUnshort_ok">Desacortado</string>
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
-    <string name="mFlags_invalid">Flag inválida</string>
     <string name="mFlag_desc">[Funcionalidad beta] Este es un módulo avanzado que te permite editar las marcas del intent al abrir otra aplicación.
 \nEste módulo mostrará una lista de marcas, se puede cambiar si la marca se establece o no tocando el icono. También hay un menú de desbordamiento para ocultar las marcas allí, es sólo visual, las marcas seguirán utilizando el estado asignado.
 \nLas marcas tendrán dos indicadores de color junto a la casilla de verificación. El de la izquierda muestra el valor recibido del intent, el de la derecha indica el estado establecido por el propio módulo. Rojo significa que la marca no está establecida y verde significa que sí lo está. Adicionalmente, el indicador puede ser gris, que significa que el estado se estableció en automático.
 \nCon el botón de abajo puede editar el estado por defecto y la visibilidad de las marcas.</string>
-    <string name="mFlag_flagHint">Nombre de flag</string>
-    <string name="remove">Eliminar</string>
-    <string name="edit">Editar</string>
-    <string name="add">Añadir</string>
-    <string name="on">Activado</string>
-    <string name="off">Desactivado</string>
     <string name="mFlag_editFlags">Editar los valores por defecto de los marcadores</string>
+    <!-- -->
     <string name="mParts_name">Partes de la URI</string>
     <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento. Al hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada. También puedes hacer clic en el botón \'X\' para eliminar algunos de ellos. Esta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
 </resources>

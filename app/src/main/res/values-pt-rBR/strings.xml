@@ -7,7 +7,6 @@
     <string name="tutorial">Tutorial</string>
     <string name="canceled">Cancelado</string>
     <string name="next">Próximo</string>
-    <string name="add">Adicionar</string>
     <string name="json_edit">Editor avançado</string>
     <string name="mOpen_ctabsOff">Desabilitado por padrão</string>
     <string name="mClear_clear">Aplicar</string>
@@ -47,8 +46,6 @@
     <string name="auto">Automático</string>
     <string name="mHist_name">Histórico</string>
     <string name="mLog_name">Log</string>
-    <string name="remove">Remover</string>
-    <string name="edit">Editar</string>
     <string name="mOpen_ctabsDis">Sempre desligado</string>
     <string name="mOpen_with">Abrir com %s</string>
     <string name="mOpen_open">Abrir</string>

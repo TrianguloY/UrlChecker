@@ -251,7 +251,5 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
 \n(Non necessario se gli URL vengono reindirizzati utilizzando la funzionalità \"Condividi\".)</string>
     <string name="btn_tutorialSkip">Salta il tutorial</string>
     <string name="btn_tutorialEnd">Termina il tutorial</string>
-    <string name="edit">Modifica</string>
-    <string name="add">Aggiungi</string>
     <string name="shortcut_checkClipboard">Controlla gli URL dagli appunti</string>
 </resources>

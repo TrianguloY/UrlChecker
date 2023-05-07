@@ -97,9 +97,6 @@ Umarım uygulamayı yararlı bulursunuz! Ve özellikler önermekten, hataları b
     <string name="deviceDefault">Cihaz varsayılanı</string>
     <string name="next">Sonraki</string>
     <string name="back">Geri</string>
-    <string name="remove">Kaldır</string>
-    <string name="edit">Değiştir</string>
-    <string name="add">Ekle</string>
     <!--
         json
     -->
@@ -303,9 +300,7 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mUnshort_ok">Kısaltma giderildi</string>
     <!-- -->
     <string name="mFlags_name">İşaretler düzenleyici</string>
-    <string name="mFlags_invalid">Geçersiz işaret</string>
     <string name="mFlag_desc">"[Beta özelliği] Bu gelişmiş bir modüldür, başka bir uygulamayı açarken 'intent' işaretlerini düzenlemenize olanak tanır.
 Aşağıdaki alana, varsayılanların üzerine yazacak işaretler koyabilirsiniz; bunlar, bu uygulamayı açmak için kullanılan 'intent'ten alınmıştır.
 Modülü kullanırken, işaretleri varsayılana ayarlamak için düzenleme butonuna basılı tutabilirsiniz. İşaretler alanına isimlerini yazarak bayrak ekleyebilirsiniz."</string>
-    <string name="mFlag_flagHint">İşaret adı</string>
 </resources>

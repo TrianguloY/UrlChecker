@@ -65,4 +65,4 @@ jobs:
         with:
           path: /dev/null
           name: ${{ github.event.number }}
-          retention-days: 2
+          retention-days: 1

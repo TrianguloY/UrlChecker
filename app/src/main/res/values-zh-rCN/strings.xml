@@ -264,10 +264,6 @@
     <string name="mUnshort_notFound">未发现重定向</string>
     <string name="mUnshort_pending">待处理: %d/%d</string>
     <string name="mUnshort_ok">已解析短链接</string>
-    <string name="on">启用</string>
-    <string name="off">禁用</string>
-    <string name="mFlags_invalid">无效标识符</string>
-    <string name="mFlag_flagHint">标识符名称</string>
     <string name="mFlag_editFlags">修改标识符值</string>
     <string name="mParts_name">URI 部件</string>
     <string name="mFlag_desc">[测试版功能]这是个高级模块，它允许您在打开另一个应用程序时编辑意图标识符。
@@ -275,9 +271,6 @@
 \n标识符在复选框旁边将有两个颜色指示器。左边显示从意图收到的值，右边显示模块本身设置的状态。红色表示标识符未设置，绿色表示标识符已设置。此外，首选项指示器也可能是灰色的，意味着状态已设为自动。
 \n使用下面的按钮，您可以编辑默认状态和标识符的可见性。</string>
     <string name="mParts_desc">本模块显示解码的URL的所有部分：计划、权限、路径、参数和片段。通过单击一个部分，它将被设置为新的URL，例如，如果其中一个查询或路径是编码的重定向URL，则非常有用。您也可点击“X”按钮来删除其中一些。这是“参数移除器”模块的高级版本。</string>
-    <string name="add">添加</string>
-    <string name="edit">编辑</string>
-    <string name="remove">移除</string>
     <string name="mUnshort_tm">Unshorten.me 免费API</string>
     <string name="mFlags_name">标识符编辑器</string>
 </resources>

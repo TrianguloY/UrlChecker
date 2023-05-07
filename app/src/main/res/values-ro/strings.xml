@@ -29,8 +29,6 @@
 \n
 \nAcesta este tutorialul, dacă vrei să-l sări, o poți face cu butonul de mai jos. Puteți reveni oricând la acest tutorial din meniul de setări.</string>
     <string name="tutorial">Tutorial</string>
-    <string name="on">Activat</string>
-    <string name="off">Dezactivat</string>
     <string name="mClear_rule">- parametru inutil găsit</string>
     <string name="mClear_forcedRedirection">- redirecționare forțată găsită</string>
     <string name="mClear_redirection">- redirecționare găsită</string>
@@ -92,9 +90,6 @@
     <string name="deviceDefault">Dispozitiv implicit</string>
     <string name="next">Următor</string>
     <string name="back">Înainte</string>
-    <string name="remove">Elimină</string>
-    <string name="edit">Editează</string>
-    <string name="add">Adaugă</string>
     <string name="json_desc">[Funcția beta] Acesta este un editor avansat, conținutul trebuie formatat în JSON valid. Puteți apăsa butonul din dreapta sus pentru a-l formata și valida.</string>
     <string name="json_edit">Editor avansat</string>
     <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regexp care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. Modelele încorporate includ: - Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com - Sugerați înlocuirea „http” cu „https” - Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
