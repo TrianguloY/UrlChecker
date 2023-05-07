@@ -29,4 +29,86 @@
 \n
 \nAcesta este tutorialul, dacă vrei să-l sări, o poți face cu butonul de mai jos. Puteți reveni oricând la acest tutorial din meniul de setări.</string>
     <string name="tutorial">Tutorial</string>
+    <string name="on">Activat</string>
+    <string name="off">Dezactivat</string>
+    <string name="mClear_rule">- parametru inutil găsit</string>
+    <string name="mClear_forcedRedirection">- redirecționare forțată găsită</string>
+    <string name="mClear_redirection">- redirecționare găsită</string>
+    <string name="mClear_auto">Aplicare automată</string>
+    <string name="mClear_error">Nu s-a putut verifica regula</string>
+    <string name="mClear_sourceDesc">Adresa URL a catalogului de fișiere JSON cu regulile:</string>
+    <string name="mClear_urlHint">Catalog URL</string>
+    <string name="mClear_hashHint">Fără verificare hash</string>
+    <string name="mClear_updateNow">Actualizează acum</string>
+    <string name="mClear_autoUpdate">Actualizarea periodică</string>
+    <string name="mClear_lastCheck">Ultima verificare:</string>
+    <string name="mClear_lastUpdate">Ultima actualizare:</string>
+    <string name="mClear_updated">Catalog actualizat</string>
+    <string name="mClear_upToDate">Catalog actualizat</string>
+    <string name="mClear_urlError">Nu se pot prelua regulile, asigurați-vă că adresa URL este validă și că aveți o conexiune activă</string>
+    <string name="mClear_hashError">Nu se poate prelua hash-ul, asigurați-vă că adresa URL este validă și că aveți o conexiune activă</string>
+    <string name="mClear_restore">Restaurarea traseelor ClearURLs</string>
+    <string name="mRemove_found">%d interogări găsite</string>
+    <string name="mPttrn_editor">Aici puteți edita sau adăuga un model nou. Format: - „regex”: șir: un regex java valid care trebuie să se potrivească pentru ca întregul model să se potrivească. - „excludeRegex”: șir: dacă este furnizat, o expresie regex java validă care nu trebuie să se potrivească pentru ca întregul model să se potrivească. - „înlocuire”: șir|listă: dacă este furnizat, butonul „remediare” va rula „url=url.replaceAll(regex,replacement)”. Dacă este listă, înlocuirea va fi un element aleatoriu din ea. - \'automatic\': boolean: setat la true pentru a aplica automat modelul. - \'activat\': boolean: setat la false pentru a dezactiva modelul. Notă: dacă editați modelele, modelele noi încorporate din actualizările aplicației nu vor fi adăugate automat (le puteți restaura cu opțiunea de resetare).</string>
+    <string name="txt_tutorial5">Asta e tot. Iată câteva sfaturi care pot fi utile:
+\n
+\nAtunci când o aplicație nu vă oferă o modalitate de a deschide sau de a partaja un URL, dar vă oferă o modalitate de a face celălalt, puteți rezolva problema folosind această aplicație. De asemenea, puteți copia url-ul în clipboard apăsând lung butonul de partajare.
+\n
+\nExistă unele URL-uri care scopul său numai este redirecționarea vă la un alt URL- ul. Dacă url-ul final poate fi deschis într-o aplicație, atunci puteți evita deschiderea acestuia într-un browser.
+\n
+\nSper că veți găsi aplicația utilă! Și nu ezitați să sugerați caracteristici, să raportați bug-uri sau chiar să propuneți modificări. Găsiți toate linkurile relevante pe ecranul despre.</string>
+    <string name="txt_tutorial4">Modulele reprezintă modul în care aplicația interacționează cu adresele URL.
+\nFiecare dintre module are o funcție specifică. De obicei, pentru a prezenta informații despre URL-ul, sau permițându-i să fie modificate.
+\nCitiți despre ele și configurați-le după cum este necesar.
+\n
+\nImportant: Toate acțiunile sunt manuale în mod implicit. Aplicația nu va modifica nimic și nici nu se va conecta la Internet decât dacă o permiteți în mod specific, dar unele acțiuni pot fi aplicate automat dacă doriți.
+\n
+\nDeschideți lista de module din ecranul principal sau atingând butonul de mai jos.</string>
+    <string name="mClear_blocked">-BLOCAT!</string>
+    <string name="mClear_exception">- ignorat din cauza excepției %s</string>
+    <string name="mClear_rawRule">- conținut inutil găsit</string>
+    <string name="mClear_hashDesc">URL-ul fișierului hash de catalog. Dacă este omisă, descărcarea nu va fi verificată pentru a vedea dacă a fost manipulată/modificat (nu este recomandat)</string>
+    <string name="mClear_hashMismatch">Hashurile nu se potrivesc, este posibil ca fișierul să fi fost modificat. Dacă doriți să omiteți verificarea, eliminați adresa URL hash</string>
+    <string name="mClear_editor">Reguli de catalog: trebuie să respecte formatul de la https://docs.clearurls.xyz/latest/specs/rules/. Rețineți că orice modificare a obiectului părinte „furnizori” va fi suprascrisă dacă catalogul este actualizat automat sau manual din dialogul de actualizare. Pentru ca regulile personale să le seteze într-un obiect părinte diferit (orice nume).</string>
+    <string name="mRemove_desc">[DEPRECAT] Cu acest modul puteți elimina interogări de la adresa URL. Apăsați butonul pentru a le elimina pe toate sau apăsați pe săgeată pentru a le elimina pe rând. Mulțumim lui PabloOQ pentru idee și implementare originală!
+\n
+\nAcest modul a fost depreciat în favoarea modulului „Uri parts”.</string>
+    <string name="desc_decorations">Afișează/ascunde titlul</string>
+    <string name="desc_enable">Activarea/dezactivarea modulului</string>
+    <string name="btn_tutorialSettings">Repetarea tutorial-ul</string>
+    <string name="btn_tutorialSkip">Săriți peste tutorial</string>
+    <string name="btn_tutorialEnd">Termină tutorial-ul</string>
+    <string name="toast_noApp">Nu se poate deschide aplicația</string>
+    <string name="toast_noBrowser">Nu se poate deschide browser-ul web</string>
+    <string name="title_choose">Alegeți aplicația</string>
+    <string name="toast_invalid">Invalid</string>
+    <string name="save">Salvează</string>
+    <string name="reset">Resetare</string>
+    <string name="close">Închide</string>
+    <string name="clear">Șterge</string>
+    <string name="auto">Automat</string>
+    <string name="share">Partajați</string>
+    <string name="canceled">Anulat</string>
+    <string name="deviceDefault">Dispozitiv implicit</string>
+    <string name="next">Următor</string>
+    <string name="back">Înainte</string>
+    <string name="remove">Elimină</string>
+    <string name="edit">Editează</string>
+    <string name="add">Adaugă</string>
+    <string name="json_desc">[Funcția beta] Acesta este un editor avansat, conținutul trebuie formatat în JSON valid. Puteți apăsa butonul din dreapta sus pentru a-l formata și valida.</string>
+    <string name="json_edit">Editor avansat</string>
+    <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regexp care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. Modelele încorporate includ: - Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com - Sugerați înlocuirea „http” cu „https” - Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
+    <string name="mPttrn_fix">Aplică</string>
+    <string name="mPttrn_fixed">Aplicat - %s</string>
+    <string name="mPttrn_ascii">Atenție! S-au găsit caractere non-ASCII.</string>
+    <string name="mPttrn_http">Link HTTP. Luați în considerare utilizarea HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">Lipsește schema HTTP.</string>
+    <string name="mPttrn_noSchemeHttps">Lipsește schema HTTPS.</string>
+    <string name="mOpen_name">Deschideți și partajați</string>
+    <string name="mClear_tm">Catalogul încorporat copiat de la ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_desc">Acest modul elimină urmărirea, referințele și alți parametri inutili din URL. De asemenea, permite redirecționări URL offline obișnuite.</string>
+    <string name="mClear_clear">Aplică</string>
+    <string name="mClear_matches">Potriviri %s</string>
+    <string name="mLog_name">Jurnal</string>
+    <string name="mLog_desc">Acest modul înregistrează toate adresele URL verificate. Puteți vizualiza, șterge sau edita jurnalul complet aici, nicio indicație vizuală nu va apărea în dialogul principal. Pentru a dezactiva înregistrarea, trebuie doar să dezactivați modulul.</string>
 </resources>

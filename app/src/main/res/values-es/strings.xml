@@ -237,9 +237,11 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/. Ten en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
-    <string name="mRemove_desc">"Con este módulo puedes eliminar los parámetros de la URL.
-Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
-¡Gracias a PabloOQ por la idea e implementación original!"</string>
+    <string name="mRemove_desc">[DEPRECADO] Con este módulo puede eliminar parámetro de la URL.
+\nPresione el botón para eliminarlos todos o presione la flecha para eliminar uno a uno.
+\n¡Gracias a PabloOQ por la idea y la implementación original!
+\n
+\nEste módulo ha quedado deprecado en favor del módulo \'Partes de la URI\'</string>
     <string name="mRemove_found1">1 parámetro encontrado</string>
     <string name="mRemove_found">%d parámetros encontrados</string>
     <string name="mRemove_noQueries">Sin parámetros</string>
@@ -295,9 +297,17 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
     <string name="mFlags_invalid">Flag inválida</string>
-    <string name="mFlag_desc">[Funcionalidad beta] Este módulo avanzado te permite editar las flags del intent cuando abres una aplicación. En el cuadro de texto de debajo puedes marcar flags que sobreescribirán a las de por defecto, aquellas obtenidas del intent que se usó para abrir esta aplicación. Al usar el módulo puedes mantener pulsado el botón de editar para guardar las flags como valor por defecto. Puedes añadir flags escribiendo su nombre en el cuadro de entrada</string>
+    <string name="mFlag_desc">[Funcionalidad beta] Este es un módulo avanzado que te permite editar las marcas del intent al abrir otra aplicación.
+\nEste módulo mostrará una lista de marcas, se puede cambiar si la marca se establece o no tocando el icono. También hay un menú de desbordamiento para ocultar las marcas allí, es sólo visual, las marcas seguirán utilizando el estado asignado.
+\nLas marcas tendrán dos indicadores de color junto a la casilla de verificación. El de la izquierda muestra el valor recibido del intent, el de la derecha indica el estado establecido por el propio módulo. Rojo significa que la marca no está establecida y verde significa que sí lo está. Adicionalmente, el indicador puede ser gris, que significa que el estado se estableció en automático.
+\nCon el botón de abajo puede editar el estado por defecto y la visibilidad de las marcas.</string>
     <string name="mFlag_flagHint">Nombre de flag</string>
     <string name="remove">Eliminar</string>
     <string name="edit">Editar</string>
     <string name="add">Añadir</string>
+    <string name="on">Activado</string>
+    <string name="off">Desactivado</string>
+    <string name="mFlag_editFlags">Editar los valores por defecto de los marcadores</string>
+    <string name="mParts_name">Partes de la URI</string>
+    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento. Al hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada. También puedes hacer clic en el botón \'X\' para eliminar algunos de ellos. Esta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
 </resources>
