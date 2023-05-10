@@ -147,7 +147,7 @@ Remarque: si vous modifiez les modèles, les nouveaux modèles intégrés lors d
     <string name="mStatus_name">Code d\'état</string>
     <string name="mStatus_desc">"En appuyant sur le bouton de vérification, une requête sera faite pour récupérer et afficher le code d'état du site.
 Si le résultat est une redirection, vous pourrez voir l'url de destination.
-Le contenu de l'url est obtenu (HEAD), mais n'est pas évaluée, les redirections basées sur javascript ne seront donc pas détectées."</string>
+Le contenu de l'url est obtenu (GET), mais n'est pas évaluée, les redirections basées sur javascript ne seront donc pas détectées."</string>
     <string name="mStatus_ioerror">Erreur réseau lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_error">Erreur interne lors de la tentative de vérification de l\'URL: %s</string>
     <string name="mStatus_check">Vérifier le statut</string>

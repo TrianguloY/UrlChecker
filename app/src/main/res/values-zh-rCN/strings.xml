@@ -130,7 +130,7 @@
     <string name="mOpen_noapps">无应用</string>
     <string name="mOpen_tabsDesc">切换自定义标签页启用状态</string>
     <string name="mStatus_name">状态码</string>
-    <string name="mStatus_desc">当您按下检查按钮时，将发起一个请求以检索并显示站点状态代码。如果结果是重定向，则可以查看目标链接。获取链接的内容（HEAD），但不会对其进行评估，因此基于JavaScript的重定向不会被检测到。</string>
+    <string name="mStatus_desc">当您按下检查按钮时，将发起一个请求以检索并显示站点状态代码。如果结果是重定向，则可以查看目标链接。获取链接的内容（GET），但不会对其进行评估，因此基于JavaScript的重定向不会被检测到。</string>
     <string name="mStatus_ioerror">尝试检查链接时发生网络错误： %s</string>
     <string name="mStatus_error">尝试检查链接时发生内部错误：%s</string>
     <string name="mStatus_check">检查状态</string>

@@ -111,7 +111,7 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
     <string name="mStatus_name">Código de status</string>
     <string name="mStatus_desc">"Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.
 Se o resultado for um redirecionamento, poderá visualizar o URL de destino.
-O conteúdo da url é obtido (HEAD), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
+O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
     <string name="mStatus_check">Verificar</string>
