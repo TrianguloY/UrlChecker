@@ -130,10 +130,10 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
 - Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador."</string>
     <string name="mOpen_ctabs">"'Custom tabs':"</string>
-    <string name="mOpen_ctabsOn">Activado por defecto</string>
-    <string name="mOpen_ctabsOff">Desactivado por defecto</string>
-    <string name="mOpen_ctabsEn">Siempre activado</string>
-    <string name="mOpen_ctabsDis">Siempre desactivado</string>
+    <string name="defaultOn">Activado por defecto</string>
+    <string name="defaultOff">Desactivado por defecto</string>
+    <string name="alwaysOn">Siempre activado</string>
+    <string name="alwaysOff">Siempre desactivado</string>
     <string name="mOpen_closeOpen">Cierra la ventana después de abrir</string>
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>

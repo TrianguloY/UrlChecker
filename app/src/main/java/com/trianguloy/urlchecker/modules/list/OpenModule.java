@@ -18,7 +18,9 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
+import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -73,8 +75,9 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
 
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
+    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
     private boolean ctabs = false;
+    private final Incognito incognito;
 
     private List<String> packages;
     private Button btn_open;
@@ -87,6 +90,7 @@ class OpenDialog extends AModuleDialog {
     public OpenDialog(MainDialog dialog) {
         super(dialog);
         ctabsPref = CTabs.PREF(dialog);
+        incognito = new Incognito(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
@@ -133,6 +137,9 @@ class OpenDialog extends AModuleDialog {
             // not available, just ignore
             btn_ctabs.setVisibility(View.GONE);
         }
+
+        // incognito
+        incognito.initFrom(intent, views.findViewById(R.id.mode_incognito));
 
         // init open
         openParent = views.findViewById(R.id.open_parent);
@@ -246,6 +253,9 @@ class OpenDialog extends AModuleDialog {
             }
         }
 
+        // incognito
+        incognito.apply(intent);
+
         if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
             // disable ctabs
             intent.removeExtra(CTabs.EXTRA);
@@ -314,13 +324,15 @@ class OpenConfig extends AModuleConfig {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
+    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
+    private final GenericPref.Enumeration<OnOffConfig> incognitoPref;
 
     private final GenericPref.Bool perDomainPref;
 
     public OpenConfig(ModulesActivity activity) {
         super(activity);
         ctabsPref = CTabs.PREF(activity);
+        incognitoPref = Incognito.PREF(activity);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
         closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
         noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
@@ -340,6 +352,7 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
+        incognitoPref.attachToSpinner(views.findViewById(R.id.incognito_pref), null);
         closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
         closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
         noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));

@@ -33,7 +33,7 @@
     <string name="mPttrn_ascii">Advarsel! Fant ikke-ASCII -tegn.</string>
     <string name="mPttrn_ok">Ingen samsvarende mønster</string>
     <string name="mOpen_ctabs">Egendefinerte faner:</string>
-    <string name="mOpen_ctabsOn">Påskrudd som forvalg</string>
+    <string name="defaultOn">Påskrudd som forvalg</string>
     <string name="mOpen_closeOpen">Lukk dialog etter åpning</string>
     <string name="mOpen_closeShare">Lukk dialog etter deling</string>
     <string name="mOpen_perDomain">Sorter forskjellige domener for seg</string>
@@ -103,9 +103,9 @@
     <string name="mClear_name">URL-renser</string>
     <string name="mStatus_name">Statuskode</string>
     <string name="mClear_matches">Samsvarer med %s</string>
-    <string name="mOpen_ctabsOff">Avskrudd som forvalg</string>
-    <string name="mOpen_ctabsDis">Alltid avslått</string>
-    <string name="mOpen_ctabsEn">Alltid påslått</string>
+    <string name="defaultOff">Avskrudd som forvalg</string>
+    <string name="alwaysOff">Alltid avslått</string>
+    <string name="alwaysOn">Alltid påslått</string>
     <string name="mOpen_open">Åpne</string>
     <string name="mOpen_share">Del</string>
     <string name="mClear_urlHint">Katalog-nettadresse</string>

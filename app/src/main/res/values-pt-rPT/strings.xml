@@ -97,10 +97,10 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
 - Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
 - Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência."</string>
     <string name="mOpen_ctabs">Abas personalizadas:</string>
-    <string name="mOpen_ctabsOn">Ativado por padrão</string>
-    <string name="mOpen_ctabsOff">Desativado por padrão</string>
-    <string name="mOpen_ctabsEn">Sempre ativado</string>
-    <string name="mOpen_ctabsDis">Sempre desativado</string>
+    <string name="defaultOn">Ativado por padrão</string>
+    <string name="defaultOff">Desativado por padrão</string>
+    <string name="alwaysOn">Sempre ativado</string>
+    <string name="alwaysOff">Sempre desativado</string>
     <string name="mOpen_with">Abrir com %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Partilhar</string>

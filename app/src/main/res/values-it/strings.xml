@@ -86,10 +86,10 @@ Traduzioni: %s."</string>
 - Pulsante apri: Premi il nome dell'app per aprire il link in quell'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere tra le app disponibili.
 - Pulsante condividi: Premi il pulsante per condividere il link. Tienilo premuto per copiare nella clipboard."</string>
     <string name="mOpen_ctabs">Schede custom:</string>
-    <string name="mOpen_ctabsOn">Abilitato di default</string>
-    <string name="mOpen_ctabsOff">Disabilitato di default</string>
-    <string name="mOpen_ctabsEn">Sempre on</string>
-    <string name="mOpen_ctabsDis">Sempre off</string>
+    <string name="defaultOn">Abilitato di default</string>
+    <string name="defaultOff">Disabilitato di default</string>
+    <string name="alwaysOn">Sempre on</string>
+    <string name="alwaysOff">Sempre off</string>
     <string name="mOpen_closeOpen">"Chiudi finestra dopo l'apertura"</string>
     <string name="mOpen_closeShare">Chiudi finestra dopo la condivisione</string>
     <string name="mOpen_perDomain">Ordina domini diversi indipendentemente</string>

@@ -115,10 +115,10 @@
 - 打开按钮：按应用程序名称打开该应用程序中的链接。如果链接可以使用多个应用程序打开，则会显示箭头以供选择。
 - 分享按钮：按按钮以共享链接。长按可快速复制到剪贴板。"</string>
     <string name="mOpen_ctabs">自定义标签页:</string>
-    <string name="mOpen_ctabsOn">默认开启</string>
-    <string name="mOpen_ctabsOff">默认关闭</string>
-    <string name="mOpen_ctabsEn">始终开启</string>
-    <string name="mOpen_ctabsDis">始终关闭</string>
+    <string name="defaultOn">默认开启</string>
+    <string name="defaultOff">默认关闭</string>
+    <string name="alwaysOn">始终开启</string>
+    <string name="alwaysOff">始终关闭</string>
     <string name="mOpen_closeOpen">在打开之后关闭对话框</string>
     <string name="mOpen_closeShare">分享后关闭对话框</string>
     <string name="mOpen_perDomain">分别处理不同的域名</string>

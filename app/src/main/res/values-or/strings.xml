@@ -3,9 +3,9 @@
     <string name="link_privacy">ଗୋପନୀୟତା ନୀତି</string>
     <string name="spin_darkTheme">ଗାଢ଼</string>
     <string name="tutorial">ଅନୁଶିକ୍ଷଣ</string>
-    <string name="mOpen_ctabsOff">ଡିଫଲ୍ଟ ଭାଵରେ ଅକ୍ଷମ</string>
-    <string name="mOpen_ctabsEn">ସର୍ଵଦା ଚାଲୁ</string>
-    <string name="mOpen_ctabsDis">ସର୍ଵଦା ବନ୍ଦ</string>
+    <string name="defaultOff">ଡିଫଲ୍ଟ ଭାଵରେ ଅକ୍ଷମ</string>
+    <string name="alwaysOn">ସର୍ଵଦା ଚାଲୁ</string>
+    <string name="alwaysOff">ସର୍ଵଦା ବନ୍ଦ</string>
     <string name="mStatus_recheck">ଯାଞ୍ଚ କର</string>
     <string name="a_settings">ସେଟିଂ</string>
     <string name="a_about">ଵିଷୟରେ</string>
@@ -21,5 +21,5 @@
     <string name="mClear_autoUpdate">ସମୟ ସମୟରେ ଅଦ୍ୟତନ କରିବା</string>
     <string name="mClear_lastCheck">ଗତ ଯାଞ୍ଚ:</string>
     <string name="mClear_lastUpdate">ଗତ ଅଦ୍ୟତନ:</string>
-    <string name="mOpen_ctabsOn">ଡିଫଲ୍ଟ ଭାଵରେ ସକ୍ଷମ</string>
+    <string name="defaultOn">ଡିଫଲ୍ଟ ଭାଵରେ ସକ୍ଷମ</string>
 </resources>

@@ -86,10 +86,10 @@
 - 「開く」ボタン: アプリ名を押すと、そのアプリのリンクが開きます。複数のアプリでリンクを開くことができる場合は、選択できるように矢印が表示されます。
 - 共有ボタン: ボタンを押してリンクを共有します。長押しすると、クリップボードにすばやくコピーできます。\nこのモジュールを無効にすることはできません。"</string>
     <string name="mOpen_ctabs">カスタムタブ:</string>
-    <string name="mOpen_ctabsOn">デフォルトで有効</string>
-    <string name="mOpen_ctabsOff">デフォルトで無効</string>
-    <string name="mOpen_ctabsEn">常にオン</string>
-    <string name="mOpen_ctabsDis">常にオフ</string>
+    <string name="defaultOn">デフォルトで有効</string>
+    <string name="defaultOff">デフォルトで無効</string>
+    <string name="alwaysOn">常にオン</string>
+    <string name="alwaysOff">常にオフ</string>
     <string name="mOpen_closeOpen">開いた後にダイアログを閉じる</string>
     <string name="mOpen_closeShare">共有後にダイアログを閉じる</string>
     <string name="mOpen_perDomain">異なるドメインを個別にソートする</string>

@@ -8,7 +8,7 @@
     <string name="canceled">Cancelado</string>
     <string name="next">Próximo</string>
     <string name="json_edit">Editor avançado</string>
-    <string name="mOpen_ctabsOff">Desabilitado por padrão</string>
+    <string name="defaultOff">Desabilitado por padrão</string>
     <string name="mClear_clear">Aplicar</string>
     <string name="mLog_empty">Sem dados</string>
     <string name="btn_tutorialSkip">Pular tutorial</string>
@@ -37,7 +37,7 @@
     <string name="btn_setBrowser">Definir como navegador padrão</string>
     <string name="save">Salvar</string>
     <string name="back">Voltar</string>
-    <string name="mOpen_ctabsEn">Sempre ligado</string>
+    <string name="alwaysOn">Sempre ligado</string>
     <string name="desc_decorations">Exibir/ocultar título</string>
     <string name="desc_up">Mover para cima</string>
     <string name="reset">Redefinir</string>
@@ -46,7 +46,7 @@
     <string name="auto">Automático</string>
     <string name="mHist_name">Histórico</string>
     <string name="mLog_name">Log</string>
-    <string name="mOpen_ctabsDis">Sempre desligado</string>
+    <string name="alwaysOff">Sempre desligado</string>
     <string name="mOpen_with">Abrir com %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mStatus_check">Verificar status</string>
@@ -69,7 +69,7 @@
     <string name="toast_noApp">Não foi possível abrir o aplicativo</string>
     <string name="toast_noBrowser">Não foi possível abrir o navegador web</string>
     <string name="mOpen_name">Abrir e compartilhar</string>
-    <string name="mOpen_ctabsOn">Habilitado por padrão</string>
+    <string name="defaultOn">Habilitado por padrão</string>
     <string name="mVT_apiKey">Chave de API</string>
     <string name="btn_androidSettings">Configurações Android do aplicativo</string>
     <string name="txt_locale">Localização:</string>

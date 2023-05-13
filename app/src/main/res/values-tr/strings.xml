@@ -137,10 +137,10 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
 - Aç düğmesi: Bağlantıyı o uygulamada açmak için uygulama adına basın. Bir bağlantı birden fazla uygulama ile açılabiliyorsa, seçim yapmanızı sağlamak için bir ok gösterilecektir.
 - Paylaş düğmesi: Bağlantıyı paylaşmak için düğmeye basın. Panoya hızlıca kopyalamak için uzun basın."</string>
     <string name="mOpen_ctabs">Özel sekmeler:</string>
-    <string name="mOpen_ctabsOn">Varsayılan olarak etkin</string>
-    <string name="mOpen_ctabsOff">Varsayılan olarak devre dışı bırakıldı</string>
-    <string name="mOpen_ctabsEn">Her zaman açık</string>
-    <string name="mOpen_ctabsDis">Her zaman kapalı</string>
+    <string name="defaultOn">Varsayılan olarak etkin</string>
+    <string name="defaultOff">Varsayılan olarak devre dışı bırakıldı</string>
+    <string name="alwaysOn">Her zaman açık</string>
+    <string name="alwaysOff">Her zaman kapalı</string>
     <string name="mOpen_closeOpen">Açtıktan sonra iletişim kutusunu kapat</string>
     <string name="mOpen_closeShare">Paylaştıktan sonra iletişim kutusunu kapat</string>
     <string name="mOpen_perDomain">Farklı domainleri bağımsız olarak sıralama</string>

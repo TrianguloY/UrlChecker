@@ -92,12 +92,15 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="clear">Clear</string>
     <string name="none">None</string>
     <string name="auto">Automatic</string>
+    <string name="defaultOn">Enabled by default</string>
+    <string name="defaultOff">Disabled by default</string>
+    <string name="alwaysOn">Always on</string>
+    <string name="alwaysOff">Always off</string>
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
     <string name="deviceDefault">Device default</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
-
     <!--
         json
     -->
@@ -134,14 +137,12 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <!-- -->
     <string name="mOpen_name">Open and share</string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
-- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
+- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled, the browser should be opened in a 'lite' mode.
+- Incognito button: For Firefox only. Toggle to enable/disable the incognito mode. When enabled, the browser should be opened in incognito.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard."</string>
     <string name="mOpen_ctabs">Custom tabs:</string>
-    <string name="mOpen_ctabsOn">Enabled by default</string>
-    <string name="mOpen_ctabsOff">Disabled by default</string>
-    <string name="mOpen_ctabsEn">Always on</string>
-    <string name="mOpen_ctabsDis">Always off</string>
+    <string name="mOpen_incognito">Incognito mode:</string>
     <string name="mOpen_closeOpen">Close dialog after opening</string>
     <string name="mOpen_closeShare">Close dialog after sharing</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
@@ -152,6 +153,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_clipboard">URL copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
+    <string name="mOpen_incognitoDesc">Toggle incognito mode (for Firefox only)</string>
     <!-- -->
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (GET), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>

@@ -272,6 +272,7 @@ public abstract class GenericPref<T> {
 
         /**
          * Populate a spinner with this preference
+         * if listener is not null, it will be called each time the spinner changes value
          */
         public void attachToSpinner(Spinner spinner, JavaUtils.Consumer<T> listener) {
             // Put elements in the spinner
