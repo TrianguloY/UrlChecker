@@ -8,10 +8,10 @@ import com.trianguloy.urlchecker.utilities.Enums;
  */
 public enum OnOffConfig implements Enums.IdEnum, Enums.StringEnum {
     AUTO(0, R.string.auto),
-    ON(1, R.string.defaultOn),
-    OFF(2, R.string.defaultOff),
-    ENABLED(3, R.string.alwaysOn),
-    DISABLED(4, R.string.alwaysOff),
+    DEFAULT_ON(1, R.string.defaultOn),
+    DEFAULT_OFF(2, R.string.defaultOff),
+    ALWAYS_ON(3, R.string.alwaysOn),
+    ALWAYS_OFF(4, R.string.alwaysOff),
     ;
 
     // -----

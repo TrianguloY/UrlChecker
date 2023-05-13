@@ -3,7 +3,6 @@ package com.trianguloy.urlchecker.modules.list;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -74,9 +73,7 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-
-    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
-    private boolean ctabs = false;
+    private final CTabs cTabs;
     private final Incognito incognito;
 
     private List<String> packages;
@@ -85,11 +82,10 @@ class OpenDialog extends AModuleDialog {
     private View openParent;
     private Menu menu;
     private PopupMenu popup;
-    private ImageButton btn_ctabs;
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
-        ctabsPref = CTabs.PREF(dialog);
+        cTabs = new CTabs(dialog);
         incognito = new Incognito(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
@@ -105,38 +101,8 @@ class OpenDialog extends AModuleDialog {
     public void onInitialize(View views) {
         Intent intent = getActivity().getIntent();
 
-        // init ctabs
-        btn_ctabs = views.findViewById(R.id.ctabs);
-        if (CTabs.isAvailable()) {
-            btn_ctabs.setOnClickListener(v -> toggleCtabs());
-            AndroidUtils.longTapForDescription(btn_ctabs);
-            switch (ctabsPref.get()) {
-                case AUTO:
-                default:
-                    // If auto we get it from the intent
-                    setCtabs(intent.hasExtra(CTabs.EXTRA));
-                    break;
-                case ON:
-                    setCtabs(true);
-                    break;
-                case OFF:
-                    setCtabs(false);
-                    break;
-                case ENABLED:
-                    // enable but hide
-                    setCtabs(true);
-                    btn_ctabs.setVisibility(View.GONE);
-                    break;
-                case DISABLED:
-                    // disable but hide
-                    setCtabs(false);
-                    btn_ctabs.setVisibility(View.GONE);
-                    break;
-            }
-        } else {
-            // not available, just ignore
-            btn_ctabs.setVisibility(View.GONE);
-        }
+        // ctabs
+        cTabs.initFrom(intent, views.findViewById(R.id.ctabs));
 
         // incognito
         incognito.initFrom(intent, views.findViewById(R.id.mode_incognito));
@@ -243,23 +209,11 @@ class OpenDialog extends AModuleDialog {
             intent = UrlUtils.getViewIntent(getUrl(), chosen);
         }
 
-        if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
-            // enable Custom tabs
-
-            if (CTabs.isAvailable()) {
-                Bundle extras = new Bundle();
-                extras.putBinder(CTabs.EXTRA, null); //  Set to null for no session
-                intent.putExtras(extras);
-            }
-        }
+        // ctabs
+        cTabs.apply(intent);
 
         // incognito
         incognito.apply(intent);
-
-        if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
-            // disable ctabs
-            intent.removeExtra(CTabs.EXTRA);
-        }
 
         // Get flags from global data (probably set by flags module, if active)
         Integer flags = Flags.getGlobalFlagsNullable(this);
@@ -300,21 +254,6 @@ class OpenDialog extends AModuleDialog {
         if (closeSharePref.get()) {
             this.getActivity().finish();
         }
-    }
-
-    /**
-     * Toggle the custom tabs state
-     */
-    private void toggleCtabs() {
-        setCtabs(!ctabs);
-    }
-
-    /**
-     * Sets the custom tabs state
-     */
-    private void setCtabs(boolean state) {
-        btn_ctabs.setImageResource(state ? R.drawable.ctabs_on : R.drawable.ctabs_off);
-        ctabs = state;
     }
 
 }

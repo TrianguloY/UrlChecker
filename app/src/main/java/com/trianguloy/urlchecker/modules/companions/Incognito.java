@@ -22,7 +22,7 @@ public class Incognito {
     }
 
     private final GenericPref.Enumeration<OnOffConfig> pref;
-    private boolean state;
+    private boolean state = false;
 
     public Incognito(Context cntx) {
         this.pref = PREF(cntx);
@@ -35,27 +35,27 @@ public class Incognito {
         // init state
         boolean visible;
         switch (pref.get()) {
-            case ENABLED:
-                state = true;
-                visible = false;
-                break;
-            case ON:
-                state = true;
-                visible = true;
-                break;
-            case DISABLED:
-                state = false;
-                visible = false;
-                break;
-            case OFF:
-                state = false;
-                visible = true;
-                break;
-            default:
             case AUTO:
+            default:
                 // for Firefox
                 state = intent.getBooleanExtra("private_browsing_mode", false);
                 visible = true;
+                break;
+            case DEFAULT_ON:
+                state = true;
+                visible = true;
+                break;
+            case DEFAULT_OFF:
+                state = false;
+                visible = true;
+                break;
+            case ALWAYS_ON:
+                state = true;
+                visible = false;
+                break;
+            case ALWAYS_OFF:
+                state = false;
+                visible = false;
                 break;
         }
 
