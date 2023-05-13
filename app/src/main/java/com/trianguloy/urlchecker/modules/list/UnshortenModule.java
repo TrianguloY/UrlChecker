@@ -110,7 +110,7 @@ class UnshortenDialog extends AModuleDialog {
             // get response
             var response = new JSONObject(StreamUtils.readFromUrl("https://unshorten.me/json/" + getUrl()));
             var resolved_url = response.getString("resolved_url");
-            var usage_count = Integer.parseInt(response.getString("usage_count"));
+            var usage_count = Integer.parseInt(response.optString("usage_count", "0"));
             var ref = new Object() { // reference object to allow using these inside lambdas
                 int usage_limit = 10; // documented but hardcoded
                 int remaining_calls = usage_limit - usage_count;
