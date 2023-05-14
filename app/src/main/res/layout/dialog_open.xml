@@ -45,6 +45,14 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/copyUrl"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/mOpen_copyUrl" />
+
+
+    <Button
         android:id="@+id/share"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"

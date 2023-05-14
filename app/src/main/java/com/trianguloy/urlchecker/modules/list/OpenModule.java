@@ -142,6 +142,10 @@ class OpenDialog extends AModuleDialog {
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(v -> showList());
 
+        // init copy to URL
+        View btn_copy = views.findViewById(R.id.copyUrl);
+        btn_copy.setOnClickListener(v -> AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl()));
+
         // init share
         View btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(v -> shareUrl());

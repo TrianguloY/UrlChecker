@@ -14,6 +14,7 @@
     -->
     <string name="txt_info">Esta aplicación actúa como intermediario al abrir enlaces URL. Se muestra un diálogo con información sobre el enlace cuando se elige esta aplicación para abrirlo. Pulse el botón \'Módulos\' de abajo para comprobar y configurar todos los módulos disponibles.</string>
     <string name="txt_sample">Pulsa el enlace de debajo para probar la app:</string>
+    <string name="txt_or">O:</string>
     <string name="a_modules">Módulos</string>
     <string name="a_settings">Ajustes</string>
     <string name="a_about">Acerca de</string>

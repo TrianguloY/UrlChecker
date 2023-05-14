@@ -14,6 +14,8 @@
     -->
     <string name="txt_info">This app acts as an intermediary when opening clicked URL links. A dialog with some info about the link is shown when choosing this app to open it. Press the module button below to check and configure all available modules.</string>
     <string name="txt_sample">Press the link below to test it:</string>
+    <string name="txt_or">OR:</string>
+    <string name="a_checkUrl">Check URL from clipboard</string>
     <string name="a_modules">Modules</string>
     <string name="a_settings">Settings</string>
     <string name="a_about">About</string>
@@ -151,6 +153,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
+    <string name="mOpen_copyUrl">Copy URL</string>
     <string name="mOpen_clipboard">URL copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>

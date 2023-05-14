@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // option for the open in clipboard shortcut
-        menu.add(R.string.shortcut_checkClipboard)
+      /*  menu.add(R.string.shortcut_checkClipboard)
                 .setIcon(R.mipmap.clipboard_launcher)
                 .setOnMenuItemClickListener(o -> {
                     PackageUtils.startActivity(
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
                             this
                     );
                     return true;
-                });
+                }); */
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,6 +86,10 @@ public class MainActivity extends Activity {
 
     public void aboutToast(View view) {
         Toast.makeText(this, getString(R.string.app_name) + " - " + getString(R.string.trianguloy), Toast.LENGTH_SHORT).show();
+    }
+
+    public void openURLActivity(View view) {
+        PackageUtils.startActivity(new Intent(this, ShortcutsActivity.class), R.string.toast_noApp,this);
     }
 
 }
