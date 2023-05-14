@@ -35,8 +35,9 @@ public class ShortcutsActivity extends Activity {
         if (Intent.ACTION_CREATE_SHORTCUT.equals(getIntent().getAction())) {
             // old android method
             setResult(RESULT_OK, new Intent()
-                    .putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(this, getClass()))
-                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(this, getClass())
+                            .setAction(Intent.ACTION_VIEW)
+                    )
                     .putExtra(Intent.EXTRA_SHORTCUT_NAME, getString(R.string.shortcut_checkClipboard))
                     .putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, R.mipmap.clipboard_launcher))
             );
