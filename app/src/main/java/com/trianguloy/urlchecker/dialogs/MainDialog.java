@@ -227,7 +227,7 @@ public class MainDialog extends Activity {
                 // set module block
                 if (ModuleManager.getDecorationsPrefOfModule(moduleData, this).get()) {
                     // init decorations
-                    View block = Inflater.inflate(R.layout.dialog_module, ll_mods, this);
+                    View block = Inflater.inflate(R.layout.dialog_module, ll_mods);
                     final TextView title = block.findViewById(R.id.title);
                     title.setText(getString(R.string.dd, getString(moduleData.getName())));
                     parent = block.findViewById(R.id.mod);
@@ -237,7 +237,7 @@ public class MainDialog extends Activity {
                 }
 
                 // set module content
-                child = Inflater.inflate(layoutId, parent, this);
+                child = Inflater.inflate(layoutId, parent);
                 views.add(child);
             }
 
@@ -261,7 +261,7 @@ public class MainDialog extends Activity {
      * Adds a separator component to the list of mods
      */
     private View addSeparator() {
-        return Inflater.inflate(R.layout.separator, ll_mods, this);
+        return Inflater.inflate(R.layout.separator, ll_mods);
     }
 
     /**

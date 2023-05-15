@@ -110,7 +110,7 @@ class UnshortenDialog extends AModuleDialog {
             // get response
             var response = new JSONObject(StreamUtils.readFromUrl("https://unshorten.me/json/" + getUrl()));
             var resolved_url = response.getString("resolved_url");
-            var usage_count = Integer.parseInt(response.getString("usage_count"));
+            var usage_count = Integer.parseInt(response.optString("usage_count", "0"));
             var ref = new Object() { // reference object to allow using these inside lambdas
                 int usage_limit = 10; // documented but hardcoded
                 int remaining_calls = usage_limit - usage_count;
@@ -143,7 +143,10 @@ class UnshortenDialog extends AModuleDialog {
             } else if (Objects.equals(resolved_url, getUrl())) {
                 // same, nothing to replace
                 getActivity().runOnUiThread(() -> {
-                    info.setText(getActivity().getString(R.string.mUnshort_notFound, ref.remaining_calls, ref.usage_limit));
+                    var pending = ref.remaining_calls <= ref.usage_limit / 2
+                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
+                            : "";
+                    info.setText(getActivity().getString(R.string.mUnshort_notFound) + pending);
                     AndroidUtils.clearRoundedColor(info);
                 });
             } else {
@@ -151,7 +154,10 @@ class UnshortenDialog extends AModuleDialog {
                 getActivity().runOnUiThread(() -> {
                     setUrl(new UrlData(resolved_url).dontTriggerOwn());
 
-                    info.setText(getActivity().getString(R.string.mUnshort_ok, ref.remaining_calls, ref.usage_limit));
+                    var pending = ref.remaining_calls <= ref.usage_limit / 2
+                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
+                            : "";
+                    info.setText(getActivity().getString(R.string.mUnshort_ok) + pending);
                     AndroidUtils.setRoundedColor(R.color.good, info);
                     // a short url can redirect to another short url
                     unshort.setEnabled(true);

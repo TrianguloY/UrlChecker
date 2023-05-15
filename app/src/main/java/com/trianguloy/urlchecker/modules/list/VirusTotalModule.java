@@ -4,10 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -19,6 +17,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.VirusTotalUtility;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 import com.trianguloy.urlchecker.utilities.UrlUtils;
 
@@ -57,7 +56,7 @@ public class VirusTotalModule extends AModuleData {
     }
 }
 
-class VirusTotalConfig extends AModuleConfig implements TextWatcher {
+class VirusTotalConfig extends AModuleConfig {
 
     final GenericPref.Str api_key;
 
@@ -79,23 +78,15 @@ class VirusTotalConfig extends AModuleConfig implements TextWatcher {
 
     @Override
     public void onInitialize(View views) {
-        final EditText edit_key = (EditText) views.findViewById(R.id.api_key);
+        var edit_key = views.<TextView>findViewById(R.id.api_key);
         edit_key.setText(api_key.get());
-        edit_key.addTextChangedListener(this);
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        api_key.set(s.toString());
-        if (!canBeEnabled()) disable();
+        edit_key.addTextChangedListener(new DefaultTextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                api_key.set(s.toString());
+                if (!canBeEnabled()) disable();
+            }
+        });
     }
 }
 

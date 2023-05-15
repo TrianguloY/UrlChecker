@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translator(s) name:
         If you create or update a translation, add how you want to be credited here.
@@ -8,25 +9,21 @@
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">Italiano</string>
-
     <!-- main -->
     <string name="txt_info">"Quest'app agisce come uno step intermedio tra il premere su un link e la sua apertura. Quando premi su un link e scegli quest'app per aprirlo, ti verrà mostrata una finestra con delle informazioni riguardo il link. Premi il pulsante dei moduli in basso per dare un'occhiata a tutti i moduli disponibili."</string>
-
     <string name="txt_sample">Premi il link qui in basso per provare:</string>
     <string name="a_modules">Moduli</string>
     <string name="a_settings">Impostazioni</string>
     <string name="a_about">Informazioni</string>
-
     <!-- about -->
     <string name="txt_about">"App creata da TrianguloY.
 
 Contributi: %s.
 Traduzioni: %s."</string>
-    <string name="link_blog">"TrianguloY's blog"</string>
+    <string name="link_blog">Blog di TrianguloY</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Codice sorgente</string>
-    <string name="link_privacy">Privacy policy</string>
-
+    <string name="link_privacy">Informativa sulla privacy</string>
     <!-- modules -->
     <string name="txt_conf">Qui puoi vedere tutti i moduli disponibili, la loro descrizione, ed impostazioni. Puoi anche re-ordinarli, ed abilitarli o disabilitarli.</string>
     <string name="toast_cantEnable">"Impossibile abilitare il modulo, configurazione mancante?"</string>
@@ -36,22 +33,20 @@ Traduzioni: %s."</string>
     <string name="desc_down">Muovi giù</string>
     <string name="desc_decorations">Mostra/nascondi titoli</string>
     <string name="desc_enable">Attiva/disattiva modulo</string>
-
     <!-- settings -->
     <string name="txt_openLinks">"Durante gli anni, il modo per configurare l'apertura dei link nelle app è cambiato. Trovi qui in basso tutte le impostazioni disponibili al riguardo per il tuo dispositivo, se i link non vengono aperti in quest'app, dai un'occhiata a tutti."</string>
     <string name="btn_setBrowser">Imposta come browser di default</string>
-    <string name="toast_defaultSet">"L'app è impostata come browser di default"</string>
-    <string name="btn_configureBrowser">Browser di default</string>
+    <string name="toast_defaultSet">L\'app è ora il browser web predefinito</string>
+    <string name="btn_configureBrowser">Browser web predefinito</string>
     <string name="btn_linksSettings">Apri link supportati</string>
     <string name="btn_androidSettings">Informazioni app</string>
     <string name="txt_theme">Tema:</string>
     <string name="spin_darkTheme">Scuro</string>
     <string name="spin_lightTheme">Chiaro</string>
     <string name="txt_locale">Lingua:</string>
-
     <!-- generic -->
-    <string name="toast_noApp">"Impossibile aprire l'app"</string>
-    <string name="toast_noBrowser">"Impossibile aprire il browser"</string>
+    <string name="toast_noApp">Impossibile aprire l\'app</string>
+    <string name="toast_noBrowser">Impossibile aprire il browser web</string>
     <string name="title_choose">Scegli app</string>
     <string name="toast_invalid">Invalido</string>
     <string name="save">Salva</string>
@@ -62,45 +57,39 @@ Traduzioni: %s."</string>
     <string name="share">Condividi</string>
     <string name="canceled">Cancellato</string>
     <string name="deviceDefault">Impostazioni predefinite</string>
-
-
     <string name="json_desc">"[Funzionalità beta] Questo è un editor avanzato, il contenuto dev'essere formattato in JSON. Puoi premere il pulsante in alto a destra per formattare e controllare."</string>
     <string name="json_edit">Editor avanzato</string>
-
-
     <!-- modules -->
-    <string name="mPttrn_name">Controllo dei patterns</string>
+    <string name="mPttrn_name">Controllo dei pattern</string>
     <string name="mPttrn_desc">"Controlla cose comuni nell'url. Patterns inclusi:
 * Caratteri non-ascii come lettere greche. Quest'ultimi possono essere usati per phishing: googĺe.com vs google.com
 * Links http
 * Schema http(s) mancante"</string>
-
     <string name="mPttrn_userContent">Lista di altri patterns creati dalla community: %s</string>
     <string name="mPttrn_fix">Applica</string>
     <string name="mPttrn_fixed">Applicato - %s</string>
-    <string name="mPttrn_ascii">Attenzione! Caratteri non ascii rilevati.</string>
-    <string name="mPttrn_http">Link HTTP, considera di utilizzare HTTPS.</string>
-    <string name="mPttrn_noSchemeHttp">Schema http mancante.</string>
-    <string name="mPttrn_noSchemeHttps">Schema https mancante.</string>
-    <string name="mPttrn_ok">Nessun pattern combacia</string>
-    <string name="mPttrn_editor">"Qui puoi modificare od aggiungere altri patterns. Formato:
-- 'regex': stringa: regex valida in java che verrà confrontata con l'url.
-- 'replacement': stringa|lista: se configurato, il pulsante "fix" eseguirà 'url=url.replaceAll(regex,replacement)'. Se viene configurata una lista, verrà preso un elemento a random da essa.
-- 'automatic': booleana: settala a true per applicare il pattern automaticamente.
-- 'enabled' booleana: settala a false per disabilitare il pattern.
-Nota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiornamenti, non verranno aggiunti. (puoi ripristinarli con l'opzione di reset)."</string>
-
-    <string name="mOpen_name"><![CDATA[Apri e condividi]]></string>
+    <string name="mPttrn_ascii">Attenzione! Rilevati caratteri non ASCII.</string>
+    <string name="mPttrn_http">Collegamento HTTP. Considera l\'utilizzo di HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">Schema HTTP mancante.</string>
+    <string name="mPttrn_noSchemeHttps">Schema HTTPS mancante.</string>
+    <string name="mPttrn_ok">Nessun pattern combaciante</string>
+    <string name="mPttrn_editor">Qui puoi modificare od aggiungere altri patterns. Formato: 
+\n- \'regex\': stringa: una regex java valida che deve combaciare con l\'intero pattern. 
+\n- \'excludeRegex\': stringa: se fornita, una regex java valida che non deve combaciare con l\'intero pattern. 
+\n- \'replacement\': stringa|lista: se configurato, il pulsante fix eseguirà \'url=url.replaceAll(regex,replacement)\'. Se viene configurata una lista, verrà preso un elemento a random da essa. 
+\n- \'automatic\': booleana: settala a true per applicare il pattern automaticamente. 
+\n- \'enabled\' booleana: settala a false per disabilitare il pattern. 
+\nNota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiornamenti, non verranno aggiunti. (puoi ripristinarli con l\'opzione di reset).</string>
+    <string name="mOpen_name">Apri e condividi</string>
     <string name="mOpen_desc">"Continene i seguenti pulsanti (da sinistra a destra):
 - Schede custom: premi per attivare o disattivare le schede custom. Quando abilitato il browser dovrebbe essere aperto in modalità "light".
 - Pulsante apri: Premi il nome dell'app per aprire il link in quell'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere tra le app disponibili.
 - Pulsante condividi: Premi il pulsante per condividere il link. Tienilo premuto per copiare nella clipboard."</string>
-
     <string name="mOpen_ctabs">Schede custom:</string>
-    <string name="mOpen_ctabsOn">Abilitato di default</string>
-    <string name="mOpen_ctabsOff">Disabilitato di default</string>
-    <string name="mOpen_ctabsEn">Sempre on</string>
-    <string name="mOpen_ctabsDis">Sempre off</string>
+    <string name="defaultOn">Abilitato di default</string>
+    <string name="defaultOff">Disabilitato di default</string>
+    <string name="alwaysOn">Sempre on</string>
+    <string name="alwaysOff">Sempre off</string>
     <string name="mOpen_closeOpen">"Chiudi finestra dopo l'apertura"</string>
     <string name="mOpen_closeShare">Chiudi finestra dopo la condivisione</string>
     <string name="mOpen_perDomain">Ordina domini diversi indipendentemente</string>
@@ -108,13 +97,12 @@ Nota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiorname
     <string name="mOpen_with">Apri con %s</string>
     <string name="mOpen_open">Apri</string>
     <string name="mOpen_share">Condividi</string>
-    <string name="mOpen_clipboard">Url copiato nella clipboard</string>
+    <string name="mOpen_clipboard">URL copiato negli appunti</string>
     <string name="mOpen_noapps">Nessuna app</string>
     <string name="mOpen_tabsDesc">Attiva/disattiva</string>
-
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">"Premendo il pulsante di check, una richiesta verrà inviata per recuperare lo status code del sito. Se il risultato è una re-indirizzazione, ti verrà mostrato l'url di destinazione.
-Il contenuto viene recuperato (HEAD) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati."</string>
+Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati."</string>
     <string name="mStatus_ioerror">"Errore di rete durante il controllo dell'url: %s"</string>
     <string name="mStatus_error">"Errore interno durante il controllo dell'url: %s"</string>
     <string name="mStatus_check">Controlla stato</string>
@@ -139,14 +127,11 @@ Il contenuto viene recuperato (HEAD) ma non controllato, quindi re-indirizzament
     </string-array>
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
     <string name="mStatus_redir">Re-indirizzazione: %s</string>
-
     <string name="mInput_name">Modifica link</string>
     <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>
-
     <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"Quando questo modulo è abilitato puoi scansionare l'url utilizzando VirusTotal e visualizzare il report.
-Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us."</string>
-
+Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us ."</string>
     <string name="mVT_apiKey">chiave api</string>
     <string name="mVT_tm">VirusTotal™ è un trademark di Google, Inc.</string>
     <string name="mVT_scan">Scansiona</string>
@@ -163,12 +148,9 @@ Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi c
 Se attivi questa funzione, verrà mostrato l'intent come uri, utile per sviluppatori.
 
 Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiare tutto."</string>
-
     <string name="mD_ctabs">Mostra i messaggi di debug dal serivzio di schede custom.</string>
-
     <string name="mHist_name">Cronologia</string>
     <string name="mHist_desc">"Quando l'url viene modificato, sia manualmente o da altri moduli, quest'ultimo ti permette di annullare le modifiche."</string>
-
     <string name="mClear_name">Pulitore URL</string>
     <string name="mClear_desc">Questo modulo rimuove parametri inutili e referrals. Inoltre permette una pulizia semplice quando offline.</string>
     <string name="mClear_tm">Lista di default presa da ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
@@ -204,8 +186,6 @@ Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiar
     <string name="mClear_restore">Ripristina percorsi ClearURLs</string>
     <string name="mClear_editor">"Lista regole: Devono seguire il formato da https://docs.clearurls.xyz/latest/specs/rules/.
 Tieni conto che qualsiasi modifica ai 'providers' verrà sovrscaritta se la lista viene aggiornata automaticamente o manualmente dalla finestra degli aggiornamenti. Per avere regole custom impostale in un parent object diverso."</string>
-
-
     <string name="mRemove_name">Pulitore queries</string>
     <string name="mRemove_desc">"Con questo modulo puoi rimuovere queries dall'URL.
 Premi il pulsante per rimuoverle tutte o premi la freccia per rimuoverne una alla volta.
@@ -216,7 +196,6 @@ Grazie a PabloOQ per l'idea originale!"</string>
     <string name="mRemove_all">Rimuovi tutte</string>
     <string name="mRemove_one">Rimuovi %s</string>
     <string name="mRemove_empty">Rimuovi vuota</string>
-
     <string name="mLog_name">Log</string>
     <string name="mLog_desc">"Questo modulo logga tutti gli url controllati.
 Puoi visualizzare, pulire o modificare l'intero log qui.
@@ -224,7 +203,6 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mLog_view">Visualizza log</string>
     <string name="mLog_edit">Modifica log</string>
     <string name="mLog_empty">Nessun dato</string>
-
     <string name="mHosts_name">Categorie hosts</string>
     <string name="mHosts_desc">"Questo modulo etichetta gli hosts, e può essere configurato manualmente od utilizzando un file remoto hosts-like.
     Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
@@ -250,5 +228,28 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mHosts_buildDownload">"Scaricando '%s' hosts da %s…"</string>
     <string name="mHosts_buildSave">Salvando…</string>
     <string name="mHosts_built">Database pronto: %d hosts</string>
-
+    <string name="txt_tutorial1">Grazie per aver scaricato l\'applicazione!
+\n
+\nQuesto è il tutorial, se vuoi saltarlo puoi farlo con il pulsante qui sotto. Puoi sempre tornare a questo tutorial dal menu delle impostazioni.</string>
+    <string name="txt_tutorial4">I moduli sono il modo in cui l\'applicazione interagisce con gli URL.
+\nOgni modulo ha una funzione specifica. Di solito per presentare informazioni sull\'URL o per consentirne la modifica.
+\nLeggi i moduli e configurali secondo le necessità.
+\n
+\nImportante: tutte le azioni sono manuali per impostazione predefinita. L\'app non modificherà nulla né si collegherà a Internet a meno che tu non lo consenta espressamente, ma alcune azioni possono essere applicate automaticamente, se lo preferisci.
+\n
+\nApri l\'elenco dei moduli dalla schermata principale o toccando il pulsante sottostante.</string>
+    <string name="txt_tutorial5">Questo è tutto. Ecco alcuni suggerimenti che possono essere utili:
+\n
+\nQuando un\'app non consente di aprire o condividere un URL, ma offre un modo per fare l\'altro, è possibile risolvere il problema utilizzando questa app. Puoi anche copiare l\'URL negli appunti premendo a lungo il pulsante di condivisione.
+\n
+\nCi sono alcuni URL il cui unico scopo è reindirizzarti a un altro URL. Se l\'URL finale può essere aperto in un\'app, puoi evitare di aprirlo in un browser.
+\n
+\nSpero che l\'applicazione ti sia utile! E non esitare a suggerire funzionalità, segnalare bug o proporre modifiche. Trovi tutti i link pertinenti nella schermata delle informazioni.</string>
+    <string name="btn_tutorialSettings">Ripeti il tutorial</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="txt_tutorial3">Imposta l\'app come browser web predefinito per intercettare gli URL all\'apertura.
+\n(Non necessario se gli URL vengono reindirizzati utilizzando la funzionalità \"Condividi\".)</string>
+    <string name="btn_tutorialSkip">Salta il tutorial</string>
+    <string name="btn_tutorialEnd">Termina il tutorial</string>
+    <string name="shortcut_checkClipboard">Controlla gli URL dagli appunti</string>
 </resources>

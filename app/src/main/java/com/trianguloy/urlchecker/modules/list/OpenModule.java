@@ -3,7 +3,6 @@ package com.trianguloy.urlchecker.modules.list;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,10 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
+import com.trianguloy.urlchecker.modules.companions.Flags;
+import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -71,9 +73,8 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
-    private boolean ctabs = false;
+    private final CTabs cTabs;
+    private final Incognito incognito;
 
     private List<String> packages;
     private Button btn_open;
@@ -81,11 +82,11 @@ class OpenDialog extends AModuleDialog {
     private View openParent;
     private Menu menu;
     private PopupMenu popup;
-    private ImageButton btn_ctabs;
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
-        ctabsPref = CTabs.PREF(dialog);
+        cTabs = new CTabs(dialog);
+        incognito = new Incognito(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
@@ -100,38 +101,11 @@ class OpenDialog extends AModuleDialog {
     public void onInitialize(View views) {
         Intent intent = getActivity().getIntent();
 
-        // init ctabs
-        btn_ctabs = views.findViewById(R.id.ctabs);
-        if (CTabs.isAvailable()) {
-            btn_ctabs.setOnClickListener(v -> toggleCtabs());
-            AndroidUtils.longTapForDescription(btn_ctabs);
-            switch (ctabsPref.get()) {
-                case AUTO:
-                default:
-                    // If auto we get it from the intent
-                    setCtabs(intent.hasExtra(CTabs.EXTRA));
-                    break;
-                case ON:
-                    setCtabs(true);
-                    break;
-                case OFF:
-                    setCtabs(false);
-                    break;
-                case ENABLED:
-                    // enable but hide
-                    setCtabs(true);
-                    btn_ctabs.setVisibility(View.GONE);
-                    break;
-                case DISABLED:
-                    // disable but hide
-                    setCtabs(false);
-                    btn_ctabs.setVisibility(View.GONE);
-                    break;
-            }
-        } else {
-            // not available, just ignore
-            btn_ctabs.setVisibility(View.GONE);
-        }
+        // ctabs
+        cTabs.initFrom(intent, views.findViewById(R.id.ctabs));
+
+        // incognito
+        incognito.initFrom(intent, views.findViewById(R.id.mode_incognito));
 
         // init open
         openParent = views.findViewById(R.id.open_parent);
@@ -239,23 +213,14 @@ class OpenDialog extends AModuleDialog {
             intent = UrlUtils.getViewIntent(getUrl(), chosen);
         }
 
-        if (ctabs && !intent.hasExtra(CTabs.EXTRA)) {
-            // enable Custom tabs
+        // ctabs
+        cTabs.apply(intent);
 
-            if (CTabs.isAvailable()) {
-                Bundle extras = new Bundle();
-                extras.putBinder(CTabs.EXTRA, null); //  Set to null for no session
-                intent.putExtras(extras);
-            }
-        }
-
-        if (!ctabs && intent.hasExtra(CTabs.EXTRA)) {
-            // disable ctabs
-            intent.removeExtra(CTabs.EXTRA);
-        }
+        // incognito
+        incognito.apply(intent);
 
         // Get flags from global data (probably set by flags module, if active)
-        Integer flags = FlagsDialog.getFlagsNullable(this);
+        Integer flags = Flags.getGlobalFlagsNullable(this);
         if (flags != null) {
             intent.setFlags(flags);
         }
@@ -295,21 +260,6 @@ class OpenDialog extends AModuleDialog {
         }
     }
 
-    /**
-     * Toggle the custom tabs state
-     */
-    private void toggleCtabs() {
-        setCtabs(!ctabs);
-    }
-
-    /**
-     * Sets the custom tabs state
-     */
-    private void setCtabs(boolean state) {
-        btn_ctabs.setImageResource(state ? R.drawable.ctabs_on : R.drawable.ctabs_off);
-        ctabs = state;
-    }
-
 }
 
 class OpenConfig extends AModuleConfig {
@@ -317,13 +267,15 @@ class OpenConfig extends AModuleConfig {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Enumeration<CTabs.Config> ctabsPref;
+    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
+    private final GenericPref.Enumeration<OnOffConfig> incognitoPref;
 
     private final GenericPref.Bool perDomainPref;
 
     public OpenConfig(ModulesActivity activity) {
         super(activity);
         ctabsPref = CTabs.PREF(activity);
+        incognitoPref = Incognito.PREF(activity);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
         closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
         noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
@@ -343,6 +295,7 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
+        incognitoPref.attachToSpinner(views.findViewById(R.id.incognito_pref), null);
         closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
         closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
         noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));

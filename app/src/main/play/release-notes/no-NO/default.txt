@@ -1,10 +1,21 @@
+V 2.11
+- New module: Edit Flags
+- New module: Uri parts (substitute of Queries remover)
+- New config: excludeRegex field on Pattern Checker module
+- Change: modules are now hidden when unused
+- Fix: opened apps weren't showing on recents
+- Fix: standard shortcuts weren't available
+- Fix: keyboard was obstructing the dialog
+- Fix: status module wasn't working properly
+- Translations: New and updates from symbuzzer and other from Weblate
+
 V 2.10
-- New tutorial screen
-- New module: Unshortener
-- New features and improvements to status module
-- New shortcut & tile to open clipboard links
-- New chinese translation. Many thanks to Seviche CC!
-- Visual fixes
+- Ny veiledningsskjerm
+- Ny modul: Avforkorter
+- Nye funksjoner og forbedringer i statusmodulen
+- Ny snarvei og flis for åpning av utklippstavlelenker
+- Ny kinesisk oversettelse, takket være Seviche CC.
+- Visuelle forbedringer
 
 V 2.9.1
 - New Italian translation. Thanks to dperruso!

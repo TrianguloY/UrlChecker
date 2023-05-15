@@ -117,13 +117,13 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_noSchemeHttp">Falta esquema HTTP.</string>
     <string name="mPttrn_noSchemeHttps">Falta esquema HTTPS.</string>
     <string name="mPttrn_ok">No hay patrones coincidentes</string>
-    <string name="mPttrn_editor">Aquí puede editar o añadir un nuevo patrón. Formato: 
-\n- \'regex\': cadena: un regex de java válido que debe coincidir para que coincida todo el patrón. 
-\n- \'excludeRegex\': cadena: si se proporciona, un regex java válido que no debe coincidir para que coincida todo el patrón. 
-\n- \'replacement\': cadena|lista: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma. 
-\n- \'automatic\': booleano: se establece en true para aplicar automáticamente el patrón. 
-\n- \'enabled\': booleano: establece false para desactivar el patrón. 
-\nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la aplicación no se añadirán automáticamente (puedes restaurarlos con la opción restaurar).</string>
+    <string name="mPttrn_editor">Aquí puedes editar o añadir un nuevo patrón. Formato:
+\n- \'regex\': cadena: un regex de java válido que debe coincidir para que coincida todo el patrón.
+\n- \'excludeRegex\': cadena: si se proporciona, un regex java válido que no debe coincidir para que coincida todo el patrón.
+\n- \'replacement\': string|list: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma.
+\n- \'automatic\': booleano: se establece en true para aplicar automáticamente el patrón.
+\n- \'enabled\': booleano: establecido en false para desactivar el patrón.
+\nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la app no se añadirán automáticamente (puedes restaurarlos con la opción reset).</string>
     <!-- -->
     <string name="mOpen_name">Abrir y compartir</string>
     <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
@@ -131,10 +131,10 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 - Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
 - Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador."</string>
     <string name="mOpen_ctabs">"'Custom tabs':"</string>
-    <string name="mOpen_ctabsOn">Activado por defecto</string>
-    <string name="mOpen_ctabsOff">Desactivado por defecto</string>
-    <string name="mOpen_ctabsEn">Siempre activado</string>
-    <string name="mOpen_ctabsDis">Siempre desactivado</string>
+    <string name="defaultOn">Activado por defecto</string>
+    <string name="defaultOff">Desactivado por defecto</string>
+    <string name="alwaysOn">Siempre activado</string>
+    <string name="alwaysOff">Siempre desactivado</string>
     <string name="mOpen_closeOpen">Cierra la ventana después de abrir</string>
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
@@ -147,7 +147,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
     <!-- -->
     <string name="mStatus_name">Código de estado</string>
-    <string name="mStatus_desc">Al presionar el botón de verificación, se realizará una petición para recuperar y mostrar el código de estado del sitio. Si el resultado es una redirección, podrá ver la URL de destino. El contenido de la URL se obtiene (HEAD), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
+    <string name="mStatus_desc">Al presionar el botón de verificación, se realizará una petición para recuperar y mostrar el código de estado del sitio. Si el resultado es una redirección, podrá ver la URL de destino. El contenido de la URL se obtiene (GET), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
     <string name="mStatus_ioerror">Error de red al intentar comprobar la URL: %s</string>
     <string name="mStatus_error">Error interno al intentar comprobar la URL: %s</string>
     <string name="mStatus_check">Comprobar código de estado</string>
@@ -179,7 +179,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mInput_desc">Muestra la URL actual, que puede ser modificada manualmente.</string>
     <!-- -->
     <string name="mVT_name">Escáneador de la URL</string>
-    <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">Clave de la API</string>
     <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
     <string name="mVT_scan">Escanear</string>
@@ -238,9 +238,11 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/. Ten en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
-    <string name="mRemove_desc">"Con este módulo puedes eliminar los parámetros de la URL.
-Púlsa el botón para borrarlos todos o la flecha para ir uno a uno.
-¡Gracias a PabloOQ por la idea e implementación original!"</string>
+    <string name="mRemove_desc">[DEPRECADO] Con este módulo puede eliminar parámetro de la URL.
+\nPresione el botón para eliminarlos todos o presione la flecha para eliminar uno a uno.
+\n¡Gracias a PabloOQ por la idea y la implementación original!
+\n
+\nEste módulo ha quedado deprecado en favor del módulo \'Partes de la URI\'</string>
     <string name="mRemove_found1">1 parámetro encontrado</string>
     <string name="mRemove_found">%d parámetros encontrados</string>
     <string name="mRemove_noQueries">Sin parámetros</string>
@@ -290,14 +292,17 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
-    <string name="mUnshort_notFound">No se ha encontrado redirección (quedan: %d/%d)</string>
-    <string name="mUnshort_ok">Desacortado (quedan: %d/%d)</string>
+    <string name="mUnshort_notFound">No se ha encontrado redirección</string>
+    <string name="mUnshort_pending">quedan: %d/%d</string>
+    <string name="mUnshort_ok">Desacortado</string>
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
-    <string name="mFlags_invalid">Flag inválida</string>
-    <string name="mFlag_desc">[Funcionalidad beta] Este módulo avanzado te permite editar las flags del intent cuando abres una aplicación. En el cuadro de texto de debajo puedes marcar flags que sobreescribirán a las de por defecto, aquellas obtenidas del intent que se usó para abrir esta aplicación. Al usar el módulo puedes mantener pulsado el botón de editar para guardar las flags como valor por defecto. Puedes añadir flags escribiendo su nombre en el cuadro de entrada</string>
-    <string name="mFlag_flagHint">Nombre de flag</string>
-    <string name="remove">Eliminar</string>
-    <string name="edit">Editar</string>
-    <string name="add">Añadir</string>
+    <string name="mFlag_desc">[Funcionalidad beta] Este es un módulo avanzado que te permite editar las marcas del intent al abrir otra aplicación.
+\nEste módulo mostrará una lista de marcas, se puede cambiar si la marca se establece o no tocando el icono. También hay un menú de desbordamiento para ocultar las marcas allí, es sólo visual, las marcas seguirán utilizando el estado asignado.
+\nLas marcas tendrán dos indicadores de color junto a la casilla de verificación. El de la izquierda muestra el valor recibido del intent, el de la derecha indica el estado establecido por el propio módulo. Rojo significa que la marca no está establecida y verde significa que sí lo está. Adicionalmente, el indicador puede ser gris, que significa que el estado se estableció en automático.
+\nCon el botón de abajo puede editar el estado por defecto y la visibilidad de las marcas.</string>
+    <string name="mFlag_editFlags">Editar los valores por defecto de los marcadores</string>
+    <!-- -->
+    <string name="mParts_name">Partes de la URI</string>
+    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento. Al hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada. También puedes hacer clic en el botón \'X\' para eliminar algunos de ellos. Esta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
 </resources>

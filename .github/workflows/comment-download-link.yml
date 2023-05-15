@@ -1,0 +1,57 @@
+# This action will send a comment to the pr for download the built apk.
+# Needs to be as a separate action, artifacts are not available on the action used to upload them
+name: Comment Artifact URL on PR
+
+on:
+  workflow_run:
+    workflows:
+      - "Validate gradle build test"
+    types:
+      - "completed"
+
+permissions:
+  actions: read # need to read the artifacts url
+  pull-requests: write # need to write the comment
+
+jobs:
+  comment-on-pr:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Post url to artifact
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          CURRENT_JOB_ID: ${{ github.run_id }}
+          PREVIOUS_JOB_ID: ${{ github.event.workflow_run.id }}
+          PREVIOUS_SUITE_ID: ${{ github.event.workflow_run.check_suite_id }}
+        run: |
+
+          # get artifacts
+          read PR_NUMBER ARTIFACT_ID EXPIRES_AT <<< $(gh api "/repos/$OWNER/$REPO/actions/runs/$PREVIOUS_JOB_ID/artifacts" --jq '"\(.artifacts[0].name) \(.artifacts[1].id) \(.artifacts[1].expires_at)"')
+          if [ "$ARTIFACT_ID" == "null" ]; then
+            echo "No artifacts, (probably) not a PR, exiting"
+            exit
+          fi
+          echo "PR NUMBER: $PR_NUMBER"
+          echo "ARTIFACT ID: $ARTIFACT_ID"
+          echo "EXPIRES_AT: $EXPIRES_AT"
+
+          # post link comment
+          gh api "/repos/$OWNER/$REPO/issues/$PR_NUMBER/comments" -F body=@- <<EOF
+          This PR builds correctly, here is the generated apk.
+          This unsigned version can be installed alongside the original app and should only be used for testing the changes, not for daily usage.
+          
+          | [Download testing apk](https://github.com/$OWNER/$REPO/suites/$PREVIOUS_SUITE_ID/artifacts/$ARTIFACT_ID) |
+          | - |
+          
+          
+          You must be logged in for the link to work.
+          The link will expire at $EXPIRES_AT.
+          
+          <hr>
+          
+          <sub>This is an automatic comment created by a [Github Action](https://github.com/$OWNER/$REPO/actions/runs/$CURRENT_JOB_ID)</sub>
+          EOF

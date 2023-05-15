@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.modules.list.RemoveQueriesModule;
 import com.trianguloy.urlchecker.modules.list.StatusModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.UnshortenModule;
+import com.trianguloy.urlchecker.modules.list.UriPartsModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.GenericPref;
 
@@ -41,6 +42,7 @@ public class ModuleManager {
         modules.add(new VirusTotalModule());
         modules.add(new ClearUrlModule());
         modules.add(new RemoveQueriesModule());
+        modules.add(new UriPartsModule());
         modules.add(new PatternModule());
         modules.add(new HostsModule());
         // new modules should preferably be added directly above this line

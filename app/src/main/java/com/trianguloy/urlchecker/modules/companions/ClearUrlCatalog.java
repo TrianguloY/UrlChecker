@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -222,6 +223,8 @@ public class ClearUrlCatalog {
                 .setNeutralButton(R.string.mClear_restore, null) // set below
                 .setCancelable(true)
                 .show();
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         // prepare more dialog
         // these are configured here to allow auto-closing the dialog when they are pressed
