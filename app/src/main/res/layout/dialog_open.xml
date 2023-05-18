@@ -10,7 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:contentDescription="@string/mOpen_tabsDesc"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         android:src="@drawable/ctabs_off" />
+
+    <ImageButton
+        android:id="@+id/mode_incognito"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/mOpen_incognitoDesc"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:src="@drawable/no_incognito" />
 
     <LinearLayout
         android:id="@+id/open_parent"

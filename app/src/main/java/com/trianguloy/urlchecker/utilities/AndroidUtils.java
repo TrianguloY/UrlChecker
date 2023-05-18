@@ -103,6 +103,7 @@ public interface AndroidUtils {
             }
         }, 0, text.length(), 0);
         textview.setText(text);
+        // TODO: remove underline (set color only). textview.setTextColor(textview.getResources().getColor(R.color.app)); doesn't work
     }
 
     /**

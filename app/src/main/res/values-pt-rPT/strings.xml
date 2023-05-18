@@ -97,10 +97,10 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
 - Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
 - Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência."</string>
     <string name="mOpen_ctabs">Abas personalizadas:</string>
-    <string name="mOpen_ctabsOn">Ativado por padrão</string>
-    <string name="mOpen_ctabsOff">Desativado por padrão</string>
-    <string name="mOpen_ctabsEn">Sempre ativado</string>
-    <string name="mOpen_ctabsDis">Sempre desativado</string>
+    <string name="defaultOn">Ativado por padrão</string>
+    <string name="defaultOff">Desativado por padrão</string>
+    <string name="alwaysOn">Sempre ativado</string>
+    <string name="alwaysOff">Sempre desativado</string>
     <string name="mOpen_with">Abrir com %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Partilhar</string>
@@ -111,7 +111,7 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
     <string name="mStatus_name">Código de status</string>
     <string name="mStatus_desc">"Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.
 Se o resultado for um redirecionamento, poderá visualizar o URL de destino.
-O conteúdo da url é obtido (HEAD), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
+O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
     <string name="mStatus_check">Verificar</string>
@@ -141,7 +141,7 @@ O conteúdo da url é obtido (HEAD), mas não avaliado, então redirecionamentos
     <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.</string>
     <!-- -->
     <string name="mVT_name">VirusTotal</string>
-    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ é uma marca comercial da Google, Inc.</string>
     <string name="mVT_scan">Examinar</string>

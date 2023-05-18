@@ -4,7 +4,7 @@
         If you create or update a translation, add how you want to be credited here.
         For multiple translators, separate them by semicolon.
         Example: <string name="translators">John Doe; Jane Doe</string> -->
-    <string name="translators"></string>
+    <string name="translators">TrianguloY</string>
     <!--
         Locale name:
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
@@ -94,14 +94,15 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="clear">Clear</string>
     <string name="none">None</string>
     <string name="auto">Automatic</string>
+    <string name="defaultOn">Enabled by default</string>
+    <string name="defaultOff">Disabled by default</string>
+    <string name="alwaysOn">Always on</string>
+    <string name="alwaysOff">Always off</string>
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
     <string name="deviceDefault">Device default</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
-    <string name="remove">Remove</string>
-    <string name="edit">Edit</string>
-    <string name="add">Add</string>
     <!--
         json
     -->
@@ -138,14 +139,12 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <!-- -->
     <string name="mOpen_name">Open and share</string>
     <string name="mOpen_desc">"Contains the following buttons (left to right):
-- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled the browser should be opened in a 'lite' mode.
+- Custom Tabs button: toggle to enable/disable the custom tab feature. When enabled, the browser should be opened in a 'lite' mode.
+- Incognito button: For Firefox only. Toggle to enable/disable the incognito mode. When enabled, the browser should be opened in incognito.
 - Open button: Press the app name to open the link on that app. If a link can be opened with multiple apps, an arrow will be shown to let you choose.
 - Share button: Press the button to share the link. Long press to quickly copy to clipboard."</string>
     <string name="mOpen_ctabs">Custom tabs:</string>
-    <string name="mOpen_ctabsOn">Enabled by default</string>
-    <string name="mOpen_ctabsOff">Disabled by default</string>
-    <string name="mOpen_ctabsEn">Always on</string>
-    <string name="mOpen_ctabsDis">Always off</string>
+    <string name="mOpen_incognito">Incognito mode:</string>
     <string name="mOpen_closeOpen">Close dialog after opening</string>
     <string name="mOpen_closeShare">Close dialog after sharing</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
@@ -158,9 +157,10 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_clipboard">URL copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
+    <string name="mOpen_incognitoDesc">Toggle incognito mode (for Firefox only)</string>
     <!-- -->
     <string name="mStatus_name">Status code</string>
-    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (HEAD), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
+    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (GET), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
     <string name="mStatus_ioerror">Network error while trying to check the URL: %s</string>
     <string name="mStatus_error">Internal error while trying to check the URL: %s</string>
     <string name="mStatus_check">Check status</string>
@@ -191,7 +191,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current URL, which can be edited manually.</string>
     <string name="mVT_name">URL Scanner</string>
-    <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us.</string>
+    <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>
@@ -251,9 +251,11 @@ Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</st
 Note that any modification to the parent object 'providers' will be overwritten if the catalog is updated automatically or manually from the updater dialog. To have personal rules set them in a different parent object (any name)."</string>
     <!-- -->
     <string name="mRemove_name">Queries Remover</string>
-    <string name="mRemove_desc">"With this module you can remove queries from the URL.
+    <string name="mRemove_desc">"[DEPRECATED] With this module you can remove queries from the URL.
 Press the button to remove them all or press the arrow to remove one at a time.
-Thanks to PabloOQ for the idea and original implementation!"</string>
+Thanks to PabloOQ for the idea and original implementation!
+
+This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mRemove_found1">1 query found</string>
     <string name="mRemove_found">%d queries found</string>
     <string name="mRemove_noQueries">No queries</string>
@@ -301,14 +303,20 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
-    <string name="mUnshort_notFound">No redirection found (pending: %d/%d)</string>
-    <string name="mUnshort_ok">Unshorted (pending: %d/%d)</string>
+    <string name="mUnshort_notFound">No redirection found</string>
+    <string name="mUnshort_pending">pending: %d/%d</string>
+    <string name="mUnshort_ok">Unshorted</string>
     <!-- -->
     <string name="mFlags_name">Flags editor</string>
-    <string name="mFlags_invalid">Invalid flag</string>
     <string name="mFlag_desc">"[Beta feature] This is an advanced module, it allows you to edit the intent flags when opening another app.
-In the field below you can put flags that will overwrite the default ones, those are taken from the intent that was used to open this app.
-While using the module you can hold the edit button to set the flags to the default flags. You can add flags by writing their name in the flags field"</string>
-    <string name="mFlag_flagHint">Flag name</string>
-
+\nThis module will show a list of flags, you can change if the flag is set or not by taping the icon. There is also an overflow menu to hide flags in there, it is just visual, flags will still use the assigned state.
+\nThe flags will have two color indicators next to the checkbox. The left one shows the value received from the intent, the right one indicates the state set by the module itself. Red means the flag is not set and green means the flag is set. Additionally the preference indicator can be grey, this means that the state was set to auto.
+\nWith the button below you can edit the default state and the visibility of the flags."</string>
+    <string name="mFlag_editFlags">Edit default flag values</string>
+    <!-- -->
+    <string name="mParts_name">Uri parts</string>
+    <string name="mParts_desc">"This module shows all parts of the url decoded: scheme, authority, paths, queries and fragment.
+By clicking a part it will be set as the new url, useful for example if one of the queries or paths was an encoded redirection url.
+You can also click the 'X' button to remove some of them.
+This is an advanced version of the 'Queries Remover' module."</string>
 </resources>

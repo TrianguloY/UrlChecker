@@ -1,17 +1,17 @@
 plugins {
     id 'com.android.application'
-    id 'com.github.triplet.play' version '3.7.0'
+    id 'com.github.triplet.play' version '3.8.3'
 }
 
 android {
     namespace 'com.trianguloy.urlchecker'
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
-        targetSdkVersion 32
-        versionCode 22
-        versionName "2.10"
+        targetSdkVersion 33
+        versionCode 23
+        versionName "2.11"
 
 
         // generate buildconfig field with all locales
@@ -51,6 +51,11 @@ android {
             initWith(buildTypes.debug)
             applicationIdSuffix '.alpha'
             versionNameSuffix '-ALPHA'
+        }
+        evaluation {
+            initWith(buildTypes.debug)
+            applicationIdSuffix '.test'
+            versionNameSuffix '-TEST'
         }
     }
 

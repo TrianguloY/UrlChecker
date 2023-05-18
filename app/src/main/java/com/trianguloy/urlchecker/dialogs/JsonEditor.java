@@ -3,6 +3,7 @@ package com.trianguloy.urlchecker.dialogs;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,8 @@ public class JsonEditor {
                 .setNeutralButton(R.string.reset, null) // set below
                 .setCancelable(false)
                 .show();
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         // prepare more dialog
         // these are configured here to disable automatic auto-closing when they are pressed

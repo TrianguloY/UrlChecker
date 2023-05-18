@@ -1,4 +1,3 @@
-
 Questa applicazione agisce come un intermediario nell'apertura di link. Quando premi su un link, una finestra contenente informazioni riguardo l'url viene mostrata, permettendoti di modificarlo.
 È particolarmente utile quando ti serve aprire un link da una mail, un social network, od altro.
 

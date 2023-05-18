@@ -98,7 +98,7 @@ public class ModulesActivity extends Activity {
         final AModuleConfig config = module.getConfig(this);
 
         // inflate
-        View parent = Inflater.inflate(R.layout.config_module, list, this);
+        View parent = Inflater.inflate(R.layout.config_module, list);
         parent.setTag(module.getId());
         Animations.enableAnimations(parent);
 
@@ -142,7 +142,7 @@ public class ModulesActivity extends Activity {
         AndroidUtils.longTapForDescription(toggleDecorations);
 
         // configuration of the module
-        var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box), this);
+        var child = Inflater.inflate(config.getLayoutId(), parent.findViewById(R.id.box));
         config.onInitialize(child);
 
         // configure toggleable description
