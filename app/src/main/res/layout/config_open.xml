@@ -58,4 +58,11 @@
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_noReferrer" />
 
+    <Switch
+        android:id="@+id/mergeButtons_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_mergeButtons" />
+
 </LinearLayout>

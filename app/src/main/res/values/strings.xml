@@ -150,6 +150,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_closeShare">Close dialog after sharing</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
     <string name="mOpen_noReferrer">Hide the source app (referrer)</string>
+    <string name="mOpen_mergeButtons">Merge Copy URL and Share into a single button (long press to copy)</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
