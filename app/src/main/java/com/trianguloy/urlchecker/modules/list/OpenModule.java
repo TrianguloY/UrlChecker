@@ -45,8 +45,8 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_noReferrer", true, cntx);
     }
 
-    public static GenericPref.Bool MERGEBUTTON_PREF(Context cntx) {
-        return new GenericPref.Bool("", false, cntx);
+    public static GenericPref.Bool MERGECOPY_PREF(Context cntx) {
+        return new GenericPref.Bool("open_mergeCopy", false, cntx);
     }
 
     @Override
@@ -77,7 +77,7 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Bool mergePref;
+    private final GenericPref.Bool mergeCopyPref;
     private final CTabs cTabs;
     private final Incognito incognito;
 
@@ -95,7 +95,7 @@ class OpenDialog extends AModuleDialog {
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
-        mergePref = OpenModule.MERGEBUTTON_PREF(dialog);
+        mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
     }
 
     @Override
@@ -123,13 +123,13 @@ class OpenDialog extends AModuleDialog {
         btn_openWith.setOnClickListener(v -> showList());
 
         // init copy to URL
-        View btn_copy = views.findViewById(R.id.copyUrl);
+        var btn_copy = views.findViewById(R.id.copyUrl);
         btn_copy.setOnClickListener(v -> AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl()));
 
         // init share
-        View btn_share = views.findViewById(R.id.share);
+        var btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(v -> shareUrl());
-        if (mergePref.get()) {
+        if (mergeCopyPref.get()) {
             btn_copy.setVisibility(View.GONE);
             btn_share.setOnLongClickListener(v -> {
                 AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
@@ -276,7 +276,7 @@ class OpenConfig extends AModuleConfig {
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Bool mergePref;
+    private final GenericPref.Bool mergeCopyPref;
     private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
     private final GenericPref.Enumeration<OnOffConfig> incognitoPref;
 
@@ -290,7 +290,7 @@ class OpenConfig extends AModuleConfig {
         closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
         noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
         perDomainPref = LastOpened.PERDOMAIN_PREF(activity);
-        mergePref = OpenModule.MERGEBUTTON_PREF(activity);
+        mergeCopyPref = OpenModule.MERGECOPY_PREF(activity);
 
     }
 
@@ -311,7 +311,7 @@ class OpenConfig extends AModuleConfig {
         closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
         noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
         perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
-        mergePref.attachToSwitch(views.findViewById(R.id.mergeButtons_pref));
+        mergeCopyPref.attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
     }
 }
 
