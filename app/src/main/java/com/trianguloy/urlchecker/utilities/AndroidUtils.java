@@ -7,11 +7,13 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -198,5 +200,21 @@ public interface AndroidUtils {
     static void setHideableText(TextView view, CharSequence text) {
         view.setText(text);
         view.setVisibility(text == null || text.length() == 0 ? View.GONE : View.VISIBLE);
+    }
+
+    /**
+     * Returns a drawable with a different color
+     */
+    static Drawable getColoredDrawable(int drawableId, int colorAttr, Context cntx) {
+        // get drawable
+        var drawable = cntx.getResources().getDrawable(drawableId).mutate();
+
+        // get color
+        var resolvedAttr = new TypedValue();
+        cntx.getTheme().resolveAttribute(colorAttr, resolvedAttr, true);
+
+        // tint
+        drawable.setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
+        return drawable;
     }
 }

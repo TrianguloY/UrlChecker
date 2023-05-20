@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.Objects;
@@ -38,8 +40,9 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // option for the open in clipboard shortcut
-      /*  menu.add(R.string.shortcut_checkClipboard)
-                .setIcon(R.mipmap.clipboard_launcher)
+        menu.add(R.string.shortcut_checkClipboard)
+                .setIcon(AndroidUtils.getColoredDrawable(R.drawable.ic_clipboard, android.R.attr.textColorPrimary, this))
+                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT)
                 .setOnMenuItemClickListener(o -> {
                     PackageUtils.startActivity(
                             new Intent(this, ShortcutsActivity.class),
@@ -47,7 +50,7 @@ public class MainActivity extends Activity {
                             this
                     );
                     return true;
-                }); */
+                });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,10 +89,6 @@ public class MainActivity extends Activity {
 
     public void aboutToast(View view) {
         Toast.makeText(this, getString(R.string.app_name) + " - " + getString(R.string.trianguloy), Toast.LENGTH_SHORT).show();
-    }
-
-    public void openURLActivity(View view) {
-        PackageUtils.startActivity(new Intent(this, ShortcutsActivity.class), R.string.toast_noApp,this);
     }
 
 }
