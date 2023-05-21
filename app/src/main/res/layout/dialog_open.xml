@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/mOpen_tabsDesc"
         android:minWidth="0dp"
-        android:minHeight="0dp"
         android:src="@drawable/ctabs_off" />
 
     <ImageButton
@@ -21,7 +20,6 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/mOpen_incognitoDesc"
         android:minWidth="0dp"
-        android:minHeight="0dp"
         android:src="@drawable/no_incognito" />
 
     <LinearLayout
@@ -52,22 +50,30 @@
             android:background="@drawable/open_right"
             android:paddingRight="1dp"
             android:src="@drawable/arrow_down"
-            android:tint="?attr/colorAccent" />
+            android:tint="?attr/colorAccent"
+            android:paddingEnd="1dp" />
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/copyUrl"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/mOpen_copyUrl" />
+        android:contentDescription="@string/mOpen_copyUrl"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:scaleType="center"
+        android:src="@drawable/copy" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/share"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/mOpen_share" />
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:contentDescription="@string/mOpen_share"
+        android:src="@drawable/share" />
 </LinearLayout>
