@@ -19,7 +19,6 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
-import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -41,8 +40,16 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_closeshare", true, cntx);
     }
 
+    public static GenericPref.Bool CLOSECOPY_PREF(Context cntx) {
+        return new GenericPref.Bool("open_closecopy", false, cntx);
+    }
+
     public static GenericPref.Bool NOREFERRER_PREF(Context cntx) {
         return new GenericPref.Bool("open_noReferrer", true, cntx);
+    }
+
+    public static GenericPref.Bool MERGECOPY_PREF(Context cntx) {
+        return new GenericPref.Bool("open_mergeCopy", false, cntx);
     }
 
     @Override
@@ -72,7 +79,9 @@ class OpenDialog extends AModuleDialog {
 
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
+    private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
+    private final GenericPref.Bool mergeCopyPref;
     private final CTabs cTabs;
     private final Incognito incognito;
 
@@ -89,7 +98,9 @@ class OpenDialog extends AModuleDialog {
         incognito = new Incognito(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
+        closeCopyPref = OpenModule.CLOSECOPY_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
+        mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
     }
 
     @Override
@@ -116,13 +127,23 @@ class OpenDialog extends AModuleDialog {
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(v -> showList());
 
-        // init share
-        View btn_share = views.findViewById(R.id.share);
+        // init copy & share
+        var btn_copy = views.findViewById(R.id.copyUrl);
+        var btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(v -> shareUrl());
-        btn_share.setOnLongClickListener(v -> {
-            AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
-            return true;
-        });
+        if (mergeCopyPref.get()) {
+            // merge mode (single button)
+            btn_copy.setVisibility(View.GONE);
+            btn_share.setOnLongClickListener(v -> {
+                copyUrl();
+                return true;
+            });
+        } else {
+            // split mode (two buttons)
+            btn_copy.setOnClickListener(v -> copyUrl());
+            AndroidUtils.longTapForDescription(btn_share);
+            AndroidUtils.longTapForDescription(btn_copy);
+        }
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
@@ -252,7 +273,17 @@ class OpenDialog extends AModuleDialog {
                 getActivity()
         );
         if (closeSharePref.get()) {
-            this.getActivity().finish();
+            getActivity().finish();
+        }
+    }
+
+    /**
+     * Copy the url
+     */
+    private void copyUrl() {
+        AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
+        if (closeCopyPref.get()) {
+            getActivity().finish();
         }
     }
 
@@ -260,23 +291,8 @@ class OpenDialog extends AModuleDialog {
 
 class OpenConfig extends AModuleConfig {
 
-    private final GenericPref.Bool closeOpenPref;
-    private final GenericPref.Bool closeSharePref;
-    private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
-    private final GenericPref.Enumeration<OnOffConfig> incognitoPref;
-
-    private final GenericPref.Bool perDomainPref;
-
     public OpenConfig(ModulesActivity activity) {
         super(activity);
-        ctabsPref = CTabs.PREF(activity);
-        incognitoPref = Incognito.PREF(activity);
-        closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
-        closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
-        noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
-        perDomainPref = LastOpened.PERDOMAIN_PREF(activity);
-
     }
 
     @Override
@@ -287,15 +303,17 @@ class OpenConfig extends AModuleConfig {
     @Override
     public void onInitialize(View views) {
         if (CTabs.isAvailable()) {
-            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
+            CTabs.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        incognitoPref.attachToSpinner(views.findViewById(R.id.incognito_pref), null);
-        closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
-        closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
-        noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
-        perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
+        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), null);
+        OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
+        OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
+        OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));
+        OpenModule.NOREFERRER_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.noReferrer));
+        LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
+        OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
     }
 }
 

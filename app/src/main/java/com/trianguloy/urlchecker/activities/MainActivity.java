@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
 import java.util.Objects;
@@ -39,7 +41,8 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // option for the open in clipboard shortcut
         menu.add(R.string.shortcut_checkClipboard)
-                .setIcon(R.mipmap.clipboard_launcher)
+                .setIcon(AndroidUtils.getColoredDrawable(R.drawable.ic_clipboard, android.R.attr.textColorPrimary, this))
+                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT)
                 .setOnMenuItemClickListener(o -> {
                     PackageUtils.startActivity(
                             new Intent(this, ShortcutsActivity.class),
