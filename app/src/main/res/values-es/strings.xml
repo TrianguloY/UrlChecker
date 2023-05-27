@@ -125,10 +125,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la app no se añadirán automáticamente (puedes restaurarlos con la opción reset).</string>
     <!-- -->
     <string name="mOpen_name">Abrir y compartir</string>
-    <string name="mOpen_desc">"Contiene los siguientes botones (de izquierda a derecha):
-- Botón de 'custom tabs': activa/desactiva la característica de 'custom tabs'. Cuando se activa el navegador se debería abrir en un modo reducido 'lite'.
-- Boton de abrir: pulsa el nombre de la aplicación para abrir el enlace en ella. Si un enlace puede ser abierto por varias se mostrará una flecha para poder elegir.
-- Botón de compartir: Púlsalo para compartir el enlace. Mantenlo pulsado para copiarlo diréctamente en el navegador."</string>
+    <string name="mOpen_desc">Contiene los siguientes botones (de izquierda a derecha):
+\n- Botón Pestañas personalizadas: alterne para activar/desactivar la función de pestañas personalizadas (custom tabs). Cuando está habilitado, el navegador debe abrirse en un modo \'lite\'.
+\n- Botón de incógnito: solo para Firefox. Alterne para habilitar/deshabilitar el modo de incógnito. Cuando está habilitado, el navegador debe abrirse en modo incógnito.
+\n- Botón Abrir: presione el nombre de la aplicación para abrir el enlace en esa aplicación. Si un enlace se puede abrir con varias aplicaciones, se mostrará una flecha para que pueda elegir.
+\n- Botón Compartir: Presiona el botón para compartir el enlace. Mantén presionado para copiar rápidamente al portapapeles.</string>
     <string name="mOpen_ctabs">"'Custom tabs':"</string>
     <string name="defaultOn">Activado por defecto</string>
     <string name="defaultOff">Desactivado por defecto</string>
@@ -237,11 +238,11 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/. Ten en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
-    <string name="mRemove_desc">[DEPRECADO] Con este módulo puede eliminar parámetro de la URL.
-\nPresione el botón para eliminarlos todos o presione la flecha para eliminar uno a uno.
+    <string name="mRemove_desc">[OBSOLETO] Con este módulo puede eliminar consultas de la URL.
+\nPresione el botón para eliminarlos todos o presione la flecha para eliminar uno a la vez.
 \n¡Gracias a PabloOQ por la idea y la implementación original!
 \n
-\nEste módulo ha quedado deprecado en favor del módulo \'Partes de la URI\'</string>
+\nEste módulo ha quedado obsoleto en favor del módulo \'Partes de la URI\'</string>
     <string name="mRemove_found1">1 parámetro encontrado</string>
     <string name="mRemove_found">%d parámetros encontrados</string>
     <string name="mRemove_noQueries">Sin parámetros</string>
@@ -304,4 +305,6 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <!-- -->
     <string name="mParts_name">Partes de la URI</string>
     <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento. Al hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada. También puedes hacer clic en el botón \'X\' para eliminar algunos de ellos. Esta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
+    <string name="mOpen_incognito">Modo incógnito:</string>
+    <string name="mOpen_incognitoDesc">Alternar el modo de incógnito (solo para Firefox)</string>
 </resources>

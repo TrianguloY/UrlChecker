@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="locale">Deutsch</string>
+    <string name="txt_about">App erstellt von TrianguloY.
+\n
+\nBeiträge: %s.
+\nÜbersetzungen: %s.</string>
+    <string name="link_changelog">Änderungen</string>
+    <string name="desc_down">Nach unten</string>
+    <string name="desc_decorations">Titel anzeigen/ausblenden</string>
+    <string name="desc_enable">Modul aktivieren/deaktivieren</string>
+    <string name="btn_configureBrowser">Standard-Webbrowser</string>
+    <string name="btn_linksSettings">Unterstützte Links öffnen</string>
+    <string name="btn_androidSettings">Einstellungen der App in Android</string>
+    <string name="txt_theme">Erscheinungsbild:</string>
+    <string name="spin_darkTheme">Dunkel</string>
+    <string name="txt_locale">Sprache:</string>
+    <string name="btn_tutorialSettings">Tutorial wiederholen</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="btn_tutorialSkip">Tutorial überspringen</string>
+    <string name="toast_noBrowser">Webbrowser kann nicht geöffnet werden</string>
+    <string name="title_choose">App auswählen</string>
+    <string name="toast_invalid">Ungültig</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="clear">Leeren</string>
+    <string name="none">Nichts</string>
+    <string name="auto">Automatisch</string>
+    <string name="defaultOn">Standardmäßig aktiviert</string>
+    <string name="defaultOff">Standardmäßig deaktiviert</string>
+    <string name="alwaysOn">Immer an</string>
+    <string name="alwaysOff">Immer aus</string>
+    <string name="share">Teilen</string>
+    <string name="canceled">Abgebrochen</string>
+    <string name="deviceDefault">Geräte-Standard</string>
+    <string name="next">Weiter</string>
+    <string name="back">Zurück</string>
+    <string name="json_edit">Erweiterter Editor</string>
+    <string name="shortcut_checkClipboard">URLs aus der Zwischenablage prüfen</string>
+    <string name="txt_sample">Tippen Sie zum Testen auf folgenden Link:</string>
+    <string name="a_modules">Module</string>
+    <string name="a_about">Über</string>
+    <string name="a_settings">Einstellungen</string>
+    <string name="link_blog">TrianguloYs Blog</string>
+    <string name="link_source">Quellcode</string>
+    <string name="link_privacy">Datenschutzbestimmungen</string>
+    <string name="toast_cantEnable">Modul kann nicht aktiviert werden, fehlt ein Parameter\?</string>
+    <string name="menu_resetOrder">Reihenfolge zurücksetzen</string>
+    <string name="toast_defaultSet">Diese App ist jetzt der Standardbrowser</string>
+    <string name="desc_up">Nach oben</string>
+    <string name="btn_setBrowser">Als Standardbrowser festlegen</string>
+    <string name="spin_lightTheme">Hell</string>
+    <string name="toast_noApp">App kann nicht geöffnet werden</string>
+    <string name="btn_tutorialEnd">Tutorial abschließen</string>
+    <string name="save">Speichern</string>
+    <string name="close">Schließen</string>
+    <string name="translators">T</string>
+    <string name="txt_info">Diese App fungiert als Zwischenschritt beim Öffnen angeklickter Links. Wenn diese App zum Öffnen ausgewählt wurde, wird ein Dialog mit einigen Informationen über den Link angezeigt. Über den Module-Button unten können Sie alle verfügbaren Module prüfen und konfigurieren.</string>
+    <string name="menu_toggleDecorations">Alle Titel umschalten</string>
+    <string name="json_desc">[Beta-Funktion] Dies ist ein erweiterter Editor, der Inhalt muss gültiges JSON sein. Sie können die Schaltfläche oben rechts drücken, um das JSON zu formatieren und zu validieren.</string>
+    <string name="mPttrn_name">Muster (RegExp)</string>
+    <string name="mOpen_name">Öffnen und Teilen</string>
+    <string name="mOpen_ctabs">Benutzerdefinierte Tabs:</string>
+    <string name="mOpen_incognito">Privater Modus:</string>
+    <string name="mOpen_closeOpen">Dialog nach dem Öffnen schließen</string>
+    <string name="mOpen_perDomain">Verschiedene Domänen unabhängig sortieren</string>
+    <string name="mOpen_noReferrer">Quell-App verschleiern (referrer)</string>
+    <string name="mOpen_with">Öffnen mit %s</string>
+    <string name="mOpen_open">Öffnen</string>
+    <string name="mOpen_tabsDesc">„Benutzerdefinierte Tabs“-Funktion umschalten</string>
+    <string name="mOpen_incognitoDesc">Privaten Modus umschalten (nur Firefox)</string>
+    <string name="mStatus_name">Status Code</string>
+    <string name="mStatus_desc">Durch drücken des Prüfen-Buttons wird eine Anfrage ausgeführt, um den Status Code einer Seite abzufragen und anzuzeigen. Wenn das Ergebnis eine Weiterleitung ist, können Sie die Ziel-URL sehen. Der Inhalt einer URL wird geladen (GET), aber nicht ausgewertet, sodass JavaScript-basierte Weiterleitungen nicht erkannt werden können.</string>
+    <string name="mStatus_ioerror">Netzwerkfehler beim Prüfen der URL: %s</string>
+    <string name="mStatus_error">Interner Fehler beim Prüfen der URL: %s</string>
+    <string name="mStatus_check">Status Prüfen</string>
+    <string name="mStatus_redir">Leitet weiter nach %s</string>
+    <string name="mStatus_autoRedirect">URL-Weiterleitungen automatisch ersetzen</string>
+    <string name="txt_tutorial3">Legen Sie die App als Standard-Webbrowser fest, um URLs beim Öffnen abzufangen.
+\n(Nicht erforderlich, wenn URLs mithilfe der „Teilen“-Funktion umgeleitet werden.)</string>
+    <string name="txt_conf">Hier finden Sie alle verfügbaren Module, deren Beschreibungen und Einstellungen. Sie können diese aktivieren/deaktivieren, neu anordnen sowie die Sichtbarkeit des Titels umschalten.</string>
+    <string name="txt_tutorial1">Vielen Dank für das Herunterladen der App!
+\n
+\nDies ist das Tutorial. Wenn Sie es überspringen möchten, können Sie dies mit der Schaltfläche unten tun. Sie können jederzeit über das Einstellungsmenü zu diesem Tutorial zurückkehren.</string>
+    <string name="txt_tutorial2">Diese App fungiert als Zwischenschritt beim Öffnen oder Teilen von Links. Sobald eine URL an die App gesendet wurde, können Sie über die Module mit ihr interagieren. Anschließend können Sie den Link (in der gewünschten App) öffnen, teilen oder in die Zwischenablage kopieren.</string>
+    <string name="txt_tutorial4">Die App interagiert mit den URLs mittels Modulen.
+\nJedes Modul hat eine bestimmte Funktion, normalerweise, um Informationen über die URL anzuzeigen oder Änderung an der URL zu ermöglichen.
+\nLesen Sie mehr darüber und richten Sie sie nach Bedarf ein.
+\n
+\nWichtig: Alle Aktionen erfolgen standardmäßig manuell. Die App wird nichts ändert und keine Verbindung zum Internet herstellen, es sei denn, Sie erlauben dies ausdrücklich. Einige Aktionen können jedoch auf Wunsch automatisch angewendet werden.
+\n
+\nÖffnen Sie die Liste der Module über den Hauptbildschirm oder indem Sie auf die Schaltfläche unten tippen.</string>
+    <string name="txt_tutorial5">Das war alles. Hier sind noch einige nützliche Tipps:
+\n
+\nWenn eine App Ihnen nicht die Wahl bietet, eine URL zu öffnen oder zu teilen, können Sie das Problem mit dieser App lösen und so zwischen Teilen und Öffnen wählen. Sie können die URL auch in die Zwischenablage kopieren, indem Sie die Schaltfläche „Teilen“ lange drücken.
+\n
+\nEs gibt einige URLs, deren einziger Zweck darin besteht, Sie zu einer anderen URL weiterzuleiten. Wenn die endgültige URL in einer App geöffnet werden kann, können Sie das Öffnen in einem Browser vermeiden.
+\n
+\nIch hoffe, Sie finden die App nützlich! Und zögern Sie nicht, Funktionen vorzuschlagen, Fehler zu melden oder sogar Änderungen vorzuschlagen. Alle relevanten Links finden Sie auf dem Info-Bildschirm.</string>
+    <string name="mOpen_closeShare">Dialog nach dem Teilen schließen</string>
+    <string name="mOpen_share">Teilen</string>
+    <string name="mOpen_clipboard">URL in die Zwischenablage kopiert</string>
+    <string name="mOpen_noapps">Keine Apps</string>
+    <string name="mStatus_recheck">Prüfen</string>
+    <string name="mStatus_unknownCode">%d: Unbekannter Status Code</string>
+    <string name="mStatus_checking">Prüfe…</string>
+    <string name="txt_openLinks">Links mit dieser App öffnen: Über die Jahre hat Android die Einstellungen dies anzupassen geändert und ist von Version zu Version unterschiedlich. Im folgenden finden Sie alle für Ihr Gerät verfügbaren Optionen. Wenn Links nicht mit dieser App geöffnet werden, testen Sie sie alle.</string>
+    <string name="mPttrn_userContent">Liste nützlicher Muster anderer Nutzer: %s</string>
+    <string name="mPttrn_fix">Anwenden</string>
+    <string name="mPttrn_fixed">Angewendet - %s</string>
+    <string name="mPttrn_ascii">Warnung! Nicht-ASCII-Zeichen gefunden.</string>
+    <string name="mPttrn_http">HTTP-Link. Erwägen Sie HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">HTTP-Schema fehlt.</string>
+    <string name="mPttrn_noSchemeHttps">HTTPS-Schema fehlt.</string>
+    <string name="mPttrn_ok">Keine passenden Muster</string>
+    <string name="mInput_name">Texteingabe</string>
+    <string name="mInput_desc">Zeigt die aktuelle URL an, diese kann manuell bearbeitet werden.</string>
+    <string name="mVT_name">URL-Scanner</string>
+    <string name="mVT_desc">Wenn dieses Modul aktiviert ist, können Sie die URLs mithilfe von VirusTotal überprüfen und das Ergebnis sehen. Ein persönlicher VirusTotal-API-Key ist dafür notwendig, Sie können diesen erhalten, indem Sie sich hier kostenfrei registrieren: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mVT_apiKey">API-Key</string>
+    <string name="mVT_tm">VirusTotal™ ist ein eingetragenes Warenzeichen von Google, Inc.</string>
+    <string name="mVT_scan">Scannen</string>
+    <string name="mVT_goodUrl">Keiner der %d Dienste hat die URL als böswillig erkannt (Stand: %s)</string>
+    <string name="mVT_warningUrl">Warnung, %d/%d Dienste haben die URL als gefährlich eingestuft (Stand: %s)</string>
+    <string name="mVT_badUrl">Vorsicht! %d/%d Dienste haben die URL als gefährlich eingestuft (Stand: %s)</string>
+    <string name="mVT_connectError">Verbindung zu VirusTotal nicht möglich. Überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal.</string>
+    <string name="mVT_jsonError">Verbindung zu VirusTotal nicht möglich. Überprüfen Sie, dass der API-Key gültig ist oder versuchen Sie es später noch einmal.</string>
+    <string name="mD_name">Debug-/Entwickler-Modul</string>
+    <string name="mD_desc">Wenn Sie die Reihenfolge der Module verändern, werden zukünftig neue Module über diesem eingefügt.
+\n
+\nWenn Sie dieses Module aktiviert ist, wird es den empfangenen Intent als URI anzeigen, nützlich für Entwickler.
+\n
+\nTippen Sie auf Intent oder UrlData um es zu kopieren. Lange drücken, um alles zu kopieren.</string>
+    <string name="mD_ctabs">Debug-Meldungen der benutzerdefinierten Tabs anzeigen</string>
+    <string name="mHist_name">Verlauf</string>
+    <string name="mClear_name">URL Säubern</string>
+    <string name="mClear_desc">Dieses Modul entfernt Tracking, Referrer und andere unnötige Parameter einer URL. Es unterstützt auch gängige Offline-URL-Weiterleitungen.</string>
+    <string name="mClear_tm">Integrierte Liste von ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">Anwenden</string>
+    <string name="mClear_matches">Passt zu %s</string>
+    <string name="mClear_blocked">- BLOCKIERT!</string>
+    <string name="mClear_exception">- ignoriert wegen des Fehlers %s</string>
+    <string name="mClear_rule">- unnötiger Parameter gefunden</string>
+    <string name="mClear_rawRule">- unnötiger Inhalt gefunden</string>
+    <string name="mClear_referral">- Empfehlungsverweis gefunden</string>
+    <string name="mClear_forcedRedirection">- erzwungene Weiterleitung gefunden</string>
+    <string name="mClear_redirection">- Weiterleitung gefunden</string>
+    <string name="mClear_auto">Autom. Anwenden</string>
+    <string name="mClear_toggleReferral">Empfehlungsmarketing aktivieren (Empfehlungsparameter werden nicht gelöscht)</string>
+    <string name="mClear_toggleVerbose">Ausführliche Informationen über die Regelverarbeitung aktivieren</string>
+    <string name="mClear_error">Konnte Regel nicht prüfen</string>
+    <string name="mClear_updater">Aktualisierungen</string>
+    <string name="mClear_urlHint">Katalog-URL</string>
+    <string name="mClear_hashHint">Prüfsumme (Hash) nicht prüfen</string>
+    <string name="mClear_updateNow">Jetzt aktualisieren</string>
+    <string name="mClear_autoUpdate">Regelmäßig aktualisieren</string>
+    <string name="mClear_lastCheck">Letzte Suche:</string>
+    <string name="mClear_lastUpdate">Letzte Aktualisierung:</string>
+    <string name="mClear_upToDate">Katalog ist aktuell</string>
+    <string name="mClear_hashError">Prüfsumme (Hash) konnte nicht geladen werden, stellen Sie sicher, dass die URL korrekt und Ihre Internetverbindung aktiv ist</string>
+    <string name="mClear_hashMismatch">Prüfsumme passt nicht, die Datei könnte verfälscht worden sein. Wenn Sie die Prüfung überspringen möchten, entfernen Sie die Hash-URL</string>
+    <string name="mClear_restore">Adressen von ClearURL wiederherstellen</string>
+    <string name="mRemove_name">Parameter Entfernen</string>
+    <string name="mRemove_found1">1 Parameter gefunden</string>
+    <string name="mRemove_found">%d Parameter gefunden</string>
+    <string name="mRemove_noQueries">Keine Parameter</string>
+    <string name="mRemove_all">Alle entfernen</string>
+    <string name="mRemove_one">Entferne %s</string>
+    <string name="mRemove_empty">Leere entfernen</string>
+    <string name="mLog_name">Protokoll</string>
+    <string name="mLog_view">Protokoll öffnen</string>
+    <string name="mLog_empty">Keine Daten</string>
+    <string name="mHosts_name">Host Kategorien</string>
+    <string name="mHosts_malware">Adware/Malware</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mLog_edit">Protokoll bearbeiten</string>
+    <string name="mHosts_noLabel">keine Kategorie</string>
+    <string name="mHosts_fakenews">Fake News</string>
+    <string name="mHosts_gambling">Glücksspiel</string>
+    <string name="mHosts_adult">Inhalte für Erwachsene</string>
+    <string name="mHosts_build">Erstellen</string>
+    <string name="mHosts_uninitialized">Hosts Datenbank nicht initialisiert. Tippen zum erstellen</string>
+    <string name="mHosts_buildTitle">Host-Datenbank erstellen</string>
+    <string name="mHosts_buildDesc">Dies wird die aktuelle Host-Datenbank löschen und neu erstellen mit der aktuellen Konfiguration und ggf. Hosts-Dateien aus dem Internet laden. Diese Aktion könnte einige Sekunden dauern. Fortfahren\?</string>
+    <string name="mHosts_buildProgress">Erstelle Katalog</string>
+    <string name="mHosts_buildInit">Wird initialisiert</string>
+    <string name="mHosts_buildClear">Wird geleert…</string>
+    <string name="mHosts_buildDownload">Lade \'%s\' Hosts von %s…</string>
+    <string name="mUnshort_name">Ent-Kürzen</string>
+    <string name="mUnshort_tm">unshorten.me kostenlose API von Unshorten.me</string>
+    <string name="mUnshort_checking">Wird abgerufen…</string>
+    <string name="mUnshort_error">Serverfehler: %s</string>
+    <string name="mUnshort_pending">verbleibend: %d/%d</string>
+    <string name="mFlags_name">Marker-Editor</string>
+    <string name="mFlag_editFlags">Standardwerte für die Marker bearbeiten</string>
+    <string name="mParts_name">URI-Teile</string>
+    <string name="mFlag_desc">[Beta-Funktion] Dies ist ein erweitertes Modul, um Intent Marker beim Öffnen anderer Apps zu bearbeiten.
+\n
+\nDieses Modul zeigt eine Liste der Marker an. Sie können wählen, ob ein Marker gesetzt ist, indem Sie auf das Symbol tippen. Es gibt auch ein Überlaufmenü um einige Marker auszublenden, dies ist nur visuell und die Marker behalten weiterhin den zugewiesenen Status.
+\n
+\nDie Marker werden zwei Farbindikatoren neben dem Kontrollschalter haben. Der linke zeigt den vom Intent empfangenen Wert, der rechte den vom Modul selbst gesetzten Status. Rot bedeutet, dass der Marker nicht gesetzt ist, grün, dass der Marker gesetzt ist. Zusätzlich kann der Indikator grau sein, was bedeutet, dass der Status auf automatisch gesetzt wurde.
+\n
+\nMit der folgenden Schaltfläche können Sie den Standardwert und die Sichtbarkeit der Marker setzen.</string>
+    <string name="mParts_desc">Dieses Modul zeigt alle Teile der URL an: Schema, Autorität, Pfade, Parameter und Fragment.
+\nWenn Sie auf einen Teil klicken, wird dieser als neue URL festgelegt, z.B. nützlich, wenn ein Parameter oder Pfad eine kodierte URL zur Weiterleitung ist.
+\nSie können auch auf \'X\' klicken, um einzelne Teile zu entfernen.
+\nDies ist eine erweiterte Version des Moduls \'Parameter Entfernen\'.</string>
+    <string name="mPttrn_desc">Dieses Modul prüft URLs mithilfe von RegExp-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können Muster hinzufügen oder editieren oder sogar Muster anderer Benutzer verwenden.
+\nVorgegebene Muster sind unter anderem:
+\n- Warnung, wenn URLs Nicht-ASCII-Zeichen enthalten wie griechische Buchstaben. Dies könnte für Phishing benutzt werden: googĺe.com statt google.com
+\n- Möglichkeit, \'http\' mit \'https\' zu ersetzen
+\n- Möglichkeit, Youtube, Reddit oder Twitter durch datenschutzfreundlichen Alternativen zu ersetzen [standardmäßig deaktiviert]</string>
+    <string name="mLog_desc">Diese Modul speichert alle geprüften URLs. Sie können hier das gesamte Protokoll ansehen, bearbeiten und leeren. Es gibt keine visuelle Anzeige im Hauptdialog. Um das Protokoll abzuschalten, deaktivieren Sie einfach dieses Modul.</string>
+    <string name="mPttrn_editor">Hier können Sie Muster hinzufügen oder editieren. Format:
+\n- \'regex\': string: Ein valider Java RegEx, der passen muss, damit das gesamte Muster passen kann.
+\n- \'excludeRegex\': string: (optional) Ein valider Java RegEx, der nicht passen darf, damit das gesamte Muster passen kann.
+\n- \'replacement\': string|list: (optional) Der Anwenden-Button wird \'url=url.replaceAll(regex,replacement)\' ausführen. Bei einer Liste wird ein Element zufällig gewählt.
+\n- \'automatic\': boolean: Wahr, um das Muster automatisch anzuwenden.
+\n- \'enabled\': boolean: Falsch, um das Muster zu deaktivieren.
+\nHinweis: Wenn Sie die Muster verändern, werden neue Muster durch App-Updates nicht mehr automatisch hinzugefügt (diese können Sie mit dem Zurücksetzen-Button wiederherstellen).</string>
+    <string name="mOpen_desc">Enthält die folgenden Buttons (links nach rechts):
+\n- Benutzerdefinierte Tabs: Schalter um Benutzerdefinierte Tabs einzuschalten. Wenn aktiviert, sollte der Browser im \'lite\'-Modus geöffnet werden.
+\n- Privater Modus: Nur Firefox. Wenn der Schalter aktiviert ist, sollte der Browser im privaten Modus geöffnet werden.
+\n- Öffnen-Button: Tippen Sie auf den Namen der App um den Link in dieser zu öffnen. Wenn ein Link mit mehreren Apps geöffnet werden kann, wird ein Pfeil zur Auswahl angezeigt.
+\n- Teilen-Button: Tippen Sie auf diesen Button um den Link zu teilen. Langes Drücken kopiert den Link in die Zwischenablage.</string>
+    <string name="mStatus_autoCheck">URLs, die diesem Muster entsprechen, automatisch prüfen. Warnung! Es ist ratsam ein restriktives Muster zu benutzen (nicht .* für alle Links), da sonst böswillige Server Ihre IP-Adresse loggen könnten.</string>
+    <string name="mVT_cancel">Abbrechen</string>
+    <string name="mVT_scanning">Scan läuft…</string>
+    <string name="mHist_desc">Wenn eine URL verändert wird (manuell oder von anderen Modulen), können Sie hiermit Änderungen sehen und rückgängig machen.</string>
+    <string name="mClear_sourceDesc">URL des JSON-Katalogs mit den Regeln:</string>
+    <string name="mClear_cleared">- Entfernt</string>
+    <string name="mClear_noRules">Keine passende Regel</string>
+    <string name="mClear_hashDesc">URL der Prüfsumme (Hash) des Katalogs. Wenn ausgelassen, wird der Download nicht prüfen, ob dieser verfälscht/verändert wurde (nicht empfohlen)</string>
+    <string name="mClear_updated">Katalog aktualisiert</string>
+    <string name="mClear_urlError">Regeln konnten nicht geladen werden, stellen Sie sicher, dass die URL korrekt und Ihre Internetverbindung aktiv ist</string>
+    <string name="mClear_editor">Katalog-Regeln: Diese müssen dem Format unter https://docs.clearurls.xyz/latest/specs/rules/ entsprechen.
+\nBedenken Sie, dass alle Änderungen im Objekt \'providers\' überschrieben werden, wenn der Katalog aktualisiert wird (automatisch oder manuell im Aktualisieren-Menü). Erstellen Sie eigene Regeln in einem anderen Objekt (beliebiger Name).</string>
+    <string name="mRemove_desc">[ERSETZT] Mit diesem Modul können Sie Parameter aus URLs entfernen.
+\nDrücken Sie auf die Schaltfläche, um alle zu entfernen, oder drücken Sie auf den Pfeil, um einzelne zu entfernen.
+\nVielen Dank an PabloOQ für die Idee und die ursprüngliche Implementierung!
+\n
+\nDieses Modul wurde durch das Modul \'URI-Teile\' ersetzt</string>
+    <string name="mHosts_desc">Dieses Modul kategorisiert Hosts anhand manueller Konfiguration oder einer hosts-artigen Datei aus dem Internet. Sie können es zur Warnung vor gefährlichen oder besonderen Seiten benutzen. Die integrierte Konfiguration benutzt StevenBlacks Hosts (Adware/Malware, Fake News, Glücksspiel und Inhalte für Erwachsene) von https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_parseError">Hosts URL kann nicht verarbeitet werden</string>
+    <string name="mHosts_editor">Hosts-Konfiguration. Format: Liste von Objekten, bei denen der Schlüssel die Host-Kategorie ist und der Wert folgende optionale Felder enthält:
+\n- file: (Datei) Eine URL zu einer Hosts-Datei zum Download. Es werden alle validen Hosts der Datei hinzugefügt.
+\n- hosts: Eine einfache Liste der Hosts (strings).
+\n- color: Die Farbe der Kategorie. Ein Android-Farb-String (#AARRGGBB, #RRGGBB oder ein gültiger Name einer Farbe). Standardmäßig \'danger\'/Gefahr Rot.
+\n- replace: \'false\'/Falsch, damit bestehende Hosts nicht ersetzt werden, standardmäßig \'true\'/wahr. Beachten Sie, dass Objekte von oben nach unten ausgewertet werden.
+\n- enabled: Wenn \'false\'/falsch, wird das ganze Objekt übersprungen. Standardmäßig \'true\'/wahr.</string>
+    <string name="mHosts_buildSave">Wird gespeichert…</string>
+    <string name="mHosts_built">Datenbank erstellt: %d Hosts</string>
+    <string name="mUnshort_unshort">Ent-Kürzen</string>
+    <string name="mUnshort_desc">Dieses Modul stellt gekürzte Links wieder her, indem es sie zu https://unshorten.me/ schickt, wo sie auf deren Servern ausgewertet und Weiterleitungen für zukünftige Anfragen gespeichert werden. Vermeiden Sie es, Links mit privaten oder sensiblen Daten an diesen Dienst zu schicken.
+\nDie API dieses Dienstes ist auf 10 Anfragen pro Stunde für neue Anfragen beschränkt. Dieses Modul wird in der Antwort die verbleibende Anzahl an Anfragen anzeigen.</string>
+    <string name="mUnshort_internal">Interner Fehler (%s)</string>
+    <string name="mUnshort_notFound">Keine Weiterleitung gefunden</string>
+    <string name="mUnshort_ok">Ent-Kürzt</string>
+</resources>
