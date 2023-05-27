@@ -19,7 +19,6 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
-import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.GenericPref;
@@ -128,24 +127,22 @@ class OpenDialog extends AModuleDialog {
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(v -> showList());
 
-        // init copy
+        // init copy & share
         var btn_copy = views.findViewById(R.id.copyUrl);
-        btn_copy.setOnClickListener(v -> copyUrl());
-        AndroidUtils.longTapForDescription(btn_copy);
-
-        // init share
         var btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(v -> shareUrl());
         if (mergeCopyPref.get()) {
-            // merge mode
+            // merge mode (single button)
             btn_copy.setVisibility(View.GONE);
             btn_share.setOnLongClickListener(v -> {
                 copyUrl();
                 return true;
             });
         } else {
-            // normal mode
+            // split mode (two buttons)
+            btn_copy.setOnClickListener(v -> copyUrl());
             AndroidUtils.longTapForDescription(btn_share);
+            AndroidUtils.longTapForDescription(btn_copy);
         }
 
         // init openWith popup
@@ -294,27 +291,8 @@ class OpenDialog extends AModuleDialog {
 
 class OpenConfig extends AModuleConfig {
 
-    private final GenericPref.Bool closeOpenPref;
-    private final GenericPref.Bool closeSharePref;
-    private final GenericPref.Bool closeCopyPref;
-    private final GenericPref.Bool noReferrerPref;
-    private final GenericPref.Bool mergeCopyPref;
-    private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
-    private final GenericPref.Enumeration<OnOffConfig> incognitoPref;
-
-    private final GenericPref.Bool perDomainPref;
-
     public OpenConfig(ModulesActivity activity) {
         super(activity);
-        ctabsPref = CTabs.PREF(activity);
-        incognitoPref = Incognito.PREF(activity);
-        closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
-        closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
-        closeCopyPref = OpenModule.CLOSECOPY_PREF(activity);
-        noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
-        perDomainPref = LastOpened.PERDOMAIN_PREF(activity);
-        mergeCopyPref = OpenModule.MERGECOPY_PREF(activity);
-
     }
 
     @Override
@@ -325,17 +303,17 @@ class OpenConfig extends AModuleConfig {
     @Override
     public void onInitialize(View views) {
         if (CTabs.isAvailable()) {
-            ctabsPref.attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
+            CTabs.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        incognitoPref.attachToSpinner(views.findViewById(R.id.incognito_pref), null);
-        closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
-        closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
-        closeCopyPref.attachToSwitch(views.findViewById(R.id.closecopy_pref));
-        noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
-        perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
-        mergeCopyPref.attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
+        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), null);
+        OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
+        OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
+        OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));
+        OpenModule.NOREFERRER_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.noReferrer));
+        LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
+        OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
     }
 }
 
