@@ -104,10 +104,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
         modules
     -->
     <string name="mPttrn_name">Verificador de patrones</string>
-    <string name="mPttrn_desc">"Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios. Por defecto incluye:
-- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
-- Sugiere reemplazar 'http' por 'https'
-- Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]"</string>
+    <string name="mPttrn_desc">Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios.
+\nPor defecto incluye:
+\n- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
+\n- Sugiere reemplazar \'http\' por \'https\'
+\n- Sugiere reeplazar Youtube, Reddit o Twitter con alternativas mas privadas [deshabilitado por defecto]</string>
     <string name="mPttrn_userContent">Listado de otros patrones útiles creados por usuarios: %s</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
@@ -128,8 +129,9 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_desc">Contiene los siguientes botones (de izquierda a derecha):
 \n- Botón Pestañas personalizadas: alterne para activar/desactivar la función de pestañas personalizadas (custom tabs). Cuando está habilitado, el navegador debe abrirse en un modo \'lite\'.
 \n- Botón de incógnito: solo para Firefox. Alterne para habilitar/deshabilitar el modo de incógnito. Cuando está habilitado, el navegador debe abrirse en modo incógnito.
-\n- Botón Abrir: presione el nombre de la aplicación para abrir el enlace en esa aplicación. Si un enlace se puede abrir con varias aplicaciones, se mostrará una flecha para que pueda elegir.
-\n- Botón Compartir: Presiona el botón para compartir el enlace. Mantén presionado para copiar rápidamente al portapapeles.</string>
+\n- Botón Abrir: Presione el nombre de la aplicación para abrir el enlace en esa aplicación. Si un enlace se puede abrir con varias aplicaciones, se mostrará una flecha para que pueda elegir.
+\n- Botón copiar: Presione el botón para copiar el enlace en el portapapeles.
+\n- Botón Compartir: Presione el botón para compartir el enlace.</string>
     <string name="mOpen_ctabs">"'Custom tabs':"</string>
     <string name="defaultOn">Activado por defecto</string>
     <string name="defaultOff">Desactivado por defecto</string>
@@ -235,7 +237,8 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mClear_hashError">No se ha podido descargar el hash, comprueba que la url es correcta y que tienes acceso a internet</string>
     <string name="mClear_hashMismatch">Los hash no coinciden, el archivo puede haber sido manipulado. Si desea omitir la comprobación, elimine la URL del hash</string>
     <string name="mClear_restore">Restaurar direcciones de ClearURLs</string>
-    <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/. Ten en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
+    <string name="mClear_editor">Catálogo de reglas: deben seguir el formato definido en https://docs.clearurls.xyz/latest/specs/rules/.
+\nTen en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
     <string name="mRemove_desc">[OBSOLETO] Con este módulo puede eliminar consultas de la URL.
@@ -267,11 +270,12 @@ Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado 
     <string name="mHosts_build">Generar</string>
     <string name="mHosts_uninitialized">Catálogo de hosts sin inicializar. Pulsa para generarlo</string>
     <string name="mHosts_parseError">No se puede analizar la URL del host</string>
-    <string name="mHosts_editor">"Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
-- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
-- color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo 'peligro' por defecto.
-- replace: si es 'false' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. 'true' por defecto.
-- enabled: si es 'false' el objeto entero se ignorará. 'true' por defecto."</string>
+    <string name="mHosts_editor">Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
+\n- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
+\n- hosts: Lista de hosts (strings) para añadir.
+\n- color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo \'peligro\' por defecto.
+\n- replace: si es \'false\' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. \'true\' por defecto.
+\n- enabled: si es \'false\' el objeto entero se ignorará. \'true\' por defecto.</string>
     <string name="mHosts_buildTitle">Generar catálogo de hosts</string>
     <string name="mHosts_buildDesc">Esto eliminará el catálogo actual y lo generará con la configuración actual, descargando ficheros de hosts de internet si es necesario. Esta acción puede durar varios segundos. ¿Continuar?</string>
     <string name="mHosts_buildProgress">Generando base de datos</string>
@@ -304,7 +308,13 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mFlag_editFlags">Editar los valores por defecto de los marcadores</string>
     <!-- -->
     <string name="mParts_name">Partes de la URI</string>
-    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento. Al hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada. También puedes hacer clic en el botón \'X\' para eliminar algunos de ellos. Esta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
+    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento.
+\nAl hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada.
+\nTambién puedes hacer clic en el botón \'X\' para eliminar algunos de ellos.
+\nEsta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
     <string name="mOpen_incognito">Modo incógnito:</string>
     <string name="mOpen_incognitoDesc">Alternar el modo de incógnito (solo para Firefox)</string>
+    <string name="mOpen_closeCopy">Cierra la ventana después de copiar</string>
+    <string name="mOpen_mergeCopy">Juntar botones de copiar y compartir (mantén pulsado para copiar)</string>
+    <string name="mOpen_copyUrl">Copiar</string>
 </resources>
