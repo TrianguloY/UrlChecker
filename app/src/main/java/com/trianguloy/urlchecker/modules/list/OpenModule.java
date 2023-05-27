@@ -41,6 +41,10 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_closeshare", true, cntx);
     }
 
+    public static GenericPref.Bool CLOSECOPY_PREF(Context cntx) {
+        return new GenericPref.Bool("open_closecopy", false, cntx);
+    }
+
     public static GenericPref.Bool NOREFERRER_PREF(Context cntx) {
         return new GenericPref.Bool("open_noReferrer", true, cntx);
     }
@@ -76,6 +80,7 @@ class OpenDialog extends AModuleDialog {
 
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
+    private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
     private final GenericPref.Bool mergeCopyPref;
     private final CTabs cTabs;
@@ -94,6 +99,7 @@ class OpenDialog extends AModuleDialog {
         incognito = new Incognito(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
+        closeCopyPref = OpenModule.CLOSECOPY_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
         mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
     }
@@ -124,17 +130,22 @@ class OpenDialog extends AModuleDialog {
 
         // init copy
         var btn_copy = views.findViewById(R.id.copyUrl);
-        btn_copy.setOnClickListener(v -> AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl()));
+        btn_copy.setOnClickListener(v -> copyUrl());
+        AndroidUtils.longTapForDescription(btn_copy);
 
         // init share
         var btn_share = views.findViewById(R.id.share);
         btn_share.setOnClickListener(v -> shareUrl());
         if (mergeCopyPref.get()) {
+            // merge mode
             btn_copy.setVisibility(View.GONE);
             btn_share.setOnLongClickListener(v -> {
-                AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
+                copyUrl();
                 return true;
             });
+        } else {
+            // normal mode
+            AndroidUtils.longTapForDescription(btn_share);
         }
 
         // init openWith popup
@@ -265,7 +276,17 @@ class OpenDialog extends AModuleDialog {
                 getActivity()
         );
         if (closeSharePref.get()) {
-            this.getActivity().finish();
+            getActivity().finish();
+        }
+    }
+
+    /**
+     * Copy the url
+     */
+    private void copyUrl() {
+        AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
+        if (closeCopyPref.get()) {
+            getActivity().finish();
         }
     }
 
@@ -275,6 +296,7 @@ class OpenConfig extends AModuleConfig {
 
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
+    private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
     private final GenericPref.Bool mergeCopyPref;
     private final GenericPref.Enumeration<OnOffConfig> ctabsPref;
@@ -288,6 +310,7 @@ class OpenConfig extends AModuleConfig {
         incognitoPref = Incognito.PREF(activity);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(activity);
         closeSharePref = OpenModule.CLOSESHARE_PREF(activity);
+        closeCopyPref = OpenModule.CLOSECOPY_PREF(activity);
         noReferrerPref = OpenModule.NOREFERRER_PREF(activity);
         perDomainPref = LastOpened.PERDOMAIN_PREF(activity);
         mergeCopyPref = OpenModule.MERGECOPY_PREF(activity);
@@ -309,6 +332,7 @@ class OpenConfig extends AModuleConfig {
         incognitoPref.attachToSpinner(views.findViewById(R.id.incognito_pref), null);
         closeOpenPref.attachToSwitch(views.findViewById(R.id.closeopen_pref));
         closeSharePref.attachToSwitch(views.findViewById(R.id.closeshare_pref));
+        closeCopyPref.attachToSwitch(views.findViewById(R.id.closecopy_pref));
         noReferrerPref.attachToSwitch(views.findViewById(R.id.noReferrer));
         perDomainPref.attachToSwitch(views.findViewById(R.id.perDomain));
         mergeCopyPref.attachToSwitch(views.findViewById(R.id.mergeCopy_pref));

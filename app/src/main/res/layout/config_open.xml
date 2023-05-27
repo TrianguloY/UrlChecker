@@ -65,6 +65,20 @@
         android:text="@string/mOpen_closeShare" />
 
     <Switch
+        android:id="@+id/closecopy_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_closeCopy" />
+
+    <Switch
+        android:id="@+id/mergeCopy_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallPadding"
+        android:text="@string/mOpen_mergeCopy" />
+
+    <Switch
         android:id="@+id/perDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,12 +91,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/smallPadding"
         android:text="@string/mOpen_noReferrer" />
-
-    <Switch
-        android:id="@+id/mergeCopy_pref"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/smallPadding"
-        android:text="@string/mOpen_mergeCopy" />
 
 </LinearLayout>
