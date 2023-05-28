@@ -3,8 +3,8 @@ package com.trianguloy.urlchecker.dialogs;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +25,11 @@ import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * The main dialog, when opening a url
@@ -177,11 +179,39 @@ public class MainDialog extends Activity {
         // get views
         ll_mods = findViewById(R.id.middle_modules);
 
-        // initialize
-        initializeModules();
+        // load url (or urls)
+        var links = getOpenUrl();
+        switch (links.size()) {
+            case 0:
+                // no links, invalid
+                Toast.makeText(this, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
+                finish();
+                break;
+            case 1:
+                // 1 link, just that
 
-        // load url
-        onNewUrl(new UrlData(getOpenUrl()));
+                // initialize
+                initializeModules();
+
+                // show
+                onNewUrl(new UrlData(links.iterator().next()));
+                break;
+            default:
+                // multiple links, choose
+                var links_array = links.toArray(new String[0]);
+                new AlertDialog.Builder(this)
+                        .setItems(links_array, (dialog, which) -> {
+
+                            // initialize
+                            initializeModules();
+
+                            // show
+                            onNewUrl(new UrlData(links_array[which]));
+                            dialog.dismiss();
+                        })
+                        .setOnCancelListener(o -> this.finish())
+                        .show();
+        }
     }
 
     /**
@@ -267,37 +297,29 @@ public class MainDialog extends Activity {
     /**
      * Returns the url that this activity was opened with (intent uri or sent text)
      */
-    private String getOpenUrl() {
+    private Set<String> getOpenUrl() {
         // get the intent
-        Intent intent = getIntent();
-        if (intent == null) return invalid();
+        var intent = getIntent();
+        if (intent == null) return Collections.emptySet();
 
         // check the action
-        String action = getIntent().getAction();
+        var action = getIntent().getAction();
         if (Intent.ACTION_SEND.equals(action)) {
             // sent text
-            String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
-            if (sharedText == null) return invalid();
-            return sharedText.trim();
+            var sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+            if (sharedText == null) return Collections.emptySet();
+            var links = AndroidUtils.getLinksFromText(sharedText);
+            if (links.isEmpty()) links.add(sharedText.trim()); // no links? just use the whole text, the user requested the app so...
+            return links;
         } else if (Intent.ACTION_VIEW.equals(action)) {
             // view url
-            Uri uri = intent.getData();
-            if (uri == null) return invalid();
-            return uri.toString();
+            var uri = intent.getData();
+            if (uri == null) return Collections.emptySet();
+            return Collections.singleton(uri.toString());
         } else {
             // other
-            return invalid();
+            return Collections.emptySet();
         }
-    }
-
-    /**
-     * shows a toast, finishes the activity and returns null
-     */
-    private String invalid() {
-        // for an invalid parameter
-        Toast.makeText(this, R.string.toast_invalid, Toast.LENGTH_SHORT).show();
-        finish();
-        return null;
     }
 
     /* ------------------- its a secret! ------------------- */

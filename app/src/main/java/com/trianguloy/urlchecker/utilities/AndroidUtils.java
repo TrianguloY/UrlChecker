@@ -13,6 +13,7 @@ import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.util.Patterns;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ import com.trianguloy.urlchecker.R;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Generic Android utilities
@@ -216,5 +219,15 @@ public interface AndroidUtils {
         // tint
         drawable.setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
         return drawable;
+    }
+
+    /**
+     * Returns all the unique links found on a given text
+     */
+    static Set<String> getLinksFromText(CharSequence text) {
+        var links = new HashSet<String>();
+        var matcher = Patterns.WEB_URL.matcher(text);
+        while (matcher.find()) links.add(matcher.group());
+        return links;
     }
 }

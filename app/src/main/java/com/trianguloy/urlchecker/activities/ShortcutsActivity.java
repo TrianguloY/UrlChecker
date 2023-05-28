@@ -9,17 +9,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.service.quicksettings.TileService;
-import android.util.Patterns;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 /**
  * This activity opens (on this app) a link detected on the clipboard text. If multiple asks.
@@ -83,14 +82,15 @@ public class ShortcutsActivity extends Activity {
                 break;
             case 1:
                 // 1 link, open
-                open(links.get(0));
+                open(links.iterator().next());
                 finish();
                 break;
             default:
                 // multiple links, choose
+                var links_array = links.toArray(new String[0]);
                 dialog = new AlertDialog.Builder(this)
-                        .setItems(links.toArray(new String[0]), (dialog, which) -> {
-                            open(links.get(which));
+                        .setItems(links_array, (dialog, which) -> {
+                            open(links_array[which]);
                             dialog.cancel();
                         })
                         .setOnCancelListener(o -> this.finish())
@@ -116,21 +116,15 @@ public class ShortcutsActivity extends Activity {
     /**
      * Returns all links detected on the clipboard
      */
-    private List<String> getLinksFromClipboard() {
+    private Set<String> getLinksFromClipboard() {
 
         var clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return Collections.emptyList();
+        if (clipboard == null) return Collections.emptySet();
 
         var primaryClip = clipboard.getPrimaryClip();
-        if (primaryClip == null || primaryClip.getItemCount() < 1) return Collections.emptyList();
+        if (primaryClip == null || primaryClip.getItemCount() < 1) return Collections.emptySet();
 
-        var textLinks = primaryClip.getItemAt(0).coerceToText(this);
-
-        var links = new ArrayList<String>();
-        var matcher = Patterns.WEB_URL.matcher(textLinks);
-        while (matcher.find()) links.add(matcher.group());
-
-        return links;
+        return AndroidUtils.getLinksFromText(primaryClip.getItemAt(0).coerceToText(this));
     }
 
     /**
