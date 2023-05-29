@@ -17,6 +17,7 @@ import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.Inflater;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,6 +53,7 @@ public class UriPartsModule extends AModuleData {
 class UriPartsDialog extends AModuleDialog {
 
     private LinearLayout box;
+    private final List<String> expandedGroups = new ArrayList<>();
 
     public UriPartsDialog(MainDialog dialog) {
         super(dialog);
@@ -77,7 +79,7 @@ class UriPartsDialog extends AModuleDialog {
 
         // domain elements
         if (uri.getAuthority() != null || uri.getScheme() != null) {
-            var domain = addGroup("Domain", null);
+            var domain = addGroup("Domain", -1, null);
             addPart("scheme", uri.getScheme(), domain, null);
             addPart("user info", uri.getUserInfo(), domain, null);
             addPart("host", uri.getHost(), domain, null);
@@ -87,7 +89,7 @@ class UriPartsDialog extends AModuleDialog {
         // paths
         var pathSegments = uri.getPathSegments();
         if (pathSegments.size() > 0) {
-            var paths = addGroup("Paths (" + pathSegments.size() + ")", uri.buildUpon().path(null));
+            var paths = addGroup("Paths", pathSegments.size(), uri.buildUpon().path(null));
             for (var i = 0; i < pathSegments.size(); i++) {
                 var pathSegment = pathSegments.get(i);
 
@@ -103,7 +105,7 @@ class UriPartsDialog extends AModuleDialog {
         // queries
         var queryParts = getQueryParts(uri);
         if (queryParts.size() > 0) {
-            var queries = addGroup("Queries (" + queryParts.size() + ")", uri.buildUpon().query(null));
+            var queries = addGroup("Queries", queryParts.size(), uri.buildUpon().query(null));
             for (var queryPart : queryParts) {
                 var builder = uri.buildUpon();
                 builder.query(null);
@@ -118,7 +120,7 @@ class UriPartsDialog extends AModuleDialog {
 
         // fragment
         if (uri.getFragment() != null) {
-            var fragment = addGroup("Fragment", uri.buildUpon().fragment(null));
+            var fragment = addGroup("Fragment", -1, uri.buildUpon().fragment(null));
             addPart("#", uri.getFragment(), fragment, null);
         }
 
@@ -126,14 +128,14 @@ class UriPartsDialog extends AModuleDialog {
     }
 
     /**
-     * Adds a collapsible group, removes it
+     * Adds a collapsible group
      */
-    private LinearLayout addGroup(String name, Uri.Builder onDelete) {
+    private LinearLayout addGroup(String name, int size, Uri.Builder onDelete) {
         var title = Inflater.inflate(R.layout.uri_part, box);
         title.findViewById(R.id.key).setVisibility(View.GONE);
 
         var name_view = title.<TextView>findViewById(R.id.value);
-        name_view.setText(name);
+        name_view.setText(name + (size <= -1 ? "" : " (" + size + ")"));
         AndroidUtils.setAsClickable(name_view);
 
         var delete_view = title.<Button>findViewById(R.id.delete);
@@ -141,13 +143,16 @@ class UriPartsDialog extends AModuleDialog {
         else delete_view.setOnClickListener(v -> setUrl(onDelete.build().toString()));
 
         var group = Inflater.<LinearLayout>inflate(R.layout.dialog_parts, box);
-        group.setVisibility(View.GONE);
+        group.setVisibility(expandedGroups.contains(name) ? View.VISIBLE : View.GONE);
         AndroidUtils.toggleableListener(
                 title,
-                v -> group.setVisibility(group.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
-                v -> AndroidUtils.setStartDrawables(name_view,
-                        group.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right
-                )
+                v -> JavaUtils.toggleContains(expandedGroups, name),
+                v -> {
+                    group.setVisibility(expandedGroups.contains(name) ? View.VISIBLE : View.GONE);
+                    AndroidUtils.setStartDrawables(name_view,
+                            expandedGroups.contains(name) ? R.drawable.arrow_down : R.drawable.arrow_right
+                    );
+                }
         );
 
         return group;

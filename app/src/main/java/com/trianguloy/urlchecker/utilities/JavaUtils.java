@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,14 +50,14 @@ public interface JavaUtils {
      * Applies a filter to both strings to check if all words of keywords are in body.
      * The order does not matter.
      */
-    static boolean containsWords(String body, String keywords){
+    static boolean containsWords(String body, String keywords) {
         JavaUtils.Function<String, String> filter = s -> s.toUpperCase().replaceAll("[\\s-_]+", " ");
         // Match all words
         String[] words = filter.apply(keywords).split(" ");
         body = filter.apply(body);
         boolean match = true;
         for (String str : words) {
-            if (!body.contains(str)){
+            if (!body.contains(str)) {
                 match = false;
                 break;
             }
@@ -68,8 +69,17 @@ public interface JavaUtils {
      * Returns the object, or default if null
      * java.util.Optional requires api 24
      */
-    static <T> T valueOrDefault(T value, T defaultValue){
+    static <T> T valueOrDefault(T value, T defaultValue) {
         return value == null ? defaultValue : value;
+    }
+
+    /**
+     * if the element is present in the list, removes it
+     * if not, adds it
+     */
+    static <E> void toggleContains(Collection<E> list, E element) {
+        if (list.contains(element)) list.remove(element);
+        else list.add(element);
     }
 
     /**
