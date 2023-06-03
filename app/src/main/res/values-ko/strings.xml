@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_sample">다음의 링크를 눌러 테스트해 보세요:</string>
+    <string name="a_modules">모듈</string>
+    <string name="a_settings">설정</string>
+    <string name="a_about">정보</string>
+    <string name="txt_about">이 앱은 TrianguloY에 의해 제작되었습니다.
+\n
+\n기여자: %s
+\n번역한 사람들: %s</string>
+    <string name="link_blog">TrianguloY의 블로그</string>
+    <string name="link_changelog">변경 사항</string>
+    <string name="link_source">소스 코드</string>
+    <string name="link_privacy">개인정보 보호 정책</string>
+    <string name="toast_cantEnable">모듈을 활성화할 수 있습니다. 빼먹은 설정이 없는지 확인하세요.</string>
+    <string name="menu_resetOrder">순서 초기화하기</string>
+    <string name="desc_up">위로 옮기기</string>
+    <string name="desc_enable">모듈 켜기/끄기</string>
+    <string name="btn_setBrowser">기본 브라우저로 정하기</string>
+    <string name="toast_defaultSet">이 앱은 이제 기본 웹 브라우저입니다.</string>
+    <string name="txt_theme">테마:</string>
+    <string name="spin_darkTheme">어두운 테마</string>
+    <string name="spin_lightTheme">밝은 테마</string>
+    <string name="txt_locale">언어:</string>
+    <string name="btn_tutorialSettings">튜토리얼 다시 보기</string>
+    <string name="tutorial">튜토리얼</string>
+    <string name="txt_tutorial1">앱을 다운로드해주셔서 감사합니다!
+\n
+\n만약 이 튜토리얼을 넘기고 싶다면 아래에 있는 버튼을 눌러 주세요. 설정에서 이 튜토리얼을 언제든 다시 보실 수 있습니다.</string>
+    <string name="txt_tutorial3">URL을 열 때 이 앱을 사용하려면 기본 웹 브라우저로 설정하세요.
+\n(기본 웹 브라우저로 설정하지 않더라도 “공유” 기능을 이용하면 앱을 사용할 수 있습니다.)</string>
+    <string name="translators">ilotoki0804;</string>
+    <string name="locale">한국어</string>
+    <string name="txt_info">이 앱은 URL 링크를 클릭했을 때 중간역을 합니다. 이 앱을 링크를 열 때 사용하도록 하면 링크에 대한 몇 가지 정보가 있는 창이 나타납니다. 아래에 있는 모듈 버튼을 눌러 사용 가능한 모든 모듈을 확인하고 설정해 보세요.</string>
+    <string name="txt_openLinks">이 앱으로 링크 열기: 안드로이드는 여러 해에 걸쳐 이를 설정하는 방법을 변경해왔고, 버전에 따라 설정하는 방법이 차이가 납니다. 아래에서 당신의 기기에서 가능한 설정법을 찾으세요. 만약 이 앱에서 링크가 열리지 않는다면, 모든 방법을 시도해보세요.</string>
+    <string name="btn_androidSettings">안드로이드 앱 설정</string>
+    <string name="btn_configureBrowser">기본 웹 브라우저</string>
+    <string name="btn_linksSettings">지원하는 링크 열기</string>
+    <string name="menu_toggleDecorations">모든 제목 켜거나 끄기</string>
+    <string name="desc_down">아래로 옮기기</string>
+    <string name="txt_conf">여기에는 사용 가능한 모든 모듈과 설명 및 설정이 있습니다. 또한 모듈의 순서를 변경하고, 제목을 보일지 여부를 설정하며, 켜거나 끌 수 있습니다.</string>
+    <string name="desc_decorations">제목 보이기/숨기기</string>
+    <string name="txt_tutorial2">이 앱은 URL 링크를 열 때 중간역을 합니다. 이 앱이 URL이 받으면, 모듈을 통해 URL과 상호작용할 수 있습니다. 이후, 링크를 원하는 앱으로 열거나, 공유하거나, 클립보드에 복사할 수 있습니다.</string>
+    <string name="txt_tutorial4">모듈은 앱이 URL과 상호작용하는 방법입니다.
+\n각각의 모듈은 특정한 기능이 있습니다. 보통 URL에 대한 정보를 보여주기도 하고, 사용자의 허락이 있을 경우 변경하기도 합니다.
+\n모듈의 설명을 읽어 보고 필요한 기능을 설정하세요.
+\n
+\n중요!: 모든 동작은 기본적으로 수동입니다. 앱은 사용자가 허용하지 않는 한 인터넷에 연결하거나 링크를 수정하지 않습니다. 다만, 몇몇 동작은 필요하면 자동으로 작동하도록 설정할 수 있습니다.
+\n
+\n아래에 있는 버튼을 누르거나 메인 화면에서 모듈 목록을 열 수 있습니다.</string>
+    <string name="txt_tutorial5">끝입니다. 유용한 팁 몇 가지를 알려 드리겠습니다:
+\n
+\n어떤 앱이 링크 열기나 공유하는 방법 중 하나를 제공하지 않지만 나머지 하나는 제공한다면, 이 앱을 통해 문제를 해결할 수 있습니다. 공유 버튼을 길게 눌러 클립보드에 복사할 수 있습니다.
+\n
+\n몇몇 URL은 단지 리다이렉트하는 것이 목적입니다. 만약 최종 URL을 앱으로 열 수 있다면, 브라우저에서 여는 것을 피할 수 있습니다.
+\n
+\n이 앱이 유용하기를 빕니다! 적극적으로 기능을 제안하거나, 버그를 제보하거나, 변경을 제안해 주세요. 관련한 모든 링크는 정보란에 있습니다.</string>
+    <string name="btn_tutorialSkip">튜토리얼 넘기기</string>
+    <string name="title_choose">앱 선택하기</string>
+    <string name="save">저장</string>
+    <string name="close">닫기</string>
+    <string name="auto">자동</string>
+    <string name="btn_tutorialEnd">튜토리얼 끝내기</string>
+    <string name="toast_noBrowser">웹 브라우저를 열 수 없음</string>
+    <string name="toast_noApp">앱을 열 수 없음</string>
+    <string name="reset">초기화</string>
+    <string name="defaultOn">기본적으로 활성화</string>
+    <string name="mOpen_with">%s(으)로 열기</string>
+    <string name="mOpen_open">열기</string>
+    <string name="mOpen_share">공유</string>
+    <string name="mOpen_copyUrl">복사</string>
+    <string name="mOpen_clipboard">URL이 복사되었습니다.</string>
+    <string name="mOpen_noapps">사용 가능한 앱 없음</string>
+    <string name="mOpen_tabsDesc">커스텀 탭 기능 켜거나 끄기</string>
+    <string name="mOpen_incognitoDesc">익명 모드 켜거나 끄기(파이어폭스만 해당)</string>
+    <string name="mStatus_name">상태 코드</string>
+    <string name="defaultOff">기본적으로 비활성화</string>
+    <string name="alwaysOn">언제나 활성화</string>
+    <string name="alwaysOff">언제나 비활성화</string>
+    <string name="share">공유</string>
+    <string name="deviceDefault">기기 기본값</string>
+    <string name="next">다음</string>
+    <string name="canceled">취소됨</string>
+    <string name="back">뒤로</string>
+</resources>
