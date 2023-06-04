@@ -248,16 +248,16 @@ class PatternDialog extends AModuleDialog {
             appendTail(text, sb, appendPos);
             return sb.toString();
         }
-        return text.toString();
+        return text;
     }
 
     private static int appendReplacement(String text, Matcher matcher, StringBuffer sb, String replacement, int appendPos) {
         // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#714
         sb.append(text.substring(appendPos, matcher.start()));
         appendEvaluated(matcher, sb, replacement);
-        appendPos = matcher.end();
+        int newAppendPos = matcher.end();
 
-        return appendPos;
+        return newAppendPos;
     }
 
     @TargetApi(Build.VERSION_CODES.O)
