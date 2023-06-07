@@ -1,7 +1,8 @@
-Bu uygulama URL bağlantılarını açmak için bir ara adım görevi görür. Bir bağlantıya tıkladığınızda ve açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir. Özellikle bir e-postadan, bir sosyal ağ uygulamasından veya benzerinden harici bir bağlantı açmanız gerektiğinde kullanışlıdır.
+Bu uygulama URL bağlantılarını açmak için bir ara adım görevi görür. Bir bağlantıya tıkladığınızda ve açmak için bu uygulamayı seçtiğinizde, bağlantı hakkında bazı bilgiler içeren bir iletişim kutusu gösterecektir.
+Özellikle bir e-postadan, bir sosyal ağ uygulamasından veya benzerinden harici bir bağlantı açmanız gerektiğinde kullanışlıdır.
 
 
-Uygulama kişisel kullanım içindir, ancak başkalarıyla paylaşıldığında bundan faydalanabilir. Ücretsizdir ve reklamsızdır, olabildiğince hafiftir ve olabildiğince az sayıda izin kullanır (yalnızca kullanıcı talep ettiğinde gerçekleştirilecek bileşen kontrolleri için yalnızca internet izni). Uygulamaya yeni özellikler eklemek ya da önermek isterseniz kaynak kodu GitHub'da da mevcuttur: https://github.com/TrianguloY/UrlChecker
+URLCheck TrianguloY tarafından geliştirilmiş olup esasında kişisel kullanım içindir. Ücretsizdir ve reklamsızdır, olabildiğince hafiftir ve olabildiğince az sayıda izin kullanır (yalnızca kullanıcı talep ettiğinde gerçekleştirilecek bileşen kontrolleri için yalnızca internet izni). Uygulamaya yeni özellikler eklemek ya da önermek isterseniz kaynak kodu GitHub'da da mevcuttur: https://github.com/TrianguloY/UrlChecker
 
 
 Geliştirilmiş modüler bir yapıya sahiptir, modülleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz:
@@ -14,7 +15,7 @@ Geliştirilmiş modüler bir yapıya sahiptir, modülleri tek tek etkinleştireb
 
 * VirusTotal analizi: Bu modül etkinleştirildiğinde, VirusTotal kullanarak URL'yi tarayabilir ve raporu kontrol edebilirsiniz. Çalışması için kişisel bir VirusTotal API anahtarı gereklidir. VirusTotal™ Google, Inc. şirketinin ticari markasıdır.
 
-* Clear Url modülleri: URL'den yönlendirme ve işe yaramaz parametreleri tespit ederek 'temizlemek' için Clear Url kataloğunu kullanır. Ayrıca yaygın çevrimdışı url yönlendirmelerine de izin verir. https://docs.clearurls.xyz/latest/specs/rules/ adresindeki Clear URL kataloğunu kullanır
+* URL Temizleyici: URL'den yönlendirme ve işe yaramaz parametreleri tespit ederek 'temizlemek' için Clear Url kataloğunu kullanır. Ayrıca yaygın çevrimdışı url yönlendirmelerine de izin verir. https://docs.clearurls.xyz/latest/specs/rules/ adresindeki Clear URL kataloğunu kullanır
 
 * Desen modülü: Kalıplara dayalı kontroller gerçekleştirir:
     - Eğer url http ise, https ile değiştirmek için uyarı mesajına basın.

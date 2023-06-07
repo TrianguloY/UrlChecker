@@ -194,11 +194,8 @@
     <string name="mFlag_editFlags">Standardwerte für die Marker bearbeiten</string>
     <string name="mParts_name">URI-Teile</string>
     <string name="mFlag_desc">[Beta-Funktion] Dies ist ein erweitertes Modul, um Intent Marker beim Öffnen anderer Apps zu bearbeiten.
-\n
 \nDieses Modul zeigt eine Liste der Marker an. Sie können wählen, ob ein Marker gesetzt ist, indem Sie auf das Symbol tippen. Es gibt auch ein Überlaufmenü um einige Marker auszublenden, dies ist nur visuell und die Marker behalten weiterhin den zugewiesenen Status.
-\n
 \nDie Marker werden zwei Farbindikatoren neben dem Kontrollschalter haben. Der linke zeigt den vom Intent empfangenen Wert, der rechte den vom Modul selbst gesetzten Status. Rot bedeutet, dass der Marker nicht gesetzt ist, grün, dass der Marker gesetzt ist. Zusätzlich kann der Indikator grau sein, was bedeutet, dass der Status auf automatisch gesetzt wurde.
-\n
 \nMit der folgenden Schaltfläche können Sie den Standardwert und die Sichtbarkeit der Marker setzen.</string>
     <string name="mParts_desc">Dieses Modul zeigt alle Teile der URL an: Schema, Autorität, Pfade, Parameter und Fragment.
 \nWenn Sie auf einen Teil klicken, wird dieser als neue URL festgelegt, z.B. nützlich, wenn ein Parameter oder Pfad eine kodierte URL zur Weiterleitung ist.
@@ -221,7 +218,8 @@
 \n- Benutzerdefinierte Tabs: Schalter um Benutzerdefinierte Tabs einzuschalten. Wenn aktiviert, sollte der Browser im \'lite\'-Modus geöffnet werden.
 \n- Privater Modus: Nur Firefox. Wenn der Schalter aktiviert ist, sollte der Browser im privaten Modus geöffnet werden.
 \n- Öffnen-Button: Tippen Sie auf den Namen der App um den Link in dieser zu öffnen. Wenn ein Link mit mehreren Apps geöffnet werden kann, wird ein Pfeil zur Auswahl angezeigt.
-\n- Teilen-Button: Tippen Sie auf diesen Button um den Link zu teilen. Langes Drücken kopiert den Link in die Zwischenablage.</string>
+\n- Kopieren-Button: Tippen Sie auf diesen Button um den Link zu kopieren.
+\n- Teilen-Button: Tippen Sie auf diesen Button um den Link zu teilen.</string>
     <string name="mStatus_autoCheck">URLs, die diesem Muster entsprechen, automatisch prüfen. Warnung! Es ist ratsam ein restriktives Muster zu benutzen (nicht .* für alle Links), da sonst böswillige Server Ihre IP-Adresse loggen könnten.</string>
     <string name="mVT_cancel">Abbrechen</string>
     <string name="mVT_scanning">Scan läuft…</string>
@@ -255,4 +253,7 @@
     <string name="mUnshort_internal">Interner Fehler (%s)</string>
     <string name="mUnshort_notFound">Keine Weiterleitung gefunden</string>
     <string name="mUnshort_ok">Ent-Kürzt</string>
+    <string name="mOpen_closeCopy">Dialog nach dem Kopieren schließen</string>
+    <string name="mOpen_mergeCopy">Kombinierter Kopieren-/Teilen-Button (Lange drücken zum Kopieren)</string>
+    <string name="mOpen_copyUrl">Kopieren</string>
 </resources>
