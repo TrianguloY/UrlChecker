@@ -91,12 +91,12 @@ public class RegexFix {
                 }
                 dollar = false;
             } else if (c == '{' && dollar) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                    throw new IllegalArgumentException("your android version does not support named-capturing groups");
-                }
                 escapeNamedGroup = true;
                 escapeNamedGroupStart = i;
             } else if (c == '}' && dollar && escapeNamedGroup) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                    throw new IllegalArgumentException("your android version does not support named-capturing groups");
+                }
                 String groupValue = matcher.group(s.substring(escapeNamedGroupStart + 1, i));
                 if (groupValue != null) {
                     buffer.append(groupValue);
