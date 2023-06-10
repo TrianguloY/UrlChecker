@@ -74,6 +74,7 @@ class PatternConfig extends AModuleConfig {
                         R.string.mPttrn_userContent,
                         "https://github.com/TrianguloY/UrlChecker/wiki/Custom-patterns"
                 ));
+        RegexFix.attachSetting(views.findViewById(R.id.regex_fix));
     }
 
 }
@@ -85,12 +86,14 @@ class PatternDialog extends AModuleDialog {
     private LinearLayout box;
 
     private final PatternCatalog catalog;
+    private final RegexFix regexFix;
 
     private final List<Message> messages = new ArrayList<>();
 
     public PatternDialog(MainDialog dialog) {
         super(dialog);
         catalog = new PatternCatalog(dialog);
+        regexFix = new RegexFix(dialog);
     }
 
     @Override
@@ -159,7 +162,7 @@ class PatternDialog extends AModuleDialog {
 
                     if (replacement != null) {
                         // replace url
-                        message.newUrl = RegexFix.replaceAll(url, regex, replacement);
+                        message.newUrl = regexFix.replaceAll(url, regex, replacement);
 
                         // automatic? apply
                         if (data.optBoolean("automatic")) {

@@ -1,23 +1,58 @@
 package com.trianguloy.urlchecker.utilities;
 
-import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Build;
+import android.view.View;
+import android.widget.Switch;
 
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public interface RegexFix {
+/**
+ * On Android 10 and under, optional groups may yield a "null" in the replacement output instead of an empty string.
+ * Therefore, we just copy the implementation from a newer version of Android
+ * https://github.com/TrianguloY/UrlChecker/issues/237
+ */
+public class RegexFix {
+
     /**
-     * On Android 10 and under, optional groups may yield a "null" in the replacement output instead of an empty string.
-     * Therefore, we just copy the implementation from a newer version of Android
-     * https://github.com/TrianguloY/UrlChecker/issues/237
+     * Android 11 and up have already the fix, disable in those cases
      */
-    static String replaceAll(String text, Pattern pattern, String replacement) {
-        // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#837
+    public static final boolean IS_ANDROID_FIXED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
+
+    private final GenericPref.Bool pttrn_regexfix;
+
+    public RegexFix(Context cntx) {
+        // fix enabled by default
+        pttrn_regexfix = new GenericPref.Bool("pttrn_regexfix", true, cntx);
+    }
+
+    /**
+     * Attach the setting to a given switch view (or disabled if not needed)
+     */
+    public static void attachSetting(Switch view) {
+        if (IS_ANDROID_FIXED) {
+            // hide, already native
+            view.setVisibility(View.GONE);
+        } else {
+            // show, required
+            new RegexFix(view.getContext()).pttrn_regexfix.attachToSwitch(view);
+            view.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Use this instead of: pattern.matcher(text).replaceAll(replacement)
+     */
+    public String replaceAll(String text, Pattern pattern, String replacement) {
         Matcher matcher = pattern.matcher(text);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+
+        if (IS_ANDROID_FIXED || !pttrn_regexfix.get()) {
+            // no fix required or explicitly disabled, just use native function
             return matcher.replaceAll(replacement);
         }
+
+        // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#837
         boolean result = matcher.find();
         if (result) {
             StringBuffer sb = new StringBuffer();
@@ -36,12 +71,9 @@ public interface RegexFix {
         // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#714
         sb.append(text.substring(appendPos, matcher.start()));
         appendEvaluated(matcher, sb, replacement);
-        int newAppendPos = matcher.end();
-
-        return newAppendPos;
+        return matcher.end();
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
     private static void appendEvaluated(Matcher matcher, StringBuffer buffer, String s) {
         // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#731
         boolean escape = false;
