@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Switch;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * On Android 10 and under, optional groups may yield a "null" in the replacement output instead of an empty string.
@@ -42,18 +41,16 @@ public class RegexFix {
     }
 
     /**
-     * Use this instead of: pattern.matcher(text).replaceAll(replacement)
+     * Use this instead of: matcher = pattern.matcher(text); result = matcher.replaceAll(replacement)
      */
-    public String replaceAll(String text, Pattern pattern, String replacement) {
-        Matcher matcher = pattern.matcher(text);
-
+    public String replaceAll(String text, Matcher matcher, String replacement) {
         if (IS_ANDROID_FIXED || !pttrn_regexfix.get()) {
             // no fix required or explicitly disabled, just use native function
             return matcher.replaceAll(replacement);
         }
 
         // Copied from https://android.googlesource.com/platform/libcore/+/refs/heads/android13-release/ojluni/src/main/java/java/util/regex/Matcher.java#837
-        boolean result = matcher.find();
+        boolean result = matcher.reset().find();
         if (result) {
             StringBuffer sb = new StringBuffer();
             int appendPos = 0;

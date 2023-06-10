@@ -19,7 +19,6 @@ import com.trianguloy.urlchecker.utilities.JavaUtils;
 import com.trianguloy.urlchecker.utilities.RegexFix;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,14 +110,14 @@ class PatternDialog extends AModuleDialog {
     public void onModifyUrl(UrlData urlData, JavaUtils.Function<UrlData, Boolean> setNewUrl) {
         // init
         messages.clear();
-        String url = urlData.url;
+        var url = urlData.url;
 
         // check each pattern
-        JSONObject patterns = catalog.getCatalog();
-        for (String pattern : JavaUtils.toList(patterns.keys())) {
+        var patterns = catalog.getCatalog();
+        for (var pattern : JavaUtils.toList(patterns.keys())) {
             try {
-                JSONObject data = patterns.optJSONObject(pattern);
-                Message message = new Message(pattern);
+                var data = patterns.optJSONObject(pattern);
+                var message = new Message(pattern);
 
                 // enabled?
                 if (data == null) continue;
@@ -126,7 +125,7 @@ class PatternDialog extends AModuleDialog {
 
                 // get regex (must exists)
                 if (!data.has("regex")) continue;
-                Pattern regex = Pattern.compile(data.getString("regex"));
+                var regex_matcher = Pattern.compile(data.getString("regex")).matcher(url);
 
                 // applied?
                 message.applied = urlData.getData(APPLIED + pattern) != null;
@@ -134,7 +133,7 @@ class PatternDialog extends AModuleDialog {
                 // check matches
                 // if 'regexp' matches, the pattern can match
                 // if 'regexp' doesn't match, the patter doesn't match
-                var matches = regex.matcher(url).find();
+                var matches = regex_matcher.find();
                 if (matches && data.has("excludeRegex")) {
                     // if 'excludeRegex' doesn't exist, the pattern can match
                     // if 'excludeRegex' matches, the pattern doesn't matches
@@ -147,12 +146,12 @@ class PatternDialog extends AModuleDialog {
                     // check replacements
                     String replacement = null;
 
-                    Object replacements = data.opt("replacement");
+                    var replacements = data.opt("replacement");
                     if (replacements != null) {
                         // data exists
                         if (replacements instanceof JSONArray) {
                             // array, get random
-                            JSONArray replacementsArray = (JSONArray) replacements;
+                            var replacementsArray = (JSONArray) replacements;
                             replacement = replacementsArray.getString(new Random().nextInt(replacementsArray.length()));
                         } else {
                             // single data, get that one
@@ -162,7 +161,7 @@ class PatternDialog extends AModuleDialog {
 
                     if (replacement != null) {
                         // replace url
-                        message.newUrl = regexFix.replaceAll(url, regex, replacement);
+                        message.newUrl = regexFix.replaceAll(url, regex_matcher, replacement);
 
                         // automatic? apply
                         if (data.optBoolean("automatic")) {
