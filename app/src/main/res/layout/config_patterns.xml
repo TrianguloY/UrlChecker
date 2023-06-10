@@ -16,6 +16,12 @@
         android:layout_height="wrap_content"
         android:text="@string/json_edit" />
 
+    <Switch
+        android:id="@+id/regex_fix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mPttrn_regexfix" />
+
     <TextView
         android:id="@+id/user_content"
         android:layout_width="match_parent"

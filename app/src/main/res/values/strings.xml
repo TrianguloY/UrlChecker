@@ -119,6 +119,7 @@ Built-in patterns include:
 - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 - Suggest replacing 'http' with 'https'
 - Suggest replacing Youtube, Reddit or Twitter with privacy-friendly alternatives [disabled by default]"</string>
+    <string name="mPttrn_regexfix">Fix optional regex groups (disable if regex is not working correctly)</string>
     <string name="mPttrn_userContent">List of other useful user-created patterns: %s</string>
     <string name="mPttrn_fix">Apply</string>
     <string name="mPttrn_fixed">Applied - %s</string>
