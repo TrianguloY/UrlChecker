@@ -2,8 +2,8 @@
 <resources>
     <string name="btn_tutorialSettings">Repetir tutorial</string>
     <string name="btn_tutorialEnd">Terminar tutorial</string>
-    <string name="link_source">Código fonte</string>
-    <string name="link_changelog">Histórico de mudanças</string>
+    <string name="link_source">Código-fonte</string>
+    <string name="link_changelog">Novidades</string>
     <string name="tutorial">Tutorial</string>
     <string name="canceled">Cancelado</string>
     <string name="next">Próximo</string>
@@ -22,18 +22,19 @@
     <string name="locale">Português Brasileiro</string>
     <string name="txt_about">Aplicativo criado por TrianguloY.
 \n
-\nContribuições: %s. Traduções: %s.</string>
+\nContribuições: %s.
+\nTraduções: %s.</string>
     <string name="desc_down">Mover para baixo</string>
     <string name="none">Nenhum</string>
     <string name="share">Compartilhar</string>
-    <string name="deviceDefault">Dispositivo padrão</string>
+    <string name="deviceDefault">Padrão do dispositivo</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mStatus_checking">Verificando…</string>
     <string name="desc_enable">Habilitar/desabilitar módulo</string>
     <string name="mClear_autoUpdate">Atualizar periodicamente</string>
     <string name="mClear_lastUpdate">Última atualização:</string>
     <string name="menu_resetOrder">Redefinir ordem</string>
-    <string name="btn_configureBrowser">Navegador web padrão</string>
+    <string name="btn_configureBrowser">Navegador padrão</string>
     <string name="btn_setBrowser">Definir como navegador padrão</string>
     <string name="save">Salvar</string>
     <string name="back">Voltar</string>
@@ -62,12 +63,12 @@
     <string name="mLog_view">Visualizar log</string>
     <string name="mClear_updateNow">Atualizar agora</string>
     <string name="mClear_lastCheck">Última verificação:</string>
-    <string name="toast_cantEnable">Não foi possível habilitar o módulo, configuração em falta\?</string>
+    <string name="toast_cantEnable">Não foi possível habilitar o módulo, configuração faltando\?</string>
     <string name="txt_theme">Tema:</string>
     <string name="spin_darkTheme">Escuro</string>
     <string name="spin_lightTheme">Claro</string>
     <string name="toast_noApp">Não foi possível abrir o aplicativo</string>
-    <string name="toast_noBrowser">Não foi possível abrir o navegador web</string>
+    <string name="toast_noBrowser">Não foi possível abrir o navegador</string>
     <string name="mOpen_name">Abrir e compartilhar</string>
     <string name="defaultOn">Habilitado por padrão</string>
     <string name="mVT_apiKey">Chave de API</string>
@@ -82,4 +83,90 @@
     <string name="mUnshort_error">Erro de servidor: %s</string>
     <string name="mUnshort_checking">Verificando…</string>
     <string name="mUnshort_internal">Erro interno (%s)</string>
+    <string name="translators">Murilogs1910</string>
+    <string name="txt_info">Esse aplicativo age como intermediário ao abrir links. Um diálogo com algumas informações sobre o link são apresentadas ao escolher esse app para abrir um link. Pressione o botão módulos abaixo para checar e configurar todos os módulos disponíveis.</string>
+    <string name="link_blog">Blog do TrianguloY</string>
+    <string name="menu_toggleDecorations">Alternar todos os títulos</string>
+    <string name="txt_openLinks">Abra os links neste aplicativo: Ao longo dos anos, o Android mudou a forma de configurar, variando entre as diferentes versões. Encontre abaixo todas as configurações disponíveis para o seu dispositivo. Se os links não estiverem sendo abertos neste aplicativo, tente todas elas.</string>
+    <string name="toast_defaultSet">O aplicativo agora é o navegador padrão</string>
+    <string name="txt_tutorial1">Obrigado por baixar o app!
+\n
+\nEste é o tutorial, você pode pulá-lo com o botão abaixo. Você sempre pode voltar através das configurações.</string>
+    <string name="txt_tutorial2">O aplicativo age como intermediário ao abrir links. Assim que um link é aberto com o aplicativo, você pode interagir com ele por meio dos módulos. Depois disso, você pode abrir o link (no aplicativo desejado), compartilhá-lo, ou copiá-lo para a área de transferência.</string>
+    <string name="txt_conf">Aqui estão todos os módulos disponíveis, onde você pode checar suas descrições e configurações. Você também pode reordenar, mudar a visibilidade e ativar/desativar eles.</string>
+    <string name="mOpen_incognito">Modo anônimo:</string>
+    <string name="mOpen_incognitoDesc">Ativar/desativar modo anônimo (apenas Firefox)</string>
+    <string name="txt_tutorial3">Selecione o aplicativo como navegador padrão para interceptar os links abertos.
+\n(Não é necessário se os links são redirecionados usando a função de compartilhar.)</string>
+    <string name="mPttrn_userContent">Lista de outros padrões úteis criados por usuários: %s</string>
+    <string name="mOpen_perDomain">Ordenar diferentes domínios independentemente</string>
+    <string name="mOpen_tabsDesc">Ativar/desativar abas customizadas</string>
+    <string name="mLog_edit">Editar log</string>
+    <string name="mHosts_fakenews">Notícias Falsas</string>
+    <string name="shortcut_checkClipboard">Verificar link da área de transferência</string>
+    <string name="mPttrn_name">Verificador de padrões</string>
+    <string name="mOpen_ctabs">Abas customizadas:</string>
+    <string name="mHosts_malware">Adware/Malware</string>
+    <string name="mHosts_adult">Conteúdo Adulto</string>
+    <string name="mHosts_gambling">Apostas</string>
+    <string name="mOpen_mergeCopy">Mesclar botões de Copiar e Compartilhar (segurar para copiar)</string>
+    <string name="mOpen_copyUrl">Copiar</string>
+    <string name="mPttrn_noSchemeHttp">Esquema HTTP ausente.</string>
+    <string name="mPttrn_ascii">Aviso! Caracteres não-ASCII encontrados.</string>
+    <string name="mPttrn_http">Link HTTP. Considere utilizar HTTPS.</string>
+    <string name="mVT_goodUrl">Nenhum dos %d mecanismos detectou a URL (na data %s)</string>
+    <string name="mVT_warningUrl">Aviso, %d/%d mecanismos detectaram a URL (na data %s)</string>
+    <string name="mD_name">Módulo de Depuração/Marcador</string>
+    <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de abas customizadas</string>
+    <string name="mD_desc">Caso você reordene os módulos, os novos adicionados em atualizações futuras serão colocados acima desse.
+\n
+\nSe você habilitar isso, ele exibirá a intenção recebida como uri, útil para desenvolvedores.
+\n
+\nClique na intenção ou em UrlData para copiar para a área de transferência. Segure para copiar tudo.</string>
+    <string name="mClear_name">Limpador de URL</string>
+    <string name="mClear_desc">Esse módulo remove rastreamento, referência e outros parâmetros inúteis da URL. Ele também permite redirecionamentos comuns de URL offline.</string>
+    <string name="mClear_matches">Corresponde %s</string>
+    <string name="mClear_tm">Catálogo embutido copiado do ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_blocked">- BLOQUEADO!</string>
+    <string name="mClear_exception">- ignorado devido a exceção %s</string>
+    <string name="json_desc">[Função Beta] Este é um editor avançado, o conteúdo deve ser formatado em JSON válido. Você pode pressionar o botão no canto superior direito para formatá-lo e validá-lo.</string>
+    <string name="mPttrn_noSchemeHttps">Esquema HTTPS ausente.</string>
+    <string name="mPttrn_ok">Não há padrões correspondentes.</string>
+    <string name="mStatus_autoCheck">Verifique automaticamente as URLs que correspondem ao seguinte padrão de expressão regular. Aviso! É aconselhável especificar um padrão restritivo (e não .* para todos) caso contrário, servidores mal-intencionados podem registrar seu endereço IP.</string>
+    <string name="mStatus_autoRedirect">Substituir as URLs de redirecionamento automaticamente</string>
+    <string name="mVT_name">Scanner de URL</string>
+    <string name="mInput_desc">Mostra a URL atual, que pode ser editada manualmente.</string>
+    <string name="mVT_tm">VirusTotal™ é uma marca registrada da Google, Inc.</string>
+    <string name="mHist_desc">Quando a URL é editada, seja manualmente ou por outros módulos, esse permite que você veja e reverta as mudanças.</string>
+    <string name="mClear_referral">- referência encontrada</string>
+    <string name="mClear_forcedRedirection">- redirecionamento forçado encontrado</string>
+    <string name="mClear_cleared">- Limpo</string>
+    <string name="mClear_rule">- parâmetro inútil encontrado</string>
+    <string name="mClear_rawRule">- conteúdo inútil encontrado</string>
+    <string name="mClear_redirection">- redirecionamento encontrado</string>
+    <string name="mClear_auto">Aplicar automaticamente</string>
+    <string name="mClear_noRules">Sem regras correspondentes</string>
+    <string name="mClear_toggleReferral">Permitir parâmetros de referência de marketing (não serão limpados)</string>
+    <string name="txt_tutorial4">Os módulos são a forma com que o app interage com as URLs.
+\nCada um dos módulos tem uma função específica. Geralmente para apresentar informação sobre a URL, or permitir sua modificação.
+\nLeia sobre elas e as configure como necessário.
+\n
+\nImportante: Todas as ações são manuais por padrão. O app não modificará nada nem se conectará a Internet a não ser que você permita especificamente, mas algumas ações podem ser aplicadas automaticamente, se desejado.
+\n
+\nAbra a lista de módulos a partir da tela principal ou tocando no botão abaixo.</string>
+    <string name="mPttrn_desc">Este módulo verifica a URL com padrões de expressões regulares que alertam, sugerem ou aplicam substituições. Você pode modificar ou criar seus próprios padrões, ou mesmo usar padrões criados por usuários.
+\nOs padrões embutidos incluem:
+\n- Alerta quando contém caracteres não-ASCII, como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
+\n- Sugere substituir ‘http’ por ‘https’
+\n- Sugere substituir Youtube, Reddit ou Twitter por alternativas que respeitam a privacidade [desativadas por padrão]</string>
+    <string name="mVT_desc">Quando este módulo está habilitado, você pode verificar a URL usando o VirusTotal e conferir o relatório. É necessário uma chave da API do VirusTotal para que isso funcione, você pode obter uma registrando-se para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detectaram a URL (na data %s)</string>
+    <string name="mClear_toggleVerbose">Ativar informações detalhadas para o processo de correspondência</string>
+    <string name="txt_tutorial5">Isso é tudo. Aqui vão algumas dicas que podem ser úteis:
+\n
+\nQuando um aplicativo não fornece uma maneira de abrir ou compartilhar uma URL, mas oferece uma maneira de fazer o outro, você pode resolver o problema usando este aplicativo. Você também pode copiar a URL para a área de transferência pressionando o botão de compartilhar por um longo tempo.
+\n
+\nExistem algumas URLs cujo único propósito é redirecioná-lo para outra URL. Se a URL final puder ser aberta em um aplicativo, você pode evitar abri-la em um navegador.
+\n
+\nEspero que você ache o aplicativo útil! E não hesite em sugerir funções, relatar bugs ou até propor mudanças. Encontre todos os links relevantes na tela “Sobre”.</string>
 </resources>
