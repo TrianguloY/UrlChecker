@@ -165,7 +165,8 @@ class UriPartsDialog extends AModuleDialog {
         if (value == null) return;
         var part = Inflater.inflate(R.layout.uri_part, container);
 
-        part.<TextView>findViewById(R.id.key).setText(name);
+        part.<TextView>findViewById(R.id.key)
+                .setText(name.isEmpty() ? getActivity().getString(R.string.mParts_empty) : name);
         var value_view = part.<TextView>findViewById(R.id.value);
         value_view.setText(value);
         AndroidUtils.setAsClickable(value_view);
@@ -192,6 +193,7 @@ class UriPartsDialog extends AModuleDialog {
             var queries = new ArrayList<Pair<String, String>>();
             for (var name : uri.getQueryParameterNames()) {
                 for (var value : uri.getQueryParameters(name)) {
+                    if (name.isEmpty() && value.isEmpty()) continue; // skip fully empty entries
                     queries.add(Pair.create(name, value));
                 }
             }

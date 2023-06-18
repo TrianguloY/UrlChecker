@@ -322,4 +322,5 @@ With the button below you can edit the default state and the visibility of the f
 By clicking a part it will be set as the new url, useful for example if one of the queries or paths was an encoded redirection url.
 You can also click the 'X' button to remove some of them.
 This is an advanced version of the 'Queries Remover' module."</string>
+    <string name="mParts_empty">(empty)</string>
 </resources>
