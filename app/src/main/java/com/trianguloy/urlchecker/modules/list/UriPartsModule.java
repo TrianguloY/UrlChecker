@@ -163,15 +163,22 @@ class UriPartsDialog extends AModuleDialog {
      */
     private void addPart(String name, String value, LinearLayout container, Uri.Builder onDelete) {
         if (value == null) return;
+        // create row
         var part = Inflater.inflate(R.layout.uri_part, container);
 
-        part.<TextView>findViewById(R.id.key)
-                .setText(name.isEmpty() ? getActivity().getString(R.string.mParts_empty) : name);
+        // configure key
+        var key_view = part.<TextView>findViewById(R.id.key);
+        key_view.setText(name.isEmpty() ? getActivity().getString(R.string.mParts_empty) : name);
+        if (!name.isEmpty()) key_view.setOnLongClickListener(longTapToCopy);
+
+        // configure value
         var value_view = part.<TextView>findViewById(R.id.value);
         value_view.setText(value);
         AndroidUtils.setAsClickable(value_view);
         value_view.setOnClickListener(v -> setUrl(value));
+        value_view.setOnLongClickListener(longTapToCopy);
 
+        // configure delete
         var delete_view = part.<Button>findViewById(R.id.delete);
         if (onDelete != null) {
             try {
@@ -188,7 +195,7 @@ class UriPartsDialog extends AModuleDialog {
     /**
      * Gets the queries, in order (except for same-name ones)
      */
-    private List<Pair<String, String>> getQueryParts(Uri uri) {
+    private static List<Pair<String, String>> getQueryParts(Uri uri) {
         try {
             var queries = new ArrayList<Pair<String, String>>();
             for (var name : uri.getQueryParameterNames()) {
@@ -202,5 +209,13 @@ class UriPartsDialog extends AModuleDialog {
             return Collections.emptyList();
         }
     }
+
+    /**
+     * OnLongClickListener to copy a part (textview text) to the clipboard
+     */
+    private final View.OnLongClickListener longTapToCopy = v -> {
+        AndroidUtils.copyToClipboard(getActivity(), R.string.mParts_copy, ((TextView) v).getText().toString());
+        return true;
+    };
 
 }
