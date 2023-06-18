@@ -304,11 +304,10 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mUnshort_ok">Kısaltma giderildi</string>
     <!-- -->
     <string name="mFlags_name">İşaretler düzenleyici</string>
-    <string name="mFlag_desc">[Beta özelliği] Bu gelişmiş bir modüldür, başka bir uygulamayı açarken \'intent\' işaretlerini düzenlemenize olanak tanır.
-\n
-\nAşağıdaki alana, varsayılanların üzerine yazacak işaretler koyabilirsiniz; bunlar, bu uygulamayı açmak için kullanılan \'intent\'ten alınmıştır.
-\n
-\nModülü kullanırken, işaretleri varsayılana ayarlamak için düzenleme butonuna basılı tutabilirsiniz. İşaretler alanına isimlerini yazarak bayrak ekleyebilirsiniz.</string>
+    <string name="mFlag_desc">[Beta özelliği] Bu gelişmiş bir modüldür, başka bir uygulamayı açarken amaç bayraklarını düzenlemenizi sağlar.
+\nBu modül bayrakların bir listesini gösterecektir, simgeye dokunarak bayrağın ayarlanıp ayarlanmadığını değiştirebilirsiniz. Orada bayrakları gizlemek için bir taşma menüsü de vardır, bu sadece görseldir, bayraklar hala atanmış durumu kullanacaktır.
+\nBayraklar, onay kutusunun yanında iki renk göstergesine sahip olacaktır. Soldaki, amaçtan alınan değeri gösterir, sağdaki ise modülün kendisi tarafından ayarlanan durumu gösterir. Kırmızı, bayrağın ayarlanmadığı, yeşil ise ayarlandığı anlamına gelir. Ek olarak tercih göstergesi gri olabilir, bu da durumun otomatik olarak ayarlandığı anlamına gelir.
+\nAşağıdaki düğme ile varsayılan durumu ve bayrakların görünürlüğünü düzenleyebilirsiniz.</string>
     <string name="mOpen_incognito">Gizli mod:</string>
     <string name="mOpen_incognitoDesc">Gizli modu aç / kapat (yalnızca Firefox için)</string>
     <string name="mParts_desc">Bu modül, kodu çözülen URL\'nin tüm parçalarını gösterir: şema, yetki, yollar, sorgular ve parça.
@@ -320,4 +319,5 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mOpen_mergeCopy">Kopyala ve Paylaş düğmelerini birleştir (kopyalamak için uzun basın)</string>
     <string name="mOpen_copyUrl">Kopyala</string>
     <string name="mParts_name">URI parçaları</string>
+    <string name="mPttrn_regexfix">İsteğe bağlı regex gruplarını düzelt (regex düzgün çalışmıyorsa devre dışı bırakın)</string>
 </resources>

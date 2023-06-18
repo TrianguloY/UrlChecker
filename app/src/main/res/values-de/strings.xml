@@ -256,4 +256,5 @@
     <string name="mOpen_closeCopy">Dialog nach dem Kopieren schließen</string>
     <string name="mOpen_mergeCopy">Kombinierter Kopieren-/Teilen-Button (Lange drücken zum Kopieren)</string>
     <string name="mOpen_copyUrl">Kopieren</string>
+    <string name="mPttrn_regexfix">Optionale RegEx-Gruppen korrigieren (ausschalten, falls RegEx nicht korrekt funktioniert)</string>
 </resources>

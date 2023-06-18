@@ -317,4 +317,5 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mOpen_closeCopy">Cierra la ventana después de copiar</string>
     <string name="mOpen_mergeCopy">Juntar botones de copiar y compartir (mantén pulsado para copiar)</string>
     <string name="mOpen_copyUrl">Copiar</string>
+    <string name="mPttrn_regexfix">Arreglar grupos de expresiones regulares opcionales (deshabilitar si la expresión regular no funciona correctamente)</string>
 </resources>
