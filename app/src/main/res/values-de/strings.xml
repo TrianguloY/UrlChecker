@@ -57,7 +57,7 @@
     <string name="txt_info">Diese App fungiert als Zwischenschritt beim Öffnen angeklickter Links. Wenn diese App zum Öffnen ausgewählt wurde, wird ein Dialog mit einigen Informationen über den Link angezeigt. Über den Module-Button unten können Sie alle verfügbaren Module prüfen und konfigurieren.</string>
     <string name="menu_toggleDecorations">Alle Titel umschalten</string>
     <string name="json_desc">[Beta-Funktion] Dies ist ein erweiterter Editor, der Inhalt muss gültiges JSON sein. Sie können die Schaltfläche oben rechts drücken, um das JSON zu formatieren und zu validieren.</string>
-    <string name="mPttrn_name">Muster (RegExp)</string>
+    <string name="mPttrn_name">Muster (RegEx)</string>
     <string name="mOpen_name">Öffnen und Teilen</string>
     <string name="mOpen_ctabs">Benutzerdefinierte Tabs:</string>
     <string name="mOpen_incognito">Privater Modus:</string>
@@ -201,7 +201,7 @@
 \nWenn Sie auf einen Teil klicken, wird dieser als neue URL festgelegt, z.B. nützlich, wenn ein Parameter oder Pfad eine kodierte URL zur Weiterleitung ist.
 \nSie können auch auf \'X\' klicken, um einzelne Teile zu entfernen.
 \nDies ist eine erweiterte Version des Moduls \'Parameter Entfernen\'.</string>
-    <string name="mPttrn_desc">Dieses Modul prüft URLs mithilfe von RegExp-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können Muster hinzufügen oder editieren oder sogar Muster anderer Benutzer verwenden.
+    <string name="mPttrn_desc">Dieses Modul prüft URLs mithilfe von RegEx-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können Muster hinzufügen oder editieren oder sogar Muster anderer Benutzer verwenden.
 \nVorgegebene Muster sind unter anderem:
 \n- Warnung, wenn URLs Nicht-ASCII-Zeichen enthalten wie griechische Buchstaben. Dies könnte für Phishing benutzt werden: googĺe.com statt google.com
 \n- Möglichkeit, \'http\' mit \'https\' zu ersetzen

@@ -374,14 +374,14 @@ class ClearUrlDialog extends AModuleDialog {
     }
 
     /**
-     * Matches case insensitive regexp into an input
+     * Matches case insensitive regex into an input
      *
-     * @param regexp regexp to use
-     * @param input  input to use
+     * @param regex regex to use
+     * @param input input to use
      * @return the matcher object
      */
-    private static Matcher matcher(String regexp, String input) {
-        return Pattern.compile(regexp, Pattern.CASE_INSENSITIVE).matcher(input);
+    private static Matcher matcher(String regex, String input) {
+        return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(input);
     }
 
 }

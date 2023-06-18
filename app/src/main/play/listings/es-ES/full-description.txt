@@ -23,7 +23,7 @@ La aplicación está estructurada con una configuración modular, puedes activar
 
 * Eliminador de parámetros: Muestra los parámetros individuales decodificados, que puede eliminar o comprobar.
 
-* Módulo de patrones: Comprueba la url con patrones regexp que avisa, sugiere o aplica sustituciones. Puede modificar o crear sus propios patrones, o incluso utilizar los creados por otros usuarios.
+* Módulo de patrones: Comprueba la url con patrones regex que avisa, sugiere o aplica sustituciones. Puede modificar o crear sus propios patrones, o incluso utilizar los creados por otros usuarios.
 Los patrones incorporados incluyen:
     - Advertencia cuando contiene caracteres no-ascii como letras griegas. Esto puede utilizarse para phishing: googĺe.com vs google.com
     - Sugerir la sustitución de "http" por "https".

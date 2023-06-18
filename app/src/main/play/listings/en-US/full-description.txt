@@ -23,7 +23,7 @@ The app is structured with a modular setup, you can enable/disable and reorder i
 
 * Queries remover: Displays the decoded individual url queries, which you can remove or check.
 
-* Pattern module: Checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
+* Pattern module: Checks the url with regex patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
 Built-in patterns include:
     - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
     - Suggest replacing 'http' with 'https'

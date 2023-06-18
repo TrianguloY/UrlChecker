@@ -104,7 +104,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
         modules
     -->
     <string name="mPttrn_name">Verificador de patrones</string>
-    <string name="mPttrn_desc">Este módulo comprueba la url con patrones regexp para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios.
+    <string name="mPttrn_desc">Este módulo comprueba la url con patrones regex para notificar, sugerir o aplicar reemplazos. Puedes modificar o crear tus propios patrones, o usar otros realizados por usuarios.
 \nPor defecto incluye:
 \n- Notifica si contiene caracteres no-ascii como letras griegas. Esto podría usarse para phishing: googĺe.com vs google.com.
 \n- Sugiere reemplazar \'http\' por \'https\'

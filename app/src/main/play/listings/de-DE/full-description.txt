@@ -23,7 +23,7 @@ Die App ist modular aufgebaut, Sie können einzelne Module aktivieren/deaktivier
 
 * Parameter Entfernen: Zeigt die dekodierten Parameter einer URL an, die Sie nach Wahl entfernen können.
 
-* Muster (RegExp): Prüft die URL mit RegExp-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können eigene Muster hinzufügen oder ändern oder sogar Muster anderer Benutzer verwenden.
+* Muster (RegEx): Prüft die URL mit RegEx-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können eigene Muster hinzufügen oder ändern oder sogar Muster anderer Benutzer verwenden.
 Integrierte Muster sind unter anderem:
     - Warnung, wenn URLs Nicht-ASCII-Zeichen wie griechische Buchstaben enthalten. Dies könnte für Phishing verwendet werden: googĺe.com statt google.com
     - Möglichkeit, 'http' durch 'https' zu ersetzen

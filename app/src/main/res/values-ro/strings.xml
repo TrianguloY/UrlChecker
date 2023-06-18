@@ -92,7 +92,7 @@
     <string name="back">Înainte</string>
     <string name="json_desc">[Funcția beta] Acesta este un editor avansat, conținutul trebuie formatat în JSON valid. Puteți apăsa butonul din dreapta sus pentru a-l formata și valida.</string>
     <string name="json_edit">Editor avansat</string>
-    <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regexp care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. Modelele încorporate includ: - Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com - Sugerați înlocuirea „http” cu „https” - Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
+    <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regex care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. Modelele încorporate includ: - Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com - Sugerați înlocuirea „http” cu „https” - Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
     <string name="mPttrn_fix">Aplică</string>
     <string name="mPttrn_fixed">Aplicat - %s</string>
     <string name="mPttrn_ascii">Atenție! S-au găsit caractere non-ASCII.</string>

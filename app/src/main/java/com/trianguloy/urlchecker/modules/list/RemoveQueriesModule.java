@@ -242,11 +242,11 @@ class RemoveQueriesDialog extends AModuleDialog {
      * {@link String#split(String)} won't return the last element if it's empty.
      * This function does. And it returns a list instead of an array.
      * Everything else is the same.
-     * Note: regexp must not match '#', it does change this function
+     * Note: regex must not match '#', it does change this function
      */
-    private static List<String> splitFix(String string, String regexp) {
+    private static List<String> splitFix(String string, String regex) {
         // split with an extra char
-        String[] parts = (string + "#").split(regexp);
+        String[] parts = (string + "#").split(regex);
         // remove the extra char
         parts[parts.length - 1] = parts[parts.length - 1].substring(0, parts[parts.length - 1].length() - 1);
         return Arrays.asList(parts);

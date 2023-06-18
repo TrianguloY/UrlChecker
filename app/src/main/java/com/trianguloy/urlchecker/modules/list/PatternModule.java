@@ -20,6 +20,8 @@ import com.trianguloy.urlchecker.utilities.RegexFix;
 
 import org.json.JSONArray;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -110,11 +112,11 @@ class PatternDialog extends AModuleDialog {
     public void onModifyUrl(UrlData urlData, JavaUtils.Function<UrlData, Boolean> setNewUrl) {
         // init
         messages.clear();
-        var url = urlData.url;
 
         // check each pattern
         var patterns = catalog.getCatalog();
         for (var pattern : JavaUtils.toList(patterns.keys())) {
+            var url = urlData.url;
             try {
                 var data = patterns.optJSONObject(pattern);
                 var message = new Message(pattern);
@@ -125,14 +127,19 @@ class PatternDialog extends AModuleDialog {
 
                 // get regex (must exists)
                 if (!data.has("regex")) continue;
-                var regex_matcher = Pattern.compile(data.getString("regex")).matcher(url);
 
-                // applied?
+                // applied previously?
                 message.applied = urlData.getData(APPLIED + pattern) != null;
 
+                // encode if required
+                if (data.optBoolean("encode")) {
+                    url = URLEncoder.encode(url);
+                }
+
                 // check matches
-                // if 'regexp' matches, the pattern can match
-                // if 'regexp' doesn't match, the patter doesn't match
+                // if 'regex' matches, the pattern can match
+                // if 'regex' doesn't match, the patter doesn't match
+                var regex_matcher = Pattern.compile(data.getString("regex")).matcher(url);
                 var matches = regex_matcher.find();
                 if (matches && data.has("excludeRegex")) {
                     // if 'excludeRegex' doesn't exist, the pattern can match
@@ -162,6 +169,11 @@ class PatternDialog extends AModuleDialog {
                     if (replacement != null) {
                         // replace url
                         message.newUrl = regexFix.replaceAll(url, regex_matcher, replacement);
+
+                        // decode if required
+                        if (data.optBoolean("decode")) {
+                            message.newUrl = URLDecoder.decode(message.newUrl);
+                        }
 
                         // automatic? apply
                         if (data.optBoolean("automatic")) {

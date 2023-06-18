@@ -114,7 +114,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
         modules
     -->
     <string name="mPttrn_name">Pattern checker</string>
-    <string name="mPttrn_desc">"This module checks the url with regexp patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
+    <string name="mPttrn_desc">"This module checks the url with regex patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
 Built-in patterns include:
 - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
 - Suggest replacing 'http' with 'https'
@@ -129,9 +129,11 @@ Built-in patterns include:
     <string name="mPttrn_noSchemeHttps">Missing HTTPS scheme.</string>
     <string name="mPttrn_ok">No matching patterns</string>
     <string name="mPttrn_editor">"Here you can edit or add new pattern. Format:
-- 'regex': string: a valid java regex that must match for the entire pattern to match.
-- 'excludeRegex': string: if provided, a valid java regex that must not match for the entire pattern to match.
+- 'encode': boolean: set to true to encode the url before checking regex.
+- 'regex': string, required: a valid java regex that the url must match, otherwise the pattern is skipped.
+- 'excludeRegex': string: if provided, a valid java regex that the url must not match, otherwise the pattern is skipped.
 - 'replacement': string|list: if provided, the 'fix' button will run 'url=url.replaceAll(regex,replacement)'. If list, replacement will be a random element from it.
+- 'decode': boolean: set to true to decode the replaced url.
 - 'automatic': boolean: set to true to automatically apply the pattern.
 - 'enabled': boolean: set to false to disable the pattern.
 Note: if you edit the patterns, new built-in patterns from app updates will not be added automatically (you can restore them with the reset option)."</string>
@@ -187,7 +189,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mStatus_unknownCode">%d: Unknown status code</string>
     <string name="mStatus_redir">Redirects to %s</string>
     <string name="mStatus_autoRedirect">Automatically replace redirection URLs</string>
-    <string name="mStatus_autoCheck">Automatically check URLs that match the following regexp pattern. Warning! It is advised to specify a restrictive pattern (and not .* for all) otherwise malicious servers may log your IP.</string>
+    <string name="mStatus_autoCheck">Automatically check URLs that match the following regex pattern. Warning! It is advised to specify a restrictive pattern (and not .* for all) otherwise malicious servers may log your IP.</string>
     <!-- -->
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current URL, which can be edited manually.</string>
