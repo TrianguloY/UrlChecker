@@ -115,4 +115,6 @@
     <string name="mHosts_built">Database bygd: %d verter</string>
     <string name="mHosts_fakenews">falske nyheter</string>
     <string name="mUnshort_error">Tjenerfeil: %s</string>
+    <string name="mStatus_autoRedirect">Erstatt videresendelsesnettadresser automatisk</string>
+    <string name="mPttrn_name">Mønstersjekker</string>
 </resources>

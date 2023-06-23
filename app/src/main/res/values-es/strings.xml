@@ -117,13 +117,15 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_noSchemeHttp">Falta esquema HTTP.</string>
     <string name="mPttrn_noSchemeHttps">Falta esquema HTTPS.</string>
     <string name="mPttrn_ok">No hay patrones coincidentes</string>
-    <string name="mPttrn_editor">Aquí puedes editar o añadir un nuevo patrón. Formato:
-\n- \'regex\': cadena: un regex de java válido que debe coincidir para que coincida todo el patrón.
-\n- \'excludeRegex\': cadena: si se proporciona, un regex java válido que no debe coincidir para que coincida todo el patrón.
-\n- \'replacement\': string|list: si se proporciona, el botón \'fix\' ejecutará \'url=url.replaceAll(regex,replacement)\'. Si es una lista, el reemplazo será un elemento aleatorio de la misma.
-\n- \'automatic\': booleano: se establece en true para aplicar automáticamente el patrón.
-\n- \'enabled\': booleano: establecido en false para desactivar el patrón.
-\nNota: si editas los patrones, los nuevos patrones incorporados de las actualizaciones de la app no se añadirán automáticamente (puedes restaurarlos con la opción reset).</string>
+    <string name="mPttrn_editor">Aquí puedes editar o agregar un nuevo patrón. Formato:
+\n- \'encode\': boolean: establecido en verdadero para codificar la url antes de verificar la expresión regular.
+\n- \'regex\': string, requerida: una expresión regular de Java válida que la URL debe coincidir; de lo contrario, se omite el patrón.
+\n- \'excludeRegex\': string: si se proporciona, una expresión regular de Java válida y que la URL no debe coincidir; de lo contrario, se omite el patrón.
+\n- \'replacement\': string|list: si se proporciona, el botón \'fix\' ejecutará la \'url=url.replaceAll(regex,replacement)\'. Si está en la lista, el reemplazo será un elemento aleatorio de la misma.
+\n- \'decode\': boolean: establecido en verdadero para decodificar la url reemplazada.
+\n- \'automatic\': boolean: establecido en verdadero para aplicar automáticamente el patrón.
+\n- \'enabled\': boolean: establecido en falso para deshabilitar el patrón.
+\nNota: si edita los patrones, los nuevos patrones incorporados de las actualizaciones de la aplicación no se agregarán automáticamente (puedes restaurarlos con la opción de reinicio).</string>
     <!-- -->
     <string name="mOpen_name">Abrir y compartir</string>
     <string name="mOpen_desc">Contiene los siguientes botones (de izquierda a derecha):
@@ -175,7 +177,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
     <string name="mStatus_redir">Redirige a %s</string>
     <string name="mStatus_autoRedirect">Sustituir automáticamente las URL de redireccionamiento</string>
-    <string name="mStatus_autoCheck">Verifique automáticamente las URL que coincidan con el siguiente patrón de expresión regular. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar su IP.</string>
+    <string name="mStatus_autoCheck">Verifica automáticamente las URL que coincidan con el siguiente patrón de expresiones regulares. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar tu IP.</string>
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
     <string name="mInput_desc">Muestra la URL actual, que puede ser modificada manualmente.</string>
@@ -308,14 +310,17 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mFlag_editFlags">Editar los valores por defecto de los marcadores</string>
     <!-- -->
     <string name="mParts_name">Partes de la URI</string>
-    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, parámetros y fragmento.
+    <string name="mParts_desc">Este módulo muestra todas las partes de la url decodificadas: esquema, autoridad, rutas, consultas y fragmento.
 \nAl hacer clic en una parte, se establecerá como la nueva URL, útil por ejemplo si una de las consultas o rutas era una URL de redirección codificada.
-\nTambién puedes hacer clic en el botón \'X\' para eliminar algunos de ellos.
-\nEsta es una versión avanzada del módulo \'Eliminador de parámetros\'.</string>
+\nAl hacer clic largo en una parte, se copiará en el portapapeles.
+\nTambién puede hacer clic en el botón \'X\' para eliminar algunos de ellos.
+\nEsta es una versión avanzada del módulo \'Eliminador de consultas\'.</string>
     <string name="mOpen_incognito">Modo incógnito:</string>
     <string name="mOpen_incognitoDesc">Alternar el modo de incógnito (solo para Firefox)</string>
     <string name="mOpen_closeCopy">Cierra la ventana después de copiar</string>
     <string name="mOpen_mergeCopy">Juntar botones de copiar y compartir (mantén pulsado para copiar)</string>
     <string name="mOpen_copyUrl">Copiar</string>
     <string name="mPttrn_regexfix">Arreglar grupos de expresiones regulares opcionales (deshabilitar si la expresión regular no funciona correctamente)</string>
+    <string name="mParts_empty">(vacío)</string>
+    <string name="mParts_copy">Sección copiada al portapapeles</string>
 </resources>
