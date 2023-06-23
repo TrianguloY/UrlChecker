@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static java.util.Objects.requireNonNullElse;
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.AndroidUtils;
 
 import java.util.List;
 
@@ -51,8 +54,12 @@ public class DebugModule extends AModuleData {
 
 class DebugDialog extends AModuleDialog {
 
+    public static final String SEPARATOR = "";
     private TextView textView;
+
+    // cached
     private String intentUri;
+    private String referrer;
 
     public DebugDialog(MainDialog dialog) {
         super(dialog);
@@ -69,17 +76,30 @@ class DebugDialog extends AModuleDialog {
 
         // cached
         intentUri = getActivity().getIntent().toUri(0);
+        referrer = requireNonNullElse(AndroidUtils.getReferrer(getActivity()), "null");
     }
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
-        textView.setText(String.join("\n\n", List.of(
-                // show activity uri
+        // data to display
+        textView.setText(String.join("\n", List.of(
+                "Intent:",
                 intentUri,
-                // show current url data
+
+                SEPARATOR,
+
+                "UrlData:",
                 urlData.toString(),
-                // show global data
-                getGlobalData().toString()
+
+                SEPARATOR,
+
+                "GlobalData:",
+                getGlobalData().toString(),
+
+                SEPARATOR,
+
+                "Referrer:",
+                referrer
         )));
     }
 }

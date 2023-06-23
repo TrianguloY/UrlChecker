@@ -209,9 +209,9 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mD_name">Debug/Marker module</string>
     <string name="mD_desc">"If you reorder the modules, new ones added in future updates will be placed above this one.
 
-If you enable this it will display the received intent as uri, useful for developers.
+If you enable this it will display some internal debug data (like original intent uri), useful for developers.
 
-Tap on Intent or UrlData to copy to the clipboard. Hold to copy everything."</string>
+You can hold to select text."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
     <!-- -->
     <string name="mHist_name">History</string>
