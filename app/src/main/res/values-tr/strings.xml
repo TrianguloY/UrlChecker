@@ -320,4 +320,6 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mOpen_copyUrl">Kopyala</string>
     <string name="mParts_name">URI parçaları</string>
     <string name="mPttrn_regexfix">İsteğe bağlı regex gruplarını düzelt (regex düzgün çalışmıyorsa devre dışı bırakın)</string>
+    <string name="mParts_empty">(boş)</string>
+    <string name="mParts_copy">Bölüm panoya kopyalandı</string>
 </resources>

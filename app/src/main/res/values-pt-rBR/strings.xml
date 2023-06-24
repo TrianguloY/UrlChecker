@@ -169,4 +169,34 @@
 \nExistem algumas URLs cujo único propósito é redirecioná-lo para outra URL. Se a URL final puder ser aberta em um aplicativo, você pode evitar abri-la em um navegador.
 \n
 \nEspero que você ache o aplicativo útil! E não hesite em sugerir funções, relatar bugs ou até propor mudanças. Encontre todos os links relevantes na tela “Sobre”.</string>
+    <string name="mRemove_found">%d parâmetros encontrados</string>
+    <string name="mRemove_all">Remover todos</string>
+    <string name="mRemove_found1">1 parâmetro encontrado</string>
+    <string name="mOpen_closeOpen">Fechar diálogo após abrir</string>
+    <string name="mOpen_closeShare">Fechar diálogo após compartilhar</string>
+    <string name="mStatus_unknownCode">%d: Código de status desconhecido</string>
+    <string name="mRemove_noQueries">Sem parâmetros</string>
+    <string name="mRemove_one">Remover %s</string>
+    <string name="mRemove_empty">Remover vazio</string>
+    <string name="mClear_sourceDesc">URL do catálogo de arquivos JSON com as regras:</string>
+    <string name="mClear_urlHint">URL do catálogo</string>
+    <string name="mClear_hashDesc">URL do arquivo hash do catálogo. Se omitido, o download não será verificado para ver se foi adulterado/modificado (não recomendado)</string>
+    <string name="mClear_hashError">Não foi possível obter o hash, certifique-se que a URL é válida e que você tem uma conexão ativa</string>
+    <string name="mRemove_name">Removedor de parâmetros</string>
+    <string name="mUnshort_unshort">Desencurtar</string>
+    <string name="mUnshort_ok">Desencurtado</string>
+    <string name="mUnshort_pending">pendente: %d/%d</string>
+    <string name="mParts_name">Partes da URI</string>
+    <string name="mClear_updater">Atualizador</string>
+    <string name="mClear_hashHint">Sem verificação de hash</string>
+    <string name="mClear_upToDate">Catálogo está atualizado</string>
+    <string name="mClear_urlError">Não foi possível obter as regras, certifique-se que a URL é válida e que você tem uma conexão ativa</string>
+    <string name="mClear_hashMismatch">Hashes não correspondem, o arquivo pode ter sido adulterado. Se quiser pular a verificação, remova a URL de hash</string>
+    <string name="mLog_desc">Esse módulo registra todas as URLs verificadas. Você pode visualizar, limpar ou editar a log completa aqui, nenhuma indicação visual aparecerá no diálogo principal. Para desabilitar a log, basta desabilitar o módulo.</string>
+    <string name="mHosts_buildInit">Inicializando</string>
+    <string name="mHosts_buildClear">Limpando…</string>
+    <string name="mHosts_buildSave">Salvando…</string>
+    <string name="mUnshort_name">Desencurtador</string>
+    <string name="mClear_error">Não foi possível verificar a regra</string>
+    <string name="mOpen_closeCopy">Fechar diálogo após copiar</string>
 </resources>
