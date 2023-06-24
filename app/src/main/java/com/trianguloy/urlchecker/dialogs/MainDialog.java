@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
@@ -165,7 +166,8 @@ public class MainDialog extends Activity {
 
     // ------------------- initialize -------------------
 
-    private LinearLayout ll_mods;
+    private LinearLayout ll_shown_mods;
+    private LinearLayout ll_hidden_mods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +179,9 @@ public class MainDialog extends Activity {
         setFinishOnTouchOutside(true);
 
         // get views
-        ll_mods = findViewById(R.id.middle_modules);
+        ll_shown_mods = findViewById(R.id.shown_mods);
+        ll_hidden_mods = findViewById(R.id.hidden_mods);
+        ll_hidden_mods.setVisibility(View.GONE);
 
         // load url (or urls)
         var links = getOpenUrl();
@@ -219,17 +223,22 @@ public class MainDialog extends Activity {
      */
     private void initializeModules() {
         modules.clear();
-        ll_mods.removeAllViews();
+        ll_shown_mods.removeAllViews();
+        ll_hidden_mods.removeAllViews();
+        boolean belowDrawerMod = false;
 
         // add
         final List<AModuleData> middleModules = ModuleManager.getModules(false, this);
         for (AModuleData module : middleModules) {
-            initializeModule(module);
+            initializeModule(module, belowDrawerMod);
+
+            // If this module is the drawer module, all the remaining modules will be hidden
+            belowDrawerMod = belowDrawerMod || module.getId().equals(new DrawerModule().getId());
         }
 
         // avoid empty
-        if (ll_mods.getChildCount() == 0) {
-            ll_mods.addView(egg());
+        if (ll_shown_mods.getChildCount() + ll_hidden_mods.getChildCount() == 0) {
+            ll_shown_mods.addView(egg()); // ;)
         }
     }
 
@@ -238,7 +247,7 @@ public class MainDialog extends Activity {
      *
      * @param moduleData which module to initialize
      */
-    private void initializeModule(AModuleData moduleData) {
+    private void initializeModule(AModuleData moduleData, boolean hide) {
         try {
             // enabled, add
             AModuleDialog module = moduleData.getDialog(this);
@@ -248,22 +257,23 @@ public class MainDialog extends Activity {
 
             // set content if required
             var views = new ArrayList<View>();
+            LinearLayout ll = hide ? ll_hidden_mods : ll_shown_mods;
             if (layoutId >= 0) {
 
                 // separator if necessary
-                if (ll_mods.getChildCount() != 0) views.add(addSeparator());
+                if (ll_shown_mods.getChildCount() + ll_hidden_mods.getChildCount() != 0) views.add(addSeparator(ll));
 
                 ViewGroup parent;
                 // set module block
                 if (ModuleManager.getDecorationsPrefOfModule(moduleData, this).get()) {
                     // init decorations
-                    View block = Inflater.inflate(R.layout.dialog_module, ll_mods);
+                    View block = Inflater.inflate(R.layout.dialog_module, ll);
                     final TextView title = block.findViewById(R.id.title);
                     title.setText(getString(R.string.dd, getString(moduleData.getName())));
                     parent = block.findViewById(R.id.mod);
                 } else {
                     // no decorations
-                    parent = ll_mods;
+                    parent = ll;
                 }
 
                 // set module content
@@ -290,9 +300,10 @@ public class MainDialog extends Activity {
     /**
      * Adds a separator component to the list of mods
      */
-    private View addSeparator() {
-        return Inflater.inflate(R.layout.separator, ll_mods);
+    private View addSeparator(LinearLayout ll) {
+        return Inflater.inflate(R.layout.separator, ll);
     }
+
 
     /**
      * Returns the url that this activity was opened with (intent uri or sent text)
@@ -320,6 +331,20 @@ public class MainDialog extends Activity {
             // other
             return Collections.emptySet();
         }
+    }
+
+    // ------------------- drawer module -------------------
+
+    public int getDrawerVisibility(){
+        return ll_hidden_mods.getVisibility();
+    }
+
+    public void setDrawerVisibility(int visibility){
+        ll_hidden_mods.setVisibility(visibility);
+    }
+
+    public void toggleDrawer() {
+        setDrawerVisibility(getDrawerVisibility() == View.GONE ? View.VISIBLE : View.GONE);
     }
 
     /* ------------------- its a secret! ------------------- */

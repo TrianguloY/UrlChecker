@@ -11,6 +11,7 @@ import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.RemoveQueriesModule;
+import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.modules.list.StatusModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.UnshortenModule;
@@ -50,6 +51,9 @@ public class ModuleManager {
         modules.add(new DebugModule());
 
         modules.add(new OpenModule());
+
+        // by default the separator module should not hide other modules, so it must be the last
+        modules.add(new DrawerModule());
     }
 
     /* ------------------- order ------------------- */
