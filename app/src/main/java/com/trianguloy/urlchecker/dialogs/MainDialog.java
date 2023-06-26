@@ -28,6 +28,7 @@ import com.trianguloy.urlchecker.utilities.Inflater;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,7 +48,7 @@ public class MainDialog extends Activity {
     /**
      * All active modules
      */
-    private final Map<AModuleDialog, List<View>> modules = new HashMap<>();
+    private final Map<AModuleDialog, List<View>> modules = new LinkedHashMap<>();
 
     /**
      * Global data to keep even if the url changes
@@ -125,7 +126,10 @@ public class MainDialog extends Activity {
             }
 
             // third notify for final changes
-            for (var module : modules.keySet()) {
+            var mods = new ArrayList<>(modules.keySet());
+            // drawer module needs to display AFTER the hidden modules
+            Collections.reverse(mods);
+            for (var module : mods) {
                 // skip own if required
                 if (!urlData.triggerOwn && module == urlData.trigger) continue;
                 try {
@@ -345,6 +349,16 @@ public class MainDialog extends Activity {
 
     public void toggleDrawer() {
         setDrawerVisibility(getDrawerVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+    }
+
+    public boolean anyDrawerChildVisible(){
+        int childCount = ll_hidden_mods.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            if (ll_hidden_mods.getChildAt(i).getVisibility() == View.VISIBLE){
+                return true;
+            }
+        }
+        return false;
     }
 
     /* ------------------- its a secret! ------------------- */

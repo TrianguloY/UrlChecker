@@ -10,6 +10,7 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
+import com.trianguloy.urlchecker.url.UrlData;
 
 public class DrawerModule extends AModuleData {
     @Override
@@ -60,6 +61,11 @@ class DrawerDialog extends AModuleDialog {
             updateMoreIndicator();
         });
         updateMoreIndicator();
+    }
+
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
+        setVisibility(dialog.anyDrawerChildVisible());
     }
 
     void updateMoreIndicator() {
