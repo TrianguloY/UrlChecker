@@ -196,11 +196,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la clave api es correcta o prueba mas tarde.</string>
     <!-- -->
     <string name="mD_name">Módulo debug/marcador</string>
-    <string name="mD_desc">"Si reordenas los módulos, los que se añadan en futuras actualizaciones serán colocados encima de este.
-
-Si lo habilitas, mostrará el intent recibido como uri, útil para desarrolladores.
-
-Pulsa en el Intent o en UrlData para copiarlo al portapapeles. Mantenlo pulsado para copiarlo todo."</string>
+    <string name="mD_desc">Si reordenas los módulos, los nuevos que se añadan en futuras actualizaciones se colocarán encima de éste.
+\n
+\nSi habilitas esta opción, se mostrarán algunos datos de depuración internos (como la uri de la intención original), útil para los desarrolladores.
+\n
+\nPuede mantener pulsado para seleccionar el texto.</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
     <!-- -->
     <string name="mHist_name">Historial</string>

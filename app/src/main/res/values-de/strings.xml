@@ -127,9 +127,9 @@
     <string name="mD_name">Debug-/Entwickler-Modul</string>
     <string name="mD_desc">Wenn Sie die Reihenfolge der Module verändern, werden zukünftig neue Module über diesem eingefügt.
 \n
-\nWenn Sie dieses Module aktiviert ist, wird es den empfangenen Intent als URI anzeigen, nützlich für Entwickler.
+\nWenn Sie dieses Module aktiviert ist, wird es interne Debug-Informationen anzeigen (z.B. die originale Intent URI).
 \n
-\nTippen Sie auf Intent oder UrlData um es zu kopieren. Lange drücken, um alles zu kopieren.</string>
+\nLange drücken, um Text zu selektieren.</string>
     <string name="mD_ctabs">Debug-Meldungen der benutzerdefinierten Tabs anzeigen</string>
     <string name="mHist_name">Verlauf</string>
     <string name="mClear_name">URL Säubern</string>
@@ -199,6 +199,7 @@
 \nMit der folgenden Schaltfläche können Sie den Standardwert und die Sichtbarkeit der Marker setzen.</string>
     <string name="mParts_desc">Dieses Modul zeigt alle Teile der URL an: Schema, Autorität, Pfade, Parameter und Fragment.
 \nWenn Sie auf einen Teil klicken, wird dieser als neue URL festgelegt, z.B. nützlich, wenn ein Parameter oder Pfad eine kodierte URL zur Weiterleitung ist.
+\nLanges Drücken auf einen Teil kopiert diesen in die Zwischenablage.
 \nSie können auch auf \'X\' klicken, um einzelne Teile zu entfernen.
 \nDies ist eine erweiterte Version des Moduls \'Parameter Entfernen\'.</string>
     <string name="mPttrn_desc">Dieses Modul prüft URLs mithilfe von RegEx-Mustern und warnt, schlägt Änderungen vor oder wendet diese an. Sie können Muster hinzufügen oder editieren oder sogar Muster anderer Benutzer verwenden.
@@ -208,9 +209,11 @@
 \n- Möglichkeit, Youtube, Reddit oder Twitter durch datenschutzfreundlichen Alternativen zu ersetzen [standardmäßig deaktiviert]</string>
     <string name="mLog_desc">Diese Modul speichert alle geprüften URLs. Sie können hier das gesamte Protokoll ansehen, bearbeiten und leeren. Es gibt keine visuelle Anzeige im Hauptdialog. Um das Protokoll abzuschalten, deaktivieren Sie einfach dieses Modul.</string>
     <string name="mPttrn_editor">Hier können Sie Muster hinzufügen oder editieren. Format:
-\n- \'regex\': string: Ein valider Java RegEx, der passen muss, damit das gesamte Muster passen kann.
-\n- \'excludeRegex\': string: (optional) Ein valider Java RegEx, der nicht passen darf, damit das gesamte Muster passen kann.
+\n- \'encode\': boolean: Wahr, um das Muster auf die encodierte URL anzuwenden.
+\n- \'regex\': string, notwendig: Ein valider Java RegEx, der passen muss; sonst wird das Muster übersprungen.
+\n- \'excludeRegex\': string: (optional) Ein valider Java RegEx, der nicht passen darf; sonst wird das Muster übersprungen.
 \n- \'replacement\': string|list: (optional) Der Anwenden-Button wird \'url=url.replaceAll(regex,replacement)\' ausführen. Bei einer Liste wird ein Element zufällig gewählt.
+\n- \'decode\': boolean: Wahr, um die URL nach Ersetzung zu decodieren.
 \n- \'automatic\': boolean: Wahr, um das Muster automatisch anzuwenden.
 \n- \'enabled\': boolean: Falsch, um das Muster zu deaktivieren.
 \nHinweis: Wenn Sie die Muster verändern, werden neue Muster durch App-Updates nicht mehr automatisch hinzugefügt (diese können Sie mit dem Zurücksetzen-Button wiederherstellen).</string>
@@ -257,4 +260,6 @@
     <string name="mOpen_mergeCopy">Kombinierter Kopieren-/Teilen-Button (Lange drücken zum Kopieren)</string>
     <string name="mOpen_copyUrl">Kopieren</string>
     <string name="mPttrn_regexfix">Optionale RegEx-Gruppen korrigieren (ausschalten, falls RegEx nicht korrekt funktioniert)</string>
+    <string name="mParts_empty">(leer)</string>
+    <string name="mParts_copy">URL-Teil in die Zwischenablage kopiert</string>
 </resources>
