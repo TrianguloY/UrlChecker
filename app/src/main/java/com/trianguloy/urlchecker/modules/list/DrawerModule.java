@@ -40,10 +40,11 @@ public class DrawerModule extends AModuleData {
 }
 
 class DrawerDialog extends AModuleDialog {
-    private ImageView button;
-    private MainDialog dialog;
+    private ImageView buttonL;
+    private ImageView buttonR;
+    private final MainDialog dialog;
 
-    public DrawerDialog(MainDialog dialog){
+    public DrawerDialog(MainDialog dialog) {
         super(dialog);
         this.dialog = dialog;
     }
@@ -55,11 +56,14 @@ class DrawerDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        button = views.findViewById(R.id.drawerButton);
-        button.setOnClickListener(v -> {
+        buttonL = views.findViewById(R.id.drawerL);
+        buttonR = views.findViewById(R.id.drawerR);
+        var parent = views.findViewById(R.id.parent);
+        parent.setOnClickListener(v -> {
             dialog.toggleDrawer();
             updateMoreIndicator();
         });
+        parent.getBackground().setAlpha(25);
         updateMoreIndicator();
     }
 
@@ -69,7 +73,9 @@ class DrawerDialog extends AModuleDialog {
     }
 
     void updateMoreIndicator() {
-        button.setImageResource(dialog.getDrawerVisibility() == View.VISIBLE ?
+        buttonL.setImageResource(dialog.getDrawerVisibility() == View.VISIBLE ?
+                R.drawable.arrow_down : R.drawable.arrow_right);
+        buttonR.setImageResource(dialog.getDrawerVisibility() == View.VISIBLE ?
                 R.drawable.arrow_down : R.drawable.arrow_right);
     }
 }
