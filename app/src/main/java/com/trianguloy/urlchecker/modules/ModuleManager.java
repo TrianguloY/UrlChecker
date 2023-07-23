@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.trianguloy.urlchecker.modules.list.ClearUrlModule;
 import com.trianguloy.urlchecker.modules.list.DebugModule;
+import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.modules.list.FlagsModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
 import com.trianguloy.urlchecker.modules.list.HostsModule;
@@ -11,7 +12,6 @@ import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.OpenModule;
 import com.trianguloy.urlchecker.modules.list.PatternModule;
 import com.trianguloy.urlchecker.modules.list.RemoveQueriesModule;
-import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.modules.list.StatusModule;
 import com.trianguloy.urlchecker.modules.list.TextInputModule;
 import com.trianguloy.urlchecker.modules.list.UnshortenModule;
@@ -52,7 +52,7 @@ public class ModuleManager {
 
         modules.add(new OpenModule());
 
-        // by default the separator module should not hide other modules, so it must be the last
+        // by default the drawer module should not hide other modules, so it must be the last
         modules.add(new DrawerModule());
     }
 
