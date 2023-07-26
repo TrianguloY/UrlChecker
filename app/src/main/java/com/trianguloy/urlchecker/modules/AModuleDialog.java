@@ -46,6 +46,12 @@ public abstract class AModuleDialog implements Fragment {
     public void onDisplayUrl(UrlData urlData) {
     }
 
+    /**
+     * Last call for any update a module may need (like the drawer module needing to know how many modules are visible).
+     */
+    public void onFinishUrl(UrlData urlData) {
+    }
+
     // ------------------- utilities -------------------
 
     /**

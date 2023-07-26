@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.trianguloy.urlchecker.modules.list.ClearUrlModule;
 import com.trianguloy.urlchecker.modules.list.DebugModule;
+import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.modules.list.FlagsModule;
 import com.trianguloy.urlchecker.modules.list.HistoryModule;
 import com.trianguloy.urlchecker.modules.list.HostsModule;
@@ -50,6 +51,9 @@ public class ModuleManager {
         modules.add(new DebugModule());
 
         modules.add(new OpenModule());
+
+        // by default the drawer module should not hide other modules, so it must be the last
+        modules.add(new DrawerModule());
     }
 
     /* ------------------- order ------------------- */

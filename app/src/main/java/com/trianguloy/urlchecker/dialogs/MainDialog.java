@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
@@ -135,6 +136,18 @@ public class MainDialog extends Activity {
                 }
             }
 
+            // fourth finish notification
+            for (var module : modules.keySet()) {
+                // skip own if required
+                if (!urlData.triggerOwn && module == urlData.trigger) continue;
+                try {
+                    module.onFinishUrl(urlData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    AndroidUtils.assertError("Exception in onFinishUrl for module " + module.getClass().getName());
+                }
+            }
+
             break;
         }
 
@@ -165,7 +178,8 @@ public class MainDialog extends Activity {
 
     // ------------------- initialize -------------------
 
-    private LinearLayout ll_mods;
+    private LinearLayout ll_main;
+    private LinearLayout ll_drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +191,9 @@ public class MainDialog extends Activity {
         setFinishOnTouchOutside(true);
 
         // get views
-        ll_mods = findViewById(R.id.middle_modules);
+        ll_main = findViewById(R.id.main);
+        ll_drawer = findViewById(R.id.drawer);
+        ll_drawer.setVisibility(View.GONE);
 
         // load url (or urls)
         var links = getOpenUrl();
@@ -219,17 +235,22 @@ public class MainDialog extends Activity {
      */
     private void initializeModules() {
         modules.clear();
-        ll_mods.removeAllViews();
+        ll_main.removeAllViews();
+        ll_drawer.removeAllViews();
+        var placeOnDrawer = false;
 
         // add
-        final List<AModuleData> middleModules = ModuleManager.getModules(false, this);
-        for (AModuleData module : middleModules) {
-            initializeModule(module);
+        var middleModules = ModuleManager.getModules(false, this);
+        for (var module : middleModules) {
+            initializeModule(module, placeOnDrawer);
+
+            // If this module is the drawer module, all the remaining modules will be hidden
+            if (module instanceof DrawerModule) placeOnDrawer = true;
         }
 
         // avoid empty
-        if (ll_mods.getChildCount() == 0) {
-            ll_mods.addView(egg());
+        if (ll_main.getChildCount() == 0) {
+            ll_main.addView(egg()); // ;)
         }
     }
 
@@ -238,7 +259,7 @@ public class MainDialog extends Activity {
      *
      * @param moduleData which module to initialize
      */
-    private void initializeModule(AModuleData moduleData) {
+    private void initializeModule(AModuleData moduleData, boolean drawer) {
         try {
             // enabled, add
             AModuleDialog module = moduleData.getDialog(this);
@@ -248,22 +269,23 @@ public class MainDialog extends Activity {
 
             // set content if required
             var views = new ArrayList<View>();
+            var ll = drawer ? ll_drawer : ll_main;
             if (layoutId >= 0) {
 
                 // separator if necessary
-                if (ll_mods.getChildCount() != 0) views.add(addSeparator());
+                if (ll_main.getChildCount() != 0) views.add(addSeparator(ll));
 
                 ViewGroup parent;
                 // set module block
                 if (ModuleManager.getDecorationsPrefOfModule(moduleData, this).get()) {
                     // init decorations
-                    View block = Inflater.inflate(R.layout.dialog_module, ll_mods);
-                    final TextView title = block.findViewById(R.id.title);
+                    var block = Inflater.inflate(R.layout.dialog_module, ll);
+                    var title = block.<TextView>findViewById(R.id.title);
                     title.setText(getString(R.string.dd, getString(moduleData.getName())));
                     parent = block.findViewById(R.id.mod);
                 } else {
                     // no decorations
-                    parent = ll_mods;
+                    parent = ll;
                 }
 
                 // set module content
@@ -290,8 +312,8 @@ public class MainDialog extends Activity {
     /**
      * Adds a separator component to the list of mods
      */
-    private View addSeparator() {
-        return Inflater.inflate(R.layout.separator, ll_mods);
+    private View addSeparator(LinearLayout ll) {
+        return Inflater.inflate(R.layout.separator, ll);
     }
 
     /**
@@ -320,6 +342,35 @@ public class MainDialog extends Activity {
             // other
             return Collections.emptySet();
         }
+    }
+
+    // ------------------- drawer module -------------------
+
+    /**
+     * returns the visibility of the drawer
+     */
+    public boolean isDrawerVisible() {
+        return ll_drawer.getVisibility() != View.GONE;
+    }
+
+    /**
+     * Toggles the drawer visibility
+     */
+    public void toggleDrawer() {
+        ll_drawer.setVisibility(isDrawerVisible() ? View.GONE : View.VISIBLE);
+    }
+
+    /**
+     * returns true if the drawer contains at least one visible children
+     */
+    public boolean anyDrawerChildVisible() {
+        int childCount = ll_drawer.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            if (ll_drawer.getChildAt(i).getVisibility() == View.VISIBLE) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* ------------------- its a secret! ------------------- */
