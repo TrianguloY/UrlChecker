@@ -308,7 +308,7 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_internal">Internal error (%s)</string>
     <string name="mUnshort_notFound">No redirection found</string>
     <string name="mUnshort_pending">pending: %d/%d</string>
-    <string name="mUnshort_ok">Unshorted</string>
+    <string name="mUnshort_ok">Unshortened</string>
     <!-- -->
     <string name="mFlags_name">Flags editor</string>
     <string name="mFlag_desc">"[Beta feature] This is an advanced module, it allows you to edit the intent flags when opening another app.

@@ -300,7 +300,7 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mUnshort_internal">Error interno (%s)</string>
     <string name="mUnshort_notFound">No se ha encontrado redirección</string>
     <string name="mUnshort_pending">quedan: %d/%d</string>
-    <string name="mUnshort_ok">Desacortado</string>
+    <string name="mUnshort_ok">Sin acortar</string>
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
     <string name="mFlag_desc">[Funcionalidad beta] Este es un módulo avanzado que te permite editar las marcas del intent al abrir otra aplicación.
@@ -323,4 +323,6 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mPttrn_regexfix">Arreglar grupos de expresiones regulares opcionales (deshabilitar si la expresión regular no funciona correctamente)</string>
     <string name="mParts_empty">(vacío)</string>
     <string name="mParts_copy">Sección copiada al portapapeles</string>
+    <string name="mDrawer_desc">Todos los módulos por debajo de esto se ocultarán en un cajón. Los módulos seguirán funcionando, pero se almacenan en el cajón, puede almacenar módulos aquí para evitar el desorden de los módulos que no siempre necesita.</string>
+    <string name="mDrawer_name">Dibujante</string>
 </resources>

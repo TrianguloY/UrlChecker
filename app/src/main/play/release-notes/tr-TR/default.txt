@@ -1,21 +1,33 @@
+V 2.12
+- New: open Firefox in incognito
+- New: enhance share & copy buttons
+- New: encode and decode pattern parameters
+- Improvement: show referrer on the debug module
+- Improvement: keep expanded groups on Uri parts
+- Improvement: long tap uri parts to copy to clipboard
+- Fix: null optional groups on Android <=10
+- Fix: extract links from shared text
+- Fix: legacy shortcuts should work now
+- Fix: minor crash on Unshorten module
+
 V 2.11
-- Yeni modül: Bayrakları Düzenle
-- Yeni modül: URI Parçaları (Sorgu Silici'nin yerine)
-- Yeni ayar: Kalıp Denetleyicisi modülünde excludeRegex alanı
-- Değişiklik: modüller kullanılmadıklarında artık gizliler
-- Düzeltme: açılan uygulamalar son açılanlarda gözükmüyordu
-- Düzeltme: standart kısayollar mevcut değildi
-- Düzeltme: klavye diyaloğu engelliyordu
-- Düzeltme: durum modülü düzgün çalışmıyordu
-- Çeviriler: symbuzzer yeni ve güncellemeler ve diğerleri Weblate'ten
+- New module: Edit Flags
+- New module: Uri parts (substitute of Queries remover)
+- New config: excludeRegex field on Pattern Checker module
+- Change: modules are now hidden when unused
+- Fix: opened apps weren't showing on recents
+- Fix: standard shortcuts weren't available
+- Fix: keyboard was obstructing the dialog
+- Fix: status module wasn't working properly
+- Translations: New and updates from symbuzzer and other from Weblate
 
 V 2.10
-- Yeni eğitim ekranı
-- Yeni modül: Unshortener
-- Durum modülüne yeni özellikler ve geliştirmeler
-- Pano linkleri için yeni kısayol ve buton
-- Yeni Çince çeviri. Seviche CC'e çok teşekkürler!
-- Görsel düzeltmeler
+- New tutorial screen
+- New module: Unshortener
+- New features and improvements to status module
+- New shortcut & tile to open clipboard links
+- New chinese translation. Many thanks to Seviche CC!
+- Visual fixes
 
 V 2.9.1
 - New Italian translation. Thanks to dperruso!
@@ -61,23 +73,18 @@ V 2.6
 - New Hebrew translation. Thanks to Nhman Mazuz!
 - Minor tweaks and fixes
 
-V 2.5
-- Advanced JSON editor for ClearURLs and Patterns
-- The ClearURLs database can now be updated
-- Added Spanish translation
-- Styles and texts improvements
+V 2.0
+- Style update
+- Updated Clear Url catalog
 
 V 2.4
 - Added French translation. Thanks to Ilithy!
 - Added Ukrainian translation. Thanks to Idris!
 - Automatic dark/white theme
 
-V 2.3
-- Allow reordering modules
-- Clear urls module can be configured to auto-apply
-- Remove queries module can remove individual queries
-- Added European Portuguese translation. Thanks to Tiago Carmo!
-- Some tweaks and fixes
+V 2.0
+- Style update
+- Updated Clear Url catalog
 
 V 2.2
 - New module 'Remove queries module': removes all queries from the url. Thanks to PabloOQ for the idea and original implementation!
