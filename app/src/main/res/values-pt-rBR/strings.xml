@@ -120,9 +120,9 @@
     <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de abas customizadas</string>
     <string name="mD_desc">Caso você reordene os módulos, os novos adicionados em atualizações futuras serão colocados acima desse.
 \n
-\nSe você habilitar isso, ele exibirá a intenção recebida como uri, útil para desenvolvedores.
+\nSe você habilitar isso, ele exibirá alguns dados de depuração interno (como a uri da intenção original), útil para desenvolvedores.
 \n
-\nClique na intenção ou em UrlData para copiar para a área de transferência. Segure para copiar tudo.</string>
+\nVocê pode segurar para selecionar o texto.</string>
     <string name="mClear_name">Limpador de URL</string>
     <string name="mClear_desc">Esse módulo remove rastreamento, referência e outros parâmetros inúteis da URL. Ele também permite redirecionamentos comuns de URL offline.</string>
     <string name="mClear_matches">Corresponde %s</string>
@@ -199,4 +199,56 @@
     <string name="mUnshort_name">Desencurtador</string>
     <string name="mClear_error">Não foi possível verificar a regra</string>
     <string name="mOpen_closeCopy">Fechar diálogo após copiar</string>
+    <string name="mRemove_desc">[OBSOLETO] Com este módulo você pode remover parâmetros da URL.
+\nPressione o botão para remover todos ou pressione a seta para remover um de cada vez.
+\nObrigado a PabloOQ pela ideia e implementação original!
+\n
+\nEste módulo foi descontinuado em favor do módulo \'Partes da URI\'</string>
+    <string name="mHosts_name">Rotulador de hosts</string>
+    <string name="mHosts_buildProgress">Construindo catálogo</string>
+    <string name="mUnshort_notFound">Nenhum redirecionamento encontrado</string>
+    <string name="mFlags_name">Editor de marcadores</string>
+    <string name="mParts_empty">(vazio)</string>
+    <string name="mParts_copy">Parte copiada para área de transferência</string>
+    <string name="mStatus_desc">Ao pressionar o botão de verificação, uma petição será feita para consultar e exibir o código de status do site. Se o resultado for um redirecionamento, você poderá visualizar a URL de destino. O conteúdo da URL é obtido (GET), mas não avaliado, portanto redirecionamentos baseados em JavaScript não serão detectados.</string>
+    <string name="mClear_editor">Regras do catálogo: Devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
+\nObserve que qualquer modificação no objeto principal \'providers\' será substituída se o catálogo for atualizado, automaticamente ou manualmente. Portanto, crie suas regras pessoais eu um outro objeto (qualquer nome).</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_buildTitle">Construir catálogo de hosts</string>
+    <string name="mFlag_editFlags">Editar valor padrão de marcadores</string>
+    <string name="mHosts_build">Construir</string>
+    <string name="mHosts_noLabel">sem rótulo</string>
+    <string name="mHosts_built">Catálogo construido: %d hosts</string>
+    <string name="mUnshort_desc">Este módulo desencurta links enviando-os para https://unshorten.me/, que os avalia em seus servidores e salva o redirecionamento para futuras petições. Evite desencurtar links com dados privados ou confidenciais.
+\nA API é limitada a 10 solicitações por hora para novas verificações. A resposta do módulo mostrará quantas petições você tem pendentes.</string>
+    <string name="mOpen_desc">Contém os seguintes botões (da esquerda para a direita):
+\n- Abas customizadas: Alterne para ativar/desativar as abas customizadas. Quando ativado, o navegador deve abrir em um modo \'lite\'.
+\n- Modo anônimo: Apenas para Firefox. Se ativado, o navegador deve abrir no modo anônimo.
+\n- Botão Abrir: Pressione o nome do aplicativo para abrir o link nele. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para seleção.
+\n- Botão Copiar: Pressione o botão para copiar o link para a área de transferência.
+\n- Botão Compartilhar: Pressione o botão para compartilhar o link.</string>
+    <string name="mHosts_editor">Configuração de hosts. Formato: Lista de objetos onde a chave é o rótulo dos hosts e o conteúdo inclui os seguintes valores opcionais:
+\n- file: Link de um arquivo de hosts remoto para download. Todos os hosts válidos presentes serão adicionados.
+\n- hosts: Lista de hosts brutos (strings) a serem adicionados.
+\n- color: A cor do rótulo. Uma string de cores do Android (#AARRGGBB, #RRGGBB ou um nome de cor válido). O padrão é um vermelho de \'perigo\'.
+\n- replace: Se falso, os hosts existentes não serão substituídos. Nota que os objetos são avaliados de cima para baixo. Verdadeiro por padrão.
+\n- enabled: Se falso, todo o objeto será ignorado. Verdadeiro por padrão.</string>
+    <string name="mPttrn_editor">Aqui você pode editar ou adicionar novos padrões. Formato:
+\n- \'encode\': booleano: defina como true para codificar a URL antes de checar o regex.
+\n- \'regex\': string, requerido: regex java válido que a URL deve corresponder; caso contrário, o padrão é ignorado.
+\n- \'excludeRegex\': string: (opcional) um regex java válido que a URL não deve corresponder; caso contrário, o padrão é ignorado.
+\n- \'replacement\': string|lista: se fornecido, o botão \'corrigir\' executará \'url=url.replaceAll(regex,replacement)\'. Em uma lista, um elemento aleatório é escolhido.
+\n- \'decode\': booleano: defina como true para decodificar a URL substítuida.
+\n- \'automatic\': booleano: defina como true para aplicar automaticamente o padrão.
+\n- \'enabled\': booleano: defina como false para desativar o padrão.
+\nNota: se você editar os padrões, novos padrões integrados de atualizações não serão adicionados automaticamente (pode restaurá-los com a opção de redefinição).</string>
+    <string name="mParts_desc">Este módulo mostra todas as partes da url decodificadas: esquema, autoridade, caminhos, parâmetros e fragmento.
+\nAo clicar em uma parte, ela será definida como a nova URL, útil, por exemplo, se uma das consultas ou caminhos for uma URL codificada de redirecionamento.
+\nAo segurar uma parte, ela será copiada para a área de transferência.
+\nVocê também pode clicar no botão \'X\' para remover alguns deles.
+\nEsta é uma versão avançada do módulo \'Queries Remover\'.</string>
+    <string name="mStatus_ioerror">Erro de rede ao tentar verificar a URL: %s</string>
+    <string name="mUnshort_tm">API gratuita de Unshorten.me</string>
+    <string name="mHosts_buildDownload">Baixando \'%s\' hosts de %s…</string>
+    <string name="mStatus_error">Erro interno ao tentar verificar a URL: %s</string>
 </resources>

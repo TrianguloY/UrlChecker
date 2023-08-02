@@ -323,4 +323,6 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="mPttrn_regexfix">Arreglar grupos de expresiones regulares opcionales (deshabilitar si la expresión regular no funciona correctamente)</string>
     <string name="mParts_empty">(vacío)</string>
     <string name="mParts_copy">Sección copiada al portapapeles</string>
+    <string name="mDrawer_desc">Todos los módulos por debajo de éste se ocultarán en un cajón. Los módulos seguirán funcionando, pero estarán ocultos hasta que abras el cajón. Puede almacenar aquí módulos que solo necesite de vez en cuando, para evitar recargar la interfaz.</string>
+    <string name="mDrawer_name">Cajón</string>
 </resources>

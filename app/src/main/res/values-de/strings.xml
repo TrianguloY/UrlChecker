@@ -262,4 +262,6 @@
     <string name="mPttrn_regexfix">Optionale RegEx-Gruppen korrigieren (ausschalten, falls RegEx nicht korrekt funktioniert)</string>
     <string name="mParts_empty">(leer)</string>
     <string name="mParts_copy">URL-Teil in die Zwischenablage kopiert</string>
+    <string name="mDrawer_name">Überhangmenü</string>
+    <string name="mDrawer_desc">Alle Module unter diesem landen im Überhangmenü und können dort weiterhin benutzt werden. Sie können dies nutzen, um selten genutzte Module aus dem Hauptdialog auszublenden.</string>
 </resources>
