@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">URLCheck</string>
+    <string name="app_name" translatable="false">URLCheck</string>
 
     <string name="lnk_playStore" translatable="false">Play Store</string>
     <string name="lnk_fDroid" translatable="false">F-Droid</string>
@@ -7,8 +7,8 @@
 
     <string name="dd" translatable="false">%s:</string>
 
-    <string name="trianguloy">TrianguloY</string>
+    <string name="trianguloy" translatable="false">TrianguloY</string>
     <string name="contributors" translatable="false">Ilithy, PabloOQ</string>
 
-    <string name="sample_url"><![CDATA[http://www.google.com/?ref=referrer&foo=bar#tag]]></string>
+    <string name="sample_url" translatable="false"><![CDATA[http://www.google.com/?ref=referrer&foo=bar#tag]]></string>
 </resources>

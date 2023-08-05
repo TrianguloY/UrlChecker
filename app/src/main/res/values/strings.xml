@@ -327,5 +327,5 @@ This is an advanced version of the 'Queries Remover' module."</string>
     <string name="mParts_copy">Part copied to clipboard</string>
     <!-- -->
     <string name="mDrawer_name">Drawer</string>
-    <string name="mDrawer_desc">All modules below this will be hidden in a drawer. The modules will still work, but are stored in the drawer, you can store modules here to avoid clutter of modules you do not always need.</string>
+    <string name="mDrawer_desc">All modules below this will be hidden in a drawer. The modules will still work, but will be hidden until you open the drawer. Here you can place modules you rarely use, to avoid clutter.</string>
 </resources>
