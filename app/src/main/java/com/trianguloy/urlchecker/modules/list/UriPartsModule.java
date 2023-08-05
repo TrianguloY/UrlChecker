@@ -1,7 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.net.Uri;
-import android.util.Pair;
+import android.net.UrlQuerySanitizer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,9 +20,7 @@ import com.trianguloy.urlchecker.utilities.Inflater;
 import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * This module shows all parts of the url decoded
@@ -76,6 +74,10 @@ class UriPartsDialog extends AModuleDialog {
 
         // parse
         var uri = Uri.parse(urlData.url);
+        var urlQuerySanitizer = new UrlQuerySanitizer();
+        // the default parseUrl doesn't remove the fragment
+        urlQuerySanitizer.setAllowUnregisteredParamaters(true);
+        urlQuerySanitizer.parseQuery(uri.getQuery());
 
         // domain elements
         if (uri.getAuthority() != null || uri.getScheme() != null) {
@@ -102,19 +104,19 @@ class UriPartsDialog extends AModuleDialog {
             }
         }
 
-        // queries
-        var queryParts = getQueryParts(uri);
-        if (queryParts.size() > 0) {
-            var queries = addGroup("Queries", queryParts.size(), uri.buildUpon().query(null));
-            for (var queryPart : queryParts) {
+        // query parameters
+        var parameters = urlQuerySanitizer.getParameterList();
+        if (parameters.size() > 0) {
+            var queries = addGroup("Parameters", parameters.size(), uri.buildUpon().query(null));
+            for (var i = 0; i < parameters.size(); i++) {
+                // generate same url but without this parameter
                 var builder = uri.buildUpon();
                 builder.query(null);
-                for (var newQuerypart : queryParts) {
-                    if (!Objects.equals(newQuerypart, queryPart))
-                        builder.appendQueryParameter(newQuerypart.first, newQuerypart.second);
-
+                for (var j = 0; j < parameters.size(); j++) {
+                    if (i != j) builder.appendQueryParameter(parameters.get(j).mParameter, parameters.get(j).mValue);
                 }
-                addPart(queryPart.first, queryPart.second, queries, builder);
+                // append the parameter
+                addPart(parameters.get(i).mParameter, parameters.get(i).mValue, queries, builder);
             }
         }
 
@@ -189,24 +191,6 @@ class UriPartsDialog extends AModuleDialog {
             }
         } else {
             delete_view.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Gets the queries, in order (except for same-name ones)
-     */
-    private static List<Pair<String, String>> getQueryParts(Uri uri) {
-        try {
-            var queries = new ArrayList<Pair<String, String>>();
-            for (var name : uri.getQueryParameterNames()) {
-                for (var value : uri.getQueryParameters(name)) {
-                    if (name.isEmpty() && value.isEmpty()) continue; // skip fully empty entries
-                    queries.add(Pair.create(name, value));
-                }
-            }
-            return queries;
-        } catch (UnsupportedOperationException e) {
-            return Collections.emptyList();
         }
     }
 
