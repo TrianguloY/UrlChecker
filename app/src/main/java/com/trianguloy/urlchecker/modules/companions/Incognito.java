@@ -41,6 +41,11 @@ public class Incognito {
                 state = intent.getBooleanExtra("private_browsing_mode", false);
                 visible = true;
                 break;
+            case HIDDEN:
+                // for Firefox
+                state = intent.getBooleanExtra("private_browsing_mode", false);
+                visible = false;
+                break;
             case DEFAULT_ON:
                 state = true;
                 visible = true;

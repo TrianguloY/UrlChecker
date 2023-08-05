@@ -60,6 +60,11 @@ public class CTabs {
                     state = intent.hasExtra(CTabs.EXTRA);
                     visible = true;
                     break;
+                case HIDDEN:
+                    // If hidden we also get it from the intent
+                    state = intent.hasExtra(CTabs.EXTRA);
+                    visible = false;
+                    break;
                 case DEFAULT_ON:
                     state = true;
                     visible = true;

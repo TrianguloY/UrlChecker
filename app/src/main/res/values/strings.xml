@@ -96,6 +96,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="defaultOff">Disabled by default</string>
     <string name="alwaysOn">Always on</string>
     <string name="alwaysOff">Always off</string>
+    <string name="hidden">Hidden</string>
     <string name="share">Share</string>
     <string name="canceled">Canceled</string>
     <string name="deviceDefault">Device default</string>
