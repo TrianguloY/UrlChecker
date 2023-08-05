@@ -1,3 +1,15 @@
+V 2.12
+- New: open Firefox in incognito
+- New: enhance share & copy buttons
+- New: encode and decode pattern parameters
+- Improvement: show referrer on the debug module
+- Improvement: keep expanded groups on Uri parts
+- Improvement: long tap uri parts to copy to clipboard
+- Fix: null optional groups on Android <=10
+- Fix: extract links from shared text
+- Fix: legacy shortcuts should work now
+- Fix: minor crash on Unshorten module
+
 V 2.11
 - New module: Edit Flags
 - New module: Uri parts (substitute of Queries remover)
@@ -17,7 +29,7 @@ V 2.10
 - Nouvelle traduction en chinois. Un grand merci à Seviche CC !
 - Correctifs visuels
 
-Version 2.9.1
+V 2.9.1
 - Nouvelle traduction en italien. Merci à dperruso!
 - Correction de quelques erreurs rares lors de l'ouverture de liens
 
@@ -91,7 +103,7 @@ V 2.0
 - Mise à jour des styles.
 - Mise à jour du catalogue de ClearUrl.
 
-Version 1.1
+V 1.1
 - Nouveau module 'Nettoyer l'url': utilise le dictionnaire Clear Url pour effacer les URL de référence et d'autres paramètres d'URL inutiles.
 - Nouveau module "Historique": Annulez les modifications de n'importe quel module.
 - Remplacement du module 'Redirection' par 'État': Récupère le code de statut de la page, permet toujours la redirection.
