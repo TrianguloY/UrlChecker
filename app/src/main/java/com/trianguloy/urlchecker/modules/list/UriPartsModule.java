@@ -76,8 +76,10 @@ class UriPartsDialog extends AModuleDialog {
         var uri = Uri.parse(urlData.url);
         var urlQuerySanitizer = new UrlQuerySanitizer();
         // the default parseUrl doesn't remove the fragment
-        urlQuerySanitizer.setAllowUnregisteredParamaters(true);
-        urlQuerySanitizer.parseQuery(uri.getQuery());
+        if (uri.getQuery() != null) {
+            urlQuerySanitizer.setAllowUnregisteredParamaters(true);
+            urlQuerySanitizer.parseQuery(uri.getQuery());
+        }
 
         // domain elements
         if (uri.getAuthority() != null || uri.getScheme() != null) {
