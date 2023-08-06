@@ -66,6 +66,26 @@ public interface JavaUtils {
     }
 
     /**
+     * Takes the [limit] last lines of a [text], separated by [delimiter].
+     * This is equivalent to text.split(delimiter).takeLast(limit).join(delimiter) but using java sdk 14 (and hopefully more efficient)
+     */
+    static String limitLines(String text, char delimiter, int limit) {
+        // early exit
+        if (limit <= 0 || text.isEmpty()) return "";
+
+        // find the first character of the last (first) line required
+        var i = text.length() - 1; // character pointer
+        var lines = 0; // count full lines (delimiters encountered)
+        while (i >= 0 && lines < limit) {
+            if (text.charAt(i) == delimiter) lines++; // delimiter found
+            i--; // continue
+        }
+        // split if necessary
+        if (lines >= limit) text = text.substring(i + 2); // found the lines, split
+        return text;
+    }
+
+    /**
      * Returns the object, or default if null
      * java.util.Optional requires api 24
      */

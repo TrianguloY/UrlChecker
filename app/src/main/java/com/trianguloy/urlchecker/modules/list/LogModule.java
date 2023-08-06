@@ -17,6 +17,7 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 import java.util.Date;
 
@@ -27,6 +28,10 @@ public class LogModule extends AModuleData {
 
     public static GenericPref.Str LOG_DATA(Context cntx) {
         return new GenericPref.Str("log_data", "", cntx);
+    }
+
+    public static GenericPref.Int LOG_LIMIT(Context cntx) {
+        return new GenericPref.Int("log_limit", 0, cntx); // 0 means unlimited
     }
 
     @Override
@@ -53,10 +58,12 @@ public class LogModule extends AModuleData {
 class LogDialog extends AModuleDialog {
 
     private final GenericPref.Str log;
+    private final GenericPref.Int limit;
 
     public LogDialog(MainDialog dialog) {
         super(dialog);
         log = LogModule.LOG_DATA(dialog);
+        limit = LogModule.LOG_LIMIT(dialog);
     }
 
     @Override
@@ -67,15 +74,21 @@ class LogDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         // new instance, log date
-        log.add((log.get().isEmpty() ? "" : "\n")
-                + "--- " + new Date().toLocaleString() + " ---\n"
-        );
+        addLine("--- " + new Date().toLocaleString() + " ---");
     }
 
     @Override
     public void onPrepareUrl(UrlData urlData) {
         // new url, log it
-        log.add("> " + urlData.url + "\n");
+        addLine("> " + urlData.url);
+    }
+
+    private void addLine(String line) {
+        var text = log.get();
+        if (limit.get() > 0) text = JavaUtils.limitLines(text, '\n', limit.get() - 1);
+        if (!text.isEmpty()) text += "\n";
+        text += line.replace("\n", "%0A");
+        log.set(text);
     }
 }
 
@@ -97,6 +110,8 @@ class LogConfig extends AModuleConfig {
     public void onInitialize(View views) {
         views.findViewById(R.id.view).setOnClickListener(v -> showLog(false));
         views.findViewById(R.id.edit).setOnClickListener(v -> showLog(true));
+
+        LogModule.LOG_LIMIT(getActivity()).attachToEditText(views.findViewById(R.id.limit), 0);
     }
 
     /**

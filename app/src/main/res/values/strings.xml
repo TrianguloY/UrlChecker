@@ -272,6 +272,8 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mLog_view">View log</string>
     <string name="mLog_edit">Edit log</string>
     <string name="mLog_empty">No data</string>
+    <string name="mLog_limit">Maximum number of entries to keep. Recommended value: 100. Set empty for unlimited</string>
+    <string name="mLog_unlimited">Unlimited</string>
     <!-- -->
     <string name="mHosts_name">Hosts labeler</string>
     <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>

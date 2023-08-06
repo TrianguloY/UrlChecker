@@ -105,6 +105,32 @@ public abstract class GenericPref<T> {
         protected void save(Integer value) {
             prefs.edit().putInt(prefName, value).apply();
         }
+
+        /**
+         * This editText will be set to the pref value, and when the editText changes the value will too.
+         * The special empty value will be set when the input is empty.
+         */
+        public void attachToEditText(EditText editText, int empty) {
+            editText.setText(get() == empty ? "" : get().toString());
+            editText.addTextChangedListener(new DefaultTextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {
+                    try {
+                        // empty -> set empty
+                        if (s.length() == 0) set(empty);
+                        else {
+                            var value = Integer.parseInt(s.toString());
+                            if (value == empty) s.clear(); // empty input -> clear
+                            set(value);
+                        }
+                    } catch (NumberFormatException e) {
+                        // shouldn't be possible, but just in case
+                        s.clear();
+                        s.append(get() == empty ? "" : get().toString());
+                    }
+                }
+            });
+        }
     }
 
     /**
