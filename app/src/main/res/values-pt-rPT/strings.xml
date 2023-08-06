@@ -20,11 +20,11 @@
     <!--
         about
     -->
-    <string name="txt_about">"Aplicação criada por TrianguloY.
-
-Contributions: %s.
-Translations: %s."</string>
-    <string name="link_blog">"Blog do TrianguloY"</string>
+    <string name="txt_about">Aplicação criada por TrianguloY.
+\n
+\nContributions: %s.
+\nTranslations: %s.</string>
+    <string name="link_blog">Blog do TrianguloY</string>
     <string name="link_changelog">Log de alterações</string>
     <string name="link_source">Código fonte</string>
     <string name="link_privacy">Política de privacidade</string>
@@ -32,7 +32,7 @@ Translations: %s."</string>
         modules
     -->
     <string name="txt_conf">Lista de módulos: pode ativá-los ou desativá-los, verifique também sua descrição e configuração.</string>
-    <string name="toast_cantEnable">Não é possível habilitar o módulo, configuração em falta?</string>
+    <string name="toast_cantEnable">Não é possível habilitar o módulo, configuração em falta\?</string>
     <string name="menu_resetOrder">Redefinir ordem</string>
     <string name="menu_toggleDecorations">Alternar todos os títulos</string>
     <string name="desc_up">Subir</string>
@@ -74,9 +74,9 @@ Translations: %s."</string>
         modules
     -->
     <string name="mPttrn_name">Verificador de padrões</string>
-    <string name="mPttrn_desc">"Verifica problemas comuns no URL:
-* Caracteres não-ascii como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
-* links http, deve usar https em vez disso"</string>
+    <string name="mPttrn_desc">Verifica problemas comuns no URL:
+\n* Caracteres não-ascii como letras gregas. Isso pode ser usado para phishing: googĺe.com vs google.com
+\n* links http, deve usar https em vez disso</string>
     <string name="mPttrn_fix">Aplicar</string>
     <string name="mPttrn_fixed">Aplicado - %s</string>
     <string name="mPttrn_ascii">Aviso! Caracteres não ASCII encontrados</string>
@@ -84,18 +84,18 @@ Translations: %s."</string>
     <string name="mPttrn_noSchemeHttp">Esquema HTTP em falta.</string>
     <string name="mPttrn_noSchemeHttps">Esquema HTTPS em falta.</string>
     <string name="mPttrn_ok">Nenhum padrão corresponde</string>
-    <string name="mPttrn_editor">"Aqui podes editar ou adicionar novos padrões. Formato:
-- 'regex': string: regex java válido que será correspondido ao URL.
-- 'substituição': string: se fornecido, o botão 'corrigir' será executado 'url=url.replaceAll(regex,replacement)'.
-- 'automático': boolean: defina como true para aplicar automaticamente o padrão.
-- 'ativado': boolean: defina como false para desativar o padrão.
-Nota: se editar os padrões, novos padrões integrados de atualizações de aplicações não serão adicionados automaticamente (pode restaurá-los com a opção de redefinição)."</string>
+    <string name="mPttrn_editor">Aqui podes editar ou adicionar novos padrões. Formato:
+\n- \'regex\': string: regex java válido que será correspondido ao URL.
+\n- \'substituição\': string: se fornecido, o botão \'corrigir\' será executado \'url=url.replaceAll(regex,replacement)\'.
+\n- \'automático\': boolean: defina como true para aplicar automaticamente o padrão.
+\n- \'ativado\': boolean: defina como false para desativar o padrão.
+\nNota: se editar os padrões, novos padrões integrados de atualizações de aplicações não serão adicionados automaticamente (pode restaurá-los com a opção de redefinição).</string>
     <!-- -->
-    <string name="mOpen_name"><![CDATA[Open & Share]]></string>
-    <string name="mOpen_desc">"Contém os seguintes botões (da esquerda para a direita):
-- Botão de guias personalizadas: alterne para ativar/desativar o recurso de guia personalizada. Quando ativado, o navegador deve ser aberto no modo 'l'.
-- Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
-- Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência."</string>
+    <string name="mOpen_name">Open &amp; Share</string>
+    <string name="mOpen_desc">Contém os seguintes botões (da esquerda para a direita):
+\n- Botão de guias personalizadas: alterne para ativar/desativar o recurso de guia personalizada. Quando ativado, o navegador deve ser aberto no modo \'l\'.
+\n- Botão Abrir: Pressione o nome do aplicativo para abrir o link nesse aplicativo. Se um link puder ser aberto com vários aplicativos, uma seta será exibida para permitir que escolha.
+\n- Botão Compartilhar: Pressione o botão para compartilhar o link. Pressione e segure para copiar rapidamente para a área de transferência.</string>
     <string name="mOpen_ctabs">Abas personalizadas:</string>
     <string name="defaultOn">Ativado por padrão</string>
     <string name="defaultOff">Desativado por padrão</string>
@@ -109,9 +109,9 @@ Nota: se editar os padrões, novos padrões integrados de atualizações de apli
     <string name="mOpen_tabsDesc">Ativar recurso de abas personalizadas</string>
     <!-- -->
     <string name="mStatus_name">Código de status</string>
-    <string name="mStatus_desc">"Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.
-Se o resultado for um redirecionamento, poderá visualizar o URL de destino.
-O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados."</string>
+    <string name="mStatus_desc">Ao pressionar o botão de verificação, será feita uma petição para recuperar e exibir o código de status do site.
+\nSe o resultado for um redirecionamento, poderá visualizar o URL de destino.
+\nO conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos baseados em javascript não serão detectados.</string>
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar o URL: %s</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a url: %s</string>
     <string name="mStatus_check">Verificar</string>
@@ -141,7 +141,8 @@ O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos 
     <string name="mInput_desc">Exibe o URL atual, que pode ser editado manualmente.</string>
     <!-- -->
     <string name="mVT_name">VirusTotal</string>
-    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mVT_desc">Quando este módulo está ativado, pode verificar o URL usando o VirusTotal e verificar o relatório.
+\nÉ necessária uma chave de API pessoal do VirusTotal para que funcione, pode obter uma após se registrar para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">api key</string>
     <string name="mVT_tm">VirusTotal™ é uma marca comercial da Google, Inc.</string>
     <string name="mVT_scan">Examinar</string>
@@ -154,9 +155,9 @@ O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos 
     <string name="mVT_jsonError">Não é possível conectar ao VirusTotal. Verifique se a chave da API é válida ou tente novamente mais tarde.</string>
     <!-- -->
     <string name="mD_name">Módulo de depuração/marcador</string>
-    <string name="mD_desc">"Se reordenar os módulos, os novos adicionados em futuras atualizações serão colocados acima deste.
-
-Se habilitar isso, ele exibirá a intenção recebida como uri, útil para desenvolvedores."</string>
+    <string name="mD_desc">Se reordenar os módulos, os novos adicionados em futuras atualizações serão colocados acima deste.
+\n
+\nSe habilitar isso, ele exibirá a intenção recebida como uri, útil para desenvolvedores.</string>
     <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de guias personalizadas</string>
     <!-- -->
     <string name="mHist_name">Histórico</string>
@@ -195,13 +196,13 @@ Se habilitar isso, ele exibirá a intenção recebida como uri, útil para desen
     <string name="mClear_hashError">Não foi possível buscar o hash, verifique se o URL é válido e se á uma conexão ativa</string>
     <string name="mClear_hashMismatch">Hashes não correspondem, o arquivo pode ter sido adulterado. Se quiser pular a verificação, remova o URL de hash</string>
     <string name="mClear_restore">Restaurar caminhos de ClearURLs</string>
-    <string name="mClear_editor">"Regras do catálogo: devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
-Observe que qualquer modificação nos 'provedores' do objeto pai será substituída se o catálogo for atualizado automaticamente ou manualmente a partir da caixa de diálogo do atualizador. Para que as regras pessoais as definam em um objeto pai diferente (qualquer nome)."</string>
+    <string name="mClear_editor">Regras do catálogo: devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
+\nObserve que qualquer modificação nos \'provedores\' do objeto pai será substituída se o catálogo for atualizado automaticamente ou manualmente a partir da caixa de diálogo do atualizador. Para que as regras pessoais as definam em um objeto pai diferente (qualquer nome).</string>
     <!-- -->
     <string name="mRemove_name">Removedor de Consultas</string>
-    <string name="mRemove_desc">"Com este módulo pode remover consultas da URL.
-Pressione o botão para removê-los todos ou pressione a seta para remover um de cada vez.
-Obrigado a PabloOQ pela ideia e implementação original!"</string>
+    <string name="mRemove_desc">Com este módulo pode remover consultas da URL.
+\nPressione o botão para removê-los todos ou pressione a seta para remover um de cada vez.
+\nObrigado a PabloOQ pela ideia e implementação original!</string>
     <string name="mRemove_found1">1 consulta encontrada</string>
     <string name="mRemove_found">%d consultas encontradas</string>
     <string name="mRemove_noQueries">Sem consultas</string>
@@ -210,9 +211,9 @@ Obrigado a PabloOQ pela ideia e implementação original!"</string>
     <string name="mRemove_empty">Remover vazio</string>
     <!-- -->
     <string name="mLog_name">Log</string>
-    <string name="mLog_desc">"Este módulo registra todos os URLs verificados.
-Pode visualizar, limpar ou editar o log completo aqui, nenhuma indicação visual aparecerá na caixa de diálogo principal.
-Para desabilitar o log, basta desabilitar o módulo."</string>
+    <string name="mLog_desc">Este módulo registra todos os URLs verificados.
+\nPode visualizar, limpar ou editar o log completo aqui, nenhuma indicação visual aparecerá na caixa de diálogo principal.
+\nPara desabilitar o log, basta desabilitar o módulo.</string>
     <string name="mLog_view">Ver log</string>
     <string name="mLog_edit">Editar log</string>
     <string name="mLog_empty">Sem data</string>
@@ -233,7 +234,7 @@ Para desabilitar o log, basta desabilitar o módulo."</string>
     <string name="mHosts_parseError">Não é possível analisar o host do URL</string>
     <string name="mHosts_editor">Configuração de hosts. Formato: Lista de objetos onde a chave é o rótulo de hosts e o conteúdo inclui os seguintes valores opcionais: - arquivo: Uma url de um arquivo de hosts remoto para download. Todos os hosts válidos presentes serão adicionados. - hosts: Lista de hosts brutos (strings) a serem adicionados. - cor: A cor da etiqueta. Uma sequência de cores do Android (#AARRGGBB, #RRGGBB ou um nome de cor válido). O padrão é um vermelho \'perigo\'. - replace: se os hosts existentes falsos não forem substituídos. Observe que os objetos são avaliados de cima para baixo. Verdadeiro por padrão. - habilitado: se falso, todo o objeto será ignorado. Verdadeiro por padrão.</string>
     <string name="mHosts_buildTitle">Criar banco de dados de hosts</string>
-    <string name="mHosts_buildDesc">Isso limpará o banco de dados de hosts atual e o construirá com a configuração atual, baixando arquivos de hosts da Internet, se necessário. Esta ação pode levar alguns segundos. Continuar?</string>
+    <string name="mHosts_buildDesc">Isso limpará o banco de dados de hosts atual e o construirá com a configuração atual, baixando arquivos de hosts da Internet, se necessário. Esta ação pode levar alguns segundos. Continuar\?</string>
     <string name="mHosts_buildProgress">Catálogo de construção</string>
     <string name="mHosts_buildInit">Inicializando</string>
     <string name="mHosts_buildClear">Limpando…</string>

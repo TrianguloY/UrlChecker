@@ -20,10 +20,10 @@
     <!--
         about
     -->
-    <string name="txt_about">"Aplicación creada por TrianguloY.
-
-Contribuciones: %s.
-Traducciones: %s."</string>
+    <string name="txt_about">Aplicación creada por TrianguloY.
+\n
+\nContribuciones: %s.
+\nTraducciones: %s.</string>
     <string name="link_blog">Blog de TrianguloY</string>
     <string name="link_changelog">Cambios</string>
     <string name="link_source">Código fuente</string>
@@ -32,7 +32,7 @@ Traducciones: %s."</string>
         modules
     -->
     <string name="txt_conf">Aquí se encuentran todos los módulos disponibles, con su descripción y configuración. También los puedes reordenar, mostrar/ocultar los títulos y activarlos o desactivarlos.</string>
-    <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
+    <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado\?</string>
     <string name="menu_resetOrder">Reiniciar orden</string>
     <string name="menu_toggleDecorations">Alternar los títulos</string>
     <string name="desc_up">Subir</string>
@@ -56,9 +56,9 @@ Traducciones: %s."</string>
         generic
     -->
     <string name="tutorial">Tutorial</string>
-    <string name="txt_tutorial1">"¡Gracias por descargar la aplicación!
-
-Este es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo. Puedes volver a este tutorial siempre que quieras desde el menú de ajustes."</string>
+    <string name="txt_tutorial1">¡Gracias por descargar la aplicación!
+\n
+\nEste es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo. Puedes volver a este tutorial siempre que quieras desde el menú de ajustes.</string>
     <string name="txt_tutorial2">La aplicación actúa como intermediaria cuando se abre o comparte un enlace. Una vez se envía un enlace a la aplicación puedes interactuar con él mediante los módulos. Tras ello puedes abrir el enlace (en la aplicación que quieras), compartirlo o copiarlo al portapapeles.</string>
     <string name="txt_tutorial3">Configura la aplicación como navegador web predeterminado para interceptar las URL al abrirlas.
 \n(No es necesario si las URL se abren utilizando la funcionalidad \"Compartir\".)</string>
@@ -69,13 +69,13 @@ Este es el tutorial, si quieres saltarlo puedes hacerlo con el botón de debajo.
 \nImportante: Todas las acciones son manuales por defecto. La aplicación no modificará nada ni se conectará a Internet a menos que usted lo permita específicamente, pero algunas acciones pueden aplicarse automáticamente si lo desea.
 \n
 \nAbre la lista de módulos desde la pantalla principal, o pulsando el botón de abajo.</string>
-    <string name="txt_tutorial5">"Eso es todo. Aquí tienes algunos consejos que pueden ser útiles:
-
-Cuando una app no te da una forma de abrir o compartir un enlace, pero sí te una forma para hacer la otra puedes solventar este problema usando esta aplicación. También puedes copiar el enlace al portapapeles al mantener el botón de compartir.
-
-Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el enlace final puede ser abierto en una aplicación, entonces puedes evitar abrirlo en un navegador.
-
-¡Esperamos que la aplicación te resulte útil! No dudes en sugerir funcionalidades, reportar errores o proponer cambios. Puedes encontrar los todos los enlaces importantes en la pantalla 'Acerca de'."</string>
+    <string name="txt_tutorial5">Eso es todo. Aquí tienes algunos consejos que pueden ser útiles:
+\n
+\nCuando una app no te da una forma de abrir o compartir un enlace, pero sí te una forma para hacer la otra puedes solventar este problema usando esta aplicación. También puedes copiar el enlace al portapapeles al mantener el botón de compartir.
+\n
+\nHay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el enlace final puede ser abierto en una aplicación, entonces puedes evitar abrirlo en un navegador.
+\n
+\n¡Esperamos que la aplicación te resulte útil! No dudes en sugerir funcionalidades, reportar errores o proponer cambios. Puedes encontrar los todos los enlaces importantes en la pantalla \'Acerca de\'.</string>
     <string name="btn_tutorialSkip">Saltar tutorial</string>
     <string name="btn_tutorialEnd">Terminar tutorial</string>
     <string name="toast_noApp">No se puede abrir la aplicación</string>
@@ -134,7 +134,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n- Botón Abrir: Presione el nombre de la aplicación para abrir el enlace en esa aplicación. Si un enlace se puede abrir con varias aplicaciones, se mostrará una flecha para que pueda elegir.
 \n- Botón copiar: Presione el botón para copiar el enlace en el portapapeles.
 \n- Botón Compartir: Presione el botón para compartir el enlace.</string>
-    <string name="mOpen_ctabs">"'Custom tabs':"</string>
+    <string name="mOpen_ctabs">\'Custom tabs\':</string>
     <string name="defaultOn">Activado por defecto</string>
     <string name="defaultOff">Desactivado por defecto</string>
     <string name="alwaysOn">Siempre activado</string>
@@ -148,7 +148,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_share">Compartir</string>
     <string name="mOpen_clipboard">URL copiada en el portapapeles</string>
     <string name="mOpen_noapps">Sin aplicaciones</string>
-    <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
+    <string name="mOpen_tabsDesc">Activa/desactiva \'custom tabs\'</string>
     <!-- -->
     <string name="mStatus_name">Código de estado</string>
     <string name="mStatus_desc">Al presionar el botón de verificación, se realizará una petición para recuperar y mostrar el código de estado del sitio. Si el resultado es una redirección, podrá ver la URL de destino. El contenido de la URL se obtiene (GET), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
@@ -279,11 +279,11 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n- replace: si es \'false\' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. \'true\' por defecto.
 \n- enabled: si es \'false\' el objeto entero se ignorará. \'true\' por defecto.</string>
     <string name="mHosts_buildTitle">Generar catálogo de hosts</string>
-    <string name="mHosts_buildDesc">Esto eliminará el catálogo actual y lo generará con la configuración actual, descargando ficheros de hosts de internet si es necesario. Esta acción puede durar varios segundos. ¿Continuar?</string>
+    <string name="mHosts_buildDesc">Esto eliminará el catálogo actual y lo generará con la configuración actual, descargando ficheros de hosts de internet si es necesario. Esta acción puede durar varios segundos. ¿Continuar\?</string>
     <string name="mHosts_buildProgress">Generando base de datos</string>
     <string name="mHosts_buildInit">Inicializando</string>
     <string name="mHosts_buildClear">Borrando…</string>
-    <string name="mHosts_buildDownload">"Descargando '%s' hosts de %s…"</string>
+    <string name="mHosts_buildDownload">Descargando \'%s\' hosts de %s…</string>
     <string name="mHosts_buildSave">Guardando…</string>
     <string name="mHosts_built">Base de datos construida: %d hosts</string>
     <string name="btn_tutorialSettings">Repetir tutorial</string>
@@ -292,8 +292,8 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mUnshort_name">Desacortador</string>
     <string name="mUnshort_unshort">Desacortar</string>
-    <string name="mUnshort_desc">"Este módulo desacorta enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para peticiones futuras. Evita desacortar enlaces con datos privados o sensibles.
-El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La respuesta del módulo muestra cuantas peticiones quedan pendientes."</string>
+    <string name="mUnshort_desc">Este módulo desacorta enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para peticiones futuras. Evita desacortar enlaces con datos privados o sensibles.
+\nEl servicio está limitado a 10 peticiones por hora para nuevos enlaces. La respuesta del módulo muestra cuantas peticiones quedan pendientes.</string>
     <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
