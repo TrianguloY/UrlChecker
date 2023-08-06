@@ -15,17 +15,17 @@
     <string name="a_modules">מודולים</string>
     <string name="a_about">על אודות</string>
     <!-- about -->
-    <string name="txt_about">"אפליקציה שנוצרה על ידי TrianguloY.
- תרומות: %s.
- תרגומים: %s."</string>
-    <string name="link_blog">"הבלוג של TrianguloY"</string>
+    <string name="txt_about">אפליקציה שנוצרה על ידי TrianguloY.
+\n תרומות: %s.
+\n תרגומים: %s.</string>
+    <string name="link_blog">הבלוג של TrianguloY</string>
     <!-- configuration -->
     <string name="txt_conf">רשימת מודולים: אתה יכול להפעיל או לבטל אותם, גם לבדוק את התיאור והתצורה שלו.</string>
-    <string name="toast_cantEnable">"לא ניתן להפעיל את המודול, חסרה תצורה?"</string>
+    <string name="toast_cantEnable">לא ניתן להפעיל את המודול, חסרה תצורה\?</string>
     <string name="menu_resetOrder">אפס סדר</string>
     <!-- generic -->
-    <string name="toast_noApp">"לא ניתן לפתוח את האפליקציה"</string>
-    <string name="toast_noBrowser">"לא מצליח לפתוח את הדפדפן"</string>
+    <string name="toast_noApp">לא ניתן לפתוח את האפליקציה</string>
+    <string name="toast_noBrowser">לא מצליח לפתוח את הדפדפן</string>
     <string name="title_choose">בחר אפליקציה</string>
     <string name="toast_invalid">לא חוקי</string>
     <string name="save">להציל</string>
@@ -36,9 +36,9 @@
     <!-- modules -->
     <string name="mPttrn_name">בודק דפוסים</string>
     <string name="mPttrn_desc">"בודק בעיות נפוצות בכתובת האתר.  דפוסים מובנים:
- * תווים שאינם ASCII כמו אותיות יווניות.  זה יכול לשמש עבור דיוג: googĺe.com לעומת google.com
- * קישורי http, עליך להשתמש ב-https במקום זאת
- * סכימת http(s) חסרה"</string>
+\n * תווים שאינם ASCII כמו אותיות יווניות.  זה יכול לשמש עבור דיוג: googĺe.com לעומת google.com
+\n * קישורי http, עליך להשתמש ב-https במקום זאת
+\n * סכימת http(s) חסרה"</string>
     <string name="mPttrn_fix">להגיש מועמדות</string>
     <string name="mPttrn_fixed">הוחל - %s</string>
     <string name="mPttrn_ascii">אַזהָרָה! נמצאו תווים שאינם ascii</string>
@@ -47,25 +47,25 @@
     <string name="mPttrn_noSchemeHttps">חסרה ערכת https.</string>
     <string name="mPttrn_ok">אין תבניות תואמות</string>
     <string name="mPttrn_editor">"כאן אתה יכול לערוך או להוסיף דפוס חדש.  פוּרמָט:
- - 'regex': מחרוזת: ג'אווה רגולרי חוקי שיותאם ל-url.
- - 'replacement': string: אם מסופק, כפתור 'תיקון' יפעיל את 'url=url.replaceAll(regex,replacement)'.
- - 'אוטומטי': בוליאני: מוגדר כ-true כדי להחיל את התבנית באופן אוטומטי.
- - 'מופעל': בוליאני: הוגדר ל-false כדי להשבית את התבנית.
- הערה: אם תערוך את התבניות, דפוסים מובנים חדשים מעידכוני אפליקציה לא יתווספו אוטומטית (תוכל לשחזר אותם עם אפשרות האיפוס)."</string>
-    <string name="mOpen_name"><![CDATA[Open & Share]]></string>
+\n - \'regex\': מחרוזת: ג\'אווה רגולרי חוקי שיותאם ל-url.
+\n - \'replacement\': string: אם מסופק, כפתור \'תיקון\' יפעיל את \'url=url.replaceAll(regex,replacement)\'.
+\n - \'אוטומטי\': בוליאני: מוגדר כ-true כדי להחיל את התבנית באופן אוטומטי.
+\n - \'מופעל\': בוליאני: הוגדר ל-false כדי להשבית את התבנית.
+\n הערה: אם תערוך את התבניות, דפוסים מובנים חדשים מעידכוני אפליקציה לא יתווספו אוטומטית (תוכל לשחזר אותם עם אפשרות האיפוס)."</string>
+    <string name="mOpen_name">Open &amp; Share</string>
     <string name="mOpen_desc">"מכיל את הכפתורים הבאים (משמאל לימין):
- - לחצן כרטיסיות מותאמות אישית: החלף כדי להפעיל/לבטל את תכונת הכרטיסיות המותאמת אישית.  כאשר מופעל הדפדפן צריך להיפתח במצב 'לייט'.
- - לחצן פתיחה: לחץ על שם האפליקציה כדי לפתוח את הקישור באפליקציה זו.  אם ניתן לפתוח קישור עם אפליקציות מרובות, יוצג חץ שיאפשר לך לבחור.
- - כפתור שיתוף: לחץ על הלחצן כדי לשתף את הקישור.  לחץ לחיצה ארוכה כדי להעתיק במהירות ללוח."</string>
+\n - לחצן כרטיסיות מותאמות אישית: החלף כדי להפעיל/לבטל את תכונת הכרטיסיות המותאמת אישית.  כאשר מופעל הדפדפן צריך להיפתח במצב \'לייט\'.
+\n - לחצן פתיחה: לחץ על שם האפליקציה כדי לפתוח את הקישור באפליקציה זו.  אם ניתן לפתוח קישור עם אפליקציות מרובות, יוצג חץ שיאפשר לך לבחור.
+\n - כפתור שיתוף: לחץ על הלחצן כדי לשתף את הקישור.  לחץ לחיצה ארוכה כדי להעתיק במהירות ללוח."</string>
     <string name="mOpen_with">פתח עם %s</string>
     <string name="mOpen_open">לִפְתוֹחַ</string>
     <string name="mOpen_share">לַחֲלוֹק</string>
     <string name="mOpen_clipboard">כתובת האתר הועתקה ללוח</string>
     <string name="mOpen_noapps">אין אפליקציות</string>
     <string name="mStatus_name">קוד סטטוס</string>
-    <string name="mStatus_desc">"בלחיצה על כפתור הסימון, תוגש עצומה לאחזור והצגת קוד סטטוס האתר.
- אם התוצאה היא הפניה מחדש, תוכל לראות את כתובת אתר היעד.
- תוכן ה-URL מתקבל (GET), אך לא מוערך, כך שהפניות מחדש המבוססות על javascript לא יזוהו.."</string>
+    <string name="mStatus_desc">בלחיצה על כפתור הסימון, תוגש עצומה לאחזור והצגת קוד סטטוס האתר.
+\n אם התוצאה היא הפניה מחדש, תוכל לראות את כתובת אתר היעד.
+\n תוכן ה-URL מתקבל (GET), אך לא מוערך, כך שהפניות מחדש המבוססות על javascript לא יזוהו..</string>
     <string name="mStatus_ioerror">שגיאת רשת בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_error">שגיאה פנימית בעת ניסיון לבדוק את כתובת האתר: %s</string>
     <string name="mStatus_check">חשבון</string>
@@ -91,10 +91,10 @@
     <string name="mStatus_unknownCode">%d: קוד סטטוס לא ידוע</string>
     <string name="mStatus_redir">הפניה מחדש: %s</string>
     <string name="mInput_name">הקלד טקסט</string>
-    <string name="mInput_desc">"מציג את כתובת האתר הנוכחית, אותה ניתן לערוך באופן ידני."</string>
+    <string name="mInput_desc">מציג את כתובת האתר הנוכחית, אותה ניתן לערוך באופן ידני.</string>
     <string name="mVT_name">סורק כתובות אתרים</string>
-    <string name="mVT_desc">"כאשר מודול זה מופעל אתה יכול לסרוק את כתובת האתר באמצעות וירוס טוטאל ולבדוק את הדוח.
- יש צורך במפתח API אישי של וירוס טוטאל כדי שזה יעבוד, אתה יכול לקבל אחד לאחר הרשמה לחשבון בחינם כאן: https://www.virustotal.com/gui/join-us ."</string>
+    <string name="mVT_desc">כאשר מודול זה מופעל אתה יכול לסרוק את כתובת האתר באמצעות וירוס טוטאל ולבדוק את הדוח.
+\n יש צורך במפתח API אישי של וירוס טוטאל כדי שזה יעבוד, אתה יכול לקבל אחד לאחר הרשמה לחשבון בחינם כאן: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">מפתח api</string>
     <string name="mVT_tm">VirusTotal™ הוא סימן מסחרי של Google, Inc.</string>
     <string name="mVT_scan">לִסְרוֹק</string>
@@ -103,12 +103,12 @@
     <string name="mVT_goodUrl">אף אחד מהמנועים %d לא זיהה את כתובת האתר (נכון לתאריך %s)</string>
     <string name="mVT_warningUrl">אזהרה, מנועי %d/%d זיהו את כתובת האתר (נכון לתאריך %s)</string>
     <string name="mVT_badUrl">זָהִיר! %d/%d מנועים זיהו את כתובת האתר (נכון לתאריך %s)</string>
-    <string name="mVT_connectError">"לא ניתן להתחבר ל-VirusTotal. ודא שיש לך חיבור אינטרנט פעיל או נסה שוב מאוחר יותר."</string>
-    <string name="mVT_jsonError">"לא ניתן להתחבר ל-VirusTotal. ודא שמפתח ה-API חוקי או נסה שוב מאוחר יותר."</string>
+    <string name="mVT_connectError">לא ניתן להתחבר ל-VirusTotal. ודא שיש לך חיבור אינטרנט פעיל או נסה שוב מאוחר יותר.</string>
+    <string name="mVT_jsonError">לא ניתן להתחבר ל-VirusTotal. ודא שמפתח ה-API חוקי או נסה שוב מאוחר יותר.</string>
     <string name="mD_name">מודול ניפוי באגים/סמן</string>
-    <string name="mD_desc">"אם תסדר מחדש את המודולים, חדשים שנוספו בעדכונים עתידיים יוצבו מעל זה.
-
- אם תפעיל את זה, זה יציג את הכוונה שהתקבלה בתור uri, שימושי למפתחים."</string>
+    <string name="mD_desc">אם תסדר מחדש את המודולים, חדשים שנוספו בעדכונים עתידיים יוצבו מעל זה.
+\n
+\n אם תפעיל את זה, זה יציג את הכוונה שהתקבלה בתור uri, שימושי למפתחים.</string>
     <string name="mD_ctabs">הצג הודעות ניפוי באגים משירות הכרטיסיות המותאמות אישית</string>
     <string name="mHist_name">הִיסטוֹרִיָה</string>
     <string name="mHist_desc">כאשר כתובת האתר נערכת, ידנית או על ידי מודולים אחרים, הכתובת הזו מאפשרת לך להציג שינויים ולבטל אותם.</string>
@@ -127,7 +127,7 @@
     <string name="mClear_cleared">- נוקה</string>
     <string name="mClear_noRules">שום דבר לא נמצא</string>
     <string name="mClear_auto">החל אוטומטית</string>
-    <string name="mClear_toggleReferral">"הפעל שיווק הפניות (פרמטרי הפניה לא יימחקו)"</string>
+    <string name="mClear_toggleReferral">הפעל שיווק הפניות (פרמטרי הפניה לא יימחקו)</string>
     <string name="mClear_toggleVerbose">אפשר מידע מילולי עבור תהליך ההתאמה</string>
     <string name="mClear_error">אירעה שגיאה בעת בדיקת הכלל</string>
     <string name="mClear_updater">מעדכן</string>
@@ -143,11 +143,11 @@
     <string name="mClear_hashMismatch">הגיבובים אינם תואמים, ייתכן שהקובץ מטופל. אם אתה רוצה לדלג על הסימון, הסר את כתובת ה-hash</string>
     <string name="mClear_restore">שחזר נתיבי ClearURLs</string>
     <string name="mClear_editor">"כללי קטלוג: עליהם לפעול לפי הפורמט של https://docs.clearurls.xyz/latest/specs/rules/.
- שים לב שכל שינוי באובייקט האב 'ספקי' ידרוס אם הקטלוג יתעדכן אוטומטית או ידנית מתיבת הדו-שיח של העדכון.  כדי שהכללים האישיים יקבעו אותם באובייקט אב אחר (כל שם)."</string>
+\n שים לב שכל שינוי באובייקט האב \'ספקי\' ידרוס אם הקטלוג יתעדכן אוטומטית או ידנית מתיבת הדו-שיח של העדכון.  כדי שהכללים האישיים יקבעו אותם באובייקט אב אחר (כל שם)."</string>
     <string name="mRemove_name">מסיר שאילתות</string>
-    <string name="mRemove_desc">"עם מודול זה תוכל להסיר שאילתות מכתובת האתר.
- לחץ על הלחצן כדי להסיר את כולם או לחץ על החץ כדי להסיר אחד בכל פעם.
- תודה ל-PabloOQ על הרעיון והיישום המקורי!"</string>
+    <string name="mRemove_desc">עם מודול זה תוכל להסיר שאילתות מכתובת האתר.
+\n לחץ על הלחצן כדי להסיר את כולם או לחץ על החץ כדי להסיר אחד בכל פעם.
+\n תודה ל-PabloOQ על הרעיון והיישום המקורי!</string>
     <string name="mRemove_found1">נמצאה שאילתה אחת</string>
     <string name="mRemove_found">נמצאו %d שאילתות</string>
     <string name="mRemove_noQueries">אין שאילתות</string>

@@ -10,23 +10,23 @@
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">Italiano</string>
     <!-- main -->
-    <string name="txt_info">"Quest'app agisce come uno step intermedio tra il premere su un link e la sua apertura. Quando premi su un link e scegli quest'app per aprirlo, ti verrà mostrata una finestra con delle informazioni riguardo il link. Premi il pulsante dei moduli in basso per dare un'occhiata a tutti i moduli disponibili."</string>
+    <string name="txt_info">Quest\'app agisce come uno step intermedio tra il premere su un link e la sua apertura. Quando premi su un link e scegli quest\'app per aprirlo, ti verrà mostrata una finestra con delle informazioni riguardo il link. Premi il pulsante dei moduli in basso per dare un\'occhiata a tutti i moduli disponibili.</string>
     <string name="txt_sample">Premi il link qui in basso per provare:</string>
     <string name="a_modules">Moduli</string>
     <string name="a_settings">Impostazioni</string>
     <string name="a_about">Informazioni</string>
     <!-- about -->
-    <string name="txt_about">"App creata da TrianguloY.
-
-Contributi: %s.
-Traduzioni: %s."</string>
+    <string name="txt_about">App creata da TrianguloY.
+\n
+\nContributi: %s.
+\nTraduzioni: %s.</string>
     <string name="link_blog">Blog di TrianguloY</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Codice sorgente</string>
     <string name="link_privacy">Informativa sulla privacy</string>
     <!-- modules -->
     <string name="txt_conf">Qui puoi vedere tutti i moduli disponibili, la loro descrizione, ed impostazioni. Puoi anche re-ordinarli, ed abilitarli o disabilitarli.</string>
-    <string name="toast_cantEnable">"Impossibile abilitare il modulo, configurazione mancante?"</string>
+    <string name="toast_cantEnable">Impossibile abilitare il modulo, configurazione mancante\?</string>
     <string name="menu_resetOrder">Ripristina ordine</string>
     <string name="menu_toggleDecorations">Inverti tutti</string>
     <string name="desc_up">Muovi su</string>
@@ -34,7 +34,7 @@ Traduzioni: %s."</string>
     <string name="desc_decorations">Mostra/nascondi titoli</string>
     <string name="desc_enable">Attiva/disattiva modulo</string>
     <!-- settings -->
-    <string name="txt_openLinks">"Durante gli anni, il modo per configurare l'apertura dei link nelle app è cambiato. Trovi qui in basso tutte le impostazioni disponibili al riguardo per il tuo dispositivo, se i link non vengono aperti in quest'app, dai un'occhiata a tutti."</string>
+    <string name="txt_openLinks">Durante gli anni, il modo per configurare l\'apertura dei link nelle app è cambiato. Trovi qui in basso tutte le impostazioni disponibili al riguardo per il tuo dispositivo, se i link non vengono aperti in quest\'app, dai un\'occhiata a tutti.</string>
     <string name="btn_setBrowser">Imposta come browser di default</string>
     <string name="toast_defaultSet">L\'app è ora il browser web predefinito</string>
     <string name="btn_configureBrowser">Browser web predefinito</string>
@@ -57,14 +57,14 @@ Traduzioni: %s."</string>
     <string name="share">Condividi</string>
     <string name="canceled">Cancellato</string>
     <string name="deviceDefault">Impostazioni predefinite</string>
-    <string name="json_desc">"[Funzionalità beta] Questo è un editor avanzato, il contenuto dev'essere formattato in JSON. Puoi premere il pulsante in alto a destra per formattare e controllare."</string>
+    <string name="json_desc">[Funzionalità beta] Questo è un editor avanzato, il contenuto dev\'essere formattato in JSON. Puoi premere il pulsante in alto a destra per formattare e controllare.</string>
     <string name="json_edit">Editor avanzato</string>
     <!-- modules -->
     <string name="mPttrn_name">Controllo dei pattern</string>
-    <string name="mPttrn_desc">"Controlla cose comuni nell'url. Patterns inclusi:
-* Caratteri non-ascii come lettere greche. Quest'ultimi possono essere usati per phishing: googĺe.com vs google.com
-* Links http
-* Schema http(s) mancante"</string>
+    <string name="mPttrn_desc">Controlla cose comuni nell\'url. Patterns inclusi:
+\n* Caratteri non-ascii come lettere greche. Quest\'ultimi possono essere usati per phishing: googĺe.com vs google.com
+\n* Links http
+\n* Schema http(s) mancante</string>
     <string name="mPttrn_userContent">Lista di altri patterns creati dalla community: %s</string>
     <string name="mPttrn_fix">Applica</string>
     <string name="mPttrn_fixed">Applicato - %s</string>
@@ -73,27 +73,27 @@ Traduzioni: %s."</string>
     <string name="mPttrn_noSchemeHttp">Schema HTTP mancante.</string>
     <string name="mPttrn_noSchemeHttps">Schema HTTPS mancante.</string>
     <string name="mPttrn_ok">Nessun pattern combaciante</string>
-    <string name="mPttrn_editor">Qui puoi modificare od aggiungere altri patterns. Formato: 
-\n- \'regex\': stringa: una regex java valida che deve combaciare con l\'intero pattern. 
-\n- \'excludeRegex\': stringa: se fornita, una regex java valida che non deve combaciare con l\'intero pattern. 
-\n- \'replacement\': stringa|lista: se configurato, il pulsante fix eseguirà \'url=url.replaceAll(regex,replacement)\'. Se viene configurata una lista, verrà preso un elemento a random da essa. 
-\n- \'automatic\': booleana: settala a true per applicare il pattern automaticamente. 
-\n- \'enabled\' booleana: settala a false per disabilitare il pattern. 
+    <string name="mPttrn_editor">Qui puoi modificare od aggiungere altri patterns. Formato:
+\n- \'regex\': stringa: una regex java valida che deve combaciare con l\'intero pattern.
+\n- \'excludeRegex\': stringa: se fornita, una regex java valida che non deve combaciare con l\'intero pattern.
+\n- \'replacement\': stringa|lista: se configurato, il pulsante fix eseguirà \'url=url.replaceAll(regex,replacement)\'. Se viene configurata una lista, verrà preso un elemento a random da essa.
+\n- \'automatic\': booleana: settala a true per applicare il pattern automaticamente.
+\n- \'enabled\' booleana: settala a false per disabilitare il pattern.
 \nNota: se modifichi i patterns, i nuovi patterns inclusi con eventuali aggiornamenti, non verranno aggiunti. (puoi ripristinarli con l\'opzione di reset).</string>
     <string name="mOpen_name">Apri e condividi</string>
-    <string name="mOpen_desc">"Continene i seguenti pulsanti (da sinistra a destra):
-- Schede custom: premi per attivare o disattivare le schede custom. Quando abilitato il browser dovrebbe essere aperto in modalità "light".
-- Pulsante apri: Premi il nome dell'app per aprire il link in quell'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere tra le app disponibili.
-- Pulsante condividi: Premi il pulsante per condividere il link. Tienilo premuto per copiare nella clipboard."</string>
+    <string name="mOpen_desc">Continene i seguenti pulsanti (da sinistra a destra):
+\n- Schede custom: premi per attivare o disattivare le schede custom. Quando abilitato il browser dovrebbe essere aperto in modalità light.
+\n- Pulsante apri: Premi il nome dell\'app per aprire il link in quell\'app. Se un link può essere aperto con più app, una freccia verrà mostrata per permetterti di scegliere tra le app disponibili.
+\n- Pulsante condividi: Premi il pulsante per condividere il link. Tienilo premuto per copiare nella clipboard.</string>
     <string name="mOpen_ctabs">Schede custom:</string>
     <string name="defaultOn">Abilitato di default</string>
     <string name="defaultOff">Disabilitato di default</string>
     <string name="alwaysOn">Sempre on</string>
     <string name="alwaysOff">Sempre off</string>
-    <string name="mOpen_closeOpen">"Chiudi finestra dopo l'apertura"</string>
+    <string name="mOpen_closeOpen">Chiudi finestra dopo l\'apertura</string>
     <string name="mOpen_closeShare">Chiudi finestra dopo la condivisione</string>
     <string name="mOpen_perDomain">Ordina domini diversi indipendentemente</string>
-    <string name="mOpen_noReferrer">"Nascondi l'app sorgente (referrer)"</string>
+    <string name="mOpen_noReferrer">Nascondi l\'app sorgente (referrer)</string>
     <string name="mOpen_with">Apri con %s</string>
     <string name="mOpen_open">Apri</string>
     <string name="mOpen_share">Condividi</string>
@@ -101,10 +101,10 @@ Traduzioni: %s."</string>
     <string name="mOpen_noapps">Nessuna app</string>
     <string name="mOpen_tabsDesc">Attiva/disattiva</string>
     <string name="mStatus_name">Status code</string>
-    <string name="mStatus_desc">"Premendo il pulsante di check, una richiesta verrà inviata per recuperare lo status code del sito. Se il risultato è una re-indirizzazione, ti verrà mostrato l'url di destinazione.
-Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati."</string>
-    <string name="mStatus_ioerror">"Errore di rete durante il controllo dell'url: %s"</string>
-    <string name="mStatus_error">"Errore interno durante il controllo dell'url: %s"</string>
+    <string name="mStatus_desc">Premendo il pulsante di check, una richiesta verrà inviata per recuperare lo status code del sito. Se il risultato è una re-indirizzazione, ti verrà mostrato l\'url di destinazione.
+\nIl contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti basati su javascript non verranno rilevati.</string>
+    <string name="mStatus_ioerror">Errore di rete durante il controllo dell\'url: %s</string>
+    <string name="mStatus_error">Errore interno durante il controllo dell\'url: %s</string>
     <string name="mStatus_check">Controlla stato</string>
     <string name="mStatus_recheck">Controlla</string>
     <string name="mStatus_checking">Controllo…</string>
@@ -128,10 +128,10 @@ Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
     <string name="mStatus_redir">Re-indirizzazione: %s</string>
     <string name="mInput_name">Modifica link</string>
-    <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>
+    <string name="mInput_desc">Mostra l\'url corrente, che può essere modificato manualmente.</string>
     <string name="mVT_name">Url Scanner</string>
-    <string name="mVT_desc">"Quando questo modulo è abilitato puoi scansionare l'url utilizzando VirusTotal e visualizzare il report.
-Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us ."</string>
+    <string name="mVT_desc">Quando questo modulo è abilitato puoi scansionare l\'url utilizzando VirusTotal e visualizzare il report.
+\nUna chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">chiave api</string>
     <string name="mVT_tm">VirusTotal™ è un trademark di Google, Inc.</string>
     <string name="mVT_scan">Scansiona</string>
@@ -140,24 +140,24 @@ Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi c
     <string name="mVT_goodUrl">Nessun %d engine ha rilevato qualcosa (ad oggi %s)</string>
     <string name="mVT_warningUrl">Attenzione, questi engines: %d/%d hanno rilevato qualcosa (ad oggi %s)</string>
     <string name="mVT_badUrl">Attenzione! %d/%d engines hanno rilevato qualcosa (ad oggi %s)</string>
-    <string name="mVT_connectError">"Impossibile connettersi a VirusTotal. Controlla di avere una connessione funzionante e/o riprova più tardi."</string>
-    <string name="mVT_jsonError">"Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi."</string>
+    <string name="mVT_connectError">Impossibile connettersi a VirusTotal. Controlla di avere una connessione funzionante e/o riprova più tardi.</string>
+    <string name="mVT_jsonError">Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi.</string>
     <string name="mD_name">Modulo di debug</string>
-    <string name="mD_desc">"Se re-organizzi i moduli, eventuali nuovi aggiunti in futuro tramite aggiornamenti verranno posizionati sopra quest'ultimo.
-
-Se attivi questa funzione, verrà mostrato l'intent come uri, utile per sviluppatori.
-
-Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiare tutto."</string>
+    <string name="mD_desc">Se re-organizzi i moduli, eventuali nuovi aggiunti in futuro tramite aggiornamenti verranno posizionati sopra quest\'ultimo.
+\n
+\nSe attivi questa funzione, verrà mostrato l\'intent come uri, utile per sviluppatori.
+\n
+\nPremi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiare tutto.</string>
     <string name="mD_ctabs">Mostra i messaggi di debug dal serivzio di schede custom.</string>
     <string name="mHist_name">Cronologia</string>
-    <string name="mHist_desc">"Quando l'url viene modificato, sia manualmente o da altri moduli, quest'ultimo ti permette di annullare le modifiche."</string>
+    <string name="mHist_desc">Quando l\'url viene modificato, sia manualmente o da altri moduli, quest\'ultimo ti permette di annullare le modifiche.</string>
     <string name="mClear_name">Pulitore URL</string>
     <string name="mClear_desc">Questo modulo rimuove parametri inutili e referrals. Inoltre permette una pulizia semplice quando offline.</string>
     <string name="mClear_tm">Lista di default presa da ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
     <string name="mClear_clear">Applica</string>
     <string name="mClear_matches">Corrisponde %s</string>
     <string name="mClear_blocked">- BLOCCATO!</string>
-    <string name="mClear_exception">"- ignorato per l'eccezione %s"</string>
+    <string name="mClear_exception">- ignorato per l\'eccezione %s</string>
     <string name="mClear_rule">- parametro inutile trovato</string>
     <string name="mClear_rawRule">- contenuto inutile trovato</string>
     <string name="mClear_referral">- referral trovato</string>
@@ -166,13 +166,13 @@ Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiar
     <string name="mClear_cleared">- Pulito</string>
     <string name="mClear_noRules">Nessuna regola corrisponde</string>
     <string name="mClear_auto">Applica automaticamente</string>
-    <string name="mClear_toggleReferral">"Abilita l'utilizzo dei referrals (link con parametri di referral non verranno puliti)"</string>
+    <string name="mClear_toggleReferral">Abilita l\'utilizzo dei referrals (link con parametri di referral non verranno puliti)</string>
     <string name="mClear_toggleVerbose">Attiva verbosità alta per il processo di controllo</string>
-    <string name="mClear_error">"C'è stato un errore nel controllo della regola"</string>
+    <string name="mClear_error">C\'è stato un errore nel controllo della regola</string>
     <string name="mClear_updater">Updater</string>
     <string name="mClear_sourceDesc">URL del file JSON con la lista di regole:</string>
     <string name="mClear_urlHint">URL lista</string>
-    <string name="mClear_hashDesc">"URL dell'hash della lista. Se non incluso, il file della lista non verrà controllato per modifiche non autorizzate. (non raccomandato)"</string>
+    <string name="mClear_hashDesc">URL dell\'hash della lista. Se non incluso, il file della lista non verrà controllato per modifiche non autorizzate. (non raccomandato)</string>
     <string name="mClear_hashHint">Nessun check hash</string>
     <string name="mClear_updateNow">Aggiorna ora</string>
     <string name="mClear_autoUpdate">Aggiorna periodicamente</string>
@@ -180,16 +180,16 @@ Premi su Intent od UrlData per copiare nella clipboard. Tieni premuto per copiar
     <string name="mClear_lastUpdate">Ultimo aggiornamento:</string>
     <string name="mClear_updated">Elenco aggiornato</string>
     <string name="mClear_upToDate">Elenco già aggiornato</string>
-    <string name="mClear_urlError">"Non è stato possibile recuperare le regole, controlla che l'url sia valido e che tu abbia una connessione internet funzionante."</string>
-    <string name="mClear_hashError">"Non è stato possibile recuperare l'hash, controlla che l'url sia valido e che tu abbia una connessione internet funzionante."</string>
-    <string name="mClear_hashMismatch">"Gli hash non corrispondono, il file potrebbe essere stato modificato. Se vuoi saltare il check, rimuovi l'url dell'hash."</string>
+    <string name="mClear_urlError">Non è stato possibile recuperare le regole, controlla che l\'url sia valido e che tu abbia una connessione internet funzionante.</string>
+    <string name="mClear_hashError">Non è stato possibile recuperare l\'hash, controlla che l\'url sia valido e che tu abbia una connessione internet funzionante.</string>
+    <string name="mClear_hashMismatch">Gli hash non corrispondono, il file potrebbe essere stato modificato. Se vuoi saltare il check, rimuovi l\'url dell\'hash.</string>
     <string name="mClear_restore">Ripristina percorsi ClearURLs</string>
-    <string name="mClear_editor">"Lista regole: Devono seguire il formato da https://docs.clearurls.xyz/latest/specs/rules/.
-Tieni conto che qualsiasi modifica ai 'providers' verrà sovrscaritta se la lista viene aggiornata automaticamente o manualmente dalla finestra degli aggiornamenti. Per avere regole custom impostale in un parent object diverso."</string>
+    <string name="mClear_editor">Lista regole: Devono seguire il formato da https://docs.clearurls.xyz/latest/specs/rules/.
+\nTieni conto che qualsiasi modifica ai \'providers\' verrà sovrscaritta se la lista viene aggiornata automaticamente o manualmente dalla finestra degli aggiornamenti. Per avere regole custom impostale in un parent object diverso.</string>
     <string name="mRemove_name">Pulitore queries</string>
-    <string name="mRemove_desc">"Con questo modulo puoi rimuovere queries dall'URL.
-Premi il pulsante per rimuoverle tutte o premi la freccia per rimuoverne una alla volta.
-Grazie a PabloOQ per l'idea originale!"</string>
+    <string name="mRemove_desc">Con questo modulo puoi rimuovere queries dall\'URL.
+\nPremi il pulsante per rimuoverle tutte o premi la freccia per rimuoverne una alla volta.
+\nGrazie a PabloOQ per l\'idea originale!</string>
     <string name="mRemove_found1">1 query trovata</string>
     <string name="mRemove_found">%d queries trovate</string>
     <string name="mRemove_noQueries">Nessuna query</string>
@@ -197,15 +197,15 @@ Grazie a PabloOQ per l'idea originale!"</string>
     <string name="mRemove_one">Rimuovi %s</string>
     <string name="mRemove_empty">Rimuovi vuota</string>
     <string name="mLog_name">Log</string>
-    <string name="mLog_desc">"Questo modulo logga tutti gli url controllati.
-Puoi visualizzare, pulire o modificare l'intero log qui.
-Per disabilitare il logging, ti basta disabilitare il modulo."</string>
+    <string name="mLog_desc">Questo modulo logga tutti gli url controllati.
+\nPuoi visualizzare, pulire o modificare l\'intero log qui.
+\nPer disabilitare il logging, ti basta disabilitare il modulo.</string>
     <string name="mLog_view">Visualizza log</string>
     <string name="mLog_edit">Modifica log</string>
     <string name="mLog_empty">Nessun dato</string>
     <string name="mHosts_name">Categorie hosts</string>
     <string name="mHosts_desc">"Questo modulo etichetta gli hosts, e può essere configurato manualmente od utilizzando un file remoto hosts-like.
-    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
+\n    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">nessuna categoria</string>
@@ -214,18 +214,18 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mHosts_adult">contenuto per adulti</string>
     <string name="mHosts_build">Crea</string>
     <string name="mHosts_uninitialized">Database degli hosts non inizializzato. Premi per crearlo.</string>
-    <string name="mHosts_parseError">"Impossibile recuperare URL host"</string>
-    <string name="mHosts_editor">"Configurazione hosts. Formato: Lista di oggetti dove la chiave è l'etichetta dell'host ed il contenuto include i seguenti valori opzionali:
-- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
-- hosts: Lista di host grezza (stringhe) da aggiungere.
-- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall'alto al basso. Attivato di defualt.
-- enabled: se falso questo intero oggetto sarà saltato. Attivato di default."</string>
+    <string name="mHosts_parseError">Impossibile recuperare URL host</string>
+    <string name="mHosts_editor">Configurazione hosts. Formato: Lista di oggetti dove la chiave è l\'etichetta dell\'host ed il contenuto include i seguenti valori opzionali:
+\n- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
+\n- hosts: Lista di host grezza (stringhe) da aggiungere.
+\n- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall\'alto al basso. Attivato di defualt.
+\n- enabled: se falso questo intero oggetto sarà saltato. Attivato di default.</string>
     <string name="mHosts_buildTitle">Riempi database hosts</string>
-    <string name="mHosts_buildDesc">"Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest'azione potrebbe richiedere qualche secondo. Continuare?"</string>
+    <string name="mHosts_buildDesc">Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest\'azione potrebbe richiedere qualche secondo. Continuare\?</string>
     <string name="mHosts_buildProgress">Preparando lista</string>
     <string name="mHosts_buildInit">Inizializzazione</string>
     <string name="mHosts_buildClear">Pulizia…</string>
-    <string name="mHosts_buildDownload">"Scaricando '%s' hosts da %s…"</string>
+    <string name="mHosts_buildDownload">Scaricando \'%s\' hosts da %s…</string>
     <string name="mHosts_buildSave">Salvando…</string>
     <string name="mHosts_built">Database pronto: %d hosts</string>
     <string name="txt_tutorial1">Grazie per aver scaricato l\'applicazione!

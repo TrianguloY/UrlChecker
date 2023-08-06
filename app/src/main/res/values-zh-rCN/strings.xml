@@ -16,17 +16,17 @@
     <string name="a_settings">设置</string>
     <string name="a_about">关于</string>
     <!-- about -->
-    <string name="txt_about">"此应用由 TrianguloY 创造
-
-贡献者: %s.
-翻译者: %s."</string>
-    <string name="link_blog">"TrianguloY的博客"</string>
+    <string name="txt_about">此应用由 TrianguloY 创造
+\n
+\n贡献者: %s.
+\n翻译者: %s.</string>
+    <string name="link_blog">TrianguloY的博客</string>
     <string name="link_changelog">更新日志</string>
     <string name="link_source">源码</string>
     <string name="link_privacy">隐私政策</string>
     <!-- modules -->
     <string name="txt_conf">这里是所有可用的模块，您可以在这里检查它们的相关描述和设置。您还可以重新排序、切换标题可见性以及启用或禁用它们。</string>
-    <string name="toast_cantEnable">"无法启用模块，是否缺少相关配置？"</string>
+    <string name="toast_cantEnable">无法启用模块，是否缺少相关配置？</string>
     <string name="menu_resetOrder">重置顺序</string>
     <string name="menu_toggleDecorations">切换所有标题的可见性</string>
     <string name="desc_up">上移</string>
@@ -47,9 +47,9 @@
     <string name="btn_tutorialSettings">重看教程</string>
     <!-- tutorial -->
     <string name="tutorial">教程</string>
-    <string name="txt_tutorial1">"感谢下载URLCheck！
-
-这是教程，如果您想跳过它，可以点击下方的按钮。另外，您可以随时从设置菜单重看此教程。"</string>
+    <string name="txt_tutorial1">感谢下载URLCheck！
+\n
+\n这是教程，如果您想跳过它，可以点击下方的按钮。另外，您可以随时从设置菜单重看此教程。</string>
     <string name="txt_tutorial2">URLCheck 在打开或共享网址链接时充当中介。当链接发送到 URLCheck时，您可以通过模块对该链接进行相关操作。随之，您可以选择所需的应用程序打开该链接、共享链接或将其复制到剪贴板中。</string>
     <string name="txt_tutorial3">将URLCheck设置为默认网络浏览器以便在打开URL时拦截它们。（如果使用“共享”意图传递URL，则不需要。）</string>
     <string name="txt_tutorial4">模块是 URLCheck 与网址链接进行交互的方式。
@@ -59,13 +59,13 @@
 \n重要信息：默认情况下所有操作都是手动操作。除非您特别允许，否则该应用程序不修改任何内容也不连接到互联网，但如果操作需要，一些操作可以自动应用。
 \n
 \n从主屏幕打开模块列表，或点击下面的按钮。</string>
-    <string name="txt_tutorial5">"以上就是全部内容。以下是一些可能有用的提示：
-
-当某个应用程序没有提供打开或共享网址链接的方法，但是提供了执行其他操作的方法时，您可以使用 URLCheck 解决该问题。您还可以通过长按共享按钮将链接复制到剪贴板中。
-
-有些链接的唯一目的是将您重定向到另一个链接。如果最终网址链接可以在一个应用程序中打开，那么你可以避免在浏览器中打开它。
-
-希望您觉得该应用有用！如果您有功能建议、错误报告甚至提出修改，请不要犹豫。您可以在“关于”页面中找到所有相关链接。"</string>
+    <string name="txt_tutorial5">以上就是全部内容。以下是一些可能有用的提示：
+\n
+\n当某个应用程序没有提供打开或共享网址链接的方法，但是提供了执行其他操作的方法时，您可以使用 URLCheck 解决该问题。您还可以通过长按共享按钮将链接复制到剪贴板中。
+\n
+\n有些链接的唯一目的是将您重定向到另一个链接。如果最终网址链接可以在一个应用程序中打开，那么你可以避免在浏览器中打开它。
+\n
+\n希望您觉得该应用有用！如果您有功能建议、错误报告甚至提出修改，请不要犹豫。您可以在“关于”页面中找到所有相关链接。</string>
     <string name="btn_tutorialSkip">跳过教程</string>
     <string name="btn_tutorialEnd">完成教程</string>
     <!-- generic -->
@@ -102,18 +102,18 @@
     <string name="mPttrn_noSchemeHttp">缺少 HTTP 协议</string>
     <string name="mPttrn_noSchemeHttps">缺少 HTTPS 协议</string>
     <string name="mPttrn_ok">无匹配的模式</string>
-    <string name="mPttrn_editor">您可以在这里编辑或添加新的模式。格式: 
-\n- \'regex\': string：有效的 Java 正则表达式，将与 URL 进行匹配。 
-\n- \'replacement\': string|list：如果提供，则“修复”按钮将运行\'url=url.replaceAll(regex,replacement)。如果是 list ，replacement 将从中随机选择一个元素。 
-\n- \'automatic\'：boolean：将其设置为 true，以自动应用该模式。 
-\n- \'enabled\'：boolean：将其设置为 false，以禁用该模式。 
+    <string name="mPttrn_editor">您可以在这里编辑或添加新的模式。格式:
+\n- \'regex\': string：有效的 Java 正则表达式，将与 URL 进行匹配。
+\n- \'replacement\': string|list：如果提供，则“修复”按钮将运行\'url=url.replaceAll(regex,replacement)。如果是 list ，replacement 将从中随机选择一个元素。
+\n- \'automatic\'：boolean：将其设置为 true，以自动应用该模式。
+\n- \'enabled\'：boolean：将其设置为 false，以禁用该模式。
 \n注意：如果你编辑了这些模式，新的内置模式将不会自动添加到应用程序更新中（你可以使用重置选项恢复它们）。</string>
     <string name="mOpen_name">打开并分享</string>
-    <string name="mOpen_desc">"包含以下按钮（从左到右）：
-
-- 自定义标签页：切换以启用/禁用自定义标签页功能。启用后，浏览器以App内置浏览器的模式（Lite 模式）打开链接。
-- 打开按钮：按应用程序名称打开该应用程序中的链接。如果链接可以使用多个应用程序打开，则会显示箭头以供选择。
-- 分享按钮：按按钮以共享链接。长按可快速复制到剪贴板。"</string>
+    <string name="mOpen_desc">包含以下按钮（从左到右）：
+\n
+\n- 自定义标签页：切换以启用/禁用自定义标签页功能。启用后，浏览器以App内置浏览器的模式（Lite 模式）打开链接。
+\n- 打开按钮：按应用程序名称打开该应用程序中的链接。如果链接可以使用多个应用程序打开，则会显示箭头以供选择。
+\n- 分享按钮：按按钮以共享链接。长按可快速复制到剪贴板。</string>
     <string name="mOpen_ctabs">自定义标签页:</string>
     <string name="defaultOn">默认开启</string>
     <string name="defaultOff">默认关闭</string>
@@ -160,7 +160,7 @@
     <string name="mInput_name">输入文本</string>
     <string name="mInput_desc">显示当前链接，可以用于手动编辑。</string>
     <string name="mVT_name">链接扫描器</string>
-    <string name="mVT_desc">"当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us ."</string>
+    <string name="mVT_desc">当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API key</string>
     <string name="mVT_tm">VirusTotal™ 是 Google, Inc. 的商标。</string>
     <string name="mVT_scan">扫描</string>
@@ -172,12 +172,12 @@
     <string name="mVT_connectError">无法连接到 VirusTotal，请确保您已连接互联网或稍后重试</string>
     <string name="mVT_jsonError">无法连接到 VirusTotal，请确保您的API key有效或稍后重试。</string>
     <string name="mD_name">调试/标记模块</string>
-    <string name="mD_desc">"如果您重新排序模块，则未来更新中添加的新模块将放置在此模块之上。
-
-如果启用此功能，它将把接收到的Intent显示为uri，这是为开发人员设计的。
-
-点击Intent或UrlData以复制到剪贴板。长按以复制所有内容"</string>
-    <string name="mD_ctabs"> 显示来自自定义标签页服务的调试消息</string>
+    <string name="mD_desc">如果您重新排序模块，则未来更新中添加的新模块将放置在此模块之上。
+\n
+\n如果启用此功能，它将把接收到的Intent显示为uri，这是为开发人员设计的。
+\n
+\n点击Intent或UrlData以复制到剪贴板。长按以复制所有内容</string>
+    <string name="mD_ctabs">显示来自自定义标签页服务的调试消息</string>
     <string name="mHist_name">历史记录</string>
     <string name="mHist_desc">当链接被手动编辑过或者被其他模块修改时，此模块允许您查看和恢复更改。</string>
     <string name="mClear_name">链接清洁器</string>
@@ -195,7 +195,7 @@
     <string name="mClear_cleared">- 已清理</string>
     <string name="mClear_noRules">无匹配的规则</string>
     <string name="mClear_auto">自动应用</string>
-    <string name="mClear_toggleReferral">"允许引用来源推广（来源参数不会被清除"</string>
+    <string name="mClear_toggleReferral">允许引用来源推广（来源参数不会被清除</string>
     <string name="mClear_toggleVerbose">启用匹配过程的粗略信息</string>
     <string name="mClear_error">无法检查规则</string>
     <string name="mClear_updater">更新器</string>
@@ -213,8 +213,8 @@
     <string name="mClear_hashError">无法获取哈希值，请确保链接是有效的，并且您的网络连接正常</string>
     <string name="mClear_hashMismatch">哈希值不匹配，文件可能被篡改了。如果你想跳过检查，删除哈希值链接</string>
     <string name="mClear_restore">重置ClearURLs路径</string>
-    <string name="mClear_editor">"目录规则。他们必须遵循以下的格式 https://docs.clearurls.xyz/latest/specs/rules/.
-请注意，如果目录被自动或手动从更新器对话框中更新，对家长对象 "提供者 "的任何修改将被覆盖。要想拥有个人自定义规则，可以在不同的家长对象（任何名称）中设置它们。"</string>
+    <string name="mClear_editor">目录规则。他们必须遵循以下的格式 https://docs.clearurls.xyz/latest/specs/rules/.
+\n请注意，如果目录被自动或手动从更新器对话框中更新，对家长对象 提供者 的任何修改将被覆盖。要想拥有个人自定义规则，可以在不同的家长对象（任何名称）中设置它们。</string>
     <string name="mRemove_name">查询删除器</string>
     <string name="mRemove_desc">[已弃用]通过这个模块，你可以删除网址链接中的查询参数。 按下按钮可将它们全部删除，或按下箭头一次删除一个。 感谢PabloOQ的想法和原始实现!
 \n
@@ -231,7 +231,7 @@
     <string name="mLog_edit">修改日志</string>
     <string name="mLog_empty">无数据</string>
     <string name="mHosts_name">主机标识符</string>
-    <string name="mHosts_desc">"此模块可以标记主机，通过手动指定或使用类似远程主机的文件进行配置。您可以使用它来警告危险或特殊的网站。内置的配置使用StevenBlack的hosts（广告软件/恶意软件、假新闻、赌博和成人内容）来自https://github.com/StevenBlack/hosts。"</string>
+    <string name="mHosts_desc">此模块可以标记主机，通过手动指定或使用类似远程主机的文件进行配置。您可以使用它来警告危险或特殊的网站。内置的配置使用StevenBlack的hosts（广告软件/恶意软件、假新闻、赌博和成人内容）来自https://github.com/StevenBlack/hosts。</string>
     <string name="mHosts_malware">广告软件/恶意软件</string>
     <string name="mHosts_info">主机:</string>
     <string name="mHosts_noLabel">无标识</string>
@@ -241,23 +241,23 @@
     <string name="mHosts_build">构建</string>
     <string name="mHosts_uninitialized">主机数据库未初始化，点击以构建</string>
     <string name="mHosts_parseError">无法解析链接主机</string>
-    <string name="mHosts_editor">"主机配置。格式：键是主机标签的对象列表(List of Objects)，内容包括以下可选的值:
-- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。
-- 主机：要添加的原始主机（字符串）的列表。
-- color：标签的颜色。 一个 Android 颜色字符串（#AARRGGBB，#RRGGBB 或有效颜色名称）。默认为 "danger" 红色。
-- replace：如果为 false ，则不会替换现有主机。请注意，从上到下评估对象。默认为true。
-- enabled：如果为 false ，则会跳过整个对象。默认为 true。"</string>
+    <string name="mHosts_editor">主机配置。格式：键是主机标签的对象列表(List of Objects)，内容包括以下可选的值:
+\n- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。
+\n- 主机：要添加的原始主机（字符串）的列表。
+\n- color：标签的颜色。 一个 Android 颜色字符串（#AARRGGBB，#RRGGBB 或有效颜色名称）。默认为 danger 红色。
+\n- replace：如果为 false ，则不会替换现有主机。请注意，从上到下评估对象。默认为true。
+\n- enabled：如果为 false ，则会跳过整个对象。默认为 true。</string>
     <string name="mHosts_buildTitle">构建主机数据库</string>
     <string name="mHosts_buildDesc">这将清除当前主机数据库，并根据当前配置重新构建它，如果需要，可从互联网下载主机文件。此操作可能需要几秒钟。继续吗？</string>
     <string name="mHosts_buildProgress">构建目录中</string>
     <string name="mHosts_buildInit">初始化中</string>
     <string name="mHosts_buildClear">清除中…</string>
-    <string name="mHosts_buildDownload">"下载了 '%s' 个主机，从%s…</string>
+    <string name="mHosts_buildDownload">下载了 \'%s\' 个主机，从%s…</string>
     <string name="mHosts_buildSave">保存中…</string>
     <string name="mHosts_built">数据库构建: %d 主机</string>
     <string name="mUnshort_name">短链接解析器</string>
     <string name="mUnshort_unshort">解析短链接</string>
-    <string name="mUnshort_desc">"此模块将通过将网址链接发送到https://unshorten.me/ 来解析短链接，它们将在其服务器上对该链接进行检查，并为将来的请求保存重定向。避免那些含有私人或敏感数据的短链接。此API的限制为每小时10个新检查的请求。该模块响应将显示还您有多少请求待处理。"</string>
+    <string name="mUnshort_desc">此模块将通过将网址链接发送到https://unshorten.me/ 来解析短链接，它们将在其服务器上对该链接进行检查，并为将来的请求保存重定向。避免那些含有私人或敏感数据的短链接。此API的限制为每小时10个新检查的请求。该模块响应将显示还您有多少请求待处理。</string>
     <string name="mUnshort_checking">检查中</string>
     <string name="mUnshort_error">服务器错误: %s</string>
     <string name="mUnshort_internal">内部错误 (%s)</string>
