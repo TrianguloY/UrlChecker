@@ -91,8 +91,10 @@ V 2.3
 - Added European Portuguese translation. Thanks to Tiago Carmo!
 - Some tweaks and fixes
 
-V 2.2
-- New module 'Remove queries module': removes all queries from the url. Thanks to PabloOQ for the idea and original implementation!
+V 2.1
+- Fixed and improved ClearUrl module
+- Improved some texts and messages
+- Tweaked style to be more compact
 
 V 2.1
 - Fixed and improved ClearUrl module
