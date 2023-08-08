@@ -86,6 +86,18 @@ public interface JavaUtils {
     }
 
     /**
+     * Same as Arrays.compare, which is not available in api < 33
+     */
+    static int compareArrays(int[] l, int[] r) {
+        int i = 0;
+        while (i < l.length && i < r.length) {
+            if (l[i] != r[i]) return Integer.signum(r[i] - l[i]);
+            i++;
+        }
+        return Integer.signum(r.length - l.length);
+    }
+
+    /**
      * Returns the object, or default if null
      * java.util.Optional requires api 24
      */

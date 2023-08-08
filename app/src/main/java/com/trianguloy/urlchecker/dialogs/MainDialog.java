@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.ModuleManager;
+import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
@@ -190,6 +191,9 @@ public class MainDialog extends Activity {
         setContentView(R.layout.dialog_main);
         setFinishOnTouchOutside(true);
 
+        // mark as seen if required
+        VersionManager.check(this);
+
         // get views
         ll_main = findViewById(R.id.main);
         ll_drawer = findViewById(R.id.drawer);
@@ -300,8 +304,8 @@ public class MainDialog extends Activity {
             }
 
             // init
-            module.onInitialize(child);
             modules.put(module, views);
+            module.onInitialize(child);
         } catch (Exception e) {
             // can't add module
             e.printStackTrace();

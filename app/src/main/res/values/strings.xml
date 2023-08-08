@@ -331,4 +331,7 @@ This is an advanced version of the 'Queries Remover' module."</string>
     <!-- -->
     <string name="mDrawer_name">Drawer</string>
     <string name="mDrawer_desc">All modules below this will be hidden in a drawer. The modules will still work, but will be hidden until you open the drawer. Here you can place modules you rarely use, to avoid clutter.</string>
+    <!-- -->
+    <string name="mChg_name">Changelog</string>
+    <string name="mChg_desc">Will notify when the app was updated.</string>
 </resources>
