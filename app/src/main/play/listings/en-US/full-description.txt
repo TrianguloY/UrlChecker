@@ -13,7 +13,7 @@ The app is structured with a modular setup, you can enable/disable and reorder i
 
 * Log: Keeps a log of all checked urls, which you can view, edit, copy, clear...
 
-* Status code: By pressing the button a petition will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to check the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
+* Status code: By pressing the button a network request will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to check the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
 
 * Url Scanner: Allows you to scan the url using VirusTotal, and check the report. A free personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
 

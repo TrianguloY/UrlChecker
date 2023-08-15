@@ -25,7 +25,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 
 /**
- * A module that checks the page status code by performing a GET petition
+ * A module that checks the page status code by performing a GET request
  * Allows checking for redirection
  */
 public class StatusModule extends AModuleData {

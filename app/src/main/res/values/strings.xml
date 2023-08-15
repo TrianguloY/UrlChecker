@@ -164,7 +164,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_incognitoDesc">Toggle incognito mode (for Firefox only)</string>
     <!-- -->
     <string name="mStatus_name">Status code</string>
-    <string name="mStatus_desc">By pressing the check button, a petition will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (GET), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
+    <string name="mStatus_desc">By pressing the check button, a network request will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (GET), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
     <string name="mStatus_ioerror">Network error while trying to check the URL: %s</string>
     <string name="mStatus_error">Internal error while trying to check the URL: %s</string>
     <string name="mStatus_check">Check status</string>
@@ -303,8 +303,8 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <!-- -->
     <string name="mUnshort_name">Unshortener</string>
     <string name="mUnshort_unshort">Unshort</string>
-    <string name="mUnshort_desc">"This module will unshort links by sending them to https://unshorten.me/, which evaluates them on their servers and save the redirection for future petitions. Avoid unshortening links with private or sensitive data.
-Their api is rate limited to 10 requests per hour for new checks. The module response will show how many petitions you have pending."</string>
+    <string name="mUnshort_desc">"This module will unshort links by sending them to https://unshorten.me/, which evaluates them on their servers and save the redirection for future requests. Avoid unshortening links with private or sensitive data.
+Their api is rate limited to 10 requests per hour for new checks. The module response will show how many requests you have pending."</string>
     <string name="mUnshort_tm">unshorten.me free API by Unshorten.me</string>
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
