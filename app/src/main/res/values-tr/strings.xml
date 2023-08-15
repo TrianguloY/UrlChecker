@@ -322,4 +322,8 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mPttrn_regexfix">İsteğe bağlı regex gruplarını düzelt (regex düzgün çalışmıyorsa devre dışı bırakın)</string>
     <string name="mParts_empty">(boş)</string>
     <string name="mParts_copy">Bölüm panoya kopyalandı</string>
+    <string name="hidden">Gizli</string>
+    <string name="mLog_unlimited">Sınırsız</string>
+    <string name="mDrawer_name">Çekmece</string>
+    <string name="mDrawer_desc">Bunun altındaki tüm modüller bir çekmecede gizlenecektir. Modüller çalışmaya devam edecek, ancak siz çekmeceyi açana kadar gizli kalacaktır. Dağınıklığı önlemek için nadiren kullandığınız modülleri buraya yerleştirebilirsiniz.</string>
 </resources>
