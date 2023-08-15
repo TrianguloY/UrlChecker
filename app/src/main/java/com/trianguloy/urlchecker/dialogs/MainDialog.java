@@ -337,14 +337,11 @@ public class MainDialog extends Activity {
             var links = AndroidUtils.getLinksFromText(sharedText);
             if (links.isEmpty()) links.add(sharedText.trim()); // no links? just use the whole text, the user requested the app so...
             return links;
-        } else if (Intent.ACTION_VIEW.equals(action)) {
-            // view url
+        } else {
+            // other, check data
             var uri = intent.getData();
             if (uri == null) return Collections.emptySet();
             return Collections.singleton(uri.toString());
-        } else {
-            // other
-            return Collections.emptySet();
         }
     }
 

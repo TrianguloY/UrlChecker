@@ -128,6 +128,8 @@ Built-in patterns include:
     <string name="mPttrn_http">HTTP link. Consider using HTTPS.</string>
     <string name="mPttrn_noSchemeHttp">Missing HTTP scheme.</string>
     <string name="mPttrn_noSchemeHttps">Missing HTTPS scheme.</string>
+    <string name="mPttrn_wrongSchemaHttp">Invalid http scheme case.</string>
+    <string name="mPttrn_wrongSchemaHttps">Invalid https scheme case.</string>
     <string name="mPttrn_ok">No matching patterns</string>
     <string name="mPttrn_editor">"Here you can edit or add new pattern. Format:
 - 'encode': boolean: set to true to encode the url before checking regex.

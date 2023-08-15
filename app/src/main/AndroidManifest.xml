@@ -39,22 +39,38 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
+
+                <!-- Invalid by the android schema, but some apps do send them -->
+                <data android:scheme="Http" />
+                <data android:scheme="Https" />
+                <data android:scheme="HTTP" />
+                <data android:scheme="HTTPS" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
 
                 <data android:mimeType="text/html" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/xhtml+xml" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_BROWSER" />
             </intent-filter>
         </activity>
         <activity
