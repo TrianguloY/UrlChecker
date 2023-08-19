@@ -267,4 +267,8 @@
     <string name="mParts_name">Části Uri</string>
     <string name="mClear_editor">Katalogová pravidla: Musí dodržovat formát z https://docs.clearurls.xyz/latest/specs/rules/.
 \nVšimněte si, že jakákoliv úprava nadřazeného objektu \'providers\' (poskytovatelé) bude přepsána, pokud je katalog aktualizován automaticky nebo ručně z dialogu aktualizačního programu. Chcete-li zde užít vlastních pravidel, nastavte je v jiném nadřazeném objektu (libovolný název).</string>
+    <string name="mPttrn_wrongSchemaHttp">Neplatné HTTP schéma.</string>
+    <string name="mPttrn_wrongSchemaHttps">Neplatné HTTPS schéma.</string>
+    <string name="mChg_name">Seznam změn</string>
+    <string name="mChg_desc">Upozorní, kdy by byla aplikace aktualizována.</string>
 </resources>

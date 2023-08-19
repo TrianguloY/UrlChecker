@@ -13,7 +13,7 @@ La aplicación está estructurada con una configuración modular, puedes activar
 
 * Registro: Mantiene un registro de todas las urls comprobadas, que puede ver, editar, copiar, borrar...
 
-* Código de estado: Al pulsar el botón se hará una petición para recuperar esa url, y se mostrará el código de estado (ok, error del servidor, no encontrado...). Adicionalmente, si corresponde a una redirección, pulse el mensaje para comprobar la nueva url. La url se obtiene, pero no se evalúa, por lo que no se detectarán las redirecciones basadas en javascript.
+* Código de estado: Pulsando el botón se realizará una petición de red para recuperar la url, y se mostrará el código de estado (correcto, error del servidor, no encontrado...). Además, si corresponde a una redirección, pulsa en el mensaje para comprobar la nueva dirección url. La dirección url se recupera, pero no se evalúa, por lo que no se detectarán las redirecciones basadas en javascript..
 
 * Escáner de url: Le permite escanear la url usando VirusTotal, y comprobar el informe. Se necesita una clave API personal gratuita de VirusTotal para que funcione. VirusTotal™ es una marca registrada de Google, Inc.
 
