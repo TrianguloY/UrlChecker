@@ -151,7 +151,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_tabsDesc">"Activa/desactiva 'custom tabs'"</string>
     <!-- -->
     <string name="mStatus_name">Código de estado</string>
-    <string name="mStatus_desc">Al presionar el botón de verificación, se realizará una petición para recuperar y mostrar el código de estado del sitio. Si el resultado es una redirección, podrá ver la URL de destino. El contenido de la URL se obtiene (GET), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
+    <string name="mStatus_desc">Al pulsar sobre el botón de verificación, se realizará una solicitud a la red para recuperar y mostrar el código de estado de la página. Si el resultado es una redirección, podrás ver la URL de destino. El contenido de la URL se obtiene (GET), pero no se evalúa, por lo que no se detectarán las redirecciones basadas en JavaScript.</string>
     <string name="mStatus_ioerror">Error de red al intentar comprobar la URL: %s</string>
     <string name="mStatus_error">Error interno al intentar comprobar la URL: %s</string>
     <string name="mStatus_check">Comprobar código de estado</string>
@@ -292,8 +292,8 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mUnshort_name">Desacortador</string>
     <string name="mUnshort_unshort">Desacortar</string>
-    <string name="mUnshort_desc">"Este módulo desacorta enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para peticiones futuras. Evita desacortar enlaces con datos privados o sensibles.
-El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La respuesta del módulo muestra cuantas peticiones quedan pendientes."</string>
+    <string name="mUnshort_desc">Este módulo abreviará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para futuras solicitudes. Evita acortar los enlaces con datos privados o confidenciales.
+\nEsta API tiene una tasa limitada a 10 peticiones por hora para nuevas solicitudes. La respuesta del módulo mostrará cuántas solicitudes tienes pendientes.</string>
     <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
@@ -328,4 +328,8 @@ El servicio está limitado a 10 peticiones por hora para nuevos enlaces. La resp
     <string name="hidden">Oculto</string>
     <string name="mLog_unlimited">Sin límites</string>
     <string name="mLog_limit">Número máximo de entradas a conservar. Valor recomendado: 100. No poner nada para ilimitadas</string>
+    <string name="mPttrn_wrongSchemaHttps">Esquema HTTPS no válido.</string>
+    <string name="mPttrn_wrongSchemaHttp">Esquema HTTP no válido.</string>
+    <string name="mChg_name">Registro de cambios</string>
+    <string name="mChg_desc">Avisará cuando se actualice la aplicación.</string>
 </resources>
