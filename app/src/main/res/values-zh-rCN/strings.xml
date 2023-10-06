@@ -161,7 +161,7 @@
     <string name="mInput_desc">显示当前链接，可以用于手动编辑。</string>
     <string name="mVT_name">链接扫描器</string>
     <string name="mVT_desc">"当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us ."</string>
-    <string name="mVT_apiKey">API key</string>
+    <string name="mVT_apiKey">API 密钥</string>
     <string name="mVT_tm">VirusTotal™ 是 Google, Inc. 的商标。</string>
     <string name="mVT_scan">扫描</string>
     <string name="mVT_cancel">取消</string>
@@ -273,4 +273,11 @@
     <string name="mParts_desc">本模块显示解码的URL的所有部分：计划、权限、路径、参数和片段。通过单击一个部分，它将被设置为新的URL，例如，如果其中一个查询或路径是编码的重定向URL，则非常有用。您也可点击“X”按钮来删除其中一些。这是“参数移除器”模块的高级版本。</string>
     <string name="mUnshort_tm">Unshorten.me 免费API</string>
     <string name="mFlags_name">标识符编辑器</string>
+    <string name="mOpen_copyUrl">复制</string>
+    <string name="hidden">已隐藏</string>
+    <string name="mPttrn_wrongSchemaHttp">无效的HTTP协议实例</string>
+    <string name="mPttrn_wrongSchemaHttps">无效的HTTPS协议实例</string>
+    <string name="mPttrn_regexfix">修改可选正则表达式组合（如果正则表达式不能正确生效禁用）</string>
+    <string name="mOpen_mergeCopy">合并复制和分享按钮（长按复制）</string>
+    <string name="mOpen_incognitoDesc">切换无痕模式（仅用于火狐浏览器）</string>
 </resources>
