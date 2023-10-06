@@ -102,6 +102,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="deviceDefault">Device default</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="dismiss">Dismiss</string>
     <!--
         json
     -->
@@ -336,4 +337,7 @@ This is an advanced version of the 'Queries Remover' module."</string>
     <!-- -->
     <string name="mChg_name">Changelog</string>
     <string name="mChg_desc">Will notify when the app was updated.</string>
+    <string name="mChg_updated">The app has been updated.</string>
+    <string name="mChg_current">Current version: %s</string>
+    <string name="mChg_view">View changes</string>
 </resources>

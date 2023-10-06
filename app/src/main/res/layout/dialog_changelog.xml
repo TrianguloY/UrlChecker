@@ -9,8 +9,14 @@
         android:id="@+id/updated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="The app has been updated"
-        android:textStyle="bold"></TextView>
+        android:text="@string/mChg_updated"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/current"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mChg_current" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,12 +24,20 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/dismiss"
+            android:id="@+id/viewChanges"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dismiss" />
+            android:text="@string/mChg_view" />
+
+        <Button
+            android:id="@+id/dismiss"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dismiss" />
+
     </LinearLayout>
 
 </LinearLayout>

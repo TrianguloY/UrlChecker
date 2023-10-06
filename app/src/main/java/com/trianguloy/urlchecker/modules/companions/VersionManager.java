@@ -5,7 +5,6 @@ import android.content.Context;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.activities.TutorialActivity;
 import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.JavaUtils;
 
 /**
  * Manages the app version, to notify of updates
@@ -30,10 +29,9 @@ public class VersionManager {
         lastVersion = LASTVERSION_PREF(cntx);
         if (lastVersion.get() == null) {
             // no previous setting, the app is a new install, mark as seen
-            // ... or maybe it was updated from an old version (where the setting was not yet implemented)
-            // In that case fake a 'previous' version
+            // ... or maybe it was updated from an old version (where the setting was not yet implemented, 2.12 or below)
             // we check by testing the tutorial flag (which should be set if the app was used)
-            if (TutorialActivity.DONE(cntx).get()) lastVersion.set("0");
+            if (TutorialActivity.DONE(cntx).get()) lastVersion.set("<2.12");
             else markSeen();
         }
     }
@@ -42,12 +40,8 @@ public class VersionManager {
      * returns true iff the app was updated since last time it was used
      */
     public boolean wasUpdated() {
-        var last = lastVersion.get();
-        var current = BuildConfig.VERSION_NAME;
-        if (last.equals(current)) return false; // early exit: same version = no update
-
-        // check
-        return JavaUtils.compareArrays(parseVersion(last), parseVersion(current)) < 0;
+        // just check inequality. If the app was downgraded, you probably also want to be notified.
+        return !BuildConfig.VERSION_NAME.equals(lastVersion.get());
     }
 
     /**
@@ -55,22 +49,5 @@ public class VersionManager {
      */
     public void markSeen() {
         lastVersion.set(BuildConfig.VERSION_NAME);
-    }
-
-    /**
-     * extracts the version numbers:
-     * 1.2.3-alpha -> [1, 2, 3]
-     */
-    private int[] parseVersion(String version) {
-        var parts = version.split("\\.");
-        var parsed = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            try {
-                parsed[i] = Integer.parseInt(parts[i].replaceAll("[^0-9]", ""));
-            } catch (NumberFormatException e) {
-                parsed[i] = 0; // failsafe
-            }
-        }
-        return parsed;
     }
 }

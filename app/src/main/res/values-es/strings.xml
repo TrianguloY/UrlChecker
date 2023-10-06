@@ -332,4 +332,8 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mPttrn_wrongSchemaHttp">Esquema HTTP no válido.</string>
     <string name="mChg_name">Registro de cambios</string>
     <string name="mChg_desc">Avisará cuando se actualice la aplicación.</string>
+    <string name="dismiss">Descartar</string>
+    <string name="mChg_updated">La aplicación se ha actualizado.</string>
+    <string name="mChg_current">Versión actual: %s</string>
+    <string name="mChg_view">Ver cambios</string>
 </resources>

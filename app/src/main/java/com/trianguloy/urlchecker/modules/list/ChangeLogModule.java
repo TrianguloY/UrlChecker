@@ -1,7 +1,9 @@
 package com.trianguloy.urlchecker.modules.list;
 
 import android.view.View;
+import android.widget.TextView;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
@@ -53,13 +55,44 @@ class ChangeLogModuleDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         var versionManager = new VersionManager(getActivity());
-        setVisibility(versionManager.wasUpdated());
 
-        AndroidUtils.setRoundedColor(R.color.good, views.findViewById(R.id.updated));
+        // set visibility
+        var updated = versionManager.wasUpdated();
+        setVisibility(updated);
 
-        views.findViewById(R.id.dismiss).setOnClickListener(v -> {
-            setVisibility(false);
-            versionManager.markSeen();
+        // updated text
+        var txt_updated = views.<TextView>findViewById(R.id.updated);
+        if (updated) {
+            AndroidUtils.setRoundedColor(R.color.good, txt_updated);
+        } else {
+            txt_updated.setVisibility(View.GONE);
+        }
+
+        // version
+        views.<TextView>findViewById(R.id.current).setText(getActivity().getString(R.string.mChg_current, BuildConfig.VERSION_NAME));
+
+        // click dismiss to hide
+        var dismiss = views.findViewById(R.id.dismiss);
+        if (updated) {
+            dismiss.setOnClickListener(v -> {
+                versionManager.markSeen();
+
+                txt_updated.setVisibility(View.GONE);
+                dismiss.setVisibility(View.GONE);
+                setVisibility(false);
+            });
+        } else {
+            dismiss.setVisibility(View.GONE);
+        }
+
+        // click view to open the changes (the url)
+        views.findViewById(R.id.viewChanges).setOnClickListener(v -> {
+            // TODO: somehow redirect to the current locale
+            // or, even better, load the changes and show inline (ask the user to get them)
+            setUrl("https://github.com/TrianguloY/UrlChecker/tree/master/app/src/main/play/release-notes");
+
+            // auto-dismiss
+            dismiss.performClick();
         });
     }
 }
