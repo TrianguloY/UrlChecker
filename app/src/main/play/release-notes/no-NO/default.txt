@@ -1,3 +1,10 @@
+V 2.13
+- New module: drawer. Hide modules under a button.
+- New module: changelog. Will notify if the app updates.
+- Improvement: Limit number of log entries.
+- Improvement: Missing 'hidden' status for ctabs and private buttons.
+- Improvement: Try to open more valid urls
+
 V 2.12
 - New: open Firefox in incognito
 - New: enhance share & copy buttons
