@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.PackageUtils;
@@ -30,6 +31,9 @@ public class MainActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_main);
+
+        // mark as seen if required
+        VersionManager.check(this);
 
         // open tutorial if not done yet
         if (!TutorialActivity.DONE(this).get()) {
