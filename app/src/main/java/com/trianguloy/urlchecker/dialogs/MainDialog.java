@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -342,6 +343,18 @@ public class MainDialog extends Activity {
             var uri = intent.getData();
             if (uri == null) return Collections.emptySet();
             return Collections.singleton(uri.toString());
+        }
+    }
+
+    /**
+     * Remove from recent programmatically (https://stackoverflow.com/a/47688494)
+     */
+    @Override
+    public void finish() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        } else {
+            super.finish();
         }
     }
 
