@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.activities.TutorialActivity;
-import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 /**
  * Manages the app version, to notify of updates

@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.util.ArrayList;
 import java.util.Collections;

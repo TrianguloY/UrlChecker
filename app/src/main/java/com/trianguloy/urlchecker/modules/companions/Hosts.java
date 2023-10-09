@@ -6,10 +6,11 @@ import android.util.Log;
 import android.util.Pair;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.InternalFile;
-import com.trianguloy.urlchecker.utilities.JavaUtils;
-import com.trianguloy.urlchecker.utilities.ProgressDialog;
-import com.trianguloy.urlchecker.utilities.StreamUtils;
+import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
+import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 
 import org.json.JSONException;
 
@@ -58,7 +59,7 @@ public class Hosts {
     }
 
     /**
-     * @see com.trianguloy.urlchecker.utilities.JsonCatalog#showEditor
+     * @see JsonCatalog#showEditor
      */
     public void showEditor() {
         data.showEditor();

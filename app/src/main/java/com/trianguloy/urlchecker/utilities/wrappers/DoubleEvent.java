@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.wrappers;
 
 /**
  * A small utility to detect repeated events in a short time

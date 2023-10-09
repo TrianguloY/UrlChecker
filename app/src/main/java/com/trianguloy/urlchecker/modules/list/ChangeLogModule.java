@@ -12,11 +12,10 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
 /**
  * This module will show a message if the app was updated.
- * TODO: display the changelog, or a button to open it.
  */
 public class ChangeLogModule extends AModuleData {
 

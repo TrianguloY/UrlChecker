@@ -3,7 +3,7 @@ package com.trianguloy.urlchecker.fragments;
 import android.content.Intent;
 import android.util.Log;
 
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
 import java.util.ArrayList;
 import java.util.List;

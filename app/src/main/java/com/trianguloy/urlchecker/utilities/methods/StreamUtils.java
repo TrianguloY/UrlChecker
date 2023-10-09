@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.methods;
 
 import java.io.BufferedReader;
 import java.io.IOException;

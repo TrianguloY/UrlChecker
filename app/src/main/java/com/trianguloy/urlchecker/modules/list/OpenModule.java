@@ -20,10 +20,10 @@ import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.PackageUtils;
-import com.trianguloy.urlchecker.utilities.UrlUtils;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
+import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.PackageUtils;
+import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 public class BrowserButtonsFragment implements Fragment, ActivityResultInjector.Listener {
     private final Activity cntx;

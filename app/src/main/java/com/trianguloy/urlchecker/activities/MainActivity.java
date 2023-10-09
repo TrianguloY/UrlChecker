@@ -12,8 +12,8 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.PackageUtils;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 import java.util.Objects;
 

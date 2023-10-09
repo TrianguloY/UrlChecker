@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 /**
  * Empty service for fake custom tabs.

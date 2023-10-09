@@ -1,6 +1,6 @@
 package com.trianguloy.urlchecker.modules.list;
 
-import static com.trianguloy.urlchecker.utilities.JavaUtils.valueOrDefault;
+import static com.trianguloy.urlchecker.utilities.methods.JavaUtils.valueOrDefault;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,13 +22,13 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
 import com.trianguloy.urlchecker.utilities.Enums;
-import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.Inflater;
-import com.trianguloy.urlchecker.utilities.InternalFile;
-import com.trianguloy.urlchecker.utilities.JavaUtils;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.Inflater;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
+import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
 import com.trianguloy.urlchecker.views.CycleImageButton;
 
 import org.json.JSONException;

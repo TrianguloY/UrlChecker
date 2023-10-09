@@ -1,6 +1,6 @@
 package com.trianguloy.urlchecker.modules.companions;
 
-import static com.trianguloy.urlchecker.utilities.JavaUtils.valueOrDefault;
+import static com.trianguloy.urlchecker.utilities.methods.JavaUtils.valueOrDefault;
 
 import android.app.Activity;
 import android.content.Intent;

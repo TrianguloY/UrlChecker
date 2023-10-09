@@ -1,9 +1,11 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.wrappers;
 
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.widget.Switch;
+
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.util.regex.Matcher;
 

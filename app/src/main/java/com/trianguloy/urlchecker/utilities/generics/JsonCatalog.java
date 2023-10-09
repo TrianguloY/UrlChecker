@@ -1,9 +1,10 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.generics;
 
 import android.app.Activity;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.dialogs.JsonEditor;
+import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
 
 import org.json.JSONException;
 import org.json.JSONObject;

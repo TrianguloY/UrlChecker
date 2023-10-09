@@ -12,8 +12,8 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.DefaultTextWatcher;
-import com.trianguloy.urlchecker.utilities.DoubleEvent;
+import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
+import com.trianguloy.urlchecker.utilities.wrappers.DoubleEvent;
 
 /**
  * This module shows the current url and allows manual editing

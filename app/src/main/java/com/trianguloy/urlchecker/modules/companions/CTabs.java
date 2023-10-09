@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.GenericPref;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
 /**
  * Static elements related to CTabs

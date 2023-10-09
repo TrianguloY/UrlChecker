@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.methods;
 
 import org.json.JSONException;
 import org.json.JSONObject;

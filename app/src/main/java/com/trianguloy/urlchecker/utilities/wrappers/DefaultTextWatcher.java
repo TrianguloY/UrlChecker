@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.wrappers;
 
 import android.text.Editable;
 import android.text.TextWatcher;

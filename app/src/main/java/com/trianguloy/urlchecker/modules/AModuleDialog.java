@@ -5,7 +5,7 @@ import android.app.Activity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.fragments.Fragment;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 import java.util.Map;
 

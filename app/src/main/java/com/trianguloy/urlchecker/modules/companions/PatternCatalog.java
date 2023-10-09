@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.JsonCatalog;
+import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
 
 import org.json.JSONArray;
 import org.json.JSONException;

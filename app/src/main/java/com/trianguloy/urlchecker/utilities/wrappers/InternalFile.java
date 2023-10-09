@@ -1,6 +1,9 @@
-package com.trianguloy.urlchecker.utilities;
+package com.trianguloy.urlchecker.utilities.wrappers;
 
 import android.content.Context;
+
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -13,9 +13,9 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
-import com.trianguloy.urlchecker.utilities.DoubleEvent;
-import com.trianguloy.urlchecker.utilities.GenericPref;
-import com.trianguloy.urlchecker.utilities.PackageUtils;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.DoubleEvent;
 
 import java.util.Locale;
 
