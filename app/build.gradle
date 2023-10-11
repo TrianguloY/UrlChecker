@@ -10,7 +10,7 @@ android {
         applicationId "com.trianguloy.urlchecker"
         minSdkVersion 14
         targetSdkVersion 33
-        versionCode 26
+        versionCode 27
         versionName "2.13"
 
 
