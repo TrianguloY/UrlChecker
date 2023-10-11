@@ -271,4 +271,8 @@
     <string name="mClear_blocked">- DIBLOKIR!</string>
     <string name="mClear_hashError">Gagal memperoleh hash, pastikan URL tersebut valid dan Anda terhubung ke internet</string>
     <string name="mClear_lastCheck">Pengecekan terakhir:</string>
+    <string name="dismiss">Abaikan</string>
+    <string name="mChg_updated">Aplikasi telah diperbarui.</string>
+    <string name="mChg_current">Versi saat ini: %s</string>
+    <string name="mChg_view">Lihat perubahan</string>
 </resources>
