@@ -261,14 +261,16 @@ class OpenDialog extends AModuleDialog {
      */
     private void shareUrl() {
         // create send intent
-        Intent sendIntent = new Intent();
+        var sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, getUrl());
         sendIntent.setType("text/plain");
 
         // share intent
+        var chooser = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
+        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // to still show after finishAndRemoveTask
         PackageUtils.startActivity(
-                Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share)),
+                chooser,
                 R.string.mOpen_noapps,
                 getActivity()
         );
