@@ -45,7 +45,7 @@ public class OpenModule extends AModuleData {
     }
 
     public static GenericPref.Bool NOREFERRER_PREF(Context cntx) {
-        return new GenericPref.Bool("open_noReferrer", true, cntx);
+        return new GenericPref.Bool("open_noReferrer", false, cntx);
     }
 
     public static GenericPref.Bool MERGECOPY_PREF(Context cntx) {
