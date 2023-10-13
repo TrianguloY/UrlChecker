@@ -24,6 +24,7 @@ import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.RejectionDetector;
 
 import java.util.List;
 
@@ -75,15 +76,16 @@ public class OpenModule extends AModuleData {
 
 class OpenDialog extends AModuleDialog {
 
-    private LastOpened lastOpened;
-
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
     private final GenericPref.Bool mergeCopyPref;
+
+    private final LastOpened lastOpened;
     private final CTabs cTabs;
     private final Incognito incognito;
+    private final RejectionDetector rejectionDetector;
 
     private List<String> packages;
     private Button btn_open;
@@ -94,8 +96,10 @@ class OpenDialog extends AModuleDialog {
 
     public OpenDialog(MainDialog dialog) {
         super(dialog);
+        lastOpened = new LastOpened(dialog);
         cTabs = new CTabs(dialog);
         incognito = new Incognito(dialog);
+        rejectionDetector = new RejectionDetector(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
         closeCopyPref = OpenModule.CLOSECOPY_PREF(dialog);
@@ -152,9 +156,6 @@ class OpenDialog extends AModuleDialog {
             return false;
         });
         menu = popup.getMenu();
-
-        // init lastOpened utility
-        lastOpened = new LastOpened(getActivity());
     }
 
     @Override
@@ -174,6 +175,10 @@ class OpenDialog extends AModuleDialog {
         if (noReferrerPref.get()) {
             packages.remove(AndroidUtils.getReferrer(getActivity()));
         }
+
+        // remove rejected
+        // note: this will be called each time, so a rejected package will not be rejected again if the user changes the url and goes back. This is expected
+        packages.remove(rejectionDetector.getPrevious(url));
 
         // check no apps
         if (packages.isEmpty()) {
@@ -213,13 +218,13 @@ class OpenDialog extends AModuleDialog {
     private void openUrl(int index) {
         // get
         if (index < 0 || index >= packages.size()) return;
-        String chosen = packages.get(index);
+        var chosen = packages.get(index);
 
         // update as preferred over the rest
         lastOpened.prefer(chosen, packages, getUrl());
 
         // open
-        Intent intent = new Intent(getActivity().getIntent());
+        var intent = new Intent(getActivity().getIntent());
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             // preserve original VIEW intent
             intent.setData(Uri.parse(getUrl()));
@@ -237,13 +242,18 @@ class OpenDialog extends AModuleDialog {
         incognito.apply(intent);
 
         // Get flags from global data (probably set by flags module, if active)
-        Integer flags = Flags.getGlobalFlagsNullable(this);
+        var flags = Flags.getGlobalFlagsNullable(this);
         if (flags != null) {
             intent.setFlags(flags);
         }
 
+        // rejection detector: mark as open
+        rejectionDetector.markAsOpen(getUrl(), chosen);
+
+        // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
+        // finish activity
         if (closeOpenPref.get()) {
             this.getActivity().finish();
         }

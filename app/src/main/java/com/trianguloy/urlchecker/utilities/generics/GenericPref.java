@@ -238,15 +238,23 @@ public abstract class GenericPref<T> {
 
 
     /**
-     * A list of strings preference
+     * A list of strings preference.
+     * Saved as string concatenated with separator
+     * Optionally limit the number of entries
      */
     static public class LstStr extends GenericPref<List<String>> {
 
         final String separator;
+        final int limit;
 
         public LstStr(String prefName, String separator, List<String> defaultValue, Context cntx) {
+            this(prefName, separator, 0, defaultValue, cntx);
+        }
+
+        public LstStr(String prefName, String separator, int limit, List<String> defaultValue, Context cntx) {
             super(prefName, defaultValue, cntx);
             this.separator = separator;
+            this.limit = limit;
         }
 
         @Override
@@ -270,7 +278,7 @@ public abstract class GenericPref<T> {
 
         private List<String> split(String value) {
             ArrayList<String> list = new ArrayList<>();
-            if (value != null) list.addAll(Arrays.asList(value.split(separator)));
+            if (value != null) list.addAll(Arrays.asList(value.split(separator, limit)));
             return list;
         }
     }
