@@ -102,4 +102,25 @@
     <string name="mVT_badUrl">주의! %d/%d 엔진이 URL을 감지했습니다. (%s 기준)</string>
     <string name="mVT_jsonError">VirusTotal에 연결할 수 없습니다. API 키가 유효한지 확인하거나 나중에 다시 시도하세요.</string>
     <string name="mUnshort_tm">unshorten.me 무료 API</string>
+    <string name="mUnshort_notFound">리디렉션 발견되지 않음</string>
+    <string name="mUnshort_error">서버 오류: %s</string>
+    <string name="mUnshort_pending">기다리는 중: %d/%d</string>
+    <string name="mUnshort_ok">복구됨</string>
+    <string name="mUnshort_internal">내부 오류 (%s)</string>
+    <string name="mUnshort_desc">이 모듈은 https://unshorten.me/로 보내 단축된 URL의 원본을 보여줍니다. 해당 사이트의 서버에서 실행한 뒤 향후의 요청을 위해 리디렉션 정보를 저장하는 방식으로 작동하니 사적이거나 민감한 링크에 사용하는 것을 피하세요.
+\nAPI는 새로운 확인에 대해 시간당 10개의 요청으로 제한됩니다. 이 모듈의 응답은 몇 번의 요청이 남았는지 보여줍니다.</string>
+    <string name="mStatus_unknownCode">%d: 불명의 상태 코드</string>
+    <string name="mUnshort_unshort">단축 URL 복구하기</string>
+    <string name="mUnshort_checking">확인 중…</string>
+    <string name="mUnshort_name">단축 URL 복구</string>
+    <string name="mStatus_check">상태 확인하기</string>
+    <string name="mStatus_recheck">확인하기</string>
+    <string name="mStatus_redir">%s(으)로 리다이렉트함</string>
+    <string name="mStatus_ioerror">URL을 확인하는 도중 네트워크 오류 발생: %s</string>
+    <string name="mStatus_error">URL을 확인하는 도중 내부 오류 발생: %s</string>
+    <string name="mStatus_autoRedirect">자동으로 리다이렉트 URL로 교체하기</string>
+    <string name="mStatus_desc">\'확인하기\' 버튼을 누르면 사이트의 상태 코드를 받아와 표시하기 위해 네트워크 요청이 이루어집니다. 결과가 리다이렉션이라면 도착 URL을 볼 수 있습니다. 만약 URL에서 정보를 받아오기눈 하지만, 실행되지는 않기에 JavaScript 기반 동적 리다이렉션은 감지되지 않습니다.</string>
+    <string name="mStatus_checking">확인 중…</string>
+    <string name="mStatus_autoCheck">다음의 정규식 패턴에 맞는 URL을 자동으로 확인합니다. 주의! (.*가 아닌) 제한적인 패턴을 사용하는 것이 권장됩니다. 그렇지 않다면 악의적인 서버는 당신의 IP를 기록할 수 있습니다.</string>
+    <string name="mOpen_incognito">익명 모드:</string>
 </resources>

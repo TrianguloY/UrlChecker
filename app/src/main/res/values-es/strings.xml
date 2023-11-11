@@ -328,12 +328,12 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="hidden">Oculto</string>
     <string name="mLog_unlimited">Sin límites</string>
     <string name="mLog_limit">Número máximo de entradas a conservar. Valor recomendado: 100. No poner nada para ilimitadas</string>
-    <string name="mPttrn_wrongSchemaHttps">Esquema HTTPS no válido.</string>
-    <string name="mPttrn_wrongSchemaHttp">Esquema HTTP no válido.</string>
+    <string name="mPttrn_wrongSchemaHttps">Mayúsculas no válidas en el https.</string>
+    <string name="mPttrn_wrongSchemaHttp">Mayúsculas no válidas en el http.</string>
     <string name="mChg_name">Registro de cambios</string>
     <string name="mChg_desc">Avisará cuando se actualice la aplicación.</string>
     <string name="dismiss">Descartar</string>
     <string name="mChg_updated">La aplicación se ha actualizado.</string>
     <string name="mChg_current">Versión actual: %s</string>
-    <string name="mChg_view">Ver cambios</string>
+    <string name="mChg_view">Ver los cambios</string>
 </resources>

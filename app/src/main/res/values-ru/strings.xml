@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a_settings">Настройки</string>
+    <string name="desc_down">Двигаться вниз</string>
+    <string name="txt_info">Это приложение выступает в качестве посредника при открытии URL-ссылок. Диалоговое окно с некоторой информацией о ссылке отображается, если открывается этим приложением. Нажмите на кнопку ниже, чтобы проверить и настроить все доступные модули.</string>
+    <string name="desc_decorations">Показать/скрыть заголовок</string>
+    <string name="dismiss">Отклонить</string>
+    <string name="toast_invalid">Неверный</string>
+    <string name="close">Закрыть</string>
+    <string name="toast_cantEnable">Не могу включить модуль, возможно отсутствует его конфигурация\?</string>
+    <string name="save">Сохранить</string>
+    <string name="reset">Сбросить</string>
+    <string name="link_changelog">История изменений</string>
+    <string name="txt_tutorial1">Спасибо за установку приложения!
+\n
+\nЭто обучение, если вы хотите его пропустить, то нажмите кнопку ниже. Вы всегда можете вернуться к обучению из меню настроек.</string>
+    <string name="btn_tutorialSettings">Повторить обучение</string>
+    <string name="tutorial">Руководство</string>
+    <string name="toast_defaultSet">Приложение теперь является браузером по умолчанию</string>
+    <string name="a_about">О приложении</string>
+    <string name="spin_darkTheme">Тёмная</string>
+    <string name="next">Следующий</string>
+    <string name="txt_conf">Здесь перечислены доступные модули, где вы можете посмотреть их описание и настройки. Вы также можете их переставлять, переключить видимость заголовка и включить/выключить их.</string>
+    <string name="txt_tutorial5">И это всё. Вот несколько полезных советов:
+\n
+\nКогда какое-то приложение не даёт вам возможность открыть или поделиться URL, но даёт возможность выполнять другие действия, то вы можете решить данную проблему при помощи этого приложения. Также вы можете скопировать URL в буфер обмена, нажав и удерживая кнопку \"Поделиться\".
+\n
+\nСуществуют некоторые URL, единственный смысл которых — перенаправлять вас на другой URL. Если конечный адрес можно открыть в приложении, то вы можете не открывать его в браузере.
+\n
+\nНадеюсь вы найдёте это приложение полезным! Также не стесняйтесь предлагать нововведения, сообщать об ошибках или даже предлагать изменения. Вы можете найти все актуальные ссылки в меню \"О приложении\".</string>
+    <string name="link_privacy">Политика приватности</string>
+    <string name="clear">Очистить</string>
+    <string name="btn_tutorialEnd">Завершить обучение</string>
+    <string name="shortcut_checkClipboard">Посмотреть URL-адрес(а) в буфере обмена</string>
+    <string name="desc_enable">Включить/выключить модуль</string>
+    <string name="none">Ничего</string>
+    <string name="defaultOn">Включено по умолчанию</string>
+    <string name="toast_noApp">Невозможно открыть приложение</string>
+    <string name="txt_sample">Нажмите на ссылку ниже чтобы протестировать:</string>
+    <string name="txt_theme">Тема:</string>
+    <string name="a_modules">Модули</string>
+    <string name="txt_openLinks">Открытие ссылок этим приложением: На протяжение многих лет Android изменял способы настройки, и они различаются от версии к версии. Ниже вы найдёте все возможные настройки для вашего устройства, если ссылки не открываются этим приложением, то попробуйте нажать их все.</string>
+    <string name="back">Назад</string>
+    <string name="hidden">Скрыто</string>
+    <string name="mPttrn_name">Проверка по шаблону</string>
+    <string name="translators">povidlos</string>
+    <string name="txt_tutorial3">Установите приложение в качестве веб-браузера по умолчанию для перехвата URL-адресов при их открытии.
+\n(Не нужно если URL-адреса перенаправляются функцией \"Поделиться\")</string>
+    <string name="btn_configureBrowser">Браузер по умолчанию</string>
+    <string name="link_blog">Блог TrianguloY</string>
+    <string name="btn_linksSettings">Открытие поддерживаемых ссылок</string>
+    <string name="menu_resetOrder">Сбросить порядок</string>
+    <string name="btn_setBrowser">Установить браузером по умолчанию</string>
+    <string name="btn_androidSettings">Настройки Android приложения</string>
+    <string name="txt_about">Приложение сделано TrianguloY.
+\n
+\nРазработка: %s
+\nПеревод: %s.</string>
+    <string name="txt_locale">Язык:</string>
+    <string name="alwaysOn">Всегда включено</string>
+    <string name="btn_tutorialSkip">Пропустить обучение</string>
+    <string name="canceled">Отменено</string>
+    <string name="deviceDefault">Устройство по умолчанию</string>
+    <string name="desc_up">Вверх</string>
+    <string name="auto">Автоматический</string>
+    <string name="txt_tutorial2">Это приложение играет роль посредника при открытии URL-ссылок. Как только ссылка отправлена в приложение, вы сможете взаимодействовать с ней при помощи модулей. После этого вы можете открыть ссылку (в желаемом приложении), поделиться ей или скопировать в буфер обмена.</string>
+    <string name="locale">Русский</string>
+    <string name="spin_lightTheme">Светлая</string>
+    <string name="menu_toggleDecorations">Включить/выключить все заголовки</string>
+    <string name="toast_noBrowser">Невозможно открыть веб-браузер</string>
+    <string name="link_source">Исходный код</string>
+    <string name="txt_tutorial4">Модули — это то, как приложение взаимодействует с URL.
+\nКаждый модуль имеет определённую функцию. В основном для показа информации о URL или для его модификации.
+\nПрочтите о них и настройте их для своих нужд.
+\n
+\nВажно: Все действия выполняются вручную. Приложение не будет ничего модифицировать, а также не будет подключаться к интернету, если вы отдельно не разрешите этого, но некоторые действия при вашем желании могут применяться автоматически.
+\n
+\nОткройте список модулей на главном экране или нажав на кнопку ниже.</string>
+    <string name="json_edit">Продвинутый редактор</string>
+    <string name="share">Поделиться</string>
+    <string name="defaultOff">Выключено по умолчанию</string>
+    <string name="title_choose">Выберите приложение</string>
+    <string name="alwaysOff">Всегда выключено</string>
+    <string name="mClear_exception">- проигнорировано из-за исключения %s</string>
+    <string name="mClear_cleared">- Очищено</string>
+    <string name="mVT_scanning">Сканирование…</string>
+    <string name="mVT_desc">Когда этот модуль включён, вы можете сканировать URL, используя VirusTotal, и ознакомиться с результатами. Для работы необходим персональный VirusTotal API ключ, который вы можете получить, зарегистрировавшись на https://www.virustotal.com/gui/join-us .</string>
+    <string name="mPttrn_wrongSchemaHttp">Неправильная HTTP схема.</string>
+    <string name="mClear_lastUpdate">Последнее обновление:</string>
+    <string name="mVT_connectError">Невозможно подключиться к VirusTotal. Удостоверьтесь, что вы подключены к интернету, или попробуйте позже.</string>
+    <string name="mPttrn_regexfix">Исправить необязательные группы регулярных выражений (отключите, если регулярные выражения работают неправильно)</string>
+    <string name="json_desc">[Бета-функция] Это продвинутый редактор, содержимое обязано быть форматировано в допустимый JSON. Вы можете нажать кнопку в правом верхнем углу для форматирования и проверки.</string>
+    <string name="mPttrn_http">HTTP ссылка. Лучше использовать HTTPS.</string>
+    <string name="mStatus_check">Проверить состояние</string>
+    <string name="mD_desc">Если вы переставите модули, то те, добавленные в будущих обновлениях, будут размещены выше этого.
+\n
+\nЕсли вы включите этот модуль, то он будет отображать некоторые данные для отладки (например, первоначальный Intent URI), что полезно для разработчиков.
+\n
+\nДолгое нажатие для выбора текста.</string>
+    <string name="mClear_rawRule">- найден ненужный контент</string>
+    <string name="mClear_hashMismatch">Хэши не совпадают, файл мог быть подменён. Если вы хотите пропустить проверку, то уберите URL-адрес хэша</string>
+    <string name="mPttrn_userContent">Список других полезных шаблонов, созданных пользователями: %s</string>
+    <string name="mStatus_recheck">Проверить</string>
+    <string name="mInput_desc">Отображает текущий URL, который может быть изменён вручную.</string>
+    <string name="mOpen_copyUrl">Скопировать</string>
+    <string name="mOpen_name">Открыть и поделиться</string>
+    <string name="mStatus_name">Код состояния</string>
+    <string name="mOpen_closeShare">Закрыть диалоговое окно после того как поделились ссылкой</string>
+    <string name="mClear_tm">Встроенный каталог скопирован с ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mStatus_autoCheck">Автоматически проверять URL-адреса которые соответствуют следующему шаблону, заданным регулярным выражением. Внимание! Рекомендуется указать ограничивающий шаблон (а не .* для всех), потому что в ином случае вредоносные сервера могут сохранять ваш IP адрес.</string>
+    <string name="mClear_rule">- найден бесполезный параметр</string>
+    <string name="mPttrn_desc">Этот модуль проверяет URL при помощи регулярных выражений которые могут предупреждать, предлагать или применять изменения. Вы можете модифицировать шаблоны или создавать свои собственные, или даже использовать созданные пользователями шаблоны.
+\nВстроенные шаблоны включают в себя:
+\n- Предупреждение когда ссылка состоит из не-ASCII символов, например из греческих букв. Это может быть использовано в целях фишинга: googĺe.com и google.com
+\n- Предлагать изменение с \'http\' на \'https\'
+\n- Предлагать изменить ссылки, ведущие на Youtube, Reddit или Twitter на альтернативные сервисы, уважающие вашу приватность [отключено по умолчанию]</string>
+    <string name="mOpen_noapps">Нет приложений</string>
+    <string name="mPttrn_ascii">Внимание! Обнаружены не-ASCII символы.</string>
+    <string name="mVT_cancel">Отменить</string>
+    <string name="mVT_name">Сканер URL</string>
+    <string name="mStatus_redir">Перенаправляет на %s</string>
+    <string name="mClear_forcedRedirection">- найдено вынужденное перенаправление</string>
+    <string name="mStatus_ioerror">Ошибка сети при попытке проверить URL: %s</string>
+    <string name="mStatus_error">Внутренняя ошибка при попытке проверить URL: %s</string>
+    <string name="mOpen_desc">Состоит из следующих кнопок (слева направо):
+\n- Пользовательские вкладки: Нажмите чтобы включить/выключить функцию пользовательских вкладок. Когда включено, браузер будет открываться в \'лайт\'-режиме.
+\n- Режим инкогнито: Только для Firefox. Нажмите чтобы включить/выключить режим инкогнито. Когда включено, браузер будет открываться в режиме инкогнито.
+\n- Открыть: Нажмите на название приложения где вы хотите открыть ссылку. Если ссылка может быть открыта в нескольких приложениях, будет показана стрелочка, где можно будет выбрать нужное приложение.
+\n- Скопировать: Нажмите на кнопку чтобы скопировать ссылку в буфер обмена.
+\n- Поделиться: Нажмите на кнопку чтобы поделиться ссылкой.</string>
+    <string name="mClear_matches">Соответствует %s</string>
+    <string name="mOpen_with">Открыть c помощью %s</string>
+    <string name="mHist_desc">Когда URL изменён, либо вручную, либо другими модулями, этот модуль даёт вам возможность видеть и отменять применённые изменения.</string>
+    <string name="mStatus_autoRedirect">Автоматически заменять URL-адреса перенаправления</string>
+    <string name="mClear_upToDate">Каталог актуальный</string>
+    <string name="mClear_updated">Каталог обновлён</string>
+    <string name="mOpen_ctabs">Пользовательские вкладки:</string>
+    <string name="mVT_warningUrl">Внимание, %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mOpen_closeOpen">Закрыть диалоговое окно после открытия</string>
+    <string name="mD_ctabs">Показывать сообщения отладки из службы Пользовательских вкладок</string>
+    <string name="mVT_goodUrl">Ни одна из %d поисковых систем не распознала URL (на момент %s)</string>
+    <string name="mVT_apiKey">API ключ</string>
+    <string name="mStatus_unknownCode">%d: Неизвестный код состояния</string>
+    <string name="mOpen_incognitoDesc">Включить/выключить режим инкогнито (только для Firefox)</string>
+    <string name="mOpen_noReferrer">Скрыть исходное приложение (referrer)</string>
+    <string name="mClear_name">Очиститель URL</string>
+    <string name="mOpen_closeCopy">Закрыть диалоговое окно после копирования</string>
+    <string name="mVT_scan">Сканировать</string>
+    <string name="mOpen_share">Поделиться</string>
+    <string name="mClear_urlHint">URL-адрес каталога</string>
+    <string name="mStatus_desc">При нажатии на кнопку проверки будет выполнен запрос, целью которого является получение и отображение кода состояния сайта. Если результатом запроса будет перенаправление на другой URL, то вы сможете увидеть конечный URL-адрес. Содержимое URL извлекается (GET), но не оценивается, поэтому перенаправления на основе JavaScript не будут обнаружены.</string>
+    <string name="mVT_badUrl">Будьте осторожны! %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mOpen_mergeCopy">Совместить кнопки Поделиться и Скопировать (долгое нажатие для копирования)</string>
+    <string name="mClear_clear">Применить</string>
+    <string name="mOpen_incognito">Режим инкогнито:</string>
+    <string name="mClear_redirection">- найдено перенаправление</string>
+    <string name="mVT_jsonError">Невозможно подключиться к VirusTotal. Удостоверьтесь, что API ключ правильный, или попробуйте позже.</string>
+    <string name="mInput_name">Входной текст</string>
+    <string name="mClear_autoUpdate">Обновлять периодично</string>
+    <string name="mClear_updateNow">Обновить сейчас</string>
+    <string name="mPttrn_ok">Нет подходящих шаблонов</string>
+    <string name="mClear_referral">- найден реферальный параметр</string>
+    <string name="mPttrn_fix">Применить</string>
+    <string name="mPttrn_noSchemeHttp">Отсутствует HTTP схема.</string>
+    <string name="mPttrn_wrongSchemaHttps">Неверная HTTPS схема.</string>
+    <string name="mPttrn_fixed">Применено - %s</string>
+    <string name="mD_name">Модуль Отладки</string>
+    <string name="mClear_noRules">Нет соответствующих правил</string>
+    <string name="mOpen_clipboard">URL был скопирован в буфер обмена</string>
+    <string name="mClear_error">Не удалось проверить правило</string>
+    <string name="mOpen_open">Открыть</string>
+    <string name="mHist_name">История</string>
+    <string name="mClear_toggleReferral">Разрешить реферальный маркетинг (реферальные параметры ссылок не будут очищены)</string>
+    <string name="mPttrn_noSchemeHttps">Отсутствует HTTPS схема.</string>
+    <string name="mStatus_checking">Проверка…</string>
+    <string name="mClear_auto">Применять автоматически</string>
+    <string name="mVT_tm">VirusTotal™ является торговой маркой Google, Inc.</string>
+    <string name="mClear_blocked">- ЗАБЛОКИРОВАНО!</string>
+    <string name="mOpen_tabsDesc">Включить/выключить функцию Пользовательских вкладок</string>
+    <string name="mClear_lastCheck">Последняя проверка:</string>
+    <string name="mOpen_perDomain">Сортировать разные домены независимо</string>
+    <string name="mRemove_desc">[УСТАРЕЛО] С этим модулем вы можете убирать запросы из URL-адресов.
+\nНажмите кнопку чтобы убрать их всех сразу, или нажмите стрелочку, чтобы удалять их по одному.
+\nСпасибо PabloOQ за идею и первоначальную реализацию!
+\n
+\nЭтот модуль был устарел в пользу модуля \'Части URI\'</string>
+    <string name="mClear_editor">Правила каталога: они должны соответствовать формату, указанном на https://docs.clearurls.xyz/latest/specs/rules/.
+\nОбратите внимание, что любые изменения родительского объекта \'providers\' будут перезаписаны, если каталог обновлён автоматически или вручную из диалогового окна средства обновлений. Чтобы использовать собственные правила, установите их в другом родительском объекте (любого имени).</string>
+    <string name="mLog_unlimited">Неограниченное</string>
+    <string name="mHosts_built">База данных построена: %d хостов</string>
+    <string name="mChg_updated">Приложение было обновлено.</string>
+    <string name="mHosts_buildInit">Инициализация</string>
+    <string name="mHosts_buildTitle">Построить базу данных хостов</string>
+    <string name="mUnshort_notFound">Перенаправления не найдены</string>
+    <string name="mChg_name">История изменений</string>
+    <string name="mClear_restore">Восстановить пути ClearURLs</string>
+    <string name="mHosts_parseError">Невозможно проанализировать URL хоста</string>
+    <string name="mUnshort_error">Ошибка сервера: %s</string>
+    <string name="mChg_current">Текущая версия: %s</string>
+    <string name="mRemove_name">Средство для удаления запросов</string>
+    <string name="mUnshort_pending">осталось: %d/%d</string>
+    <string name="mUnshort_internal">Внутренняя ошибка (%s)</string>
+    <string name="mChg_desc">Вы будете уведомлены, когда приложение обновится.</string>
+    <string name="mHosts_info">Хост:</string>
+    <string name="mHosts_name">Маркировщик хостов</string>
+    <string name="mHosts_gambling">азартные игры</string>
+    <string name="mChg_view">Посмотреть изменения</string>
+    <string name="mHosts_buildDesc">Это очистит нынешнюю базу данных хостов и построит её с текущей конфигурацией, скачивая файлы хостов с интернета, если потребуется. Это действие может занять несколько секунд. Продолжить\?</string>
+    <string name="mClear_hashHint">Нет проверки хэша</string>
+    <string name="mParts_name">Части URI</string>
+    <string name="mParts_desc">Этот модуль показывает все части декодированного URL: схему, имя хоста и порт URI, запросы и фрагмент.
+\nПри нажатии на одну часть ссылки она будет установлена как новый URL, что полезно, когда один из запросов или путей ссылки был закодирован как конечный URL-адрес перенаправления.
+\nПри долгом нажатии на одну часть ссылки она будет скопирована в буфер обмена.
+\nВы также можете нажать на крестик чтобы убрать некоторые части.
+\nЭто продвинутая версия модуля \'Средство для удаления запросов\'.</string>
+    <string name="mHosts_uninitialized">База данных хостов не инициализирована. Нажмите чтобы построить</string>
+    <string name="mHosts_buildSave">Сохранение…</string>
+    <string name="mRemove_all">Убрать все</string>
+    <string name="mLog_empty">Нет данных</string>
+    <string name="mHosts_noLabel">нет пометки</string>
+    <string name="mRemove_empty">Убрать пустые</string>
+    <string name="mClear_urlError">Невозможно получить правила, удостоверьтесь что URL правильный, а интернет соединение активно</string>
+    <string name="mLog_limit">Максимальное число сохранённых записей. Рекомендуемое значение: 100. Оставьте пустым для неограниченного числа</string>
+    <string name="mUnshort_desc">Этот модуль позволяет раскоротить ссылки, отправляя их на https://unshorten.me/, который оценивает их на своих серверах и сохраняет конечный адрес перенаправления для будущих запросов. Избегайте раскорачивания ссылок с личными или конфинденциальными данными!
+\nИх API ограничено до 10 запросов/час для новых ссылок. Ответ модуля покажет, сколько запросов к API у вас осталось.</string>
+    <string name="mHosts_build">Построить</string>
+    <string name="mRemove_one">Убрать %s</string>
+    <string name="mFlag_editFlags">Изменить значения флажков по умолчанию</string>
+    <string name="mClear_updater">Средство обновления</string>
+    <string name="mPttrn_editor">Здесь вы можете изменять или добавлять новые шаблоны. Формат:
+\n- \'encode\': boolean: true для кодирования URL перед проверкой регулярным выражением.
+\n- \'regex\': string, необходимо: регулярное выражение Java, которому обязан соответствовать любой URL, иначе шаблон пропускается.
+\n- \'excludeRegex\': string: если предоставлено, то является регулярным выражением Java, которому обязан НЕ соответствовать любой URL, иначе шаблон пропускается.
+\n- \'replacement\': string|list: если предоставлена строка, то кнопка Исправить выполнит \'url=url.replaceAll(regex, replacement)\'. Если предоставлен список, то replacement будет случайным элементом из списка.
+\n- \'decode\': boolean: true для декодирования заменённого URL.
+\n- \'automatic\': boolean: true для автоматического применения шаблона.
+\n- \'enabled\': boolean: false для отключения шаблона.
+\nЗаметка: если вы изменяете шаблоны, то новые встроенные шаблоны из приложения не будут добавляться автоматически (вы можете восстановить их кнопкой сброса).</string>
+    <string name="mHosts_buildProgress">Построение каталога</string>
+    <string name="mClear_sourceDesc">URL-адрес JSON файла каталога с правилами:</string>
+    <string name="mDrawer_name">Ящик</string>
+    <string name="mHosts_adult">контент для взрослых</string>
+    <string name="mLog_view">Посмотреть историю</string>
+    <string name="mLog_desc">Этот модуль логирует все проверенные URL. Вы можете просматривать, очищать или изменять всю историю здесь, в основном диалоговом окне никакой визуальной индикации не появится. Чтобы отключить логирование, просто отключите модуль.</string>
+    <string name="mLog_name">Лог</string>
+    <string name="mHosts_buildDownload">Скачиваются \'%s\' хостов с %s…</string>
+    <string name="mRemove_noQueries">Нет запросов</string>
+    <string name="mDrawer_desc">Все модули ниже будут скрыты в ящике. Модули всё ещё будут работать, но, пока вы не выдвините ящик, будут скрыты. Сюда вы можете поместить модули которыми вы редко пользуютесь, чтобы избежать загромождения.</string>
+    <string name="mHosts_fakenews">фейковые новости</string>
+    <string name="mHosts_buildClear">Очистка…</string>
+    <string name="mParts_empty">(пусто)</string>
+    <string name="mRemove_found">%d запросов (запроса) найдено</string>
+    <string name="mFlag_desc">[Бета функция] Это продвинутый модуль, он позволяет вам изменять флаги намерений при открытии другого приложения.
+\nЭтот модуль покажет список флагов, вы можете изменить то, установлен флаг или нет, щёлкнув на иконку. Также присутствует раскрывающийся список, позволяющий скрыть флаги, но только визуальный, флаги всё равно будут использоваться в назначенном состоянии.
+\nРядом с флажком будут расположены два цветовых индикатора. Левый показывает значение, полученное от намерения, правый - состояние, заданное самим модулем. Красный означает, что флаг не установлен, зелёный - что флаг установлен. Также индикатор предпочтений может быть серым, это значит, что состояние было установлено на автоматическое.
+\nПри помощи кнопки ниже вы можете изменить состояние по умолчанию и видимость флажков.</string>
+    <string name="mUnshort_checking">Проверка…</string>
+    <string name="mParts_copy">Часть скопирована в буфер обмена</string>
+    <string name="mClear_toggleVerbose">Включить подробную информацию для процесса соответствия</string>
+    <string name="mHosts_malware">реклама/вредоносные программы</string>
+    <string name="mFlags_name">Редактор флажков</string>
+    <string name="mRemove_found1">1 запрос найден</string>
+    <string name="mUnshort_tm">unshorten.me бесплатное API от Unshorten.me</string>
+    <string name="mHosts_desc">Этот модуль маркирует хостов, настраивается либо ручным перечислением хостов, либо используя удалённый файл с хостами. Вы можете использовать это для предупреждения об опасных или специальных сайтах. Во встроенной конфигурации указаны хосты StevenBlack (реклама/вредоносные программы, фейковые новости, азартные игры и контент для взрослых), взятые с https://github.com/StevenBlack/hosts</string>
+    <string name="mLog_edit">Изменить историю</string>
+    <string name="mClear_hashDesc">URL хэш файла каталога. Если параметр опущен, то загрузка не будет проверяться на предмет подделки (не рекомендуется)</string>
+    <string name="mClear_hashError">Невозможно получить хэш, удостоверьтесь, что URL правильный, а интернет соединение активно</string>
+</resources>
