@@ -110,11 +110,11 @@ Umarım uygulamayı yararlı bulursunuz! Ve özellikler önermekten, hataları b
         modules
     -->
     <string name="mPttrn_name">Kalıp denetleyicisi</string>
-    <string name="mPttrn_desc">"Bu modül, değiştirmeleri uyaran, öneren veya uygulayan normal ifade kalıplarıyla url'yi kontrol eder. Kendi kalıplarınızı değiştirebilir veya oluşturabilir, hatta kullanıcılar tarafından oluşturulanları kullanabilirsiniz.
-Dahili modeller şunları içerir:
-- Yunan harfleri gibi ascii olmayan karakterler içerdiğinde uyarı. Bu, kimlik avı için kullanılabilir: googĺe.com vs google.com
-- 'http'nin 'https' ile değiştirilmesini öner
-- Youtube, Reddit veya Twitter'ı gizlilik dostu alternatiflerle değiştirmeyi öner [varsayılan olarak devre dışıdır]"</string>
+    <string name="mPttrn_desc">Bu modül, değiştirmeleri uyaran, öneren veya uygulayan normal ifade kalıplarıyla url\'yi kontrol eder. Kendi kalıplarınızı değiştirebilir veya oluşturabilir, hatta kullanıcılar tarafından oluşturulanları kullanabilirsiniz.
+\nDahili modeller şunları içerir:
+\n- Yunan harfleri gibi ascii olmayan karakterler içerdiğinde uyarı. Bu, kimlik avı için kullanılabilir: googĺe.com vs google.com
+\n- \'http\'nin \'https\' ile değiştirilmesini öner
+\n- Youtube, Reddit veya Twitter\'ı gizlilik dostu alternatiflerle değiştirmeyi öner [varsayılan olarak devre dışıdır]</string>
     <string name="mPttrn_userContent">Kullanıcılar tarafından oluşturulan diğer faydalı modellerin listesi: %s</string>
     <string name="mPttrn_fix">Uygula</string>
     <string name="mPttrn_fixed">Uygulandı - %s</string>
@@ -301,7 +301,7 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mUnshort_internal">Dahili hata (%s)</string>
     <string name="mUnshort_notFound">Yönlendirme bulunamadı</string>
     <string name="mUnshort_pending">beklemede: %d/%d</string>
-    <string name="mUnshort_ok">Kısaltma giderildi</string>
+    <string name="mUnshort_ok">Kısaltılmamış</string>
     <!-- -->
     <string name="mFlags_name">İşaretler düzenleyici</string>
     <string name="mFlag_desc">[Beta özelliği] Bu gelişmiş bir modüldür, başka bir uygulamayı açarken amaç bayraklarını düzenlemenizi sağlar.
@@ -326,4 +326,13 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mLog_unlimited">Sınırsız</string>
     <string name="mDrawer_name">Çekmece</string>
     <string name="mDrawer_desc">Bunun altındaki tüm modüller bir çekmecede gizlenecektir. Modüller çalışmaya devam edecek, ancak siz çekmeceyi açana kadar gizli kalacaktır. Dağınıklığı önlemek için nadiren kullandığınız modülleri buraya yerleştirebilirsiniz.</string>
+    <string name="dismiss">Reddet</string>
+    <string name="mChg_updated">Uygulama güncellendi.</string>
+    <string name="mPttrn_wrongSchemaHttp">Geçersiz http durumu.</string>
+    <string name="mChg_name">Değişiklik Geçmişi</string>
+    <string name="mChg_current">Şu anki sürüm: %s</string>
+    <string name="mChg_desc">Uygulama güncellendiğinde bildirimde bulunacaktır.</string>
+    <string name="mChg_view">Değişiklikleri görüntüle</string>
+    <string name="mLog_limit">Saklanacak maksimum giriş sayısı. Önerilen değer: 100. Sınırsız için boş olarak ayarlayın</string>
+    <string name="mPttrn_wrongSchemaHttps">Geçersiz https durumu.</string>
 </resources>

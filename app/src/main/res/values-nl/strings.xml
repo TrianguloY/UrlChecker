@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mClear_exception">- genegeerd vanwege uitzondering %s</string>
+    <string name="a_settings">Instellingen</string>
+    <string name="dismiss">Afwijzen</string>
+    <string name="desc_down">Naar beneden verplaatsen</string>
+    <string name="mVT_scanning">Scannen…</string>
+    <string name="toast_invalid">Ongeldig</string>
+    <string name="close">Sluit</string>
+    <string name="toast_cantEnable">Kan de module niet inschakelen, ontbreekt de configuratie?</string>
+    <string name="save">Opslaan</string>
+    <string name="mVT_desc">Wanneer deze module is ingeschakeld, kunt u de URL scannen met VirusTotal en het rapport controleren. Om te kunnen werken is een persoonlijke VirusTotal API-sleutel nodig. U kunt er een verkrijgen nadat u zich hier voor een gratis account heeft geregistreerd: https://www.virustotal.com/gui/join-us.</string>
+    <string name="reset">Reset</string>
+    <string name="mPttrn_wrongSchemaHttp">Ongeldig hoofdlettergebruik van http-schema.</string>
+    <string name="link_changelog">Wijzigingslog</string>
+    <string name="txt_tutorial1">Bedankt voor het downloaden van de app!
+\n
+\nDit is de tutorial, als je deze wilt overslaan, kun je dat doen met de onderstaande knop. Je kunt altijd terugkeren naar deze tutorial vanuit het instellingenmenu.</string>
+    <string name="mClear_desc">Deze module verwijdert tracking, referrer en andere nutteloze parameters uit de URL. Het maakt ook algemene offline URL-omleidingen mogelijk.</string>
+    <string name="btn_tutorialSettings">Herhaal tutorial</string>
+    <string name="mVT_connectError">Kan geen verbinding maken met VirusTotal. Zorg ervoor dat u verbonden bent met internet of probeer het later opnieuw.</string>
+    <string name="mPttrn_regexfix">Optionele regex-groepen repareren (uitschakelen als regex niet correct werkt)</string>
+    <string name="json_desc">[Bètafunctie] Dit is een geavanceerde editor, de inhoud moet worden opgemaakt in geldige JSON. U kunt op de knop rechtsboven drukken om deze te formatteren en te valideren.</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="toast_defaultSet">De app is nu de standaardwebbrowser</string>
+    <string name="mPttrn_http">HTTP-link. Overweeg het gebruik van HTTPS.</string>
+    <string name="mStatus_check">Controleer de status</string>
+    <string name="a_about">Over</string>
+    <string name="spin_darkTheme">Donker</string>
+    <string name="mD_desc">Als u de modules opnieuw ordent, worden nieuwe modules die in toekomstige updates worden toegevoegd, boven deze geplaatst.
+\n
+\nAls u dit inschakelt, worden enkele interne foutopsporingsgegevens weergegeven (zoals de oorspronkelijke intentie-uri), handig voor ontwikkelaars.
+\n
+\nHoud ingedrukt om tekst te selecteren.</string>
+    <string name="next">Volgende</string>
+    <string name="txt_conf">Hier vindt u alle beschikbare modules, waar u hun beschrijving en instellingen kunt controleren. U kunt ook de volgorde wijzigen, de zichtbaarheid van de titels wijzigen en deze in-/uitschakelen.</string>
+    <string name="txt_tutorial5">Dat is alles. Hier zijn enkele tips die nuttig kunnen zijn:
+\n
+\nWanneer een app je geen manier biedt om een url te openen of te delen, maar wel een manier om de andere te doen, kun je het probleem oplossen met deze app. U kunt de URL ook naar het klembord kopiëren door lang op de deelknop te drukken.
+\n
+\nEr zijn enkele URL\'s waarvan het enige doel is om u door te verwijzen naar een andere URL. Als de uiteindelijke URL in een app kan worden geopend, kunt u voorkomen dat deze in een browser wordt geopend.
+\n
+\nIk hoop dat je de app nuttig vindt! En aarzel niet om functies voor te stellen, bugs te melden of zelfs wijzigingen voor te stellen. Vind alle relevante links op het infoscherm.</string>
+    <string name="link_privacy">Privacybeleid</string>
+    <string name="mPttrn_userContent">Lijst met andere nuttige, door de gebruiker gemaakte patronen: %s</string>
+    <string name="clear">Wissen</string>
+    <string name="btn_tutorialEnd">Tutorial afronden</string>
+    <string name="shortcut_checkClipboard">Controleer URL\'s vanaf het klembord</string>
+    <string name="desc_enable">Module in-/uitschakelen</string>
+    <string name="none">Geen</string>
+    <string name="defaultOn">Standaard ingeschakeld</string>
+    <string name="mStatus_recheck">Controleer</string>
+    <string name="mInput_desc">Toont de huidige URL, die handmatig kan worden bewerkt.</string>
+    <string name="mOpen_copyUrl">Kopiëren</string>
+    <string name="toast_noApp">Kan de app niet openen</string>
+    <string name="txt_sample">Druk op de onderstaande link om het te testen:</string>
+    <string name="mOpen_name">Openen en delen</string>
+    <string name="txt_theme">Thema:</string>
+    <string name="mStatus_name">Status code</string>
+    <string name="a_modules">Modules</string>
+    <string name="mOpen_closeShare">Dialoogvenster sluiten na delen</string>
+    <string name="txt_openLinks">Links openen in deze app: Android heeft in de loop der jaren de manier veranderd waarop het wordt geconfigureerd en verschilt per versie. Hieronder vindt u alle beschikbare instellingen voor uw apparaat. Als er geen links worden geopend in deze app, probeer ze dan allemaal.</string>
+    <string name="mClear_tm">Ingebouwde catalogus gekopieerd van ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mStatus_autoCheck">Controleer automatisch URL\'s die overeenkomen met het volgende regex-patroon. Waarschuwing! Het wordt aanbevolen om een beperkend patroon op te geven (en niet .* voor alles), anders kunnen kwaadwillende servers uw IP-adres registreren.</string>
+    <string name="back">Terug</string>
+    <string name="hidden">Verborgen</string>
+    <string name="mPttrn_desc">Deze module controleert de url met regex-patronen die vervangingen waarschuwen, voorstellen of toepassen. U kunt uw eigen patronen wijzigen of creëren, of zelfs door de gebruiker gemaakte patronen gebruiken.
+\nIngebouwde patronen zijn onder meer:
+\n- Waarschuwing als het niet-ASCII-tekens bevat, zoals Griekse letters. Dit kan worden gebruikt voor phishing: google.com versus google.com
+\n- Stel voor om \'http\' te vervangen door \'https\'
+\n- Stel voor om YouTube, Reddit of Twitter te vervangen door privacyvriendelijke alternatieven [standaard uitgeschakeld]</string>
+    <string name="mOpen_noapps">Geen apps</string>
+    <string name="mPttrn_ascii">Waarschuwing! Niet-ASCII-tekens gevonden.</string>
+    <string name="mVT_cancel">Annuleren</string>
+    <string name="mVT_name">URL Scanner</string>
+    <string name="mPttrn_name">Patrooncontrole</string>
+    <string name="mStatus_redir">Omleidingen naar %s</string>
+    <string name="mStatus_ioerror">Netwerkfout tijdens het controleren van de URL: %s</string>
+    <string name="mStatus_error">Interne fout bij het controleren van de URL: %s</string>
+    <string name="translators">Mika</string>
+    <string name="txt_tutorial3">Stel de app in als de standaardwebbrowser om URL\'s te onderscheppen wanneer deze worden geopend.
+\n(Niet nodig als URL\'s worden omgeleid via de functionaliteit \'Delen\'.)</string>
+    <string name="btn_configureBrowser">Standaard webbrowser</string>
+    <string name="mOpen_desc">Bevat de volgende knoppen (van links naar rechts):
+\n- Knop Aangepaste tabbladen: schakel om de functie voor aangepaste tabbladen in of uit te schakelen. Indien ingeschakeld, moet de browser in een \'lite\'-modus worden geopend.
+\n- Incognitoknop: alleen voor Firefox. Schakel tussen het in-/uitschakelen van de incognitomodus. Indien ingeschakeld, moet de browser incognito worden geopend.
+\n- Knop Openen: druk op de app-naam om de link in die app te openen. Als een link met meerdere apps kan worden geopend, wordt er een pijl weergegeven waarmee u kunt kiezen.
+\n- Knop Kopiëren: Druk op de knop om de link naar het klembord te kopiëren.
+\n- Deelknop: druk op de knop om de link te delen.</string>
+    <string name="link_blog">TrianguloY\'s blog</string>
+    <string name="mClear_matches">Komt overeen met %s</string>
+    <string name="mOpen_with">Openen met %s</string>
+    <string name="mHist_desc">Wanneer de URL wordt bewerkt, handmatig of door andere modules, kunt u met deze module de wijzigingen bekijken en ongedaan maken.</string>
+    <string name="mPttrn_editor">Hier kunt u een nieuw patroon bewerken of toevoegen. Formaat:
+\n- \'encode\': boolean: ingesteld op true om de URL te coderen voordat regex wordt gecontroleerd.
+\n- \'regex\': string, vereist: een geldige Java-regex waaraan de url moet voldoen, anders wordt het patroon overgeslagen.
+\n- \'excludeRegex\': string: indien opgegeven, een geldige Java-regex waarvan de url niet mag overeenkomen, anders wordt het patroon overgeslagen.
+\n- \'replacement\': string|list: indien opgegeven, zal de \'fix\'-knop \'url=url.replaceAll(regex,replacement)\' uitvoeren. Als de lijst wordt weergegeven, zal vervanging een willekeurig element zijn.
+\n- \'decode\': boolean: ingesteld op true om de vervangen url te decoderen.
+\n- \'automatisch\': boolean: ingesteld op true om het patroon automatisch toe te passen.
+\n- \'enabled\': boolean: ingesteld op false om het patroon uit te schakelen.
+\nLet op: als je de patronen bewerkt, worden nieuwe ingebouwde patronen uit app-updates niet automatisch toegevoegd (je kunt ze herstellen met de reset-optie).</string>
+    <string name="mStatus_autoRedirect">Vervang omleidings-URL\'s automatisch</string>
+    <string name="mOpen_ctabs">Aangepaste tabbladen:</string>
+    <string name="btn_linksSettings">Open ondersteunde koppelingen</string>
+    <string name="menu_resetOrder">opnieuw instellen</string>
+    <string name="mVT_warningUrl">Waarschuwing: %d/%d-engines hebben de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="mOpen_closeOpen">Dialoogvenster sluiten na openen</string>
+    <string name="btn_setBrowser">Stel in als standaard browser</string>
+    <string name="btn_androidSettings">Instellingen voor Android</string>
+    <string name="txt_about">App gemaakt door TrianguloY.
+\n
+\nBijdragen: %s.
+\nVertalingen: %s.</string>
+    <string name="mD_ctabs">Toon foutopsporingsberichten van de service voor aangepaste tabbladen</string>
+    <string name="txt_locale">Taal:</string>
+    <string name="mVT_goodUrl">Geen van de %d-engines heeft de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="alwaysOn">Altijd aan</string>
+    <string name="mVT_apiKey">API key</string>
+    <string name="mStatus_unknownCode">%d: Onbekende statuscode</string>
+    <string name="mOpen_incognitoDesc">Schakel de incognitomodus in (alleen voor Firefox)</string>
+    <string name="btn_tutorialSkip">Tutorial overslaan</string>
+    <string name="mOpen_noReferrer">Verberg de bronapp (verwijzer)</string>
+    <string name="mClear_name">URL Cleaner</string>
+    <string name="canceled">Geannuleerd</string>
+    <string name="mOpen_closeCopy">Dialoogvenster sluiten na kopiëren</string>
+    <string name="mVT_scan">Scan</string>
+    <string name="deviceDefault">Standaardinstelling van apparaat</string>
+    <string name="txt_info">Deze app fungeert als tussenpersoon bij het openen van aangeklikte URL-links. Er wordt een dialoogvenster met enige informatie over de link weergegeven wanneer u deze app kiest om deze te openen. Druk op de onderstaande moduleknop om alle beschikbare modules te controleren en te configureren.</string>
+    <string name="desc_up">Ga omhoog</string>
+    <string name="mOpen_share">Deel</string>
+    <string name="mStatus_desc">Door op de check knop te drukken, wordt er een netwerkverzoek gedaan om de locatiestatuscode op te halen en weer te geven. Als het resultaat een omleiding is, kunt u de bestemmings-URL bekijken. De URL-inhoud wordt verkregen (GET), maar niet geëvalueerd, zodat omleidingen op basis van JavaScript niet worden gedetecteerd.</string>
+    <string name="mVT_badUrl">Voorzichtig! %d/%d engines hebben de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="mOpen_mergeCopy">Voeg de knoppen Kopiëren en Delen samen (lang indrukken om te kopiëren)</string>
+    <string name="mClear_clear">Toepassen</string>
+    <string name="mOpen_incognito">Incognito modus:</string>
+    <string name="desc_decorations">Titel tonen/verbergen</string>
+    <string name="mVT_jsonError">Kan geen verbinding maken met VirusTotal. Zorg ervoor dat de API-sleutel geldig is, of probeer het later opnieuw.</string>
+    <string name="auto">Automatisch</string>
+    <string name="mInput_name">Voer tekst in</string>
+    <string name="txt_tutorial2">De app fungeert als tussenpersoon bij het openen of delen van url-links. Zodra een URL naar de app is verzonden, kunt u ermee communiceren via de modules. Daarna kunt u de link openen (in de gewenste app), delen of naar het klembord kopiëren.</string>
+    <string name="locale">Nederlands</string>
+    <string name="spin_lightTheme">Licht</string>
+    <string name="menu_toggleDecorations">Schakel alle titels in</string>
+    <string name="mPttrn_ok">Geen overeenkomende patronen</string>
+    <string name="toast_noBrowser">Kan de webbrowser niet openen</string>
+    <string name="link_source">Broncode</string>
+    <string name="mPttrn_fix">Toepassen</string>
+    <string name="mPttrn_noSchemeHttp">Ontbrekend HTTP-schema.</string>
+    <string name="txt_tutorial4">Modules is hoe de app communiceert met de URL\'s.
+\nElk van de modules heeft een specifieke functie. Meestal om informatie over de URL weer te geven, of om deze te laten wijzigen.
+\nLees er meer over en stel ze indien nodig in.
+\n
+\nBelangrijk: Alle acties zijn standaard handmatig. De app zal niets wijzigen en geen verbinding maken met internet, tenzij u dit specifiek toestaat, maar sommige acties kunnen desgewenst automatisch worden toegepast.
+\n
+\nOpen de lijst met modules vanuit het hoofdscherm of door op de onderstaande knop te tikken.</string>
+    <string name="mPttrn_wrongSchemaHttps">Ongeldig hoofdlettergebruik van https-schema.</string>
+    <string name="json_edit">Geavanceerde editor</string>
+    <string name="mPttrn_fixed">Toegepast - %s</string>
+    <string name="mD_name">Debug/Marker-module</string>
+    <string name="mOpen_clipboard">URL gekopieerd naar klembord</string>
+    <string name="share">Deel</string>
+    <string name="mOpen_open">Open</string>
+    <string name="mHist_name">Geschiedenis</string>
+    <string name="defaultOff">Standaard uitgeschakeld</string>
+    <string name="title_choose">Kies app</string>
+    <string name="mPttrn_noSchemeHttps">Ontbrekend HTTPS-schema.</string>
+    <string name="mStatus_checking">Controleren…</string>
+    <string name="mVT_tm">VirusTotal™ is een handelsmerk van Google, Inc.</string>
+    <string name="mClear_blocked">- GEBLOKKEERD!</string>
+    <string name="mOpen_tabsDesc">Schakel de functie Aangepaste tabbladen in</string>
+    <string name="alwaysOff">Altijd uit</string>
+    <string name="mOpen_perDomain">Sorteer verschillende domeinen onafhankelijk van elkaar</string>
+</resources>

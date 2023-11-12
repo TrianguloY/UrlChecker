@@ -269,4 +269,10 @@
     <string name="mLog_limit">Maximale Länge des gespeicherten Logs. Empfohlen: 100. Leer für unbegrenzt</string>
     <string name="mChg_name">Änderungen</string>
     <string name="mChg_desc">Nach Updates der App benachrichtigen.</string>
+    <string name="dismiss">Schließen</string>
+    <string name="mChg_updated">Die App wurde aktualisiert.</string>
+    <string name="mPttrn_wrongSchemaHttp">Ungültige Großschreibung des http-Schemas.</string>
+    <string name="mChg_current">Aktuelle Version: %s</string>
+    <string name="mChg_view">Änderungen ansehen</string>
+    <string name="mPttrn_wrongSchemaHttps">Ungültige Großschreibung des https-Schemas.</string>
 </resources>
