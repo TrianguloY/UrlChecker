@@ -22,7 +22,6 @@ import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLDecoder;
 
 /**
  * A module that checks the page status code by performing a GET request
@@ -206,7 +205,8 @@ class StatusDialog extends AModuleDialog {
             // redirection
             var location = conn.getHeaderField("Location");
             if (location != null) {
-                location = URLDecoder.decode(location, "UTF-8");
+                // this should be removed, the uri needs to be kept encoded
+                // location = URLDecoder.decode(location, "UTF-8");
                 redirectionUrl = new URL(new URL(url), location).toExternalForm(); // Deal with relative URLs
             }
         } catch (IOException e) {
