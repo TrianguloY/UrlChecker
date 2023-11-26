@@ -1,10 +1,10 @@
 package com.trianguloy.urlchecker.modules.companions;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -83,92 +83,65 @@ public class Flags {
 
     // ------------------- CRUD -------------------
 
-    private Set<String> flags;
+    private int flags;
 
-    // TODO store non-compatible flags? as String "0x001000", int 0x001000
-
+    /**
+     * New empty flags
+     */
     public Flags() {
         this(0x00000000);
     }
 
+    /**
+     * New flags from existing source
+     */
     public Flags(int hex) {
         setFlags(hex);
     }
 
-    public boolean isSet(String flag) {
-        return flags.contains(flag);
+    /**
+     * check if a flag by name is set
+     */
+    public boolean isSet(String flagName) {
+        var flag = compatibleFlags.get(flagName);
+        return flag != null && (flags & flag) != 0;
     }
 
-    public int getFlagsAsInt() {
-        return flagsSetToHex(flags);
+    /**
+     * get Flags
+     */
+    public int getFlags() {
+        return flags;
     }
 
     /**
      * Replaces the stored flags with the received hex
      */
     public void setFlags(int hex) {
-        this.flags = hexFlagsToSet(hex);
+        this.flags = hex;
     }
 
     /**
      * Sets the flag to the received boolean
      */
-    public boolean setFlag(String flag, boolean bool) {
-        if (compatibleFlags.containsKey(flag)) {
-            if (bool) {
-                return flags.add(flag);
+    public void setFlag(String flagName, boolean set) {
+        var flag = compatibleFlags.get(flagName);
+        if (flag != null) {
+            if (set) {
+                flags |= flag;
             } else {
-                return flags.remove(flag);
+                flags &= ~flag;
             }
-        } else {
-            return false;
         }
     }
 
     // ------------------- utils -------------------
 
     /**
-     * Decode an int as set
-     */
-    private static Set<String> hexFlagsToSet(int hex) {
-        var foundFlags = new HashSet<String>();
-        for (var flag : compatibleFlags.entrySet()) {
-            // check if flag is present
-            if ((hex & flag.getValue()) != 0) {
-                foundFlags.add(flag.getKey());
-            }
-        }
-        return foundFlags;
-    }
-
-    /**
-     * Decode a set as hex
-     */
-    private static int flagsSetToHex(Set<String> set) {
-        int hex = 0x00000000;
-        for (var flag : set) {
-            var flagHex = compatibleFlags.get(flag);
-            if (flagHex != null) {
-                hex = hex | flagHex;
-            }
-        }
-        return hex;
-    }
-
-
-    // ------------------- store/load flags -------------------
-    // this handles the store and load of the flags, if something wants to get the flags
-    // it should always use these methods.
-
-    private static final String DATA_FLAGS = "flagsEditor.flags";
-    private static final String REGEX = "(0x)?[a-fA-F\\d]{1,8}";
-    private static final int BASE = 16;
-
-    /**
      * parses a text as an hexadecimal flags string.
      * Returns null if invalid
      */
-    public static Integer toInteger(String text) {
+    private static Integer toInteger(String text) {
         if (text != null && text.matches(REGEX)) {
             return Integer.parseInt(text.replaceAll("^0x", ""), BASE);
         } else {
@@ -179,13 +152,22 @@ public class Flags {
     /**
      * Converts an int flags to string
      */
-    public static String toHexString(int flags) {
+    private static String toHexString(int flags) {
         return "0x" + Integer.toString(flags, BASE);
     }
+
+    // ------------------- store/load flags -------------------
+    // this handles the store and load of the flags, if something wants to get the flags
+    // it should always use these methods.
+
+    private static final String DATA_FLAGS = "flagsEditor.flags";
+    private static final String REGEX = "(0x)?[a-fA-F\\d]{1,8}";
+    private static final int BASE = 16;
 
     /**
      * Applies the custom (or default) flags to an intent
      */
+    @SuppressLint("WrongConstant")
     public static void applyGlobalFlags(Intent intent, AModuleDialog instance) {
         var flags = toInteger(instance.getData(DATA_FLAGS));
         if (flags == null) {
@@ -194,7 +176,7 @@ public class Flags {
             for (var flag_state : DEFAULT_STATE.entrySet()) {
                 computedFlags.setFlag(flag_state.getKey(), flag_state.getValue());
             }
-            flags = computedFlags.getFlagsAsInt();
+            flags = computedFlags.getFlags();
         }
 
         intent.setFlags(flags);
@@ -204,6 +186,6 @@ public class Flags {
      * Stores the flags in GlobalData
      */
     public static void setGlobalFlags(Flags flags, AModuleDialog instance) {
-        instance.putData(DATA_FLAGS, flags == null ? null : toHexString(flags.getFlagsAsInt()));
+        instance.putData(DATA_FLAGS, flags == null ? null : toHexString(flags.getFlags()));
     }
 }
