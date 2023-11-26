@@ -241,11 +241,8 @@ class OpenDialog extends AModuleDialog {
         // incognito
         incognito.apply(intent);
 
-        // Get flags from global data (probably set by flags module, if active)
-        var flags = Flags.getGlobalFlagsNullable(this);
-        if (flags != null) {
-            intent.setFlags(flags);
-        }
+        // apply flags from global data (probably set by flags module, if active) or by default
+        Flags.applyGlobalFlags(intent, this);
 
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
@@ -278,7 +275,6 @@ class OpenDialog extends AModuleDialog {
 
         // share intent
         var chooser = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
-        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // to still show after finishAndRemoveTask
         PackageUtils.startActivity(
                 chooser,
                 R.string.mOpen_noapps,

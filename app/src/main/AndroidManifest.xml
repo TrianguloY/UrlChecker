@@ -28,6 +28,9 @@
         <activity android:name=".activities.TutorialActivity" />
         <activity
             android:name=".dialogs.MainDialog"
+            android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleInstance"
             android:exported="true"
             android:noHistory="true"
             android:windowSoftInputMode="adjustResize|stateHidden"
