@@ -57,7 +57,7 @@ public abstract class AModuleDialog implements Fragment {
     /**
      * @return this activity context
      */
-    protected final Activity getActivity() {
+    public final Activity getActivity() {
         return dialog;
     }
 

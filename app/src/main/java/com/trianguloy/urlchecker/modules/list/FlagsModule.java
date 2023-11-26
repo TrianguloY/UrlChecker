@@ -3,7 +3,6 @@ package com.trianguloy.urlchecker.modules.list;
 import static com.trianguloy.urlchecker.utilities.methods.JavaUtils.valueOrDefault;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.Enums;
-import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
@@ -47,9 +45,6 @@ import java.util.TreeSet;
  */
 public class FlagsModule extends AModuleData {
 
-    public static GenericPref.Str DEFAULTFLAGS_PREF(Context cntx) {
-        return new GenericPref.Str("flagsEditor_defaultFlags", null, cntx);
-    }
 
     public static final String DEFAULT_GROUP = "default";
 
@@ -194,6 +189,11 @@ class FlagsDialog extends AModuleDialog {
                     }
                 } catch (JSONException ignored) {
                 }
+            }
+        } else {
+            // default flags
+            for (var flag_state : Flags.DEFAULT_STATE.entrySet()) {
+                flagsStatePref.put(flag_state.getKey(), flag_state.getValue() ? FlagsConfig.FlagState.ON : FlagsConfig.FlagState.OFF);
             }
         }
 
@@ -378,18 +378,24 @@ class FlagsConfig extends AModuleConfig {
 
             // Load preferences from settings
             Boolean showValue = null;
-            Integer stateValue = null;
+            FlagState stateValue = null;
             // Get current preferences
             if (oldPref != null) {
                 JSONObject flagPref;
                 try {
                     flagPref = oldPref.getJSONObject(flag);
                     showValue = flagPref.getBoolean("show");
-                    stateValue = flagPref.getInt("state");
+                    stateValue = Enums.toEnum(FlagState.class, flagPref.getInt("state"));
                 } catch (JSONException ignored) {
                 }
+            } else {
+                var defaultState = Flags.DEFAULT_STATE.get(flag);
+                if (defaultState != null) {
+                    stateValue = defaultState ? FlagState.ON : FlagState.OFF;
+                    showValue = false;
+                }
             }
-            flagState.setCurrentState(Enums.toEnum(FlagState.class, valueOrDefault(stateValue, FlagState.AUTO.id)));
+            flagState.setCurrentState(valueOrDefault(stateValue, FlagState.AUTO));
             var show = entryView.<ImageButton>findViewById(R.id.show);
             show.setTag(valueOrDefault(showValue, false));
             AndroidUtils.toggleableListener(show,
@@ -441,8 +447,10 @@ class FlagsConfig extends AModuleConfig {
     private void resetFlags(ViewGroup vg) {
         // Set everything to default values
         for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            v.<CycleImageButton<FlagState>>findViewById(R.id.state).setCurrentState(FlagState.AUTO);
+            var v = vg.getChildAt(i);
+
+            var defaultState = Flags.DEFAULT_STATE.get(v.<TextView>findViewById(R.id.text).getText().toString());
+            v.<CycleImageButton<FlagState>>findViewById(R.id.state).setCurrentState(defaultState == null ? FlagState.AUTO : defaultState ? FlagState.ON : FlagState.OFF);
             var visible = v.<ImageButton>findViewById(R.id.show);
             visible.setImageResource(R.drawable.hide);
             visible.setTag(Boolean.FALSE);
