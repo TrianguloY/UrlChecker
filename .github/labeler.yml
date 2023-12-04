@@ -12,34 +12,37 @@
 # You will probably need to modify the labels, or their targets.
 #
 
-# Add 'assets' label to any assets file changes within the source dir
-Assets:
-- app/src/main/assets/**/*
-
-# Add 'Automation' label to any file changes within scripts or workflows dir
-Automation:
-- .github/scripts/**/*
-- .github/workflows/**/*
-
-# Add 'Github' label to any git file changes within the source dir
+# Add 'Github' label to any file changes within the '.github' dir
 Github:
-- .github/**/*
+  - changed-files:
+      - any-glob-to-any-file: '.github/**'
 
-# Add 'Core' label to any change within the 'core' package
+# Add 'Automation' label to any file changes within the 'workflows' dir
+Automation:
+  - changed-files:
+      - any-glob-to-any-file: '.github/workflows/**'
+
+# Add 'Core' label to any file changes within the 'java' dir
 Core:
-- app/src/main/java/**/*
-- app/src/main/kotlin/**/*
+  - changed-files:
+      - any-glob-to-any-file: 'app/src/main/java/**'
 
-# Add 'Store file' label to any change within the 'play' folder and subfolder(s)
+# Add 'Store file' label to any change within the 'play' dir
 Store file:
-- app/src/main/play/**/*
+  - changed-files:
+      - any-glob-to-any-file: 'app/src/main/play/**'
 
-# Add 'Gradle wrapper' label to any change within the 'gradle' folder and subfolder
+# Add 'assets' label to any change within the 'assets' or 'res' dirs
+Assets:
+  - changed-files:
+      - any-glob-to-any-file: [ 'app/src/main/assets/**', 'app/src/main/res/**' ]
+
+# Add 'Gradle wrapper' label to any change within the 'gradle' dir
 Gradle wrapper:
-- gradle/wrapper/**/*
+  - changed-files:
+      - any-glob-to-any-file: 'gradle/**'
 
-# Add 'Translation` label to any change to strings.xml files as long as the English strings.xml file hasn't changed
+# Add 'Translation` label to any change to strings.xml files other than english
 Translation:
-- any: ['app/src/**/strings.xml']
-  all: ['!app/src/main/res/values/strings.xml']
-
+  - changed-files:
+      - all-globs-to-any-file: [ 'app/src/**/strings.xml', '!app/src/main/res/values/strings.xml' ]
