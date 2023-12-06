@@ -48,4 +48,18 @@
 \n
 \n
 \n從主畫面開啟模組清單，或是點擊下面的按鈕。</string>
+    <string name="close">關閉</string>
+    <string name="save">儲存</string>
+    <string name="reset">重設</string>
+    <string name="next">下一步</string>
+    <string name="clear">清空</string>
+    <string name="btn_tutorialEnd">完成教學</string>
+    <string name="mOpen_copyUrl">複製</string>
+    <string name="toast_noApp">無法打開程式</string>
+    <string name="back">返回</string>
+    <string name="btn_tutorialSkip">跳過教學</string>
+    <string name="mOpen_share">分享</string>
+    <string name="toast_noBrowser">無法打開瀏覽器</string>
+    <string name="mOpen_open">開啟</string>
+    <string name="title_choose">選擇程式</string>
 </resources>
