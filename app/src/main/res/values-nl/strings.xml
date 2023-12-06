@@ -171,4 +171,108 @@
     <string name="mOpen_tabsDesc">Schakel de functie Aangepaste tabbladen in</string>
     <string name="alwaysOff">Altijd uit</string>
     <string name="mOpen_perDomain">Sorteer verschillende domeinen onafhankelijk van elkaar</string>
+    <string name="mClear_cleared">- Gewist</string>
+    <string name="mClear_rawRule">- nutteloze inhoud gevonden</string>
+    <string name="mClear_rule">- nutteloze parameter gevonden</string>
+    <string name="mClear_forcedRedirection">- gedwongen omleiding gevonden</string>
+    <string name="mClear_updater">Updater</string>
+    <string name="mClear_sourceDesc">URL van de JSON-bestandscatalogus met de regels:</string>
+    <string name="mClear_redirection">- omleiding gevonden</string>
+    <string name="mClear_toggleVerbose">Schakel uitgebreide informatie in voor het matchingproces</string>
+    <string name="mClear_referral">- verwijzing gevonden</string>
+    <string name="mClear_noRules">Geen overeenkomende regels</string>
+    <string name="mClear_error">Kan de regel niet controleren</string>
+    <string name="mClear_toggleReferral">Verwijzingsmarketing inschakelen (verwijzingsparameters worden niet gewist)</string>
+    <string name="mClear_auto">Automatisch toepassen</string>
+    <string name="mRemove_desc">[AFGESCHAFT] Met deze module kunt u zoekopdrachten uit de URL verwijderen.
+\nDruk op de knop om ze allemaal te verwijderen of druk op de pijl om ze allemaal één voor één te verwijderen.
+\nMet dank aan PabloOQ voor het idee en de originele uitvoering!
+\n
+\nDeze module is verouderd ten gunste van de module \'Uri-onderdelen\'</string>
+    <string name="mClear_editor">Catalogusregels: ze moeten het formaat volgen van https://docs.clearurls.xyz/latest/specs/rules/.
+\nHoud er rekening mee dat elke wijziging aan het bovenliggende object \'providers\' zal worden overschreven als de catalogus automatisch of handmatig wordt bijgewerkt vanuit het updatevenster. Als u persoonlijke regels wilt instellen, plaatst u deze in een ander bovenliggend object (willekeurige naam).</string>
+    <string name="mLog_unlimited">Onbeperkt</string>
+    <string name="mHosts_built">Database gebouwd: %d hosts</string>
+    <string name="mChg_updated">De app is bijgewerkt.</string>
+    <string name="mHosts_buildInit">Initialiseren</string>
+    <string name="mHosts_buildTitle">Bouw een hosts-database</string>
+    <string name="mUnshort_notFound">Geen omleiding gevonden</string>
+    <string name="mChg_name">Wijzigingslog</string>
+    <string name="mClear_restore">Herstel ClearURLs-paden</string>
+    <string name="mHosts_parseError">Kan URL-host niet parseren</string>
+    <string name="mClear_lastUpdate">Laatste update:</string>
+    <string name="mUnshort_error">Serverfout: %s</string>
+    <string name="mHosts_editor">Hostconfiguratie. Indeling: Lijst met objecten waarbij de sleutel het hosts-label is en de inhoud de volgende optionele waarden bevat:
+\n- bestand: een URL van een extern hosts-bestand om te downloaden. Alle aanwezige geldige hosts worden toegevoegd.
+\n- hosts: Lijst met onbewerkte hosts (strings) die moeten worden toegevoegd.
+\n- kleur: de kleur van het label. Een Android-kleurreeks (#AARRGGBB, #RRGGBB of een geldige kleurnaam). Standaard ingesteld op \'gevaar\' rood.
+\n- vervangen: als valse bestaande hosts niet worden vervangen. Houd er rekening mee dat objecten van boven naar beneden worden geëvalueerd. Standaard waar.
+\n- ingeschakeld: indien false wordt dit hele object overgeslagen. Standaard waar.</string>
+    <string name="mChg_current">Huidige versie: %s</string>
+    <string name="mRemove_name">Zoekopdracht Verwijderaar</string>
+    <string name="mClear_hashMismatch">Hashes komen niet overeen, er is mogelijk met het bestand geknoeid. Als u de controle wilt overslaan, verwijdert u de hash-URL</string>
+    <string name="mUnshort_pending">in behandeling: %d/%d</string>
+    <string name="mUnshort_ok">Niet ingekort</string>
+    <string name="mUnshort_internal">Interne fout (%s)</string>
+    <string name="mChg_desc">Zal op de hoogte stellen wanneer de app is bijgewerkt.</string>
+    <string name="mHosts_info">Host:</string>
+    <string name="mHosts_name">Hosts-labeler</string>
+    <string name="mHosts_gambling">gokken</string>
+    <string name="mChg_view">Wijzigingen bekijken</string>
+    <string name="mHosts_buildDesc">Hierdoor wordt de huidige hosts-database gewist en opgebouwd met de huidige configuratie, waarbij indien nodig hosts-bestanden van internet worden gedownload. Deze actie kan enkele seconden duren. Doorgaan?</string>
+    <string name="mClear_hashHint">Geen hash-check</string>
+    <string name="mParts_name">Uri-onderdelen</string>
+    <string name="mParts_desc">Deze module toont alle delen van de url gedecodeerd: schema, autoriteit, paden, queries en fragment.
+\nDoor op een onderdeel te klikken, wordt het ingesteld als de nieuwe url, wat bijvoorbeeld handig is als een van de queries of paden een gecodeerde omleidings-URL was.
+\nDoor lang op een onderdeel te klikken, wordt het naar het klembord gekopieerd.
+\nU kunt ook op de knop \'X\' klikken om enkele ervan te verwijderen.
+\nDit is een geavanceerde versie van de module \'Queries Remover\'.</string>
+    <string name="mHosts_uninitialized">Hostdatabase niet geïnitialiseerd. Druk om te bouwen</string>
+    <string name="mHosts_buildSave">Bewaren…</string>
+    <string name="mRemove_all">Verwijder alles</string>
+    <string name="mLog_empty">Geen gegevens</string>
+    <string name="mHosts_noLabel">geen label</string>
+    <string name="mRemove_empty">Verwijder leeg</string>
+    <string name="mClear_urlError">Kan de regels niet ophalen. Controleer of de URL geldig is en of u een actieve verbinding heeft</string>
+    <string name="mLog_limit">Maximaal aantal te behouden vermeldingen. Aanbevolen waarde: 100. Stel leeg in voor onbeperkt</string>
+    <string name="mUnshort_desc">Deze module ontkoppelt links door ze naar https://unshorten.me/ te sturen, die ze op hun servers evalueert en de omleiding opslaat voor toekomstige verzoeken. Vermijd het verkorten van koppelingen met privé- of gevoelige gegevens.
+\nHun API is beperkt tot 10 verzoeken per uur voor nieuwe cheques. Het moduleantwoord laat zien hoeveel verzoeken u in behandeling heeft.</string>
+    <string name="mHosts_build">Build</string>
+    <string name="mRemove_one">Verwijder %s</string>
+    <string name="mFlag_editFlags">Standaardvlagwaarden bewerken</string>
+    <string name="mClear_upToDate">Catalogus up-to-date</string>
+    <string name="mClear_updated">Catalogus bijgewerkt</string>
+    <string name="mHosts_buildProgress">Catalogus bouwen</string>
+    <string name="mDrawer_name">Lade</string>
+    <string name="mHosts_adult">inhoud voor volwassenen</string>
+    <string name="mLog_view">Bekijk logboek</string>
+    <string name="mLog_desc">Deze module registreert alle gecontroleerde URL\'s. U kunt het volledige logboek hier bekijken, wissen of bewerken. Er verschijnt geen visuele indicatie in het hoofddialoogvenster. Om het loggen uit te schakelen, schakelt u gewoon de module uit.</string>
+    <string name="mLog_name">Log</string>
+    <string name="mUnshort_unshort">Unshort</string>
+    <string name="mClear_urlHint">Catalogus-URL</string>
+    <string name="mHosts_buildDownload">\'%s\' hosts downloaden van %s…</string>
+    <string name="mRemove_noQueries">Geen zoekopdrachten</string>
+    <string name="mDrawer_desc">Alle modules daaronder worden verborgen in een lade. De modules werken nog steeds, maar zijn verborgen totdat je de lade opent. Hier kunt u modules plaatsen die u zelden gebruikt, om rommel te voorkomen.</string>
+    <string name="mHosts_fakenews">nepnieuws</string>
+    <string name="mHosts_buildClear">Wissen…</string>
+    <string name="mParts_empty">(leeg)</string>
+    <string name="mRemove_found">%d zoekopdrachten gevonden</string>
+    <string name="mFlag_desc">[Bètafunctie] Dit is een geavanceerde module, waarmee u de intentievlaggen kunt bewerken wanneer u een andere app opent.
+\nDeze module toont een lijst met vlaggen. U kunt wijzigen of de vlag is ingesteld of niet door op het pictogram te tikken. Er is ook een overloopmenu om vlaggen daarin te verbergen, het is alleen visueel, vlaggen zullen nog steeds de toegewezen status gebruiken.
+\nDe vlaggen hebben twee kleurindicatoren naast het selectievakje. De linker toont de waarde die is ontvangen van de intentie, de rechter geeft de status aan die door de module zelf is ingesteld. Rood betekent dat de vlag niet is uitgezet en groen betekent dat de vlag is uitgezet. Bovendien kan de voorkeursindicator grijs zijn, dit betekent dat de status op automatisch staat.
+\nMet onderstaande knop kunt u de standaardstatus en de zichtbaarheid van de vlaggen bewerken.</string>
+    <string name="mUnshort_checking">Controleren…</string>
+    <string name="mClear_autoUpdate">Periodiek bijwerken</string>
+    <string name="mClear_updateNow">Update nu</string>
+    <string name="mParts_copy">Onderdeel gekopieerd naar klembord</string>
+    <string name="mUnshort_name">Unshortener</string>
+    <string name="mHosts_malware">adware/malware</string>
+    <string name="mFlags_name">Flags editor</string>
+    <string name="mRemove_found1">1 zoekopdracht gevonden</string>
+    <string name="mUnshort_tm">unshorten.me gratis API van Unshorten.me</string>
+    <string name="mHosts_desc">Deze module labelt hosts, geconfigureerd door ze handmatig op te geven of door een extern hosts-achtig bestand te gebruiken. U kunt het gebruiken om te waarschuwen voor gevaarlijke of bijzondere locaties. De ingebouwde configuratie specificeert de hosts van StevenBlack (adware/malware, fakenews, gokken en inhoud voor volwassenen) van https://github.com/StevenBlack/hosts</string>
+    <string name="mLog_edit">Logboek bewerken</string>
+    <string name="mClear_hashDesc">URL van het catalogus-hashbestand. Als u dit weglaat, wordt de download niet gecontroleerd om te zien of er mee is geknoeid/gewijzigd (niet aanbevolen)</string>
+    <string name="mClear_hashError">Kan de hash niet ophalen. Zorg ervoor dat de URL geldig is en dat u een actieve verbinding heeft</string>
+    <string name="mClear_lastCheck">Laatste controle:</string>
 </resources>

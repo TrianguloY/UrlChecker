@@ -85,7 +85,7 @@
     <string name="mClear_cleared">- Очищено</string>
     <string name="mVT_scanning">Сканирование…</string>
     <string name="mVT_desc">Когда этот модуль включён, вы можете сканировать URL, используя VirusTotal, и ознакомиться с результатами. Для работы необходим персональный VirusTotal API ключ, который вы можете получить, зарегистрировавшись на https://www.virustotal.com/gui/join-us .</string>
-    <string name="mPttrn_wrongSchemaHttp">Неправильная HTTP схема.</string>
+    <string name="mPttrn_wrongSchemaHttp">Неверная высота букв в схеме HTTP.</string>
     <string name="mClear_lastUpdate">Последнее обновление:</string>
     <string name="mVT_connectError">Невозможно подключиться к VirusTotal. Удостоверьтесь, что вы подключены к интернету, или попробуйте позже.</string>
     <string name="mPttrn_regexfix">Исправить необязательные группы регулярных выражений (отключите, если регулярные выражения работают неправильно)</string>
@@ -162,7 +162,7 @@
     <string name="mClear_referral">- найден реферальный параметр</string>
     <string name="mPttrn_fix">Применить</string>
     <string name="mPttrn_noSchemeHttp">Отсутствует HTTP схема.</string>
-    <string name="mPttrn_wrongSchemaHttps">Неверная HTTPS схема.</string>
+    <string name="mPttrn_wrongSchemaHttps">Неверная высота букв схемы HTTPS.</string>
     <string name="mPttrn_fixed">Применено - %s</string>
     <string name="mD_name">Модуль Отладки</string>
     <string name="mClear_noRules">Нет соответствующих правил</string>
@@ -265,4 +265,14 @@
     <string name="mLog_edit">Изменить историю</string>
     <string name="mClear_hashDesc">URL хэш файла каталога. Если параметр опущен, то загрузка не будет проверяться на предмет подделки (не рекомендуется)</string>
     <string name="mClear_hashError">Невозможно получить хэш, удостоверьтесь, что URL правильный, а интернет соединение активно</string>
+    <string name="mClear_desc">Данный модуль убирает из ссылки реферальные, отслеживающие и прочие бесполезные параметры. Также он позволяет вам переходить по перенаправляющим ссылкам без реального перехода на этот сайт.</string>
+    <string name="mHosts_editor">Конфигурация хостов. Формат: Список объектов, для которых метка хоста является ключом, а содержимое содержит следующие необязательные значения:
+\n‐ file: Ссылка для загрузки удалённого hosts-файла. Будут добавлены все корректные хосты.
+\n‐ hosts: Список необработанных хостов (строк) для добавления.
+\n‐ color: Цвет метки. Строка цвета Android (#AARRGGBB, #RRGGBB или корректное название цвета). По умолчанию стоит ядовито-красный.
+\n‐ replace: если стоит \"false\", то существующие хосты не будут заменены. Учтите, что объекты считываются сверху вниз. По умолчанию стоит \"true\".
+\n- enabled: если стоит \"false\", то данный объект будет полностью пропущен. По умолчанию стоит \"true\".</string>
+    <string name="mUnshort_ok">Удлиненно</string>
+    <string name="mUnshort_unshort">Удлинить</string>
+    <string name="mUnshort_name">Удлинитель</string>
 </resources>
