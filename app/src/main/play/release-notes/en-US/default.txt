@@ -1,3 +1,8 @@
+V 2.13.1
+- New: Custom logic to hide rejected urls. Hide referrer is now disabled by default.
+- Fix: Third try to the 'open/share does nothing' bug.
+- Fix: Status module no longer decodes the location.
+
 V 2.13
 - New module: drawer. Hide modules under a toggleable.
 - New module: changelog. Will notify if the app updates.
