@@ -5,6 +5,9 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -147,6 +151,54 @@ public interface AndroidUtils {
     }
 
     /**
+     * Get primary clip from clipboard, retrieves string from id
+     */
+    static ClipData getPrimaryClip(Context context, int id) {
+        return getPrimaryClip(context, context.getString(id));
+    }
+
+    /**
+     * Get primary clip from clipboard
+     */
+    static ClipData getPrimaryClip(Context context, String toast) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) return null;
+
+        // NOTE: according to https://stackoverflow.com/a/38965870
+        //  if the clipboard is empty, it will return null, however there is no mention of this in
+        //  the documentation https://developer.android.com/reference/android/content/ClipboardManager#getPrimaryClip().
+        //  If there is a way to know it is empty for sure we should instead return ClipData.newPlainText("", "")
+        //  or similar. We want to keep null for cases in which we cannot access the clipboard
+        ClipData res = clipboard.getPrimaryClip();
+
+        // show toast to notify it was read (except on Android 13+, where the device shows a popup itself)
+        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+            Toast.makeText(context, toast, Toast.LENGTH_LONG).show();
+        return res;
+    }
+
+    /**
+     * Set primary clip from clipboard, retrieves string from id
+     */
+    static void setPrimaryClip(Context context, int id, ClipData clipData) {
+        setPrimaryClip(context, context.getString(id), clipData);
+    }
+
+    /**
+     * Set primary clip from clipboard
+     */
+    static void setPrimaryClip(Context context, String toast, ClipData clipData) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) return;
+
+        clipboard.setPrimaryClip(clipData);
+
+        // show toast to notify it was read (except on Android 13+, where the device shows a popup itself)
+        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+            Toast.makeText(context, toast, Toast.LENGTH_LONG).show();
+    }
+
+    /**
      * Get the (possible) referrer activity from an existing one.
      * Null if can't find
      */
@@ -191,7 +243,8 @@ public interface AndroidUtils {
     static void longTapForDescription(View view) {
         view.setOnLongClickListener(v -> {
             var contentDescription = v.getContentDescription();
-            if (contentDescription == null) AndroidUtils.assertError("No content description for view " + view);
+            if (contentDescription == null)
+                AndroidUtils.assertError("No content description for view " + view);
             Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
             return true;
         });
@@ -230,4 +283,32 @@ public interface AndroidUtils {
         while (matcher.find()) links.add(matcher.group());
         return links;
     }
+
+    /**
+     * Returns the main activity of a package
+     */
+    static String getMainActivity(Context cntx, String pckg) {
+        return cntx.getPackageManager()
+                .getLaunchIntentForPackage(pckg)
+                .getComponent().getClassName();
+    }
+
+    /**
+     * Returns a Set with all the activities of a package
+     */
+    static Set<String> getActivities(Context cntx, String pckg) {
+        Set<String> activities = new HashSet<>();
+        try {
+            ActivityInfo[] activityInfos = (cntx.getPackageManager()
+                    .getPackageInfo(pckg, PackageManager.GET_ACTIVITIES).activities);
+
+            for (var act : activityInfos) {
+                activities.add(act.name);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+        return activities;
+    }
+
 }

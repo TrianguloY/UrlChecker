@@ -109,6 +109,14 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
     <string name="json_edit">Advanced editor</string>
     <!--
+        clipboard borrower
+    -->
+    <string name="borrow_borrowSet">Clipboard borrowed</string>
+    <string name="borrow_borrowError">"Clipboard not available can't borrow"</string>
+    <string name="borrow_releaseSet">Clipboard released</string>
+    <string name="borrow_releaseError">"Clipboard not available can't restore"</string>
+    <string name="borrow_storeGet">"Clipboard content stored"</string>
+    <!--
         shortcuts
     -->
     <string name="shortcut_checkClipboard">Check URLs from the clipboard</string>

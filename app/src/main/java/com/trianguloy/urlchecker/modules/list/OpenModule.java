@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -239,7 +240,7 @@ class OpenDialog extends AModuleDialog {
         cTabs.apply(intent);
 
         // incognito
-        incognito.apply(intent);
+        var incogCompat = incognito.apply(getActivity(), intent);
 
         // Get flags from global data (probably set by flags module, if active)
         var flags = Flags.getGlobalFlagsNullable(this);
@@ -252,6 +253,11 @@ class OpenDialog extends AModuleDialog {
 
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
+
+        if (incogCompat == UrlHelper.compatibility.urlNeedsHelp){
+            var helper = UrlHelper.autoClipboard.getHelper();
+            helper.accept(getActivity(), getUrl());
+        }
 
         // finish activity
         if (closeOpenPref.get()) {
