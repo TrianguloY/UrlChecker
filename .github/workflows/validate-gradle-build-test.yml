@@ -53,7 +53,7 @@ jobs:
 
       - name: Upload apk as artifact
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
           name: ${{ env.NAME }}
@@ -61,7 +61,7 @@ jobs:
 
       - name: Upload PR id as artifact
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: /dev/null
           name: ${{ github.event.number }}
