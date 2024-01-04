@@ -1,65 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="locale">Traditional Chinese</string>
-    <string name="link_privacy">隱私政策</string>
-    <string name="txt_conf">以下為所有可用的模組，你可以個別確認敘述和設定。你也可以個別重新排序、切換是否顯示標題和是否啟用。</string>
+    <string name="locale">繁體中文</string>
+    <string name="link_privacy">隱私權政策</string>
+    <string name="txt_conf">這裡列出了所有可用的模組。你可以查看個別的描述並調整其設定，也可以重新排序、切換標題顯示與否和啟閉個別模組。</string>
     <string name="txt_openLinks">用這個 APP 開啟連結：從古至今以來 Android 多次改變了設定開啟鏈結的方式，因版本而異。下面列出您裝置上可用的所有可能的方式，若其中有不能用的，請試試其他的。</string>
-    <string name="txt_info">這個 APP 會在點開 URL 連結時介入，跳出關於連結的一些資訊。點選下面的「模組」按鈕以了解和設定所有可用的模組。</string>
-    <string name="txt_sample">點擊下面的連結來測試功能：</string>
+    <string name="txt_info">這個應用程式會在點開網址時發揮作用，彈出一個包含該連結相關資訊等內容的對話方塊。你可至「模組」中查看和設定所有可用的模組。</string>
+    <string name="txt_sample">點選下方連結進行測試：</string>
     <string name="a_modules">模組</string>
     <string name="a_settings">設定</string>
     <string name="a_about">關於</string>
-    <string name="txt_about">本 APP 由 TrianguloY 建立
+    <string name="txt_about">本應用程式由 TrianguloY 所建立
 \n
 \n貢獻者：%s
 \n翻譯者：%s</string>
-    <string name="link_blog">TrianguloY 的部落格</string>
-    <string name="link_changelog">更新記錄</string>
+    <string name="link_blog">TrianguloY 的網誌</string>
+    <string name="link_changelog">更新日誌</string>
     <string name="link_source">原始碼</string>
     <string name="toast_cantEnable">無法啟用模組，缺少設定？</string>
-    <string name="menu_resetOrder">重置順序</string>
+    <string name="menu_resetOrder">重設排序</string>
     <string name="menu_toggleDecorations">切換所有標題顯示</string>
     <string name="desc_up">上移</string>
     <string name="desc_down">下移</string>
-    <string name="desc_decorations">開/關 標題</string>
-    <string name="desc_enable">開/關 模組</string>
+    <string name="desc_decorations">切換標題顯示與否</string>
+    <string name="desc_enable">切換模組啟用與否</string>
     <string name="btn_setBrowser">設為預設瀏覽器</string>
-    <string name="toast_defaultSet">此 APP 現在是預設瀏覽器了</string>
-    <string name="btn_configureBrowser">預設瀏覽器</string>
-    <string name="btn_linksSettings">開啟支援的鏈結</string>
-    <string name="btn_androidSettings">Android APP 設定</string>
+    <string name="toast_defaultSet">已設為預設瀏覽器</string>
+    <string name="btn_configureBrowser">預設瀏覽器應用程式</string>
+    <string name="btn_linksSettings">開啟支援的連結</string>
+    <string name="btn_androidSettings">應用程式資訊</string>
     <string name="txt_theme">主題：</string>
-    <string name="spin_darkTheme">暗</string>
-    <string name="spin_lightTheme">亮</string>
+    <string name="spin_darkTheme">深色</string>
+    <string name="spin_lightTheme">淺色</string>
     <string name="txt_locale">語言：</string>
-    <string name="tutorial">導覽</string>
-    <string name="btn_tutorialSettings">重啟導覽</string>
-    <string name="txt_tutorial1">謝謝您下載此 APP！
+    <string name="tutorial">入門導覽</string>
+    <string name="btn_tutorialSettings">重溫入門導覽</string>
+    <string name="txt_tutorial1">感謝下載本應用程式！
 \n
-\n您現在看到的是教學導覽，若您想要跳過可以點擊下面的按鈕。您可以隨時從設定選單回到這個導覽。</string>
-    <string name="txt_tutorial2">這個 APP 可以作為點擊或分享鏈結時的中介，當 URL 被送到 APP 時您可以透過各模組進行處理，最後再用對應 APP 開啟、分享處理後的鏈結或將其複製到剪貼簿上。</string>
-    <string name="txt_tutorial3">設定本 APP 為預設瀏覽器可在點擊鏈結時直接啟動攔截處理。
-\n（若僅想使用分享功能來傳送鏈結，可以略過此設定）</string>
-    <string name="txt_tutorial4">模組就是此 APP 如何處理鏈結的關鍵。
-\n每個模組都有其對應的功能，有些可能提供資訊，有的可能對鏈結進行調整。
-\n依照需求，閱讀並設定他們。
+\n接下來將為你簡要地介紹本程式的用途。若你想先「略過導覽」，日後隨時可以前往設定選單中返回此處。</string>
+    <string name="txt_tutorial2">當開啟或分享網址時，本應用程式將扮演「中間人」的角色。一旦網址被傳送到本程式，你便能藉由各式的模組對其處理，並將該連結以你偏好的應用程式開啟、分享或複製到剪貼簿。</string>
+    <string name="txt_tutorial3">將本應用程式設為預設瀏覽器以便在開啟網址時將其攔截。
+\n(若僅想透過「分享」來傳遞網址，則可略過此設定。)</string>
+    <string name="txt_tutorial4">「模組」乃本應用程式處理網址的關鍵。
+\n每個模組有其對應的功能：有些能提供網址的相關資訊、有些則能修改網址。
+\n請查看個別的描述，並依你所需進行設置。
 \n
-\n重要：所有動作預設均為手動。除非您有特別指定，否則此 APP 不會自動更動或傳送任何資訊。然而若您有需要，部分模組的部分動作是可以設為自動的。
+\n重要事項：在預設情況下，所有的動作均需手動執行。除非事先取得你的同意，否則本程式不會自動修改任何內容或連上網際網路。如有需要，你可以允許自動套用部分的動作。
 \n
-\n
-\n從主畫面開啟模組清單，或是點擊下面的按鈕。</string>
+\n你可以從下方的按鈕，或稍後從首頁進入模組清單。</string>
     <string name="close">關閉</string>
     <string name="save">儲存</string>
     <string name="reset">重設</string>
     <string name="next">下一步</string>
     <string name="clear">清空</string>
-    <string name="btn_tutorialEnd">完成教學</string>
+    <string name="btn_tutorialEnd">完成導覽</string>
     <string name="mOpen_copyUrl">複製</string>
-    <string name="toast_noApp">無法打開程式</string>
+    <string name="toast_noApp">無法開啟應用程式</string>
     <string name="back">返回</string>
-    <string name="btn_tutorialSkip">跳過教學</string>
+    <string name="btn_tutorialSkip">略過導覽</string>
     <string name="mOpen_share">分享</string>
-    <string name="toast_noBrowser">無法打開瀏覽器</string>
+    <string name="toast_noBrowser">無法開啟網頁瀏覽器</string>
     <string name="mOpen_open">開啟</string>
     <string name="title_choose">選擇程式</string>
+    <string name="mVT_scanning">掃描中…</string>
+    <string name="mLog_unlimited">無限制</string>
+    <string name="mChg_name">更新日誌</string>
+    <string name="mClear_lastUpdate">上次更新時間：</string>
+    <string name="mStatus_check">檢查狀態</string>
+    <string name="shortcut_checkClipboard">檢查剪貼簿中的網址</string>
+    <string name="none">無</string>
+    <string name="mStatus_recheck">檢查</string>
+    <string name="mStatus_name">狀態碼</string>
+    <string name="mLog_empty">沒有資料</string>
+    <string name="mOpen_noapps">無可用的程式</string>
+    <string name="mVT_cancel">取消</string>
+    <string name="mVT_name">網址掃描器</string>
+    <string name="mLog_limit">欲保留的條目數量上限。建議值：100。留空表示無限制。</string>
+    <string name="mHist_desc">當網址被手動或透過其他模組編輯時，你可以藉由此模組檢視並復原變更。</string>
+    <string name="mVT_apiKey">API 金鑰</string>
+    <string name="mLog_view">檢視記錄檔</string>
+    <string name="mClear_name">網址清理器</string>
+    <string name="mVT_scan">掃描</string>
+    <string name="mLog_name">記錄檔</string>
+    <string name="deviceDefault">系統預設</string>
+    <string name="mClear_clear">套用</string>
+    <string name="mUnshort_checking">檢查中…</string>
+    <string name="mClear_updateNow">立即更新</string>
+    <string name="mPttrn_fix">套用</string>
+    <string name="json_edit">進階編輯器</string>
+    <string name="mOpen_clipboard">網址已複製到剪貼簿</string>
+    <string name="share">分享</string>
+    <string name="mLog_edit">編輯記錄檔</string>
+    <string name="mStatus_checking">檢查中…</string>
+    <string name="mVT_tm">VirusTotal™ 是 Google Inc. 的商標。</string>
+    <string name="mClear_lastCheck">上次檢查時間：</string>
+    <string name="mHosts_gambling">賭博</string>
+    <string name="defaultOn">預設為啟用</string>
+    <string name="mInput_desc">顯示目前的網址，並可手動編輯。</string>
+    <string name="mOpen_name">開啟與分享</string>
+    <string name="mOpen_closeShare">分享後關閉對話方塊</string>
+    <string name="mClear_tm">內建的規則目錄是從 ClearURLs 複製而來：https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="hidden">隱藏</string>
+    <string name="mStatus_redir">重新導向至 %s</string>
+    <string name="mClear_updater">更新工具</string>
+    <string name="mOpen_ctabs">自訂分頁：</string>
+    <string name="mOpen_closeOpen">開啟後關閉對話方塊</string>
+    <string name="mD_ctabs">顯示自訂分頁服務的偵錯訊息</string>
+    <string name="mDrawer_name">隱藏匣</string>
+    <string name="mHosts_adult">成人內容</string>
+    <string name="alwaysOn">一律啟用</string>
+    <string name="mOpen_closeCopy">複製後關閉對話方塊</string>
+    <string name="mOpen_mergeCopy">合併複製按鈕與分享按鈕 (長按以複製)</string>
+    <string name="mDrawer_desc">所有排列在此之下的模組都將被收合在「隱藏匣」裡。收合的模組仍具作用，唯需展開隱藏匣才會顯示。你可以將罕用的模組收納於此以保簡潔。</string>
+    <string name="mOpen_incognito">無痕模式：</string>
+    <string name="auto">自動</string>
+    <string name="mInput_name">輸入欄</string>
+    <string name="mParts_empty">(空白)</string>
+    <string name="mClear_autoUpdate">定期更新</string>
+    <string name="mClear_error">無法檢查規則</string>
+    <string name="mHist_name">操作記錄</string>
+    <string name="defaultOff">預設為停用</string>
+    <string name="mClear_auto">自動套用</string>
+    <string name="alwaysOff">一律停用</string>
+    <string name="dismiss">關閉</string>
+    <string name="toast_invalid">無效</string>
+    <string name="mChg_updated">本應用程式已更新。</string>
+    <string name="mHosts_buildInit">正在初始化</string>
+    <string name="mChg_current">目前版本：%s</string>
+    <string name="mUnshort_ok">已還原</string>
+    <string name="mChg_desc">當本應用程式更新至新版本時將會發出通知。</string>
+    <string name="mHosts_name">主機識別器</string>
+    <string name="mChg_view">檢視變更</string>
+    <string name="mParts_name">URI 結構</string>
+    <string name="mHosts_buildSave">儲存中…</string>
+    <string name="canceled">已取消</string>
+    <string name="mUnshort_unshort">還原縮址</string>
+    <string name="mHosts_fakenews">假新聞</string>
+    <string name="mUnshort_name">縮址還原器</string>
+    <string name="mHosts_malware">廣告/惡意軟體</string>
 </resources>
