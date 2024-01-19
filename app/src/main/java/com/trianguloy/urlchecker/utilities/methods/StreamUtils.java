@@ -1,9 +1,12 @@
 package com.trianguloy.urlchecker.utilities.methods;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -76,6 +79,28 @@ public interface StreamUtils {
                 sb.append(line);
             }
             return sb.toString();
+        }
+    }
+
+    /**
+     * Reads and inputstream and transfers its content to a file.
+     * The stream is NOT closed
+     */
+    static void inputStream2File(InputStream in, File file) throws IOException {
+        try (var out = new FileOutputStream(file)) {
+            inputStream2OutputStream(in, out);
+        }
+    }
+
+    /**
+     * Reads an inputStream and transfers its content to an output stream.
+     * The streams are NOT closed
+     */
+    static void inputStream2OutputStream(InputStream in, OutputStream out) throws IOException {
+        var buffer = new byte[10240];
+        int read;
+        while ((read = in.read(buffer)) != -1) {
+            out.write(buffer, 0, read);
         }
     }
 

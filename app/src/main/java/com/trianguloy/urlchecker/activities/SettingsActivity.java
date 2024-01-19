@@ -125,4 +125,10 @@ public class SettingsActivity extends Activity {
     public void openTutorial(View view) {
         PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }
+
+    /* ------------------- backup ------------------- */
+
+    public void openBackup(View view) {
+        PackageUtils.startActivity(new Intent(this, BackupActivity.class), R.string.toast_noApp, this);
+    }
 }
