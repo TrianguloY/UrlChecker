@@ -17,17 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="openTutorial"
-            android:text="@string/btn_tutorialSettings" /><FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/padding">
+            android:text="@string/btn_tutorialSettings" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/padding">
 
             <include layout="@layout/separator" />
 
-        </FrameLayout><TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_openLinks" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_openLinks" />
 
         <include layout="@layout/fragment_browser_buttons" />
 
@@ -36,37 +40,46 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/padding"
             android:paddingBottom="@dimen/padding">
+
             <include layout="@layout/separator" />
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_theme" />
+
             <Spinner
                 android:id="@+id/theme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false" />
         </LinearLayout>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="@dimen/padding"
             android:paddingBottom="@dimen/padding">
+
             <include layout="@layout/separator" />
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_locale" />
+
             <Spinner
                 android:id="@+id/locale"
                 android:layout_width="match_parent"
@@ -74,6 +87,21 @@
                 android:saveEnabled="false" />
         </LinearLayout>
 
-        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/padding">
+
+            <include layout="@layout/separator" />
+        </FrameLayout>
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="openBackup"
+            android:text="@string/btn_backupRestore" />
+
+    </LinearLayout>
 
 </ScrollView>

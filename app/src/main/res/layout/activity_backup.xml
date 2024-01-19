@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.BackupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:padding="@dimen/smallPadding">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bkp_description" />
+
+        <Switch
+            android:id="@+id/chk_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_data" />
+
+        <Switch
+            android:id="@+id/chk_data_prefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginLeft="@dimen/padding"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_data_prefs"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <Switch
+            android:id="@+id/chk_data_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginLeft="@dimen/padding"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_data_files"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <Switch
+            android:id="@+id/chk_secrets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_secrets" />
+
+        <Switch
+            android:id="@+id/chk_cache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bjp_cache" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_backup"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="backup"
+                android:text="@string/btn_backup" />
+
+            <Button
+                android:id="@+id/btn_restore"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="restore"
+                android:text="@string/btn_restore" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="delete"
+                android:text="@string/btn_delete"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/chk_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bck_restoreDelete"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <Switch
+            android:id="@+id/chk_ignoreNewer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bck_ignoreNewer"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+</ScrollView>

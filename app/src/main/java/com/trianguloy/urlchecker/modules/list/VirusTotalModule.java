@@ -26,8 +26,10 @@ import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
  */
 public class VirusTotalModule extends AModuleData {
 
+    public static final String PREF = "api_key";
+
     static GenericPref.Str API_PREF(Context cntx) {
-        return new GenericPref.Str("api_key", "", cntx);
+        return new GenericPref.Str(PREF, "", cntx);
     }
 
     @Override

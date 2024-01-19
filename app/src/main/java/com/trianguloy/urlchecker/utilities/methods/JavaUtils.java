@@ -130,6 +130,11 @@ public interface JavaUtils {
         R apply(T t);
     }
 
+    /** Negates a boolean Function */
+    static <T> Function<T, Boolean> negate(Function<T, Boolean> function) {
+        return t -> !function.apply(t);
+    }
+
     /**
      * java.util.function.UnaryOperator requires api 24
      */
