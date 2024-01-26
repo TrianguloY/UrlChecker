@@ -36,7 +36,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build & test with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: >
             build
@@ -46,7 +46,7 @@ jobs:
 
       - name: Generate apk
         if: ${{ github.event_name == 'pull_request' }}
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: >
             assemble${{ env.VARIANT }}
