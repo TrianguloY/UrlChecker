@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -225,5 +227,14 @@ public interface AndroidUtils {
         var matcher = Patterns.WEB_URL.matcher(text);
         while (matcher.find()) links.add(matcher.group());
         return links;
+    }
+
+    /**
+     * Copies a Uri to a file.
+     */
+    static void copyUri2File(Uri uri, File file, Context cntx) throws IOException {
+        try (var in = cntx.getContentResolver().openInputStream(uri)) {
+            StreamUtils.inputStream2File(in, file);
+        }
     }
 }
