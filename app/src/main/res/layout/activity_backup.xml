@@ -69,7 +69,28 @@
                 android:layout_weight="1"
                 android:onClick="restore"
                 android:text="@string/btn_restore" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="delete"
+                android:text="@string/btn_delete"
+                android:visibility="gone"
+                tools:visibility="visible" />
         </LinearLayout>
+
+        <Switch
+            android:id="@+id/chk_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bck_restoreDelete"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

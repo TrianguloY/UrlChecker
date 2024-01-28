@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.provider.DocumentsContract;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -45,6 +46,7 @@ public class BackupActivity extends Activity {
     private Switch chk_secrets;
     private Switch chk_files;
     private Switch chk_cache;
+    private Switch chk_delete;
     private SharedPreferences prefs;
 
     /* ------------------- activity ------------------- */
@@ -63,14 +65,29 @@ public class BackupActivity extends Activity {
         chk_secrets = findViewById(R.id.chk_secrets);
         chk_files = findViewById(R.id.chk_files);
         chk_cache = findViewById(R.id.chk_cache);
+        chk_delete = findViewById(R.id.chk_delete);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_backup, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            // press the 'back' button in the action bar to go back
-            onBackPressed();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home -> {
+                // press the 'back' button in the action bar to go back
+                onBackPressed();
+                return true;
+            }
+            case R.id.menu_advanced -> {
+                // show advanced
+                item.setVisible(false);
+                chk_delete.setVisibility(View.VISIBLE);
+                findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -171,7 +188,7 @@ public class BackupActivity extends Activity {
 
     /* ------------------- restore ------------------- */
 
-    public void restore(View view) {
+    public void restore(View ignored) {
         // choose backup file
         var intent = new Intent(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ? Intent.ACTION_OPEN_DOCUMENT : Intent.ACTION_GET_CONTENT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getOutputFolder());
@@ -229,8 +246,10 @@ public class BackupActivity extends Activity {
         var editor = prefs.edit();
 
         // remove
-        for (var key : prefs.getAll().keySet()) {
-            if (predicate.apply(key)) editor.remove(key);
+        if (chk_delete.isChecked()) {
+            for (var key : prefs.getAll().keySet()) {
+                if (predicate.apply(key)) editor.remove(key);
+            }
         }
 
         // add
@@ -253,8 +272,10 @@ public class BackupActivity extends Activity {
         if (fileNames.isEmpty()) return;
 
         // delete
-        for (var file : fileList()) {
-            if (predicate.apply(file)) deleteFile(file);
+        if (chk_delete.isChecked()) {
+            for (var file : fileList()) {
+                if (predicate.apply(file)) deleteFile(file);
+            }
         }
 
         // create
@@ -263,6 +284,54 @@ public class BackupActivity extends Activity {
             try (var out = openFileOutput(fileName.substring(folder.length()), MODE_PRIVATE)) {
                 zip.getFileStream(fileName, out);
             }
+        }
+    }
+
+    /* ------------------- delete ------------------- */
+
+    public void delete(View ignored) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.bck_deleteTitle)
+                .setMessage(R.string.bck_deleteMessage)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.btn_delete, (d, w) -> delete())
+                .show();
+    }
+
+    private void delete() {
+        try {
+
+            // secret preferences
+            if (chk_secrets.isChecked()) deletePreferencesMatching(IS_PREF_SECRET);
+
+            // rest of preferences
+            if (chk_prefs.isChecked()) deletePreferencesMatching(negate(IS_PREF_SECRET));
+
+            // cache files
+            if (chk_cache.isChecked()) deleteFilesMatching(IS_FILE_CACHE);
+
+            // rest of files
+            if (chk_files.isChecked()) deleteFilesMatching(negate(IS_FILE_CACHE));
+
+            Toast.makeText(this, R.string.bck_deleteOk, Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.bck_deleteError, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void deletePreferencesMatching(Function<String, Boolean> predicate) {
+        var editor = prefs.edit();
+        for (var key : prefs.getAll().keySet()) {
+            if (predicate.apply(key)) editor.remove(key);
+        }
+        editor.apply();
+    }
+
+    private void deleteFilesMatching(Function<String, Boolean> predicate) {
+        for (var file : fileList()) {
+            if (predicate.apply(file)) deleteFile(file);
         }
     }
 
