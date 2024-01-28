@@ -12,19 +12,64 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="backup"
-            android:text="@string/btn_bckp" />
+            android:text="@string/bkp_description" />
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
+        <Switch
+            android:id="@+id/chk_prefs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="restore"
-            android:text="@string/btn_rstr" />
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_prefs" />
+
+        <Switch
+            android:id="@+id/chk_secrets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_secrets" />
+
+        <Switch
+            android:id="@+id/chk_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_files" />
+
+        <Switch
+            android:id="@+id/chk_cache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bjp_cache" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="backup"
+                android:text="@string/btn_backup" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="restore"
+                android:text="@string/btn_restore" />
+        </LinearLayout>
 
     </LinearLayout>
 

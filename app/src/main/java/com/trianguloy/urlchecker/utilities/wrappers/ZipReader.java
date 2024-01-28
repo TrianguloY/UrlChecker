@@ -55,11 +55,12 @@ public class ZipReader implements Closeable {
         }
     }
 
-    public List<String> fileNames() {
+    public List<String> fileNames(String folder) {
         var fileNames = new ArrayList<String>();
         var zipEntries = zip.entries();
         while (zipEntries.hasMoreElements()) {
-            fileNames.add(zipEntries.nextElement().getName());
+            var name = zipEntries.nextElement().getName();
+            if (name.startsWith(folder)) fileNames.add(name);
         }
         return fileNames;
     }

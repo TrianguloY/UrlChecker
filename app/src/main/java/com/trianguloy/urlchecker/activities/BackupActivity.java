@@ -1,7 +1,10 @@
 package com.trianguloy.urlchecker.activities;
 
+import static com.trianguloy.urlchecker.utilities.methods.JavaUtils.negate;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,30 +16,35 @@ import android.provider.DocumentsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.modules.companions.Hosts;
+import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipReader;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipWriter;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class BackupActivity extends Activity {
 
-    public static final String PREF_VALUE = "value";
-    public static final String PREF_TYPE = "type";
-    public static final String PREFERENCES = "preferences";
-    public static final String FILES_FOLDER = "files/";
-
+    private Switch chk_prefs;
+    private Switch chk_secrets;
+    private Switch chk_files;
+    private Switch chk_cache;
     private SharedPreferences prefs;
 
     /* ------------------- activity ------------------- */
@@ -47,10 +55,14 @@ public class BackupActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_backup);
-        setTitle(R.string.btn_bckp);
+        setTitle(R.string.btn_backup);
         AndroidUtils.configureUp(this);
 
         prefs = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+        chk_prefs = findViewById(R.id.chk_prefs);
+        chk_secrets = findViewById(R.id.chk_secrets);
+        chk_files = findViewById(R.id.chk_files);
+        chk_cache = findViewById(R.id.chk_cache);
     }
 
     @Override
@@ -65,55 +77,96 @@ public class BackupActivity extends Activity {
 
     /* ------------------- backup ------------------- */
 
-    public void backup(View view) {
+    public void backup(View ignored) {
         // choose backup name
         var input = new EditText(this);
         input.setText(getOutputFile());
-        new AlertDialog.Builder(this)
-                .setTitle("Choose backup name")
-                .setMessage("Name of the backup.\nThe file will be created in the " + getOutputFolder() + " directory.")
+        var dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.bck_backupTitle)
+                .setMessage(getString(R.string.bck_backupMessage, getOutputFolder()))
                 .setView(input)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.btn_bckp, (dialog, which) -> backup(input.getText().toString()))
+                .setPositiveButton(R.string.btn_backup, null)
                 .show();
+
+        // positive button: confirm if file exists (run afterwards to avoid auto-dismiss)
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
+            var file = new File(getOutputFolder(), input.getText().toString());
+
+            if (file.exists()) {
+                // confirm
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.fileExists)
+                        .setMessage(R.string.overrideFile)
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(R.string.btn_replace, (d, w) -> {
+                            dialog.dismiss();
+                            backup(file);
+                        })
+                        .show();
+            } else {
+                // run directly
+                dialog.dismiss();
+                backup(file);
+            }
+        });
     }
 
     /**
-     * Creates a backup and saves it to [fileName]
+     * Creates a backup and saves it to [file]
      */
-    private void backup(String fileName) {
-        try (var file = new ZipWriter(new File(getOutputFolder(), fileName), getString(R.string.app_name) + " backup")) {
+    private void backup(File file) {
+        try (var zip = new ZipWriter(file, getString(R.string.app_name) + " backup")) {
 
             // version
-            file.addStringFile("version", BuildConfig.VERSION_NAME);
+            zip.addStringFile("version", BuildConfig.VERSION_NAME);
 
             // readme
             try (var readme = getAssets().open("backup_readme.txt")) {
-                file.addStreamFile("readme.txt", readme);
+                zip.addStreamFile("readme.txt", readme);
             }
 
-            // preferences
-            var jsonPrefs = new JSONObject();
-            for (var entry : prefs.getAll().entrySet()) {
-                jsonPrefs.put(entry.getKey(), new JSONObject()
-                        .put(PREF_VALUE, entry.getValue())
-                        .put(PREF_TYPE, entry.getValue().getClass().getSimpleName()));
-            }
-            file.addStringFile(PREFERENCES, jsonPrefs.toString());
+            // secret preferences
+            if (chk_secrets.isChecked()) backupPreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
 
-            // other files
-            for (var otherFile : fileList()) {
-                try (var in = openFileInput(otherFile)) {
-                    file.addStreamFile(FILES_FOLDER + otherFile, in);
-                }
-            }
+            // rest of preferences
+            if (chk_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
-            Toast.makeText(this, "Backup created", Toast.LENGTH_SHORT).show();
+            // cache files
+            if (chk_cache.isChecked()) backupFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
+
+            // rest of files
+            if (chk_files.isChecked()) backupFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+
+            Toast.makeText(this, R.string.bck_backupOk, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Can't create backup", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.bck_backupError, Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void backupPreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipWriter zip) throws IOException, JSONException {
+        var jsonPrefs = new JSONObject();
+        for (var entry : prefs.getAll().entrySet()) {
+            if (!predicate.apply(entry.getKey())) continue;
+            jsonPrefs.put(entry.getKey(), new JSONObject()
+                    .put(PREF_VALUE, entry.getValue())
+                    .put(PREF_TYPE, entry.getValue().getClass().getSimpleName()));
+        }
+        zip.addStringFile(fileName, jsonPrefs.toString());
+    }
+
+    private void backupFilesMatching(String folder, Function<String, Boolean> predicate, ZipWriter zip) throws IOException {
+        var empty = true;
+        for (var file : fileList()) {
+            if (!predicate.apply(file)) continue;
+            try (var in = openFileInput(file)) {
+                zip.addStreamFile(folder + file, in);
+                empty = false;
+            }
+        }
+        if (empty) zip.addStringFile(folder + EMPTY, "");
     }
 
     /* ------------------- restore ------------------- */
@@ -125,7 +178,7 @@ public class BackupActivity extends Activity {
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
-        startActivityForResult(Intent.createChooser(intent, "Select backup file"), 0);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.bck_restoreTitle)), 0);
     }
 
     @Override
@@ -135,7 +188,7 @@ public class BackupActivity extends Activity {
             return;
         }
         if (resultCode != Activity.RESULT_OK || data == null || data.getData() == null) {
-            Toast.makeText(this, "canceled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
             return;
         }
         restore(data.getData());
@@ -147,41 +200,84 @@ public class BackupActivity extends Activity {
     private void restore(Uri inputFile) {
         try (var zip = new ZipReader(inputFile, this)) {
 
-            // get preferences
-            var preferences = zip.getFileString(PREFERENCES);
-            if (preferences != null) {
-                var jsonPrefs = new JSONObject(preferences);
-                var editor = prefs.edit().clear();
-                for (var key : JavaUtils.toList(jsonPrefs.keys())) {
-                    var ent = jsonPrefs.getJSONObject(key);
-                    switch (ent.getString(PREF_TYPE)) {
-                        case "String" -> editor.putString(key, ent.getString(PREF_VALUE));
-                        case "Integer" -> editor.putInt(key, ent.getInt(PREF_VALUE));
-                        case "Long" -> editor.putLong(key, ent.getLong(PREF_VALUE));
-                        case "Boolean" -> editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
-                        default -> throw new RuntimeException("Unknown type: " + ent.getString(PREF_TYPE));
-                    }
-                    editor.apply();
-                }
-            }
+            // secret preferences
+            if (chk_secrets.isChecked()) restorePreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
 
-            // internal files
-            for (var file : fileList()) deleteFile(file);
-            for (var fileName : zip.fileNames()) {
-                if (!fileName.startsWith(FILES_FOLDER)) continue;
-                try (var out = openFileOutput(fileName.substring(6), MODE_PRIVATE)) {
-                    zip.getFileStream(fileName, out);
-                }
-            }
+            // rest of preferences
+            if (chk_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
-            Toast.makeText(this, "Restored backup", Toast.LENGTH_SHORT).show();
+            // cache files
+            if (chk_cache.isChecked()) restoreFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
+
+            // rest of files
+            if (chk_files.isChecked()) restoreFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+
+            Toast.makeText(this, R.string.bck_restoreOk, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Unable to restore the backup file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.bck_restoreError, Toast.LENGTH_SHORT).show();
         }
 
     }
+
+    private void restorePreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipReader zip) throws IOException, JSONException {
+        var preferences = zip.getFileString(fileName);
+        if (preferences == null) return;
+
+        var jsonPrefs = new JSONObject(preferences);
+        var editor = prefs.edit();
+
+        // remove
+        for (var key : prefs.getAll().keySet()) {
+            if (predicate.apply(key)) editor.remove(key);
+        }
+
+        // add
+        for (var key : JavaUtils.toList(jsonPrefs.keys())) {
+            var ent = jsonPrefs.getJSONObject(key);
+            switch (ent.getString(PREF_TYPE)) {
+                case "String" -> editor.putString(key, ent.getString(PREF_VALUE));
+                case "Integer" -> editor.putInt(key, ent.getInt(PREF_VALUE));
+                case "Long" -> editor.putLong(key, ent.getLong(PREF_VALUE));
+                case "Boolean" -> editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
+                default -> AndroidUtils.assertError("Unknown type: " + ent.getString(PREF_TYPE));
+            }
+        }
+
+        editor.apply();
+    }
+
+    private void restoreFilesMatching(String folder, Function<String, Boolean> predicate, ZipReader zip) throws IOException {
+        var fileNames = zip.fileNames(folder);
+        if (fileNames.isEmpty()) return;
+
+        // delete
+        for (var file : fileList()) {
+            if (predicate.apply(file)) deleteFile(file);
+        }
+
+        // create
+        for (var fileName : fileNames) {
+            if ((folder + EMPTY).equals(fileName)) continue; // ignore marker
+            try (var out = openFileOutput(fileName.substring(folder.length()), MODE_PRIVATE)) {
+                zip.getFileStream(fileName, out);
+            }
+        }
+    }
+
+    /* ------------------- common ------------------- */
+
+    private static final String FILE_PREFERENCES = "preferences";
+    private static final String FILE_SECRETS = "secrets";
+    private static final String FILES_FOLDER = "files/";
+    private static final String CACHE_FOLDER = "cache/";
+    private static final String PREF_VALUE = "value";
+    private static final String PREF_TYPE = "type";
+    private static final String EMPTY = ".empty";
+
+    private static final Function<String, Boolean> IS_PREF_SECRET = VirusTotalModule.PREF::equals;
+    private static final Function<String, Boolean> IS_FILE_CACHE = Hosts.PREFIX::startsWith;
 
     private File getOutputFolder() {
         File folder;

@@ -27,7 +27,7 @@ public class Hosts {
 
     private static final char SEPARATOR = '\t';
     private static final int FILES = 128;
-    private static final String PREFIX = "hosts_";
+    public static final String PREFIX = "hosts_";
 
     // A custom mapping from a given hash with queryable buckets
     private final HashMap<Integer, HashMap<String, Pair<String, String>>> buckets = new HashMap<>();
