@@ -43,19 +43,18 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // option for the open in clipboard shortcut
-        menu.add(R.string.shortcut_checkClipboard)
-                .setIcon(AndroidUtils.getColoredDrawable(R.drawable.ic_clipboard, android.R.attr.textColorPrimary, this))
-                .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT)
-                .setOnMenuItemClickListener(o -> {
-                    PackageUtils.startActivity(
-                            new Intent(this, ShortcutsActivity.class),
-                            R.string.toast_noApp,
-                            this
-                    );
-                    return true;
-                });
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        AndroidUtils.fixMenuIconColor(menu.findItem(R.id.menu_checkClipboard), this);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_checkClipboard) {
+            // the open in clipboard shortcut
+            PackageUtils.startActivity(new Intent(this, ShortcutsActivity.class), R.string.toast_noApp, this);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
