@@ -10,20 +10,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
-
-import java.util.Objects;
 
 /**
  * The activity to show when clicking the desktop shortcut (when 'opening' the app)
  */
 public class MainActivity extends Activity {
 
-    private AndroidSettings.Theme previousTheme;
-    private String previousLocale;
+    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +56,9 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        // check if the theme was changed, if so reload to apply
-        var currentTheme = AndroidSettings.THEME_PREF(this).get();
-        if (previousTheme == null) previousTheme = currentTheme;
-        if (previousTheme != currentTheme) AndroidSettings.reload(this);
-        // check if the locale was changed, if so reload to apply
-        var currentLocale = AndroidSettings.LOCALE_PREF(this).get();
-        if (previousLocale == null) previousLocale = currentLocale;
-        if (!Objects.equals(previousLocale, currentLocale)) AndroidSettings.reload(this);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+            super.onActivityResult(requestCode, resultCode, data);
     }
 
     /* ------------------- button clicks ------------------- */
@@ -77,7 +68,12 @@ public class MainActivity extends Activity {
     }
 
     public void openSettings(View view) {
-        PackageUtils.startActivity(new Intent(this, SettingsActivity.class), R.string.toast_noApp, this);
+        PackageUtils.startActivityForResult(
+                new Intent(this, SettingsActivity.class),
+                AndroidSettings.registerForReloading(activityResultInjector, this),
+                R.string.toast_noApp,
+                this
+        );
     }
 
     public void openAbout(View view) {

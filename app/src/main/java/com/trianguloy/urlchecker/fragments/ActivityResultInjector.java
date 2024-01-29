@@ -18,7 +18,7 @@ public class ActivityResultInjector {
 
     /* ------------------- client use ------------------- */
 
-    interface Listener {
+    public interface Listener {
         /**
          * Called when the event fires for a particular registrar
          */

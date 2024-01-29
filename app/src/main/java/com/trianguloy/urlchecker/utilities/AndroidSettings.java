@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.util.ArrayList;
@@ -192,13 +193,46 @@ public interface AndroidSettings {
         activity.setTheme(style);
     }
 
-    /* ------------------- general ------------------- */
+    /* ------------------- reloading ------------------- */
+
+    String RELOAD_EXTRA = "reloaded";
+    int RELOAD_RESULT_CODE = Activity.RESULT_FIRST_USER;
 
     /**
-     * destroys and recreates the activity (to apply changes)
+     * destroys and recreates the activity (to apply changes) and marks it
      */
     static void reload(Activity cntx) {
         Log.d("SETTINGS", "reloading");
+        cntx.getIntent().putExtra(RELOAD_EXTRA, true); // keep data
         cntx.recreate();
     }
+
+    /**
+     * Returns true if the activity was reloaded (with {@link AndroidSettings#reload}) and clears the flag
+     */
+    static boolean wasReloaded(Activity cntx) {
+        var intent = cntx.getIntent();
+        var reloaded = intent.getBooleanExtra(RELOAD_EXTRA, false);
+        intent.removeExtra(RELOAD_EXTRA);
+        return reloaded;
+    }
+
+    /**
+     * Registers an activity result to reload if the launched activity is marked as reloading using{@link AndroidSettings#markForReloading(Activity)}
+     */
+    static int registerForReloading(ActivityResultInjector activityResultInjector, Activity cntx) {
+        return activityResultInjector.register((resultCode, data) -> {
+            if (resultCode == RELOAD_RESULT_CODE) {
+                AndroidSettings.reload(cntx);
+            }
+        });
+    }
+
+    /**
+     * Makes the activity that launched this one to reload, if registered with {@link AndroidSettings#registerForReloading(ActivityResultInjector, Activity)}
+     */
+    static void markForReloading(Activity cntx) {
+        cntx.setResult(RELOAD_RESULT_CODE);
+    }
+
 }
