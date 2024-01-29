@@ -1,5 +1,5 @@
 # This actions validates the gradle files and runs a build test to ensure the app is not corrupted
-# if succeeded and the source is a pull request, builds an evaluation apk
+# if succeeded, and the source is a pull request, builds an evaluation apk and posts a comment to download it
 name: Validate gradle build test
 
 on:
@@ -14,6 +14,16 @@ on:
 env:
   VARIANT: evaluation
   NAME: URLCheck_evaluation.apk
+  DAYS: 14
+
+permissions:
+  contents: read # to checkout the repo
+  pull-requests: write # to write the comment
+
+# this will cancel running actions if a newer commit is added to the pr
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -44,25 +54,48 @@ jobs:
 
       # the following steps will only run for PRs
 
-      - name: Generate apk
+      - name: "[PR] Generate apk"
         if: ${{ github.event_name == 'pull_request' }}
         uses: gradle/gradle-build-action@v3
         with:
           arguments: >
             assemble${{ env.VARIANT }}
 
-      - name: Upload apk as artifact
+      - name: "[PR] Upload apk as artifact"
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
+        id: upload-artifact-step
+        uses: actions/upload-artifact@v4
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
           name: ${{ env.NAME }}
-          retention-days: 14
+          retention-days: ${{ env.DAYS }}
 
-      - name: Upload PR id as artifact
+      - name: "[PR] Comment url to artifact"
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
-        with:
-          path: /dev/null
-          name: ${{ github.event.number }}
-          retention-days: 1
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          ARTIFACT: ${{ steps.upload-artifact-step.outputs.artifact-url }}
+          ACTION: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?pr=${{ github.event.pull_request.number }}"
+        run: |
+
+          # calculate expiration date
+          EXPIRATION=$(date -d "+$DAYS days")
+          echo "EXPIRATION=$EXPIRATION"
+
+          # post link comment
+          gh pr comment $PR -F - <<EOF
+          This PR builds correctly, here is the generated apk.
+          This unsigned version can be installed alongside the original app and should only be used for testing the changes, not for daily usage.
+          
+          | [Download testing apk]($ARTIFACT) |
+          | - |
+          
+          
+          You must be logged in for the link to work.
+          The link will expire in $DAYS days, at $EXPIRATION.
+          
+          <hr>
+          
+          <sub>This is an automatic comment created by a [Github Action]($ACTION)</sub>
+          EOF
