@@ -28,6 +28,7 @@ import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
+import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipReader;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipWriter;
 
@@ -66,6 +67,9 @@ public class BackupActivity extends Activity {
         chk_files = findViewById(R.id.chk_files);
         chk_cache = findViewById(R.id.chk_cache);
         chk_delete = findViewById(R.id.chk_delete);
+
+        // if this app was reloaded, some settings may have changed, so reload previous one too
+        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
     }
 
     @Override
@@ -133,34 +137,51 @@ public class BackupActivity extends Activity {
      * Creates a backup and saves it to [file]
      */
     private void backup(File file) {
-        try (var zip = new ZipWriter(file, getString(R.string.app_name) + " backup")) {
+        ProgressDialog.run(this, R.string.btn_backup, progress -> {
 
-            // version
-            zip.addStringFile("version", BuildConfig.VERSION_NAME);
+            progress.setMax(7);
+            progress.setMessage("Initializing backup");
+            try (var zip = new ZipWriter(file, getString(R.string.app_name) + " backup")) {
 
-            // readme
-            try (var readme = getAssets().open("backup_readme.txt")) {
-                zip.addStreamFile("readme.txt", readme);
+                // version
+                progress.setMessage("Adding version");
+                progress.increaseProgress();
+                zip.addStringFile("version", BuildConfig.VERSION_NAME);
+
+                // readme
+                progress.setMessage("Adding readme");
+                progress.increaseProgress();
+                try (var readme = getAssets().open("backup_readme.txt")) {
+                    zip.addStreamFile("readme.txt", readme);
+                }
+
+                // rest of preferences
+                progress.setMessage("Adding preferences");
+                progress.increaseProgress();
+                if (chk_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+
+                // secret preferences
+                progress.setMessage("Adding secrets");
+                progress.increaseProgress();
+                if (chk_secrets.isChecked()) backupPreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
+
+                // rest of files
+                progress.setMessage("Adding files");
+                progress.increaseProgress();
+                if (chk_files.isChecked()) backupFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+
+                // cache files
+                progress.setMessage("Adding cache");
+                progress.increaseProgress();
+                if (chk_cache.isChecked()) backupFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
+
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_backupOk, Toast.LENGTH_SHORT).show());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_backupError, Toast.LENGTH_LONG).show());
             }
-
-            // secret preferences
-            if (chk_secrets.isChecked()) backupPreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
-
-            // rest of preferences
-            if (chk_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
-
-            // cache files
-            if (chk_cache.isChecked()) backupFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
-
-            // rest of files
-            if (chk_files.isChecked()) backupFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
-
-            Toast.makeText(this, R.string.bck_backupOk, Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.bck_backupError, Toast.LENGTH_LONG).show();
-        }
+        });
     }
 
     private void backupPreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipWriter zip) throws IOException, JSONException {
@@ -215,27 +236,40 @@ public class BackupActivity extends Activity {
      * Restores a backup from an uri
      */
     private void restore(Uri inputFile) {
-        try (var zip = new ZipReader(inputFile, this)) {
+        ProgressDialog.run(this, R.string.btn_restore, progress -> {
+            progress.setMax(5);
+            progress.setMessage("Loading backup");
+            try (var zip = new ZipReader(inputFile, this)) {
 
-            // secret preferences
-            if (chk_secrets.isChecked()) restorePreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
+                // rest of preferences
+                progress.setMessage("Restoring preferences");
+                progress.increaseProgress();
+                if (chk_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
-            // rest of preferences
-            if (chk_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+                // secret preferences
+                progress.setMessage("Restoring secrets");
+                progress.increaseProgress();
+                if (chk_secrets.isChecked()) restorePreferencesMatching(FILE_SECRETS, IS_PREF_SECRET, zip);
 
-            // cache files
-            if (chk_cache.isChecked()) restoreFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
+                // rest of files
+                progress.setMessage("Restoring files");
+                progress.increaseProgress();
+                if (chk_files.isChecked()) restoreFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
 
-            // rest of files
-            if (chk_files.isChecked()) restoreFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+                // cache files
+                progress.setMessage("Restoring cache");
+                progress.increaseProgress();
+                if (chk_cache.isChecked()) restoreFilesMatching(CACHE_FOLDER, IS_FILE_CACHE, zip);
 
-            Toast.makeText(this, R.string.bck_restoreOk, Toast.LENGTH_SHORT).show();
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_restoreOk, Toast.LENGTH_LONG).show());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.bck_restoreError, Toast.LENGTH_SHORT).show();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_restoreError, Toast.LENGTH_LONG).show());
+            }
 
+            runOnUiThread(() -> AndroidSettings.reload(this));
+        });
     }
 
     private void restorePreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipReader zip) throws IOException, JSONException {
@@ -299,26 +333,38 @@ public class BackupActivity extends Activity {
     }
 
     private void delete() {
-        try {
+        ProgressDialog.run(this, R.string.btn_restore, progress -> {
+            progress.setMax(4);
+            try {
 
-            // secret preferences
-            if (chk_secrets.isChecked()) deletePreferencesMatching(IS_PREF_SECRET);
+                // rest of preferences
+                progress.setMessage("Deleting preferences");
+                if (chk_prefs.isChecked()) deletePreferencesMatching(negate(IS_PREF_SECRET));
 
-            // rest of preferences
-            if (chk_prefs.isChecked()) deletePreferencesMatching(negate(IS_PREF_SECRET));
+                // secret preferences
+                progress.setMessage("Deleting secrets");
+                progress.increaseProgress();
+                if (chk_secrets.isChecked()) deletePreferencesMatching(IS_PREF_SECRET);
 
-            // cache files
-            if (chk_cache.isChecked()) deleteFilesMatching(IS_FILE_CACHE);
+                // rest of files
+                progress.setMessage("Deleting files");
+                progress.increaseProgress();
+                if (chk_files.isChecked()) deleteFilesMatching(negate(IS_FILE_CACHE));
 
-            // rest of files
-            if (chk_files.isChecked()) deleteFilesMatching(negate(IS_FILE_CACHE));
+                // cache files
+                progress.setMessage("Deleting cache");
+                progress.increaseProgress();
+                if (chk_cache.isChecked()) deleteFilesMatching(IS_FILE_CACHE);
 
-            Toast.makeText(this, R.string.bck_deleteOk, Toast.LENGTH_SHORT).show();
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_deleteOk, Toast.LENGTH_SHORT).show());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.bck_deleteError, Toast.LENGTH_SHORT).show();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(this, R.string.bck_deleteError, Toast.LENGTH_SHORT).show());
+            }
+
+            runOnUiThread(() -> AndroidSettings.reload(this));
+        });
     }
 
     private void deletePreferencesMatching(Function<String, Boolean> predicate) {
@@ -346,7 +392,7 @@ public class BackupActivity extends Activity {
     private static final String EMPTY = ".empty";
 
     private static final Function<String, Boolean> IS_PREF_SECRET = VirusTotalModule.PREF::equals;
-    private static final Function<String, Boolean> IS_FILE_CACHE = Hosts.PREFIX::startsWith;
+    private static final Function<String, Boolean> IS_FILE_CACHE = s -> s.startsWith(Hosts.PREFIX);
 
     private File getOutputFolder() {
         File folder;

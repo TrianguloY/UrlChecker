@@ -35,11 +35,18 @@ public class SettingsActivity extends Activity {
         configureBrowserButtons();
         configureDayNight();
         configureLocale();
-
-        // if this app was reloaded, some settings may have changed, so reload previous one too
-        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (AndroidSettings.wasReloaded(this)) {
+            // if this was reloaded, some settings may have change, so reload previous one too
+            AndroidSettings.markForReloading(this);
+        } else {
+            // don't restore when recreating, settings may have change
+            super.onRestoreInstanceState(savedInstanceState);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -129,6 +136,10 @@ public class SettingsActivity extends Activity {
     /* ------------------- backup ------------------- */
 
     public void openBackup(View view) {
-        PackageUtils.startActivity(new Intent(this, BackupActivity.class), R.string.toast_noApp, this);
+        PackageUtils.startActivityForResult(new Intent(this, BackupActivity.class),
+                AndroidSettings.registerForReloading(resultCodeInjector, this),
+                R.string.toast_noApp,
+                this
+        );
     }
 }
