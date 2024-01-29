@@ -46,11 +46,12 @@ public class Hosts {
                 .setTitle(R.string.mHosts_buildTitle)
                 .setMessage(R.string.mHosts_buildDesc)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    var progress = new ProgressDialog(cntx, cntx.getString(R.string.mHosts_buildProgress));
-                    progress.setMessage(cntx.getString(R.string.mHosts_buildInit));
-                    new Thread(() -> _build(progress, onFinished)).start();
-                });
+                .setPositiveButton(android.R.string.ok, (dialog, which) ->
+                        ProgressDialog.run(cntx, R.string.mHosts_buildProgress, progress -> {
+                            progress.setMessage(cntx.getString(R.string.mHosts_buildInit));
+                            _build(progress, onFinished);
+                        })
+                );
 
         if (showEditor) builder
                 .setNeutralButton(R.string.json_edit, (dialog, which) -> data.showEditor());
