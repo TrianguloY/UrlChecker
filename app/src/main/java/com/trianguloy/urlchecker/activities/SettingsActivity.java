@@ -35,6 +35,9 @@ public class SettingsActivity extends Activity {
         configureBrowserButtons();
         configureDayNight();
         configureLocale();
+
+        // if this app was reloaded, some settings may have changed, so reload previous one too
+        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
     }
 
 

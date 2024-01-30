@@ -7,7 +7,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
@@ -15,6 +14,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.util.Patterns;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -206,19 +206,15 @@ public interface AndroidUtils {
     }
 
     /**
-     * Returns a drawable with a different color
+     * Fixes the color of a MenuItem icon (colorFilter=textColorPrimary)
      */
-    static Drawable getColoredDrawable(int drawableId, int colorAttr, Context cntx) {
-        // get drawable
-        var drawable = cntx.getResources().getDrawable(drawableId).mutate();
-
+    static void fixMenuIconColor(MenuItem menuItem, Context cntx) {
         // get color
         var resolvedAttr = new TypedValue();
-        cntx.getTheme().resolveAttribute(colorAttr, resolvedAttr, true);
+        cntx.getTheme().resolveAttribute(android.R.attr.textColorPrimary, resolvedAttr, true);
 
         // tint
-        drawable.setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
-        return drawable;
+        menuItem.getIcon().setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
     }
 
     /**
