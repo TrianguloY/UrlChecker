@@ -2,12 +2,13 @@ package com.trianguloy.urlchecker.utilities.wrappers;
 
 import static com.trianguloy.urlchecker.utilities.methods.StreamUtils.UTF_8;
 
+import android.content.Context;
+import android.net.Uri;
+
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 
 import java.io.Closeable;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
@@ -20,9 +21,8 @@ public class ZipWriter implements Closeable {
 
     private final ZipOutputStream zip;
 
-    public ZipWriter(File file, String comment) throws FileNotFoundException {
-        file.delete();
-        zip = new ZipOutputStream(new FileOutputStream(file));
+    public ZipWriter(Uri uri, String comment, Context cntx) throws FileNotFoundException {
+        zip = new ZipOutputStream(cntx.getContentResolver().openOutputStream(uri));
         zip.setComment(comment);
     }
 

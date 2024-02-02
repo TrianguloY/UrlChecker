@@ -4,7 +4,6 @@ import static com.trianguloy.urlchecker.utilities.methods.JavaUtils.negate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -16,18 +15,20 @@ import android.provider.DocumentsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.modules.companions.Hosts;
+import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
+import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipReader;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipWriter;
@@ -39,9 +40,12 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class BackupActivity extends Activity {
+
+    private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
 
     private Switch chk_prefs;
     private Switch chk_secrets;
@@ -96,52 +100,49 @@ public class BackupActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!resultCodeInjector.onActivityResult(requestCode, resultCode, data))
+            super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (!resultCodeInjector.onRequestPermissionsResult(requestCode, permissions, grantResults))
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
     /* ------------------- backup ------------------- */
 
     public void backup(View ignored) {
-        // choose backup name
-        var input = new EditText(this);
-        input.setText(getOutputFile());
-        var dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.bck_backupTitle)
-                .setMessage(getString(R.string.bck_backupMessage, getOutputFolder()))
-                .setView(input)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.btn_backup, null)
-                .show();
+        // choose backup file
+        var intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.putExtra(Intent.EXTRA_TITLE, getOutputFile());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getOutputFolder());
 
-        // positive button: confirm if file exists (run afterwards to avoid auto-dismiss)
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(v -> {
-            var file = new File(getOutputFolder(), input.getText().toString());
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
 
-            if (file.exists()) {
-                // confirm
-                new AlertDialog.Builder(this)
-                        .setTitle(R.string.fileExists)
-                        .setMessage(R.string.overrideFile)
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(R.string.btn_replace, (d, w) -> {
-                            dialog.dismiss();
-                            backup(file);
-                        })
-                        .show();
-            } else {
-                // run directly
-                dialog.dismiss();
-                backup(file);
-            }
-        });
+        PackageUtils.startActivityForResult(
+                Intent.createChooser(intent, getString(R.string.bck_backupTitle)),
+                resultCodeInjector.registerActivityResult((resultCode, data) -> {
+                    // file selected?
+                    if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) backup(data.getData());
+                    else Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
+                }),
+                R.string.toast_noApp,
+                this);
     }
 
     /**
-     * Creates a backup and saves it to [file]
+     * Creates a backup and saves it to [uri]
      */
-    private void backup(File file) {
+    private void backup(Uri uri) {
         ProgressDialog.run(this, R.string.btn_backup, progress -> {
 
             progress.setMax(7);
             progress.setMessage("Initializing backup");
-            try (var zip = new ZipWriter(file, getString(R.string.app_name) + " backup")) {
+            try (var zip = new ZipWriter(uri, getString(R.string.app_name) + " backup", this)) {
 
                 // version
                 progress.setMessage("Adding version");
@@ -211,25 +212,20 @@ public class BackupActivity extends Activity {
 
     public void restore(View ignored) {
         // choose backup file
-        var intent = new Intent(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT ? Intent.ACTION_OPEN_DOCUMENT : Intent.ACTION_GET_CONTENT);
+        var intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getOutputFolder());
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.bck_restoreTitle)), 0);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode != 0) {
-            super.onActivityResult(requestCode, resultCode, data);
-            return;
-        }
-        if (resultCode != Activity.RESULT_OK || data == null || data.getData() == null) {
-            Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        restore(data.getData());
+        PackageUtils.startActivityForResult(
+                Intent.createChooser(intent, getString(R.string.bck_restoreTitle)),
+                resultCodeInjector.registerActivityResult((resultCode, data) -> {
+                    // file selected?
+                    if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) restore(data.getData());
+                    else Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
+                }),
+                R.string.toast_noApp,
+                this);
     }
 
     /**
@@ -391,7 +387,7 @@ public class BackupActivity extends Activity {
     private static final String PREF_TYPE = "type";
     private static final String EMPTY = ".empty";
 
-    private static final Function<String, Boolean> IS_PREF_SECRET = VirusTotalModule.PREF::equals;
+    private static final Function<String, Boolean> IS_PREF_SECRET = List.of(VirusTotalModule.PREF, LogModule.PREF)::contains;
     private static final Function<String, Boolean> IS_FILE_CACHE = s -> s.startsWith(Hosts.PREFIX);
 
     private File getOutputFolder() {

@@ -26,8 +26,10 @@ import java.util.Date;
  */
 public class LogModule extends AModuleData {
 
+    public static final String PREF = "log_data";
+
     public static GenericPref.Str LOG_DATA(Context cntx) {
-        return new GenericPref.Str("log_data", "", cntx);
+        return new GenericPref.Str(PREF, "", cntx);
     }
 
     public static GenericPref.Int LOG_LIMIT(Context cntx) {
