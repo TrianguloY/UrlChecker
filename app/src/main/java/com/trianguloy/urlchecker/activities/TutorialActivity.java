@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
@@ -55,8 +55,8 @@ public class TutorialActivity extends Activity {
 
     /* ------------------- browser fragment ------------------- */
 
-    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
-    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, activityResultInjector);
+    private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
+    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, resultCodeInjector);
 
     private void configureBrowserButtons() {
         browserButtons.onInitialize(findViewById(browserButtons.getLayoutId()));
@@ -64,7 +64,7 @@ public class TutorialActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+        if (!resultCodeInjector.onActivityResult(requestCode, resultCode, data))
             super.onActivityResult(requestCode, resultCode, data);
     }
 

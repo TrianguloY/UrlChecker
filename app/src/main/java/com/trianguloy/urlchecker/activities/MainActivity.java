@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -21,7 +21,7 @@ import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
  */
 public class MainActivity extends Activity {
 
-    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
+    private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+        if (!resultCodeInjector.onActivityResult(requestCode, resultCode, data))
             super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
     public void openSettings(View view) {
         PackageUtils.startActivityForResult(
                 new Intent(this, SettingsActivity.class),
-                AndroidSettings.registerForReloading(activityResultInjector, this),
+                AndroidSettings.registerForReloading(resultCodeInjector, this),
                 R.string.toast_noApp,
                 this
         );

@@ -10,8 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
@@ -53,8 +53,8 @@ public class SettingsActivity extends Activity {
 
     /* ------------------- configure browser ------------------- */
 
-    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
-    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, activityResultInjector);
+    private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
+    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, resultCodeInjector);
 
     private void configureBrowserButtons() {
         browserButtons.onInitialize(findViewById(browserButtons.getLayoutId()));
@@ -62,7 +62,7 @@ public class SettingsActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+        if (!resultCodeInjector.onActivityResult(requestCode, resultCode, data))
             super.onActivityResult(requestCode, resultCode, data);
     }
 

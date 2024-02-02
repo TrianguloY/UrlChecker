@@ -15,14 +15,14 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
-public class BrowserButtonsFragment implements Fragment, ActivityResultInjector.Listener {
+public class BrowserButtonsFragment implements Fragment, ResultCodeInjector.ActivityResultListener {
     private final Activity cntx;
     private final int requestCode;
     private RoleManager roleManager;
 
-    public BrowserButtonsFragment(Activity cntx, ActivityResultInjector activityResultInjector) {
+    public BrowserButtonsFragment(Activity cntx, ResultCodeInjector resultCodeInjector) {
         this.cntx = cntx;
-        requestCode = activityResultInjector.register(this);
+        requestCode = resultCodeInjector.registerActivityResult(this);
     }
 
     @Override
