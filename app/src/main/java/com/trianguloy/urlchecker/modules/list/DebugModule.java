@@ -2,7 +2,6 @@ package com.trianguloy.urlchecker.modules.list;
 
 import static java.util.Objects.requireNonNullElse;
 
-import android.os.Build;
 import android.view.View;
 import android.widget.TextView;
 
@@ -77,7 +76,7 @@ class DebugDialog extends AModuleDialog {
 
         // expand when touched (not only clicked, to avoid a double-click-required bug and because it feels better)
         textView.setOnTouchListener((v, event) -> {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN || textView.getMaxHeight() != Integer.MAX_VALUE) textView.setMaxHeight(Integer.MAX_VALUE);
+            if (textView.getMaxHeight() != Integer.MAX_VALUE) textView.setMaxHeight(Integer.MAX_VALUE);
             return false;
         });
 

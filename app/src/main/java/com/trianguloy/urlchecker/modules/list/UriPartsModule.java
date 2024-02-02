@@ -153,9 +153,7 @@ class UriPartsDialog extends AModuleDialog {
                 v -> JavaUtils.toggleContains(expandedGroups, name),
                 v -> {
                     group.setVisibility(expandedGroups.contains(name) ? View.VISIBLE : View.GONE);
-                    AndroidUtils.setStartDrawables(name_view,
-                            expandedGroups.contains(name) ? R.drawable.arrow_down : R.drawable.arrow_right
-                    );
+                    name_view.setCompoundDrawablesRelativeWithIntrinsicBounds(expandedGroups.contains(name) ? R.drawable.arrow_down : R.drawable.arrow_right, 0, 0, 0);
                 }
         );
 

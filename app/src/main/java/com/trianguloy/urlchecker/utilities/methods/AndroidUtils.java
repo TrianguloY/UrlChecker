@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Build;
@@ -31,26 +30,6 @@ import java.util.Set;
  * Generic Android utilities
  */
 public interface AndroidUtils {
-
-    /**
-     * Sets the start drawable of a textview
-     * Wrapped for android compatibility
-     */
-    static void setStartDrawables(TextView txt, int start) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            // we can use the function directly!
-            txt.setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0);
-        } else {
-            // we need to manually adjust
-            if ((txt.getContext().getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_LAYOUTDIR_MASK) == Configuration.SCREENLAYOUT_LAYOUTDIR_RTL) {
-                // rtl
-                txt.setCompoundDrawablesWithIntrinsicBounds(0, 0, start, 0);
-            } else {
-                // ltr
-                txt.setCompoundDrawablesWithIntrinsicBounds(start, 0, 0, 0);
-            }
-        }
-    }
 
     /**
      * For some reason some drawable buttons are displayed the same when enabled and disabled.
@@ -142,7 +121,7 @@ public interface AndroidUtils {
         clipboard.setPrimaryClip(ClipData.newPlainText("", text));
 
         // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
-        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU)
             Toast.makeText(activity, toast, Toast.LENGTH_LONG).show();
     }
 
