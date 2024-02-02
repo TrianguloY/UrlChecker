@@ -310,11 +310,7 @@ class OpenConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        if (CTabs.isAvailable()) {
-            CTabs.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
-        } else {
-            views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
-        }
+        CTabs.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
         Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), null);
         OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
         OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));

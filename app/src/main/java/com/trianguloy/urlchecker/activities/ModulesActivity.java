@@ -151,9 +151,7 @@ public class ModulesActivity extends Activity {
         AndroidUtils.toggleableListener(
                 title,
                 v -> description.setVisibility(description.getVisibility() == View.GONE ? View.VISIBLE : View.GONE),
-                v -> AndroidUtils.setStartDrawables(title,
-                        description.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right
-                )
+                v -> title.setCompoundDrawablesRelativeWithIntrinsicBounds(description.getVisibility() != View.GONE ? R.drawable.arrow_down : R.drawable.arrow_right, 0, 0, 0)
         );
     }
 

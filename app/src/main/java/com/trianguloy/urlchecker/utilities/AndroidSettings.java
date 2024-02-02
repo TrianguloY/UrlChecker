@@ -3,7 +3,6 @@ package com.trianguloy.urlchecker.utilities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.util.Log;
 
@@ -92,11 +91,7 @@ public interface AndroidSettings {
      * returns a specific string in a specific locale
      */
     static String getStringForLocale(int id, Locale locale, Context cntx) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return cntx.createConfigurationContext(getConfig(locale)).getString(id);
-        } else {
-            return new Resources(cntx.getAssets(), cntx.getResources().getDisplayMetrics(), getConfig(locale)).getString(id);
-        }
+        return cntx.createConfigurationContext(getConfig(locale)).getString(id);
     }
 
     /**

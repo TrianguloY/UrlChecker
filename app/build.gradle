@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.trianguloy.urlchecker"
         compileSdk 33
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 33
         versionCode 29
         versionName "2.13.1"
