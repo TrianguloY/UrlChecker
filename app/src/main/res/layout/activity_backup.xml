@@ -19,12 +19,37 @@
             android:text="@string/bkp_description" />
 
         <Switch
-            android:id="@+id/chk_prefs"
+            android:id="@+id/chk_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:button="@android:color/transparent"
             android:checked="true"
             android:padding="@dimen/smallPadding"
-            android:text="@string/bkp_prefs" />
+            android:text="@string/bkp_data" />
+
+        <Switch
+            android:id="@+id/chk_data_prefs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginLeft="@dimen/padding"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_data_prefs"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <Switch
+            android:id="@+id/chk_data_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:layout_marginLeft="@dimen/padding"
+            android:checked="true"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bkp_data_files"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <Switch
             android:id="@+id/chk_secrets"
@@ -33,14 +58,6 @@
             android:checked="true"
             android:padding="@dimen/smallPadding"
             android:text="@string/bkp_secrets" />
-
-        <Switch
-            android:id="@+id/chk_files"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:padding="@dimen/smallPadding"
-            android:text="@string/bkp_files" />
 
         <Switch
             android:id="@+id/chk_cache"

@@ -25,6 +25,7 @@ import com.trianguloy.urlchecker.modules.companions.Hosts;
 import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
@@ -47,9 +48,10 @@ public class BackupActivity extends Activity {
 
     private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
 
-    private Switch chk_prefs;
+    private Switch chk_data;
+    private Switch chk_data_prefs;
+    private Switch chk_data_files;
     private Switch chk_secrets;
-    private Switch chk_files;
     private Switch chk_cache;
     private Switch chk_delete;
     private SharedPreferences prefs;
@@ -62,18 +64,25 @@ public class BackupActivity extends Activity {
         AndroidSettings.setTheme(this, false);
         AndroidSettings.setLocale(this);
         setContentView(R.layout.activity_backup);
-        setTitle(R.string.btn_backup);
+        setTitle(R.string.btn_backupRestore);
         AndroidUtils.configureUp(this);
 
-        prefs = getSharedPreferences(getPackageName(), MODE_PRIVATE);
-        chk_prefs = findViewById(R.id.chk_prefs);
+        prefs = GenericPref.getPrefs(this);
+        chk_data = findViewById(R.id.chk_data);
+        chk_data_prefs = findViewById(R.id.chk_data_prefs);
+        chk_data_files = findViewById(R.id.chk_data_files);
         chk_secrets = findViewById(R.id.chk_secrets);
-        chk_files = findViewById(R.id.chk_files);
         chk_cache = findViewById(R.id.chk_cache);
         chk_delete = findViewById(R.id.chk_delete);
 
         // if this app was reloaded, some settings may have changed, so reload previous one too
         if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
+
+        // sync data switches
+        chk_data.setOnCheckedChangeListener((v, checked) -> {
+            chk_data_prefs.setChecked(checked);
+            chk_data_files.setChecked(checked);
+        });
     }
 
     @Override
@@ -93,6 +102,9 @@ public class BackupActivity extends Activity {
             case R.id.menu_advanced -> {
                 // show advanced
                 item.setVisible(false);
+                chk_data.setThumbResource(android.R.color.transparent);
+                chk_data_prefs.setVisibility(View.VISIBLE);
+                chk_data_files.setVisibility(View.VISIBLE);
                 chk_delete.setVisibility(View.VISIBLE);
                 findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
             }
@@ -117,8 +129,8 @@ public class BackupActivity extends Activity {
     public void backup(View ignored) {
         // choose backup file
         var intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.putExtra(Intent.EXTRA_TITLE, getOutputFile());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getOutputFolder());
+        intent.putExtra(Intent.EXTRA_TITLE, getInitialFile());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getInitialFolder());
 
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -159,7 +171,7 @@ public class BackupActivity extends Activity {
                 // rest of preferences
                 progress.setMessage("Adding preferences");
                 progress.increaseProgress();
-                if (chk_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+                if (chk_data_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
                 // secret preferences
                 progress.setMessage("Adding secrets");
@@ -169,7 +181,7 @@ public class BackupActivity extends Activity {
                 // rest of files
                 progress.setMessage("Adding files");
                 progress.increaseProgress();
-                if (chk_files.isChecked()) backupFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+                if (chk_data_files.isChecked()) backupFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
 
                 // cache files
                 progress.setMessage("Adding cache");
@@ -213,7 +225,7 @@ public class BackupActivity extends Activity {
     public void restore(View ignored) {
         // choose backup file
         var intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getOutputFolder());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getInitialFolder());
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
@@ -229,18 +241,18 @@ public class BackupActivity extends Activity {
     }
 
     /**
-     * Restores a backup from an uri
+     * Restores a backup from [uri]
      */
-    private void restore(Uri inputFile) {
+    private void restore(Uri uri) {
         ProgressDialog.run(this, R.string.btn_restore, progress -> {
             progress.setMax(5);
             progress.setMessage("Loading backup");
-            try (var zip = new ZipReader(inputFile, this)) {
+            try (var zip = new ZipReader(uri, this)) {
 
                 // rest of preferences
                 progress.setMessage("Restoring preferences");
                 progress.increaseProgress();
-                if (chk_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+                if (chk_data_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
                 // secret preferences
                 progress.setMessage("Restoring secrets");
@@ -250,7 +262,7 @@ public class BackupActivity extends Activity {
                 // rest of files
                 progress.setMessage("Restoring files");
                 progress.increaseProgress();
-                if (chk_files.isChecked()) restoreFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
+                if (chk_data_files.isChecked()) restoreFilesMatching(FILES_FOLDER, negate(IS_FILE_CACHE), zip);
 
                 // cache files
                 progress.setMessage("Restoring cache");
@@ -329,13 +341,13 @@ public class BackupActivity extends Activity {
     }
 
     private void delete() {
-        ProgressDialog.run(this, R.string.btn_restore, progress -> {
+        ProgressDialog.run(this, R.string.btn_delete, progress -> {
             progress.setMax(4);
             try {
 
                 // rest of preferences
                 progress.setMessage("Deleting preferences");
-                if (chk_prefs.isChecked()) deletePreferencesMatching(negate(IS_PREF_SECRET));
+                if (chk_data_prefs.isChecked()) deletePreferencesMatching(negate(IS_PREF_SECRET));
 
                 // secret preferences
                 progress.setMessage("Deleting secrets");
@@ -345,7 +357,7 @@ public class BackupActivity extends Activity {
                 // rest of files
                 progress.setMessage("Deleting files");
                 progress.increaseProgress();
-                if (chk_files.isChecked()) deleteFilesMatching(negate(IS_FILE_CACHE));
+                if (chk_data_files.isChecked()) deleteFilesMatching(negate(IS_FILE_CACHE));
 
                 // cache files
                 progress.setMessage("Deleting cache");
@@ -390,7 +402,7 @@ public class BackupActivity extends Activity {
     private static final Function<String, Boolean> IS_PREF_SECRET = List.of(VirusTotalModule.PREF, LogModule.PREF)::contains;
     private static final Function<String, Boolean> IS_FILE_CACHE = s -> s.startsWith(Hosts.PREFIX);
 
-    private File getOutputFolder() {
+    private File getInitialFolder() {
         File folder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             folder = getSystemService(StorageManager.class).getPrimaryStorageVolume().getDirectory();
@@ -402,7 +414,7 @@ public class BackupActivity extends Activity {
         return folder;
     }
 
-    private String getOutputFile() {
+    private String getInitialFile() {
         return "UrlChecker_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.US).format(new Date()) + ".backup";
     }
 }
