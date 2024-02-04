@@ -36,10 +36,9 @@ public class SettingsActivity extends Activity {
         configureDayNight();
         configureLocale();
 
-        // if this app was reloaded, some settings may have changed, so reload previous one too
+        // if this was reloaded, some settings may have change, so reload previous one too
         if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -125,4 +124,5 @@ public class SettingsActivity extends Activity {
     public void openTutorial(View view) {
         PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
     }
+
 }

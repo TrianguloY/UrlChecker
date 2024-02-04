@@ -49,7 +49,8 @@
             <Spinner
                 android:id="@+id/theme"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:saveEnabled="false" />
         </LinearLayout>
         <FrameLayout
             android:layout_width="match_parent"
@@ -69,7 +70,8 @@
             <Spinner
                 android:id="@+id/locale"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:saveEnabled="false" />
         </LinearLayout>
 
         </LinearLayout>
