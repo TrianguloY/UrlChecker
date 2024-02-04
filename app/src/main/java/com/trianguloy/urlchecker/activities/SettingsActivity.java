@@ -35,17 +35,9 @@ public class SettingsActivity extends Activity {
         configureBrowserButtons();
         configureDayNight();
         configureLocale();
-    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        if (AndroidSettings.wasReloaded(this)) {
-            // if this was reloaded, some settings may have change, so reload previous one too
-            AndroidSettings.markForReloading(this);
-        } else {
-            // don't restore when recreating, settings may have change
-            super.onRestoreInstanceState(savedInstanceState);
-        }
+        // if this was reloaded, some settings may have change, so reload previous one too
+        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
     }
 
     @Override
