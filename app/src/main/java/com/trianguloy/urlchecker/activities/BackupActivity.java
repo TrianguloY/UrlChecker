@@ -127,23 +127,7 @@ public class BackupActivity extends Activity {
     /* ------------------- backup ------------------- */
 
     public void backup(View ignored) {
-        // choose backup file
-        var intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.putExtra(Intent.EXTRA_TITLE, getInitialFile());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getInitialFolder());
-
-        intent.setType("*/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-
-        PackageUtils.startActivityForResult(
-                Intent.createChooser(intent, getString(R.string.bck_backupTitle)),
-                resultCodeInjector.registerActivityResult((resultCode, data) -> {
-                    // file selected?
-                    if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) backup(data.getData());
-                    else Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
-                }),
-                R.string.toast_noApp,
-                this);
+        chooseFile(Intent.ACTION_CREATE_DOCUMENT, R.string.bck_backupTitle, this::backup);
     }
 
     /**
@@ -223,21 +207,7 @@ public class BackupActivity extends Activity {
     /* ------------------- restore ------------------- */
 
     public void restore(View ignored) {
-        // choose backup file
-        var intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getInitialFolder());
-        intent.setType("*/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-
-        PackageUtils.startActivityForResult(
-                Intent.createChooser(intent, getString(R.string.bck_restoreTitle)),
-                resultCodeInjector.registerActivityResult((resultCode, data) -> {
-                    // file selected?
-                    if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) restore(data.getData());
-                    else Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
-                }),
-                R.string.toast_noApp,
-                this);
+        chooseFile(Intent.ACTION_OPEN_DOCUMENT, R.string.bck_restoreTitle, this::restore);
     }
 
     /**
@@ -402,14 +372,30 @@ public class BackupActivity extends Activity {
     private static final Function<String, Boolean> IS_PREF_SECRET = List.of(VirusTotalModule.PREF, LogModule.PREF)::contains;
     private static final Function<String, Boolean> IS_FILE_CACHE = s -> s.startsWith(Hosts.PREFIX);
 
+    private void chooseFile(String action, int title, JavaUtils.Consumer<Uri> listener) {
+        // choose backup file
+        var intent = new Intent(action);
+        intent.putExtra(Intent.EXTRA_TITLE, getInitialFile());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, getInitialFolder());
+
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        PackageUtils.startActivityForResult(
+                Intent.createChooser(intent, getString(title)),
+                resultCodeInjector.registerActivityResult((resultCode, data) -> {
+                    // file selected?
+                    if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) listener.accept(data.getData());
+                    else Toast.makeText(this, R.string.canceled, Toast.LENGTH_SHORT).show();
+                }),
+                R.string.toast_noApp,
+                this);
+    }
+
     private File getInitialFolder() {
-        File folder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            folder = getSystemService(StorageManager.class).getPrimaryStorageVolume().getDirectory();
-        } else {
-            folder = Environment.getExternalStorageDirectory();
-        }
-        folder = new File(folder, Environment.DIRECTORY_DOWNLOADS);
+        var folder = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+                ? new File(getSystemService(StorageManager.class).getPrimaryStorageVolume().getDirectory(), Environment.DIRECTORY_DOWNLOADS)
+                : Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         folder.mkdirs();
         return folder;
     }
