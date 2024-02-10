@@ -70,16 +70,21 @@ When restoring, if the backup was created without it, existing ones will be kept
     <string name="bkp_secrets">"Secrets: Data considered 'secret', like the VirusTotal api key or the log."</string>
     <string name="bjp_cache">Cache: Data that can be easily downloaded/generated, like the hosts database. Enabling this option may increase the backup size notably.</string>
     <string name="bck_restoreDelete">Delete elements before restoring. Note that preferences and some files with default values may not exist, so disabling this option will merge the existing elements with the backup ones in unexpected ways. Disable if you know what you are doing.</string>
-    <string name="bck_backupTitle">Choose backup name</string>
+    <string name="bck_chooseFile">Choose backup file</string>
     <string name="bck_backupMessage">"Name of the backup.
 The file will be created in the %s directory."</string>
     <string name="bck_backupOk">Backup created</string>
-    <string name="bck_backupError">"Can't create backup"</string>
-    <string name="bck_restoreTitle">Select backup file</string>
+    <string name="bck_backupError">"Unable to create backup, try to choose a different location for the file."</string>
+    <string name="bck_restoreTitle">Restore backup</string>
+    <string name="bck_restoreMessage">"WARNING! This will replace the selected elements from the backup.
+Do you really want to continue?"</string>
+    <string name="bck_restoreConfirm">Replace elements</string>
     <string name="bck_restoreOk">Backup restored</string>
-    <string name="bck_restoreError">Unable to restore the backup file</string>
+    <string name="bck_restoreError">Unable to restore the backup. Is it a valid file?</string>
     <string name="bck_deleteTitle">Delete elements</string>
-    <string name="bck_deleteMessage">WARNING! This will delete all the selected elements. Do you really want to continue?</string>
+    <string name="bck_deleteMessage">"WARNING! This will delete all the selected elements.
+Do you really want to continue?"</string>
+    <string name="bck_deleteConfirm">Delete elements</string>
     <string name="bck_deleteOk">Elements deleted</string>
     <string name="bck_deleteError">Unable to delete elements</string>
     <!--

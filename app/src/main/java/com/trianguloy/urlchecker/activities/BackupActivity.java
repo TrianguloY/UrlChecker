@@ -83,6 +83,18 @@ public class BackupActivity extends Activity {
             chk_data_prefs.setChecked(checked);
             chk_data_files.setChecked(checked);
         });
+
+        // restore advanced status
+        if (getIntent().getBooleanExtra(ADVANCED_EXTRA, false)) {
+            showAdvanced();
+        }
+
+        // ask to restore if a file was opened
+        var data = getIntent().getData();
+        if (data != null) {
+            getIntent().setData(null); // avoid restoring again after reload
+            askRestore(data);
+        }
     }
 
     @Override
@@ -102,11 +114,8 @@ public class BackupActivity extends Activity {
             case R.id.menu_advanced -> {
                 // show advanced
                 item.setVisible(false);
-                chk_data.setThumbResource(android.R.color.transparent);
-                chk_data_prefs.setVisibility(View.VISIBLE);
-                chk_data_files.setVisibility(View.VISIBLE);
-                chk_delete.setVisibility(View.VISIBLE);
-                findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
+                getIntent().putExtra(ADVANCED_EXTRA, true);
+                showAdvanced();
             }
         }
         return super.onOptionsItemSelected(item);
@@ -127,7 +136,7 @@ public class BackupActivity extends Activity {
     /* ------------------- backup ------------------- */
 
     public void backup(View ignored) {
-        chooseFile(Intent.ACTION_CREATE_DOCUMENT, R.string.bck_backupTitle, this::backup);
+        chooseFile(Intent.ACTION_CREATE_DOCUMENT, this::backup);
     }
 
     /**
@@ -207,7 +216,19 @@ public class BackupActivity extends Activity {
     /* ------------------- restore ------------------- */
 
     public void restore(View ignored) {
-        chooseFile(Intent.ACTION_OPEN_DOCUMENT, R.string.bck_restoreTitle, this::restore);
+        chooseFile(Intent.ACTION_OPEN_DOCUMENT, this::askRestore);
+    }
+
+    /**
+     * Asks to restore a backup from [uri]
+     */
+    private void askRestore(Uri uri) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.bck_restoreTitle)
+                .setMessage(R.string.bck_restoreMessage)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.bck_restoreConfirm, (d, w) -> restore(uri))
+                .show();
     }
 
     /**
@@ -306,7 +327,7 @@ public class BackupActivity extends Activity {
                 .setTitle(R.string.bck_deleteTitle)
                 .setMessage(R.string.bck_deleteMessage)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.btn_delete, (d, w) -> delete())
+                .setPositiveButton(R.string.bck_deleteConfirm, (d, w) -> delete())
                 .show();
     }
 
@@ -368,11 +389,12 @@ public class BackupActivity extends Activity {
     private static final String PREF_VALUE = "value";
     private static final String PREF_TYPE = "type";
     private static final String EMPTY = ".empty";
+    private static final String ADVANCED_EXTRA = "advanced";
 
     private static final Function<String, Boolean> IS_PREF_SECRET = List.of(VirusTotalModule.PREF, LogModule.PREF)::contains;
     private static final Function<String, Boolean> IS_FILE_CACHE = s -> s.startsWith(Hosts.PREFIX);
 
-    private void chooseFile(String action, int title, JavaUtils.Consumer<Uri> listener) {
+    private void chooseFile(String action, JavaUtils.Consumer<Uri> listener) {
         // choose backup file
         var intent = new Intent(action);
         intent.putExtra(Intent.EXTRA_TITLE, getInitialFile());
@@ -382,7 +404,7 @@ public class BackupActivity extends Activity {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
         PackageUtils.startActivityForResult(
-                Intent.createChooser(intent, getString(title)),
+                Intent.createChooser(intent, getString(R.string.bck_chooseFile)),
                 resultCodeInjector.registerActivityResult((resultCode, data) -> {
                     // file selected?
                     if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) listener.accept(data.getData());
@@ -401,6 +423,14 @@ public class BackupActivity extends Activity {
     }
 
     private String getInitialFile() {
-        return "UrlChecker_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.US).format(new Date()) + ".backup";
+        return "UrlChecker_" + new SimpleDateFormat("yyyyMMddHHmmss", Locale.US).format(new Date()) + ".ucbckp";
+    }
+
+    private void showAdvanced() {
+        chk_data.setThumbResource(android.R.color.transparent);
+        chk_data_prefs.setVisibility(View.VISIBLE);
+        chk_data_files.setVisibility(View.VISIBLE);
+        chk_delete.setVisibility(View.VISIBLE);
+        findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
     }
 }
