@@ -147,7 +147,8 @@ public class BackupActivity extends Activity {
 
             progress.setMax(7);
             progress.setMessage("Initializing backup");
-            try (var zip = new ZipWriter(uri, getString(R.string.app_name) + " backup", this)) {
+            try (var zip = new ZipWriter(uri, this)) {
+                zip.setComment(getString(R.string.app_name) + " (" + getPackageName() + ") " + getString(R.string.btn_backup));
 
                 // version
                 progress.setMessage("Adding version");

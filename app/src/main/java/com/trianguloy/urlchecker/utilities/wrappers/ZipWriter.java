@@ -21,8 +21,11 @@ public class ZipWriter implements Closeable {
 
     private final ZipOutputStream zip;
 
-    public ZipWriter(Uri uri, String comment, Context cntx) throws FileNotFoundException {
+    public ZipWriter(Uri uri, Context cntx) throws FileNotFoundException {
         zip = new ZipOutputStream(cntx.getContentResolver().openOutputStream(uri));
+    }
+
+    public void setComment(String comment) {
         zip.setComment(comment);
     }
 
