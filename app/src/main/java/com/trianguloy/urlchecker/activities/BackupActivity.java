@@ -15,6 +15,7 @@ import android.provider.DocumentsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -56,6 +57,9 @@ public class BackupActivity extends Activity {
     private Switch chk_cache;
     private Switch chk_delete;
     private Switch chk_ignoreNewer;
+    private Button btn_backup;
+    private Button btn_restore;
+    private Button btn_delete;
     private SharedPreferences prefs;
 
     /* ------------------- activity ------------------- */
@@ -77,6 +81,9 @@ public class BackupActivity extends Activity {
         chk_cache = findViewById(R.id.chk_cache);
         chk_delete = findViewById(R.id.chk_delete);
         chk_ignoreNewer = findViewById(R.id.chk_ignoreNewer);
+        btn_backup = findViewById(R.id.btn_backup);
+        btn_restore = findViewById(R.id.btn_restore);
+        btn_delete = findViewById(R.id.btn_delete);
 
         // if this app was reloaded, some settings may have changed, so reload previous one too
         if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
@@ -86,6 +93,17 @@ public class BackupActivity extends Activity {
             chk_data_prefs.setChecked(checked);
             chk_data_files.setChecked(checked);
         });
+
+        // sync button enabled status
+        var chks = List.of(chk_cache, chk_secrets, chk_data_files, chk_data_prefs);
+        for (var chk : chks)
+            chk.setOnCheckedChangeListener((b, c) -> {
+                var enabled = false;
+                for (var chkk : chks) if (chkk.isChecked()) enabled = true;
+                btn_backup.setEnabled(enabled);
+                btn_restore.setEnabled(enabled);
+                btn_delete.setEnabled(enabled);
+            });
 
         // restore advanced status
         if (getIntent().getBooleanExtra(ADVANCED_EXTRA, false)) {
@@ -103,6 +121,12 @@ public class BackupActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_backup, menu);
+
+        // restore advanced status
+        if (getIntent().getBooleanExtra(ADVANCED_EXTRA, false)) {
+            menu.findItem(R.id.menu_advanced).setVisible(false);
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -443,6 +467,6 @@ public class BackupActivity extends Activity {
         chk_data_files.setVisibility(View.VISIBLE);
         chk_delete.setVisibility(View.VISIBLE);
         chk_ignoreNewer.setVisibility(View.VISIBLE);
-        findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
+        btn_delete.setVisibility(View.VISIBLE);
     }
 }

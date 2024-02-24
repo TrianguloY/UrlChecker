@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.companions;
 
-import android.app.AlertDialog;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.BuildConfig;
@@ -8,11 +7,9 @@ import com.trianguloy.urlchecker.activities.TutorialActivity;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * Manages the app version, to notify of updates
