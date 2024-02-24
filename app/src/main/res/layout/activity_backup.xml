@@ -111,6 +111,16 @@
             android:visibility="gone"
             tools:visibility="visible" />
 
+        <Switch
+            android:id="@+id/chk_ignoreNewer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="@dimen/smallPadding"
+            android:text="@string/bck_ignoreNewer"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
     </LinearLayout>
 
 </ScrollView>

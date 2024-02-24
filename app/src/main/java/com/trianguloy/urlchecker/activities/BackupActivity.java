@@ -22,6 +22,7 @@ import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.modules.companions.Hosts;
+import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.modules.list.LogModule;
 import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
@@ -54,6 +55,7 @@ public class BackupActivity extends Activity {
     private Switch chk_secrets;
     private Switch chk_cache;
     private Switch chk_delete;
+    private Switch chk_ignoreNewer;
     private SharedPreferences prefs;
 
     /* ------------------- activity ------------------- */
@@ -74,6 +76,7 @@ public class BackupActivity extends Activity {
         chk_secrets = findViewById(R.id.chk_secrets);
         chk_cache = findViewById(R.id.chk_cache);
         chk_delete = findViewById(R.id.chk_delete);
+        chk_ignoreNewer = findViewById(R.id.chk_ignoreNewer);
 
         // if this app was reloaded, some settings may have changed, so reload previous one too
         if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
@@ -153,7 +156,7 @@ public class BackupActivity extends Activity {
                 // version
                 progress.setMessage("Adding version");
                 progress.increaseProgress();
-                zip.addStringFile("version", BuildConfig.VERSION_NAME);
+                zip.addStringFile(FILE_VERSION, BuildConfig.VERSION_NAME);
 
                 // readme
                 progress.setMessage("Adding readme");
@@ -240,6 +243,12 @@ public class BackupActivity extends Activity {
             progress.setMax(5);
             progress.setMessage("Loading backup");
             try (var zip = new ZipReader(uri, this)) {
+
+                // check version
+                if (!chk_ignoreNewer.isChecked() && VersionManager.isNewerThanCurrent(zip.getFileString(FILE_VERSION))) {
+                    runOnUiThread(() -> Toast.makeText(this, R.string.bck_newer, Toast.LENGTH_LONG).show());
+                    return;
+                }
 
                 // rest of preferences
                 progress.setMessage("Restoring preferences");
@@ -383,6 +392,7 @@ public class BackupActivity extends Activity {
 
     /* ------------------- common ------------------- */
 
+    private static final String FILE_VERSION = "version";
     private static final String FILE_PREFERENCES = "preferences";
     private static final String FILE_SECRETS = "secrets";
     private static final String FILES_FOLDER = "files/";
@@ -432,6 +442,7 @@ public class BackupActivity extends Activity {
         chk_data_prefs.setVisibility(View.VISIBLE);
         chk_data_files.setVisibility(View.VISIBLE);
         chk_delete.setVisibility(View.VISIBLE);
+        chk_ignoreNewer.setVisibility(View.VISIBLE);
         findViewById(R.id.btn_delete).setVisibility(View.VISIBLE);
     }
 }
