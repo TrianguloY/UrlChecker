@@ -210,7 +210,7 @@
     <string name="mFlags_name">Editor de marcadores</string>
     <string name="mParts_empty">(vazio)</string>
     <string name="mParts_copy">Parte copiada para área de transferência</string>
-    <string name="mStatus_desc">Ao pressionar o botão de verificação, uma petição será feita para consultar e exibir o código de status do site. Se o resultado for um redirecionamento, você poderá visualizar a URL de destino. O conteúdo da URL é obtido (GET), mas não avaliado, portanto redirecionamentos baseados em JavaScript não serão detectados.</string>
+    <string name="mStatus_desc">Ao pressionar o botão de verificação, uma solicitação de rede será feita para consultar e exibir o código de status do site. Se o resultado for um redirecionamento, você poderá visualizar a URL de destino. O conteúdo da URL é obtido (GET), mas não avaliado, portanto redirecionamentos baseados em JavaScript não serão detectados.</string>
     <string name="mClear_editor">Regras do catálogo: Devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
 \nObserve que qualquer modificação no objeto principal \'providers\' será substituída se o catálogo for atualizado, automaticamente ou manualmente. Portanto, crie suas regras pessoais eu um outro objeto (qualquer nome).</string>
     <string name="mHosts_info">Host:</string>
@@ -251,4 +251,11 @@
     <string name="mUnshort_tm">API gratuita de Unshorten.me</string>
     <string name="mHosts_buildDownload">Baixando \'%s\' hosts de %s…</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a URL: %s</string>
+    <string name="mClear_restore">Restaurar os caminhos do ClearURLs</string>
+    <string name="hidden">Oculto</string>
+    <string name="mOpen_noReferrer">Oculte o aplicativo de origem (referenciador)</string>
+    <string name="mPttrn_regexfix">Corrigir grupos regex opcionais (desative-os se o regex não estiver funcionando corretamente)</string>
+    <string name="mPttrn_wrongSchemaHttp">Esquema de capitalização http inválido.</string>
+    <string name="mPttrn_wrongSchemaHttps">Capitalização inválida do esquema https.</string>
+    <string name="dismiss">Descartar</string>
 </resources>

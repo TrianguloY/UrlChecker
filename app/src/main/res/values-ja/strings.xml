@@ -10,7 +10,7 @@
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">日本語</string>
     <!-- main -->
-    <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認・設定することができます。</string>
+    <string name="txt_info">このアプリは、クリックされた URL リンクを開く際の仲介として機能します。 このアプリを選択して開くと、リンクに関する情報を含むダイアログが表示されます。 下のモジュール ボタンを押して、利用可能なすべてのモジュールを確認して設定します。</string>
     <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>
     <string name="a_modules">モジュール</string>
     <string name="a_settings">設定</string>
@@ -36,8 +36,8 @@
     <!-- settings -->
     <string name="txt_openLinks">このアプリで外部リンクを開くように設定してください。\n設定方法は、Androidのバージョンによって異なります。\n以下の設定をお試しください。</string>
     <string name="btn_setBrowser">デフォルトのアプリとして設定する</string>
-    <string name="toast_defaultSet">このアプリはデフォルトブラウザに設定されています</string>
-    <string name="btn_configureBrowser">デフォルトのブラウザアプリ</string>
+    <string name="toast_defaultSet">アプリがデフォルトの Web ブラウザーになりました</string>
+    <string name="btn_configureBrowser">デフォルトの Web ブラウザアプリ</string>
     <string name="btn_linksSettings">対応リンクの設定</string>
     <string name="btn_androidSettings">Androidのアプリ設定</string>
     <string name="txt_theme">テーマ:</string>
@@ -46,7 +46,7 @@
     <string name="txt_locale">言語:</string>
     <!-- generic -->
     <string name="toast_noApp">アプリを開けません</string>
-    <string name="toast_noBrowser">ブラウザを開けません</string>
+    <string name="toast_noBrowser">Web ブラウザを開けません</string>
     <string name="title_choose">アプリを選択</string>
     <string name="toast_invalid">無効です</string>
     <string name="save">保存</string>
@@ -229,4 +229,13 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mHosts_buildDownload">"%s個のホストを %s からダウンロード中…"</string>
     <string name="mHosts_buildSave">保存中…</string>
     <string name="mHosts_built">データベースが作成されました: %d個のホスト</string>
+    <string name="tutorial">チュートリアル</string>
+    <string name="btn_tutorialSettings">チュートリアルを繰り返す</string>
+    <string name="btn_tutorialSkip">チュートリアルをスキップする</string>
+    <string name="btn_tutorialEnd">チュートリアルを終了する</string>
+    <string name="none">なし</string>
+    <string name="back">戻る</string>
+    <string name="next">次に</string>
+    <string name="hidden">隠れた</string>
+    <string name="shortcut_checkClipboard">クリップボードから URL を確認する</string>
 </resources>
