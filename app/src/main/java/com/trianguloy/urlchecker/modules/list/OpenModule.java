@@ -19,7 +19,9 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -251,12 +253,26 @@ class OpenDialog extends AModuleDialog {
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
 
+        var urlNeedsHelp = incogCompat == HelperManager.Compatibility.urlNeedsHelp;
+
+        // Store before opening? So we are still in foreground
+        UrlHelper urlHelper = null;
+        if (urlNeedsHelp){
+            urlHelper = HelperManager.getHelper(HelperManager.Autonomy.semiauto, HelperManager.Type.bubble);
+            var borrowsClipboard = HelperManager.clipboardSet.contains(urlHelper.getType());
+            if (borrowsClipboard){
+                ClipboardBorrower.borrow(getActivity(), getUrl());
+            }
+        }
+
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
-        if (incogCompat == UrlHelper.compatibility.urlNeedsHelp){
-            var helper = UrlHelper.autoClipboard.getHelper();
-            helper.accept(getActivity(), getUrl());
+        // TODO: check if package did open or not. Can be easily reproduced just install brave,
+        //      do not open the app, and try to open incognito activity. Because it hasn't been
+        //      properly configured yet, it will not open.
+        if (urlNeedsHelp) {
+            urlHelper.getFunction().accept(getActivity(), getUrl());
         }
 
         // finish activity

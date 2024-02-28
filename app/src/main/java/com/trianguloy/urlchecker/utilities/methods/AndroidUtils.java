@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -13,6 +12,8 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -24,7 +25,6 @@ import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -141,7 +141,10 @@ public interface AndroidUtils {
      */
     static void copyToClipboard(Activity activity, String toast, String text) {
         ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return;
+        if (clipboard == null) {
+            Toast.makeText(activity, "TODO: copyToClipboard failed", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         clipboard.setPrimaryClip(ClipData.newPlainText("", text));
 
@@ -162,7 +165,10 @@ public interface AndroidUtils {
      */
     static ClipData getPrimaryClip(Context context, String toast) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return null;
+        if (clipboard == null) {
+            safeToast(context, "TODO: getSystemService failed", Toast.LENGTH_LONG);
+            return null;
+        }
 
         // NOTE: according to https://stackoverflow.com/a/38965870
         //  if the clipboard is empty, it will return null, however there is no mention of this in
@@ -170,10 +176,14 @@ public interface AndroidUtils {
         //  If there is a way to know it is empty for sure we should instead return ClipData.newPlainText("", "")
         //  or similar. We want to keep null for cases in which we cannot access the clipboard
         ClipData res = clipboard.getPrimaryClip();
-
-        // show toast to notify it was read (except on Android 13+, where the device shows a popup itself)
-        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
-            Toast.makeText(context, toast, Toast.LENGTH_LONG).show();
+        if (res != null) {
+            // show toast to notify it was read (except on Android 13+, where the device shows a popup itself)
+            if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+                safeToast(context, toast, Toast.LENGTH_LONG);
+        } else {
+            // FIXME: does android show toast on failed read?
+            safeToast(context, "TODO: getPrimaryClip failed", Toast.LENGTH_LONG);
+        }
         return res;
     }
 
@@ -189,13 +199,25 @@ public interface AndroidUtils {
      */
     static void setPrimaryClip(Context context, String toast, ClipData clipData) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) return;
+        if (clipboard == null) {
+            safeToast(context, "TODO: setPrimaryClip failed", Toast.LENGTH_LONG);
+            return;
+        }
 
         clipboard.setPrimaryClip(clipData);
 
         // show toast to notify it was read (except on Android 13+, where the device shows a popup itself)
         if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
-            Toast.makeText(context, toast, Toast.LENGTH_LONG).show();
+            safeToast(context, toast, Toast.LENGTH_LONG);
+    }
+
+    /**
+     * Checks if the clipboard can be used at this moment. For android 10+ that means the app is
+     * focused or has a special permission granted via ADB (READ_CLIPBOARD_IN_BACKGROUND).
+     */
+    static boolean canUseClip(Context context) {
+        // FIXME: find a better way, this creates an unnecessary toast
+        return AndroidUtils.getPrimaryClip(context, "TODO: canUseClip - TRUE") != null;
     }
 
     /**
@@ -311,4 +333,45 @@ public interface AndroidUtils {
         return activities;
     }
 
+    /**
+     * Just {@link #safeToast(Context, int, int)} but retrieves string from id
+     */
+    static void safeToast(Context context, int resId, int duration) {
+        safeToast(context, context.getString(resId), duration);
+    }
+
+    /**
+     * A way to show {@link Toast#makeText(Context, CharSequence, int)} if unsure wether this is the
+     * UI thread
+     */
+    static void safeToast(Context context, String text, int duration) {
+        runOnUiThread(() -> {
+            Toast.makeText(context, text, duration).show();
+        });
+    }
+
+    /**
+     * @return Wether it was called from an UI thread
+     */
+    static boolean isUiThread() {
+        return Looper.getMainLooper().getThread() == Thread.currentThread();
+    }
+
+    /**
+     * To be used when uncertain if this is the UI thread. If it is the UI thread, it runs
+     * immediately, if not, it is added to the message queue of the UI thread via
+     * {@link Handler#post(Runnable)}.
+     *
+     * @param run A runnable which will be ran on the UI thread
+     * @return Wether it was called from an UI thread
+     */
+    static boolean runOnUiThread(Runnable run) {
+        var isUiThread = isUiThread();
+        if (isUiThread) {
+            run.run();
+        } else {
+            new Handler(Looper.getMainLooper()).post(run);
+        }
+        return isUiThread;
+    }
 }

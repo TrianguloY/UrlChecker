@@ -1,8 +1,8 @@
 package com.trianguloy.urlchecker.modules.companions;
 
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper.compatibility.compatible;
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper.compatibility.notCompatible;
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper.compatibility.urlNeedsHelp;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.compatible;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.notCompatible;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.urlNeedsHelp;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
@@ -190,7 +190,8 @@ public class Incognito {
     /**
      * applies the setting to a given intent
      */
-    public UrlHelper.compatibility apply(Context context, Intent intent) {
+    public HelperManager.Compatibility apply(Context context, Intent intent) {
+        // FIXME: ctabs compatibility
         removeIncognito(intent);
         if (state) {
             for (var entry : findPackage.entrySet()) {
