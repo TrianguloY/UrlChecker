@@ -77,6 +77,7 @@ public class ShortcutsActivity extends Activity {
         switch (links.size()) {
             case 0:
                 // no links, notify
+                // FIXME: Move string to resources
                 Toast.makeText(this, "No links detected", Toast.LENGTH_SHORT).show();
                 finish();
                 break;

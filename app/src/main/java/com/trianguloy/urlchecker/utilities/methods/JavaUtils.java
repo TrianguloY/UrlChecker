@@ -123,11 +123,27 @@ public interface JavaUtils {
     }
 
     /**
+     * java.util.function.Consumer requires api 24
+     */
+    @FunctionalInterface
+    interface BiConsumer<T,U> {
+        void accept(T t, U u);
+    }
+
+    /**
      * java.util.function.Function requires api 24
      */
     @FunctionalInterface
     interface Function<T, R> {
         R apply(T t);
+    }
+
+    /**
+     * java.util.function.BiFunction requires api 24
+     */
+    @FunctionalInterface
+    interface BiFunction<T,U, R>{
+        R apply(T t, U u);
     }
 
     /**
