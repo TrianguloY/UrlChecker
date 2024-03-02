@@ -13,7 +13,7 @@ Die App ist modular aufgebaut, Sie können einzelne Module aktivieren/deaktivier
 
 * Protokoll: Führt ein Protokoll über alle geprüften URLs, die Sie anzeigen, bearbeiten, kopieren und löschen können.
 
-* Status Code: Durch Drücken einer Schaltfläche, wird versucht, diese URL abzurufen, und der Statuscode wird angezeigt (ok, Serverfehler, nicht gefunden...). Wenn es sich um eine Weiterleitung handelt, können Sie die neue URL wählen. Die URL wird abgerufen, aber Inhalt nicht ausgewertet, sodass Umleitungen, die auf JavaScript basieren, nicht erkannt werden können.
+* Status Code: Durch Drücken einer Schaltfläche wird die URL abgefragt und der Statuscode angezeigt (OK, Serverfehler, nicht gefunden, ...). Wenn es sich um eine Weiterleitung handelt, können Sie die neue URL wählen. Die URL wird abgerufen, aber Inhalt nicht ausgewertet, sodass Umleitungen, die auf JavaScript basieren, nicht erkannt werden können.
 
 * URL-Scanner: Ermöglicht es, die URL mit VirusTotal zu scannen und den Bericht zu überprüfen. Ein kostenloser persönlicher VirusTotal-API-Schlüssel ist für die Funktion erforderlich. VirusTotal™ ist eine Marke von Google, Inc.
 
