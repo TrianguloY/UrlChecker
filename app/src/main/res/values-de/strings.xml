@@ -178,7 +178,7 @@
     <string name="mHosts_gambling">Glücksspiel</string>
     <string name="mHosts_adult">Inhalte für Erwachsene</string>
     <string name="mHosts_build">Erstellen</string>
-    <string name="mHosts_uninitialized">Hosts Datenbank nicht initialisiert. Tippen zum erstellen</string>
+    <string name="mHosts_uninitialized">Hosts-Datenbank nicht initialisiert. Tippen zum erstellen</string>
     <string name="mHosts_buildTitle">Host-Datenbank erstellen</string>
     <string name="mHosts_buildDesc">Dies wird die aktuelle Host-Datenbank löschen und neu erstellen mit der aktuellen Konfiguration und ggf. Hosts-Dateien aus dem Internet laden. Diese Aktion könnte einige Sekunden dauern. Fortfahren\?</string>
     <string name="mHosts_buildProgress">Erstelle Katalog</string>
@@ -275,4 +275,35 @@
     <string name="mChg_current">Aktuelle Version: %s</string>
     <string name="mChg_view">Änderungen ansehen</string>
     <string name="mPttrn_wrongSchemaHttps">Ungültige Großschreibung des https-Schemas.</string>
+    <string name="btn_backupRestore">Backup und Wiederherstellung</string>
+    <string name="bck_mn_advanced">Erweiterte Optionen anzeigen</string>
+    <string name="btn_replace">Ersetzen</string>
+    <string name="bkp_data">Daten: Standarddaten der App, z. B. aktivierte Module, JSON-Konfigurationen, etc. Enthält keine geheimen Informationen oder den Cache.</string>
+    <string name="bkp_data_prefs">Einstellungen</string>
+    <string name="bkp_data_files">Dateien</string>
+    <string name="bck_ignoreNewer">Backups aus neueren Versionen der App zulassen</string>
+    <string name="bck_newer">Abgebrochen. Das Backup wurde mit einer neueren App-Version erstellt.</string>
+    <string name="bck_chooseFile">Wählen Sie eine Backup-Datei</string>
+    <string name="bck_backupOk">Backup erstellt</string>
+    <string name="bck_backupError">Backup nicht erfolgreich, versuchen Sie einen anderen Speicherort für die Datei.</string>
+    <string name="bck_restoreTitle">Backup wiederherstellen</string>
+    <string name="bck_restoreConfirm">Elemente ersetzen</string>
+    <string name="bck_restoreError">Wiederherstellung nicht erfolgreich. Ist dies eine valide Backup-Datei?</string>
+    <string name="bck_deleteTitle">Elemente löschen</string>
+    <string name="bck_deleteConfirm">Elemente löschen</string>
+    <string name="bck_deleteOk">Elemente gelöscht</string>
+    <string name="bck_deleteError">Löschen nicht erfolgreich</string>
+    <string name="btn_backup">Backup</string>
+    <string name="btn_restore">Wiederherstellen</string>
+    <string name="btn_delete">Löschen</string>
+    <string name="bck_restoreDelete">Aktuelle Elemente vor der Wiederherstellung löschen. Beachten Sie, dass manche Einstellungen und Dateien mit Standardwerten nicht existieren könnten, sodass ohne diese Option existierende Elemente mit denen des Backups in unvorhersehbarer Weise zusammengeführt werden könnten. Deaktivieren Sie diese Option nur, wenn Sie verstehen, was Sie tun.</string>
+    <string name="bkp_description">Wählen Sie die Elemente zur Sicherung/Wiederherstellung.
+\nEs werden nur die im Backup enthaltenen Elemente wiederhergestellt, andere bleiben unverändert.</string>
+    <string name="bjp_cache">Cache: Daten, die einfach heruntergeladen/generiert werden können, wie die Hosts-Datenbank. Diese Option kann die Backupgröße deutlich erhöhen.</string>
+    <string name="bkp_secrets">Geheimnisse: Vertrauliche Daten, wie der VirusTotal-API-Key oder Logs</string>
+    <string name="bck_restoreMessage">WARNUNG! Dies wird die ausgewählten Elemente aus dem Backup wiederherstellen und ersetzen.
+\nMöchten Sie wirklich fortfahren?</string>
+    <string name="bck_restoreOk">Backup wiederhergestellt</string>
+    <string name="bck_deleteMessage">WARNUNG! Dies wird die ausgewählten Elemente aus den Einstellungen löschen.
+\nMöchten Sie wirklich fortfahren?</string>
 </resources>
