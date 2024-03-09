@@ -49,6 +49,10 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_noReferrer", false, cntx);
     }
 
+    public static GenericPref.Bool REJECTED_PREF(Context cntx) {
+        return new GenericPref.Bool("open_rejected", true, cntx);
+    }
+
     public static GenericPref.Bool MERGECOPY_PREF(Context cntx) {
         return new GenericPref.Bool("open_mergeCopy", false, cntx);
     }
@@ -80,6 +84,7 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool closeSharePref;
     private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
+    private final GenericPref.Bool rejectedPref;
     private final GenericPref.Bool mergeCopyPref;
 
     private final LastOpened lastOpened;
@@ -104,6 +109,7 @@ class OpenDialog extends AModuleDialog {
         closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
         closeCopyPref = OpenModule.CLOSECOPY_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
+        rejectedPref = OpenModule.REJECTED_PREF(dialog);
         mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
     }
 
@@ -176,9 +182,11 @@ class OpenDialog extends AModuleDialog {
             packages.remove(AndroidUtils.getReferrer(getActivity()));
         }
 
-        // remove rejected
+        // remove rejected if desired (and is not a non-view action, like share)
         // note: this will be called each time, so a rejected package will not be rejected again if the user changes the url and goes back. This is expected
-        packages.remove(rejectionDetector.getPrevious(url));
+        if (rejectedPref.get() && Intent.ACTION_VIEW.equals(getActivity().getIntent().getAction())) {
+            packages.remove(rejectionDetector.getPrevious(url));
+        }
 
         // check no apps
         if (packages.isEmpty()) {
@@ -316,6 +324,7 @@ class OpenConfig extends AModuleConfig {
         OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
         OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));
         OpenModule.NOREFERRER_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.noReferrer));
+        OpenModule.REJECTED_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.rejected));
         LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
         OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
     }

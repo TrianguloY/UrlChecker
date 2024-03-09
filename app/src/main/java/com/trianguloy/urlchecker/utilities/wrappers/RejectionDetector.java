@@ -1,8 +1,9 @@
 package com.trianguloy.urlchecker.utilities.wrappers;
 
-import android.content.Context;
+import android.app.Activity;
 
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +17,11 @@ public class RejectionDetector {
 
     private static final int TIMEFRAME = 5000;
     private final GenericPref.LstStr rejectLast; // [openedTimeMillis, package, url]
+    private final Activity cntx;
 
-    public RejectionDetector(Context cntx) {
+    public RejectionDetector(Activity cntx) {
         rejectLast = new GenericPref.LstStr("reject_last", "\n", 3, Collections.emptyList(), cntx);
+        this.cntx = cntx;
     }
 
     /**
@@ -29,16 +32,23 @@ public class RejectionDetector {
     }
 
     /**
-     * returns the last package that opened the url if it happened in a short amount of time, null otherwise
+     * returns the last package that opened the url if
+     * - it happened in a short amount of time
+     * - (and) the url is the same
+     * - (and) the referrer app is the same
+     * null otherwise
      */
     public String getPrevious(String url) {
+
         try {
             var data = rejectLast.get();
 
-            // return the saved package if the time is less than the timeframe and the url is the same
             return !data.isEmpty()
+                    // checks
                     && System.currentTimeMillis() - Long.parseLong(data.get(0)) < TIMEFRAME
                     && Objects.equals(data.get(2), url)
+                    && Objects.equals(AndroidUtils.getReferrer(cntx), data.get(1))
+
                     ? data.get(1)
                     : null;
         } catch (Exception ignore) {
