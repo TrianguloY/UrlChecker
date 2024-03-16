@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
@@ -16,6 +15,7 @@ import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.DoubleEvent;
+import com.trianguloy.urlchecker.utilities.wrappers.FixedViewFlipper;
 
 import java.util.Locale;
 
@@ -26,7 +26,7 @@ public class TutorialActivity extends Activity {
     private Button prevButton;
     private Button nextButton;
     private GenericPref.Bool tutorialDone;
-    private ViewFlipper flipper;
+    private FixedViewFlipper flipper;
     private TextView pageIndexText;
 
     public static GenericPref.Bool DONE(Context cntx) {
@@ -43,7 +43,7 @@ public class TutorialActivity extends Activity {
 
         tutorialDone = DONE(this);
 
-        flipper = findViewById(R.id.flipper);
+        flipper = new FixedViewFlipper(findViewById(R.id.flipper));
         prevButton = findViewById(R.id.bBack);
         nextButton = findViewById(R.id.bNext);
         pageIndexText = findViewById(R.id.pageIndex);
