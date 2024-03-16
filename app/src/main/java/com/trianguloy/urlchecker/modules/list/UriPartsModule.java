@@ -78,6 +78,7 @@ class UriPartsDialog extends AModuleDialog {
         // the default parseUrl doesn't remove the fragment
         if (uri.getQuery() != null) {
             urlQuerySanitizer.setAllowUnregisteredParamaters(true);
+            urlQuerySanitizer.setUnregisteredParameterValueSanitizer(v -> v);
             urlQuerySanitizer.parseQuery(uri.getQuery());
         }
 
