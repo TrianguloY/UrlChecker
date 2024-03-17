@@ -100,7 +100,7 @@ public class ModulesActivity extends Activity {
         // inflate
         View parent = Inflater.inflate(R.layout.config_module, list);
         parent.setTag(module.getId());
-        Animations.enableAnimations(parent);
+        Animations.enableAnimationsRecursively(parent); // instead of full activity to avoid 'replacing' when reordering
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);

@@ -52,6 +52,7 @@ Traducciones: %s."</string>
     <string name="spin_darkTheme">Oscuro</string>
     <string name="spin_lightTheme">Claro</string>
     <string name="txt_locale">Idioma:</string>
+    <string name="txt_animation">Activar animaciones</string>
     <!--
         generic
     -->

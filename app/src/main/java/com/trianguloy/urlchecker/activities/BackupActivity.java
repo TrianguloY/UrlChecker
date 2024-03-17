@@ -29,6 +29,7 @@ import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
@@ -72,6 +73,8 @@ public class BackupActivity extends Activity {
         setContentView(R.layout.activity_backup);
         setTitle(R.string.btn_backupRestore);
         AndroidUtils.configureUp(this);
+
+        Animations.enableAnimationsRecursively(this);
 
         prefs = GenericPref.getPrefs(this);
         chk_data = findViewById(R.id.chk_data);

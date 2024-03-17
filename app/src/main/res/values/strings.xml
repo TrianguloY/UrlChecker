@@ -52,6 +52,7 @@ Translations: %s."</string>
     <string name="spin_darkTheme">Dark</string>
     <string name="spin_lightTheme">Light</string>
     <string name="txt_locale">Locale:</string>
+    <string name="txt_animation">Enable animations</string>
     <string name="btn_tutorialSettings">Repeat tutorial</string>
     <string name="btn_backupRestore">Backup / Restore</string>
     <!--
