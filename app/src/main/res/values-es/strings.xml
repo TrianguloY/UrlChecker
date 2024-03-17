@@ -91,6 +91,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="share">Compartir</string>
     <string name="canceled">Cancelado</string>
     <string name="deviceDefault">Por defecto del dispositivo</string>
+    <string name="noLinks">No se han detectado enlaces</string>
     <!--
         json
     -->
