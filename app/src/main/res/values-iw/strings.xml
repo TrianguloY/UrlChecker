@@ -21,7 +21,7 @@
     <string name="link_blog">"הבלוג של TrianguloY"</string>
     <!-- configuration -->
     <string name="txt_conf">רשימת מודולים: אתה יכול להפעיל או לבטל אותם, גם לבדוק את התיאור והתצורה שלו.</string>
-    <string name="toast_cantEnable">"לא ניתן להפעיל את המודול, חסרה תצורה?"</string>
+    <string name="toast_cantEnable">"לא ניתן להפעיל את המודול: %s"</string>
     <string name="menu_resetOrder">אפס סדר</string>
     <!-- generic -->
     <string name="toast_noApp">"לא ניתן לפתוח את האפליקציה"</string>

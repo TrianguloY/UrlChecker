@@ -68,9 +68,9 @@ class VirusTotalConfig extends AModuleConfig {
     }
 
     @Override
-    public boolean canBeEnabled() {
+    public int cannotEnableErrorId() {
         final String key = api_key.get();
-        return key != null && !key.isEmpty();
+        return key != null && !key.isEmpty() ? -1 : R.string.mVT_noKey;
     }
 
     @Override
@@ -86,7 +86,7 @@ class VirusTotalConfig extends AModuleConfig {
             @Override
             public void afterTextChanged(Editable s) {
                 api_key.set(s.toString());
-                if (!canBeEnabled()) disable();
+                if (cannotEnableErrorId() != -1) disable();
             }
         });
     }

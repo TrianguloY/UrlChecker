@@ -63,7 +63,7 @@
     <string name="mLog_view">Visualizar log</string>
     <string name="mClear_updateNow">Atualizar agora</string>
     <string name="mClear_lastCheck">Última verificação:</string>
-    <string name="toast_cantEnable">Não foi possível habilitar o módulo, configuração faltando\?</string>
+    <string name="toast_cantEnable">Não foi possível habilitar o módulo: %s</string>
     <string name="txt_theme">Tema:</string>
     <string name="spin_darkTheme">Escuro</string>
     <string name="spin_lightTheme">Claro</string>

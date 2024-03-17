@@ -26,7 +26,7 @@ Traduzioni: %s."</string>
     <string name="link_privacy">Informativa sulla privacy</string>
     <!-- modules -->
     <string name="txt_conf">Qui puoi vedere tutti i moduli disponibili, la loro descrizione, ed impostazioni. Puoi anche re-ordinarli, ed abilitarli o disabilitarli.</string>
-    <string name="toast_cantEnable">"Impossibile abilitare il modulo, configurazione mancante?"</string>
+    <string name="toast_cantEnable">Impossibile abilitare il modulo: %s</string>
     <string name="menu_resetOrder">Ripristina ordine</string>
     <string name="menu_toggleDecorations">Inverti tutti</string>
     <string name="desc_up">Muovi su</string>

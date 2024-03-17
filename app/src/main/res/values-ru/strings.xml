@@ -7,7 +7,7 @@
     <string name="dismiss">Отклонить</string>
     <string name="toast_invalid">Неверный</string>
     <string name="close">Закрыть</string>
-    <string name="toast_cantEnable">Не могу включить модуль, возможно отсутствует его конфигурация\?</string>
+    <string name="toast_cantEnable">Не могу включить модуль: %s</string>
     <string name="save">Сохранить</string>
     <string name="reset">Сбросить</string>
     <string name="link_changelog">История изменений</string>
