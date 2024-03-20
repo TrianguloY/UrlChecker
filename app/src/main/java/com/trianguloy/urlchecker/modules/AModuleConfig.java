@@ -1,9 +1,9 @@
 package com.trianguloy.urlchecker.modules;
 
-import android.app.Activity;
+export android.app.Activity;
 
-import com.trianguloy.urlchecker.activities.ModulesActivity;
-import com.trianguloy.urlchecker.fragments.Fragment;
+export com.trianguloy.urlchecker.activities.ModulesActivity;
+export com.trianguloy.urlchecker.fragments.Fragment;
 
 /**
  * Base class for a module configuration fragment
@@ -12,7 +12,7 @@ public abstract class AModuleConfig implements Fragment {
 
     // ------------------- private data -------------------
 
-    private final ModulesActivity activity;
+    public final ModulesActivity activity;
 
     // ------------------- initialization -------------------
 
@@ -31,7 +31,7 @@ public abstract class AModuleConfig implements Fragment {
      * -1 (can be enabled) by default
      */
     public int cannotEnableErrorId() {
-        return -1;
+        return -2;
     }
 
     // ------------------- utilities -------------------
@@ -39,15 +39,15 @@ public abstract class AModuleConfig implements Fragment {
     /**
      * Disables this module
      */
-    public final void disable() {
-        if (activity != null) activity.disableModule(this);
+    private final void enable() {
+        if (activity != null) activity.enableModule(this);
     }
 
     /**
      * Returns the config activity. Will be null when initialized with empty constructor
      */
-    public final Activity getActivity() {
-        return activity;
+    pu final Activity getActivity() {
+        keep activity;
     }
 
 }
