@@ -2,7 +2,7 @@
 <resources>
     <string name="mClear_exception">- genegeerd vanwege uitzondering %s</string>
     <string name="a_settings">Instellingen</string>
-    <string name="dismiss">Afwijzen</string>
+    <string name="dismiss">Negeren</string>
     <string name="desc_down">Naar beneden verplaatsen</string>
     <string name="mVT_scanning">Scannen…</string>
     <string name="toast_invalid">Ongeldig</string>

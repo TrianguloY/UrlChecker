@@ -192,7 +192,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_closeCopy">Close dialog after copying</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
     <string name="mOpen_noReferrer">Hide the source app (referrer)</string>
-    <string name="mOpen_rejected">Hide app if rejected url (an app that immediately requested to open the same url it was opened with). Don\'t affect sharing</string>
+    <string name="mOpen_rejected">Hide app if URL was rejected (an app immediately requests to open the same URL it was opened with). Doesn\'t affect sharing.</string>
     <string name="mOpen_mergeCopy">Merge Copy and Share buttons (long press to copy)</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>

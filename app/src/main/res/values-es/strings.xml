@@ -86,7 +86,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="save">Guardar</string>
     <string name="reset">Reiniciar</string>
     <string name="close">Cerrar</string>
-    <string name="clear">Borrar</string>
+    <string name="clear">Limpiar</string>
     <string name="none">Nada</string>
     <string name="auto">Automático</string>
     <string name="share">Compartir</string>
@@ -145,7 +145,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
     <string name="mOpen_noReferrer">Ocultar la aplicación de origen (referrer)</string>
-    <string name="mOpen_rejected">Ocultar la aplicación si ha rechazado el enlace (aplicación que pide abrir inmediatamente el mismo enlace que se le pidió abrir). No afecta a compartir.</string>
+    <string name="mOpen_rejected">Ocultar la aplicación si se rechaza la URL (una aplicación solicita inmediatamente abrir la misma URL con la que se abrió). No afecta a la compartición.</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
@@ -344,7 +344,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="bck_mn_advanced">Mostrar opciones avanzadas</string>
     <string name="btn_backup">Hacer copia</string>
     <string name="btn_replace">Reemplazar</string>
-    <string name="btn_restore">Restaurar copia</string>
+    <string name="btn_restore">Restaurar</string>
     <string name="btn_delete">Borrar</string>
     <string name="bkp_description">Elige los elementos para hacer copia/restaurar.\nAl restaurar, si la copia se creó sin ellos, los existentes se mantendrán.</string>
     <string name="bkp_data">Ajustes: Ajustes generales de la aplicación. Por ejemplo módulos habilitados, configuración json, etc. No incluye secretos ni caché.</string>
@@ -358,7 +358,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="bck_chooseFile">Elige fichero de la copia</string>
     <string name="bck_backupOk">Copia de seguridad creada</string>
     <string name="bck_backupError">No se ha podido crear la copia, prueba a elegir otra ubicación para el fichero.</string>
-    <string name="bck_restoreTitle">Restaurar copia</string>
+    <string name="bck_restoreTitle">Restaurar copia de seguridad</string>
     <string name="bck_restoreMessage">¡CUIDADO! Esto va a reemplazar los elementos seleccionados con los de la copia de seguridad.\n¿Realmente deseas continuar?</string>
     <string name="bck_restoreConfirm">Reemplazar elementos</string>
     <string name="bck_restoreOk">Copia restaurada</string>
