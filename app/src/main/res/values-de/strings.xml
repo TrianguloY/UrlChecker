@@ -306,4 +306,8 @@
     <string name="bck_restoreOk">Backup wiederhergestellt</string>
     <string name="bck_deleteMessage">WARNUNG! Dies wird die ausgewählten Elemente aus den Einstellungen löschen.
 \nMöchten Sie wirklich fortfahren?</string>
+    <string name="txt_animation">Animationen aktivieren</string>
+    <string name="noLinks">Keine Links erkannt</string>
+    <string name="mVT_noKey">API-Key fehlt</string>
+    <string name="mOpen_rejected">App ausblenden, wenn URL abgelehnt wurde (eine App öffnet sofort dieselbe URL, mit der sie geöffnet wurde). Hat keinen Einfluss auf Teilen.</string>
 </resources>

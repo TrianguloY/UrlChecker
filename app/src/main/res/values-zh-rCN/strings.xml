@@ -339,4 +339,8 @@
     <string name="btn_restore">恢复</string>
     <string name="btn_delete">删除</string>
     <string name="bck_restoreDelete">恢复前删除元素。请注意，备份中可能缺少某些首选项或带默认值的文件，因此禁用此设置后，已有元素会与备份文件以预期外的方式合并。请在知道在做什么的情况下禁用。</string>
+    <string name="mOpen_rejected">若链接被拒则隐藏应用（立即请求再次打开同一链接的应用）。不影响分享功能。</string>
+    <string name="noLinks">未检测到链接</string>
+    <string name="txt_animation">启用动画</string>
+    <string name="mVT_noKey">缺少 API 密钥</string>
 </resources>
