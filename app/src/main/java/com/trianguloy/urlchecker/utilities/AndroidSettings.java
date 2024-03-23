@@ -3,13 +3,12 @@ package com.trianguloy.urlchecker.utilities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.util.Log;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 import java.util.ArrayList;
@@ -92,11 +91,7 @@ public interface AndroidSettings {
      * returns a specific string in a specific locale
      */
     static String getStringForLocale(int id, Locale locale, Context cntx) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return cntx.createConfigurationContext(getConfig(locale)).getString(id);
-        } else {
-            return new Resources(cntx.getAssets(), cntx.getResources().getDisplayMetrics(), getConfig(locale)).getString(id);
-        }
+        return cntx.createConfigurationContext(getConfig(locale)).getString(id);
     }
 
     /**
@@ -220,8 +215,8 @@ public interface AndroidSettings {
     /**
      * Registers an activity result to reload if the launched activity is marked as reloading using{@link AndroidSettings#markForReloading(Activity)}
      */
-    static int registerForReloading(ActivityResultInjector activityResultInjector, Activity cntx) {
-        return activityResultInjector.register((resultCode, data) -> {
+    static int registerForReloading(ResultCodeInjector resultCodeInjector, Activity cntx) {
+        return resultCodeInjector.registerActivityResult((resultCode, data) -> {
             if (resultCode == RELOAD_RESULT_CODE) {
                 AndroidSettings.reload(cntx);
             }
@@ -229,7 +224,7 @@ public interface AndroidSettings {
     }
 
     /**
-     * Makes the activity that launched this one to reload, if registered with {@link AndroidSettings#registerForReloading(ActivityResultInjector, Activity)}
+     * Makes the activity that launched this one to reload, if registered with {@link AndroidSettings#registerForReloading(ResultCodeInjector, Activity)}
      */
     static void markForReloading(Activity cntx) {
         cntx.setResult(RELOAD_RESULT_CODE);

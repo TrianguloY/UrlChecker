@@ -27,7 +27,7 @@
         configuration
     -->
     <string name="txt_conf">Ось усі доступні модулі, де ви можете глянути їх опис і налаштування. Ви також можете змінити порядок відображення, видимість та увімкнути/вимкнути кожен.</string>
-    <string name="toast_cantEnable">Неможливо активувати модуль, відсутня конфігурація\?</string>
+    <string name="toast_cantEnable">Неможливо активувати модуль: %s</string>
     <string name="menu_resetOrder">Відновити початковий порядок</string>
     <!--
         generic

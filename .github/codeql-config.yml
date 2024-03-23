@@ -1,0 +1,8 @@
+# exclude rules that I don't agree with
+query-filters:
+  - exclude:
+      # allow markdown lines to be as long as they need
+      id: markdownlint_MD013
+  - exclude:
+      # I like to 'group' logic inside classes, which means that sometimes fields are below other methods (fields1/methods1/fields2/methods2)
+      id: PMD_category_java_codestyle_FieldDeclarationsShouldBeAtStartOfClass

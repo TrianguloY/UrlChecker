@@ -1,3 +1,8 @@
+V 2.14
+- New: Backup/restore screen
+- Removed support for Android 4.3 and below
+- Updated internal versions
+
 V 2.13.1
 - New: Custom logic to hide rejected urls. Hide referrer is now disabled by default.
 - Fix: Third try to the 'open/share does nothing' bug.

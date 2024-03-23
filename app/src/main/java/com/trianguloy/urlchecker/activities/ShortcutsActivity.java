@@ -77,7 +77,7 @@ public class ShortcutsActivity extends Activity {
         switch (links.size()) {
             case 0:
                 // no links, notify
-                Toast.makeText(this, "No links detected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.noLinks, Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case 1:

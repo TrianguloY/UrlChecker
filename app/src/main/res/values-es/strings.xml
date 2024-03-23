@@ -32,7 +32,7 @@ Traducciones: %s."</string>
         modules
     -->
     <string name="txt_conf">Aquí se encuentran todos los módulos disponibles, con su descripción y configuración. También los puedes reordenar, mostrar/ocultar los títulos y activarlos o desactivarlos.</string>
-    <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
+    <string name="toast_cantEnable">No se puede habilitar el módulo: %s</string>
     <string name="menu_resetOrder">Reiniciar orden</string>
     <string name="menu_toggleDecorations">Alternar los títulos</string>
     <string name="desc_up">Subir</string>
@@ -52,6 +52,7 @@ Traducciones: %s."</string>
     <string name="spin_darkTheme">Oscuro</string>
     <string name="spin_lightTheme">Claro</string>
     <string name="txt_locale">Idioma:</string>
+    <string name="txt_animation">Activar animaciones</string>
     <!--
         generic
     -->
@@ -91,6 +92,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="share">Compartir</string>
     <string name="canceled">Cancelado</string>
     <string name="deviceDefault">Por defecto del dispositivo</string>
+    <string name="noLinks">No se han detectado enlaces</string>
     <!--
         json
     -->
@@ -143,6 +145,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
     <string name="mOpen_noReferrer">Ocultar la aplicación de origen (referrer)</string>
+    <string name="mOpen_rejected">Ocultar la aplicación si ha rechazado el enlace (aplicación que pide abrir inmediatamente el mismo enlace que se le pidió abrir). No afecta a compartir.</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
@@ -185,6 +188,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mVT_name">Escáneador de la URL</string>
     <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">Clave de la API</string>
+    <string name="mVT_noKey">Falta la clave de la API</string>
     <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
     <string name="mVT_scan">Escanear</string>
     <string name="mVT_cancel">Cancelar</string>
@@ -336,4 +340,32 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mChg_updated">La aplicación se ha actualizado.</string>
     <string name="mChg_current">Versión actual: %s</string>
     <string name="mChg_view">Ver los cambios</string>
+    <string name="btn_backupRestore">Copia de seguridad y restauración</string>
+    <string name="bck_mn_advanced">Mostrar opciones avanzadas</string>
+    <string name="btn_backup">Hacer copia</string>
+    <string name="btn_replace">Reemplazar</string>
+    <string name="btn_restore">Restaurar copia</string>
+    <string name="btn_delete">Borrar</string>
+    <string name="bkp_description">Elige los elementos para hacer copia/restaurar.\nAl restaurar, si la copia se creó sin ellos, los existentes se mantendrán.</string>
+    <string name="bkp_data">Ajustes: Ajustes generales de la aplicación. Por ejemplo módulos habilitados, configuración json, etc. No incluye secretos ni caché.</string>
+    <string name="bkp_data_prefs">Preferencias: Ajustes guardados como preferencias (preferences).</string>
+    <string name="bkp_data_files">Archivos: Ajustes guardados como ficheros.</string>
+    <string name="bkp_secrets">Secretos: Ajustes considerados \'secretos\', como la clave de VirusTotal o el registro (log).</string>
+    <string name="bjp_cache">Caché: Datos que pueden ser fácilmente descargados/generados, como la base de datos del etiquetador de hosts. Activar esta opción puede aumentar el tamaño de la copia notablemente.</string>
+    <string name="bck_restoreDelete">Borrar elementos antes de restaurar. Ten en cuenta que las preferencias y algunos ficheros con valores por defecto pueden no existir, con lo que deshabilitando esta opción combinarán los elementos existentes con los de la copia de formas inesperadas. Deshabilitalo sólo si sabes lo que estás haciendo.</string>
+    <string name="bck_ignoreNewer">Permitir copias creadas en versiones más recientes de la aplicación.</string>
+    <string name="bck_newer">Cancelado. La copia fue creada con una versión más reciente de la aplicación.</string>
+    <string name="bck_chooseFile">Elige fichero de la copia</string>
+    <string name="bck_backupOk">Copia de seguridad creada</string>
+    <string name="bck_backupError">No se ha podido crear la copia, prueba a elegir otra ubicación para el fichero.</string>
+    <string name="bck_restoreTitle">Restaurar copia</string>
+    <string name="bck_restoreMessage">¡CUIDADO! Esto va a reemplazar los elementos seleccionados con los de la copia de seguridad.\n¿Realmente deseas continuar?</string>
+    <string name="bck_restoreConfirm">Reemplazar elementos</string>
+    <string name="bck_restoreOk">Copia restaurada</string>
+    <string name="bck_restoreError">No se ha podido restaurar la copia. ¿Es un fichero válido?</string>
+    <string name="bck_deleteTitle">Borrar elementos</string>
+    <string name="bck_deleteMessage">¡CUIDADO! Esto borrará todos los elementos seleccionados.\n¿Realmente deseas continuar?</string>
+    <string name="bck_deleteConfirm">Borrar elementos</string>
+    <string name="bck_deleteOk">Elementos borrados</string>
+    <string name="bck_deleteError">No se han podido borrar los elementos</string>
 </resources>

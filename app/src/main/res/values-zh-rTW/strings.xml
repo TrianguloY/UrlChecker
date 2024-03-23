@@ -16,7 +16,7 @@
     <string name="link_blog">TrianguloY 的網誌</string>
     <string name="link_changelog">更新日誌</string>
     <string name="link_source">原始碼</string>
-    <string name="toast_cantEnable">無法啟用模組，未完整設定？</string>
+    <string name="toast_cantEnable">無法啟用模組: %s</string>
     <string name="menu_resetOrder">重設排序</string>
     <string name="menu_toggleDecorations">反轉標題顯示狀態</string>
     <string name="desc_up">上移</string>

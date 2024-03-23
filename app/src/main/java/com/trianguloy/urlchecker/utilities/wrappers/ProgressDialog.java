@@ -6,6 +6,7 @@ import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 /**
  * A wrapper around {@link android.app.ProgressDialog} with more useful functions
+ * TODO: allow to cancel
  */
 public class ProgressDialog extends android.app.ProgressDialog {
 
@@ -37,7 +38,13 @@ public class ProgressDialog extends android.app.ProgressDialog {
 
         // show & start
         show();
-        new Thread(() -> consumer.accept(this)).start();
+        new Thread(() -> {
+            try {
+                consumer.accept(this);
+            } finally {
+                dismiss();
+            }
+        }).start();
     }
 
     /**

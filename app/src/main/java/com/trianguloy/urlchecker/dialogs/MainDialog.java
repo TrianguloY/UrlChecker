@@ -24,6 +24,7 @@ import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 
 import java.util.ArrayList;
@@ -256,6 +257,8 @@ public class MainDialog extends Activity {
         if (ll_main.getChildCount() == 0) {
             ll_main.addView(egg()); // ;)
         }
+
+        Animations.enableAnimationsRecursively(this);
     }
 
     /**

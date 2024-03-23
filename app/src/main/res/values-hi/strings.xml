@@ -2,7 +2,7 @@
 <resources>
     <string name="a_settings">सेटिंग्स</string>
     <string name="desc_down">नीचे ले जाएँ</string>
-    <string name="toast_cantEnable">मॉड्यूल को सक्षम नहीं किया जा सकता, कॉन्फ़िगरेशन अनुपलब्ध है?</string>
+    <string name="toast_cantEnable">मॉड्यूल को सक्षम नहीं किया जा सकता: %s</string>
     <string name="a_about">बारे में</string>
     <string name="txt_conf">यहां सभी उपलब्ध मॉड्यूल हैं, जहां आप उनका विवरण और सेटिंग्स देख सकते हैं। आप इनको पुन: व्यवस्थित भी कर सकते हैं, शीर्षक दृश्यता को टॉगल कर सकते हैं और उन्हें सक्षम/अक्षम कर सकते हैं।</string>
     <string name="link_privacy">गोपनीयता नीति</string>

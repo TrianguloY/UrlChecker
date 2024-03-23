@@ -10,6 +10,11 @@ on:
     branches:
       - master
 
+# Cancel running actions if new commits are added
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 # parameters
 env:
   VARIANT: evaluation

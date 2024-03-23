@@ -1,28 +1,43 @@
 package com.trianguloy.urlchecker.utilities.methods;
 
 import android.animation.LayoutTransition;
-import android.os.Build;
+import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 
 /**
  * Animations-related functionality
  */
 public interface Animations {
+
+    static GenericPref.Bool ANIMATIONS(Context cntx) {
+        return new GenericPref.Bool("animations", true, cntx);
+    }
+
     /**
-     * Enables animations for a specific view
+     * Enables animations on all views from this activity
      */
-    static void enableAnimations(View view) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) return;
-        if (view instanceof ViewGroup) {
-            final LayoutTransition lt = ((ViewGroup) view).getLayoutTransition();
-            if (lt != null) {
-                lt.enableTransitionType(LayoutTransition.CHANGING);
-            } else {
-                AndroidUtils.assertError(view + " doesn't have a LayoutTransition");
-            }
-        } else {
-            AndroidUtils.assertError(view + " isn't a ViewGroup");
+    static void enableAnimationsRecursively(Activity cntx) {
+        if (ANIMATIONS(cntx).get()) enableAnimationsRecursively(cntx.findViewById(android.R.id.content));
+    }
+
+    /**
+     * Enables animations from all views starting from this parent
+     */
+    static void enableAnimationsRecursively(View parent) {
+        if (ANIMATIONS(parent.getContext()).get()) _enableAnimationsRecursively(parent);
+    }
+
+    static void _enableAnimationsRecursively(View view) {
+        if (view instanceof ViewGroup group) {
+            var lt = new LayoutTransition();
+            lt.enableTransitionType(LayoutTransition.CHANGING);
+            group.setLayoutTransition(lt);
+
+            for (var i = 0; i < group.getChildCount(); ++i) _enableAnimationsRecursively(group.getChildAt(i));
         }
     }
 }

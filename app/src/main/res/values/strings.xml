@@ -32,7 +32,7 @@ Translations: %s."</string>
         modules
     -->
     <string name="txt_conf">Here are all the available modules, where you can check their description and settings. You can also reorder, toggle the title visibility and enable/disable them.</string>
-    <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
+    <string name="toast_cantEnable">"Can't enable the module: %s"</string>
     <string name="menu_resetOrder">Reset order</string>
     <string name="menu_toggleDecorations">Toggle all titles</string>
     <string name="desc_up">Move up</string>
@@ -52,7 +52,42 @@ Translations: %s."</string>
     <string name="spin_darkTheme">Dark</string>
     <string name="spin_lightTheme">Light</string>
     <string name="txt_locale">Locale:</string>
+    <string name="txt_animation">Enable animations</string>
     <string name="btn_tutorialSettings">Repeat tutorial</string>
+    <string name="btn_backupRestore">Backup / Restore</string>
+    <!--
+        Backup / Restore
+    -->
+    <string name="bck_mn_advanced">Show advanced options</string>
+    <string name="btn_backup">Backup</string>
+    <string name="btn_replace">Replace</string>
+    <string name="btn_restore">Restore</string>
+    <string name="btn_delete">Delete</string>
+    <string name="bkp_description">"Choose which elements to backup/restore.
+When restoring, if the backup was created without it, existing ones will be kept."</string>
+    <string name="bkp_data">Data: Standard application data. Things like enabled modules, json configurations, etc. Will not include secrets nor cache.</string>
+    <string name="bkp_data_prefs">Preferences: Data saved as preferences.</string>
+    <string name="bkp_data_files">Files: Data saved as files.</string>
+    <string name="bkp_secrets">"Secrets: Data considered 'secret', like the VirusTotal api key or the log."</string>
+    <string name="bjp_cache">Cache: Data that can be easily downloaded/generated, like the hosts database. Enabling this option may increase the backup size notably.</string>
+    <string name="bck_restoreDelete">Delete elements before restoring. Note that preferences and some files with default values may not exist, so disabling this option will merge the existing elements with the backup ones in unexpected ways. Disable if you know what you are doing.</string>
+    <string name="bck_ignoreNewer">Allow backups created from newer app versions.</string>
+    <string name="bck_newer">Canceled. The backup was created with a newer app version.</string>
+    <string name="bck_chooseFile">Choose backup file</string>
+    <string name="bck_backupOk">Backup created</string>
+    <string name="bck_backupError">"Unable to create backup, try to choose a different location for the file."</string>
+    <string name="bck_restoreTitle">Restore backup</string>
+    <string name="bck_restoreMessage">"WARNING! This will replace the selected elements from the backup.
+Do you really want to continue?"</string>
+    <string name="bck_restoreConfirm">Replace elements</string>
+    <string name="bck_restoreOk">Backup restored</string>
+    <string name="bck_restoreError">Unable to restore the backup. Is it a valid file?</string>
+    <string name="bck_deleteTitle">Delete elements</string>
+    <string name="bck_deleteMessage">"WARNING! This will delete all the selected elements.
+Do you really want to continue?"</string>
+    <string name="bck_deleteConfirm">Delete elements</string>
+    <string name="bck_deleteOk">Elements deleted</string>
+    <string name="bck_deleteError">Unable to delete elements</string>
     <!--
         tutorial
     -->
@@ -103,6 +138,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="dismiss">Dismiss</string>
+    <string name="noLinks">No links detected</string>
     <!--
         json
     -->
@@ -156,6 +192,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_closeCopy">Close dialog after copying</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
     <string name="mOpen_noReferrer">Hide the source app (referrer)</string>
+    <string name="mOpen_rejected">Hide app if rejected url (an app that immediately requested to open the same url it was opened with). Don\'t affect sharing</string>
     <string name="mOpen_mergeCopy">Merge Copy and Share buttons (long press to copy)</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
@@ -200,6 +237,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mVT_name">URL Scanner</string>
     <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API key</string>
+    <string name="mVT_noKey">Missing API key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>
     <string name="mVT_cancel">Cancel</string>

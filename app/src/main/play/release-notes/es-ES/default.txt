@@ -1,3 +1,8 @@
+V 2.14
+- Nuevo: Copia de seguridad y restauración
+- Quitado soporte a Android 4.3 e inferior
+- Actualizadas versiones internas
+
 V 2.13.1
 - Nuevo: Lógica especial para ocultar enlaces rechazados. Ocultar origen se ha deshabilitado por defecto.
 - Arreglo: Tercer intento para arreglar el problema 'abrir/compartir no hace nada'.

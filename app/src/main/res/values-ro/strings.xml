@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="toast_cantEnable">Nu se poate activa modulul, lipsesc de configurare\?</string>
+    <string name="toast_cantEnable">Nu se poate activa modulul: %s</string>
     <string name="locale">Engleză</string>
     <string name="txt_info">Această aplicație acționează ca un intermediar la deschiderea linkurilor URL accesate. Când alegeți această aplicație pentru a deschide un link, este afișată o fereastră de dialog cu informații despre acesta. Apăsați butonul modul de mai jos pentru a verifica și configura toate modulele disponibile.</string>
     <string name="txt_sample">Apasă linkul de mai jos pentru a-l testa:</string>

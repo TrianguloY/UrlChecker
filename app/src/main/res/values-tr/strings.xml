@@ -32,7 +32,7 @@ Geliştiriciler: %s.
         configuration
     -->
     <string name="txt_conf">Bileşenlerin listesi: Bunları etkinleştirebilir veya devre dışı bırakabilir, ayrıca açıklamasını ve yapılandırmasını inceleyebilirsiniz.</string>
-    <string name="toast_cantEnable">Bileşen etkinleştirilemiyor, eksik yapılandırma olabilir mi?</string>
+    <string name="toast_cantEnable">Bileşen etkinleştirilemiyor: %s</string>
     <string name="menu_resetOrder">Düzeni Sıfırla</string>
     <string name="menu_toggleDecorations">Bütün başlıkları aç</string>
     <string name="desc_up">Yukarı taşı</string>

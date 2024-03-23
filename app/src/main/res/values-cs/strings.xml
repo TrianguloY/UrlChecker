@@ -14,7 +14,7 @@
     <string name="link_blog">Blog TrianguloY</string>
     <string name="link_source">Zdrojový kód</string>
     <string name="link_privacy">Ochrana osobních údajů</string>
-    <string name="toast_cantEnable">Nemohu povolit modul, je správně/vůbec nastaven\?</string>
+    <string name="toast_cantEnable">Nemohu povolit modul: %s</string>
     <string name="menu_resetOrder">Obnovit pořadí</string>
     <string name="menu_toggleDecorations">(Ne)zobrazovat všechny nadpisy</string>
     <string name="desc_up">Přesunout výše</string>
