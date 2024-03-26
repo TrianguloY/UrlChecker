@@ -10,10 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.trianguloy.urlchecker.R;
+//import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 import java.util.Objects;
@@ -27,7 +29,7 @@ public class SettingsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_settings);
         setTitle(R.string.a_settings);
         AndroidUtils.configureUp(this);
@@ -84,11 +86,11 @@ public class SettingsActivity extends Activity {
      */
     private void configureLocale() {
         // init
-        var pref = AndroidSettings.LOCALE_PREF(this);
+        var pref = LocaleUtils.LOCALE_PREF(this);
         var spinner = this.<Spinner>findViewById(R.id.locale);
 
         // populate available
-        var locales = AndroidSettings.getLocales(this);
+        var locales = LocaleUtils.getLocales(this);
         var adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,

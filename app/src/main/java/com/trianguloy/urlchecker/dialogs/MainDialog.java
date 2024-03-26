@@ -25,6 +25,7 @@ import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -186,7 +187,7 @@ public class MainDialog extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, true);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
         setFinishOnTouchOutside(true);

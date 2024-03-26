@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -93,18 +94,24 @@ public interface AndroidUtils {
     }
 
     /**
-     * Returns a formatted date/time from epoch milliseconds according to the context locale.
-     * If the date is invalid (negative), "---" is returned instead
+     *  Returns a formatted date/time from epoch milliseconds according to the context locale.
+     *  If the date is invalid (negative), "---" is returned instead
+     * @param millis
+     * @param cntx
+     * @return
      */
     static String formatMillis(long millis, Context cntx) {
         if (millis < 0) return "---";
 
-        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT,
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                        ? cntx.getResources().getConfiguration().getLocales().get(0)
-                        : cntx.getResources().getConfiguration().locale
-        ).format(new Date(millis));
+        Locale locale = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N ?
+                cntx.getResources().getConfiguration().getLocales().get(0) :
+                cntx.getResources().getConfiguration().locale;
+
+        DateFormat dateTimeInstance = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, locale);
+
+        return dateTimeInstance.format(new Date(millis));
     }
+
 
     /**
      * Copy to the clipboard, retrieves string from id

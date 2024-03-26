@@ -32,29 +32,45 @@ public class VersionManager {
         new VersionManager(cntx);
     }
 
-    /** Returns true iff [version] is newer than the current one */
-    public static boolean isNewerThanCurrent(String version) {
+    /**
+     * Returns true if [version] is newer than the current one
+     * @param version
+     * @return
+     */
+    public static boolean isVersionNewer(String version) {
         // shortcut to check own version
-        if (BuildConfig.VERSION_NAME.equals(version)) return false;
-
-        var versionSplit = split(version);
-        // invalid version, consider new just in case
-        if (versionSplit.isEmpty()) return true;
-        // compare: "1" < "2", "1" < "1.1"
-        var currentSplit = split(BuildConfig.VERSION_NAME);
-        var i = 0;
-        while (true) {
-            // end of version, version is older (or equal)
-            if (versionSplit.size() <= i) return false;
-            // end of current, version is newer
-            if (currentSplit.size() <= i) return true;
-            // version is older
-            if (versionSplit.get(i) < currentSplit.get(i)) return false;
-            // version is newer
-            if (versionSplit.get(i) > currentSplit.get(i)) return true;
-            i++;
+        if (BuildConfig.VERSION_NAME.equals(version)) {
+            return false;
         }
+
+        List<Integer> versionSplit = split(version);
+        // invalid version, consider new just in case
+        if (versionSplit.isEmpty()) {
+            return true;
+        }
+
+        // compare: "1" < "2", "1" < "1.1"
+        List<Integer> currentSplit = split(BuildConfig.VERSION_NAME);
+        int minLength = Math.min(versionSplit.size(), currentSplit.size());
+
+        for (int i = 0; i < minLength; i++) {
+            int versionPart = versionSplit.get(i);
+            int currentPart = currentSplit.get(i);
+
+            // version is older
+            if (versionPart < currentPart) {
+                return false;
+            }
+            // version is newer
+            if (versionPart > currentPart) {
+                return true;
+            }
+        }
+
+        // If all parts are equal up to the minimum length, the version with more parts is newer
+        return versionSplit.size() > currentSplit.size();
     }
+
 
     /* ------------------- instance ------------------- */
 

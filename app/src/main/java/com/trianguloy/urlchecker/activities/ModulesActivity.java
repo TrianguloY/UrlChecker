@@ -17,10 +17,9 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
-import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.methods.Animations;
-import com.trianguloy.urlchecker.utilities.methods.Inflater;
-import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.*;
+import com.trianguloy.urlchecker.utilities.wrappers.DownButtonUpdater;
+import com.trianguloy.urlchecker.utilities.wrappers.UpButtonUpdater;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +42,7 @@ public class ModulesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_modules);
         setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);
@@ -190,16 +189,18 @@ public class ModulesActivity extends Activity {
      * Updates the enable status of all the movable buttons
      */
     private void updateMovableButtons() {
-        for (int i = 0; i < list.getChildCount(); i++) {
+        MovableButtonUpdater upButtonUpdater = new UpButtonUpdater();
+        MovableButtonUpdater downButtonUpdater = new DownButtonUpdater();
+
+        int listSize = list.getChildCount();
+        for (int i = 0; i < listSize; i++) {
             View child = list.getChildAt(i);
             // enable up unless already at the top
             View up = child.findViewById(R.id.move_up);
-            up.setEnabled(i > 0);
-            up.setAlpha(i > 0 ? 1 : 0.5f);
+            upButtonUpdater.updateButton(up, i, listSize);
             // enable down unless already at the bottom
             View down = child.findViewById(R.id.move_down);
-            down.setEnabled(i < list.getChildCount() - 1);
-            down.setAlpha(i < list.getChildCount() - 1 ? 1 : 0.5f);
+            downButtonUpdater.updateButton(down, i, listSize);
         }
     }
 
