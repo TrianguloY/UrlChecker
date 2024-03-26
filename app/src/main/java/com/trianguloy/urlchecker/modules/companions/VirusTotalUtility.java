@@ -3,6 +3,7 @@ package com.trianguloy.urlchecker.modules.companions;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 
 import org.json.JSONException;
@@ -34,7 +35,7 @@ public class VirusTotalUtility {
 
         String responseJSON;
         try {
-            responseJSON = StreamUtils.performPOST(urlGetReport, getPOSTparameters(urlToScan, key));
+            responseJSON = HttpUtils.performPOST(urlGetReport, getPOSTparameters(urlToScan, key));
         } catch (IOException e) {
             e.printStackTrace();
             result.error = cntx.getString(R.string.mVT_connectError);

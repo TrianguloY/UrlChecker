@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 
 import org.json.JSONException;
@@ -108,7 +109,7 @@ class UnshortenDialog extends AModuleDialog {
 
         try {
             // get response
-            var response = new JSONObject(StreamUtils.readFromUrl("https://unshorten.me/json/" + getUrl()));
+            var response = new JSONObject(HttpUtils.readFromUrl("https://unshorten.me/json/" + getUrl()));
             var resolved_url = response.getString("resolved_url");
             var usage_count = Integer.parseInt(response.optString("usage_count", "0"));
             var ref = new Object() { // reference object to allow using these inside lambdas

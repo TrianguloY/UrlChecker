@@ -7,6 +7,7 @@ import android.util.Pair;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
@@ -97,7 +98,7 @@ public class Hosts {
                     progress.setMessage(cntx.getString(R.string.mHosts_buildDownload, label, file));
 
                     Log.d("HOSTS", "Downloading " + file);
-                    StreamUtils.streamFromUrl(file, line -> {
+                    HttpUtils.streamFromUrl(file, line -> {
                         var parts = line.replaceAll("#.*", "").trim().split(" +");
                         if (parts.length != 2) return;
                         // valid, add
