@@ -7,7 +7,7 @@
     <string name="mVT_scanning">Scannen…</string>
     <string name="toast_invalid">Ongeldig</string>
     <string name="close">Sluit</string>
-    <string name="toast_cantEnable">Kan de module niet inschakelen, ontbreekt de configuratie?</string>
+    <string name="toast_cantEnable">Kan de module niet inschakelen: %s</string>
     <string name="save">Opslaan</string>
     <string name="mVT_desc">Wanneer deze module is ingeschakeld, kunt u de URL scannen met VirusTotal en het rapport controleren. Om te kunnen werken is een persoonlijke VirusTotal API-sleutel nodig. U kunt er een verkrijgen nadat u zich hier voor een gratis account heeft geregistreerd: https://www.virustotal.com/gui/join-us.</string>
     <string name="reset">Reset</string>

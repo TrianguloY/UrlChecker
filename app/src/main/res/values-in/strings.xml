@@ -2,7 +2,7 @@
 <resources>
     <string name="a_settings">Pengaturan</string>
     <string name="desc_down">Geser ke bawah</string>
-    <string name="toast_cantEnable">Modul tidak dapat diaktifkan, mungkin konfigurasinya tidak lengkap\?</string>
+    <string name="toast_cantEnable">Modul tidak dapat diaktifkan: %s</string>
     <string name="link_changelog">Daftar perubahan</string>
     <string name="txt_tutorial1">Terima kasih telah mengunduh aplikasi ini!
 \n

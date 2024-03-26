@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:animateLayoutChanges="true"
     android:background="@drawable/round_border"
     android:orientation="vertical"
     android:paddingTop="5dp"
@@ -12,8 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/label"
@@ -75,6 +73,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/desc_decorations"
             android:src="@drawable/t" />
+
         <Switch
             android:id="@+id/enable"
             android:layout_width="wrap_content"
@@ -88,15 +87,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-            <FrameLayout
-                android:id="@+id/box"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp">
 
-                </FrameLayout>
-        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
+
+        </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

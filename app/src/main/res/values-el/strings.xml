@@ -2,7 +2,7 @@
 <resources>
     <string name="a_settings">Ρυθμίσεις</string>
     <string name="desc_down">Πήγαινε κάτω</string>
-    <string name="toast_cantEnable">Δεν μπορώ να ενεργοποιήσω την λειτουργία, λείπει η ρύθμιση;</string>
+    <string name="toast_cantEnable">Δεν μπορώ να ενεργοποιήσω την λειτουργία: %s</string>
     <string name="link_changelog">Καταγραφή αλλάγων</string>
     <string name="txt_tutorial1">Ευχαριστώ που κατέβασες την εφαρμογή μου!
 \n

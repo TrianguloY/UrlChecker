@@ -99,7 +99,7 @@ public class ModulesActivity extends Activity {
         // inflate
         View parent = Inflater.inflate(R.layout.config_module, list);
         parent.setTag(module.getId());
-        Animations.enableAnimations(parent);
+        Animations.enableAnimationsRecursively(parent); // instead of full activity to avoid 'replacing' when reordering
 
         // configure enable toggle
         Switch toggleEnable = parent.findViewById(R.id.enable);
@@ -107,12 +107,16 @@ public class ModulesActivity extends Activity {
         final GenericPref.Bool enabled_pref = ModuleManager.getEnabledPrefOfModule(module, this);
         toggleEnable.setChecked(enabled_pref.get());
         toggleEnable.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked && !config.canBeEnabled()) {
-                Toast.makeText(ModulesActivity.this, R.string.toast_cantEnable, Toast.LENGTH_LONG).show();
-                buttonView.setChecked(false);
-            } else {
-                enabled_pref.set(isChecked);
+            if (isChecked) {
+                var resId = config.cannotEnableErrorId();
+                if (resId != -1) {
+                    // error: notify and keep disabled
+                    Toast.makeText(ModulesActivity.this, getString(R.string.toast_cantEnable, getString(resId)), Toast.LENGTH_LONG).show();
+                    buttonView.setChecked(false);
+                    return;
+                }
             }
+            enabled_pref.set(isChecked);
         });
         switches.put(config, toggleEnable);
 

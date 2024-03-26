@@ -29,6 +29,7 @@ import com.trianguloy.urlchecker.modules.list.VirusTotalModule;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
 import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
@@ -65,11 +66,6 @@ public class BackupActivity extends Activity {
 
     /* ------------------- activity ------------------- */
 
-    /**
-     * Refactored code from line 71 to 150.
-     * Extraction of method
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +93,8 @@ public class BackupActivity extends Activity {
     }
 
     private void findViewUIElements() {
+        Animations.enableAnimationsRecursively(this);
+
         prefs = GenericPref.getPrefs(this);
         chk_data = findViewById(R.id.chk_data);
         chk_data_prefs = findViewById(R.id.chk_data_prefs);

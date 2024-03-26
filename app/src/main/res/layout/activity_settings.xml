@@ -90,6 +90,22 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="@dimen/padding"
+            android:paddingBottom="@dimen/padding">
+
+            <include layout="@layout/separator" />
+
+        </FrameLayout>
+
+        <Switch
+            android:id="@+id/animations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_animation" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:paddingTop="@dimen/padding">
 
             <include layout="@layout/separator" />

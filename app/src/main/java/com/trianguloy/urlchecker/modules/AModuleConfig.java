@@ -27,11 +27,11 @@ public abstract class AModuleConfig implements Fragment {
     // ------------------- abstract functions -------------------
 
     /**
-     * @return true iff this module can be enabled (possibly from current settings).
-     * True by default
+     * returns -1 if the module can be enabled, or the resource id of a string describing why it can't
+     * -1 (can be enabled) by default
      */
-    public boolean canBeEnabled() {
-        return true;
+    public int cannotEnableErrorId() {
+        return -1;
     }
 
     // ------------------- utilities -------------------

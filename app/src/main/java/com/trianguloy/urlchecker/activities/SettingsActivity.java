@@ -16,6 +16,7 @@ import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 import java.util.Objects;
@@ -37,6 +38,7 @@ public class SettingsActivity extends Activity {
         configureBrowserButtons();
         configureDayNight();
         configureLocale();
+        Animations.ANIMATIONS(this).attachToSwitch(findViewById(R.id.animations));
 
         // if this was reloaded, some settings may have change, so reload previous one too
         if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
