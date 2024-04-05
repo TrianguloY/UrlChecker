@@ -50,7 +50,7 @@ public class Incognito {
     static {
         // There are 2 functions:
         //      - One checks if the app/fork is the same as the one we want to open in incognito
-        //      - The other applies the necessary changes so it opens on incognito, it returns if
+        //      - The other applies the necessary changes so it opens in incognito, it returns if
         //          the app needs help to input the URL
 
         // fenix (firefox)
@@ -188,7 +188,7 @@ public class Incognito {
 
 
     /**
-     * applies the setting to a given intent
+     * Applies the setting to a given intent
      */
     public HelperManager.Compatibility apply(Context context, Intent intent) {
         // FIXME: ctabs compatibility
@@ -196,10 +196,12 @@ public class Incognito {
         if (state) {
             for (var entry : findPackage.entrySet()) {
                 if (entry.getValue().apply(context, intent)) {
-                    if (transform.get(entry.getKey()).apply(intent)) {
-                        return urlNeedsHelp;
-                    }
-                    return compatible;
+                    // Package can be opened in incognito
+
+                    // Apply transformation, the function also tells us if we will need help to input
+                    // to input the URL
+                    return transform.get(entry.getKey()).apply(intent) ?
+                            urlNeedsHelp : compatible;
                 }
             }
 

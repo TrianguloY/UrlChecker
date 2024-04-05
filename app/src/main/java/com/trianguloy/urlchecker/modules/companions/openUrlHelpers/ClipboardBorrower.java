@@ -53,32 +53,38 @@ public class ClipboardBorrower {
     }
 
     /**
-     * Restores the content of the clipboard. If the user has copied something to the clipboard
-     * between the first call to {@link #borrow} and this, we will restore that content instead.
-     * If the user has copied multiple things in between calls we will restore the last one.
+     * Restores the content of the clipboard. We will restore the last thing the user copied to the
+     * clipboard.
+     *
+     * @param storeBeforeRestore Check first if the clipboard has changed, since the last call to
+     *                   {@link #release} or {@link #borrow}. Mainly used to avoid the toast.
      */
-    public synchronized static boolean release(Context context) {
-        // XXX: As a side effect, this makes technically possible to call release without borrowing,
-        // as the method also initializes things, in practise it doesn't make sense and it achieves
-        // nothing
-        boolean success = store(context);
-        if (success) {
+    public synchronized static boolean release(Context context, boolean storeBeforeRestore) {
+        // Read clipboard and check if there has been any changes since we last borrowed it, store
+        // the changes in previous
+        boolean storeSuccess = false;
+        if (storeBeforeRestore) storeSuccess = store(context);
+        // We always restore, even if we couldn't check the clipboard, in practice this means that
+        // if the user copies something to the clipboard after the last call to release or borrow,
+        // we can't restore that.
+        if (previous != null) {
             AndroidUtils.setPrimaryClip(context, R.string.borrow_releaseSet, previous);
-        } else {
-            // FIXME: Not needed, androidutils already shows a toast, delete or move borrow_releaseError
-            //Toast.makeText(context, R.string.borrow_releaseError, Toast.LENGTH_LONG).show();
         }
+
         clear();
-        return success;
+        return storeSuccess;
     }
 
     /**
-     * A way to use the {@link #release(Context)} method from the background in higher android
+     * A way to use the {@link #release} method from the background in higher android
      * versions (10+).
      * <p>
      * Relies on window drawing, so it requires the SYSTEM_ALERT_WINDOW permission. Because it will
      * be run as {@link android.view.ViewTreeObserver.OnPreDrawListener}, it won't be done
      * immediately.
+     * <p>
+     * Can't store if we can't create a floating window, i.e. if the user is in the android system
+     * sharing dialog.
      * <p>
      * Has some problems, i.e. if the user is scrolling we will get focus for an instant, so we
      * steal the scrolling from the user.
@@ -98,9 +104,12 @@ public class ClipboardBorrower {
                 PixelFormat.TRANSLUCENT);
 
         floatView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            // TODO: add way so that just when it is unrendering, we read the clipboard
             @Override
             public boolean onPreDraw() {
-                release(floatView.getContext());
+                // There is no reason to not storeBeforeRelease, otherwise the call could be done
+                // without the bubble. The only reason might be emergencies.
+                release(floatView.getContext(), true);
                 floatView.getViewTreeObserver().removeOnPreDrawListener(this);
                 windowManager.removeView(floatView);
                 return false;
@@ -112,21 +121,26 @@ public class ClipboardBorrower {
         });
     }
 
+    public synchronized static boolean releaseSmart(Context context) {
+        // TODO: read pref from disk
+        var storeBeforeRelease = true;
+        return releaseSmart(context, storeBeforeRelease);
+    }
+
     /**
-     * Will choose between {@link #release(Context)} and its wrappers so that it selects the best
+     * Will choose between {@link #release} and its wrappers so that it selects the best
      * for the current moment, avoiding unnecessary compatibility layers. What this means is that it
      * won't call a background wrapper when in focus and things like that.
-     *
-     * @return {@link AndroidUtils#canUseClip(Context)}
      */
-    public synchronized static boolean releaseSmart(Context context) {
-        var canUseClip = AndroidUtils.canUseClip(context);
-        if (canUseClip) {
-            release(context);
+    public synchronized static boolean releaseSmart(Context context, boolean storeBeforeRelease) {
+        // If we don't store before releasing we don't need to check if we can read the clipboard
+        var releaseNormally = !storeBeforeRelease || AndroidUtils.canReadClip(context);
+        if (releaseNormally) {
+            release(context, storeBeforeRelease);
         } else {
             releaseFromBubble(context);
         }
-        return canUseClip;
+        return releaseNormally;
     }
 
     /**
@@ -159,7 +173,7 @@ public class ClipboardBorrower {
             //   User opens URL in incognito, pastes URL, then remembers it wants to copy it to the
             //   clipboard so it copies it. Now the label is different, but the text is not.
             if (BuildConfig.DEBUG) {
-                // In debug we DO NOT check the label
+                // In debug build we DO NOT check the label
                 if (current.getDescription().getMimeType(0).equals("text/plain")) {
                     var currentText = current.getItemAt(0).coerceToText(context);
                     var borrowerText = ClipboardBorrower.borrowerData.getItemAt(0).coerceToText(context);
@@ -168,7 +182,7 @@ public class ClipboardBorrower {
                     }
                 }
             } else {
-                // On release we DO check the label
+                // On release build we DO check the label
                 if (!current.equals(ClipboardBorrower.borrowerData)) {
                     previous = current;
                 }

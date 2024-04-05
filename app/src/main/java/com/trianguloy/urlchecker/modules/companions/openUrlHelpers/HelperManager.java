@@ -1,46 +1,50 @@
 package com.trianguloy.urlchecker.modules.companions.openUrlHelpers;
 
+import android.content.Context;
+
+import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.ManualBubble;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.AutoBackground;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.SemiautoBubble;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import com.trianguloy.urlchecker.utilities.Enums;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 public class HelperManager {
     public static final int timerSeconds = 10;
-    static UrlHelper[][] urlHelpers = new UrlHelper[Autonomy.values().length][Type.values().length];
 
-    static {
-        java.util.List<UrlHelper> helpersList = new ArrayList<>();
-        helpersList.add(new ManualBubble());
-        helpersList.add(new AutoBackground());
-        helpersList.add(new SemiautoBubble());
+    // TODO: add string resource
+    public enum Helper implements Enums.IdEnum, Enums.StringEnum {
+        autoBackground(1, R.string.auto, new AutoBackground()),
+        manualBubble(2, R.string.auto, new ManualBubble()),
+        semiAutoBubble(3, R.string.auto, new SemiautoBubble());
 
-        for (UrlHelper urlHelper : helpersList) {
-            urlHelpers[urlHelper.getAutonomy().ordinal()][urlHelper.getType().ordinal()] = urlHelper;
+        // -----
+
+        private final int id;
+        private final int stringResource;
+        private final JavaUtils.BiConsumer<Context, String> function;
+
+        Helper(int id, int stringResource, JavaUtils.BiConsumer<Context, String> function) {
+            this.id = id;
+            this.stringResource = stringResource;
+            this.function = function;
         }
-    }
 
-    public static UrlHelper getHelper(Autonomy autonomy, Type type) {
-        return urlHelpers[autonomy.ordinal()][type.ordinal()];
-    }
+        @Override
+        public int getId() {
+            return id;
+        }
 
-    public enum Autonomy {
-        auto,
-        semiauto,
-        manual
-    }
+        @Override
+        public int getStringResource() {
+            return stringResource;
+        }
 
-    public final static Set<Type> clipboardSet = new HashSet<>(Arrays.asList(
-            Type.background, Type.bubble, Type.notification));
+        public JavaUtils.BiConsumer<Context, String> getFunction() {
+            return function;
+        }
 
-    public enum Type {
-        background,
-        bubble,
-        notification
+
     }
 
     public enum Compatibility {

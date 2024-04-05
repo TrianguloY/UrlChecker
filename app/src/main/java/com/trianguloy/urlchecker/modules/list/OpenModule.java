@@ -19,8 +19,6 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelper;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
@@ -253,27 +251,21 @@ class OpenDialog extends AModuleDialog {
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
 
-        var urlNeedsHelp = incogCompat == HelperManager.Compatibility.urlNeedsHelp;
-
-        // Store before opening? So we are still in foreground
-        UrlHelper urlHelper = null;
-        if (urlNeedsHelp){
-            urlHelper = HelperManager.getHelper(HelperManager.Autonomy.semiauto, HelperManager.Type.bubble);
-            var borrowsClipboard = HelperManager.clipboardSet.contains(urlHelper.getType());
-            if (borrowsClipboard){
-                ClipboardBorrower.borrow(getActivity(), getUrl());
-            }
+        // If the URL needs help, get a helper
+        var urlHelper = incogCompat == HelperManager.Compatibility.urlNeedsHelp ?
+                HelperManager.Helper.semiAutoBubble.getFunction() :
+                null;
+        if (urlHelper != null) {
+            // For helpers that borrow the clipboard, we should borrow before opening the app,
+            // to ensure we are still in foreground
+            urlHelper.accept(getActivity(), getUrl());
         }
 
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
-        // TODO: check if package did open or not. Can be easily reproduced just install brave,
-        //      do not open the app, and try to open incognito activity. Because it hasn't been
-        //      properly configured yet, it will not open.
-        if (urlNeedsHelp) {
-            urlHelper.getFunction().accept(getActivity(), getUrl());
-        }
+        // We borrow the clipboard before launching the activity, if the activity does not start,
+        // it doesn't make sense that we borrowed the clipboard
 
         // finish activity
         if (closeOpenPref.get()) {

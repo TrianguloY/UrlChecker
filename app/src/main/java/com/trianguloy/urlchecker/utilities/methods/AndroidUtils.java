@@ -212,10 +212,10 @@ public interface AndroidUtils {
     }
 
     /**
-     * Checks if the clipboard can be used at this moment. For android 10+ that means the app is
+     * Checks if the clipboard can be read at this moment. For android 10+ that means the app is
      * focused or has a special permission granted via ADB (READ_CLIPBOARD_IN_BACKGROUND).
      */
-    static boolean canUseClip(Context context) {
+    static boolean canReadClip(Context context) {
         // FIXME: find a better way, this creates an unnecessary toast
         return AndroidUtils.getPrimaryClip(context, "TODO: canUseClip - TRUE") != null;
     }
