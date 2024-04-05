@@ -275,4 +275,13 @@
     <string name="mUnshort_ok">Удлиненно</string>
     <string name="mUnshort_unshort">Удлинить</string>
     <string name="mUnshort_name">Удлинитель</string>
+    <string name="btn_backupRestore">Бэкап / восстановление</string>
+    <string name="bck_mn_advanced">Показать расширенные настройки</string>
+    <string name="btn_backup">Бэкап</string>
+    <string name="btn_delete">Удалить</string>
+    <string name="txt_animation">Включить анимации</string>
+    <string name="btn_restore">Восстановить</string>
+    <string name="bkp_description">Выберите элементы для бэкапа/восстановления.
+\nПри восстановлении, если бэкап был создан без него, существующие будут сохранены.</string>
+    <string name="btn_replace">Заменить</string>
 </resources>
