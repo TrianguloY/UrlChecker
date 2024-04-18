@@ -1,3 +1,11 @@
+# Contribution Documentation for Developers & Translators
+
+### Table of Contents
+- [For coder/developer](#for-coderdeveloper)
+- [For translator](#for-translator)
+- [Installing UrlChecker in Android Studio](#installing-urlchecker-in-android-studio)
+- [App Architecture](#app-architecture)
+
 ### For coder/developer:
 
 We don't have a coding style, but try to keep it similar to existing code, with just a couple notes:
@@ -23,3 +31,33 @@ For manual translation, there are two independent things to translate:
   - Place the translated files in the corresponding `./app/src/main/play/listings/{locale}/` folder
 
 Note: if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).
+
+
+
+### Installing UrlChecker in Android Studio
+This is a small guide for first-time contributors to be able to build and execute this application in Android Studio. 
+
+1. Download Android Studio from [here](https://developer.android.com/studio).
+2. Clone this github repository to your local workspace. The git command should look something like this: 
+`git clone https://github.com/TrianguloY/UrlChecker.git`
+3. Download a device emulator from the Device Manager, so you can see the application running.
+4. Follow these commands from the Android Studio terminal to build the application: 
+
+- `./gradlew clean` 
+- `./gradlew build`
+- `./gradlew installAlpha`
+5. If everything went according to plan, you should be able to see the app installed in your emulator and be able to run it smoothly.
+
+### App Architecture
+
+UrlChecker is an Android Application that checks Url links. It is seperated into modules:
+ 
+- Activities
+- Dialogs
+- Fragments
+- Modules
+- Services
+- Url
+- Utilities
+- Views
+    
