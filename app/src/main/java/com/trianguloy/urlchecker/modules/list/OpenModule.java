@@ -22,11 +22,14 @@ import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.IntentApp;
 import com.trianguloy.urlchecker.utilities.wrappers.RejectionDetector;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This module contains an open and share buttons
@@ -92,7 +95,7 @@ class OpenDialog extends AModuleDialog {
     private final Incognito incognito;
     private final RejectionDetector rejectionDetector;
 
-    private List<String> packages;
+    private List<IntentApp> intentApps;
     private Button btn_open;
     private ImageButton btn_openWith;
     private View openParent;
@@ -171,26 +174,27 @@ class OpenDialog extends AModuleDialog {
 
     // ------------------- Spinner -------------------
 
-    /**
-     * Populates the spinner with the apps that can open it, in preference order
-     */
+    /** Populates the spinner with the apps that can open it, in preference order */
     private void updateSpinner(String url) {
-        packages = PackageUtils.getOtherPackages(UrlUtils.getViewIntent(url, null), getActivity());
+        intentApps = IntentApp.getOtherPackages(UrlUtils.getViewIntent(url, null), getActivity());
 
         // remove referrer
         if (noReferrerPref.get()) {
-            packages.remove(AndroidUtils.getReferrer(getActivity()));
+            var referrer = AndroidUtils.getReferrer(getActivity());
+            JavaUtils.removeIf(intentApps, ri -> Objects.equals(ri.getPackage(), referrer));
         }
 
         // remove rejected if desired (and is not a non-view action, like share)
         // note: this will be called each time, so a rejected package will not be rejected again if the user changes the url and goes back. This is expected
         if (rejectedPref.get() && Intent.ACTION_VIEW.equals(getActivity().getIntent().getAction())) {
-            packages.remove(rejectionDetector.getPrevious(url));
+            var rejected = rejectionDetector.getPrevious(url);
+            JavaUtils.removeIf(intentApps, ri -> Objects.equals(ri.getComponent(), rejected));
         }
 
         // check no apps
-        if (packages.isEmpty()) {
+        if (intentApps.isEmpty()) {
             btn_open.setText(R.string.mOpen_noapps);
+            btn_open.setCompoundDrawables(null, null, null, null);
             AndroidUtils.setEnabled(openParent, false);
             btn_open.setEnabled(false);
             btn_openWith.setVisibility(View.GONE);
@@ -198,19 +202,24 @@ class OpenDialog extends AModuleDialog {
         }
 
         // sort
-        lastOpened.sort(packages, getUrl());
+        lastOpened.sort(intentApps, getUrl());
 
         // set
-        btn_open.setText(getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(0), getActivity())));
+        var label = intentApps.get(0).getLabel(getActivity());
+//        label = getActivity().getString(R.string.mOpen_with, label);
+        btn_open.setText(label);
+        btn_open.setCompoundDrawables(intentApps.get(0).getIcon(getActivity()), null, null, null);
         AndroidUtils.setEnabled(openParent, true);
         btn_open.setEnabled(true);
         menu.clear();
-        if (packages.size() == 1) {
+        if (intentApps.size() == 1) {
             btn_openWith.setVisibility(View.GONE);
         } else {
             btn_openWith.setVisibility(View.VISIBLE);
-            for (int i = 1; i < packages.size(); i++) {
-                menu.add(Menu.NONE, i, i, getActivity().getString(R.string.mOpen_with, PackageUtils.getPackageName(packages.get(i), getActivity())));
+            for (int i = 1; i < intentApps.size(); i++) {
+                label = intentApps.get(i).getLabel(getActivity());
+//                label = getActivity().getString(R.string.mOpen_with, label);
+                menu.add(Menu.NONE, i, i, label);//.setIcon(intentApps.get(i).getIcon(getActivity()));
             }
         }
 
@@ -221,23 +230,22 @@ class OpenDialog extends AModuleDialog {
     /**
      * Open url in a specific app
      *
-     * @param index index from the packages list of the app to use
+     * @param index index from the intentApps list of the app to use
      */
     private void openUrl(int index) {
         // get
-        if (index < 0 || index >= packages.size()) return;
-        var chosen = packages.get(index);
+        if (index < 0 || index >= intentApps.size()) return;
+        var chosen = intentApps.get(index);
 
         // update as preferred over the rest
-        lastOpened.prefer(chosen, packages, getUrl());
+        lastOpened.prefer(chosen, intentApps, getUrl());
 
         // open
         var intent = new Intent(getActivity().getIntent());
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             // preserve original VIEW intent
             intent.setData(Uri.parse(getUrl()));
-            intent.setComponent(null);
-            intent.setPackage(chosen);
+            intent.setComponent(chosen.getComponent());
         } else {
             // replace with new VIEW intent
             intent = UrlUtils.getViewIntent(getUrl(), chosen);

@@ -1,6 +1,7 @@
 package com.trianguloy.urlchecker.utilities.wrappers;
 
 import android.app.Activity;
+import android.content.ComponentName;
 
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -16,7 +17,7 @@ import java.util.Objects;
 public class RejectionDetector {
 
     private static final int TIMEFRAME = 5000;
-    private final GenericPref.LstStr rejectLast; // [openedTimeMillis, package, url]
+    private final GenericPref.LstStr rejectLast; // [openedTimeMillis, component, url]
     private final Activity cntx;
 
     public RejectionDetector(Activity cntx) {
@@ -24,21 +25,19 @@ public class RejectionDetector {
         this.cntx = cntx;
     }
 
-    /**
-     * Marks a url as opened to a package (at this moment)
-     */
-    public void markAsOpen(String url, String packageName) {
-        rejectLast.set(List.of(Long.toString(System.currentTimeMillis()), packageName, url));
+    /** Marks a url as opened from an intentApp (at this moment) */
+    public void markAsOpen(String url, IntentApp intentApp) {
+        rejectLast.set(List.of(Long.toString(System.currentTimeMillis()), intentApp.getComponent().toShortString(), url));
     }
 
     /**
-     * returns the last package that opened the url if
+     * returns the last component that opened the url if
      * - it happened in a short amount of time
      * - (and) the url is the same
      * - (and) the referrer app is the same
      * null otherwise
      */
-    public String getPrevious(String url) {
+    public ComponentName getPrevious(String url) {
 
         try {
             var data = rejectLast.get();
@@ -49,7 +48,7 @@ public class RejectionDetector {
                     && Objects.equals(data.get(2), url)
                     && Objects.equals(AndroidUtils.getReferrer(cntx), data.get(1))
 
-                    ? data.get(1)
+                    ? ComponentName.unflattenFromString(data.get(1))
                     : null;
         } catch (Exception ignore) {
             // just ignore errors while retrieving the data
