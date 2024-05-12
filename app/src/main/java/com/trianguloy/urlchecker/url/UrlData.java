@@ -2,8 +2,9 @@ package com.trianguloy.urlchecker.url;
 
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * Manages an url and extra data associated with it
@@ -58,7 +59,7 @@ public class UrlData {
 
     // ------------------- extra data -------------------
 
-    private final Map<String, String> extraData = new HashMap<>();
+    private final LinkedHashMap<String, String> extraData = new LinkedHashMap<>(); // keeps order
 
     /**
      * saves a key-value data, will be kept with automatic updates (but not with manual ones)
@@ -75,11 +76,24 @@ public class UrlData {
         return extraData.get(key);
     }
 
+    /** Returns all entries with a given prefix, in insertion order */
+    public List<String> getDataByPrefix(String prefix) {
+        var entries = new ArrayList<String>();
+        for (var entry : extraData.entrySet()) {
+            if (entry.getKey().startsWith(prefix)) entries.add(entry.getValue());
+        }
+        return entries;
+    }
+
     /**
-     * adds all data from the parameter into this object
+     * adds all data from the parameter into this object. Keeps insertion order [...urlData.extraData,...this.extraData]
      */
     public void mergeData(UrlData urlData) {
+        // there is no putAllFirst
+        var thisExtraData = new LinkedHashMap<>(extraData);
+        extraData.clear();
         extraData.putAll(urlData.extraData);
+        extraData.putAll(thisExtraData);
     }
 
     @Override
