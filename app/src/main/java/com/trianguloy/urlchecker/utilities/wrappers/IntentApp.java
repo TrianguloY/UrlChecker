@@ -75,4 +75,9 @@ public class IntentApp {
         }
         return iconsCache.get(component);
     }
+
+    @Override
+    public String toString() {
+        return "IntentApp{" + resolveInfo + '}';
+    }
 }

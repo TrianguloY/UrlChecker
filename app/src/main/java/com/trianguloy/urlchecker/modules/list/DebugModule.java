@@ -14,6 +14,8 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.IntentApp;
 
 import java.util.List;
 
@@ -109,7 +111,12 @@ class DebugDialog extends AModuleDialog {
                 SEPARATOR,
 
                 "Referrer:",
-                referrer
+                referrer,
+
+                SEPARATOR,
+
+                "queryIntentActivityOptions:",
+                IntentApp.getOtherPackages(UrlUtils.getViewIntent(urlData.url, null), getActivity()).toString()
         )));
     }
 }
