@@ -9,18 +9,19 @@ import javax.net.ssl.HttpsURLConnection;
 
 /** HttpUtils class contains the method related to url. */
 public class HttpUtils {
+    public static final int CONNECT_TIMEOUT = 5000;
 
     /** GETs an URL and returns the content as a string. */
     public static String readFromUrl(String url) throws IOException {
         var connection = new URL(url).openConnection();
-        connection.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
+        connection.setConnectTimeout(CONNECT_TIMEOUT);
         return StreamUtils.inputStream2String(connection.getInputStream());
     }
 
     /** GETs an URL and streams its lines. */
     public static void streamFromUrl(String url, JavaUtils.Consumer<String> consumer) throws IOException {
         var connection = new URL(url).openConnection();
-        connection.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
+        connection.setConnectTimeout(CONNECT_TIMEOUT);
         StreamUtils.consumeLines(connection.getInputStream(), consumer);
     }
 
@@ -29,7 +30,7 @@ public class HttpUtils {
         // Send POST data request
         var conn = (HttpsURLConnection) new URL(url).openConnection();
         conn.setDoOutput(true);
-        conn.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
+        conn.setConnectTimeout(CONNECT_TIMEOUT);
         try (var wr = new OutputStreamWriter(conn.getOutputStream())) {
             wr.write(body);
             wr.flush();

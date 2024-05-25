@@ -16,7 +16,6 @@ import java.security.NoSuchAlgorithmException;
  */
 public interface StreamUtils {
     Charset UTF_8 = Charset.forName("UTF-8"); // StandardCharsets.UTF_8 requires api 19
-    int CONNECT_TIMEOUT = 5000;
 
     /** Reads an input stream and returns its content as a string. The stream is closed afterwards. */
     static String inputStream2String(InputStream is) throws IOException {
