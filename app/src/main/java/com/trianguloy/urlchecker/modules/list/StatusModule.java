@@ -17,7 +17,7 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -183,7 +183,7 @@ class StatusDialog extends AModuleDialog {
             // perform GET to the url
             conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setInstanceFollowRedirects(false);   // Make the logic below easier to detect redirections
-            conn.setConnectTimeout(StreamUtils.CONNECT_TIMEOUT);
+            conn.setConnectTimeout(HttpUtils.CONNECT_TIMEOUT);
             var responseCode = conn.getResponseCode();
             Log.d("RESPONSE_CODE", url + ": " + responseCode);
 

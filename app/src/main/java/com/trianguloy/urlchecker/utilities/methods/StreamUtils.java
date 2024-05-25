@@ -7,69 +7,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Generic utilities related to streams (urls, strings, bytes...)
  */
 public interface StreamUtils {
     Charset UTF_8 = Charset.forName("UTF-8"); // StandardCharsets.UTF_8 requires api 19
-    int CONNECT_TIMEOUT = 5000;
 
-    /**
-     * GETs an url and returns the content as string
-     */
-    static String readFromUrl(String url) throws IOException {
-        URLConnection connection = new URL(url).openConnection();
-        connection.setConnectTimeout(CONNECT_TIMEOUT);
-        return inputStream2String(connection.getInputStream());
-    }
-
-    /**
-     * GETs an url and streams their lines
-     */
-    static void streamFromUrl(String url, JavaUtils.Consumer<String> consumer) throws IOException {
-        URLConnection connection = new URL(url).openConnection();
-        connection.setConnectTimeout(CONNECT_TIMEOUT);
-        consumeLines(connection.getInputStream(), consumer);
-    }
-
-    /**
-     * POSTs something (a body) to an url, returns its content as a string
-     */
-    static String performPOST(String url, String body) throws IOException {
-
-        // Defined URL  where to send data
-        URL urlObject = new URL(url);
-
-        // Send POST data request
-        HttpsURLConnection conn = (HttpsURLConnection) urlObject.openConnection();
-        conn.setDoOutput(true);
-        conn.setConnectTimeout(CONNECT_TIMEOUT);
-        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-        wr.write(body);
-        wr.flush();
-
-        // Get the server response
-        return inputStream2String(
-                conn.getResponseCode() >= 200 && conn.getResponseCode() < 300
-                        ? conn.getInputStream()
-                        : conn.getErrorStream()
-        );
-
-    }
-
-    /**
-     * Reads an input stream and returns its content as string.
-     * The stream is closed afterwards
-     */
+    /** Reads an input stream and returns its content as a string. The stream is closed afterwards. */
     static String inputStream2String(InputStream is) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
             StringBuilder sb = new StringBuilder();
@@ -82,14 +30,14 @@ public interface StreamUtils {
         }
     }
 
-    /** Reads an inputStream and transfers its content to a file. The stream is NOT closed */
+    /** Reads an input stream and transfers its content to a file. The stream is NOT closed. */
     static void inputStream2File(InputStream in, File file) throws IOException {
         try (var out = new FileOutputStream(file)) {
             inputStream2OutputStream(in, out);
         }
     }
 
-    /** Reads an inputStream and transfers its content to an output stream. The streams are NOT closed */
+    /** Reads an input stream and transfers its content to an output stream. The streams are NOT closed. */
     static void inputStream2OutputStream(InputStream in, OutputStream out) throws IOException {
         var buffer = new byte[10240];
         int read;
@@ -98,9 +46,7 @@ public interface StreamUtils {
         }
     }
 
-    /**
-     * Reads an input stream and streams its lines
-     */
+    /** Reads an input stream and streams its lines. */
     static void consumeLines(InputStream is, JavaUtils.Consumer<String> function) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8))) {
             String line;
@@ -112,9 +58,7 @@ public interface StreamUtils {
         }
     }
 
-    /**
-     * Returns the sha-256 of a string
-     */
+    /** Returns the SHA-256 hash of a string. */
     static String sha256(String string) {
         try {
             // get byte array
