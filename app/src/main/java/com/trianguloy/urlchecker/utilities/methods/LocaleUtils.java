@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.util.Log;
+
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
@@ -14,11 +15,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+/** Utilities related to translations */
 public interface LocaleUtils {
 
-    /**
-     * Returns a locale for the given tag (language[-country[-variant]])
-     */
+    /** Returns a locale for the given tag (language[-country[-variant]]) */
     static Locale parseLocale(String locale) {
         if (locale.isEmpty()) return null;
         try {
@@ -29,11 +29,9 @@ public interface LocaleUtils {
         }
     }
 
-    /**
-     * Returns a configuration object for the given locale
-     */
+    /** Returns a configuration object for the given locale */
     static Configuration getConfig(Locale locale) {
-        Configuration config = new Configuration();
+        var config = new Configuration();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             config.setLocale(locale);
         } else {
@@ -42,16 +40,12 @@ public interface LocaleUtils {
         return config;
     }
 
-    /**
-     * The locale pref
-     */
+    /** The locale pref */
     static GenericPref.Str LOCALE_PREF(Context cntx) {
         return new GenericPref.Str("locale", "", cntx);
     }
 
-    /**
-     * Sets the locale to an activity
-     */
+    /** Sets the locale to an activity */
     static void setLocale(Activity cntx) {
         cntx.getResources().updateConfiguration(
                 getConfig(parseLocale(LOCALE_PREF(cntx).get())),
@@ -59,9 +53,7 @@ public interface LocaleUtils {
         );
     }
 
-    /**
-     * Container for a locale with a given name
-     */
+    /** Container for a locale with a given name */
     class AvailableLocale {
         public final String tag;
         public final Locale locale;
@@ -85,9 +77,7 @@ public interface LocaleUtils {
         }
     }
 
-    /**
-     * Returns the list of available/installed locales (plus a 'default' at the top)
-     */
+    /** Returns the list of available/installed locales (plus a 'default' at the top) */
     static List<AvailableLocale> getLocales(Context cntx) {
         // check each locale
         var available = new ArrayList<AvailableLocale>();
@@ -109,9 +99,7 @@ public interface LocaleUtils {
         return available;
     }
 
-    /**
-     * returns a specific string in a specific locale
-     */
+    /** returns a specific string in a specific locale */
     static String getStringForLocale(int id, Locale locale, Context cntx) {
         return cntx.createConfigurationContext(getConfig(locale)).getString(id);
     }

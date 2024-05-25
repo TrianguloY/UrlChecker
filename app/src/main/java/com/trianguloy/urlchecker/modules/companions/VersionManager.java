@@ -32,45 +32,31 @@ public class VersionManager {
         new VersionManager(cntx);
     }
 
-    /**
-     * Returns true if [version] is newer than the current one
-     * @param version
-     * @return
-     */
+    /** Returns true iff [version] is newer than the current one */
     public static boolean isVersionNewer(String version) {
         // shortcut to check own version
-        if (BuildConfig.VERSION_NAME.equals(version)) {
-            return false;
-        }
+        if (BuildConfig.VERSION_NAME.equals(version)) return false;
 
-        List<Integer> versionSplit = split(version);
+        var versionSplit = split(version);
         // invalid version, consider new just in case
-        if (versionSplit.isEmpty()) {
-            return true;
-        }
-
+        if (versionSplit.isEmpty()) return true;
         // compare: "1" < "2", "1" < "1.1"
-        List<Integer> currentSplit = split(BuildConfig.VERSION_NAME);
-        int minLength = Math.min(versionSplit.size(), currentSplit.size());
+        var currentSplit = split(BuildConfig.VERSION_NAME);
 
-        for (int i = 0; i < minLength; i++) {
-            int versionPart = versionSplit.get(i);
-            int currentPart = currentSplit.get(i);
+        for (var i = 0; i < Math.min(versionSplit.size(), currentSplit.size()); i++) {
+            var versionPart = versionSplit.get(i);
+            var currentPart = currentSplit.get(i);
 
             // version is older
-            if (versionPart < currentPart) {
-                return false;
-            }
+            if (versionPart < currentPart) return false;
             // version is newer
-            if (versionPart > currentPart) {
-                return true;
-            }
+            if (versionPart > currentPart) return true;
         }
 
         // If all parts are equal up to the minimum length, the version with more parts is newer
+        // (and if both are equal, then it is not newer)
         return versionSplit.size() > currentSplit.size();
     }
-
 
     /* ------------------- instance ------------------- */
 

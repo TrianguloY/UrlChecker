@@ -69,32 +69,15 @@ public class BackupActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeUI();
-    }
-
-    private void initializeUI() {
-        configureThemeAndLocalSettings();
-        setContentView(R.layout.activity_backup);
-        configureActionBar();
-        findViewUIElements();
-        setupListeners();
-        restoreAdvancedIfNeeded();
-        restoreIfFileOpened();
-    }
-
-    private void configureThemeAndLocalSettings() {
         AndroidSettings.setTheme(this, false);
         LocaleUtils.setLocale(this);
-    }
-
-    private void configureActionBar() {
-        AndroidUtils.configureUp(this);
+        setContentView(R.layout.activity_backup);
         setTitle(R.string.btn_backupRestore);
-    }
+        AndroidUtils.configureUp(this);
 
-    private void findViewUIElements() {
         Animations.enableAnimationsRecursively(this);
 
+        // find view UI elements
         prefs = GenericPref.getPrefs(this);
         chk_data = findViewById(R.id.chk_data);
         chk_data_prefs = findViewById(R.id.chk_data_prefs);
@@ -106,9 +89,9 @@ public class BackupActivity extends Activity {
         btn_backup = findViewById(R.id.btn_backup);
         btn_restore = findViewById(R.id.btn_restore);
         btn_delete = findViewById(R.id.btn_delete);
-    }
 
-    private void setupListeners() {
+        // if this app was reloaded, some settings may have changed, so reload previous one too
+        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
 
         // sync data switches
         chk_data.setOnCheckedChangeListener((v, checked) -> {
@@ -127,19 +110,11 @@ public class BackupActivity extends Activity {
                 btn_delete.setEnabled(enabled);
             });
 
-    }
-
-    private void restoreAdvancedIfNeeded() {
-        // if this app was reloaded, some settings may have changed, so reload previous one too
-        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
-
         // restore advanced status
         if (getIntent().getBooleanExtra(ADVANCED_EXTRA, false)) {
             showAdvanced();
         }
-    }
 
-    private void restoreIfFileOpened() {
         // ask to restore if a file was opened
         var data = getIntent().getData();
         if (data != null) {
@@ -147,7 +122,6 @@ public class BackupActivity extends Activity {
             askRestore(data);
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -223,8 +197,7 @@ public class BackupActivity extends Activity {
                 // rest of preferences
                 progress.setMessage("Adding preferences");
                 progress.increaseProgress();
-                if (chk_data_prefs.isChecked())
-                    backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+                if (chk_data_prefs.isChecked()) backupPreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
                 // secret preferences
                 progress.setMessage("Adding secrets");
@@ -309,8 +282,7 @@ public class BackupActivity extends Activity {
                 // rest of preferences
                 progress.setMessage("Restoring preferences");
                 progress.increaseProgress();
-                if (chk_data_prefs.isChecked())
-                    restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
+                if (chk_data_prefs.isChecked()) restorePreferencesMatching(FILE_PREFERENCES, negate(IS_PREF_SECRET), zip);
 
                 // secret preferences
                 progress.setMessage("Restoring secrets");
@@ -338,79 +310,41 @@ public class BackupActivity extends Activity {
         });
     }
 
-    /**
-     * Restore preferences matching by removing and adding preferences.
-     * @param fileName
-     * @param predicate
-     * @param zip
-     * @throws IOException
-     * @throws JSONException
-     */
+    /** Restore preferences from [fileName] in the [zip] that matches the [predicate]. */
     private void restorePreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipReader zip) throws IOException, JSONException {
-        String preferences = zip.getFileString(fileName);
-        if (preferences != null) {
-            JSONObject jsonPrefs = new JSONObject(preferences);
-            updatePreferences(jsonPrefs, predicate);
-        }
-    }
+        var preferences = zip.getFileString(fileName);
+        if (preferences == null) return;
 
-    /**
-     * Update the shared preferences values.
-     * @param jsonPrefs
-     * @param predicate
-     */
-    private void updatePreferences(JSONObject jsonPrefs, Function<String, Boolean> predicate) {
-        SharedPreferences.Editor editor = prefs.edit();
-        removeMatchingPreferences(editor, predicate);
-        addNewPreferences(jsonPrefs, editor);
-        editor.apply();
-    }
+        var jsonPrefs = new JSONObject(preferences);
+        var editor = prefs.edit();
 
-    /**
-     * Remove matched shared preferences values.
-     * @param editor
-     * @param predicate
-     */
-    private void removeMatchingPreferences(SharedPreferences.Editor editor, Function<String, Boolean> predicate) {
-        for (String key : prefs.getAll().keySet()) {
-            if (predicate.apply(key)) {
-                editor.remove(key);
+        // remove
+        if (chk_delete.isChecked()) {
+            for (var key : prefs.getAll().keySet()) {
+                if (predicate.apply(key)) editor.remove(key);
             }
         }
-    }
 
-    /**
-     * Add new preferences values to shared preferences.
-     * @param jsonPrefs
-     * @param editor
-     */
-    private void addNewPreferences(JSONObject jsonPrefs, SharedPreferences.Editor editor) {
-        for (String key : JavaUtils.toList(jsonPrefs.keys())) {
+        // add
+        for (var key : JavaUtils.toList(jsonPrefs.keys())) {
             try {
-                JSONObject ent = jsonPrefs.getJSONObject(key);
-                String type = ent.getString(PREF_TYPE);
+                var ent = jsonPrefs.getJSONObject(key);
+                var type = ent.getString(PREF_TYPE);
                 switch (type) {
-                    case "String":
-                        editor.putString(key, ent.getString(PREF_VALUE));
-                        break;
-                    case "Integer":
-                        editor.putInt(key, ent.getInt(PREF_VALUE));
-                        break;
-                    case "Long":
-                        editor.putLong(key, ent.getLong(PREF_VALUE));
-                        break;
-                    case "Boolean":
-                        editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
-                        break;
-                    default:
-                        AndroidUtils.assertError("Unknown type: " + type);
+                    case "String" -> editor.putString(key, ent.getString(PREF_VALUE));
+                    case "Integer" -> editor.putInt(key, ent.getInt(PREF_VALUE));
+                    case "Long" -> editor.putLong(key, ent.getLong(PREF_VALUE));
+                    case "Boolean" -> editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
+                    default -> AndroidUtils.assertError("Unknown type: " + type);
                 }
             } catch (JSONException e) {
+                AndroidUtils.assertError("Error when restoring key: " + key);
                 e.printStackTrace();
             }
         }
-    }
 
+        editor.apply();
+    }
 
     private void restoreFilesMatching(String folder, Function<String, Boolean> predicate, ZipReader zip) throws IOException {
         var fileNames = zip.fileNames(folder);
