@@ -2,6 +2,8 @@ package com.trianguloy.urlchecker.modules.list;
 
 import static java.util.Objects.requireNonNullElse;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -85,6 +87,11 @@ class DebugDialog extends AModuleDialog {
         data.setText(String.join("\n", List.of(
                 "Intent:",
                 getActivity().getIntent().toUri(0),
+
+                SEPARATOR,
+
+                "queryIntentActivities:",
+                getActivity().getPackageManager().queryIntentActivities(UrlUtils.getViewIntent(urlData.url, null), Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0).toString(),
 
                 SEPARATOR,
 
