@@ -2,7 +2,7 @@
 <resources>
     <string name="mClear_exception">- genegeerd vanwege uitzondering %s</string>
     <string name="a_settings">Instellingen</string>
-    <string name="dismiss">Afwijzen</string>
+    <string name="dismiss">Negeren</string>
     <string name="desc_down">Naar beneden verplaatsen</string>
     <string name="mVT_scanning">Scannen…</string>
     <string name="toast_invalid">Ongeldig</string>
@@ -275,4 +275,39 @@
     <string name="mClear_hashDesc">URL van het catalogus-hashbestand. Als u dit weglaat, wordt de download niet gecontroleerd om te zien of er mee is geknoeid/gewijzigd (niet aanbevolen)</string>
     <string name="mClear_hashError">Kan de hash niet ophalen. Zorg ervoor dat de URL geldig is en dat u een actieve verbinding heeft</string>
     <string name="mClear_lastCheck">Laatste controle:</string>
+    <string name="btn_backupRestore">Back-up/herstellen</string>
+    <string name="btn_replace">Vervangen</string>
+    <string name="btn_delete">Verwijderen</string>
+    <string name="bkp_description">Kies welke elementen je wil back-uppen of herstellen.
+\nAls je een element herstelt en er een back-up van is gemaakt, wordt die behouden.</string>
+    <string name="bkp_data_prefs">Voorkeuren: gegevens die zijn opgeslagen als voorkeuren.</string>
+    <string name="bck_restoreTitle">Back-up herstellen</string>
+    <string name="bck_backupError">Back-up maken mislukt. Kies een andere locatie voor het bestand.</string>
+    <string name="bck_restoreMessage">PAS OP! Hiermee worden de gekozen elementen van de back-up vervangen.
+\nWeet je zeker dat je dit wilt?</string>
+    <string name="bck_restoreConfirm">Elementen herstellen</string>
+    <string name="bck_restoreOk">Back-up hersteld</string>
+    <string name="bck_restoreError">Back-up herstellen mislukt. Is dit het juiste bestand?</string>
+    <string name="bck_deleteTitle">Elementen wissen</string>
+    <string name="bck_deleteMessage">PAS OP! Hiermee worden alle gekozen elementen gewist.
+\nWeet je zeker dat je dit wilt?</string>
+    <string name="bck_deleteConfirm">Elementen wissen</string>
+    <string name="bck_deleteOk">Elementen gewist</string>
+    <string name="txt_animation">Animaties activeren</string>
+    <string name="bck_mn_advanced">Geavanceerde opties weergeven</string>
+    <string name="btn_backup">Back-up</string>
+    <string name="btn_restore">Herstellen</string>
+    <string name="bkp_data">Gegevens: standaardappgegevens. Denk aan geactiveerde modules, json-configs, etc. Bevat geen geheimen of cache.</string>
+    <string name="bjp_cache">Cache: gegevens die makkelijk kunnen worden gedownload of gegenereerd, zoals de hostdatabase. Als je deze optie activeert, vergroot dat de back-upgrootte aanzienlijk.</string>
+    <string name="bck_restoreDelete">Verwijder elementen voordat je ze herstelt. Voorkeuren en bepaalde bestanden met standaardwaarden bestaan mogelijk niet, dus als je deze optie uitzet worden de bestaande elementen met de back-upelementen samengesmolten. Dat kan onverwachte resultaten opleveren, dus zet deze optie alleen uit als je weet waar je mee bezig bent.</string>
+    <string name="bck_deleteError">Elementen wissen mislukt</string>
+    <string name="noLinks">Geen links gevonden</string>
+    <string name="mVT_noKey">API-key mist</string>
+    <string name="mOpen_rejected">Verberg de app als een url is geweigerd (een app vraagt direct om dezelfde url te openen waarmee deze zojuist was geopend). Heeft geen effect op delen.</string>
+    <string name="bkp_data_files">Bestanden: gegevens die zijn opgeslagen als bestanden.</string>
+    <string name="bkp_secrets">Geheimen: Gegevens die als \'geheim\' worden gezien, zoals de api-key van VirusTotal of het log.</string>
+    <string name="bck_ignoreNewer">Hiermee is het mogelijk om back-ups te maken van nieuwere appversies.</string>
+    <string name="bck_newer">Geannuleerd. De back-up is gemaakt met een nieuwere appversie.</string>
+    <string name="bck_chooseFile">Kies het back-upbestand</string>
+    <string name="bck_backupOk">Back-up gemaakt</string>
 </resources>
