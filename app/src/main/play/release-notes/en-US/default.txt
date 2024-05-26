@@ -1,3 +1,9 @@
+V 2.16
+- Improve: Detect multiple activities for the same app
+- Improve: Show first app icon
+- Improve: Display applied patterns in order
+- Debug: Include query results in the debug module
+
 V 2.15
 - New: Animations (can be disabled)
 - Fix: Better rejected detection. And allow to disable.

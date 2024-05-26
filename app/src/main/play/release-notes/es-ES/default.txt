@@ -1,3 +1,9 @@
+V 2.16
+- Mejora: Detectar varias actividades para la misma aplicación
+- Mejora: Mostrar el icono de la primera aplicación
+- Mejora: Mostrar los patrones aplicados en orden
+- Debug: Añadir el resultado de las query en el modulo debug
+
 V 2.15
 - Nuevo: Animaciones (se pueden desactivar)
 - Arreglo: Mejora en la detección de rechazados. Y se permite desactivar.

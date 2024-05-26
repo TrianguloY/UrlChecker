@@ -10,8 +10,8 @@ android {
         compileSdk 33
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 32
-        versionName "2.15"
+        versionCode 33
+        versionName "2.16"
 
 
         // generate buildconfig field with all locales
