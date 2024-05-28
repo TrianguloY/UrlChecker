@@ -172,7 +172,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_clipboard">URL copied to clipboard</string>
     <string name="mOpen_noapps">No apps</string>
     <string name="mOpen_tabsDesc">Toggle Custom Tabs feature</string>
-    <string name="mOpen_incognitoDesc">Toggle incognito mode (for Firefox only)</string>
+    <string name="mOpen_incognitoDesc">Toggle incognito mode</string>
     <!-- -->
     <string name="mStatus_name">Status code</string>
     <string name="mStatus_desc">By pressing the check button, a network request will be made to retrieve and display the site status code. If the result is a redirection, you will be able to view the destination URL. The URL content is obtained (GET), but not evaluated, so redirections based on JavaScript won\'t be detected.</string>
