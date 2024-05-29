@@ -142,7 +142,7 @@ public interface AndroidUtils {
     static void copyToClipboard(Activity activity, String toast, String text) {
         ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) {
-            Toast.makeText(activity, "TODO: copyToClipboard failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, R.string.clipboard_copyError, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -157,16 +157,27 @@ public interface AndroidUtils {
      * Get primary clip from clipboard, retrieves string from id
      */
     static ClipData getPrimaryClip(Context context, int id) {
-        return getPrimaryClip(context, context.getString(id));
+        return getPrimaryClip(context, context.getString(id), context.getString(R.string.clipboard_getError));
+    }
+
+    /**
+     * Get primary clip from clipboard, retrieves string from id
+     */
+    static ClipData getPrimaryClip(Context context, int id, int failId) {
+        return getPrimaryClip(context, context.getString(id), context.getString(failId));
     }
 
     /**
      * Get primary clip from clipboard
      */
     static ClipData getPrimaryClip(Context context, String toast) {
+        return getPrimaryClip(context, toast, context.getString(R.string.clipboard_getError));
+    }
+
+    static ClipData getPrimaryClip(Context context, String toast, String failToast) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) {
-            safeToast(context, "TODO: getSystemService failed", Toast.LENGTH_LONG);
+            safeToast(context, R.string.clipboard_serviceError, Toast.LENGTH_LONG);
             return null;
         }
 
@@ -182,7 +193,7 @@ public interface AndroidUtils {
                 safeToast(context, toast, Toast.LENGTH_LONG);
         } else {
             // FIXME: does android show toast on failed read?
-            safeToast(context, "TODO: getPrimaryClip failed", Toast.LENGTH_LONG);
+            safeToast(context, failToast, Toast.LENGTH_LONG);
         }
         return res;
     }
@@ -200,7 +211,7 @@ public interface AndroidUtils {
     static void setPrimaryClip(Context context, String toast, ClipData clipData) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null) {
-            safeToast(context, "TODO: setPrimaryClip failed", Toast.LENGTH_LONG);
+            safeToast(context, R.string.clipboard_setError, Toast.LENGTH_LONG);
             return;
         }
 
@@ -217,7 +228,9 @@ public interface AndroidUtils {
      */
     static boolean canReadClip(Context context) {
         // FIXME: find a better way, this creates an unnecessary toast
-        return AndroidUtils.getPrimaryClip(context, "TODO: canUseClip - TRUE") != null;
+        return AndroidUtils.getPrimaryClip(context,
+                R.string.clipboard_canReadTrue,
+                R.string.clipboard_canReadFalse) != null;
     }
 
     /**

@@ -3,7 +3,7 @@ package com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.Bubble;
 
@@ -47,6 +47,7 @@ public class SemiautoBubble implements JavaUtils.BiConsumer<Context, String> {
 // FIXME: breakpoint here, run app, open in incognito, tap bubble, wait for "URLCheck isn't
 //  responding", continue execution, can't access clipboard
 //  just after getPrimaryClip() on getPrimaryClip() when URLCheck isn't responding
+//  Probably can't be fixed, it just loses clipboard access.
                             ClipboardBorrower.releaseSmart(bubbleContext);
                             task.cancel(true);
                             executor = null;
@@ -62,7 +63,7 @@ public class SemiautoBubble implements JavaUtils.BiConsumer<Context, String> {
                         bubble.pop();
                     }
                 }
-            }, HelperManager.timerSeconds, TimeUnit.SECONDS);
+            }, UrlHelperCompanion.TIMER_PREF(context).get(), TimeUnit.SECONDS);
         }
     }
 }

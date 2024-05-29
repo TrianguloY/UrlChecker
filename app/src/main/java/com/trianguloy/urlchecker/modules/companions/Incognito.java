@@ -1,8 +1,8 @@
 package com.trianguloy.urlchecker.modules.companions;
 
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.compatible;
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.notCompatible;
-import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager.Compatibility.urlNeedsHelp;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion.Compatibility.compatible;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion.Compatibility.notCompatible;
+import static com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion.Compatibility.urlNeedsHelp;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
@@ -164,7 +164,7 @@ public class Incognito {
     /**
      * Returns if an intent will launch incognito for a given intent/app, only checks extras
      */
-    private boolean isIncognito(Intent intent) {
+    public static boolean isIncognito(Intent intent) {
         boolean incognito = false;
         // Find any extra
         for (String extra : possibleExtras) {
@@ -186,11 +186,15 @@ public class Incognito {
         }
     }
 
+    public UrlHelperCompanion.Compatibility willNeedHelp(Context context, Intent intent){
+        Intent simulation = new Intent(intent);
+        return apply(context, simulation);
+    }
 
     /**
      * Applies the setting to a given intent
      */
-    public HelperManager.Compatibility apply(Context context, Intent intent) {
+    public UrlHelperCompanion.Compatibility apply(Context context, Intent intent) {
         // FIXME: ctabs compatibility
         removeIncognito(intent);
         if (state) {
@@ -198,7 +202,7 @@ public class Incognito {
                 if (entry.getValue().apply(context, intent)) {
                     // Package can be opened in incognito
 
-                    // Apply transformation, the function also tells us if we will need help to input
+                    // Apply transformation, the function also tells us if we will need help
                     // to input the URL
                     return transform.get(entry.getKey()).apply(intent) ?
                             urlNeedsHelp : compatible;

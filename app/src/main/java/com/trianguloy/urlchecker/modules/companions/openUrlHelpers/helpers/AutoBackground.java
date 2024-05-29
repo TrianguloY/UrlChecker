@@ -3,7 +3,7 @@ package com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 import java.util.concurrent.ScheduledFuture;
@@ -43,7 +43,7 @@ public class AutoBackground implements JavaUtils.BiConsumer<Context, String> {
                         task = null;
                     }
                 }
-            }, HelperManager.timerSeconds, TimeUnit.SECONDS);
+            }, UrlHelperCompanion.TIMER_PREF(context).get(), TimeUnit.SECONDS);
         }
     }
 }

@@ -19,10 +19,12 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.HelperManager;
+import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.RejectionDetector;
@@ -240,7 +242,16 @@ class OpenDialog extends AModuleDialog {
         cTabs.apply(intent);
 
         // incognito
-        var incogCompat = incognito.apply(getActivity(), intent);
+        var currentUrlHelper = UrlHelperCompanion.CURRENT_PREF(getActivity()).get();
+        var intentClone = new Intent(intent);
+        var incogCompat = incognito.apply(getActivity(), intentClone);
+        // If helper is none, and url needs help, do not apply incognito
+        if (currentUrlHelper == UrlHelperCompanion.Helper.none &&
+                incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp) {
+            incogCompat = UrlHelperCompanion.Compatibility.notCompatible;
+        } else {
+            intent = intentClone;
+        }
 
         // Get flags from global data (probably set by flags module, if active)
         var flags = Flags.getGlobalFlagsNullable(this);
@@ -252,20 +263,22 @@ class OpenDialog extends AModuleDialog {
         rejectionDetector.markAsOpen(getUrl(), chosen);
 
         // If the URL needs help, get a helper
-        var urlHelper = incogCompat == HelperManager.Compatibility.urlNeedsHelp ?
-                HelperManager.Helper.semiAutoBubble.getFunction() :
+        var urlHelper = incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp ?
+                currentUrlHelper :
                 null;
-        if (urlHelper != null) {
+        if (urlHelper == UrlHelperCompanion.Helper.autoBackground ||
+                urlHelper == UrlHelperCompanion.Helper.manualBubble ||
+                urlHelper == UrlHelperCompanion.Helper.semiAutoBubble) {
             // For helpers that borrow the clipboard, we should borrow before opening the app,
             // to ensure we are still in foreground
-            urlHelper.accept(getActivity(), getUrl());
+            urlHelper.getFunction().accept(getActivity(), getUrl());
         }
 
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
-        // We borrow the clipboard before launching the activity, if the activity does not start,
-        // it doesn't make sense that we borrowed the clipboard
+        // FIXME: We borrow the clipboard before launching the activity, if the activity does not
+        //  start, it doesn't make sense that we borrowed the clipboard
 
         // finish activity
         if (closeOpenPref.get()) {
@@ -333,7 +346,14 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), null);
+        var incognitoButton = (Button) views.findViewById(R.id.urlHelper_settings);
+        incognitoButton.setOnClickListener(v -> UrlHelperCompanion.showSettings(getActivity()));
+        JavaUtils.Consumer<OnOffConfig> buttonEnabled = onOffConfig -> {
+            incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
+        };
+        buttonEnabled.accept(Incognito.PREF(getActivity()).get());
+
+        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), buttonEnabled);
         OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
         OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
         OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));

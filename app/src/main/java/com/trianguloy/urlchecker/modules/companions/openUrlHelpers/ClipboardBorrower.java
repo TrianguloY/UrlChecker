@@ -4,10 +4,12 @@ import android.content.ClipData;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Toast;
 
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
@@ -57,7 +59,7 @@ public class ClipboardBorrower {
      * clipboard.
      *
      * @param storeBeforeRestore Check first if the clipboard has changed, since the last call to
-     *                   {@link #release} or {@link #borrow}. Mainly used to avoid the toast.
+     *                           {@link #release} or {@link #borrow}. Mainly used to avoid the toast.
      */
     public synchronized static boolean release(Context context, boolean storeBeforeRestore) {
         // Read clipboard and check if there has been any changes since we last borrowed it, store
@@ -90,6 +92,10 @@ public class ClipboardBorrower {
      * steal the scrolling from the user.
      */
     public static void releaseFromBubble(Context context) {
+        if (!Settings.canDrawOverlays(context)) {
+            AndroidUtils.safeToast(context, R.string.borrow_drawError, Toast.LENGTH_LONG);
+            return;
+        }
         var windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         var floatView = LayoutInflater.from(context).inflate(R.layout.bubble, null);
         var layoutParams = new LayoutParams(
@@ -122,8 +128,7 @@ public class ClipboardBorrower {
     }
 
     public synchronized static boolean releaseSmart(Context context) {
-        // TODO: read pref from disk
-        var storeBeforeRelease = true;
+        var storeBeforeRelease = UrlHelperCompanion.STOREBEFORERELEASE_PREF(context).get();
         return releaseSmart(context, storeBeforeRelease);
     }
 
@@ -138,7 +143,15 @@ public class ClipboardBorrower {
         if (releaseNormally) {
             release(context, storeBeforeRelease);
         } else {
-            releaseFromBubble(context);
+            if (Settings.canDrawOverlays(context)) {
+                releaseFromBubble(context);
+            } else {
+                // No permissions, we can't read the clipboard, so we are unable to respect changes
+                // to the clipboard
+                // TODO: recommend user give the app drawing permissions?
+                // Last resort, ignore user preferences
+                release(context, false);
+            }
         }
         return releaseNormally;
     }
