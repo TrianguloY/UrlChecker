@@ -2,6 +2,7 @@ package com.trianguloy.urlchecker.modules.list;
 
 import static java.util.Objects.requireNonNullElse;
 
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
@@ -91,12 +92,17 @@ class DebugDialog extends AModuleDialog {
                 SEPARATOR,
 
                 "queryIntentActivities:",
-                getActivity().getPackageManager().queryIntentActivities(UrlUtils.getViewIntent(urlData.url, null), Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0).toString(),
+                IntentApp.getOtherPackages(UrlUtils.getViewIntent(urlData.url, null), getActivity()).toString(),
 
                 SEPARATOR,
 
                 "queryIntentActivityOptions:",
-                IntentApp.getOtherPackages(UrlUtils.getViewIntent(urlData.url, null), getActivity()).toString(),
+                getActivity().getPackageManager().queryIntentActivityOptions(
+                        new ComponentName(getActivity(), MainDialog.class.getName()),
+                        null,
+                        UrlUtils.getViewIntent(urlData.url, null),
+                        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0
+                ).toString(),
 
                 SEPARATOR,
 

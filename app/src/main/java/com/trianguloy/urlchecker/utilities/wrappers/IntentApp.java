@@ -8,8 +8,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
-import com.trianguloy.urlchecker.dialogs.MainDialog;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,14 +25,17 @@ public class IntentApp {
      */
     public static List<IntentApp> getOtherPackages(Intent baseIntent, Context cntx) {
         // get all packages
-        var resolveInfos = cntx.getPackageManager().queryIntentActivityOptions(
-                new ComponentName(cntx, MainDialog.class.getName()),
-                null,
+        var resolveInfos = cntx.getPackageManager().queryIntentActivities(
                 baseIntent,
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0);
 
         var intentApps = new ArrayList<IntentApp>();
-        for (var resolveInfo : resolveInfos) intentApps.add(new IntentApp(resolveInfo));
+        for (var resolveInfo : resolveInfos) {
+            // filter the current app
+            if (!resolveInfo.activityInfo.packageName.equals(cntx.getPackageName())) {
+                intentApps.add(new IntentApp(resolveInfo));
+            }
+        }
         return intentApps;
     }
 
