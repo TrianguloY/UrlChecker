@@ -21,6 +21,7 @@ import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +44,7 @@ public class ModulesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_modules);
         setTitle(R.string.a_modules);
         AndroidUtils.configureUp(this);
@@ -194,7 +195,8 @@ public class ModulesActivity extends Activity {
      * Updates the enable status of all the movable buttons
      */
     private void updateMovableButtons() {
-        for (int i = 0; i < list.getChildCount(); i++) {
+        var listSize = list.getChildCount();
+        for (int i = 0; i < listSize; i++) {
             View child = list.getChildAt(i);
             // enable up unless already at the top
             View up = child.findViewById(R.id.move_up);
@@ -202,8 +204,8 @@ public class ModulesActivity extends Activity {
             up.setAlpha(i > 0 ? 1 : 0.5f);
             // enable down unless already at the bottom
             View down = child.findViewById(R.id.move_down);
-            down.setEnabled(i < list.getChildCount() - 1);
-            down.setAlpha(i < list.getChildCount() - 1 ? 1 : 0.5f);
+            down.setEnabled(i < listSize - 1);
+            down.setAlpha(i < listSize - 1 ? 1 : 0.5f);
         }
     }
 

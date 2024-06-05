@@ -33,7 +33,7 @@ public class VersionManager {
     }
 
     /** Returns true iff [version] is newer than the current one */
-    public static boolean isNewerThanCurrent(String version) {
+    public static boolean isVersionNewer(String version) {
         // shortcut to check own version
         if (BuildConfig.VERSION_NAME.equals(version)) return false;
 
@@ -42,18 +42,20 @@ public class VersionManager {
         if (versionSplit.isEmpty()) return true;
         // compare: "1" < "2", "1" < "1.1"
         var currentSplit = split(BuildConfig.VERSION_NAME);
-        var i = 0;
-        while (true) {
-            // end of version, version is older (or equal)
-            if (versionSplit.size() <= i) return false;
-            // end of current, version is newer
-            if (currentSplit.size() <= i) return true;
+
+        for (var i = 0; i < Math.min(versionSplit.size(), currentSplit.size()); i++) {
+            var versionPart = versionSplit.get(i);
+            var currentPart = currentSplit.get(i);
+
             // version is older
-            if (versionSplit.get(i) < currentSplit.get(i)) return false;
+            if (versionPart < currentPart) return false;
             // version is newer
-            if (versionSplit.get(i) > currentSplit.get(i)) return true;
-            i++;
+            if (versionPart > currentPart) return true;
         }
+
+        // If all parts are equal up to the minimum length, the version with more parts is newer
+        // (and if both are equal, then it is not newer)
+        return versionSplit.size() > currentSplit.size();
     }
 
     /* ------------------- instance ------------------- */

@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.widget.Toast;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.utilities.wrappers.IntentApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +20,13 @@ public interface UrlUtils {
     /**
      * Returns an intent that will open the given url, with an optional package
      *
-     * @param url         the url that will be opened
-     * @param packageName the package that will be opened, null to let android choose
+     * @param url       the url that will be opened
+     * @param intentApp the intentApp that will be opened, null to let android choose
      * @return the converted intent
      */
-    static Intent getViewIntent(String url, String packageName) {
+    static Intent getViewIntent(String url, IntentApp intentApp) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        if (packageName != null) intent.setPackage(packageName);
+        if (intentApp != null) intent.setComponent(intentApp.getComponent());
         return intent;
     }
 
@@ -37,9 +38,9 @@ public interface UrlUtils {
      */
     static void openUrlRemoveThis(String url, Context cntx) {
 
-        // get packages that can open the url
+        // get intents that can open the url
         List<Intent> intents = new ArrayList<>();
-        for (String pack : PackageUtils.getOtherPackages(getViewIntent(url, null), cntx)) {
+        for (var pack : IntentApp.getOtherPackages(getViewIntent(url, null), cntx)) {
             intents.add(getViewIntent(url, pack));
         }
 

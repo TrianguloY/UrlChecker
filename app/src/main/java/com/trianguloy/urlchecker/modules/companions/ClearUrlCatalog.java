@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.AssetFile;
@@ -284,7 +285,7 @@ public class ClearUrlCatalog {
         // read content
         String rawRules;
         try {
-            rawRules = StreamUtils.readFromUrl(catalogURL.get());
+            rawRules = HttpUtils.readFromUrl(catalogURL.get());
         } catch (IOException e) {
             e.printStackTrace();
             return R.string.mClear_urlError;
@@ -296,7 +297,7 @@ public class ClearUrlCatalog {
             // read hash
             String hash;
             try {
-                hash = StreamUtils.readFromUrl(hashURL.get()).trim();
+                hash = HttpUtils.readFromUrl(hashURL.get()).trim();
             } catch (IOException e) {
                 e.printStackTrace();
                 return R.string.mClear_hashError;

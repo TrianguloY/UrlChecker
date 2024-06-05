@@ -1,3 +1,16 @@
+V 2.16
+- Improve: Detect multiple activities for the same app
+- Improve: Show first app icon
+- Improve: Display applied patterns in order
+- Debug: Include query results in the debug module
+
+V 2.15
+- New: Animations (can be disabled)
+- Fix: Better rejected detection. And allow to disable.
+- Fix: Custom tabs should work in more situations (links not opening)
+- Fix: Emojis and other non-standard characters on the Uri parts module
+- Improvement: Better error message when a module can't be enabled
+
 V 2.14
 - New: Backup/restore screen
 - Removed support for Android 4.3 and below

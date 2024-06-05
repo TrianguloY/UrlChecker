@@ -99,11 +99,10 @@ public interface AndroidUtils {
     static String formatMillis(long millis, Context cntx) {
         if (millis < 0) return "---";
 
-        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT,
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                        ? cntx.getResources().getConfiguration().getLocales().get(0)
-                        : cntx.getResources().getConfiguration().locale
-        ).format(new Date(millis));
+        var locale = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+                ? cntx.getResources().getConfiguration().getLocales().get(0)
+                : cntx.getResources().getConfiguration().locale;
+        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, locale).format(new Date(millis));
     }
 
     /**

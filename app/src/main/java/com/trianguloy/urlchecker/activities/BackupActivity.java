@@ -32,6 +32,7 @@ import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Function;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 import com.trianguloy.urlchecker.utilities.wrappers.ZipReader;
@@ -69,13 +70,14 @@ public class BackupActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_backup);
         setTitle(R.string.btn_backupRestore);
         AndroidUtils.configureUp(this);
 
         Animations.enableAnimationsRecursively(this);
 
+        // find view UI elements
         prefs = GenericPref.getPrefs(this);
         chk_data = findViewById(R.id.chk_data);
         chk_data_prefs = findViewById(R.id.chk_data_prefs);
@@ -272,7 +274,7 @@ public class BackupActivity extends Activity {
             try (var zip = new ZipReader(uri, this)) {
 
                 // check version
-                if (!chk_ignoreNewer.isChecked() && VersionManager.isNewerThanCurrent(zip.getFileString(FILE_VERSION))) {
+                if (!chk_ignoreNewer.isChecked() && VersionManager.isVersionNewer(zip.getFileString(FILE_VERSION))) {
                     runOnUiThread(() -> Toast.makeText(this, R.string.bck_newer, Toast.LENGTH_LONG).show());
                     return;
                 }
@@ -308,6 +310,7 @@ public class BackupActivity extends Activity {
         });
     }
 
+    /** Restore preferences from [fileName] in the [zip] that matches the [predicate]. */
     private void restorePreferencesMatching(String fileName, Function<String, Boolean> predicate, ZipReader zip) throws IOException, JSONException {
         var preferences = zip.getFileString(fileName);
         if (preferences == null) return;
@@ -324,13 +327,19 @@ public class BackupActivity extends Activity {
 
         // add
         for (var key : JavaUtils.toList(jsonPrefs.keys())) {
-            var ent = jsonPrefs.getJSONObject(key);
-            switch (ent.getString(PREF_TYPE)) {
-                case "String" -> editor.putString(key, ent.getString(PREF_VALUE));
-                case "Integer" -> editor.putInt(key, ent.getInt(PREF_VALUE));
-                case "Long" -> editor.putLong(key, ent.getLong(PREF_VALUE));
-                case "Boolean" -> editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
-                default -> AndroidUtils.assertError("Unknown type: " + ent.getString(PREF_TYPE));
+            try {
+                var ent = jsonPrefs.getJSONObject(key);
+                var type = ent.getString(PREF_TYPE);
+                switch (type) {
+                    case "String" -> editor.putString(key, ent.getString(PREF_VALUE));
+                    case "Integer" -> editor.putInt(key, ent.getInt(PREF_VALUE));
+                    case "Long" -> editor.putLong(key, ent.getLong(PREF_VALUE));
+                    case "Boolean" -> editor.putBoolean(key, ent.getBoolean(PREF_VALUE));
+                    default -> AndroidUtils.assertError("Unknown type: " + type);
+                }
+            } catch (JSONException e) {
+                AndroidUtils.assertError("Error when restoring key: " + key);
+                e.printStackTrace();
             }
         }
 
