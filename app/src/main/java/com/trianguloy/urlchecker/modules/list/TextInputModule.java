@@ -3,6 +3,7 @@ package com.trianguloy.urlchecker.modules.list;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
@@ -46,7 +47,7 @@ class TextInputDialog extends AModuleDialog {
     private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
     private boolean skipUpdate = false;
 
-    private EditText edtxt_url;
+    private TextView texttxt_url;
 
     public TextInputDialog(MainDialog dialog) {
         super(dialog);
@@ -59,8 +60,8 @@ class TextInputDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        edtxt_url = views.findViewById(R.id.url);
-        edtxt_url.addTextChangedListener(new DefaultTextWatcher() {
+        texttxt_url = views.findViewById(R.id.url);
+        texttxt_url.addTextChangedListener(new DefaultTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 if (skipUpdate) return;
@@ -83,7 +84,7 @@ class TextInputDialog extends AModuleDialog {
     public void onDisplayUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to skip it
         skipUpdate = true;
-        edtxt_url.setText(urlData.url);
+        texttxt_url.setText(urlData.url);
         skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new
     }
