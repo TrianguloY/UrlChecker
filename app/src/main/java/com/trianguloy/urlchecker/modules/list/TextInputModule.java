@@ -48,6 +48,7 @@ class TextInputDialog extends AModuleDialog {
     private boolean skipUpdate = false;
 
     private TextView texttxt_url;
+    private EditText edtxt_url;
 
     public TextInputDialog(MainDialog dialog) {
         super(dialog);
@@ -61,6 +62,7 @@ class TextInputDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         texttxt_url = views.findViewById(R.id.url);
+        edtxt_url = views.findViewById(R.id.urlEdit);
         texttxt_url.addTextChangedListener(new DefaultTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -77,14 +79,26 @@ class TextInputDialog extends AModuleDialog {
                 // set
                 setUrl(newUrlData);
             }
+
+        });
+
+        texttxt_url.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                texttxt_url.setVisibility(View.GONE);
+                edtxt_url.setVisibility(View.VISIBLE);
+                edtxt_url.requestFocus(); // Request focus to automatically open the keyboard
+            }
         });
     }
+
+
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to skip it
         skipUpdate = true;
         texttxt_url.setText(urlData.url);
+        edtxt_url.setText(urlData.url);
         skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new
     }
