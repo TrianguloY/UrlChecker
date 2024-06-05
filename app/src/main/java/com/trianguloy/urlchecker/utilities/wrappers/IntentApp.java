@@ -8,6 +8,8 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
+import com.trianguloy.urlchecker.modules.companions.Size;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,11 +69,19 @@ public class IntentApp {
     }
 
     /** Returns the drawable, cached */
-    public Drawable getIcon(Context activity) {
+    public Drawable getIcon(Context activity, Size size) {
+        var dim = switch (size) {
+            case NONE -> 0;
+            case SMALL -> 25;
+            case NORMAL -> 50;
+            case BIG -> 75;
+        };
+        if (dim == 0) return null;
+
         var component = getComponent();
         if (!iconsCache.containsKey(component)) {
             var icon = resolveInfo.loadIcon(activity.getPackageManager());
-            icon.setBounds(0, 0, 50, 50);
+            icon.setBounds(0, 0, dim, dim);
             iconsCache.put(component, icon);
         }
         return iconsCache.get(component);
