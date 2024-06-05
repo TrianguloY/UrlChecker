@@ -139,6 +139,9 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="back">Back</string>
     <string name="dismiss">Dismiss</string>
     <string name="noLinks">No links detected</string>
+    <string name="small">Small</string>
+    <string name="normal">Normal</string>
+    <string name="big">Big</string>
     <!--
         json
     -->
@@ -194,6 +197,7 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_noReferrer">Hide the source app (referrer)</string>
     <string name="mOpen_rejected">Hide app if URL was rejected (an app immediately requests to open the same URL it was opened with). Doesn\'t affect sharing.</string>
     <string name="mOpen_mergeCopy">Merge Copy and Share buttons (long press to copy)</string>
+    <string name="mOpen_iconSize">Icon size</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
