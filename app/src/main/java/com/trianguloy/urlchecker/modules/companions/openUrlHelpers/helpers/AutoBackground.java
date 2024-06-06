@@ -10,7 +10,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class AutoBackground implements JavaUtils.BiConsumer<Context, String> {
+public class AutoBackground implements JavaUtils.TriConsumer<Context, String, String> {
 
     // Only one clipboard, only one thread
     static ScheduledThreadPoolExecutor executor = null;
@@ -23,7 +23,7 @@ public class AutoBackground implements JavaUtils.BiConsumer<Context, String> {
      * be cancelled an a new one launched.
      */
     @Override
-    public void accept(Context context, String url) {
+    public void accept(Context context, String url, String pckg) {
         // The task will probably outlive any context
         Context finalContext = context.getApplicationContext();
 

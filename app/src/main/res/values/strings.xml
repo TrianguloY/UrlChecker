@@ -379,6 +379,12 @@ Currently supports: Chromium(chrome, brave,…)"</string>
     <string name="cHelper_helperAuto">Automatic</string>
     <string name="cHelper_helperManual">Manual</string>
     <string name="cHelper_helperSemiauto">Semiautomatic</string>
+    <string name="cHelper_helperAccessibility">Accessibility service</string>
     <string name="cHelper_openDrawSettings">Give draw permissions</string>
+    <string name="cHelper_openAccessibilitySettings">Give accessibility permissions</string>
     <string name="cHelper_drawError">Could not launch draw permissions settings</string>
+    <!-- -->
+    <string name="helperService_summary">Automatically input URLs</string>
+    <string name="helperService_description">Used to automatically input URLs in non-supported apps, like Chromium browsers in incognito.</string>
+    <string name="helperService_notConnected">Accessibility service not available, check your settings</string>
 </resources>

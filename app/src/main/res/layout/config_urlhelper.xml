@@ -76,6 +76,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/smallPadding"
                 android:text="@string/cHelper_openDrawSettings" />
+
+            <Button
+                android:id="@+id/accessibility_permissions"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallPadding"
+                android:text="@string/cHelper_openAccessibilitySettings" />
         </LinearLayout>
     </ScrollView>
 

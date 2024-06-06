@@ -26,6 +26,16 @@ public interface JavaUtils {
     }
 
     /**
+     * Returns the element at the specified position if there is one, null if there is none
+     */
+    static <T> T getSafe(List<T> list, int index) {
+        if (list != null && 0 <= index && index < list.size()) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
      * Converts a string into a json object, returns empty on failure
      */
     static JSONObject toJson(String content) {
@@ -126,8 +136,13 @@ public interface JavaUtils {
      * java.util.function.Consumer requires api 24
      */
     @FunctionalInterface
-    interface BiConsumer<T,U> {
+    interface BiConsumer<T, U> {
         void accept(T t, U u);
+    }
+
+    @FunctionalInterface
+    interface TriConsumer<T, U, V> {
+        void accept(T t, U u, V v);
     }
 
     /**
@@ -142,8 +157,13 @@ public interface JavaUtils {
      * java.util.function.BiFunction requires api 24
      */
     @FunctionalInterface
-    interface BiFunction<T,U, R>{
+    interface BiFunction<T, U, R> {
         R apply(T t, U u);
+    }
+
+    @FunctionalInterface
+    interface TriFunction<T, U, V, R> {
+        R apply(T t, U u, V v);
     }
 
     /**

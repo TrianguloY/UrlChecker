@@ -4,10 +4,10 @@ import android.content.Context;
 
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
-public class NoneHelper implements JavaUtils.BiConsumer<Context, String> {
+public class NoneHelper implements JavaUtils.TriConsumer<Context, String, String> {
 
     @Override
-    public void accept(Context context, String s) {
+    public void accept(Context context, String s1, String s2) {
         // Nothing
     }
 }

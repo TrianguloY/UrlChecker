@@ -4,17 +4,15 @@ import static com.trianguloy.urlchecker.utilities.methods.PackageUtils.startActi
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.AccessibilityServiceHelper;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.AutoBackground;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.ManualBubble;
 import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers.NoneHelper;
@@ -53,15 +51,16 @@ public class UrlHelperCompanion {
         none(0, R.string.cHelper_helperNone, new NoneHelper()),
         autoBackground(1, R.string.cHelper_helperAuto, new AutoBackground()),
         manualBubble(2, R.string.cHelper_helperManual, new ManualBubble()),
-        semiAutoBubble(3, R.string.cHelper_helperSemiauto, new SemiautoBubble());
+        semiAutoBubble(3, R.string.cHelper_helperSemiauto, new SemiautoBubble()),
+        accessibilityService(4, R.string.cHelper_helperAccessibility, new AccessibilityServiceHelper());
 
         // -----
 
         private final int id;
         private final int stringResource;
-        private final JavaUtils.BiConsumer<Context, String> function;
+        private final JavaUtils.TriConsumer<Context, String, String> function;
 
-        Helper(int id, int stringResource, JavaUtils.BiConsumer<Context, String> function) {
+        Helper(int id, int stringResource, JavaUtils.TriConsumer<Context, String, String> function) {
             this.id = id;
             this.stringResource = stringResource;
             this.function = function;
@@ -77,7 +76,7 @@ public class UrlHelperCompanion {
             return stringResource;
         }
 
-        public JavaUtils.BiConsumer<Context, String> getFunction() {
+        public JavaUtils.TriConsumer<Context, String, String> getFunction() {
             return function;
         }
 
@@ -126,13 +125,19 @@ class UrlHelperConfig {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + cntx.getPackageName()));
             startActivity(intent, 1, cntx);
         });
+        views.findViewById(R.id.accessibility_permissions).setOnClickListener(view -> {
+            Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+            startActivity(intent, 1, cntx);
+        });
 
         // prepare dialog
         AlertDialog dialog = new AlertDialog.Builder(cntx)
                 .setView(views)
-                .setTitle(R.string.cHelper_title) // TODO
+                .setTitle(R.string.cHelper_title)
+                .setCancelable(true)
                 .show();
 
+        dialog.setCanceledOnTouchOutside(true);
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
 }

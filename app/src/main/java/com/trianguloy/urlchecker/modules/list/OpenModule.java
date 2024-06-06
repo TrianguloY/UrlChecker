@@ -241,37 +241,39 @@ class OpenDialog extends AModuleDialog {
         // ctabs
         cTabs.apply(intent);
 
-        // incognito
-        var currentUrlHelper = UrlHelperCompanion.CURRENT_PREF(getActivity()).get();
-        var intentClone = new Intent(intent);
-        var incogCompat = incognito.apply(getActivity(), intentClone);
-        // If helper is none, and url needs help, do not apply incognito
-        if (currentUrlHelper == UrlHelperCompanion.Helper.none &&
-                incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp) {
-            incogCompat = UrlHelperCompanion.Compatibility.notCompatible;
-        } else {
-            intent = intentClone;
-        }
-
         // Get flags from global data (probably set by flags module, if active)
         var flags = Flags.getGlobalFlagsNullable(this);
         if (flags != null) {
             intent.setFlags(flags);
         }
 
+        // incognito
+        var urlHelper = UrlHelperCompanion.CURRENT_PREF(getActivity()).get();
+        // Simulate incognito to know if it needs help
+        var intentClone = new Intent(intent);
+        var incogCompat = incognito.apply(getActivity(), intentClone);
+        // If url needs help but there is no helper, do not apply incognito
+        if (urlHelper == UrlHelperCompanion.Helper.none &&
+                incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp) {
+            // Do nothing
+        } else {
+            // Apply incognito
+            intent = intentClone;
+        }
+
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
 
-        // If the URL needs help, get a helper
-        var urlHelper = incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp ?
-                currentUrlHelper :
-                null;
+        // Can be done without else-if
+        // TODO: probably needs to be done without else if, for the version without accessibilityservice
         if (urlHelper == UrlHelperCompanion.Helper.autoBackground ||
                 urlHelper == UrlHelperCompanion.Helper.manualBubble ||
                 urlHelper == UrlHelperCompanion.Helper.semiAutoBubble) {
             // For helpers that borrow the clipboard, we should borrow before opening the app,
             // to ensure we are still in foreground
-            urlHelper.getFunction().accept(getActivity(), getUrl());
+            urlHelper.getFunction().accept(getActivity(), getUrl(), null);
+        } else if (urlHelper == UrlHelperCompanion.Helper.accessibilityService){
+            urlHelper.getFunction().accept(getActivity(), getUrl(), intent.getPackage());
         }
 
         // open

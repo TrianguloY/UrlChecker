@@ -11,7 +11,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class SemiautoBubble implements JavaUtils.BiConsumer<Context, String> {
+public class SemiautoBubble implements JavaUtils.TriConsumer<Context, String, String> {
     // Only one bubble
     private static volatile Bubble bubble = null;
     private static volatile ScheduledThreadPoolExecutor executor = null;
@@ -24,7 +24,7 @@ public class SemiautoBubble implements JavaUtils.BiConsumer<Context, String> {
      * When restoring the clipboard the Bubble dissapears.
      */
     @Override
-    public void accept(Context context, String url) {
+    public void accept(Context context, String url, String pckg) {
         synchronized (lock) {
             // Is it possible this could run before relaseSafely(from background) finishes
             // releasing? I think not, but I'm not sure
