@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.ShareUtility;
 import com.trianguloy.urlchecker.modules.companions.Size;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
@@ -32,21 +33,11 @@ import com.trianguloy.urlchecker.utilities.wrappers.RejectionDetector;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * This module contains an open and share buttons
- */
+/** This module contains an open and share buttons */
 public class OpenModule extends AModuleData {
 
     public static GenericPref.Bool CLOSEOPEN_PREF(Context cntx) {
         return new GenericPref.Bool("open_closeopen", true, cntx);
-    }
-
-    public static GenericPref.Bool CLOSESHARE_PREF(Context cntx) {
-        return new GenericPref.Bool("open_closeshare", true, cntx);
-    }
-
-    public static GenericPref.Bool CLOSECOPY_PREF(Context cntx) {
-        return new GenericPref.Bool("open_closecopy", false, cntx);
     }
 
     public static GenericPref.Bool NOREFERRER_PREF(Context cntx) {
@@ -55,10 +46,6 @@ public class OpenModule extends AModuleData {
 
     public static GenericPref.Bool REJECTED_PREF(Context cntx) {
         return new GenericPref.Bool("open_rejected", true, cntx);
-    }
-
-    public static GenericPref.Bool MERGECOPY_PREF(Context cntx) {
-        return new GenericPref.Bool("open_mergeCopy", false, cntx);
     }
 
     public static GenericPref.Enumeration<Size> ICONSIZE_PREF(Context cntx) {
@@ -89,17 +76,15 @@ public class OpenModule extends AModuleData {
 class OpenDialog extends AModuleDialog {
 
     private final GenericPref.Bool closeOpenPref;
-    private final GenericPref.Bool closeSharePref;
-    private final GenericPref.Bool closeCopyPref;
     private final GenericPref.Bool noReferrerPref;
     private final GenericPref.Bool rejectedPref;
-    private final GenericPref.Bool mergeCopyPref;
     private final GenericPref.Enumeration<Size> iconSizePref;
 
     private final LastOpened lastOpened;
     private final CTabs cTabs;
     private final Incognito incognito;
     private final RejectionDetector rejectionDetector;
+    private final ShareUtility.Dialog shareUtility;
 
     private List<IntentApp> intentApps;
     private Button btn_open;
@@ -114,12 +99,10 @@ class OpenDialog extends AModuleDialog {
         cTabs = new CTabs(dialog);
         incognito = new Incognito(dialog);
         rejectionDetector = new RejectionDetector(dialog);
+        shareUtility = new ShareUtility.Dialog(dialog);
         closeOpenPref = OpenModule.CLOSEOPEN_PREF(dialog);
-        closeSharePref = OpenModule.CLOSESHARE_PREF(dialog);
-        closeCopyPref = OpenModule.CLOSECOPY_PREF(dialog);
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
         rejectedPref = OpenModule.REJECTED_PREF(dialog);
-        mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
         iconSizePref = OpenModule.ICONSIZE_PREF(dialog);
     }
 
@@ -130,7 +113,7 @@ class OpenDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        Intent intent = getActivity().getIntent();
+        var intent = getActivity().getIntent();
 
         // ctabs
         cTabs.initFrom(intent, views.findViewById(R.id.ctabs));
@@ -147,23 +130,6 @@ class OpenDialog extends AModuleDialog {
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(v -> showList());
 
-        // init copy & share
-        var btn_copy = views.findViewById(R.id.copyUrl);
-        var btn_share = views.findViewById(R.id.share);
-        btn_share.setOnClickListener(v -> shareUrl());
-        if (mergeCopyPref.get()) {
-            // merge mode (single button)
-            btn_copy.setVisibility(View.GONE);
-            btn_share.setOnLongClickListener(v -> {
-                copyUrl();
-                return true;
-            });
-        } else {
-            // split mode (two buttons)
-            btn_copy.setOnClickListener(v -> copyUrl());
-            AndroidUtils.longTapForDescription(btn_share);
-            AndroidUtils.longTapForDescription(btn_copy);
-        }
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);
@@ -172,6 +138,9 @@ class OpenDialog extends AModuleDialog {
             return false;
         });
         menu = popup.getMenu();
+
+        // share
+        shareUtility.onInitialize(views);
     }
 
     @Override
@@ -279,43 +248,9 @@ class OpenDialog extends AModuleDialog {
         }
     }
 
-    /**
-     * Show the popup with the rest of the apps
-     */
+    /** Show the popup with the rest of the apps */
     private void showList() {
         popup.show();
-    }
-
-    /**
-     * Shares the url as text
-     */
-    private void shareUrl() {
-        // create send intent
-        var sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, getUrl());
-        sendIntent.setType("text/plain");
-
-        // share intent
-        var chooser = Intent.createChooser(sendIntent, getActivity().getString(R.string.mOpen_share));
-        PackageUtils.startActivity(
-                chooser,
-                R.string.mOpen_noapps,
-                getActivity()
-        );
-        if (closeSharePref.get()) {
-            getActivity().finish();
-        }
-    }
-
-    /**
-     * Copy the url
-     */
-    private void copyUrl() {
-        AndroidUtils.copyToClipboard(getActivity(), R.string.mOpen_clipboard, getUrl());
-        if (closeCopyPref.get()) {
-            getActivity().finish();
-        }
     }
 
 }
@@ -336,13 +271,13 @@ class OpenConfig extends AModuleConfig {
         CTabs.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.ctabs_pref), null);
         Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), null);
         OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
-        OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
-        OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));
         OpenModule.NOREFERRER_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.noReferrer));
         OpenModule.REJECTED_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.rejected));
         LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
-        OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
         OpenModule.ICONSIZE_PREF(getActivity()).attachToSpinner(views.findViewById(R.id.iconsize_pref), null);
+
+        // share
+        ShareUtility.onInitializeConfig(views, getActivity());
     }
 }
 
