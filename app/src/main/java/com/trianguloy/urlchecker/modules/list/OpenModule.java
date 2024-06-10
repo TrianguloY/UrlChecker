@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
+import com.trianguloy.urlchecker.modules.companions.Size;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -60,6 +61,10 @@ public class OpenModule extends AModuleData {
         return new GenericPref.Bool("open_mergeCopy", false, cntx);
     }
 
+    public static GenericPref.Enumeration<Size> ICONSIZE_PREF(Context cntx) {
+        return new GenericPref.Enumeration<>("open_iconsize", Size.NORMAL, Size.class, cntx);
+    }
+
     @Override
     public String getId() {
         return "open";
@@ -89,6 +94,7 @@ class OpenDialog extends AModuleDialog {
     private final GenericPref.Bool noReferrerPref;
     private final GenericPref.Bool rejectedPref;
     private final GenericPref.Bool mergeCopyPref;
+    private final GenericPref.Enumeration<Size> iconSizePref;
 
     private final LastOpened lastOpened;
     private final CTabs cTabs;
@@ -114,6 +120,7 @@ class OpenDialog extends AModuleDialog {
         noReferrerPref = OpenModule.NOREFERRER_PREF(dialog);
         rejectedPref = OpenModule.REJECTED_PREF(dialog);
         mergeCopyPref = OpenModule.MERGECOPY_PREF(dialog);
+        iconSizePref = OpenModule.ICONSIZE_PREF(dialog);
     }
 
     @Override
@@ -208,7 +215,7 @@ class OpenDialog extends AModuleDialog {
         var label = intentApps.get(0).getLabel(getActivity());
 //        label = getActivity().getString(R.string.mOpen_with, label);
         btn_open.setText(label);
-        btn_open.setCompoundDrawables(intentApps.get(0).getIcon(getActivity()), null, null, null);
+        btn_open.setCompoundDrawables(intentApps.get(0).getIcon(getActivity(), iconSizePref.get()), null, null, null);
         AndroidUtils.setEnabled(openParent, true);
         btn_open.setEnabled(true);
         menu.clear();
@@ -335,6 +342,7 @@ class OpenConfig extends AModuleConfig {
         OpenModule.REJECTED_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.rejected));
         LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
         OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
+        OpenModule.ICONSIZE_PREF(getActivity()).attachToSpinner(views.findViewById(R.id.iconsize_pref), null);
     }
 }
 

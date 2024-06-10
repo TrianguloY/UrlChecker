@@ -8,7 +8,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
-import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.modules.companions.Size;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,14 +27,17 @@ public class IntentApp {
      */
     public static List<IntentApp> getOtherPackages(Intent baseIntent, Context cntx) {
         // get all packages
-        var resolveInfos = cntx.getPackageManager().queryIntentActivityOptions(
-                new ComponentName(cntx, MainDialog.class.getName()),
-                null,
+        var resolveInfos = cntx.getPackageManager().queryIntentActivities(
                 baseIntent,
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0);
 
         var intentApps = new ArrayList<IntentApp>();
-        for (var resolveInfo : resolveInfos) intentApps.add(new IntentApp(resolveInfo));
+        for (var resolveInfo : resolveInfos) {
+            // filter the current app
+            if (!resolveInfo.activityInfo.packageName.equals(cntx.getPackageName())) {
+                intentApps.add(new IntentApp(resolveInfo));
+            }
+        }
         return intentApps;
     }
 
@@ -66,11 +69,19 @@ public class IntentApp {
     }
 
     /** Returns the drawable, cached */
-    public Drawable getIcon(Context activity) {
+    public Drawable getIcon(Context activity, Size size) {
+        var dim = switch (size) {
+            case NONE -> 0;
+            case SMALL -> 25;
+            case NORMAL -> 50;
+            case BIG -> 75;
+        };
+        if (dim == 0) return null;
+
         var component = getComponent();
         if (!iconsCache.containsKey(component)) {
             var icon = resolveInfo.loadIcon(activity.getPackageManager());
-            icon.setBounds(0, 0, 50, 50);
+            icon.setBounds(0, 0, dim, dim);
             iconsCache.put(component, icon);
         }
         return iconsCache.get(component);
