@@ -47,7 +47,7 @@ class TextInputDialog extends AModuleDialog {
     private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
     private boolean skipUpdate = false;
 
-    private TextView texttxt_url;
+    private TextView txt_url;
     private EditText edtxt_url;
 
     public TextInputDialog(MainDialog dialog) {
@@ -61,9 +61,9 @@ class TextInputDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        texttxt_url = views.findViewById(R.id.url);
+        txt_url = views.findViewById(R.id.url);
         edtxt_url = views.findViewById(R.id.urlEdit);
-        texttxt_url.addTextChangedListener(new DefaultTextWatcher() {
+        edtxt_url.addTextChangedListener(new DefaultTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 if (skipUpdate) return;
@@ -81,13 +81,10 @@ class TextInputDialog extends AModuleDialog {
             }
 
         });
-
-        texttxt_url.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                texttxt_url.setVisibility(View.GONE);
+        txt_url.setOnClickListener(v -> {
+                txt_url.setVisibility(View.GONE);
                 edtxt_url.setVisibility(View.VISIBLE);
-                edtxt_url.requestFocus(); // Request focus to automatically open the keyboard
-            }
+                edtxt_url.requestFocus();
         });
     }
 
@@ -97,7 +94,7 @@ class TextInputDialog extends AModuleDialog {
     public void onDisplayUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to skip it
         skipUpdate = true;
-        texttxt_url.setText(urlData.url);
+        txt_url.setText(urlData.url);
         edtxt_url.setText(urlData.url);
         skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new

@@ -14,7 +14,6 @@
         style="@android:style/Widget.TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
     <EditText
@@ -23,6 +22,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:textSize="18sp"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"/>
 </LinearLayout>
