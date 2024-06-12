@@ -1,12 +1,19 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static android.graphics.Typeface.BOLD;
+import static android.graphics.Typeface.ITALIC;
+
 import android.content.Context;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
@@ -100,7 +107,7 @@ class TextInputDialog extends AModuleDialog {
     public void onDisplayUrl(UrlData urlData) {
         // setText fires the afterTextChanged listener, so we need to skip it
         skipUpdate = true;
-        txt_url.setText(urlData.url);
+        txt_url.setText(getSpannableUriText(urlData.url));
         edtxt_url.setText(urlData.url);
         txt_url.setVisibility(View.VISIBLE);
         edtxt_url.setVisibility(View.GONE);
@@ -108,5 +115,39 @@ class TextInputDialog extends AModuleDialog {
         inputMethodManager.hideSoftInputFromWindow(edtxt_url.getWindowToken(), 0);
         skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new
+    }
+
+    private CharSequence getSpannableUriText(String rawUri) {
+        var str = new SpannableStringBuilder(rawUri);
+
+        // bold host
+        try {
+            var start = rawUri.indexOf("://");
+            if (start != -1) {
+                start += 3;
+                var end = rawUri.indexOf("/", start);
+
+                var userinfo = rawUri.indexOf("@", start);
+                if (userinfo != -1 && userinfo < end) start = userinfo + 1;
+
+                var port = rawUri.lastIndexOf(":", end);
+                if (port != -1 && port > start) end = port;
+
+                str.setSpan(new StyleSpan(BOLD), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+            }
+        } catch (Exception e) {
+            if (BuildConfig.DEBUG) e.printStackTrace();
+        }
+
+        // italic query+fragment
+        try {
+            var start = rawUri.indexOf("?");
+            if (start == -1) start = rawUri.indexOf("#");
+            if (start != -1) str.setSpan(new StyleSpan(ITALIC), start, rawUri.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        } catch (Exception e) {
+            if (BuildConfig.DEBUG) e.printStackTrace();
+        }
+
+        return str;
     }
 }
