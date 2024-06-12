@@ -93,6 +93,9 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="canceled">Cancelado</string>
     <string name="deviceDefault">Por defecto del dispositivo</string>
     <string name="noLinks">No se han detectado enlaces</string>
+    <string name="small">Pequeño</string>
+    <string name="normal">Normal</string>
+    <string name="big">Grande</string>
     <!--
         json
     -->
@@ -146,6 +149,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
     <string name="mOpen_noReferrer">Ocultar la aplicación de origen (referrer)</string>
     <string name="mOpen_rejected">Ocultar la aplicación si se rechaza la URL (una aplicación solicita inmediatamente abrir la misma URL con la que se abrió). No afecta a la compartición.</string>
+    <string name="mOpen_iconSize">Tamaño del icono</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>

@@ -10,7 +10,7 @@ android {
         compileSdk 33
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 33
+        versionCode 34
         versionName "2.16"
 
 
