@@ -1,7 +1,9 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.content.Context;
 import android.text.Editable;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,12 +15,11 @@ import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
 import com.trianguloy.urlchecker.utilities.wrappers.DoubleEvent;
 
-/**
- * This module shows the current url and allows manual editing
- */
+/** This module shows the current url and allows manual editing */
 public class TextInputModule extends AModuleData {
 
     @Override
@@ -45,6 +46,7 @@ public class TextInputModule extends AModuleData {
 class TextInputDialog extends AModuleDialog {
 
     private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
+    private final InputMethodManager inputMethodManager;
     private boolean skipUpdate = false;
 
     private TextView txt_url;
@@ -52,6 +54,7 @@ class TextInputDialog extends AModuleDialog {
 
     public TextInputDialog(MainDialog dialog) {
         super(dialog);
+        inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 
     @Override
@@ -81,13 +84,16 @@ class TextInputDialog extends AModuleDialog {
             }
 
         });
-        txt_url.setOnClickListener(v -> {
-                txt_url.setVisibility(View.GONE);
-                edtxt_url.setVisibility(View.VISIBLE);
-                edtxt_url.requestFocus();
+
+        AndroidUtils.setOnClickWithPositionListener(txt_url, position -> {
+            edtxt_url.setSelection(txt_url.getOffsetForPosition(position.first, position.second));
+            txt_url.setVisibility(View.GONE);
+            edtxt_url.setVisibility(View.VISIBLE);
+            // force open the keyboard
+            edtxt_url.requestFocus();
+            inputMethodManager.showSoftInput(edtxt_url, 0);
         });
     }
-
 
 
     @Override
@@ -96,6 +102,10 @@ class TextInputDialog extends AModuleDialog {
         skipUpdate = true;
         txt_url.setText(urlData.url);
         edtxt_url.setText(urlData.url);
+        txt_url.setVisibility(View.VISIBLE);
+        edtxt_url.setVisibility(View.GONE);
+        // force close the keyboard
+        inputMethodManager.hideSoftInputFromWindow(edtxt_url.getWindowToken(), 0);
         skipUpdate = false;
         doubleEdit.reset(); // next user update, even if immediately after, will be considered new
     }

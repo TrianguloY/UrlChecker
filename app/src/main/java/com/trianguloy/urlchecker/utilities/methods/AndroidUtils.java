@@ -11,6 +11,7 @@ import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.util.Pair;
 import android.util.Patterns;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -212,5 +213,17 @@ public interface AndroidUtils {
         try (var in = cntx.getContentResolver().openInputStream(uri)) {
             StreamUtils.inputStream2File(in, file);
         }
+    }
+
+    /** OnClickListener that reports the click position */
+    static void setOnClickWithPositionListener(View view, JavaUtils.Consumer<Pair<Float, Float>> listener) {
+        var xy = new float[2];
+        view.setOnTouchListener((v, event) -> {
+            // store any interaction and continue
+            xy[0] = event.getX();
+            xy[1] = event.getY();
+            return false;
+        });
+        view.setOnClickListener(v -> listener.accept(Pair.create(xy[0], xy[1])));
     }
 }
