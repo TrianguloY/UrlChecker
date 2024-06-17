@@ -1,16 +1,16 @@
-package com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers;
+package com.trianguloy.forceurllib.helpers.list;
 
 import android.content.Context;
 
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
-import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.forceurllib.utilities.ClipboardBorrower;
+import com.trianguloy.forceurllib.helpers.AHelper;
+import com.trianguloy.forceurllib.lib.Preferences;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class AutoBackground implements JavaUtils.TriConsumer<Context, String, String> {
+public class AutoBackgroundHelper implements AHelper {
 
     // Only one clipboard, only one thread
     static ScheduledThreadPoolExecutor executor = null;
@@ -23,7 +23,7 @@ public class AutoBackground implements JavaUtils.TriConsumer<Context, String, St
      * be cancelled an a new one launched.
      */
     @Override
-    public void accept(Context context, String url, String pckg) {
+    public void run(Context context, String url, String pckg, String mode) {
         // The task will probably outlive any context
         Context finalContext = context.getApplicationContext();
 
@@ -43,7 +43,7 @@ public class AutoBackground implements JavaUtils.TriConsumer<Context, String, St
                         task = null;
                     }
                 }
-            }, UrlHelperCompanion.TIMER_PREF(context).get(), TimeUnit.SECONDS);
+            }, Preferences.TIMER_PREF(context).get(), TimeUnit.SECONDS);
         }
     }
 }

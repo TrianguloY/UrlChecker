@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.utilities.wrappers;
+package com.trianguloy.forceurllib.utilities;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
+import com.trianguloy.forceurllib.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 public class Bubble {

@@ -1,4 +1,4 @@
-package com.trianguloy.urlchecker.services;
+package com.trianguloy.forceurllib.services;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class UrlHelperService extends AccessibilityService {
     private boolean open = true;
     private String pckg = null;
     private String url = null;
-    private JavaUtils.TriFunction<AccessibilityNodeInfo, String, String, Boolean> putUrl;
+    private JavaUtils.Function<AccessibilityNodeInfo, Boolean>  putUrl;
     private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
     private ScheduledFuture<?> task = null;
     private static UrlHelperService instance = null;
@@ -57,7 +56,7 @@ public class UrlHelperService extends AccessibilityService {
     }
 
     public synchronized void openService(String url, String pckg,
-                                         JavaUtils.TriFunction<AccessibilityNodeInfo, String, String, Boolean> putUrl) {
+                                         JavaUtils.Function<AccessibilityNodeInfo, Boolean> putUrl) { // FIXME: just a normal function?
         open = true;
 
         this.pckg = pckg;
@@ -99,7 +98,7 @@ public class UrlHelperService extends AccessibilityService {
                 // Get root node of the active window
                 AccessibilityNodeInfo rootNode = getRootInActiveWindow();
                 if (rootNode != null) {
-                    if (putUrl.apply(rootNode, pckg, url)) {
+                    if (putUrl.apply(rootNode)) {
                         // When success, close the service
                         closeService();
                     }

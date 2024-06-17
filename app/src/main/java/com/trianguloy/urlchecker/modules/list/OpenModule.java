@@ -20,7 +20,7 @@ import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
+import com.trianguloy.forceurllib.lib.Preferences;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -248,34 +248,11 @@ class OpenDialog extends AModuleDialog {
         }
 
         // incognito
-        var urlHelper = UrlHelperCompanion.CURRENT_PREF(getActivity()).get();
-        // Simulate incognito to know if it needs help
-        var intentClone = new Intent(intent);
-        var incogCompat = incognito.apply(getActivity(), intentClone);
-        // If url needs help but there is no helper, do not apply incognito
-        if (urlHelper == UrlHelperCompanion.Helper.none &&
-                incogCompat == UrlHelperCompanion.Compatibility.urlNeedsHelp) {
-            // Do nothing
-        } else {
-            // Apply incognito
-            intent = intentClone;
-        }
+        incognito.apply(getActivity(), intent, getUrl());
 
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
-
-        // Can be done without else-if
-        // TODO: probably needs to be done without else if, for the version without accessibilityservice
-        if (urlHelper == UrlHelperCompanion.Helper.autoBackground ||
-                urlHelper == UrlHelperCompanion.Helper.manualBubble ||
-                urlHelper == UrlHelperCompanion.Helper.semiAutoBubble) {
-            // For helpers that borrow the clipboard, we should borrow before opening the app,
-            // to ensure we are still in foreground
-            urlHelper.getFunction().accept(getActivity(), getUrl(), null);
-        } else if (urlHelper == UrlHelperCompanion.Helper.accessibilityService){
-            urlHelper.getFunction().accept(getActivity(), getUrl(), intent.getPackage());
-        }
-
+        
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
@@ -349,7 +326,7 @@ class OpenConfig extends AModuleConfig {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
         var incognitoButton = (Button) views.findViewById(R.id.urlHelper_settings);
-        incognitoButton.setOnClickListener(v -> UrlHelperCompanion.showSettings(getActivity()));
+        incognitoButton.setOnClickListener(v -> Preferences.showSettings(getActivity()));
         JavaUtils.Consumer<OnOffConfig> buttonEnabled = onOffConfig -> {
             incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
         };

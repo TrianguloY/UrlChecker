@@ -1,17 +1,17 @@
-package com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers;
+package com.trianguloy.forceurllib.helpers.list;
 
 import android.content.Context;
 
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.UrlHelperCompanion;
-import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
-import com.trianguloy.urlchecker.utilities.wrappers.Bubble;
+import com.trianguloy.forceurllib.utilities.ClipboardBorrower;
+import com.trianguloy.forceurllib.helpers.AHelper;
+import com.trianguloy.forceurllib.lib.Preferences;
+import com.trianguloy.forceurllib.utilities.Bubble;
 
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class SemiautoBubble implements JavaUtils.TriConsumer<Context, String, String> {
+public class SemiautoBubbleHelper implements AHelper {
     // Only one bubble
     private static volatile Bubble bubble = null;
     private static volatile ScheduledThreadPoolExecutor executor = null;
@@ -24,7 +24,7 @@ public class SemiautoBubble implements JavaUtils.TriConsumer<Context, String, St
      * When restoring the clipboard the Bubble dissapears.
      */
     @Override
-    public void accept(Context context, String url, String pckg) {
+    public void run(Context context, String url, String pckg, String mode) {
         synchronized (lock) {
             // Is it possible this could run before relaseSafely(from background) finishes
             // releasing? I think not, but I'm not sure
@@ -63,7 +63,7 @@ public class SemiautoBubble implements JavaUtils.TriConsumer<Context, String, St
                         bubble.pop();
                     }
                 }
-            }, UrlHelperCompanion.TIMER_PREF(context).get(), TimeUnit.SECONDS);
+            }, Preferences.TIMER_PREF(context).get(), TimeUnit.SECONDS);
         }
     }
 }

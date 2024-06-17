@@ -1,12 +1,12 @@
-package com.trianguloy.urlchecker.modules.companions.openUrlHelpers.helpers;
+package com.trianguloy.forceurllib.helpers.list;
 
 import android.content.Context;
 
-import com.trianguloy.urlchecker.modules.companions.openUrlHelpers.ClipboardBorrower;
-import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
-import com.trianguloy.urlchecker.utilities.wrappers.Bubble;
+import com.trianguloy.forceurllib.utilities.ClipboardBorrower;
+import com.trianguloy.forceurllib.helpers.AHelper;
+import com.trianguloy.forceurllib.utilities.Bubble;
 
-public class ManualBubble implements JavaUtils.TriConsumer<Context, String, String> {
+public class ManualBubbleHelper implements AHelper {
 
     // Only one bubble
     private static Bubble bubble = null;
@@ -18,7 +18,7 @@ public class ManualBubble implements JavaUtils.TriConsumer<Context, String, Stri
      * When restoring the clipboard the Bubble dissapears.
      */
     @Override
-    public void accept(Context context, String url, String pckg) {
+    public void run(Context context, String url, String pckg, String mode) {
         synchronized (lock) {
             ClipboardBorrower.borrow(context, url);
 

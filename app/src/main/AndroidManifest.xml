@@ -134,7 +134,7 @@
         </service>
 
         <service
-            android:name=".services.UrlHelperService"
+            android:name="com.trianguloy.forceurllib.services.UrlHelperService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="true">
             <intent-filter>

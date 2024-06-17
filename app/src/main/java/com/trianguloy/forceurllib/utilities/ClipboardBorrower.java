@@ -1,19 +1,19 @@
-package com.trianguloy.urlchecker.modules.companions.openUrlHelpers;
+package com.trianguloy.forceurllib.utilities;
 
 import android.content.ClipData;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
+import com.trianguloy.forceurllib.lib.Preferences;
+import com.trianguloy.forceurllib.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
 public class ClipboardBorrower {
     private volatile static ClipData previous;
@@ -48,8 +48,6 @@ public class ClipboardBorrower {
             AndroidUtils.setPrimaryClip(context, R.string.borrow_borrowSet, ClipboardBorrower.borrowerData);
             return true;
         } else {
-            // FIXME: Not needed, androidutils already shows a toast, delete or move borrow_borrowError
-            //Toast.makeText(context, R.string.borrow_borrowError, Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -92,7 +90,7 @@ public class ClipboardBorrower {
      * steal the scrolling from the user.
      */
     public static void releaseFromBubble(Context context) {
-        if (!Settings.canDrawOverlays(context)) {
+        if (!android.provider.Settings.canDrawOverlays(context)) {
             AndroidUtils.safeToast(context, R.string.borrow_drawError, Toast.LENGTH_LONG);
             return;
         }
@@ -111,6 +109,7 @@ public class ClipboardBorrower {
 
         floatView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             // TODO: add way so that just when it is unrendering, we read the clipboard
+
             @Override
             public boolean onPreDraw() {
                 // There is no reason to not storeBeforeRelease, otherwise the call could be done
@@ -128,7 +127,7 @@ public class ClipboardBorrower {
     }
 
     public synchronized static boolean releaseSmart(Context context) {
-        var storeBeforeRelease = UrlHelperCompanion.STOREBEFORERELEASE_PREF(context).get();
+        var storeBeforeRelease = Preferences.STOREBEFORERELEASE_PREF(context).get();
         return releaseSmart(context, storeBeforeRelease);
     }
 
@@ -140,10 +139,12 @@ public class ClipboardBorrower {
     public synchronized static boolean releaseSmart(Context context, boolean storeBeforeRelease) {
         // If we don't store before releasing we don't need to check if we can read the clipboard
         var releaseNormally = !storeBeforeRelease || AndroidUtils.canReadClip(context);
+        // Clipboard is always available under API 29 (Android 10)
         if (releaseNormally) {
             release(context, storeBeforeRelease);
         } else {
-            if (Settings.canDrawOverlays(context)) {
+            // API level is AT LEAST 29 (can't use clipboard)
+            if (android.provider.Settings.canDrawOverlays(context)) {
                 releaseFromBubble(context);
             } else {
                 // No permissions, we can't read the clipboard, so we are unable to respect changes
@@ -189,15 +190,21 @@ public class ClipboardBorrower {
                 // In debug build we DO NOT check the label
                 if (current.getDescription().getMimeType(0).equals("text/plain")) {
                     var currentText = current.getItemAt(0).coerceToText(context);
-                    var borrowerText = ClipboardBorrower.borrowerData.getItemAt(0).coerceToText(context);
+                    var borrowerText = borrowerData.getItemAt(0).coerceToText(context);
                     if (!currentText.equals(borrowerText)) {
                         previous = current;
                     }
                 }
             } else {
                 // On release build we DO check the label
-                if (!current.equals(ClipboardBorrower.borrowerData)) {
-                    previous = current;
+                if (current.getDescription().getMimeType(0).equals("text/plain")) {
+                    var currentText = current.getItemAt(0).coerceToText(context);
+                    var currentLabel = current.getDescription().getLabel();
+                    var borrowerText = borrowerData.getItemAt(0).coerceToText(context);
+                    var borrowerLabel = borrowerData.getDescription().getLabel();
+                    if (!(currentText.equals(borrowerText) && currentLabel.equals(borrowerLabel))) {
+                        previous = current;
+                    }
                 }
             }
         }
