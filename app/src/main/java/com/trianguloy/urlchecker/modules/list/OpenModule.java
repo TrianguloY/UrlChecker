@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
@@ -326,11 +327,16 @@ class OpenConfig extends AModuleConfig {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
         var incognitoButton = (Button) views.findViewById(R.id.urlHelper_settings);
-        incognitoButton.setOnClickListener(v -> Preferences.showSettings(getActivity()));
-        JavaUtils.Consumer<OnOffConfig> buttonEnabled = onOffConfig -> {
-            incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
-        };
-        buttonEnabled.accept(Incognito.PREF(getActivity()).get());
+        JavaUtils.Consumer<OnOffConfig> buttonEnabled = null;
+        if (BuildConfig.IS_INCOGNITO){
+            incognitoButton.setOnClickListener(v -> Preferences.showSettings(getActivity()));
+             buttonEnabled = onOffConfig -> {
+                incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
+            };
+            buttonEnabled.accept(Incognito.PREF(getActivity()).get());
+        } else {
+            incognitoButton.setVisibility(View.GONE);
+        }
 
         Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), buttonEnabled);
         OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));

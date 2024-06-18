@@ -59,6 +59,22 @@ android {
         }
     }
 
+    flavorDimensions = ["incognito"]
+    productFlavors {
+        // incognito dimension
+        base {
+            dimension "incognito"
+            buildConfigField("boolean", "IS_INCOGNITO", "false")
+        }
+        incognito {
+            dimension "incognito"
+            buildConfigField("boolean", "IS_INCOGNITO", "true")
+
+            applicationIdSuffix ".incognito"
+            versionNameSuffix "-incognito"
+        }
+    }
+
     lint {
         // users are free to update translations whenever
         // this mean that they are not usually up to date
