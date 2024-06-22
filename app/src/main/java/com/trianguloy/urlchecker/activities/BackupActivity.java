@@ -338,8 +338,7 @@ public class BackupActivity extends Activity {
                     default -> AndroidUtils.assertError("Unknown type: " + type);
                 }
             } catch (JSONException e) {
-                AndroidUtils.assertError("Error when restoring key: " + key);
-                e.printStackTrace();
+                AndroidUtils.assertError("Error when restoring key: " + key, e);
             }
         }
 

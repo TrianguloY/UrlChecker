@@ -92,8 +92,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onPrepareUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onPrepareUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onPrepareUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -122,8 +121,7 @@ public class MainDialog extends Activity {
                         continue main_loop;
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onModifyUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onModifyUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -134,8 +132,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onDisplayUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onDisplayUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onDisplayUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -146,8 +143,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onFinishUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onFinishUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onFinishUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -312,8 +308,7 @@ public class MainDialog extends Activity {
             module.onInitialize(child);
         } catch (Exception e) {
             // can't add module
-            e.printStackTrace();
-            AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId());
+            AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId(), e);
         }
     }
 

@@ -43,14 +43,17 @@ public interface AndroidUtils {
         view.setAlpha(enabled ? 1f : 0.35f);
     }
 
-    /**
-     * In debug mode, throws an AssertionError, in production just logs it and continues.
-     */
+    /** In debug mode, throws an AssertionError, in production just logs it and continues. */
     static void assertError(String detailMessage) {
-        Log.d("ASSERT_ERROR", detailMessage);
+        assertError(detailMessage, null);
+    }
+
+    /** In debug mode, throws an AssertionError, in production just logs it and continues. */
+    static void assertError(String detailMessage, Throwable cause) {
+        Log.d("ASSERT_ERROR", detailMessage, cause);
         if (BuildConfig.DEBUG) {
             // in debug mode, throw exception
-            throw new AssertionError(detailMessage);
+            throw new AssertionError(detailMessage, cause);
         }
         // non-debug, just discard
     }
@@ -172,8 +175,11 @@ public interface AndroidUtils {
     static void longTapForDescription(View view) {
         view.setOnLongClickListener(v -> {
             var contentDescription = v.getContentDescription();
-            if (contentDescription == null) AndroidUtils.assertError("No content description for view " + view);
-            Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            if (contentDescription == null) {
+                AndroidUtils.assertError("No content description for view " + view);
+            } else {
+                Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            }
             return true;
         });
     }

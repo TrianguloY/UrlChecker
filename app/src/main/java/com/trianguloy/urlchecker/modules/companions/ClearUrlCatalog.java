@@ -114,7 +114,7 @@ public class ClearUrlCatalog {
             return rules;
         } catch (JSONException e) {
             // invalid catalog, return empty
-            AndroidUtils.assertError(e.getMessage());
+            AndroidUtils.assertError(e.getMessage(), e);
             return Collections.emptyList();
         }
     }
