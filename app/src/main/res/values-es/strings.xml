@@ -99,8 +99,15 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!--
         json
     -->
-    <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
-    <string name="json_edit">Editor avanzado</string>
+    <string name="json_editor">Editor JSON</string>
+    <string name="json_info">Mostrar información</string>
+    <string name="json_ignore">El contenido no es JSON válido. Quieres descartarlo y cerrar el editor?</string>
+    <string name="json_discard_close">Descartar y cerrar</string>
+    <string name="json_save">Hay cambios sin guardar, quieres guardarlos o descartarlos?</string>
+    <string name="json_save_error">No se ha podido guardar: %s</string>
+    <string name="json_format_error">El contenido no es JSON válido, no se puede validar.</string>
+    <string name="json_discard">Cuidado, esto reemplazará el contenido del editor con el json guardado. Todos los cambios realizados se perderán. Quieres continuar?</string>
+    <string name="json_reset">Cuidado, esto reemplazará el contenido del editor con el json por defecto. Todos los cambios realizados se perderán, aunque el contenido guardado no se modificará a no ser que se guarde manualmente. Quieres continuar?</string>
     <!--
         shortcuts
     -->

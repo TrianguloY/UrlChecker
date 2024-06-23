@@ -1,9 +1,8 @@
 package com.trianguloy.urlchecker.utilities.generics;
 
-import android.app.Activity;
 import android.content.Context;
 
-import com.trianguloy.urlchecker.dialogs.JsonEditor;
+import com.trianguloy.urlchecker.activities.JsonEditorInterface;
 import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
 
 import org.json.JSONException;
@@ -12,13 +11,13 @@ import org.json.JSONObject;
 /**
  * Represents a generic catalog
  */
-public abstract class JsonCatalog {
+public abstract class JsonCatalog implements JsonEditorInterface {
 
-    private final Activity cntx;
+    private final Context cntx;
     private final InternalFile custom;
     private final int editorDescription;
 
-    public JsonCatalog(Activity cntx, String fileName, int editorDescription) {
+    public JsonCatalog(Context cntx, String fileName, int editorDescription) {
         this.cntx = cntx;
         this.editorDescription = editorDescription;
         custom = new InternalFile(fileName, cntx);
@@ -71,11 +70,30 @@ public abstract class JsonCatalog {
         return custom.set(content.toString());
     }
 
-    /**
-     * Shows a dialog to manually edit the catalog
-     */
+
+    @Override
+    public JSONObject getJson() {
+        return getCatalog();
+    }
+
+    @Override
+    public JSONObject getBuiltInJson() {
+        return getBuiltIn();
+    }
+
+    @Override
+    public String saveJson(JSONObject data) {
+        return save(data) ? null : "Unable to save";
+    }
+
+    @Override
+    public int getEditorDescription() {
+        return editorDescription;
+    }
+
+
     public void showEditor() {
-        JsonEditor.show(getCatalog(), getBuiltIn(), editorDescription, cntx, this::save);
+        showEditor(cntx);
     }
 
 }

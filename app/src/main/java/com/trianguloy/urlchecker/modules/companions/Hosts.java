@@ -9,7 +9,6 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
 import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
-import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
 import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 
@@ -55,7 +54,7 @@ public class Hosts {
                 );
 
         if (showEditor) builder
-                .setNeutralButton(R.string.json_edit, (dialog, which) -> data.showEditor());
+                .setNeutralButton(R.string.json_editor, (dialog, which) -> data.showEditor());
 
         builder.show();
     }

@@ -58,7 +58,6 @@
     <string name="mClear_desc">Modul ini menghilangkan pelacakan, perujuk, dan parameter lain yang tidak bermanfaat di URL. Ia juga bisa melacak pengalihan URL luring yang umum digunakan.</string>
     <string name="mVT_connectError">Tidak dapat melakukan koneksi ke VirusTotal. Pastikan Anda terhubung ke internet, atau coba lagi nanti.</string>
     <string name="mPttrn_regexfix">Perbaiki grup regex yang opsional (nonaktifkan jika regex tidak bekerja dengan baik)</string>
-    <string name="json_desc">[Fitur beta] Berikut ini adalah editor tingkat lanjut, konten terkait harus berupa JSON yang valid. Anda bisa menekan tombol di sebelah kanan atas untuk memformat dan memvalidasinya.</string>
     <string name="mPttrn_http">Link HTTP. Pertimbangkan untuk beralih ke HTTPS.</string>
     <string name="mStatus_check">Cek status</string>
     <string name="mD_desc">Jika Anda mengubah urutan modul, modul baru yang ditambahkan pada pembaruan selanjutnya akan diletakkan di atas modul ini.
@@ -152,7 +151,7 @@
     <string name="mPttrn_fix">Terapkan</string>
     <string name="mPttrn_noSchemeHttp">Skema HTTP tidak ditemukan.</string>
     <string name="mPttrn_wrongSchemaHttps">Skema https tidak valid.</string>
-    <string name="json_edit">Editor tingkat lanjut</string>
+    <string name="json_editor">Editor tingkat lanjut</string>
     <string name="mPttrn_fixed">%s - telah diterapkan</string>
     <string name="mD_name">Modul Awakutu/Penanda</string>
     <string name="mOpen_clipboard">URL telah disalin ke papan klip</string>

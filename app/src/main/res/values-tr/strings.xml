@@ -100,8 +100,7 @@ Umarım uygulamayı yararlı bulursunuz! Ve özellikler önermekten, hataları b
     <!--
         json
     -->
-    <string name="json_desc">[Beta özelliği] Bu gelişmiş bir düzenleyicidir, içerik geçerli JSON olarak biçimlendirilmelidir. Biçimlendirmek ve doğrulamak için sağ üstteki butona basabilirsiniz.</string>
-    <string name="json_edit">Gelişmiş düzenleyici</string>
+    <string name="json_editor">Gelişmiş düzenleyici</string>
     <!--
         shortcuts
     -->
