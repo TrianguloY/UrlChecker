@@ -1,36 +1,36 @@
-This application acts as an intermediary when opening url links. When you do so, a window containing information about the url is displayed, allowing you to make changes to it as well.
-Specially useful when you need to open an external link either from an email, a social network app or others.
+Это приложение выступает в качестве посредника при открытии URL-ссылок. При этом отображается окно, содержащее информацию об URL-адресе, что позволяет вам также внести в него изменения.
+Особенно полезно, когда вам нужно открыть внешнюю ссылку из электронного письма, приложения социальной сети или других источников.
 
 
-URLCheck is developed by TrianguloY, originally for personal use. It is open source (under CC BY 4.0 license), free, without any ads or trackers, light sized and using as few permissions as necessary (only the internet permission, for module checks that will only be performed when the user request them). The source code is available on GitHub too, if you want to suggest changes, perform modifications or propose a new translation: https://github.com/TrianguloY/UrlChecker
+URLCheck разработан TrianguloY изначально для личного использования. Он имеет открытый исходный код (под лицензией CC BY 4.0), бесплатный, без рекламы и трекеров, небольшой размер и использует минимально необходимое количество разрешений (только разрешение Интернета для проверок модулей, которые будут выполняться только по запросу пользователя). Исходный код также доступен на GitHub. Если вы хотите предложить изменения, внести изменения или предложить новый перевод: https://github.com/TrianguloY/UrlChecker
 
 
-The app is structured with a modular setup, you can enable/disable and reorder individual modules, which include:
+Приложение имеет модульную структуру, вы можете включать/отключать и изменять порядок отдельных модулей, в том числе:
 
-* Input text: Displays the current url which can be edited manually. Can't be disabled.
+* Ввод текста: отображает текущий URL-адрес, который можно редактировать вручную. Невозможно отключить.
 
-* History: View and revert any change from other modules, including edits from the user (typical undo/redo feature)
+* История: просмотр и отмена любых изменений из других модулей, включая изменения пользователя (типичная функция отмены/повтора).
 
-* Log: Keeps a log of all checked urls, which you can view, edit, copy, clear...
+* Журнал: ведет журнал всех проверенных URL-адресов, которые вы можете просматривать, редактировать, копировать, очищать...
 
-* Status code: By pressing the button a network request will be made to retrieve that url, and the status code will be displayed (ok, server error, not found...). Additionally, if it corresponds to a redirection, press the message to check the new url. The url is fetched, but not evaluated, so redirection based on javascript won't be detected.
+* Код состояния: при нажатии кнопки будет сделан сетевой запрос на получение этого URL-адреса, и отобразится код состояния (ок, ошибка сервера, не найден...). Кроме того, если это соответствует перенаправлению, нажмите на сообщение, чтобы проверить новый URL-адрес. URL-адрес извлекается, но не оценивается, поэтому перенаправление на основе JavaScript не будет обнаружено.
 
-* Url Scanner: Allows you to scan the url using VirusTotal, and check the report. A free personal VirusTotal API key is needed for it to work. VirusTotal™ is a trademark of Google, Inc.
+* Сканер URL-адресов: позволяет сканировать URL-адрес с помощью VirusTotal и проверять отчет. Для работы необходим бесплатный персональный API-ключ VirusTotal. VirusTotal™ является торговой маркой Google, Inc.
 
-* Url Cleaner: Uses the ClearURLs catalog to remove referral and useless parameters from the url. It also allows for common offline url redirections. Built-in catalog from https://docs.clearurls.xyz/latest/specs/rules/
+* Url Cleaner: использует каталог ClearURLs для удаления рефералов и ненужных параметров из URL-адреса. Он также позволяет выполнять общие перенаправления URL-адресов в автономном режиме. Встроенный каталог https://docs.clearurls.xyz/latest/specs/rules/.
 
-* Unshortener: Uses https://unshorten.me/ to unshorten urls remotely.
+* Unshortener: использует https://unshorten.me/ для удаленного удлинения URL-адресов.
 
-* Queries remover: Displays the decoded individual url queries, which you can remove or check.
+* Средство удаления запросов: отображает декодированные отдельные запросы URL-адресов, которые вы можете удалить или проверить.
 
-* Pattern module: Checks the url with regex patterns that warns, suggests or applies replacements. You can modify or create your own patterns, or even use user-created ones.
-Built-in patterns include:
-    - Warning when contains non-ascii characters like greek letters. This can be used for phishing: googĺe.com vs google.com
-    - Suggest replacing 'http' with 'https'
-    - Suggest replacing Youtube, Reddit or Twitter with privacy-friendly alternatives [disabled by default]
+* Модуль шаблонов: проверяет URL-адрес с помощью шаблонов регулярных выражений, которые предупреждают, предлагают или применяют замены. Вы можете изменять или создавать свои собственные шаблоны или даже использовать созданные пользователем.
+Встроенные шаблоны включают в себя:
+     - Предупреждение, если оно содержит символы, отличные от ASCII, например греческие буквы. Это можно использовать для фишинга: googĺe.com вместо google.com.
+     – Предложение заменить «http» на «https».
+     - Предложение заменить Youtube, Reddit или Twitter альтернативами, обеспечивающими конфиденциальность [по умолчанию отключено]
 
-* Hosts checker: This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts
+* Проверка хостов: этот модуль помечает хосты, настроенные либо путем указания их вручную, либо с использованием файла, подобного удаленным хостам. Вы можете использовать его, чтобы предупредить об опасных или особых сайтах. Во встроенной конфигурации указаны хосты StevenBlack (рекламное/вредоносное ПО, фейковые новости, азартные игры и контент для взрослых) с https://github.com/StevenBlack/hosts.
 
-* Debug module: Displays the intent uri, and optionally info about the ctabs (custom tabs) service. This is intended for developers.
+* Модуль отладки: отображает URI намерения и, при необходимости, информацию о службе ctabs (пользовательских вкладок). Это предназначено для разработчиков.
 
-* Open module: Contains the open and share buttons. If a link can be opened with multiple apps, an arrow will be shown to let you choose. Can't be disabled.
+* Модуль «Открыть»: содержит кнопки «Открыть» и «Поделиться». Если ссылку можно открыть в нескольких приложениях, появится стрелка, позволяющая вам выбрать. Невозможно отключить.
