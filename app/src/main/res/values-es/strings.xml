@@ -373,8 +373,4 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="bck_deleteConfirm">Borrar elementos</string>
     <string name="bck_deleteOk">Elementos borrados</string>
     <string name="bck_deleteError">No se han podido borrar los elementos</string>
-    <string name="small">Pequeño</string>
-    <string name="normal">Normal</string>
-    <string name="big">Grande</string>
-    <string name="mOpen_iconSize">Tamaño del icono</string>
 </resources>
