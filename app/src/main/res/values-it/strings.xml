@@ -57,8 +57,7 @@ Traduzioni: %2$s."</string>
     <string name="share">Condividi</string>
     <string name="canceled">Cancellato</string>
     <string name="deviceDefault">Impostazioni predefinite</string>
-    <string name="json_desc">"[Funzionalità beta] Questo è un editor avanzato, il contenuto dev'essere formattato in JSON. Puoi premere il pulsante in alto a destra per formattare e controllare."</string>
-    <string name="json_edit">Editor avanzato</string>
+    <string name="json_editor">Editor avanzato</string>
     <!-- modules -->
     <string name="mPttrn_name">Controllo dei pattern</string>
     <string name="mPttrn_desc">"Controlla cose comuni nell'url. Patterns inclusi:

@@ -1,6 +1,5 @@
 package com.trianguloy.urlchecker.modules.companions;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.R;
@@ -15,7 +14,7 @@ import org.json.JSONObject;
  */
 public class PatternCatalog extends JsonCatalog {
 
-    public PatternCatalog(Activity cntx) {
+    public PatternCatalog(Context cntx) {
         super(cntx, "patterns", R.string.mPttrn_editor);
     }
 

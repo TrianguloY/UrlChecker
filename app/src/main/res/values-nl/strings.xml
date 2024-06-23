@@ -20,7 +20,6 @@
     <string name="btn_tutorialSettings">Herhaal tutorial</string>
     <string name="mVT_connectError">Kan geen verbinding maken met VirusTotal. Zorg ervoor dat u verbonden bent met internet of probeer het later opnieuw.</string>
     <string name="mPttrn_regexfix">Optionele regex-groepen repareren (uitschakelen als regex niet correct werkt)</string>
-    <string name="json_desc">[Bètafunctie] Dit is een geavanceerde editor, de inhoud moet worden opgemaakt in geldige JSON. U kunt op de knop rechtsboven drukken om deze te formatteren en te valideren.</string>
     <string name="tutorial">Tutorial</string>
     <string name="toast_defaultSet">De app is nu de standaardwebbrowser</string>
     <string name="mPttrn_http">HTTP-link. Overweeg het gebruik van HTTPS.</string>
@@ -155,7 +154,7 @@
 \n
 \nOpen de lijst met modules vanuit het hoofdscherm of door op de onderstaande knop te tikken.</string>
     <string name="mPttrn_wrongSchemaHttps">Ongeldig hoofdlettergebruik van https-schema.</string>
-    <string name="json_edit">Geavanceerde editor</string>
+    <string name="json_editor">Geavanceerde editor</string>
     <string name="mPttrn_fixed">Toegepast - %s</string>
     <string name="mD_name">Debug/Marker-module</string>
     <string name="mOpen_clipboard">URL gekopieerd naar klembord</string>

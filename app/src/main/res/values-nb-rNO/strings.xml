@@ -27,7 +27,7 @@
     <string name="deviceDefault">Enhetsforvalg</string>
     <string name="next">Neste</string>
     <string name="back">Tilbake</string>
-    <string name="json_edit">Avansert tekstbehandler</string>
+    <string name="json_editor">Avansert tekstbehandler</string>
     <string name="mPttrn_fix">Bruk</string>
     <string name="shortcut_checkClipboard">Sjekk nettadresser fra utklippstavlen</string>
     <string name="mPttrn_http">HTTP-lenke. Overvei å bruke HTTPS.</string>

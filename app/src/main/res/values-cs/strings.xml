@@ -122,7 +122,7 @@
 \n- \'enabled\': boolean: nastavte na false, abyste vzor deaktivovali.
 \nPoznámka: Pokud si vzory upravíte, nové výchozí vzory z aktualizací aplikace se automaticky nepřidají (můžete je obnovit pomocí možnosti reset).</string>
     <string name="mOpen_with">Otevřít v %s</string>
-    <string name="json_edit">Pokročilý editor</string>
+    <string name="json_editor">Pokročilý editor</string>
     <string name="link_changelog">Seznam změn</string>
     <string name="txt_conf">Zde jsou uvedeny všechny dostupné moduly, u kterých si můžete zkontrolovat jejich popis a nastavení. Můžete také změnit jejich pořadí, přepnout viditelnost názvu či je povolit/zakázat.</string>
     <string name="txt_openLinks">Otevírání odkazů v této aplikaci: V průběhu let Android změnil způsob nastavení otevírání odkazů a značně se tak liší mezi jednotlivými verzemi. Níže najdete výběr možných kroků nastavení pro vaše zařízení. Pokud se odkazy v této aplikaci neotevírají, vyzkoušejte je všechny.</string>
@@ -145,7 +145,6 @@
 \n
 \nSeznam modulů otevřete na hlavní obrazovce nebo klepnutím na tlačítko níže.</string>
     <string name="back">Zpět</string>
-    <string name="json_desc">[Funkce v betě] Toto je pokročilý editor, obsah musí být naformátován do platného JSON. Stisknutím pravého horního tlačítka jej naformátujete a potvrdíte.</string>
     <string name="shortcut_checkClipboard">Najít URL odkaz(y) ve schránce</string>
     <string name="mPttrn_desc">Tento modul kontroluje adresu URL pomocí vzorů regulárních výrazů (regex), které varují, navrhují či nahrazují. Můžete upravovat nebo vytvářet své vlastní vzory, nebo dokonce používat ty vytvořené uživatelem.
 \nMezi vestavěné vzory patří:
