@@ -7,7 +7,7 @@
     <string name="a_modules">Module</string>
     <string name="a_settings">Setări</string>
     <string name="a_about">Despre</string>
-    <string name="link_changelog">Changelog</string>
+    <string name="link_changelog">Jurnal de modificări</string>
     <string name="link_source">Cod sursa</string>
     <string name="link_privacy">Politica de confidențialitate</string>
     <string name="menu_resetOrder">Resetează ordinea</string>
@@ -47,7 +47,15 @@
     <string name="mClear_hashError">Nu se poate prelua hash-ul, asigurați-vă că adresa URL este validă și că aveți o conexiune activă</string>
     <string name="mClear_restore">Restaurarea traseelor ClearURLs</string>
     <string name="mRemove_found">%d interogări găsite</string>
-    <string name="mPttrn_editor">Aici puteți edita sau adăuga un model nou. Format: - „regex”: șir: un regex java valid care trebuie să se potrivească pentru ca întregul model să se potrivească. - „excludeRegex”: șir: dacă este furnizat, o expresie regex java validă care nu trebuie să se potrivească pentru ca întregul model să se potrivească. - „înlocuire”: șir|listă: dacă este furnizat, butonul „remediare” va rula „url=url.replaceAll(regex,replacement)”. Dacă este listă, înlocuirea va fi un element aleatoriu din ea. - \'automatic\': boolean: setat la true pentru a aplica automat modelul. - \'activat\': boolean: setat la false pentru a dezactiva modelul. Notă: dacă editați modelele, modelele noi încorporate din actualizările aplicației nu vor fi adăugate automat (le puteți restaura cu opțiunea de resetare).</string>
+    <string name="mPttrn_editor">Aici poți edita sau adăuga un nou șablon. Formatul este:
+\n-\'encode\': boolean: setat la true pentru a codifica URL-ul înainte de verificarea regexului.
+\n-\'regex\': string, obligatoriu: un regex Java valid cu care URL-ul trebuie să se potrivească, altfel șablonul este omis.
+\n-\'excludeRegex\': string: dacă este furnizat, un regex Java valid pe care URL-ul nu trebuie să-l potrivească, altfel șablonul este omis.
+\n-\'replacement\': string|listă: dacă este furnizat, butonul \'fix\' va rula \'url=url.replaceAll(regex, replacement)\'. Dacă este listă, înlocuirea va fi un element aleatoriu din aceasta.
+\n-\'decode\': boolean: setat la true pentru a decoda URL-ul înlocuit.
+\n-\'automatic\': boolean: setat la true pentru a aplica automat șablonul.
+\n-\'enabled\': boolean: setat la false pentru a dezactiva șablonul.
+\nNotă: dacă editezi șabloanele, noi șabloane încorporate din actualizările aplicației nu vor fi adăugate automat (le poți restaura cu opțiunea de resetare).</string>
     <string name="txt_tutorial5">Asta e tot. Iată câteva sfaturi care pot fi utile:
 \n
 \nAtunci când o aplicație nu vă oferă o modalitate de a deschide sau de a partaja un URL, dar vă oferă o modalitate de a face celălalt, puteți rezolva problema folosind această aplicație. De asemenea, puteți copia url-ul în clipboard apăsând lung butonul de partajare.
@@ -89,10 +97,14 @@
     <string name="canceled">Anulat</string>
     <string name="deviceDefault">Dispozitiv implicit</string>
     <string name="next">Următor</string>
-    <string name="back">Înainte</string>
+    <string name="back">Înapoi</string>
     <string name="json_desc">[Funcția beta] Acesta este un editor avansat, conținutul trebuie formatat în JSON valid. Puteți apăsa butonul din dreapta sus pentru a-l formata și valida.</string>
     <string name="json_edit">Editor avansat</string>
-    <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regex care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. Modelele încorporate includ: - Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com - Sugerați înlocuirea „http” cu „https” - Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
+    <string name="mPttrn_desc">Acest modul verifică adresa URL cu modele regex care avertizează, sugerează sau aplică înlocuiri. Puteți modifica sau crea propriile modele sau chiar să le utilizați pe cele create de utilizator. 
+\nModelele încorporate includ: 
+\n- Avertizare când conține caractere non-ascii, cum ar fi literele grecești. Acesta poate fi folosit pentru phishing: googĺe.com vs google.com 
+\n- Sugerați înlocuirea „http” cu \'https\' 
+\n- Sugerați înlocuirea Youtube, Reddit sau Twitter cu alternative care să favorizeze confidențialitatea [dezactivate în mod implicit]</string>
     <string name="mPttrn_fix">Aplică</string>
     <string name="mPttrn_fixed">Aplicat - %s</string>
     <string name="mPttrn_ascii">Atenție! S-au găsit caractere non-ASCII.</string>
@@ -106,4 +118,67 @@
     <string name="mClear_matches">Potriviri %s</string>
     <string name="mLog_name">Jurnal</string>
     <string name="mLog_desc">Acest modul înregistrează toate adresele URL verificate. Puteți vizualiza, șterge sau edita jurnalul complet aici, nicio indicație vizuală nu va apărea în dialogul principal. Pentru a dezactiva înregistrarea, trebuie doar să dezactivați modulul.</string>
+    <string name="hidden">Ascuns</string>
+    <string name="none">Niciunul</string>
+    <string name="txt_tutorial3">Setează aplicația ca browser web implicit pentru a intercepta URL-urile atunci când sunt deschise.
+\n(Nu este necesar dacă URL-urile sunt redirecționate folosind funcționalitatea de \"Partajare\".)</string>
+    <string name="desc_up">Muta sus</string>
+    <string name="desc_down">Muta jos</string>
+    <string name="bck_mn_advanced">Arata opțiuni avansate</string>
+    <string name="btn_delete">Șterge</string>
+    <string name="bkp_data_prefs">"Preferințe:  Date salvate ca preferințe."</string>
+    <string name="bck_restoreTitle">Restaurează copia de rezervă</string>
+    <string name="bck_newer">Anulat. Copia de rezervă a fost creată cu o versiune mai nouă a aplicației.</string>
+    <string name="bck_chooseFile">Alege fișierul de rezervă</string>
+    <string name="bck_backupOk">Fișier de rezerva creat.</string>
+    <string name="bck_backupError">Nu se poate crea copia de rezervă, încearcă să alegi o locație diferită pentru fișier.</string>
+    <string name="bck_restoreConfirm">Înlocuiește elementele</string>
+    <string name="dismiss">Respins</string>
+    <string name="defaultOn">Activat implicit</string>
+    <string name="defaultOff">Dezactivat implicit</string>
+    <string name="small">Mic</string>
+    <string name="normal">Normal</string>
+    <string name="big">Mare</string>
+    <string name="mPttrn_userContent">Listă de alte șabloane create de utilizatori utile: %s</string>
+    <string name="bck_restoreMessage">ATENȚIE! Aceasta va înlocui elementele selectate din copia de rezervă.
+\nEști sigur că vrei să continui?</string>
+    <string name="alwaysOn">Întotdeauna activ</string>
+    <string name="mPttrn_regexfix">Corectează grupurile opționale de regex (dezactivează dacă regexul nu funcționează corect)</string>
+    <string name="bck_restoreOk">Copia de rezervă a fost restaurată</string>
+    <string name="bkp_description">Alege care elemente sa fie salvate/restaurate
+\nCând restaurezi, daca copia de rezerva a fost creata fără, cele existente vor fi păstrate.</string>
+    <string name="bkp_data">Date: Datele standard ale aplicației. Lucruri precum module activate, configurații JSON etc. Nu va include secrete sau cache.</string>
+    <string name="bkp_data_files">Fișiere: Date salvate ca fișiere.</string>
+    <string name="bkp_secrets">Secrete: Date considerate \'secret\', ca api key sau logul aplicației Virus Total.</string>
+    <string name="bjp_cache">Cache: Date care pot fi descărcate/generate ușor, cum ar fi baza de date a gazdelor. Activarea acestei opțiuni poate creste mărimea copiei de rezerva.</string>
+    <string name="bck_restoreDelete">Șterge elementele înainte de restaurare. Reține că preferințele și unele fișiere cu valori implicite pot să nu existe, așa că dezactivarea acestei opțiuni va îmbina elementele existente cu cele din copia de rezervă în moduri neașteptate. Dezactivează dacă știi ce faci.</string>
+    <string name="bck_ignoreNewer">Permite copii de rezervă create din versiuni mai noi ale aplicației.</string>
+    <string name="bck_restoreError">Imposibil de restaurat copia de rezervă. Este un fișier valid?</string>
+    <string name="bck_deleteTitle">Șterge elementele</string>
+    <string name="bck_deleteMessage">ATENȚIE! Aceasta va șterge toate elementele selectate.
+\nVrei cu adevărat să continui?</string>
+    <string name="bck_deleteConfirm">Șterge elementele</string>
+    <string name="bck_deleteOk">Elementele au fost șterse</string>
+    <string name="bck_deleteError">Imposibil de șters elementele</string>
+    <string name="txt_tutorial2">Aplicația acționează ca un intermediar când deschizi sau partajezi link-uri URL. Odată ce un URL este trimis în aplicație, poți interacționa cu el prin module. După aceea, poți deschide link-ul (în aplicația dorită), să-l partajezi sau să-l copiezi în clipboard.</string>
+    <string name="alwaysOff">Întotdeauna inactiv</string>
+    <string name="noLinks">Niciun link detectat</string>
+    <string name="menu_toggleDecorations">Comută toate titlurile</string>
+    <string name="translators">Dacă creezi sau actualizezi o traducere, adaugă cum dorești să fii creditat aici. Pentru mai mulți traducători, separă-i cu punct și virgulă. Exemplu: \"John Doe; Jane Doe\"</string>
+    <string name="mOpen_desc">Conține următoarele butoane (de la stânga la dreapta):
+\n-Butonul Taburi personalizate: comută pentru a activa/dezactiva funcția de taburi personalizate. Când este activată, browserul ar trebui să fie deschis într-un mod „ușor”.
+\n-Butonul Incognito: Doar pentru Firefox. Comută pentru a activa/dezactiva modul incognito. Când este activat, browserul ar trebui să fie deschis în mod incognito.
+\n-Butonul Deschide: Apasă pe numele aplicației pentru a deschide link-ul în acea aplicație. Dacă un link poate fi deschis cu mai multe aplicații, va fi afișată o săgeată pentru a te lăsa să alegi.
+\n-Butonul Copiază: Apasă pe buton pentru a copia link-ul în clipboard.
+\n-Butonul Partajează: Apasă pe buton pentru a partaja link-ul.</string>
+    <string name="mOpen_noReferrer">Ascunde aplicația sursă (referrer)</string>
+    <string name="mOpen_mergeCopy">Îmbină butoanele Copiază și Partajează (apasă lung pentru a copia)</string>
+    <string name="mOpen_iconSize">Mărimea iconiței</string>
+    <string name="mOpen_closeShare">Închide dialogul după partajare</string>
+    <string name="mOpen_perDomain">Sortează domeniile diferite independent</string>
+    <string name="mOpen_closeOpen">Închide dialogul după deschidere</string>
+    <string name="mOpen_rejected">Ascunde aplicația dacă URL-ul a fost respins (o aplicație solicită imediat să deschidă același URL cu care a fost deschisă). Nu afectează partajarea.</string>
+    <string name="mOpen_ctabs">Taburi personalizate:</string>
+    <string name="mOpen_incognito">Mod incognito:</string>
+    <string name="mOpen_closeCopy">Închide dialogul după copiere</string>
 </resources>

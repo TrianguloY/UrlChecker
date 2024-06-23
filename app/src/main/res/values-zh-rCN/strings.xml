@@ -344,4 +344,8 @@
     <string name="txt_animation">启用动画</string>
     <string name="mVT_noKey">缺少 API 密钥</string>
     <string name="mD_show">显示调试数据</string>
+    <string name="big">大</string>
+    <string name="normal">一般</string>
+    <string name="mOpen_iconSize">图标大小</string>
+    <string name="small">小</string>
 </resources>

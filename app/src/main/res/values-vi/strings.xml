@@ -310,4 +310,9 @@
     <string name="mDrawer_name">Ngăn kéo</string>
     <string name="mChg_desc">Sẽ thông báo khi ứng dụng được cập nhật.</string>
     <string name="mChg_updated">Ứng dụng đã được cập nhật.</string>
+    <string name="small">Nhỏ</string>
+    <string name="normal">Bình thường</string>
+    <string name="big">Lớn</string>
+    <string name="mOpen_iconSize">Kích cỡ biểu tượng</string>
+    <string name="mD_show">Hiển thị dữ liệu gỡ lỗi</string>
 </resources>

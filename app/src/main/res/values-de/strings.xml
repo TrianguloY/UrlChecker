@@ -311,4 +311,8 @@
     <string name="mVT_noKey">API-Key fehlt</string>
     <string name="mOpen_rejected">App ausblenden, wenn URL abgelehnt wurde (eine App öffnet sofort dieselbe URL, mit der sie geöffnet wurde). Hat keinen Einfluss auf Teilen.</string>
     <string name="mD_show">Debug-Infos anzeigen</string>
+    <string name="small">Klein</string>
+    <string name="normal">Normal</string>
+    <string name="big">Groß</string>
+    <string name="mOpen_iconSize">Symbolgröße</string>
 </resources>

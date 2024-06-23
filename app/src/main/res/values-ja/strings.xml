@@ -238,4 +238,6 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="next">次に</string>
     <string name="hidden">隠れた</string>
     <string name="shortcut_checkClipboard">クリップボードから URL を確認する</string>
+    <string name="mChg_desc">アプリが更新されたらお知らせします。</string>
+    <string name="mLog_limit">保持するエントリーの最大数。推奨値：100。無制限の場合はUnlimitedに設定</string>
 </resources>

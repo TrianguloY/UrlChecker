@@ -260,7 +260,7 @@
     <string name="mHosts_malware">реклама/вредоносные программы</string>
     <string name="mFlags_name">Редактор флажков</string>
     <string name="mRemove_found1">1 запрос найден</string>
-    <string name="mUnshort_tm">unshorten.me бесплатное API от Unshorten.me</string>
+    <string name="mUnshort_tm">бесплатный API unshorten.me от Unshorten.me</string>
     <string name="mHosts_desc">Этот модуль маркирует хостов, настраивается либо ручным перечислением хостов, либо используя удалённый файл с хостами. Вы можете использовать это для предупреждения об опасных или специальных сайтах. Во встроенной конфигурации указаны хосты StevenBlack (реклама/вредоносные программы, фейковые новости, азартные игры и контент для взрослых), взятые с https://github.com/StevenBlack/hosts</string>
     <string name="mLog_edit">Изменить историю</string>
     <string name="mClear_hashDesc">URL хэш файла каталога. Если параметр опущен, то загрузка не будет проверяться на предмет подделки (не рекомендуется)</string>
@@ -284,4 +284,5 @@
     <string name="bkp_description">Выберите элементы для бэкапа/восстановления.
 \nПри восстановлении, если бэкап был создан без него, существующие будут сохранены.</string>
     <string name="btn_replace">Заменить</string>
+    <string name="bck_deleteTitle">Удалить элементы</string>
 </resources>
