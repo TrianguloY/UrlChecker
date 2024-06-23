@@ -128,7 +128,7 @@ Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
     <string name="mStatus_redir">Re-indirizzazione: %s</string>
     <string name="mInput_name">Modifica link</string>
-    <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>
+    <string name="mInput_desc">Mostra l\'url corrente, che può essere modificato manualmente.</string>
     <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"Quando questo modulo è abilitato puoi scansionare l'url utilizzando VirusTotal e visualizzare il report.
 Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us ."</string>
