@@ -165,7 +165,7 @@
     <string name="mStatus_autoRedirect">自动替换重定向链接</string>
     <string name="mStatus_autoCheck">自动检查与以下正则表达式模式匹配的链接。警告！建议指定一个限制性模式（而不是使用 .* 匹配全部），否则恶意服务器可能会记录您的 IP。</string>
     <string name="mInput_name">输入文本</string>
-    <string name="mInput_desc">显示当前链接，可以用于手动编辑。</string>
+    <string name="mInput_desc">显示当前链接，点击以进入编辑模式。</string>
     <string name="mVT_name">链接扫描器</string>
     <string name="mVT_desc">"当启用此模块时，您可以使用VirusTotal扫描网址链接并查阅扫描报告。它需要一个个人的VirusTotal api key 才能正常工作，您可以在此处注册免费帐户后获取: https://www.virustotal.com/gui/join-us ."</string>
     <string name="mVT_apiKey">API 密钥</string>
@@ -348,4 +348,5 @@
     <string name="normal">一般</string>
     <string name="mOpen_iconSize">图标大小</string>
     <string name="small">小</string>
+    <string name="mInput_alwaysEdit">总使用编辑模式</string>
 </resources>
