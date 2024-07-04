@@ -176,38 +176,64 @@ public class ClipboardBorrower {
             // Store clip data
             previous = current;
         } else {
-            // XXX: For debugging purposes: emulator shared clipboard may trip this up, as it is
-            //  constantly syncing and messes up the label.
-            //  It is recommended to disable it.
-            //      - Android studio: File -> Settings -> Tools -> Emulator -> Enable clipboard sharing
-            //
-            //  Still it didn't work for me and it kept changing the label
-
-            // Use case where the label is relevant:
-            //   User opens URL in incognito, pastes URL, then remembers it wants to copy it to the
-            //   clipboard so it copies it. Now the label is different, but the text is not.
-            if (BuildConfig.DEBUG) {
-                // In debug build we DO NOT check the label
-                if (current.getDescription().getMimeType(0).equals("text/plain")) {
-                    var currentText = current.getItemAt(0).coerceToText(context);
-                    var borrowerText = borrowerData.getItemAt(0).coerceToText(context);
-                    if (!currentText.equals(borrowerText)) {
-                        previous = current;
-                    }
-                }
-            } else {
-                // On release build we DO check the label
-                if (current.getDescription().getMimeType(0).equals("text/plain")) {
-                    var currentText = current.getItemAt(0).coerceToText(context);
-                    var currentLabel = current.getDescription().getLabel();
-                    var borrowerText = borrowerData.getItemAt(0).coerceToText(context);
-                    var borrowerLabel = borrowerData.getDescription().getLabel();
-                    if (!(currentText.equals(borrowerText) && currentLabel.equals(borrowerLabel))) {
-                        previous = current;
-                    }
-                }
+            // if previous clipboard and current differ, that means the clipboard
+            // has been used while borrowing, if that happens we keep the content
+            if (!isEqualsToBorrower(current, context)) {
+                // maybe the method should instead return if it entered this condition
+                // that way we can avoid putting into the clipboard what is already there
+                previous = current;
             }
         }
         return true;
+    }
+
+    private static boolean isEqualsToBorrower(ClipData clip, Context context) {
+        return areClipDataEquals(clip, borrowerData, context);
+    }
+
+    private static boolean areClipDataEquals(ClipData clip1, ClipData clip2, Context context) {
+        // ---
+        // XXX: For debugging purposes: emulator shared clipboard may trip this up, as it is
+        //  constantly syncing and messes up the label.
+        //  It is recommended to disable it.
+        //      - Android studio: File -> Settings -> Tools -> Emulator -> Enable clipboard sharing
+        //
+        //  Still it didn't work for me and it kept changing the label
+
+        // Use case where the label is relevant:
+        //   User opens URL in incognito, pastes URL, then remembers it wants to copy it to the
+        //   clipboard so it copies it. Now the label is different, but the text is not.
+        var checkLabel = !BuildConfig.DEBUG;
+
+        // ---
+        var count1 = clip1.getItemCount();
+        var count2 = clip2.getItemCount();
+        var label1 = clip1.getDescription().getLabel();
+        var label2 = clip2.getDescription().getLabel();
+        // ---
+
+
+        if (count1 == count2 &&
+                (!checkLabel || label1.equals(label2))) {
+            for (int i = 0; i < clip1.getItemCount(); i++) {
+                // ---
+                var sameMimeType = clip1.getDescription().getMimeType(i).equals(
+                        clip2.getDescription().getMimeType(i));
+                var sameText = clip1.getItemAt(i).coerceToText(context).equals(
+                        clip2.getItemAt(i).coerceToText(context));
+                // ---
+
+                if (sameMimeType && sameText) {
+                    // more conditions if needed
+                } else {
+                    return false;
+                }
+            }
+
+            // no differences, they are equal
+            return true;
+        } else {
+            return false;
+        }
     }
 }
