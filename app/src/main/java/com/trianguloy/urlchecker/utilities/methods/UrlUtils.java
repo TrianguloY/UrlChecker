@@ -30,31 +30,4 @@ public interface UrlUtils {
         return intent;
     }
 
-    /**
-     * Opens an url removing this app from the chooser
-     *
-     * @param url  url to open
-     * @param cntx base context
-     */
-    static void openUrlRemoveThis(String url, Context cntx) {
-
-        // get intents that can open the url
-        List<Intent> intents = new ArrayList<>();
-        for (var pack : IntentApp.getOtherPackages(getViewIntent(url, null), cntx)) {
-            intents.add(getViewIntent(url, pack));
-        }
-
-        // check if none
-        if (intents.isEmpty()) {
-            Toast.makeText(cntx, R.string.toast_noBrowser, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // create chooser
-        Intent chooserIntent = Intent.createChooser(intents.remove(0), cntx.getString(R.string.title_choose));
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[0]));
-
-        // open
-        PackageUtils.startActivity(chooserIntent, R.string.toast_noBrowser, cntx);
-    }
 }
