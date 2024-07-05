@@ -23,28 +23,6 @@ public interface UrlUtils {
         return intent;
     }
 
-    /** Opens an [url] removing this app from the chooser */
-    static void openUrlRemoveThis(String url, Context cntx) {
-        // get intents that can open the url
-        var intents = new ArrayList<Intent>();
-        for (var pack : IntentApp.getOtherPackages(getViewIntent(url, null), cntx)) {
-            intents.add(getViewIntent(url, pack));
-        }
-
-        // check if none
-        if (intents.isEmpty()) {
-            Toast.makeText(cntx, R.string.toast_noBrowser, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // create chooser
-        var chooserIntent = Intent.createChooser(intents.remove(0), cntx.getString(R.string.title_choose));
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[0]));
-
-        // open
-        PackageUtils.startActivity(chooserIntent, R.string.toast_noBrowser, cntx);
-    }
-
     /** Calls URLDecoder.decode but returns the input string if the decoding failed */
     static String decode(String string) {
         try {
