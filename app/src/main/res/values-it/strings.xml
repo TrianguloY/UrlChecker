@@ -140,8 +140,7 @@ Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi c
     <string name="mVT_goodUrl">Nessun %1$d engine ha rilevato qualcosa (ad oggi %2$s)</string>
     <string name="mVT_warningUrl">Attenzione, questi engines: %1$d/%2$d hanno rilevato qualcosa (ad oggi %3$s)</string>
     <string name="mVT_badUrl">Attenzione! %1$d/%2$d engines hanno rilevato qualcosa (ad oggi %3$s)</string>
-    <string name="mVT_connectError">"Impossibile connettersi a VirusTotal. Controlla di avere una connessione funzionante e/o riprova più tardi."</string>
-    <string name="mVT_jsonError">"Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi."</string>
+    <string name="mVT_error">"Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi."</string>
     <string name="mD_name">Modulo di debug</string>
     <string name="mD_desc">"Se re-organizzi i moduli, eventuali nuovi aggiunti in futuro tramite aggiornamenti verranno posizionati sopra quest'ultimo.
 
