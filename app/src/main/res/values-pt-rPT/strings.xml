@@ -150,8 +150,7 @@ O conteúdo da url é obtido (GET), mas não avaliado, então redirecionamentos 
     <string name="mVT_goodUrl">Nenhum dos mecanismos %d detectou o URL (na data %s)</string>
     <string name="mVT_warningUrl">Aviso, os mecanismos %d/%d detectaram o URL (na data %s)</string>
     <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detectaram o URL (na data %s)</string>
-    <string name="mVT_connectError">Não é possível conectar ao VirusTotal. Verifique se tem uma conexão ativa com a Internet ou tente novamente mais tarde.</string>
-    <string name="mVT_jsonError">Não é possível conectar ao VirusTotal. Verifique se a chave da API é válida ou tente novamente mais tarde.</string>
+    <string name="mVT_error">Não é possível conectar ao VirusTotal. Verifique se a chave da API é válida ou tente novamente mais tarde.</string>
     <!-- -->
     <string name="mD_name">Módulo de depuração/marcador</string>
     <string name="mD_desc">"Se reordenar os módulos, os novos adicionados em futuras atualizações serão colocados acima deste.
