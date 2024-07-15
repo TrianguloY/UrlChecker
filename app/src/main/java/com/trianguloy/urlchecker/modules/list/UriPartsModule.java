@@ -79,7 +79,9 @@ class UriPartsDialog extends AModuleDialog {
         if (uri.getQuery() != null) {
             urlQuerySanitizer.setAllowUnregisteredParamaters(true);
             urlQuerySanitizer.setUnregisteredParameterValueSanitizer(v -> v);
-            urlQuerySanitizer.parseQuery(uri.getQuery());
+            urlQuerySanitizer.parseQuery(uri.getQuery()
+                    // this will fix issues with the parser decoding twice
+                    .replace("%","%25"));
         }
 
         // domain elements
@@ -93,7 +95,7 @@ class UriPartsDialog extends AModuleDialog {
 
         // paths
         var pathSegments = uri.getPathSegments();
-        if (pathSegments.size() > 0) {
+        if (!pathSegments.isEmpty()) {
             var paths = addGroup("Paths", pathSegments.size(), uri.buildUpon().path(null));
             for (var i = 0; i < pathSegments.size(); i++) {
                 var pathSegment = pathSegments.get(i);
@@ -109,7 +111,7 @@ class UriPartsDialog extends AModuleDialog {
 
         // query parameters
         var parameters = urlQuerySanitizer.getParameterList();
-        if (parameters.size() > 0) {
+        if (!parameters.isEmpty()) {
             var queries = addGroup("Parameters", parameters.size(), uri.buildUpon().query(null));
             for (var i = 0; i < parameters.size(); i++) {
                 // generate same url but without this parameter
