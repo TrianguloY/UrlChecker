@@ -18,7 +18,6 @@ import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -190,16 +189,16 @@ class RemoveQueriesDialog extends AModuleDialog {
          * Returns the name of a query (by index)
          */
         public String getQueryName(int index) {
-            return queries.get(index).split("=")[0];
+            return splitFix(queries.get(index),"=").get(0);
         }
 
         /**
          * Returns the decoded value of a query (by index)
          */
         public String getQueryValue(int index) {
-            String[] split = queries.get(index).split("=");
-            if (split.length == 1) return "";
-            return decode(split[1]);
+            var split = splitFix(queries.get(index),"=");
+            if (split.size() <= 1) return "";
+            return decode(split.get(1));
         }
 
         /**
