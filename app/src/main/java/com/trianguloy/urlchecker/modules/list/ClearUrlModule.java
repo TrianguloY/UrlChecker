@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.UrlUtils.decode;
+
 import android.content.Context;
 import android.util.Pair;
 import android.view.View;
@@ -364,11 +366,11 @@ class ClearUrlDialog extends AModuleDialog {
      * Idea from https://stackoverflow.com/a/6926987, but using own implementation
      */
     private static String decodeURIComponent(String text) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        String[] parts = text.split("\\+");
-        for (String part : parts) {
+        var result = new StringBuilder();
+        var parts = text.split("\\+");
+        for (var part : parts) {
             if (result.length() != 0) result.append('+');
-            result.append(URLDecoder.decode(part, "UTF-8"));
+            result.append(decode(part));
         }
         return result.toString();
     }

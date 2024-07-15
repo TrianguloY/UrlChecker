@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.UrlUtils.decode;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -197,12 +199,7 @@ class RemoveQueriesDialog extends AModuleDialog {
         public String getQueryValue(int index) {
             String[] split = queries.get(index).split("=");
             if (split.length == 1) return "";
-            try {
-                return URLDecoder.decode(split[1]);
-            } catch (Exception e) {
-                // can't decode, return it directly
-                return split[1];
-            }
+            return decode(split[1]);
         }
 
         /**

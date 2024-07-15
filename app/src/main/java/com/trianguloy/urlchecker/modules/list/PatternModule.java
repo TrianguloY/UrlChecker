@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.UrlUtils.decode;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -168,7 +170,7 @@ class PatternDialog extends AModuleDialog {
 
                         // decode if required
                         if (data.optBoolean("decode")) {
-                            message.newUrl = URLDecoder.decode(message.newUrl);
+                            message.newUrl = decode(message.newUrl);
                         }
 
                         // automatic? apply
