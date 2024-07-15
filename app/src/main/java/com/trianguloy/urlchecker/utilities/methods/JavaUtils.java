@@ -108,17 +108,19 @@ public interface JavaUtils {
         else list.add(element);
     }
 
-    /**
-     * java.util.function.Consumer requires api 24
-     */
+    /** java.util.function.Consumer requires api 24 */
     @FunctionalInterface
     interface Consumer<T> {
         void accept(T t);
     }
 
-    /**
-     * java.util.function.Function requires api 24
-     */
+    /** java.util.function.Supplier requires api 24 */
+    @FunctionalInterface
+    interface Supplier<T> {
+        T get();
+    }
+
+    /** java.util.function.Function requires api 24 */
     @FunctionalInterface
     interface Function<T, R> {
         R apply(T t);
