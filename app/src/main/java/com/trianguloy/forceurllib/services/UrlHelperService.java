@@ -1,11 +1,15 @@
 package com.trianguloy.forceurllib.services;
 
 import android.accessibilityservice.AccessibilityService;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
+import com.trianguloy.forceurllib.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
 import java.util.ArrayList;
@@ -55,7 +59,7 @@ public class UrlHelperService extends AccessibilityService {
         return super.onUnbind(intent);
     }
 
-    public synchronized void openService(String url, String pckg,
+    public synchronized void openService(Context context, String url, String pckg,
                                          JavaUtils.Function<AccessibilityNodeInfo, Boolean> putUrl) { // FIXME: just a normal function?
         open = true;
 
@@ -70,6 +74,7 @@ public class UrlHelperService extends AccessibilityService {
         task = executor.schedule(() -> {
             synchronized (this) {
                 closeService();
+                AndroidUtils.safeToast(context, R.string.helperService_closed, Toast.LENGTH_SHORT);
                 task = null;
             }
         }, 10, TimeUnit.SECONDS);

@@ -20,7 +20,7 @@ public class AccessibilityServiceHelper implements AHelper {
             AndroidUtils.safeToast(context, R.string.helperService_notConnected, Toast.LENGTH_LONG);
         } else {
             var app = ForceUrl.getApps(ForceUrl.findId(context, new Intent().setPackage(pckg), mode));
-            instance.openService(url, pckg, (node) -> ((AccessibilityFunction) app).putUrl(node, url, pckg));
+            instance.openService(context, url, pckg, (node) -> ((AccessibilityFunction) app).putUrl(node, url, pckg));
         }
     }
 }

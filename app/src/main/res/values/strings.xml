@@ -386,5 +386,6 @@ Currently supports: Chromium(chrome, brave,…)"</string>
     <!-- -->
     <string name="helperService_summary">Automatically input URLs</string>
     <string name="helperService_description">Used to automatically input URLs in non-supported apps, like Chromium browsers in incognito.</string>
-    <string name="helperService_notConnected">Accessibility service not available, check your settings</string>
+    <string name="helperService_notConnected">Accessibility service not available</string>
+    <string name="helperService_closed">Could not input URL, stopping attempts</string>
 </resources>
