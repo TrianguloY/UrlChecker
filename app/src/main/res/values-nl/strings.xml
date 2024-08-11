@@ -50,7 +50,7 @@
     <string name="none">Geen</string>
     <string name="defaultOn">Standaard ingeschakeld</string>
     <string name="mStatus_recheck">Controleer</string>
-    <string name="mInput_desc">Toont de huidige URL, die handmatig kan worden bewerkt.</string>
+    <string name="mInput_desc">Toont de huidige URL. Druk erop om de bewerkingsmodus te openen.</string>
     <string name="mOpen_copyUrl">Kopiëren</string>
     <string name="toast_noApp">Kan de app niet openen</string>
     <string name="txt_sample">Druk op de onderstaande link om het te testen:</string>
@@ -310,4 +310,10 @@
     <string name="bck_newer">Geannuleerd. De back-up is gemaakt met een nieuwere appversie.</string>
     <string name="bck_chooseFile">Kies het back-upbestand</string>
     <string name="bck_backupOk">Back-up gemaakt</string>
+    <string name="mOpen_iconSize">Pictogramgrootte</string>
+    <string name="small">Klein</string>
+    <string name="normal">Normaal</string>
+    <string name="big">Groot</string>
+    <string name="mInput_alwaysEdit">Blijf altijd in de bewerkingsmodus</string>
+    <string name="mD_show">Toon debuggegevens</string>
 </resources>
