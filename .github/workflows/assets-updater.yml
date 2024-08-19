@@ -89,9 +89,18 @@ jobs:
               exit 1
           fi
           
-          # create and push commit with the new file
           # at this point we know the new file is different from the last because hashes are different (old==remote!=new)
           git add "$FILE_PATH"
+          
+          # update the timestamp
+          marker="/\*$FILE_NAME-timestamp\*/"
+          grep -rli "$marker" * | while read file ; do
+            echo "Updating timestamp from file $file"
+            sed -i "s|$marker\(.*\)$marker|$marker$(date +%s)000L$marker|" "$file"
+            git add "$file"
+          done
+          
+          # create and push commit with the changes
           git commit -m "
           [action] Updated $FILE_NAME
           
