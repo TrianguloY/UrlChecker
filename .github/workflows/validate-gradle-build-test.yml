@@ -19,6 +19,7 @@ concurrency:
 env:
   VARIANT: evaluation
   NAME: URLCheck_evaluation.apk
+  RETENTION_DAYS: 14
 
 jobs:
   build:
@@ -57,17 +58,46 @@ jobs:
             assemble${{ env.VARIANT }}
 
       - name: Upload apk as artifact
+        id: artifact-upload-step
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
           name: ${{ env.NAME }}
-          retention-days: 14
+          retention-days: ${{ env.RETENTION_DAYS }}
 
-      - name: Upload PR id as artifact
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
-        with:
-          path: /dev/null
-          name: ${{ github.event.number }}
-          retention-days: 1
+    outputs:
+      artifact-url: ${{ steps.artifact-upload-step.outputs.artifact-url }}
+
+  comment:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pull-requests: write # need to write the comment
+
+    steps:
+      - name: Create comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # post link comment
+          URL="${{ github.event.pull_request.html_url }}"
+          BODY="
+          This PR builds correctly, here is the generated apk.
+          This unsigned version can be installed alongside the original app and should only be used for testing the changes, not for daily usage.
+          
+          | [Download testing apk](${{ needs.build.outputs.artifact-url }}) |
+          | - |
+          
+          
+          You must be logged in for the link to work.
+          The link will expire at $(date -d "+$RETENTION_DAYS days").
+          
+          <hr>
+          
+          <sub>This is an automatic comment created by a [Github Action](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>
+          "
+          
+          # use --edit-last-or-create whenever it is ready: https://github.com/cli/cli/issues/6790
+          gh pr comment "$URL" --edit-last --body "$BODY" || gh pr comment "$URL" --body "$BODY"
