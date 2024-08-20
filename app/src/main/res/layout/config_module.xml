@@ -78,7 +78,8 @@
             android:id="@+id/enable"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:contentDescription="@string/desc_enable" />
+            android:contentDescription="@string/desc_enable"
+            android:saveEnabled="false" />
 
     </LinearLayout>
 
