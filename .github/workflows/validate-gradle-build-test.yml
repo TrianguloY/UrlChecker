@@ -1,12 +1,12 @@
 # This actions validates the gradle files and runs a build test to ensure the app is not corrupted
-# if succeeded and the source is a pull request, builds an evaluation apk
+# if succeeded, and the source is a pull request, builds an evaluation apk and posts a comment to download it
 name: Validate gradle build test
 
 on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request_target:
     branches:
       - master
 
@@ -50,7 +50,7 @@ jobs:
 
       # the following steps will only run for PRs
 
-      - name: Generate apk
+      - name: "[PR] Generate apk"
         if: ${{ github.event_name == 'pull_request' }}
         uses: gradle/gradle-build-action@v3
         with:
@@ -77,7 +77,7 @@ jobs:
       pull-requests: write # need to write the comment
 
     steps:
-      - name: Create comment
+      - name: "[PR] Comment url to artifact"
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -92,11 +92,11 @@ jobs:
           
           
           You must be logged in for the link to work.
-          The link will expire at $(date -d "+$RETENTION_DAYS days").
+          The link will expire in $RETENTION_DAYS days, at $(date -d "+$RETENTION_DAYS days").
           
           <hr>
           
-          <sub>This is an automatic comment created by a [Github Action](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>
+          <sub>This is an automatic comment created by a [Github Action](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?pr=${{ github.event.pull_request.number })</sub>
           "
           
           # use --edit-last-or-create whenever it is ready: https://github.com/cli/cli/issues/6790
