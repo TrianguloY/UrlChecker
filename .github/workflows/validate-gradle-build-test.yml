@@ -51,15 +51,15 @@ jobs:
       # the following steps will only run for PRs
 
       - name: "[PR] Generate apk"
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request_target' }}
         uses: gradle/gradle-build-action@v3
         with:
           arguments: >
             assemble${{ env.VARIANT }}
 
-      - name: Upload apk as artifact
+      - name: "[PR] Upload apk as artifact"
         id: artifact-upload-step
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request_target' }}
         uses: actions/upload-artifact@v4
         with:
           path: ./app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
@@ -70,7 +70,7 @@ jobs:
       artifact-url: ${{ steps.artifact-upload-step.outputs.artifact-url }}
 
   comment:
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request_target' }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
@@ -96,7 +96,7 @@ jobs:
           
           <hr>
           
-          <sub>This is an automatic comment created by a [Github Action](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?pr=${{ github.event.pull_request.number })</sub>
+          <sub>This is an automatic comment created by a [Github Action](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?pr=${{ github.event.pull_request.number }})</sub>
           "
           
           # use --edit-last-or-create whenever it is ready: https://github.com/cli/cli/issues/6790
