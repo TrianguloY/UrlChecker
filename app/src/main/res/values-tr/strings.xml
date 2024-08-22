@@ -266,7 +266,7 @@ Katalog, güncelleyici iletişim kutusundan otomatik veya manuel olarak güncell
     <string name="mLog_empty">Veri yok</string>
     <!-- -->
     <string name="mHosts_name">Hosts etiketleyici</string>
-    <string name="mHosts_desc">"Bu modül, host'ları manuel olarak belirterek veya uzak hosts benzeri bir dosya kullanarak yapılandırarak etiketler. Tehlikeli veya özel siteler hakkında uyarmak için kullanabilirsiniz. Yerleşik yapılandırma, https://github.com/StevenBlack/hosts adresinden StevenBlack'in barındırıcılarını (reklam yazılımı/kötü amaçlı yazılım, sahte haberler, kumar ve yetişkinlere uygun içerik) belirtir."</string>
+    <string name="mHosts_desc">Bu modül, host\'ları manuel olarak belirterek veya uzak hosts benzeri bir dosya kullanarak yapılandırarak etiketler. Tehlikeli veya özel siteler hakkında uyarmak için kullanabilirsiniz. Yerleşik yapılandırma, https://github.com/StevenBlack/hosts adresinden StevenBlack\'in barındırıcılarını (reklam yazılımı/kötü amaçlı yazılım, sahte haberler, kumar ve yetişkinlere uygun içerik) belirtir.</string>
     <string name="mHosts_malware">reklam yazılımı/kötü amaçlı yazılım</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">etiket yok</string>
@@ -276,12 +276,12 @@ Katalog, güncelleyici iletişim kutusundan otomatik veya manuel olarak güncell
     <string name="mHosts_build">Yapı</string>
     <string name="mHosts_uninitialized">Hosts veritabanı başlatılmamış. oluşturmak için basın</string>
     <string name="mHosts_parseError">URL host ayrıştırılamıyor</string>
-    <string name="mHosts_editor">"Host yapılandırması. Format: Anahtarın hosts etiketi olduğu ve içeriğin aşağıdaki isteğe bağlı değerleri içerdiği nesnelerin listesi:
-- dosya: İndirilecek bir hosts dosyasının url'si. Mevcut tüm geçerli hosts dosyası eklenecektir.
-- hosts: Eklenecek ham hosts (dizeler) listesi.
-- renk: Etiketin rengi. Bir Android renk dizisi (#AARRGGBB, #RRGGBB veya geçerli bir renk adı). Varsayılan olarak 'tehlike' kırmızısına döner.
-- değiştir: yanlışsa mevcut hosts değiştirilmez. Nesnelerin yukarıdan aşağıya değerlendirildiğini unutmayın. Varsayılan olarak açıktır.
-- etkin: kapalı ise, bu nesnenin tamamı atlanacaktır. Varsayılan olarak açıktır."</string>
+    <string name="mHosts_editor">Host yapılandırması. Format: Anahtarın hosts etiketi olduğu ve içeriğin aşağıdaki isteğe bağlı değerleri içerdiği nesnelerin listesi:
+\n- dosya: İndirilecek bir hosts dosyasının url\'si. Mevcut tüm geçerli hosts dosyası eklenecektir.
+\n- hosts: Eklenecek ham hosts (dizeler) listesi.
+\n- renk: Etiketin rengi. Bir Android renk dizisi (#AARRGGBB, #RRGGBB veya geçerli bir renk adı). Varsayılan olarak \'tehlike\' kırmızısına döner.
+\n- değiştir: yanlışsa mevcut hosts değiştirilmez. Nesnelerin yukarıdan aşağıya değerlendirildiğini unutmayın. Varsayılan olarak açıktır.
+\n- etkin: kapalı ise, bu nesnenin tamamı atlanacaktır. Varsayılan olarak açıktır.</string>
     <string name="mHosts_buildTitle">Hosts veritabanı oluşturun</string>
     <string name="mHosts_buildDesc">Bu, mevcut hosts veritabanını temizleyecek ve mevcut yapılandırmayla oluşturacak ve gerekirse hosts dosyalarını internetten indirecektir. Bu işlem birkaç saniye sürebilir. Devam?</string>
     <string name="mHosts_buildProgress">Katalog oluşturuluyor</string>

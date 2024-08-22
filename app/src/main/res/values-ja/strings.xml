@@ -205,7 +205,8 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mLog_edit">ログを編集</string>
     <string name="mLog_empty">ログはありません</string>
     <string name="mHosts_name">ホスト ラベラー</string>
-    <string name="mHosts_desc">このモジュールは、手動で指定するか、リモートホストのようなファイルを使って設定されたホストにラベル付けします。危険なサイトや特殊なサイトについて警告するために使用することができます。\nデフォルトの設定では、StevenBlack のホスト (アドウェア/マルウェア、fakenews、ギャンブル、アダルトコンテンツ) を https://github.com/StevenBlack/hosts から取得します。</string>
+    <string name="mHosts_desc">このモジュールは、手動で指定するか、リモートホストのようなファイルを使って設定されたホストにラベル付けします。危険なサイトや特殊なサイトについて警告するために使用することができます。
+\nデフォルトの設定では、StevenBlack のホスト (アドウェア/マルウェア、fakenews、ギャンブル、アダルトコンテンツ) を https://github.com/StevenBlack/hosts から取得します。</string>
     <string name="mHosts_malware">アドウェア/マルウェア</string>
     <string name="mHosts_info">ホスト:</string>
     <string name="mHosts_noLabel">ラベルなし</string>
@@ -215,12 +216,13 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mHosts_build">データベースを作成</string>
     <string name="mHosts_uninitialized">ホストデータベースが初期化されていません。\n「データベースを作成」を押してください。</string>
     <string name="mHosts_parseError">URLのホストファイルを解析できませんでした</string>
-    <string name="mHosts_editor">"ホストの設定 です。\n形式: hosts ラベルをキーとした、オブジェクトのリスト。以下の値を含むことができます。
-- file: ダウンロードするリモートホストファイルのURL。ファイルに含まれるすべての有効なホストが追加されます。
-- hosts: 追加する生(raw)ホストのリスト(文字列)。
-- color: ラベルの色。Androidの色文字列 (#AARRGGBB, #RRGGBB または有効な色名)。デフォルトは「危険な」赤です。
-- replace: false の場合、既存のホストは置き換えられません。オブジェクトは上から下へ評価されることに注意してください。デフォルトでは true です。
-- enabled: false の場合、このオブジェクト全体がスキップされます。デフォルトでは true です。"</string>
+    <string name="mHosts_editor">ホストの設定 です。
+\n形式: hosts ラベルをキーとした、オブジェクトのリスト。以下の値を含むことができます。
+\n- file: ダウンロードするリモートホストファイルのURL。ファイルに含まれるすべての有効なホストが追加されます。
+\n- hosts: 追加する生(raw)ホストのリスト(文字列)。
+\n- color: ラベルの色。Androidの色文字列 (#AARRGGBB, #RRGGBB または有効な色名)。デフォルトは「危険な」赤です。
+\n- replace: false の場合、既存のホストは置き換えられません。オブジェクトは上から下へ評価されることに注意してください。デフォルトでは true です。
+\n- enabled: false の場合、このオブジェクト全体がスキップされます。デフォルトでは true です。</string>
     <string name="mHosts_buildTitle">ホストデータベースの作成</string>
     <string name="mHosts_buildDesc">この操作は、既存のホストデータベースを削除し、新しい設定でデータベースを作成します。必要であればインターネットからホストファイルをダウンロードします。この操作には数秒かかることがあります。続行しますか？</string>
     <string name="mHosts_buildProgress">データベースを作成中…</string>

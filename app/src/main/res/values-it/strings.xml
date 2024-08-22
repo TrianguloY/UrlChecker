@@ -205,7 +205,7 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mLog_empty">Nessun dato</string>
     <string name="mHosts_name">Categorie hosts</string>
     <string name="mHosts_desc">"Questo modulo etichetta gli hosts, e può essere configurato manualmente od utilizzando un file remoto hosts-like.
-    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
+\n    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">nessuna categoria</string>
@@ -215,11 +215,11 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mHosts_build">Crea</string>
     <string name="mHosts_uninitialized">Database degli hosts non inizializzato. Premi per crearlo.</string>
     <string name="mHosts_parseError">"Impossibile recuperare URL host"</string>
-    <string name="mHosts_editor">"Configurazione hosts. Formato: Lista di oggetti dove la chiave è l'etichetta dell'host ed il contenuto include i seguenti valori opzionali:
-- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
-- hosts: Lista di host grezza (stringhe) da aggiungere.
-- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall'alto al basso. Attivato di defualt.
-- enabled: se falso questo intero oggetto sarà saltato. Attivato di default."</string>
+    <string name="mHosts_editor">Configurazione hosts. Formato: Lista di oggetti dove la chiave è l\'etichetta dell\'host ed il contenuto include i seguenti valori opzionali:
+\n- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
+\n- hosts: Lista di host grezza (stringhe) da aggiungere.
+\n- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall\'alto al basso. Attivato di defualt.
+\n- enabled: se falso questo intero oggetto sarà saltato. Attivato di default.</string>
     <string name="mHosts_buildTitle">Riempi database hosts</string>
     <string name="mHosts_buildDesc">"Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest'azione potrebbe richiedere qualche secondo. Continuare?"</string>
     <string name="mHosts_buildProgress">Preparando lista</string>
