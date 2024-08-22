@@ -90,10 +90,13 @@ public class Hosts {
 
                     Log.d("HOSTS", "Downloading " + file);
                     HttpUtils.streamFromUrl(file, line -> {
-                        var parts = line.replaceAll("#.*", "").trim().split(" +");
-                        if (parts.length != 2) return;
-                        // valid, add
-                        add(parts[1], Pair.create(label, color), replace);
+                        var parts = line.replaceAll("#.*", "").trim().split("\\s+");
+                        // everything except the first entry is a possible host
+                        for (int i = 1; i < parts.length; i++) {
+                            add(parts[i], Pair.create(label, color), replace);
+                        }
+                        // just the host, special syntax
+                        if (parts.length == 1) add(parts[0], Pair.create(label, color), replace);
                     });
                 }
                 if (entry.has("hosts")) {

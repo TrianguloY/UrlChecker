@@ -272,7 +272,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mLog_empty">Sin datos</string>
     <!-- -->
     <string name="mHosts_name">Etiquetador de hosts</string>
-    <string name="mHosts_desc">Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_desc">"Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts. Nota: subdominios también se comprobarán, con lo que 'x.y.z' e 'y.z' serán detectados para la entrada 'y.z'"</string>
     <string name="mHosts_malware">software dañino</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">sin etiqueta</string>
@@ -283,7 +283,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mHosts_uninitialized">Catálogo de hosts sin inicializar. Pulsa para generarlo</string>
     <string name="mHosts_parseError">No se puede analizar la URL del host</string>
     <string name="mHosts_editor">Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
-\n- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
+\n- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos. Las líneas deben seguir el formato host: \'ip host [alias…]\', aunque aquellas con solo \'host\' también son validas.
 \n- hosts: Lista de hosts (strings) para añadir.
 \n- color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo \'peligro\' por defecto.
 \n- replace: si es \'false\' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. \'true\' por defecto.

@@ -324,7 +324,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mLog_unlimited">Unlimited</string>
     <!-- -->
     <string name="mHosts_name">Hosts labeler</string>
-    <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>
+    <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts. Note: subdomains will also be checked, so 'x.y.z' and 'y.z' will be detected for the entry 'y.z'"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">no label</string>
@@ -335,7 +335,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mHosts_uninitialized">Hosts database uninitialized. Press to build</string>
     <string name="mHosts_parseError">Can not parse URL host</string>
     <string name="mHosts_editor">"Hosts configuration. Format: List of objects where the key is the hosts label and the content includes the following optional values:
-- file: An url of a remote hosts-file to download. All valid hosts present will be added.
+- file: An url of a remote hosts-file to download. All valid hosts present will be added. The lines should follow the hosts syntax: 'ip host [alias…]', but those with only 'host' are valid too.
 - hosts: List of raw hosts (strings) to add.
 - color: The label's color. An Android color string (#AARRGGBB, #RRGGBB or a valid color name). Defaults to a 'danger' red.
 - replace: if false existing hosts won't be replaced. Note that objects are evaluated from top to bottom. True by default.
