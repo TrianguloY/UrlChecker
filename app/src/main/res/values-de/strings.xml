@@ -113,7 +113,7 @@
     <string name="mPttrn_noSchemeHttps">HTTPS-Schema fehlt.</string>
     <string name="mPttrn_ok">Keine passenden Muster</string>
     <string name="mInput_name">Texteingabe</string>
-    <string name="mInput_desc">Zeigt die aktuelle URL an, diese kann manuell bearbeitet werden.</string>
+    <string name="mInput_desc">Zeigt die aktuelle URL an. Antippen zum Bearbeiten.</string>
     <string name="mVT_name">URL-Scanner</string>
     <string name="mVT_desc">Wenn dieses Modul aktiviert ist, können Sie die URLs mithilfe von VirusTotal überprüfen und das Ergebnis sehen. Ein persönlicher VirusTotal-API-Key ist dafür notwendig, Sie können diesen erhalten, indem Sie sich hier kostenfrei registrieren: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API-Key</string>
@@ -315,4 +315,5 @@
     <string name="normal">Normal</string>
     <string name="big">Groß</string>
     <string name="mOpen_iconSize">Symbolgröße</string>
+    <string name="mInput_alwaysEdit">Bearbeitungsmodus dauerhaft aktivieren</string>
 </resources>

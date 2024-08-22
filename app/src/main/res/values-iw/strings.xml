@@ -91,7 +91,7 @@
     <string name="mStatus_unknownCode">%d: קוד סטטוס לא ידוע</string>
     <string name="mStatus_redir">הפניה מחדש: %s</string>
     <string name="mInput_name">הקלד טקסט</string>
-    <string name="mInput_desc">"מציג את כתובת האתר הנוכחית, אותה ניתן לערוך באופן ידני."</string>
+    <string name="mInput_desc">מציג את כתובת האתר הנוכחית, אותה ניתן לערוך באופן ידני.</string>
     <string name="mVT_name">סורק כתובות אתרים</string>
     <string name="mVT_desc">"כאשר מודול זה מופעל אתה יכול לסרוק את כתובת האתר באמצעות וירוס טוטאל ולבדוק את הדוח.
  יש צורך במפתח API אישי של וירוס טוטאל כדי שזה יעבוד, אתה יכול לקבל אחד לאחר הרשמה לחשבון בחינם כאן: https://www.virustotal.com/gui/join-us ."</string>
