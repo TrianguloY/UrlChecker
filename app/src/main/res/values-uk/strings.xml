@@ -21,7 +21,8 @@
     -->
     <string name="txt_about">Програму розробив TrianguloY.
 \n
-\nContributions: %s. Translations: %s.</string>
+\nContributions: %1$s.
+\nTranslations: %2$s.</string>
     <string name="link_blog">Блог TrianguloY</string>
     <!--
         configuration
@@ -95,9 +96,9 @@
     <string name="mVT_scan">Сканувати</string>
     <string name="mVT_cancel">Відмінити</string>
     <string name="mVT_scanning">Скануємо…</string>
-    <string name="mVT_goodUrl">Ні один з %d сканерів не знає такого посилання (на час %s)</string>
-    <string name="mVT_warningUrl">Увага! %d/%d сканерів знають це посилання (на час %s)</string>
-    <string name="mVT_badUrl">Обережно! %d/%d сканерів знають це посилання (на час %s)</string>
+    <string name="mVT_goodUrl">Ні один з %1$d сканерів не знає такого посилання (на час %2$s)</string>
+    <string name="mVT_warningUrl">Увага! %1$d/%2$d сканерів знають це посилання (на час %3$s)</string>
+    <string name="mVT_badUrl">Обережно! %1$d/%2$d сканерів знають це посилання (на час %3$s)</string>
     <string name="mVT_connectError">Не можу під\'єднатись до VirusTotal. Впевніться, що у вас є активне інтернет з\'єднання, або попробуйте пізніше</string>
     <string name="mVT_jsonError"> Не можу під\'єднатись до VirusTotal. Впевніться, що ключ api дійсний, або спробуйте пізніше</string>
     <!-- -->

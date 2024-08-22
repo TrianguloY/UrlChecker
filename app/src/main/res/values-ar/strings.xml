@@ -9,8 +9,8 @@
     <string name="locale">العربية</string>
     <string name="txt_about">تم إنشاء التطبيق بواسطة TrianguloY.
 \n
-\nالمساهمون: %s.
-\nالمترجمون: %s.</string>
+\nالمساهمون: %1$s.
+\nالمترجمون: %2$s.</string>
     <string name="link_blog">مدونة TrianguloY</string>
     <string name="link_changelog">سجل التغييرات</string>
     <string name="link_source">رمز المصدر</string>
@@ -133,9 +133,9 @@
     <string name="mVT_scan">فحص</string>
     <string name="mVT_cancel">إلغاء</string>
     <string name="mVT_scanning">جاري الفحص…</string>
-    <string name="mVT_badUrl">حذار! اكتشف %d/%d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %s)</string>
-    <string name="mVT_warningUrl">تحذير، اكتشف %d/%d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %s)</string>
-    <string name="mVT_goodUrl">لم يتم اكتشاف أي من محركات %d عنوان الويب (اعتبارًا من تاريخ %s)</string>
+    <string name="mVT_badUrl">حذار! اكتشف %1$d/%2$d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %3$s)</string>
+    <string name="mVT_warningUrl">تحذير، اكتشف %1$d/%2$d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %3$s)</string>
+    <string name="mVT_goodUrl">لم يتم اكتشاف أي من محركات %1$d عنوان الويب (اعتبارًا من تاريخ %2$s)</string>
     <string name="mVT_connectError">لا يمكن الاتصال بـ VirusTotal. تأكد من الاتصال بالإنترنت، أو حاول مرة أخرى لاحقًا.</string>
     <string name="mVT_jsonError">لا يمكن الاتصال بـ VirusTotal. تأكد من أن مفتاح API صالح، أو حاول مرة أخرى لاحقًا.</string>
     <string name="mD_name">وحدة تصحيح الأخطاء/العلامة</string>
@@ -267,7 +267,7 @@
     <string name="mHosts_buildProgress">جاري بناء الكتالوج</string>
     <string name="mHosts_buildInit">جاري التهيئة</string>
     <string name="mHosts_buildClear">جاري المسح…</string>
-    <string name="mHosts_buildDownload">جاري تحميل \'%s\' المضيفين(hosts) من %s…</string>
+    <string name="mHosts_buildDownload">جاري تحميل \'%1$s\' المضيفين(hosts) من %2$s…</string>
     <string name="mHosts_buildSave">جاري الحفظ…</string>
     <string name="mHosts_built">تم بناء قاعدة البيانات: %d مضيفين (hosts)</string>
     <string name="mUnshort_name">موسع الروابط</string>
@@ -277,7 +277,7 @@
     <string name="mUnshort_error">خطأ في الخادم(server): %s</string>
     <string name="mUnshort_internal">خطأ داخلي (%s)</string>
     <string name="mUnshort_notFound">لم يتم العثور على توجيه(redirection)</string>
-    <string name="mUnshort_pending">قيد الانتظار: %d/%d</string>
+    <string name="mUnshort_pending">قيد الانتظار: %1$d/%2$d</string>
     <string name="mUnshort_ok">تم إلغاء التقصير</string>
     <string name="mFlags_name">محرر الأعلام(flags)</string>
     <string name="mFlag_editFlags">تعديل قيم العلم(flag) الافتراضية</string>

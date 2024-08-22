@@ -10,7 +10,8 @@
     <string name="link_privacy">Personvernspraksis</string>
     <string name="txt_about">Programmet er laget av TrianguloY.
 \n
-\nBidragsytere: %s. Oversettelser: %s.</string>
+\nBidragsytere: %1$s.
+\nOversettelser: %2$s.</string>
     <string name="menu_resetOrder">Tilbakestill rekkefølge</string>
     <string name="desc_up">Flytt oppover</string>
     <string name="desc_down">Flytt nedover</string>
@@ -79,7 +80,7 @@
     <string name="mHosts_gambling">gambling</string>
     <string name="mHosts_adult">vokseninnhold</string>
     <string name="mHosts_build">Bygg</string>
-    <string name="mHosts_buildDownload">Laster ned «%s» verter fra %s …</string>
+    <string name="mHosts_buildDownload">Laster ned «%1$s» verter fra %2$s …</string>
     <string name="mUnshort_checking">Sjekker …</string>
     <string name="mUnshort_internal">Intern feil (%s)</string>
     <string name="desc_decorations">Vis/skjul navn</string>

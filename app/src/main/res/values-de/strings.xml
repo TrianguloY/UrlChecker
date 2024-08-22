@@ -3,8 +3,8 @@
     <string name="locale">Deutsch</string>
     <string name="txt_about">App erstellt von TrianguloY.
 \n
-\nBeiträge: %s.
-\nÜbersetzungen: %s.</string>
+\nBeiträge: %1$s.
+\nÜbersetzungen: %2$s.</string>
     <string name="link_changelog">Änderungen</string>
     <string name="desc_down">Nach unten</string>
     <string name="desc_decorations">Titel anzeigen/ausblenden</string>
@@ -119,9 +119,9 @@
     <string name="mVT_apiKey">API-Key</string>
     <string name="mVT_tm">VirusTotal™ ist ein eingetragenes Warenzeichen von Google, Inc.</string>
     <string name="mVT_scan">Scannen</string>
-    <string name="mVT_goodUrl">Keiner der %d Dienste hat die URL als böswillig erkannt (Stand: %s)</string>
-    <string name="mVT_warningUrl">Warnung, %d/%d Dienste haben die URL als gefährlich eingestuft (Stand: %s)</string>
-    <string name="mVT_badUrl">Vorsicht! %d/%d Dienste haben die URL als gefährlich eingestuft (Stand: %s)</string>
+    <string name="mVT_goodUrl">Keiner der %1$d Dienste hat die URL als böswillig erkannt (Stand: %2$s)</string>
+    <string name="mVT_warningUrl">Warnung, %1$d/%2$d Dienste haben die URL als gefährlich eingestuft (Stand: %3$s)</string>
+    <string name="mVT_badUrl">Vorsicht! %1$d/%2$d Dienste haben die URL als gefährlich eingestuft (Stand: %3$s)</string>
     <string name="mVT_connectError">Verbindung zu VirusTotal nicht möglich. Überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später noch einmal.</string>
     <string name="mVT_jsonError">Verbindung zu VirusTotal nicht möglich. Überprüfen Sie, dass der API-Key gültig ist oder versuchen Sie es später noch einmal.</string>
     <string name="mD_name">Debug-/Entwickler-Modul</string>
@@ -184,12 +184,12 @@
     <string name="mHosts_buildProgress">Erstelle Katalog</string>
     <string name="mHosts_buildInit">Wird initialisiert</string>
     <string name="mHosts_buildClear">Wird geleert…</string>
-    <string name="mHosts_buildDownload">Lade \'%s\' Hosts von %s…</string>
+    <string name="mHosts_buildDownload">Lade \'%1$s\' Hosts von %2$s…</string>
     <string name="mUnshort_name">Ent-Kürzen</string>
     <string name="mUnshort_tm">unshorten.me kostenlose API von Unshorten.me</string>
     <string name="mUnshort_checking">Wird abgerufen…</string>
     <string name="mUnshort_error">Serverfehler: %s</string>
-    <string name="mUnshort_pending">verbleibend: %d/%d</string>
+    <string name="mUnshort_pending">verbleibend: %1$d/%2$d</string>
     <string name="mFlags_name">Marker-Editor</string>
     <string name="mFlag_editFlags">Standardwerte für die Marker bearbeiten</string>
     <string name="mParts_name">URI-Teile</string>

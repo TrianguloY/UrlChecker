@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">"Aplicação criada por TrianguloY.
 
-Contributions: %s.
-Translations: %s."</string>
+Contributions: %1$s.
+Translations: %2$s."</string>
     <string name="link_blog">"Blog do TrianguloY"</string>
     <string name="link_changelog">Log de alterações</string>
     <string name="link_source">Código fonte</string>
@@ -150,9 +150,9 @@ Translations: %s."</string>
     <string name="mVT_scan">Examinar</string>
     <string name="mVT_cancel">Cancelar</string>
     <string name="mVT_scanning">Examinando…</string>
-    <string name="mVT_goodUrl">Nenhum dos %d mecanismos detetou a URL (na data %s)</string>
-    <string name="mVT_warningUrl">Aviso, %d/%d mecanismos detetaram a URL (na data %s)</string>
-    <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detetaram a URL (na data %s)</string>
+    <string name="mVT_goodUrl">Nenhum dos %1$d mecanismos detetou a URL (na data %2$s)</string>
+    <string name="mVT_warningUrl">Aviso, %1$d/%2$d mecanismos detetaram a URL (na data %3$s)</string>
+    <string name="mVT_badUrl">Cuidado! %1$d/%2$d mecanismos detetaram a URL (na data %3$s)</string>
     <string name="mVT_connectError">Não foi possível conectar-se ao VirusTotal. Verifique se está conectado à Internet ou tente novamente mais tarde.</string>
     <string name="mVT_jsonError">Não foi possível conectar-se ao VirusTotal. Verifique se a chave de API é válida ou tente novamente mais tarde.</string>
     <!-- -->
@@ -247,7 +247,7 @@ Para desabilitar o log, basta desabilitar o módulo."</string>
     <string name="mHosts_buildProgress">Catálogo de construção</string>
     <string name="mHosts_buildInit">Inicializando</string>
     <string name="mHosts_buildClear">Limpando…</string>
-    <string name="mHosts_buildDownload">Fazendo download de hosts \'%s\' de %s…</string>
+    <string name="mHosts_buildDownload">Fazendo download de hosts \'%1$s\' de %2$s…</string>
     <string name="mHosts_buildSave">Salvando…</string>
     <string name="mHosts_built">Banco de dados construído: %d hosts</string>
     <string name="mUnshort_error">Erro de servidor: %s</string>
@@ -272,7 +272,7 @@ Para desabilitar o log, basta desabilitar o módulo."</string>
     <string name="mOpen_closeCopy">Fechar diálogo após copiar</string>
     <string name="mUnshort_name">Desencurtador</string>
     <string name="mUnshort_tm">API gratuita de Unshorten.me</string>
-    <string name="mUnshort_pending">pendente: %d/%d</string>
+    <string name="mUnshort_pending">pendente: %1$d/%2$d</string>
     <string name="mParts_desc">Este módulo mostra todas as partes da url decodificadas: esquema, autoridade, caminhos, parâmetros e fragmento.
 \nAo clicar numa parte, ela será definida como a nova URL, útil, por exemplo, se uma das consultas ou caminhos for uma URL codificada de redirecionamento.
 \nAo segurar uma parte, ela será copiada para a área de transferência.

@@ -104,17 +104,17 @@
     <string name="mOpen_ctabs">Aangepaste tabbladen:</string>
     <string name="btn_linksSettings">Open ondersteunde koppelingen</string>
     <string name="menu_resetOrder">opnieuw instellen</string>
-    <string name="mVT_warningUrl">Waarschuwing: %d/%d-engines hebben de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="mVT_warningUrl">Waarschuwing: %1$d/%2$d-engines hebben de URL gedetecteerd (vanaf datum %3$s)</string>
     <string name="mOpen_closeOpen">Dialoogvenster sluiten na openen</string>
     <string name="btn_setBrowser">Stel in als standaard browser</string>
     <string name="btn_androidSettings">Instellingen voor Android</string>
     <string name="txt_about">App gemaakt door TrianguloY.
 \n
-\nBijdragen: %s.
-\nVertalingen: %s.</string>
+\nBijdragen: %1$s.
+\nVertalingen: %2$s.</string>
     <string name="mD_ctabs">Toon foutopsporingsberichten van de service voor aangepaste tabbladen</string>
     <string name="txt_locale">Taal:</string>
-    <string name="mVT_goodUrl">Geen van de %d-engines heeft de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="mVT_goodUrl">Geen van de %1$d-engines heeft de URL gedetecteerd (vanaf datum %2$s)</string>
     <string name="alwaysOn">Altijd aan</string>
     <string name="mVT_apiKey">API key</string>
     <string name="mStatus_unknownCode">%d: Onbekende statuscode</string>
@@ -130,7 +130,7 @@
     <string name="desc_up">Ga omhoog</string>
     <string name="mOpen_share">Deel</string>
     <string name="mStatus_desc">Door op de check knop te drukken, wordt er een netwerkverzoek gedaan om de locatiestatuscode op te halen en weer te geven. Als het resultaat een omleiding is, kunt u de bestemmings-URL bekijken. De URL-inhoud wordt verkregen (GET), maar niet geëvalueerd, zodat omleidingen op basis van JavaScript niet worden gedetecteerd.</string>
-    <string name="mVT_badUrl">Voorzichtig! %d/%d engines hebben de URL gedetecteerd (vanaf datum %s)</string>
+    <string name="mVT_badUrl">Voorzichtig! %1$d/%2$d engines hebben de URL gedetecteerd (vanaf datum %3$s)</string>
     <string name="mOpen_mergeCopy">Voeg de knoppen Kopiëren en Delen samen (lang indrukken om te kopiëren)</string>
     <string name="mClear_clear">Toepassen</string>
     <string name="mOpen_incognito">Incognito modus:</string>
@@ -211,7 +211,7 @@
     <string name="mChg_current">Huidige versie: %s</string>
     <string name="mRemove_name">Zoekopdracht Verwijderaar</string>
     <string name="mClear_hashMismatch">Hashes komen niet overeen, er is mogelijk met het bestand geknoeid. Als u de controle wilt overslaan, verwijdert u de hash-URL</string>
-    <string name="mUnshort_pending">in behandeling: %d/%d</string>
+    <string name="mUnshort_pending">in behandeling: %1$d/%2$d</string>
     <string name="mUnshort_ok">Niet ingekort</string>
     <string name="mUnshort_internal">Interne fout (%s)</string>
     <string name="mChg_desc">Zal op de hoogte stellen wanneer de app is bijgewerkt.</string>
@@ -250,7 +250,7 @@
     <string name="mLog_name">Log</string>
     <string name="mUnshort_unshort">Unshort</string>
     <string name="mClear_urlHint">Catalogus-URL</string>
-    <string name="mHosts_buildDownload">\'%s\' hosts downloaden van %s…</string>
+    <string name="mHosts_buildDownload">\'%1$s\' hosts downloaden van %2$s…</string>
     <string name="mRemove_noQueries">Geen zoekopdrachten</string>
     <string name="mDrawer_desc">Alle modules daaronder worden verborgen in een lade. De modules werken nog steeds, maar zijn verborgen totdat je de lade opent. Hier kunt u modules plaatsen die u zelden gebruikt, om rommel te voorkomen.</string>
     <string name="mHosts_fakenews">nepnieuws</string>

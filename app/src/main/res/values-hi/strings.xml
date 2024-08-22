@@ -13,8 +13,8 @@
     <string name="menu_resetOrder">क्रम रीसेट करें</string>
     <string name="txt_about">TrianguloY द्वारा बनाया एप्प।
 \n
-\nयोगदान: %s।
-\nअनुवाद: %s।</string>
+\nयोगदान: %1$s।
+\nअनुवाद: %2$s।</string>
     <string name="txt_info">क्लिक किए गए यूआरएल लिंक खोलते समय यह ऐप एक मध्यस्थ के रूप में कार्य करता है। लिंक खोलते समय इस ऐप को चुनने पर लिंक के बारे में कुछ जानकारी वाला एक संवाद दिखाया जाता है। सभी उपलब्ध मॉड्यूल की जांच और कॉन्फ़िगर करने के लिए नीचे दिए गए मॉड्यूल बटन को दबाएं।</string>
     <string name="desc_up">ऊपर ले जाएँ</string>
     <string name="desc_decorations">शीर्षक दिखाएं/छुपाएं</string>
@@ -116,11 +116,11 @@
     <string name="mClear_updater">अपडेटर</string>
     <string name="mClear_matches">%s से मेल खाता है</string>
     <string name="mHist_desc">जब यूआरएल को मैन्युअल रूप से या अन्य मॉड्यूल द्वारा संपादित किया जाता है, तो यह आपको परिवर्तनों को देखने और वापस लाने की अनुमति देता है।</string>
-    <string name="mVT_warningUrl">चेतावनी, %d/%d इंजनों ने यूआरएल का पता लगाया (दिनांक %s तक)</string>
-    <string name="mVT_goodUrl">%d इंजनों में से किसी ने भी यूआरएल का पता नहीं लगाया (दिनांक %s तक)</string>
+    <string name="mVT_warningUrl">चेतावनी, %1$d/%2$d इंजनों ने यूआरएल का पता लगाया (दिनांक %3$s तक)</string>
+    <string name="mVT_goodUrl">%1$d इंजनों में से किसी ने भी यूआरएल का पता नहीं लगाया (दिनांक %2$s तक)</string>
     <string name="mClear_name">यूआरएल क्लीनर</string>
     <string name="mClear_urlHint">कैटलॉग URL</string>
-    <string name="mVT_badUrl">सावधान! %d/%d इंजनों ने यूआरएल का पता लगाया (दिनांक %s तक)</string>
+    <string name="mVT_badUrl">सावधान! %1$d/%2$d इंजनों ने यूआरएल का पता लगाया (दिनांक %3$s तक)</string>
     <string name="mClear_clear">लागू करें</string>
     <string name="mClear_redirection">- पुनर्निर्देशन मिला</string>
     <string name="mClear_autoUpdate">समय-समय पर अपडेट करें</string>
@@ -154,7 +154,7 @@
 \nआप टेक्स्ट का चयन करने के लिए होल्ड कर सकते हैं।</string>
     <string name="mRemove_name">क्वेरीज़ रिमूवर</string>
     <string name="mClear_hashMismatch">हैश मेल नहीं खाता, फ़ाइल के साथ छेड़छाड़ की गई हो सकती है। यदि आप चेक को हटाना चाहते हैं तो हैश यूआरएल को हटा दें</string>
-    <string name="mUnshort_pending">लंबित: %d/%d</string>
+    <string name="mUnshort_pending">लंबित: %1$d/%2$d</string>
     <string name="mUnshort_ok">बगैर छोटा किया हुआ</string>
     <string name="mUnshort_internal">आंतरिक त्रुटि (%s)</string>
     <string name="mHosts_info">होस्ट:</string>
@@ -193,7 +193,7 @@
     <string name="mVT_scan">स्कैन करें</string>
     <string name="mLog_name">लेखा</string>
     <string name="mUnshort_unshort">असंक्षिप्त</string>
-    <string name="mHosts_buildDownload">\'%s\' होस्ट %s से डाउनलोड हो रहा है…</string>
+    <string name="mHosts_buildDownload">\'%1$s\' होस्ट %2$s से डाउनलोड हो रहा है…</string>
     <string name="mRemove_noQueries">कोई क्वेरी नहीं</string>
     <string name="mDrawer_desc">इसके नीचे के सभी मॉड्यूल एक दराज में छिपे होंगे। मॉड्यूल फिर भी काम करेंगे, लेकिन वो दराज में छिपे रहेंगे। अव्यवस्था से बचने के लिए आप यहां ऐसे मॉड्यूल रख सकते हैं जिनका आप शायद ही कभी उपयोग करते हैं।</string>
     <string name="mHosts_fakenews">फर्जी खबर</string>

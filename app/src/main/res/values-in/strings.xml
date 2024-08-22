@@ -30,8 +30,8 @@
     <string name="btn_androidSettings">Pengaturan aplikasi Android</string>
     <string name="txt_about">Aplikasi dibuat oleh TrianguloY.
 \n
-\nKontributor: %s.
-\nPenerjemah: %s.</string>
+\nKontributor: %1$s.
+\nPenerjemah: %2$s.</string>
     <string name="txt_locale">Lokal:</string>
     <string name="txt_info">Aplikasi ini bertindak sebagai perantara saat membuka tautan URL. Ketika tautan dibuka melalui aplikasi ini, sebuah jendela dialog berisi informasi mengenai tautan tersebut akan ditampilkan. Tekan tombol modul di bawah ini untuk memeriksa dan mengatur semua modul yang tersedia.</string>
     <string name="desc_up">Geser ke atas</string>
@@ -123,10 +123,10 @@
 \nCatatan: Jika Anda mengubah suatu pola, pola bawaan baru yang berasal dari pembaruan aplikasi tidak akan ditambahkan secara otomatis (Anda bisa memulihkannya melalui opsi \'reset\').</string>
     <string name="mStatus_autoRedirect">Ganti URL pengalihan secara otomatis</string>
     <string name="mOpen_ctabs">Tab tersuai:</string>
-    <string name="mVT_warningUrl">Peringatan, %d/%d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal %s)</string>
+    <string name="mVT_warningUrl">Peringatan, %1$d/%2$d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal %3$s)</string>
     <string name="mOpen_closeOpen">Tutup kotak dialog setelah membuka tautan</string>
     <string name="mD_ctabs">Tunjukkan pesan awakutu dari layanan tab tersuai</string>
-    <string name="mVT_goodUrl">Tidak satupun dari %d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal: %s)</string>
+    <string name="mVT_goodUrl">Tidak satupun dari %1$d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal: %2$s)</string>
     <string name="alwaysOn">Selalu aktif</string>
     <string name="mVT_apiKey">Kunci API</string>
     <string name="mStatus_unknownCode">%d: Kode status tidak diketahui</string>
@@ -140,7 +140,7 @@
     <string name="deviceDefault">Perangkat bawaan</string>
     <string name="mOpen_share">Bagikan</string>
     <string name="mStatus_desc">Dengan menekan tombol \"periksa\", sebuah koneksi akan dilakukan untuk menerima dan menampilkan kode status situs terkait. Jika hasilnya berupa pengalihan (redirection), Anda dapat melihat tujuan dari URL tersebut. Konten URL hanya akan diterima (GET) , tetapi tidak dijalankan. Sehingga, pengalihan yang berdasarkan pada JavaScript tidak dapat dideteksi.</string>
-    <string name="mVT_badUrl">Hati-hati! %d/%d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal: %s)</string>
+    <string name="mVT_badUrl">Hati-hati! %1$d/%2$d antivirus mendeteksi ancaman dari URL tersebut (pada tanggal: %3$s)</string>
     <string name="mOpen_mergeCopy">Satukan tombol Salin dan Bagikan (tekan lama untuk menyalin)</string>
     <string name="mClear_clear">Terapkan</string>
     <string name="mOpen_incognito">Mode inkognito:</string>
@@ -195,7 +195,7 @@
     <string name="mRemove_name">Penghilang Kueri</string>
     <string name="mClear_rawRule">- konten tidak bermanfaat ditemukan</string>
     <string name="mClear_hashMismatch">Hash tidak cocok, file tersebut kemungkinan besar telah diutak-atik. Jika Anda ingin mengabaikan pengecekan ini, hapus URL hash-nya</string>
-    <string name="mUnshort_pending">sisa: %d/%d</string>
+    <string name="mUnshort_pending">sisa: %1$d/%2$d</string>
     <string name="mUnshort_ok">Telah diurai</string>
     <string name="mUnshort_internal">Galat internal (%s)</string>
     <string name="mChg_desc">Akan diberi tahu ketika aplikasi telah diperbarui.</string>
@@ -238,7 +238,7 @@
     <string name="mLog_name">Log</string>
     <string name="mUnshort_unshort">Uraikan</string>
     <string name="mClear_urlHint">URL katalog</string>
-    <string name="mHosts_buildDownload">Mengunduh host \'%s\' dari %s…</string>
+    <string name="mHosts_buildDownload">Mengunduh host \'%1$s\' dari %2$s…</string>
     <string name="mRemove_noQueries">Kueri tidak ditemukan</string>
     <string name="mDrawer_desc">Semua modul di bawah ini akan disembunyikan di sebuah panel. Modul-modul tersebut tetap akan bekerja, hanya saja mereka akan disembunyikan hingga Anda membuka panelnya. Anda bisa menaruh modul-modul yang jarang dipakai di sini agar tidak berantakan.</string>
     <string name="mClear_redirection">- pengalihan ditemukan</string>

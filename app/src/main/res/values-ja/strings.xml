@@ -18,8 +18,8 @@
     <!-- about -->
     <string name="txt_about">"このアプリは TrianguloY によって開発されました。
 
-貢献者: %s
-翻訳者: %s"</string>
+貢献者: %1$s
+翻訳者: %2$s"</string>
     <string name="link_blog">TrianguloY のブログ</string>
     <string name="link_changelog">変更履歴</string>
     <string name="link_source">ソースコード</string>
@@ -138,9 +138,9 @@ URLコンテンツは取得 (GET) されますが、JavaScript によるリダ�
     <string name="mVT_scan">スキャン</string>
     <string name="mVT_cancel">キャンセル</string>
     <string name="mVT_scanning">スキャン中…</string>
-    <string name="mVT_goodUrl">%dつのエンジンのいずれもURLを検出しませんでした (%s 時点データ)</string>
-    <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dのエンジンがURLを検出しました (%s 時点データ)</string>
-    <string name="mVT_badUrl">注意! %dつのエンジンの内 %dつがURLを検出しました (%s 時点データ)</string>
+    <string name="mVT_goodUrl">%1$dつのエンジンのいずれもURLを検出しませんでした (%2$s 時点データ)</string>
+    <string name="mVT_warningUrl">警告! %1$dつのエンジンの内、%2$dのエンジンがURLを検出しました (%3$s 時点データ)</string>
+    <string name="mVT_badUrl">注意! %1$dつのエンジンの内 %2$dつがURLを検出しました (%3$s 時点データ)</string>
     <string name="mVT_connectError">VirusTotal に接続できません。インターネット接続が有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mVT_jsonError">VirusTotal に接続できません。APIキーが有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mD_name">デバッグ/マーカー モジュール</string>
@@ -226,7 +226,7 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mHosts_buildProgress">データベースを作成中…</string>
     <string name="mHosts_buildInit">準備中…</string>
     <string name="mHosts_buildClear">初期化中…</string>
-    <string name="mHosts_buildDownload">"%s個のホストを %s からダウンロード中…"</string>
+    <string name="mHosts_buildDownload">"%1$s個のホストを %2$s からダウンロード中…"</string>
     <string name="mHosts_buildSave">保存中…</string>
     <string name="mHosts_built">データベースが作成されました: %d個のホスト</string>
     <string name="tutorial">チュートリアル</string>

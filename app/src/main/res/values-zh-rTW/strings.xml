@@ -11,8 +11,8 @@
     <string name="a_about">關於</string>
     <string name="txt_about">本應用程式由 TrianguloY 所建立
 \n
-\n貢獻者：%s
-\n翻譯者：%s</string>
+\n貢獻者：%1$s
+\n翻譯者：%2$s</string>
     <string name="link_blog">TrianguloY 的網誌</string>
     <string name="link_changelog">更新日誌</string>
     <string name="link_source">原始碼</string>
@@ -159,7 +159,7 @@
     <string name="mOpen_incognitoDesc">切換無痕模式啟用與否 (僅適用 Firefox)</string>
     <string name="mParts_copy">已將元素複製到剪貼簿</string>
     <string name="mClear_upToDate">規則目錄已是最新版本</string>
-    <string name="mHosts_buildDownload">正在下載有關「%s」的主機清單 (從 %s )…</string>
+    <string name="mHosts_buildDownload">正在下載有關「%1$s」的主機清單 (從 %2$s )…</string>
     <string name="mPttrn_wrongSchemaHttp">HTTP 協定包含無效的大寫字母。</string>
     <string name="mPttrn_wrongSchemaHttps">HTTPS 協定包含無效的大寫字母。</string>
     <string name="mClear_toggleVerbose">顯示匹配過程詳細資訊</string>
@@ -191,9 +191,9 @@
     <string name="mOpen_noReferrer">隱藏前景應用程式 (Referrer)</string>
     <string name="mClear_cleared">- 已清理</string>
     <string name="mVT_desc">此模組可讓你透過 VirusTotal 掃描網址的安全性威脅並查看調查報告。如要使用此模組，請提供你的 VirusTotal API 金鑰，前往 https://www.virustotal.com/gui/join-us 免費註冊即可取得一組金鑰。</string>
-    <string name="mVT_goodUrl">已通過 %d 個掃毒引擎的檢驗 (截至 %s)</string>
-    <string name="mVT_warningUrl">警告！掃毒引擎偵測率為 %d/%d (截至 %s)</string>
-    <string name="mVT_badUrl">危險！掃毒引擎偵測率為 %d/%d (截至 %s)</string>
+    <string name="mVT_goodUrl">已通過 %1$d 個掃毒引擎的檢驗 (截至 %2$s)</string>
+    <string name="mVT_warningUrl">警告！掃毒引擎偵測率為 %1$d/%2$d (截至 %3$s)</string>
+    <string name="mVT_badUrl">危險！掃毒引擎偵測率為 %1$d/%2$d (截至 %3$s)</string>
     <string name="mVT_connectError">無法連上 VirusTotal。請確保裝置已連上網際網路，或稍後再試一次。</string>
     <string name="mClear_sourceDesc">規則目錄 JSON 檔的網址：</string>
     <string name="mClear_hashDesc">規則目錄雜湊檔的網址。若留空則不會檢查下載的內容是否遭到竄改 (不建議)：</string>
@@ -231,7 +231,7 @@
     <string name="mClear_editor">此為規則目錄，其必須遵循 https://docs.clearurls.xyz/latest/specs/rules/ 的格式。
 \n注意：一旦使用更新工具更新規則目錄，任何對於「providers」物件的修改都將被覆寫。如要自訂規則，請另行建立其他物件 (任意名稱皆可) 並在其下撰寫。</string>
     <string name="mStatus_desc">藉由點選「檢查狀態」按鈕，此模組將發送一個網路請求來檢索並顯示該網站的狀態碼。如果結果為重新導向，則能檢視目標網址。雖然已取得 (GET) 網址的內容，但並未解析，因此無法偵測到任何基於 JavaScript 的重新導向。</string>
-    <string name="mUnshort_pending">等待中：%d/%d</string>
+    <string name="mUnshort_pending">等待中：%1$d/%2$d</string>
     <string name="mRemove_name">參數移除器</string>
     <string name="mFlag_editFlags">編輯預設旗標值</string>
     <string name="mFlag_desc">[測試版功能] 這是較為進階的模組，其允許你在開啟其他應用程式之前編輯意圖旗標。

@@ -18,8 +18,8 @@
     <!-- about -->
     <string name="txt_about">"App creata da TrianguloY.
 
-Contributi: %s.
-Traduzioni: %s."</string>
+Contributi: %1$s.
+Traduzioni: %2$s."</string>
     <string name="link_blog">Blog di TrianguloY</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Codice sorgente</string>
@@ -137,9 +137,9 @@ Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi c
     <string name="mVT_scan">Scansiona</string>
     <string name="mVT_cancel">Cancella</string>
     <string name="mVT_scanning">Scansionando…</string>
-    <string name="mVT_goodUrl">Nessun %d engine ha rilevato qualcosa (ad oggi %s)</string>
-    <string name="mVT_warningUrl">Attenzione, questi engines: %d/%d hanno rilevato qualcosa (ad oggi %s)</string>
-    <string name="mVT_badUrl">Attenzione! %d/%d engines hanno rilevato qualcosa (ad oggi %s)</string>
+    <string name="mVT_goodUrl">Nessun %1$d engine ha rilevato qualcosa (ad oggi %2$s)</string>
+    <string name="mVT_warningUrl">Attenzione, questi engines: %1$d/%2$d hanno rilevato qualcosa (ad oggi %3$s)</string>
+    <string name="mVT_badUrl">Attenzione! %1$d/%2$d engines hanno rilevato qualcosa (ad oggi %3$s)</string>
     <string name="mVT_connectError">"Impossibile connettersi a VirusTotal. Controlla di avere una connessione funzionante e/o riprova più tardi."</string>
     <string name="mVT_jsonError">"Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi."</string>
     <string name="mD_name">Modulo di debug</string>
@@ -225,7 +225,7 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mHosts_buildProgress">Preparando lista</string>
     <string name="mHosts_buildInit">Inizializzazione</string>
     <string name="mHosts_buildClear">Pulizia…</string>
-    <string name="mHosts_buildDownload">"Scaricando '%s' hosts da %s…"</string>
+    <string name="mHosts_buildDownload">"Scaricando '%1$s' hosts da %2$s…"</string>
     <string name="mHosts_buildSave">Salvando…</string>
     <string name="mHosts_built">Database pronto: %d hosts</string>
     <string name="txt_tutorial1">Grazie per aver scaricato l\'applicazione!

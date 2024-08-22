@@ -9,8 +9,8 @@
     <string name="a_about">O aplikaci</string>
     <string name="txt_about">Aplikaci vytvořil TrianguloY.
 \n
-\nPřispěli: %s.
-\nPřeložili: %s.</string>
+\nPřispěli: %1$s.
+\nPřeložili: %2$s.</string>
     <string name="link_blog">Blog TrianguloY</string>
     <string name="link_source">Zdrojový kód</string>
     <string name="link_privacy">Ochrana osobních údajů</string>
@@ -101,9 +101,9 @@
     <string name="mVT_scan">Skenovat</string>
     <string name="mVT_cancel">Zrušit</string>
     <string name="mVT_scanning">Skenuji…</string>
-    <string name="mVT_warningUrl">Varování, %d/%d vyhledávačů tuto adresu URL nahlásilo (k datu %s)</string>
-    <string name="mVT_badUrl">Opatrně! %d/%d vyhledávačů tuto adresu URL nahlásilo (k datu %s)</string>
-    <string name="mVT_goodUrl">Žádný z %d vyhledávačů tuto adresu URL nenahlásilo (k datu %s)</string>
+    <string name="mVT_warningUrl">Varování, %1$d/%2$d vyhledávačů tuto adresu URL nahlásilo (k datu %3$s)</string>
+    <string name="mVT_badUrl">Opatrně! %1$d/%2$d vyhledávačů tuto adresu URL nahlásilo (k datu %3$s)</string>
+    <string name="mVT_goodUrl">Žádný z %1$d vyhledávačů tuto adresu URL nenahlásilo (k datu %2$s)</string>
     <string name="mVT_connectError">Nelze se připojit k VirusTotal. Ujistěte se, že jste připojeni k internetu, nebo to zkuste znovu později.</string>
     <string name="mD_name">Pro ladění</string>
     <string name="mDrawer_desc">Všechny moduly pod tímto budou skryty v šuplíku. Moduly budou stále fungovat, ale budou skryté, dokud šuplík neotevřete. Zde můžete umístit moduly, které používáte zřídka, abyste se vyhnuli nepořádku.</string>
@@ -215,7 +215,7 @@
     <string name="mUnshort_checking">Kontroluji…</string>
     <string name="mUnshort_error">Chyba serveru: %s</string>
     <string name="mUnshort_internal">Vnitřní chyba (%s)</string>
-    <string name="mUnshort_pending">zbývá: %d/%d</string>
+    <string name="mUnshort_pending">zbývá: %1$d/%2$d</string>
     <string name="mUnshort_ok">Rozbaleno</string>
     <string name="mFlags_name">Editor příznaků</string>
     <string name="mFlag_editFlags">Upravit výchozí hodnoty příznaků</string>
@@ -260,7 +260,7 @@
 \n- replace: Pokud false, nebudou stávající hostitelé nahrazeni. Všimněte si, že objekty jsou vyhodnocovány shora dolů. Ve výchozím nastavení je hodnota True.
 \n- enabled: pokud false, bude celý tento objekt přeskočen. Ve výchozím nastavení je True.</string>
     <string name="mHosts_buildDesc">Tím se vymaže aktuální databáze hostitelů a vytvoří se nová dle aktuální konfigurace, přičemž se v případě potřeby stáhnou soubory hostitelů z internetu. Tato akce může trvat několik sekund. Pokračovat\?</string>
-    <string name="mHosts_buildDownload">Stahuji \'%s\' hostů z %s…</string>
+    <string name="mHosts_buildDownload">Stahuji \'%1$s\' hostů z %2$s…</string>
     <string name="mHosts_buildSave">Ukládám…</string>
     <string name="mHosts_built">Databáze sestavena: %d hostů</string>
     <string name="mUnshort_name">Rozbalovač URL</string>

@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">"Uygulama TrianguloY tarafından geliştirilmiştir.
 
-Geliştiriciler: %s.
-Çeviriler: %s."</string>
+Geliştiriciler: %1$s.
+Çeviriler: %2$s."</string>
     <string name="link_blog">TrianguloY\'un blog sayfası</string>
     <string name="link_changelog">Değişiklikler</string>
     <string name="link_source">Kaynak Kodu</string>
@@ -193,9 +193,9 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
     <string name="mVT_scan">Tara</string>
     <string name="mVT_cancel">İptal et</string>
     <string name="mVT_scanning">Taranıyor…</string>
-    <string name="mVT_goodUrl">Hiçbir %d motoru URL\'yi algılamadı (%s tarihi itibariyle)</string>
-    <string name="mVT_warningUrl">Uyarı, %d/%d motorları URL\'yi algıladı (%s tarihi itibariyle)</string>
-    <string name="mVT_badUrl">Dikkat! %d/%d motorları URL\'yi algıladı (%s tarihi itibariyle)</string>
+    <string name="mVT_goodUrl">Hiçbir %1$d motoru URL\'yi algılamadı (%2$s tarihi itibariyle)</string>
+    <string name="mVT_warningUrl">Uyarı, %1$d/%2$d motorları URL\'yi algıladı (%3$s tarihi itibariyle)</string>
+    <string name="mVT_badUrl">Dikkat! %1$d/%2$d motorları URL\'yi algıladı (%3$s tarihi itibariyle)</string>
     <string name="mVT_connectError">VirusTotal\'a bağlanılamıyor. Aktif bir internet bağlantınız olduğundan emin olun veya daha sonra tekrar deneyin.</string>
     <string name="mVT_jsonError">VirusTotal\'e bağlanılamıyor. API anahtarının geçerli olduğundan emin olun veya daha sonra tekrar deneyin.</string>
     <!-- -->
@@ -287,7 +287,7 @@ Katalog, güncelleyici iletişim kutusundan otomatik veya manuel olarak güncell
     <string name="mHosts_buildProgress">Katalog oluşturuluyor</string>
     <string name="mHosts_buildInit">Başlatılıyor</string>
     <string name="mHosts_buildClear">Temizleniyor…</string>
-    <string name="mHosts_buildDownload">"'%s' hosts dosyası şuradan indiriliyor: %s…"</string>
+    <string name="mHosts_buildDownload">"'%1$s' hosts dosyası şuradan indiriliyor: %2$s…"</string>
     <string name="mHosts_buildSave">Kaydediliyor…</string>
     <string name="mHosts_built">Veritabanı oluşturuldu: %d hosts</string>
     <!-- -->
@@ -300,7 +300,7 @@ API'leri, yeni kontroller için saatte 10 istek ile sınırlıdır. Modül yanı
     <string name="mUnshort_error">Sunucu hatası: %s</string>
     <string name="mUnshort_internal">Dahili hata (%s)</string>
     <string name="mUnshort_notFound">Yönlendirme bulunamadı</string>
-    <string name="mUnshort_pending">beklemede: %d/%d</string>
+    <string name="mUnshort_pending">beklemede: %1$d/%2$d</string>
     <string name="mUnshort_ok">Kısaltılmamış</string>
     <!-- -->
     <string name="mFlags_name">İşaretler düzenleyici</string>

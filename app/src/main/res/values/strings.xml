@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">"App created by TrianguloY.
 
-Contributions: %s.
-Translations: %s."</string>
+Contributions: %1$s.
+Translations: %2$s."</string>
     <string name="link_blog">"TrianguloY's blog"</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Source code</string>
@@ -248,9 +248,9 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mVT_scan">Scan</string>
     <string name="mVT_cancel">Cancel</string>
     <string name="mVT_scanning">Scanning…</string>
-    <string name="mVT_goodUrl">None of the %d engines detected the URL (as of date %s)</string>
-    <string name="mVT_warningUrl">Warning, %d/%d engines detected the URL (as of date %s)</string>
-    <string name="mVT_badUrl">Careful! %d/%d engines detected the URL (as of date %s)</string>
+    <string name="mVT_goodUrl">None of the %1$d engines detected the URL (as of date %2$s)</string>
+    <string name="mVT_warningUrl">Warning, %1$d/%2$d engines detected the URL (as of date %3$s)</string>
+    <string name="mVT_badUrl">Careful! %1$d/%2$d engines detected the URL (as of date %3$s)</string>
     <string name="mVT_connectError">Can not connect to VirusTotal. Ensure you are connected to the Internet, or try again later.</string>
     <string name="mVT_jsonError">Can not connect to VirusTotal. Ensure the API key is valid, or try again later.</string>
     <!-- -->
@@ -345,7 +345,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mHosts_buildProgress">Building catalog</string>
     <string name="mHosts_buildInit">Initializing</string>
     <string name="mHosts_buildClear">Clearing…</string>
-    <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
+    <string name="mHosts_buildDownload">"Downloading '%1$s' hosts from %2$s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
     <!-- -->
@@ -358,7 +358,7 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
     <string name="mUnshort_notFound">No redirection found</string>
-    <string name="mUnshort_pending">pending: %d/%d</string>
+    <string name="mUnshort_pending">pending: %1$d/%2$d</string>
     <string name="mUnshort_ok">Unshortened</string>
     <!-- -->
     <string name="mFlags_name">Flags editor</string>

@@ -7,8 +7,8 @@
     <string name="a_settings">Podešavanja</string>
     <string name="txt_about">Aplikacija koju je napravio TrianguloY.
 \n
-\nDoprinosi: %s.
-\nPrevodi: %s.</string>
+\nDoprinosi: %1$s.
+\nPrevodi: %2$s.</string>
     <string name="link_blog">TrianguloY Blog</string>
     <string name="link_changelog">Dnevnik promena</string>
     <string name="link_source">Otvoreni Kod</string>
@@ -77,8 +77,8 @@
     <string name="mInput_alwaysEdit">Uvek držite u režimu za uređivanje</string>
     <string name="mVT_name">URL Skener</string>
     <string name="mVT_apiKey">API ključ</string>
-    <string name="mVT_warningUrl">Upozorenje, %d/%d mašine su otkrile URL (od datuma %s)</string>
-    <string name="mVT_badUrl">Pažljivo! %d/%d mašine su otkrile URL (od datuma %s)</string>
+    <string name="mVT_warningUrl">Upozorenje, %1$d/%2$d mašine su otkrile URL (od datuma %3$s)</string>
+    <string name="mVT_badUrl">Pažljivo! %1$d/%2$d mašine su otkrile URL (od datuma %3$s)</string>
     <string name="mD_name">Debug/Marker modul</string>
     <string name="mD_ctabs">Prikaži poruke za otklanjanje grešaka iz usluge prilagođenih kartica</string>
     <string name="mD_show">Prikaži podatke za otklanjanje grešaka</string>
@@ -123,14 +123,14 @@
     <string name="mHosts_buildProgress">Graditelj kataloga</string>
     <string name="mHosts_buildInit">Inicijalizacija</string>
     <string name="mHosts_buildClear">Brisanje…</string>
-    <string name="mHosts_buildDownload">Preuzimanje \'%s\' hostova sa %s…</string>
+    <string name="mHosts_buildDownload">Preuzimanje \'%1$s\' hostova sa %2$s…</string>
     <string name="mHosts_built">Izgrađena baza podataka: %d hostova</string>
     <string name="mUnshort_name">Uvećavač linkova</string>
     <string name="mUnshort_unshort">Uvećaj</string>
     <string name="mUnshort_tm">unshorten.me besplatni API od Unshorten.me</string>
     <string name="mUnshort_checking">Proverava se…</string>
     <string name="mUnshort_notFound">Nije pronađeno preusmeravanje</string>
-    <string name="mUnshort_pending">na čekanju: %d/%d</string>
+    <string name="mUnshort_pending">na čekanju: %1$d/%2$d</string>
     <string name="mUnshort_ok">Neskraćeno</string>
     <string name="mFlags_name">Editor zastava</string>
     <string name="mChg_updated">Aplikacija je ažurirana.</string>
@@ -249,7 +249,7 @@
     <string name="mVT_cancel">Odustani</string>
     <string name="mVT_scanning">Skeniram…</string>
     <string name="mVT_scan">Skeniraj</string>
-    <string name="mVT_goodUrl">Nijedan od %d motora nije otkrio URL (od datuma %s)</string>
+    <string name="mVT_goodUrl">Nijedan od %1$d motora nije otkrio URL (od datuma %2$s)</string>
     <string name="mVT_connectError">Ne mogu da se povežem na VirusTotal. Uverite se da ste povezani na Internet ili pokušajte ponovo kasnije.</string>
     <string name="mVT_jsonError">Ne mogu da se povežem na VirusTotal. Uverite se da je API ključ važeći ili pokušajte ponovo kasnije.</string>
     <string name="mD_desc">Ako promenite redosled modula, novi dodani u budućim ažuriranjima biće postavljeni iznad ovog.

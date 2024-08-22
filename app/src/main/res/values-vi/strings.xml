@@ -7,8 +7,8 @@
     <string name="a_about">Giới thiệu</string>
     <string name="txt_about">Ứng dụng được tạo bởi TrianguloY.
 \n
-\nĐóng góp: %s.
-\nBản dịch: %s.</string>
+\nĐóng góp: %1$s.
+\nBản dịch: %2$s.</string>
     <string name="link_changelog">Nhật ký thay đổi</string>
     <string name="link_source">Mã nguồn</string>
     <string name="link_privacy">Chính sách bảo mật</string>
@@ -122,8 +122,8 @@
 \n- \'enabled\': boolean: đặt thành false để tắt mẫu.
 \nLưu ý: nếu bạn chỉnh sửa các mẫu, các mẫu tích hợp mới từ bản cập nhật ứng dụng sẽ không được thêm tự động (bạn có thể khôi phục chúng bằng tùy chọn đặt lại).</string>
     <string name="mVT_cancel">Hủy</string>
-    <string name="mVT_warningUrl">Cảnh báo, công cụ %d/%d đã phát hiện ra URL (kể từ ngày %s)</string>
-    <string name="mVT_badUrl">Cẩn thận! Công cụ %d/%d đã phát hiện thấy URL (kể từ ngày %s)</string>
+    <string name="mVT_warningUrl">Cảnh báo, công cụ %1$d/%2$d đã phát hiện ra URL (kể từ ngày %3$s)</string>
+    <string name="mVT_badUrl">Cẩn thận! Công cụ %1$d/%2$d đã phát hiện thấy URL (kể từ ngày %3$s)</string>
     <string name="mVT_connectError">Không thể kết nối với VirusTotal. Đảm bảo bạn đã kết nối với Internet hoặc thử lại sau.</string>
     <string name="mVT_jsonError">Không thể kết nối với VirusTotal. Đảm bảo khóa API hợp lệ hoặc thử lại sau.</string>
     <string name="mD_name">Mô-đun gỡ lỗi/đánh dấu</string>
@@ -196,7 +196,7 @@
     <string name="mPttrn_ok">Không có mẫu phù hợp</string>
     <string name="mVT_scan">Quét</string>
     <string name="mVT_scanning">Đang quét…</string>
-    <string name="mVT_goodUrl">Không có công cụ %d nào phát hiện được URL (kể từ ngày %s)</string>
+    <string name="mVT_goodUrl">Không có công cụ %1$d nào phát hiện được URL (kể từ ngày %2$s)</string>
     <string name="mOpen_open">Mở</string>
     <string name="mOpen_share">Chia sẻ</string>
     <string name="mOpen_copyUrl">Sao chép</string>
@@ -286,7 +286,7 @@
     <string name="mHosts_buildProgress">Đang xây dựng danh mục</string>
     <string name="mHosts_buildInit">Đang khởi tạo</string>
     <string name="mHosts_buildClear">Đang dọn dẹp…</string>
-    <string name="mHosts_buildDownload">Đang tải xuống \'%s\' máy chủ từ %s…</string>
+    <string name="mHosts_buildDownload">Đang tải xuống \'%1$s\' máy chủ từ %2$s…</string>
     <string name="mHosts_buildSave">Đang lưu…</string>
     <string name="mHosts_built">Cơ sở dữ liệu được xây dựng: %d máy chủ</string>
     <string name="mUnshort_unshort">Không rút gọn</string>
@@ -294,7 +294,7 @@
     <string name="mUnshort_error">Lỗi máy chủ: %s</string>
     <string name="mUnshort_internal">Lỗi nội bộ (%s)</string>
     <string name="mUnshort_notFound">Không tìm thấy chuyển hướng</string>
-    <string name="mUnshort_pending">đang chờ: %d/%d</string>
+    <string name="mUnshort_pending">đang chờ: %1$d/%2$d</string>
     <string name="mFlags_name">Trình chỉnh sửa cờ</string>
     <string name="mParts_name">Các phần Uri</string>
     <string name="mUnshort_name">Máy giải rút ngắn</string>

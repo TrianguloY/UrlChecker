@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">Application créée par TrianguloY.
 \n
-\nContributions : %s.
-\nTraduction : %s.</string>
+\nContributions : %1$s.
+\nTraduction : %2$s.</string>
     <string name="link_blog">Blog de TrianguloY</string>
     <string name="link_changelog">Journal des modifications</string>
     <string name="link_source">Code source</string>
@@ -187,9 +187,9 @@ Une clé personnelle de l'Api VirusTotal est nécessaire pour que cela fonctionn
     <string name="mVT_scan">Analyse</string>
     <string name="mVT_cancel">Annuler</string>
     <string name="mVT_scanning">Balayage…</string>
-    <string name="mVT_goodUrl">Aucun des %d moteurs n\'a détecté l\'URL (en date du %s)</string>
-    <string name="mVT_warningUrl">Attention, %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
-    <string name="mVT_badUrl">Prudence ! %d/%d moteurs ont détecté l\'URL (en date du %s)</string>
+    <string name="mVT_goodUrl">Aucun des %1$d moteurs n\'a détecté l\'URL (en date du %2$s)</string>
+    <string name="mVT_warningUrl">Attention, %1$d/%2$d moteurs ont détecté l\'URL (en date du %3$s)</string>
+    <string name="mVT_badUrl">Prudence ! %1$d/%2$d moteurs ont détecté l\'URL (en date du %3$s)</string>
     <string name="mVT_connectError">Impossible de se connecter à VirusTotal. Assurez-vous d’être connecté à Internet ou réessayez plus tard.</string>
     <string name="mVT_jsonError">Impossible de se connecter à VirusTotal. Assurez-vous que la clé API est valide ou réessayez plus tard.</string>
     <!-- -->
@@ -281,7 +281,7 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mHosts_buildProgress">Construction du fichier d\'hôtes</string>
     <string name="mHosts_buildInit">Initialisation</string>
     <string name="mHosts_buildClear">Nettoyage…</string>
-    <string name="mHosts_buildDownload">"Téléchargement de '%s' hôtes depuis %s…"</string>
+    <string name="mHosts_buildDownload">"Téléchargement de '%1$s' hôtes depuis %2$s…"</string>
     <string name="mHosts_buildSave">Enregistrement…</string>
     <string name="mHosts_built">Base de données construite: %d hôtes</string>
     <!-- -->
@@ -294,7 +294,7 @@ Pour désactiver l'enregistrement, désactivez simplement le module."</string>
     <string name="mUnshort_error">Erreur de serveur : %s</string>
     <string name="mUnshort_internal">Erreur interne (%s)</string>
     <string name="mUnshort_notFound">"Aucune redirection n'a été trouvée"</string>
-    <string name="mUnshort_pending">en attente : %d/%d</string>
+    <string name="mUnshort_pending">en attente : %1$d/%2$d</string>
     <string name="mUnshort_ok">Non raccourci</string>
     <string name="mOpen_mergeCopy">Fusionner les boutons Copier et Partager (appuie long pour copier)</string>
     <string name="hidden">Caché</string>

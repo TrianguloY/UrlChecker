@@ -25,6 +25,6 @@
     <string name="link_changelog">ପରିବର୍ତ୍ତନ ପୋଥି</string>
     <string name="txt_about">TrianguloY ଦ୍ୱାରା ନିର୍ମିତ ଆପ୍।
 \n
-\nଯୋଗଦାତା: %s।
-\nଅନୁବାଦ: %s।</string>
+\nଯୋଗଦାତା: %1$s।
+\nଅନୁବାଦ: %2$s।</string>
 </resources>

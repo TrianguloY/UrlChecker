@@ -23,7 +23,8 @@
     <string name="txt_conf">Aici sunt prezentate toate modulele disponibile, unde puteți verifica descrierea și setările acestora. De asemenea, puteți să le reordonați, să comutați vizibilitatea titlului și să le activați/dezactivați.</string>
     <string name="txt_about">Aplicație creată de TrianguloY.
 \n
-\nContribuții: %s. Traduceri: %s.</string>
+\nContribuții: %1$s.
+\nTraduceri: %2$s.</string>
     <string name="txt_locale">Localitate:</string>
     <string name="txt_tutorial1">Mulțumim pentru descărcarea aplicației!
 \n

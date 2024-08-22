@@ -54,8 +54,8 @@
     <string name="btn_androidSettings">Настройки Android приложения</string>
     <string name="txt_about">Приложение сделано TrianguloY.
 \n
-\nРазработка: %s
-\nПеревод: %s.</string>
+\nРазработка: %1$s
+\nПеревод: %2$s.</string>
     <string name="txt_locale">Язык:</string>
     <string name="alwaysOn">Всегда включено</string>
     <string name="btn_tutorialSkip">Пропустить обучение</string>
@@ -135,10 +135,10 @@
     <string name="mClear_upToDate">Каталог актуальный</string>
     <string name="mClear_updated">Каталог обновлён</string>
     <string name="mOpen_ctabs">Пользовательские вкладки:</string>
-    <string name="mVT_warningUrl">Внимание, %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mVT_warningUrl">Внимание, %1$d/%2$d поисковых систем распознали URL (на момент %3$s)</string>
     <string name="mOpen_closeOpen">Закрыть диалоговое окно после открытия</string>
     <string name="mD_ctabs">Показывать сообщения отладки из службы Пользовательских вкладок</string>
-    <string name="mVT_goodUrl">Ни одна из %d поисковых систем не распознала URL (на момент %s)</string>
+    <string name="mVT_goodUrl">Ни одна из %1$d поисковых систем не распознала URL (на момент %2$s)</string>
     <string name="mVT_apiKey">API ключ</string>
     <string name="mStatus_unknownCode">%d: Неизвестный код состояния</string>
     <string name="mOpen_incognitoDesc">Включить/выключить режим инкогнито (только для Firefox)</string>
@@ -149,7 +149,7 @@
     <string name="mOpen_share">Поделиться</string>
     <string name="mClear_urlHint">URL-адрес каталога</string>
     <string name="mStatus_desc">При нажатии на кнопку проверки будет выполнен запрос, целью которого является получение и отображение кода состояния сайта. Если результатом запроса будет перенаправление на другой URL, то вы сможете увидеть конечный URL-адрес. Содержимое URL извлекается (GET), но не оценивается, поэтому перенаправления на основе JavaScript не будут обнаружены.</string>
-    <string name="mVT_badUrl">Будьте осторожны! %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mVT_badUrl">Будьте осторожны! %1$d/%2$d поисковых систем распознали URL (на момент %3$s)</string>
     <string name="mOpen_mergeCopy">Совместить кнопки Поделиться и Скопировать (долгое нажатие для копирования)</string>
     <string name="mClear_clear">Применить</string>
     <string name="mOpen_incognito">Режим инкогнито:</string>
@@ -198,7 +198,7 @@
     <string name="mUnshort_error">Ошибка сервера: %s</string>
     <string name="mChg_current">Текущая версия: %s</string>
     <string name="mRemove_name">Средство для удаления запросов</string>
-    <string name="mUnshort_pending">осталось: %d/%d</string>
+    <string name="mUnshort_pending">осталось: %1$d/%2$d</string>
     <string name="mUnshort_internal">Внутренняя ошибка (%s)</string>
     <string name="mChg_desc">Вы будете уведомлены, когда приложение обновится.</string>
     <string name="mHosts_info">Хост:</string>
@@ -243,7 +243,7 @@
     <string name="mLog_view">Посмотреть историю</string>
     <string name="mLog_desc">Этот модуль логирует все проверенные URL. Вы можете просматривать, очищать или изменять всю историю здесь, в основном диалоговом окне никакой визуальной индикации не появится. Чтобы отключить логирование, просто отключите модуль.</string>
     <string name="mLog_name">Лог</string>
-    <string name="mHosts_buildDownload">Скачиваются \'%s\' хостов с %s…</string>
+    <string name="mHosts_buildDownload">Скачиваются \'%1$s\' хостов с %2$s…</string>
     <string name="mRemove_noQueries">Нет запросов</string>
     <string name="mDrawer_desc">Все модули ниже будут скрыты в ящике. Модули всё ещё будут работать, но, пока вы не выдвините ящик, будут скрыты. Сюда вы можете поместить модули которыми вы редко пользуютесь, чтобы избежать загромождения.</string>
     <string name="mHosts_fakenews">фейковые новости</string>

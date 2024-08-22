@@ -16,8 +16,8 @@
     <string name="a_about">על אודות</string>
     <!-- about -->
     <string name="txt_about">"אפליקציה שנוצרה על ידי TrianguloY.
- תרומות: %s.
- תרגומים: %s."</string>
+ תרומות: %1$s.
+ תרגומים: %2$s."</string>
     <string name="link_blog">"הבלוג של TrianguloY"</string>
     <!-- configuration -->
     <string name="txt_conf">רשימת מודולים: אתה יכול להפעיל או לבטל אותם, גם לבדוק את התיאור והתצורה שלו.</string>
@@ -100,9 +100,9 @@
     <string name="mVT_scan">לִסְרוֹק</string>
     <string name="mVT_cancel">לְבַטֵל</string>
     <string name="mVT_scanning">Scanning…</string>
-    <string name="mVT_goodUrl">אף אחד מהמנועים %d לא זיהה את כתובת האתר (נכון לתאריך %s)</string>
-    <string name="mVT_warningUrl">אזהרה, מנועי %d/%d זיהו את כתובת האתר (נכון לתאריך %s)</string>
-    <string name="mVT_badUrl">זָהִיר! %d/%d מנועים זיהו את כתובת האתר (נכון לתאריך %s)</string>
+    <string name="mVT_goodUrl">אף אחד מהמנועים %1$d לא זיהה את כתובת האתר (נכון לתאריך %2$s)</string>
+    <string name="mVT_warningUrl">אזהרה, מנועי %1$d/%2$d זיהו את כתובת האתר (נכון לתאריך %3$s)</string>
+    <string name="mVT_badUrl">זָהִיר! %1$d/%2$d מנועים זיהו את כתובת האתר (נכון לתאריך %3$s)</string>
     <string name="mVT_connectError">"לא ניתן להתחבר ל-VirusTotal. ודא שיש לך חיבור אינטרנט פעיל או נסה שוב מאוחר יותר."</string>
     <string name="mVT_jsonError">"לא ניתן להתחבר ל-VirusTotal. ודא שמפתח ה-API חוקי או נסה שוב מאוחר יותר."</string>
     <string name="mD_name">מודול ניפוי באגים/סמן</string>

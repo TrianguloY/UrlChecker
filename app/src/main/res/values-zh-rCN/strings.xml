@@ -18,8 +18,8 @@
     <!-- about -->
     <string name="txt_about">此应用由 TrianguloY 创建。
 \n
-\n贡献者： %s。
-\n翻译者： %s。</string>
+\n贡献者： %1$s。
+\n翻译者： %2$s。</string>
     <string name="link_blog">TrianguloY 的博客</string>
     <string name="link_changelog">更新日志</string>
     <string name="link_source">源码</string>
@@ -173,9 +173,9 @@
     <string name="mVT_scan">扫描</string>
     <string name="mVT_cancel">取消</string>
     <string name="mVT_scanning">扫描中…</string>
-    <string name="mVT_goodUrl">%d 个引擎均未在此链接中发现（截至 %s）</string>
-    <string name="mVT_warningUrl">警告, %d/%d 引擎已在该链接中发现（截至 %s）</string>
-    <string name="mVT_badUrl">注意！%d/%d 个引擎已在该链接中发现（截至 %s）</string>
+    <string name="mVT_goodUrl">%1$d 个引擎均未在此链接中发现（截至 %2$s）</string>
+    <string name="mVT_warningUrl">警告, %1$d/%2$d 引擎已在该链接中发现（截至 %3$s）</string>
+    <string name="mVT_badUrl">注意！%1$d/%2$d 个引擎已在该链接中发现（截至 %3$s）</string>
     <string name="mVT_connectError">无法连接到 VirusTotal。请确保您已连接互联网或稍后重试。</string>
     <string name="mVT_jsonError">无法连接到 VirusTotal，请确保您的API key有效或稍后重试。</string>
     <string name="mD_name">调试/标记模块</string>
@@ -261,7 +261,7 @@
     <string name="mHosts_buildProgress">构建目录中</string>
     <string name="mHosts_buildInit">初始化中</string>
     <string name="mHosts_buildClear">清除中…</string>
-    <string name="mHosts_buildDownload">"下载了 '%s' 个主机，从%s…</string>
+    <string name="mHosts_buildDownload">"下载了 '%1$s' 个主机，从%2$s…</string>
     <string name="mHosts_buildSave">保存中…</string>
     <string name="mHosts_built">数据库构建: %d 主机</string>
     <string name="mUnshort_name">短链接解析器</string>
@@ -272,7 +272,7 @@
     <string name="mUnshort_error">服务器错误: %s</string>
     <string name="mUnshort_internal">内部错误 (%s)</string>
     <string name="mUnshort_notFound">未发现重定向</string>
-    <string name="mUnshort_pending">待处理: %d/%d</string>
+    <string name="mUnshort_pending">待处理: %1$d/%2$d</string>
     <string name="mUnshort_ok">已解析短链接</string>
     <string name="mFlag_editFlags">修改标识符值</string>
     <string name="mParts_name">URI 部件</string>

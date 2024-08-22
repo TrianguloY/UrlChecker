@@ -6,8 +6,8 @@
     <string name="a_about">정보</string>
     <string name="txt_about">이 앱은 TrianguloY에 의해 제작되었습니다.
 \n
-\n기여자: %s
-\n번역한 사람들: %s</string>
+\n기여자: %1$s
+\n번역한 사람들: %2$s</string>
     <string name="link_blog">TrianguloY의 블로그</string>
     <string name="link_changelog">변경 사항</string>
     <string name="link_source">소스 코드</string>
@@ -88,7 +88,7 @@
     <string name="json_desc">[베타 기능] 이 고급 편집에서는 유효한 JSON 파일이 반드시 포함되어야 합니다. 오른쪽 위 버튼을 눌러서 유효한지 확인하세요.</string>
     <string name="clear">지우기</string>
     <string name="shortcut_checkClipboard">클립보드에서 URL 확인하기</string>
-    <string name="mVT_warningUrl">주의: %d/%d 엔진이 URL을 감지했습니다. (%s 기준)</string>
+    <string name="mVT_warningUrl">주의: %1$d/%2$d 엔진이 URL을 감지했습니다. (%3$s 기준)</string>
     <string name="mVT_scan">스캔하기</string>
     <string name="json_edit">고급 편집</string>
     <string name="mVT_tm">VirusTotal™은 Google, Inc.의 트레이드마크입니다.</string>
@@ -97,14 +97,14 @@
     <string name="mVT_connectError">VirusTotal에 연결할 수 없습니다. 인터넷에 연결되어 있는지 확인하거나 나중에 다시 시도하세요.</string>
     <string name="mVT_cancel">취소</string>
     <string name="mVT_name">URL 스캐너</string>
-    <string name="mVT_goodUrl">%d개의 엔진 중 어떤 엔진도 URL을 감지하지 않았습니다. (%s 기준)</string>
+    <string name="mVT_goodUrl">%1$d개의 엔진 중 어떤 엔진도 URL을 감지하지 않았습니다. (%2$s 기준)</string>
     <string name="mVT_apiKey">API 키</string>
-    <string name="mVT_badUrl">주의! %d/%d 엔진이 URL을 감지했습니다. (%s 기준)</string>
+    <string name="mVT_badUrl">주의! %1$d/%2$d 엔진이 URL을 감지했습니다. (%3$s 기준)</string>
     <string name="mVT_jsonError">VirusTotal에 연결할 수 없습니다. API 키가 유효한지 확인하거나 나중에 다시 시도하세요.</string>
     <string name="mUnshort_tm">unshorten.me 무료 API</string>
     <string name="mUnshort_notFound">리디렉션 발견되지 않음</string>
     <string name="mUnshort_error">서버 오류: %s</string>
-    <string name="mUnshort_pending">기다리는 중: %d/%d</string>
+    <string name="mUnshort_pending">기다리는 중: %1$d/%2$d</string>
     <string name="mUnshort_ok">복구됨</string>
     <string name="mUnshort_internal">내부 오류 (%s)</string>
     <string name="mUnshort_desc">이 모듈은 https://unshorten.me/로 보내 단축된 URL의 원본을 보여줍니다. 해당 사이트의 서버에서 실행한 뒤 향후의 요청을 위해 리디렉션 정보를 저장하는 방식으로 작동하니 사적이거나 민감한 링크에 사용하는 것을 피하세요.

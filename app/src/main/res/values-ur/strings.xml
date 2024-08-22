@@ -24,8 +24,8 @@
     <string name="link_privacy">پرائیویسی پالیسی</string>
     <string name="txt_about">ایپ TrianguloY کے ذریعہ تشکیل دی گئی
 \n
-\nمعاونت: %s
-\nترجمے: %s.</string>
+\nمعاونت: %1$s
+\nترجمے: %2$s.</string>
     <string name="toast_cantEnable">ماڈیول کوفعال نہیں کر سکتے: %s</string>
     <string name="txt_openLinks">لنک اس ایپ میں کھولیں: برسوں سے اینڈرائیڈ نے اسے ترتیب دینے کے طریقوں میں تبدیلیاں کی ہیں، جو اینڈرائیڈ کے ہر ورژن میں مختلف ہیں۔ آپ کی ڈیوائس کے لیے نیچے موجود تمام ترتیبات میں تلاش کریں، اگر اس ایپ سے لنک نہیں کھل رہے ہیں تو ان سبھی ترتیبات کو آزمائیں۔</string>
     <string name="menu_toggleDecorations">سبھی عنوان کو تبدیل کریں</string>
