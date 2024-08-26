@@ -250,12 +250,12 @@
     <string name="mHosts_build">构建</string>
     <string name="mHosts_uninitialized">主机数据库未初始化，点击以构建</string>
     <string name="mHosts_parseError">无法解析链接主机</string>
-    <string name="mHosts_editor">"主机配置。格式：键是主机标签的对象列表(List of Objects)，内容包括以下可选的值:
-- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。
-- 主机：要添加的原始主机（字符串）的列表。
-- color：标签的颜色。 一个 Android 颜色字符串（#AARRGGBB，#RRGGBB 或有效颜色名称）。默认为 "danger" 红色。
-- replace：如果为 false ，则不会替换现有主机。请注意，从上到下评估对象。默认为true。
-- enabled：如果为 false ，则会跳过整个对象。默认为 true。"</string>
+    <string name="mHosts_editor">主机配置。格式：键是主机标签的对象列表(List of Objects)，内容包括以下可选的值:
+\n- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。
+\n- 主机：要添加的原始主机（字符串）的列表。
+\n- color：标签的颜色。 一个 Android 颜色字符串（#AARRGGBB，#RRGGBB 或有效颜色名称）。默认为 danger 红色。
+\n- replace：如果为 false ，则不会替换现有主机。请注意，从上到下评估对象。默认为true。
+\n- enabled：如果为 false ，则会跳过整个对象。默认为 true。</string>
     <string name="mHosts_buildTitle">构建主机数据库</string>
     <string name="mHosts_buildDesc">这将清除当前主机数据库，并根据当前配置重新构建它，如果需要，可从互联网下载主机文件。此操作可能需要几秒钟。继续吗？</string>
     <string name="mHosts_buildProgress">构建目录中</string>
