@@ -32,6 +32,13 @@ android {
         }
     }
 
+    // rename output apks
+    applicationVariants.configureEach {
+        outputs.configureEach {
+            outputFileName = "URLCheck-$versionName${name == "release" ? "" : "-$name"}.apk"
+        }
+    }
+
     lint {
         // users are free to update translations whenever
         // this mean that they are not usually up to date
@@ -56,6 +63,30 @@ play {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+// configure signing for release
+private String secret(String name) { project.hasProperty(name) ? project.property(name) : System.getenv(name) }
+
+if (secret('RELEASE_STORE_FILE')) {
+    println("Secrets provided, release will be signed")
+    android {
+        signingConfigs {
+            release {
+                storeFile file(secret('RELEASE_STORE_FILE'))
+                storePassword secret('RELEASE_STORE_PASSWORD')
+                keyAlias secret('RELEASE_KEY_ALIAS')
+                keyPassword secret('RELEASE_KEY_PASSWORD')
+            }
+        }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+} else {
+    println("No secrets provided, release will not be signed")
 }
 
 // Generate translation related fields
