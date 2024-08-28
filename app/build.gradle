@@ -12,33 +12,6 @@ android {
         targetSdkVersion 34
         versionCode 34
         versionName "2.16"
-
-
-        // generate buildconfig field with all locales
-        def folder = file("src/main/res") // from this folder
-        def prefix = "values-" // with this prefix
-        def translations = folder.list().toList().stream() // from all files in the folder
-                .filter { it.startsWith(prefix) } // keep those starting with the prefix
-                .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
-                .collect { it }
-        def constructor = translations.stream()
-                .map { it.substring(prefix.length()).replace('-r', '-') } // extract the locale code
-                .collect { '"' + it + '"' } // convert as 'string'
-                .join(',') // and concatenate with commas
-        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$constructor)" // create field
-
-        // generate string resource with all translators
-        def translators = translations.stream() // for all translations
-                .map { file("$folder.path/$it/strings.xml") } // get the xml file
-                .map { new XmlParser().parse(it).find { it.@name == "translators" }?.text() ?: "" } // extract translators
-                .filter { it != "" } // filter empty
-                .flatMap { it.split(';').stream() } // split multiple
-                .map { it.strip() } // trim
-                .filter { it != "TrianguloY" } // remove myself
-                .distinct().sorted() // keep distinct and sort them
-                .collect { it }.join(', ') // join with commas
-        print "Extracted translators: $translators"
-        resValue "string", "all_translators", translators // create resource
     }
 
     buildTypes {
@@ -83,4 +56,37 @@ play {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+// Generate translation related fields
+android {
+    defaultConfig {
+        // get translations names
+        def folder = file("src/main/res") // from this folder
+        def translations = Arrays.stream(folder.list()) // from all files in the folder
+                .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
+                .collect { it }
+
+        // generate buildconfig field with all locales
+        def locales = translations.stream()
+                .map { it.replace('values-', '').replace('-r', '-').replace('values', 'en') } // extract the locale code
+                .distinct().sorted() // keep distinct and sort them
+                .collect { '"' + it + '"' } // convert as 'string'
+                .join(',') // and concatenate with commas
+        println "Found locales: $locales"
+        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of($locales)" // create field
+
+        // generate string resource with all translators
+        def translators = translations.stream() // for all translations
+                .map { file("$folder.path/$it/strings.xml") } // get the xml file
+                .map { new XmlParser().parse(it).find { it.@name == "translators" }?.text() ?: "" } // extract translators
+                .filter { it != "" } // filter empty
+                .flatMap { it.split(';').stream() } // split multiple
+                .map { it.strip() } // trim
+                .filter { it != "TrianguloY" } // remove myself
+                .distinct().sorted() // keep distinct and sort them
+                .collect { it }.join(', ') // join with commas
+        println "Extracted translators: $translators"
+        resValue "string", "all_translators", translators // create resource
+    }
 }
