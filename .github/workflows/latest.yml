@@ -36,13 +36,11 @@ jobs:
           EOF
 
       - name: Update ${{ env.TAG }} tag to current commit
-        # equivalent to EndBug/latest-tag@latest but simpler
         run: |
           git tag --force ${{ env.TAG }}
           git push --force origin tag ${{ env.TAG }}
 
       - name: Upload ${{ env.SHIELDS }} to ${{ env.TAG }} release
-        # equivalent to softprops/action-gh-release@v1 but using official cli
         run: |
           gh release upload ${{ env.TAG }} ${{ env.SHIELDS }} --clobber
         env:
