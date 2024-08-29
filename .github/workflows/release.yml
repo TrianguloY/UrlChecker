@@ -42,15 +42,16 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
       - name: Upload apk to release with the release notes
-        run: >
+        run: |
+          (
           sed '/^$/q' ./app/src/main/play/release-notes/en-US/default.txt
-          |
-          gh release create $TAG
-          ./app/build/outputs/apk/release/*.apk
-          --title="URLCheck ${TAG#v} release apk"
-          --notes-file -
-          --latest
-          --verify-tag
+          cat - << EOF
+          ---
+          
+          Note: All three different versions (Play Store, F-droid and Github) are signed with different certificates, so you cannot update one with another unless you uninstall first.
+          Remember to use the backup/restore functionality to migrate your data!
+          EOF
+          ) | gh release create $TAG ./app/build/outputs/apk/release/*.apk --title="URLCheck ${TAG#v} release apk" --latest --verify-tag --notes-file -
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.ref_name }}
