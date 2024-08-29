@@ -240,10 +240,10 @@
 \nVielen Dank an PabloOQ für die Idee und die ursprüngliche Implementierung!
 \n
 \nDieses Modul wurde durch das Modul \'URI-Teile\' ersetzt</string>
-    <string name="mHosts_desc">Dieses Modul kategorisiert Hosts anhand manueller Konfiguration oder einer hosts-artigen Datei aus dem Internet. Sie können es zur Warnung vor gefährlichen oder besonderen Seiten benutzen. Die integrierte Konfiguration benutzt StevenBlacks Hosts (Adware/Malware, Fake News, Glücksspiel und Inhalte für Erwachsene) von https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_desc">Dieses Modul kategorisiert Hosts anhand manueller Konfiguration oder einer hosts-artigen Datei aus dem Internet. Sie können es zur Warnung vor gefährlichen oder besonderen Seiten benutzen. Die integrierte Konfiguration benutzt StevenBlacks Hosts (Adware/Malware, Fake News, Glücksspiel und Inhalte für Erwachsene) von https://github.com/StevenBlack/hosts. Hinweis: Subdomains werden auch erkannt, sodass \'x.y.z\' und \'y.z\' dem Eintrag \'y.z\' zugeordnet werden.</string>
     <string name="mHosts_parseError">Hosts URL kann nicht verarbeitet werden</string>
     <string name="mHosts_editor">Hosts-Konfiguration. Format: Liste von Objekten, bei denen der Schlüssel die Host-Kategorie ist und der Wert folgende optionale Felder enthält:
-\n- file: (Datei) Eine URL zu einer Hosts-Datei zum Download. Es werden alle validen Hosts der Datei hinzugefügt.
+\n- file: (Datei) Eine URL zu einer Hosts-Datei zum Download. Es werden alle validen Hosts der Datei hinzugefügt. Die Zeilen sollten der Hosts-Syntax folgen (\'IP Host [Alias …]\'), aber nur \'Host\' ist ausreichend.
 \n- hosts: Eine einfache Liste der Hosts (strings).
 \n- color: Die Farbe der Kategorie. Ein Android-Farb-String (#AARRGGBB, #RRGGBB oder ein gültiger Name einer Farbe). Standardmäßig \'danger\'/Gefahr Rot.
 \n- replace: \'false\'/Falsch, damit bestehende Hosts nicht ersetzt werden, standardmäßig \'true\'/wahr. Beachten Sie, dass Objekte von oben nach unten ausgewertet werden.
