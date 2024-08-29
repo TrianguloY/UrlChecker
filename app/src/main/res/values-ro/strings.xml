@@ -165,7 +165,6 @@
     <string name="alwaysOff">Întotdeauna inactiv</string>
     <string name="noLinks">Niciun link detectat</string>
     <string name="menu_toggleDecorations">Comută toate titlurile</string>
-    <string name="translators">Dacă creezi sau actualizezi o traducere, adaugă cum dorești să fii creditat aici. Pentru mai mulți traducători, separă-i cu punct și virgulă. Exemplu: \"John Doe; Jane Doe\"</string>
     <string name="mOpen_desc">Conține următoarele butoane (de la stânga la dreapta):
 \n-Butonul Taburi personalizate: comută pentru a activa/dezactiva funcția de taburi personalizate. Când este activată, browserul ar trebui să fie deschis într-un mod „ușor”.
 \n-Butonul Incognito: Doar pentru Firefox. Comută pentru a activa/dezactiva modul incognito. Când este activat, browserul ar trebui să fie deschis în mod incognito.
