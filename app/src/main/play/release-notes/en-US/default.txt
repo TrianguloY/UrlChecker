@@ -1,3 +1,12 @@
+V 2.17
+- Improve: Input Text module display
+- Improve: Hosts module will check for subdomains too
+- Fix: Avoid crashes when decoding invalid text
+- Fix: Avoid crashes with malformed queries
+- Fix: Updated invalid lastUpdate of ClearUrl catalog
+- Fix: Module enable switches was sometimes reset when the app was sent to the background
+- Fix: Double decoding of url parts
+
 V 2.16
 - Improve: Detect multiple activities for the same app
 - Improve: Show first app icon

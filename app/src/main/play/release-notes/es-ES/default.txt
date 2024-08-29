@@ -1,3 +1,12 @@
+V 2.17
+- Mejora: Visualización del módulo Texto de entrada
+- Mejora: El modulo de Hosts comprueba también subdominios
+- Arreglo: Evitados cierres al decodificar texto inválido
+- Arreglo: Evitados cierres con queries inválidas
+- Arreglo: Actualizada la incorrecta fecha de ultima actualización del catálogo ClearUrl
+- Arreglo: Botones de activación de los modulos a veces se reseteaban si la aplicación pasaba a segundo plano
+- Arreglo: Decodificación doble de las partes de la url
+
 V 2.16
 - Mejora: Detectar varias actividades para la misma aplicación
 - Mejora: Mostrar el icono de la primera aplicación
