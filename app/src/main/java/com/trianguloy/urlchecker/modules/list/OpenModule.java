@@ -13,6 +13,7 @@ import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.ModulesActivity;
 import com.trianguloy.urlchecker.dialogs.MainDialog;
+import com.trianguloy.urlchecker.flavors.IncognitoDimension;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
@@ -21,7 +22,6 @@ import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
 import com.trianguloy.urlchecker.modules.companions.LastOpened;
 import com.trianguloy.urlchecker.modules.companions.OnOffConfig;
-import com.trianguloy.forceurllib.lib.Preferences;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -253,7 +253,7 @@ class OpenDialog extends AModuleDialog {
 
         // rejection detector: mark as open
         rejectionDetector.markAsOpen(getUrl(), chosen);
-        
+
         // open
         PackageUtils.startActivity(intent, R.string.toast_noApp, getActivity());
 
@@ -326,25 +326,31 @@ class OpenConfig extends AModuleConfig {
         } else {
             views.findViewById(R.id.ctabs_parent).setVisibility(View.GONE);
         }
-        var incognitoButton = (Button) views.findViewById(R.id.urlHelper_settings);
-        JavaUtils.Consumer<OnOffConfig> buttonEnabled = null;
-        if (BuildConfig.IS_INCOGNITO){
-            incognitoButton.setOnClickListener(v -> Preferences.showSettings(getActivity()));
-             buttonEnabled = onOffConfig -> {
-                incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
-            };
-            buttonEnabled.accept(Incognito.PREF(getActivity()).get());
-        } else {
-            incognitoButton.setVisibility(View.GONE);
-        }
-
-        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), buttonEnabled);
+        configureIncognito(views);
         OpenModule.CLOSEOPEN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeopen_pref));
         OpenModule.CLOSESHARE_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closeshare_pref));
         OpenModule.CLOSECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.closecopy_pref));
         OpenModule.NOREFERRER_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.noReferrer));
         LastOpened.PERDOMAIN_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.perDomain));
         OpenModule.MERGECOPY_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.mergeCopy_pref));
+    }
+
+    // ------------------- incognito dimension -------------------
+    private void configureIncognito(View views) {
+        var incognitoButton = (Button) views.findViewById(R.id.urlHelper_settings);
+        JavaUtils.Consumer<OnOffConfig> buttonEnabled = null;
+        if (BuildConfig.IS_INCOGNITO) {
+            incognitoButton.setOnClickListener(v -> {
+                IncognitoDimension.showSettings(getActivity());
+            });
+            buttonEnabled = onOffConfig -> {
+                incognitoButton.setEnabled(OnOffConfig.ALWAYS_OFF != onOffConfig);
+            };
+            buttonEnabled.accept(Incognito.PREF(getActivity()).get());
+        } else {
+            incognitoButton.setVisibility(View.GONE);
+        }
+        Incognito.PREF(getActivity()).attachToSpinner(views.findViewById(R.id.incognito_pref), buttonEnabled);
     }
 }
 

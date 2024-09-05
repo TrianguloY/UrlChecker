@@ -1,17 +1,16 @@
 plugins {
-    id 'com.android.application'
-    id 'com.github.triplet.play' version '3.8.3'
+    id 'com.android.library'
 }
 
 android {
-    namespace 'com.trianguloy.urlchecker'
+    namespace 'com.trianguloy.forceurl'
+
     defaultConfig {
-        applicationId "com.trianguloy.urlchecker"
         compileSdk 33
         minSdkVersion 14
         targetSdkVersion 33
-        versionCode 28
-        versionName "2.13"
+        versionCode 1
+        versionName "0.1"
 
 
         // generate buildconfig field with all locales
@@ -39,40 +38,20 @@ android {
                 .collect { it }.join(', ') // join with commas
         print "Extracted translators: $translators"
         resValue "string", "all_translators", translators // create resource
-
-        buildConfigField("boolean", "IS_INCOGNITO", "false") // default incognito value
     }
 
     buildTypes {
         release {
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         alpha {
             initWith(buildTypes.debug)
-            applicationIdSuffix '.alpha'
             versionNameSuffix '-ALPHA'
         }
         evaluation {
             initWith(buildTypes.debug)
-            applicationIdSuffix '.test'
             versionNameSuffix '-TEST'
-        }
-    }
-
-    flavorDimensions = ["incognito"]
-    productFlavors {
-        // incognito dimension
-        base {
-            dimension "incognito"
-        }
-        incognito {
-            dimension "incognito"
-            buildConfigField("boolean", "IS_INCOGNITO", "true")
-
-            applicationIdSuffix ".incognito"
-            versionNameSuffix "-incognito"
         }
     }
 
@@ -88,14 +67,4 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-}
-
-play {
-    track.set("beta")
-    releaseName.set(android.defaultConfig.versionName + " (" + android.defaultConfig.versionCode + ")")
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    incognitoImplementation project(path: ':forceurl');
 }

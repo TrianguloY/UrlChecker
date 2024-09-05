@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.trianguloy.forceurllib.lib.ForceUrl;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.flavors.IncognitoDimension;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
@@ -79,11 +79,9 @@ public class Incognito {
         }
     }
 
-    static private final String helperKey = ForceUrl.KEY_INCOGNITO;
-
     private boolean isIncognito(Intent intent) {
-        if (BuildConfig.IS_INCOGNITO){
-            return ForceUrl.isMode(intent, helperKey);
+        if (BuildConfig.IS_INCOGNITO) {
+            return IncognitoDimension.isIncognito(intent);
         } else {
             return intent.getBooleanExtra("private_browsing_mode", false);
         }
@@ -93,8 +91,8 @@ public class Incognito {
      * Applies the setting to a given intent, and launches any helper needed
      */
     public void apply(Context context, Intent intent, String url) {
-        if (BuildConfig.IS_INCOGNITO){
-            ForceUrl.applyAndLaunchHelper(context, intent, url, state, ForceUrl.KEY_INCOGNITO);
+        if (BuildConfig.IS_INCOGNITO) {
+            IncognitoDimension.applyAndLaunchHelper(context, intent, url, state);
         } else {
             // for Firefox
             intent.putExtra("private_browsing_mode", state);
