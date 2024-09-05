@@ -76,10 +76,10 @@ class Config {
         EditText timerView = views.findViewById(R.id.seconds_pref);
         var timerText = views.findViewById(R.id.timerText);
 
-        current.attachToSpinner(helperView, helpers -> {
+        JavaUtils.Consumer<Helpers> updateFields = helpers -> {
             boolean timerState;
             boolean storeState;
-            switch (helpers){
+            switch (helpers) {
                 case none:
                 case accessibilityService:
                     timerState = false;
@@ -99,7 +99,9 @@ class Config {
             timerText.setEnabled(timerState);
             timerView.setEnabled(timerState);
             storeView.setEnabled(storeState);
-        });
+        };
+        updateFields.accept(current.get());
+        current.attachToSpinner(helperView, updateFields);
         storeBeforeRestore.attachToSwitch(storeView);
         timer.attachToEditText(timerView, 0);
         views.findViewById(R.id.draw_permissions).setOnClickListener(view -> {
