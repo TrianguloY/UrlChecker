@@ -10,15 +10,14 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
+import com.trianguloy.forceurl.R;
 import com.trianguloy.forceurl.lib.Preferences;
 import com.trianguloy.forceurl.utilities.methods.AndroidUtils;
-import com.trianguloy.forceurl.BuildConfig;
-import com.trianguloy.forceurl.R;
 
 public class ClipboardBorrower {
     private volatile static ClipData previous;
     private volatile static ClipData borrowerData;
-    private static final String LABEL = "clipboard_borrower_text";
+    private static final String LABEL = "ForceURL_borrower";
 
     private static void clear() {
         previous = null;
@@ -68,7 +67,11 @@ public class ClipboardBorrower {
         // if the user copies something to the clipboard after the last call to release or borrow,
         // we can't restore that.
         if (previous != null) {
-            AndroidUtils.setPrimaryClip(context, R.string.borrow_releaseSet, previous);
+            if (AndroidUtils.areClipDataEquals(previous, AndroidUtils.getDummyClipData(), context)) {
+                AndroidUtils.emptyClipboard(context);
+            } else {
+                AndroidUtils.setPrimaryClip(context, R.string.borrow_releaseSet, previous);
+            }
         }
 
         clear();
@@ -114,7 +117,8 @@ public class ClipboardBorrower {
             public boolean onPreDraw() {
                 // There is no reason to not storeBeforeRelease, otherwise the call could be done
                 // without the bubble. The only reason might be emergencies.
-                release(floatView.getContext(), true);
+                Context context = floatView.getContext();
+                release(context, true);
                 floatView.getViewTreeObserver().removeOnPreDrawListener(this);
                 windowManager.removeView(floatView);
                 return false;
@@ -138,7 +142,7 @@ public class ClipboardBorrower {
      */
     public synchronized static boolean releaseSmart(Context context, boolean storeBeforeRelease) {
         // If we don't store before releasing we don't need to check if we can read the clipboard
-        var releaseNormally = !storeBeforeRelease || AndroidUtils.canReadClip(context);
+        var releaseNormally = !storeBeforeRelease || AndroidUtils.canAccessClip();
         // Clipboard is always available under API 29 (Android 10)
         if (releaseNormally) {
             release(context, storeBeforeRelease);
@@ -149,9 +153,9 @@ public class ClipboardBorrower {
             } else {
                 // No permissions, we can't read the clipboard, so we are unable to respect changes
                 // to the clipboard
-                // TODO: recommend user give the app drawing permissions?
                 // Last resort, ignore user preferences
                 release(context, false);
+                AndroidUtils.safeToast(context, R.string.borrow_releaseNoDraw, Toast.LENGTH_LONG);
             }
         }
         return releaseNormally;
@@ -188,52 +192,6 @@ public class ClipboardBorrower {
     }
 
     private static boolean isEqualsToBorrower(ClipData clip, Context context) {
-        return areClipDataEquals(clip, borrowerData, context);
-    }
-
-    private static boolean areClipDataEquals(ClipData clip1, ClipData clip2, Context context) {
-        // ---
-        // XXX: For debugging purposes: emulator shared clipboard may trip this up, as it is
-        //  constantly syncing and messes up the label.
-        //  It is recommended to disable it.
-        //      - Android studio: File -> Settings -> Tools -> Emulator -> Enable clipboard sharing
-        //
-        //  Still it didn't work for me and it kept changing the label
-
-        // Use case where the label is relevant:
-        //   User opens URL in incognito, pastes URL, then remembers it wants to copy it to the
-        //   clipboard so it copies it. Now the label is different, but the text is not.
-        var checkLabel = !BuildConfig.DEBUG;
-
-        // ---
-        var count1 = clip1.getItemCount();
-        var count2 = clip2.getItemCount();
-        var label1 = clip1.getDescription().getLabel();
-        var label2 = clip2.getDescription().getLabel();
-        // ---
-
-
-        if (count1 == count2 &&
-                (!checkLabel || label1.equals(label2))) {
-            for (int i = 0; i < clip1.getItemCount(); i++) {
-                // ---
-                var sameMimeType = clip1.getDescription().getMimeType(i).equals(
-                        clip2.getDescription().getMimeType(i));
-                var sameText = clip1.getItemAt(i).coerceToText(context).equals(
-                        clip2.getItemAt(i).coerceToText(context));
-                // ---
-
-                if (sameMimeType && sameText) {
-                    // more conditions if needed
-                } else {
-                    return false;
-                }
-            }
-
-            // no differences, they are equal
-            return true;
-        } else {
-            return false;
-        }
+        return AndroidUtils.areClipDataEquals(clip, borrowerData, context);
     }
 }

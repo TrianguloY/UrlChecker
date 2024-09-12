@@ -23,7 +23,8 @@
     <string name="borrow_releaseSet">Clipboard released</string>
     <string name="borrow_releaseError">"Clipboard not available can't restore"</string>
     <string name="borrow_storeGet">"Clipboard content stored"</string>
-    <string name="borrow_drawError">"No draw permissions, can't release"</string>
+    <string name="borrow_drawError">"ERROR: Bubble called without draw permissions, can't release"</string>
+    <string name="borrow_releaseNoDraw">"No draw permissions, can't store before release"</string>
     <!--
     companions
     -->
