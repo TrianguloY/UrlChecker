@@ -41,6 +41,8 @@ android {
         resValue "string", "all_translators", translators // create resource
 
         buildConfigField("boolean", "IS_INCOGNITO", "false") // default incognito value
+        
+        resValue "string", "app_name", "URLCheck"
     }
 
     buildTypes {
@@ -73,6 +75,8 @@ android {
 
             applicationIdSuffix ".incognito"
             versionNameSuffix "-incognito"
+
+            resValue "string", "app_name", "URLCheck-I"
         }
     }
 
