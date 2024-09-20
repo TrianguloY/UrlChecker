@@ -18,7 +18,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cHelper_description" />
+                android:text="@string/settings_description" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,13 +51,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/cHelper_timer" />
+                    android:text="@string/settings_timer" />
 
                 <EditText
                     android:id="@+id/seconds_pref"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/cHelper_seconds"
+                    android:hint="@string/settings_seconds"
                     android:inputType="number" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/smallPadding"
-                android:text="@string/cHelper_openDrawSettings" />
+                android:text="@string/settings_openDrawSettings" />
 
             <Button
                 android:id="@+id/accessibility_permissions"
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/smallPadding"
-                android:text="@string/cHelper_openAccessibilitySettings" />
+                android:text="@string/settings_openAccessibilitySettings" />
         </LinearLayout>
     </ScrollView>
 

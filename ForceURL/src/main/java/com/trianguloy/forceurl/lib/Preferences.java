@@ -116,7 +116,7 @@ class Config {
         // prepare dialog
         AlertDialog dialog = new AlertDialog.Builder(cntx)
                 .setView(views)
-                .setTitle(R.string.cHelper_title)
+                .setTitle(R.string.settings_title)
                 .setCancelable(true)
                 .show();
 

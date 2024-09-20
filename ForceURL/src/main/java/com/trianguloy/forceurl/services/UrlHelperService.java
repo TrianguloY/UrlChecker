@@ -74,7 +74,7 @@ public class UrlHelperService extends AccessibilityService {
         task = executor.schedule(() -> {
             synchronized (this) {
                 closeService();
-                AndroidUtils.safeToast(context, R.string.helperService_closed, Toast.LENGTH_SHORT);
+                AndroidUtils.safeToast(context, R.string.service_closed, Toast.LENGTH_SHORT);
                 task = null;
             }
         }, 10, TimeUnit.SECONDS);

@@ -17,7 +17,7 @@ public class AccessibilityServiceHelper implements AHelper {
         var instance = UrlHelperService.getInstance();
         if (instance == null) {
             // FIXME: is this enough if it is not online? maybe do the check in open module?
-            AndroidUtils.safeToast(context, R.string.helperService_notConnected, Toast.LENGTH_LONG);
+            AndroidUtils.safeToast(context, R.string.service_notConnected, Toast.LENGTH_LONG);
         } else {
             var app = ForceUrl.getApps(ForceUrl.findId(context, new Intent().setPackage(pckg), mode));
             instance.openService(context, url, pckg, (node) -> ((AccessibilityFunction) app).putUrl(node, url, pckg));
