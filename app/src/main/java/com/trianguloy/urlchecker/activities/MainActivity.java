@@ -68,6 +68,10 @@ public class MainActivity extends Activity {
         PackageUtils.startActivity(new Intent(this, ModulesActivity.class), R.string.toast_noApp, this);
     }
 
+    public void openAutomations(View view) {
+        PackageUtils.startActivity(new Intent(this, AutomationActivity.class), R.string.toast_noApp, this);
+    }
+
     public void openSettings(View view) {
         PackageUtils.startActivityForResult(
                 new Intent(this, SettingsActivity.class),

@@ -29,7 +29,7 @@ public class JsonEditor {
     /**
      * Displays a generic editor for json content.
      */
-    public static void show(JSONObject content, JSONObject reset, int description, Activity cntx, Listener onSave) {
+    public static void show(JSONObject content, JSONObject reset, String description, Activity cntx, Listener onSave) {
 
         // prepare dialog content
         View views = cntx.getLayoutInflater().inflate(R.layout.json_editor, null);

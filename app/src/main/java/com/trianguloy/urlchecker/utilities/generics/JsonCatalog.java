@@ -16,9 +16,13 @@ public abstract class JsonCatalog {
 
     private final Activity cntx;
     private final InternalFile custom;
-    private final int editorDescription;
+    private final String editorDescription;
 
     public JsonCatalog(Activity cntx, String fileName, int editorDescription) {
+        this(cntx, fileName, cntx.getString(editorDescription));
+    }
+
+    public JsonCatalog(Activity cntx, String fileName, String editorDescription) {
         this.cntx = cntx;
         this.editorDescription = editorDescription;
         custom = new InternalFile(fileName, cntx);

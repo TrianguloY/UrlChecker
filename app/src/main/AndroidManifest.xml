@@ -23,6 +23,7 @@
         android:theme="@style/ActivityThemeDark"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.AutomationActivity" />
         <activity android:name=".activities.ModulesActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.TutorialActivity" />

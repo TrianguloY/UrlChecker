@@ -182,7 +182,7 @@ public class ClearUrlCatalog {
      * Show the rules editor dialog
      */
     public void showEditor() {
-        JsonEditor.show(getCatalog(), getBuiltIn(), R.string.mClear_editor, cntx, content -> {
+        JsonEditor.show(getCatalog(), getBuiltIn(), cntx.getString(R.string.mClear_editor), cntx, content -> {
             if (setRules(content, false) != Result.ERROR) {
                 // saved data, close dialog
                 return true;
