@@ -99,8 +99,8 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!--
         json
     -->
-    <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
-    <string name="json_edit">Editor avanzado</string>
+    <string name="json_desc">Editor Json: el contenido debe ser Json válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
+    <string name="json_edit">Editor Json</string>
     <!--
         shortcuts
     -->

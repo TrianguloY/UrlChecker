@@ -145,8 +145,8 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <!--
         json
     -->
-    <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
-    <string name="json_edit">Advanced editor</string>
+    <string name="json_desc">Json editor: the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
+    <string name="json_edit">Json editor</string>
     <!--
         shortcuts
     -->
