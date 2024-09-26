@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,9 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.modules.list.DrawerModule;
@@ -45,6 +48,10 @@ public class MainDialog extends Activity {
      */
     private static final int MAX_UPDATES = 100;
 
+    // ------------------- helpers -------------------
+
+    private AutomationRules automationRules;
+
     // ------------------- data -------------------
 
     /**
@@ -56,6 +63,11 @@ public class MainDialog extends Activity {
      * Global data to keep even if the url changes
      */
     public final Map<String, String> globalData = new HashMap<>();
+
+    /**
+     * Available automations
+     */
+    private final Map<String, AModuleDialog> automations = new ArrayMap<>();
 
     /**
      * The current url
@@ -147,6 +159,24 @@ public class MainDialog extends Activity {
                 }
             }
 
+            // fifth run automations
+            if (automationRules.automationsEnabledPref.get()) {
+                for (var automationKey : automationRules.check(urlData)) {
+                    var dialog = automations.get(automationKey);
+                    if (dialog == null) {
+                        if (automationRules.automationsShowErrorToast.get()) {
+                            Toast.makeText(this, getString(R.string.auto_notFound, automationKey), Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        try {
+                            dialog.runAutomation(automationKey);
+                        } catch (Exception e) {
+                            AndroidUtils.assertError("Exception while running automation " + automationKey + " with module " + dialog.getClass().getName(), e);
+                        }
+                    }
+                }
+            }
+
             break;
         }
 
@@ -196,6 +226,9 @@ public class MainDialog extends Activity {
         ll_main = findViewById(R.id.main);
         ll_drawer = findViewById(R.id.drawer);
         ll_drawer.setVisibility(View.GONE);
+
+        // load helpers
+        automationRules = new AutomationRules(this);
 
         // load url (or urls)
         var links = getOpenUrl();
@@ -306,6 +339,14 @@ public class MainDialog extends Activity {
             // init
             modules.put(module, views);
             module.onInitialize(child);
+            if (automationRules.automationsEnabledPref.get()) {
+                for (var automation : moduleData.getAutomations()) {
+                    if (BuildConfig.DEBUG && automations.containsKey(automation.key())) {
+                        AndroidUtils.assertError("There is already an automation with that key!");
+                    }
+                    automations.put(automation.key(), module);
+                }
+            }
         } catch (Exception e) {
             // can't add module
             AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId(), e);

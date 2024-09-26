@@ -15,6 +15,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
@@ -70,6 +71,13 @@ public class OpenModule extends AModuleData {
     @Override
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new OpenConfig(cntx);
+    }
+
+    @Override
+    public List<AutomationRules.Automation> getAutomations() {
+        return List.of(
+                new AutomationRules.Automation("open", R.string.auto_open)
+        );
     }
 }
 
@@ -146,6 +154,14 @@ class OpenDialog extends AModuleDialog {
     @Override
     public void onDisplayUrl(UrlData urlData) {
         updateSpinner(urlData.url);
+    }
+
+    @Override
+    public void runAutomation(String key) {
+        switch (key) {
+            case "open" -> openUrl(0);
+            default -> super.runAutomation(key);
+        }
     }
 
     // ------------------- Spinner -------------------
