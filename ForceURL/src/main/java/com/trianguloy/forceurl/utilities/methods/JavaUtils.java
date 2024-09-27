@@ -13,6 +13,16 @@ public interface JavaUtils {
         return null;
     }
 
+    /**
+     * java.lang.Math.clamp requires java 21
+     */
+    static int clamp(int value, int min, int max){
+        if (max < min) {
+            throw new IllegalArgumentException("Max can't be less than min");
+        }
+        return value < min ? min : max < value ? max : value;
+    }
+
     // ---
     // Everything, starting here, is copied from URLChecker
     // TODO: move to external library?

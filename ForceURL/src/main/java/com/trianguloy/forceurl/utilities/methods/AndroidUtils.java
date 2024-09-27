@@ -234,7 +234,7 @@ public interface AndroidUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             clipboard.clearPrimaryClip();
         } else {
-           clipboard.setPrimaryClip(ClipData.newPlainText("",""));
+            clipboard.setPrimaryClip(ClipData.newPlainText("", ""));
         }
     }
 

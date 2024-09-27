@@ -111,8 +111,6 @@ public class ClipboardBorrower {
                 PixelFormat.TRANSLUCENT);
 
         floatView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            // TODO: add way so that just when it is unrendering, we read the clipboard
-
             @Override
             public boolean onPreDraw() {
                 // There is no reason to not storeBeforeRelease, otherwise the call could be done
