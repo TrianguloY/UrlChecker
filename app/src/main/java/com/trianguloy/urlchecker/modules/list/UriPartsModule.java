@@ -19,6 +19,7 @@ import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Supplier;
+import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +76,10 @@ class UriPartsDialog extends AModuleDialog {
         var uri = Uri.parse(urlData.url);
         var urlQuerySanitizer = new UrlQuerySanitizer();
         // the default parseUrl doesn't remove the fragment
-        if (uri.getQuery() != null) {
+        if (uri.getEncodedQuery() != null) {
             urlQuerySanitizer.setAllowUnregisteredParamaters(true);
             urlQuerySanitizer.setUnregisteredParameterValueSanitizer(v -> v);
-            urlQuerySanitizer.parseQuery(uri.getQuery()
+            urlQuerySanitizer.parseQuery(uri.getEncodedQuery()
                     // this will fix issues with the parser decoding twice
                     .replace("%", "%25"));
         }
@@ -118,12 +119,12 @@ class UriPartsDialog extends AModuleDialog {
             for (var i = 0; i < parameters.size(); i++) {
                 int removeI = i;
                 // append the parameter
-                addPart(parameters.get(i).mParameter, parameters.get(i).mValue, queries, () -> {
+                addPart(UrlUtils.decode(parameters.get(i).mParameter), UrlUtils.decode(parameters.get(i).mValue), queries, () -> {
                     // generate same url but without this parameter
                     var builder = uri.buildUpon();
                     builder.query(null);
                     for (var newI = 0; newI < parameters.size(); newI++) {
-                        if (newI != removeI) builder.appendQueryParameter(parameters.get(newI).mParameter, parameters.get(newI).mValue);
+                        if (newI != removeI) builder.appendQueryParameter(UrlUtils.decode(parameters.get(newI).mParameter), UrlUtils.decode(parameters.get(newI).mValue));
                     }
                     return builder.build().toString();
                 });
@@ -200,3 +201,23 @@ class UriPartsDialog extends AModuleDialog {
     };
 
 }
+
+/*
+ * Manual tests:
+ * - Should show the expected output before and after removing the hide parameter.
+ * - Should keep the rest of the url intact when removing the hide parameter
+ *
+ *
+ * https://example.com?prefill_%25E6%259D%25A5%25E6%25BA%2590=%E5%B8%AE%E5%8A%A9%E4%B8%8E%E5%8F%8D%E9%A6%88&hide=true
+ * ->
+ * prefill_%E6%9D%A5%E6%BA%90 -> 帮助与反馈
+ *
+ *
+ * https://example.com/?q=%F0%9F%91%8D&hide=true
+ * ->
+ * q -> 👍
+ *
+ *
+ * https://example.com/?q=a%26b%3Dc&hide=true
+ * q -> a&b=c
+ */
