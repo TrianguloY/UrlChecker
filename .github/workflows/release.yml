@@ -1,0 +1,57 @@
+# Generates and uploads a release version when a new tag is pushed
+name: Create release
+
+on:
+  # trigger for tags starting with 'v'
+  push:
+    tags:
+      - v*
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the repository files
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Create release store file
+        run: |
+          RELEASE_STORE_FILE=$(readlink -f release_store_file)
+          echo -n "$RELEASE_STORE_FILE_ENCRYPTED" | base64 --decode > $RELEASE_STORE_FILE
+          echo "RELEASE_STORE_FILE=$RELEASE_STORE_FILE" >> "$GITHUB_ENV"
+        env:
+          RELEASE_STORE_FILE_ENCRYPTED: ${{ secrets.RELEASE_STORE_FILE }}
+
+      - name: Build & assemble
+        run: ./gradlew build assembleRelease
+        env:
+          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+
+      - name: Upload apk to release with the release notes
+        run: |
+          (
+          sed '/^$/q' ./app/src/main/play/release-notes/en-US/default.txt
+          cat - << EOF
+          ---
+          
+          Note: All three different versions (Play Store, F-droid and Github) are signed with different certificates, so you cannot update one with another unless you uninstall first.
+          Remember to use the backup/restore functionality to migrate your data!
+          EOF
+          ) | gh release create $TAG ./app/build/outputs/apk/release/*.apk --title="URLCheck ${TAG#v} release apk" --latest --verify-tag --notes-file -
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}

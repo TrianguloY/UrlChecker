@@ -85,16 +85,10 @@ public interface JavaUtils {
         return text;
     }
 
-    /**
-     * Same as Arrays.compare, which is not available in api < 33
-     */
-    static int compareArrays(int[] l, int[] r) {
-        int i = 0;
-        while (i < l.length && i < r.length) {
-            if (l[i] != r[i]) return Integer.signum(r[i] - l[i]);
-            i++;
-        }
-        return Integer.signum(r.length - l.length);
+    /** Removes elements from a collection matching a predicate */
+    static <E> void removeIf(Collection<E> collection, Function<E, Boolean> predicate) {
+        var iterator = collection.iterator();
+        while (iterator.hasNext()) if (predicate.apply(iterator.next())) iterator.remove();
     }
 
     /**
@@ -114,20 +108,27 @@ public interface JavaUtils {
         else list.add(element);
     }
 
-    /**
-     * java.util.function.Consumer requires api 24
-     */
+    /** java.util.function.Consumer requires api 24 */
     @FunctionalInterface
     interface Consumer<T> {
         void accept(T t);
     }
 
-    /**
-     * java.util.function.Function requires api 24
-     */
+    /** java.util.function.Supplier requires api 24 */
+    @FunctionalInterface
+    interface Supplier<T> {
+        T get();
+    }
+
+    /** java.util.function.Function requires api 24 */
     @FunctionalInterface
     interface Function<T, R> {
         R apply(T t);
+    }
+
+    /** Negates a boolean Function */
+    static <T> Function<T, Boolean> negate(Function<T, Boolean> function) {
+        return t -> !function.apply(t);
     }
 
     /**

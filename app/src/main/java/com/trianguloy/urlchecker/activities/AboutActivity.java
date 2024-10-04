@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_about);
         setTitle(R.string.a_about);
         AndroidUtils.configureUp(this);

@@ -7,7 +7,7 @@
     <string name="dismiss">Отклонить</string>
     <string name="toast_invalid">Неверный</string>
     <string name="close">Закрыть</string>
-    <string name="toast_cantEnable">Не могу включить модуль, возможно отсутствует его конфигурация\?</string>
+    <string name="toast_cantEnable">Не могу включить модуль: %s</string>
     <string name="save">Сохранить</string>
     <string name="reset">Сбросить</string>
     <string name="link_changelog">История изменений</string>
@@ -54,8 +54,8 @@
     <string name="btn_androidSettings">Настройки Android приложения</string>
     <string name="txt_about">Приложение сделано TrianguloY.
 \n
-\nРазработка: %s
-\nПеревод: %s.</string>
+\nРазработка: %1$s
+\nПеревод: %2$s.</string>
     <string name="txt_locale">Язык:</string>
     <string name="alwaysOn">Всегда включено</string>
     <string name="btn_tutorialSkip">Пропустить обучение</string>
@@ -85,7 +85,7 @@
     <string name="mClear_cleared">- Очищено</string>
     <string name="mVT_scanning">Сканирование…</string>
     <string name="mVT_desc">Когда этот модуль включён, вы можете сканировать URL, используя VirusTotal, и ознакомиться с результатами. Для работы необходим персональный VirusTotal API ключ, который вы можете получить, зарегистрировавшись на https://www.virustotal.com/gui/join-us .</string>
-    <string name="mPttrn_wrongSchemaHttp">Неправильная HTTP схема.</string>
+    <string name="mPttrn_wrongSchemaHttp">Неверная высота букв в схеме HTTP.</string>
     <string name="mClear_lastUpdate">Последнее обновление:</string>
     <string name="mVT_connectError">Невозможно подключиться к VirusTotal. Удостоверьтесь, что вы подключены к интернету, или попробуйте позже.</string>
     <string name="mPttrn_regexfix">Исправить необязательные группы регулярных выражений (отключите, если регулярные выражения работают неправильно)</string>
@@ -135,10 +135,10 @@
     <string name="mClear_upToDate">Каталог актуальный</string>
     <string name="mClear_updated">Каталог обновлён</string>
     <string name="mOpen_ctabs">Пользовательские вкладки:</string>
-    <string name="mVT_warningUrl">Внимание, %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mVT_warningUrl">Внимание, %1$d/%2$d поисковых систем распознали URL (на момент %3$s)</string>
     <string name="mOpen_closeOpen">Закрыть диалоговое окно после открытия</string>
     <string name="mD_ctabs">Показывать сообщения отладки из службы Пользовательских вкладок</string>
-    <string name="mVT_goodUrl">Ни одна из %d поисковых систем не распознала URL (на момент %s)</string>
+    <string name="mVT_goodUrl">Ни одна из %1$d поисковых систем не распознала URL (на момент %2$s)</string>
     <string name="mVT_apiKey">API ключ</string>
     <string name="mStatus_unknownCode">%d: Неизвестный код состояния</string>
     <string name="mOpen_incognitoDesc">Включить/выключить режим инкогнито</string>
@@ -149,7 +149,7 @@
     <string name="mOpen_share">Поделиться</string>
     <string name="mClear_urlHint">URL-адрес каталога</string>
     <string name="mStatus_desc">При нажатии на кнопку проверки будет выполнен запрос, целью которого является получение и отображение кода состояния сайта. Если результатом запроса будет перенаправление на другой URL, то вы сможете увидеть конечный URL-адрес. Содержимое URL извлекается (GET), но не оценивается, поэтому перенаправления на основе JavaScript не будут обнаружены.</string>
-    <string name="mVT_badUrl">Будьте осторожны! %d/%d поисковых систем распознали URL (на момент %s)</string>
+    <string name="mVT_badUrl">Будьте осторожны! %1$d/%2$d поисковых систем распознали URL (на момент %3$s)</string>
     <string name="mOpen_mergeCopy">Совместить кнопки Поделиться и Скопировать (долгое нажатие для копирования)</string>
     <string name="mClear_clear">Применить</string>
     <string name="mOpen_incognito">Режим инкогнито:</string>
@@ -162,7 +162,7 @@
     <string name="mClear_referral">- найден реферальный параметр</string>
     <string name="mPttrn_fix">Применить</string>
     <string name="mPttrn_noSchemeHttp">Отсутствует HTTP схема.</string>
-    <string name="mPttrn_wrongSchemaHttps">Неверная HTTPS схема.</string>
+    <string name="mPttrn_wrongSchemaHttps">Неверная высота букв схемы HTTPS.</string>
     <string name="mPttrn_fixed">Применено - %s</string>
     <string name="mD_name">Модуль Отладки</string>
     <string name="mClear_noRules">Нет соответствующих правил</string>
@@ -198,7 +198,7 @@
     <string name="mUnshort_error">Ошибка сервера: %s</string>
     <string name="mChg_current">Текущая версия: %s</string>
     <string name="mRemove_name">Средство для удаления запросов</string>
-    <string name="mUnshort_pending">осталось: %d/%d</string>
+    <string name="mUnshort_pending">осталось: %1$d/%2$d</string>
     <string name="mUnshort_internal">Внутренняя ошибка (%s)</string>
     <string name="mChg_desc">Вы будете уведомлены, когда приложение обновится.</string>
     <string name="mHosts_info">Хост:</string>
@@ -243,7 +243,7 @@
     <string name="mLog_view">Посмотреть историю</string>
     <string name="mLog_desc">Этот модуль логирует все проверенные URL. Вы можете просматривать, очищать или изменять всю историю здесь, в основном диалоговом окне никакой визуальной индикации не появится. Чтобы отключить логирование, просто отключите модуль.</string>
     <string name="mLog_name">Лог</string>
-    <string name="mHosts_buildDownload">Скачиваются \'%s\' хостов с %s…</string>
+    <string name="mHosts_buildDownload">Скачиваются \'%1$s\' хостов с %2$s…</string>
     <string name="mRemove_noQueries">Нет запросов</string>
     <string name="mDrawer_desc">Все модули ниже будут скрыты в ящике. Модули всё ещё будут работать, но, пока вы не выдвините ящик, будут скрыты. Сюда вы можете поместить модули которыми вы редко пользуютесь, чтобы избежать загромождения.</string>
     <string name="mHosts_fakenews">фейковые новости</string>
@@ -260,9 +260,29 @@
     <string name="mHosts_malware">реклама/вредоносные программы</string>
     <string name="mFlags_name">Редактор флажков</string>
     <string name="mRemove_found1">1 запрос найден</string>
-    <string name="mUnshort_tm">unshorten.me бесплатное API от Unshorten.me</string>
+    <string name="mUnshort_tm">бесплатный API unshorten.me от Unshorten.me</string>
     <string name="mHosts_desc">Этот модуль маркирует хостов, настраивается либо ручным перечислением хостов, либо используя удалённый файл с хостами. Вы можете использовать это для предупреждения об опасных или специальных сайтах. Во встроенной конфигурации указаны хосты StevenBlack (реклама/вредоносные программы, фейковые новости, азартные игры и контент для взрослых), взятые с https://github.com/StevenBlack/hosts</string>
     <string name="mLog_edit">Изменить историю</string>
     <string name="mClear_hashDesc">URL хэш файла каталога. Если параметр опущен, то загрузка не будет проверяться на предмет подделки (не рекомендуется)</string>
     <string name="mClear_hashError">Невозможно получить хэш, удостоверьтесь, что URL правильный, а интернет соединение активно</string>
+    <string name="mClear_desc">Данный модуль убирает из ссылки реферальные, отслеживающие и прочие бесполезные параметры. Также он позволяет вам переходить по перенаправляющим ссылкам без реального перехода на этот сайт.</string>
+    <string name="mHosts_editor">Конфигурация хостов. Формат: Список объектов, для которых метка хоста является ключом, а содержимое содержит следующие необязательные значения:
+\n‐ file: Ссылка для загрузки удалённого hosts-файла. Будут добавлены все корректные хосты.
+\n‐ hosts: Список необработанных хостов (строк) для добавления.
+\n‐ color: Цвет метки. Строка цвета Android (#AARRGGBB, #RRGGBB или корректное название цвета). По умолчанию стоит ядовито-красный.
+\n‐ replace: если стоит \"false\", то существующие хосты не будут заменены. Учтите, что объекты считываются сверху вниз. По умолчанию стоит \"true\".
+\n- enabled: если стоит \"false\", то данный объект будет полностью пропущен. По умолчанию стоит \"true\".</string>
+    <string name="mUnshort_ok">Удлиненно</string>
+    <string name="mUnshort_unshort">Удлинить</string>
+    <string name="mUnshort_name">Удлинитель</string>
+    <string name="btn_backupRestore">Бэкап / восстановление</string>
+    <string name="bck_mn_advanced">Показать расширенные настройки</string>
+    <string name="btn_backup">Бэкап</string>
+    <string name="btn_delete">Удалить</string>
+    <string name="txt_animation">Включить анимации</string>
+    <string name="btn_restore">Восстановить</string>
+    <string name="bkp_description">Выберите элементы для бэкапа/восстановления.
+\nПри восстановлении, если бэкап был создан без него, существующие будут сохранены.</string>
+    <string name="btn_replace">Заменить</string>
+    <string name="bck_deleteTitle">Удалить элементы</string>
 </resources>

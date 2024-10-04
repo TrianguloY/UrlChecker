@@ -3,6 +3,7 @@ package com.trianguloy.urlchecker.services;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
@@ -41,59 +42,7 @@ public class CustomTabs extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         log("onBind\n" + intent.toUri(0)); // a toast here, for some reason, isn't shown and later it crashes
-        return null;
-//        return new IBinder() {
-//            @Override
-//            public String getInterfaceDescriptor() throws RemoteException {
-//                log("getInterfaceDescriptor");
-//                return null;
-//            }
-//
-//            @Override
-//            public boolean pingBinder() {
-//                log("pingBinder");
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean isBinderAlive() {
-//                log("isBinderAlive");
-//                return false;
-//            }
-//
-//            @Override
-//            public IInterface queryLocalInterface(String descriptor) {
-//                log("queryLocalInterface");
-//                return null;
-//            }
-//
-//            @Override
-//            public void dump(FileDescriptor fd, String[] args) throws RemoteException {
-//                log("dump");
-//            }
-//
-//            @Override
-//            public void dumpAsync(FileDescriptor fd, String[] args) throws RemoteException {
-//                log("dumpAsync");
-//            }
-//
-//            @Override
-//            public boolean transact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
-//                log("transact");
-//                return false;
-//            }
-//
-//            @Override
-//            public void linkToDeath(DeathRecipient recipient, int flags) throws RemoteException {
-//                log("linkToDeath");
-//            }
-//
-//            @Override
-//            public boolean unlinkToDeath(DeathRecipient recipient, int flags) {
-//                log("unlinkToDeath");
-//                return false;
-//            }
-//        };
+        return new Binder();
     }
 
     // ------------------- logging -------------------

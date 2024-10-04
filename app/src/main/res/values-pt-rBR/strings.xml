@@ -22,8 +22,8 @@
     <string name="locale">Português Brasileiro</string>
     <string name="txt_about">Aplicativo criado por TrianguloY.
 \n
-\nContribuições: %s.
-\nTraduções: %s.</string>
+\nContribuições: %1$s.
+\nTraduções: %2$s.</string>
     <string name="desc_down">Mover para baixo</string>
     <string name="none">Nenhum</string>
     <string name="share">Compartilhar</string>
@@ -63,7 +63,7 @@
     <string name="mLog_view">Visualizar log</string>
     <string name="mClear_updateNow">Atualizar agora</string>
     <string name="mClear_lastCheck">Última verificação:</string>
-    <string name="toast_cantEnable">Não foi possível habilitar o módulo, configuração faltando\?</string>
+    <string name="toast_cantEnable">Não foi possível habilitar o módulo: %s</string>
     <string name="txt_theme">Tema:</string>
     <string name="spin_darkTheme">Escuro</string>
     <string name="spin_lightTheme">Claro</string>
@@ -114,8 +114,8 @@
     <string name="mPttrn_noSchemeHttp">Esquema HTTP ausente.</string>
     <string name="mPttrn_ascii">Aviso! Caracteres não-ASCII encontrados.</string>
     <string name="mPttrn_http">Link HTTP. Considere utilizar HTTPS.</string>
-    <string name="mVT_goodUrl">Nenhum dos %d mecanismos detectou a URL (na data %s)</string>
-    <string name="mVT_warningUrl">Aviso, %d/%d mecanismos detectaram a URL (na data %s)</string>
+    <string name="mVT_goodUrl">Nenhum dos %1$d mecanismos detectou a URL (na data %2$s)</string>
+    <string name="mVT_warningUrl">Aviso, %1$d/%2$d mecanismos detectaram a URL (na data %3$s)</string>
     <string name="mD_name">Módulo de Depuração/Marcador</string>
     <string name="mD_ctabs">Mostrar mensagens de depuração do serviço de abas customizadas</string>
     <string name="mD_desc">Caso você reordene os módulos, os novos adicionados em atualizações futuras serão colocados acima desse.
@@ -160,7 +160,7 @@
 \n- Sugere substituir ‘http’ por ‘https’
 \n- Sugere substituir Youtube, Reddit ou Twitter por alternativas que respeitam a privacidade [desativadas por padrão]</string>
     <string name="mVT_desc">Quando este módulo está habilitado, você pode verificar a URL usando o VirusTotal e conferir o relatório. É necessário uma chave da API do VirusTotal para que isso funcione, você pode obter uma registrando-se para uma conta gratuita aqui: https://www.virustotal.com/gui/join-us .</string>
-    <string name="mVT_badUrl">Cuidado! %d/%d mecanismos detectaram a URL (na data %s)</string>
+    <string name="mVT_badUrl">Cuidado! %1$d/%2$d mecanismos detectaram a URL (na data %3$s)</string>
     <string name="mClear_toggleVerbose">Ativar informações detalhadas para o processo de correspondência</string>
     <string name="txt_tutorial5">Isso é tudo. Aqui vão algumas dicas que podem ser úteis:
 \n
@@ -185,7 +185,7 @@
     <string name="mRemove_name">Removedor de parâmetros</string>
     <string name="mUnshort_unshort">Desencurtar</string>
     <string name="mUnshort_ok">Desencurtado</string>
-    <string name="mUnshort_pending">pendente: %d/%d</string>
+    <string name="mUnshort_pending">pendente: %1$d/%2$d</string>
     <string name="mParts_name">Partes da URI</string>
     <string name="mClear_updater">Atualizador</string>
     <string name="mClear_hashHint">Sem verificação de hash</string>
@@ -210,7 +210,7 @@
     <string name="mFlags_name">Editor de marcadores</string>
     <string name="mParts_empty">(vazio)</string>
     <string name="mParts_copy">Parte copiada para área de transferência</string>
-    <string name="mStatus_desc">Ao pressionar o botão de verificação, uma petição será feita para consultar e exibir o código de status do site. Se o resultado for um redirecionamento, você poderá visualizar a URL de destino. O conteúdo da URL é obtido (GET), mas não avaliado, portanto redirecionamentos baseados em JavaScript não serão detectados.</string>
+    <string name="mStatus_desc">Ao pressionar o botão de verificação, uma solicitação de rede será feita para consultar e exibir o código de status do site. Se o resultado for um redirecionamento, você poderá visualizar a URL de destino. O conteúdo da URL é obtido (GET), mas não avaliado, portanto redirecionamentos baseados em JavaScript não serão detectados.</string>
     <string name="mClear_editor">Regras do catálogo: Devem seguir o formato de https://docs.clearurls.xyz/latest/specs/rules/.
 \nObserve que qualquer modificação no objeto principal \'providers\' será substituída se o catálogo for atualizado, automaticamente ou manualmente. Portanto, crie suas regras pessoais eu um outro objeto (qualquer nome).</string>
     <string name="mHosts_info">Host:</string>
@@ -249,6 +249,13 @@
 \nEsta é uma versão avançada do módulo \'Queries Remover\'.</string>
     <string name="mStatus_ioerror">Erro de rede ao tentar verificar a URL: %s</string>
     <string name="mUnshort_tm">API gratuita de Unshorten.me</string>
-    <string name="mHosts_buildDownload">Baixando \'%s\' hosts de %s…</string>
+    <string name="mHosts_buildDownload">Baixando \'%1$s\' hosts de %2$s…</string>
     <string name="mStatus_error">Erro interno ao tentar verificar a URL: %s</string>
+    <string name="mClear_restore">Restaurar os caminhos do ClearURLs</string>
+    <string name="hidden">Oculto</string>
+    <string name="mOpen_noReferrer">Oculte o aplicativo de origem (referenciador)</string>
+    <string name="mPttrn_regexfix">Corrigir grupos regex opcionais (desative-os se o regex não estiver funcionando corretamente)</string>
+    <string name="mPttrn_wrongSchemaHttp">Esquema de capitalização http inválido.</string>
+    <string name="mPttrn_wrongSchemaHttps">Capitalização inválida do esquema https.</string>
+    <string name="dismiss">Descartar</string>
 </resources>

@@ -8,7 +8,7 @@
     <string name="alwaysOff">ସର୍ଵଦା ବନ୍ଦ</string>
     <string name="mStatus_recheck">ଯାଞ୍ଚ କର</string>
     <string name="a_settings">ସେଟିଂ</string>
-    <string name="a_about">ଵିଷୟରେ</string>
+    <string name="a_about">ସମ୍ବନ୍ଧରେ</string>
     <string name="txt_theme">ଥିମ୍:</string>
     <string name="spin_lightTheme">ହାଲୁକା</string>
     <string name="auto">ସ୍ୱଚାଳିତ</string>
@@ -22,4 +22,9 @@
     <string name="mClear_lastCheck">ଗତ ଯାଞ୍ଚ:</string>
     <string name="mClear_lastUpdate">ଗତ ଅଦ୍ୟତନ:</string>
     <string name="defaultOn">ଡିଫଲ୍ଟ ଭାଵରେ ସକ୍ଷମ</string>
+    <string name="link_changelog">ପରିବର୍ତ୍ତନ ପୋଥି</string>
+    <string name="txt_about">TrianguloY ଦ୍ୱାରା ନିର୍ମିତ ଆପ୍।
+\n
+\nଯୋଗଦାତା: %1$s।
+\nଅନୁବାଦ: %2$s।</string>
 </resources>

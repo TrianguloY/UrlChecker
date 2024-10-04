@@ -1,8 +1,10 @@
 package com.trianguloy.urlchecker.activities;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -65,7 +67,8 @@ public class ShortcutsActivity extends Activity {
      * The clipboard isn't available until the app is fully visible and with focus
      */
     private void waitForFocus(int retry) {
-        if (!hasWindowFocus() && retry < 50) getWindow().getDecorView().postDelayed(() -> waitForFocus(retry + 1), 100);
+        if (!hasWindowFocus() && retry < 50)
+            getWindow().getDecorView().postDelayed(() -> waitForFocus(retry + 1), 100);
         else run();
     }
 
@@ -77,8 +80,7 @@ public class ShortcutsActivity extends Activity {
         switch (links.size()) {
             case 0:
                 // no links, notify
-                // FIXME: Move string to resources
-                Toast.makeText(this, "No links detected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.noLinks, Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case 1:
@@ -128,17 +130,26 @@ public class ShortcutsActivity extends Activity {
         return AndroidUtils.getLinksFromText(primaryClip.getItemAt(0).coerceToText(this));
     }
 
-    /**
-     * The tile, just a shortcut to the activity above
-     */
+    /** The tile, just a shortcut to the activity above */
     @TargetApi(Build.VERSION_CODES.N)
     public static class ShortcutsTile extends TileService {
 
+        @SuppressLint("StartActivityAndCollapseDeprecated")
         @Override
         public void onClick() {
             super.onClick();
             // just call the activity to handle it
-            startActivityAndCollapse(new Intent(this, ShortcutsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            var intent = new Intent(this, ShortcutsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startActivityAndCollapse(PendingIntent.getActivity(
+                        this,
+                        0,
+                        intent,
+                        PendingIntent.FLAG_IMMUTABLE
+                ));
+            } else {
+                startActivityAndCollapse(intent);
+            }
         }
     }
 }

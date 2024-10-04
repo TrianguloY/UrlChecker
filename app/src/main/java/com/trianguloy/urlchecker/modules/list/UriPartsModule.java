@@ -18,13 +18,13 @@ import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils.Supplier;
+import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This module shows all parts of the url decoded
- */
+/** This module shows all parts of the url decoded */
 public class UriPartsModule extends AModuleData {
 
     @Override
@@ -76,9 +76,12 @@ class UriPartsDialog extends AModuleDialog {
         var uri = Uri.parse(urlData.url);
         var urlQuerySanitizer = new UrlQuerySanitizer();
         // the default parseUrl doesn't remove the fragment
-        if (uri.getQuery() != null) {
+        if (uri.getEncodedQuery() != null) {
             urlQuerySanitizer.setAllowUnregisteredParamaters(true);
-            urlQuerySanitizer.parseQuery(uri.getQuery());
+            urlQuerySanitizer.setUnregisteredParameterValueSanitizer(v -> v);
+            urlQuerySanitizer.parseQuery(uri.getEncodedQuery()
+                    // this will fix issues with the parser decoding twice
+                    .replace("%", "%25"));
         }
 
         // domain elements
@@ -92,33 +95,39 @@ class UriPartsDialog extends AModuleDialog {
 
         // paths
         var pathSegments = uri.getPathSegments();
-        if (pathSegments.size() > 0) {
+        if (!pathSegments.isEmpty()) {
             var paths = addGroup("Paths", pathSegments.size(), uri.buildUpon().path(null));
             for (var i = 0; i < pathSegments.size(); i++) {
-                var pathSegment = pathSegments.get(i);
-
-                var builder = uri.buildUpon();
-                builder.path(null);
-                for (int newI = 0; newI < pathSegments.size(); newI++) {
-                    if (newI != i) builder.appendPath(pathSegments.get(newI));
-                }
-                addPart("/", pathSegment, paths, builder);
+                int removeI = i;
+                // append the path
+                addPart("/", pathSegments.get(i), paths, () -> {
+                    // generate the same url without this path
+                    var builder = uri.buildUpon();
+                    builder.path(null);
+                    for (int newI = 0; newI < pathSegments.size(); newI++) {
+                        if (newI != removeI) builder.appendPath(pathSegments.get(newI));
+                    }
+                    return builder.build().toString();
+                });
             }
         }
 
         // query parameters
         var parameters = urlQuerySanitizer.getParameterList();
-        if (parameters.size() > 0) {
+        if (!parameters.isEmpty()) {
             var queries = addGroup("Parameters", parameters.size(), uri.buildUpon().query(null));
             for (var i = 0; i < parameters.size(); i++) {
-                // generate same url but without this parameter
-                var builder = uri.buildUpon();
-                builder.query(null);
-                for (var j = 0; j < parameters.size(); j++) {
-                    if (i != j) builder.appendQueryParameter(parameters.get(j).mParameter, parameters.get(j).mValue);
-                }
+                int removeI = i;
                 // append the parameter
-                addPart(parameters.get(i).mParameter, parameters.get(i).mValue, queries, builder);
+                addPart(UrlUtils.decode(parameters.get(i).mParameter), UrlUtils.decode(parameters.get(i).mValue), queries, () -> {
+                    // generate same url but without this parameter
+                    var builder = uri.buildUpon();
+                    builder.query(null);
+                    for (var newI = 0; newI < parameters.size(); newI++) {
+                        if (newI != removeI) builder.appendQueryParameter(UrlUtils.decode(parameters.get(newI).mParameter), UrlUtils.decode(parameters.get(newI).mValue));
+                    }
+                    return builder.build().toString();
+                });
             }
         }
 
@@ -131,9 +140,7 @@ class UriPartsDialog extends AModuleDialog {
         setVisibility(box.getChildCount() > 0);
     }
 
-    /**
-     * Adds a collapsible group
-     */
+    /** Adds a collapsible group */
     private LinearLayout addGroup(String name, int size, Uri.Builder onDelete) {
         var title = Inflater.inflate(R.layout.uri_part, box);
         title.findViewById(R.id.key).setVisibility(View.GONE);
@@ -153,19 +160,15 @@ class UriPartsDialog extends AModuleDialog {
                 v -> JavaUtils.toggleContains(expandedGroups, name),
                 v -> {
                     group.setVisibility(expandedGroups.contains(name) ? View.VISIBLE : View.GONE);
-                    AndroidUtils.setStartDrawables(name_view,
-                            expandedGroups.contains(name) ? R.drawable.arrow_down : R.drawable.arrow_right
-                    );
+                    name_view.setCompoundDrawablesRelativeWithIntrinsicBounds(expandedGroups.contains(name) ? R.drawable.arrow_down : R.drawable.arrow_right, 0, 0, 0);
                 }
         );
 
         return group;
     }
 
-    /**
-     * Adds a part
-     */
-    private void addPart(String name, String value, LinearLayout container, Uri.Builder onDelete) {
+    /** Adds a part */
+    private void addPart(String name, String value, LinearLayout container, Supplier<String> onDelete) {
         if (value == null) return;
         // create row
         var part = Inflater.inflate(R.layout.uri_part, container);
@@ -185,23 +188,36 @@ class UriPartsDialog extends AModuleDialog {
         // configure delete
         var delete_view = part.<Button>findViewById(R.id.delete);
         if (onDelete != null) {
-            try {
-                var newUrl = onDelete.build().toString();
-                delete_view.setOnClickListener(v -> setUrl(newUrl));
-            } catch (UnsupportedOperationException ignored) {
-                delete_view.setVisibility(View.GONE);
-            }
+            delete_view.setOnClickListener(v -> setUrl(onDelete.get()));
         } else {
             delete_view.setVisibility(View.GONE);
         }
     }
 
-    /**
-     * OnLongClickListener to copy a part (textview text) to the clipboard
-     */
+    /** OnLongClickListener to copy a part (textview text) to the clipboard */
     private final View.OnLongClickListener longTapToCopy = v -> {
         AndroidUtils.copyToClipboard(getActivity(), R.string.mParts_copy, ((TextView) v).getText().toString());
         return true;
     };
 
 }
+
+/*
+ * Manual tests:
+ * - Should show the expected output before and after removing the hide parameter.
+ * - Should keep the rest of the url intact when removing the hide parameter
+ *
+ *
+ * https://example.com?prefill_%25E6%259D%25A5%25E6%25BA%2590=%E5%B8%AE%E5%8A%A9%E4%B8%8E%E5%8F%8D%E9%A6%88&hide=true
+ * ->
+ * prefill_%E6%9D%A5%E6%BA%90 -> 帮助与反馈
+ *
+ *
+ * https://example.com/?q=%F0%9F%91%8D&hide=true
+ * ->
+ * q -> 👍
+ *
+ *
+ * https://example.com/?q=a%26b%3Dc&hide=true
+ * q -> a&b=c
+ */

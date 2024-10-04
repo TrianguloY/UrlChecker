@@ -1,3 +1,35 @@
+V 2.17
+- Improve: Input Text module display
+- Improve: Hosts module will check for subdomains too
+- Fix: Avoid crashes when decoding invalid text
+- Fix: Avoid crashes with malformed queries
+- Fix: Updated invalid lastUpdate of ClearUrl catalog
+- Fix: Module enable switches was sometimes reset when the app was sent to the background
+- Fix: Double decoding of url parts
+
+V 2.16
+- Improve: Detect multiple activities for the same app
+- Improve: Show first app icon
+- Improve: Display applied patterns in order
+- Debug: Include query results in the debug module
+
+V 2.15
+- New: Animations (can be disabled)
+- Fix: Better rejected detection. And allow to disable.
+- Fix: Custom tabs should work in more situations (links not opening)
+- Fix: Emojis and other non-standard characters on the Uri parts module
+- Improvement: Better error message when a module can't be enabled
+
+V 2.14
+- New: Backup/restore screen
+- Removed support for Android 4.3 and below
+- Updated internal versions
+
+V 2.13.1
+- New: Custom logic to hide rejected urls. Hide referrer is now disabled by default.
+- Fix: Third try to the 'open/share does nothing' bug.
+- Fix: Status module no longer decodes the location.
+
 V 2.13
 - New module: drawer. Hide modules under a toggleable.
 - New module: changelog. Will notify if the app updates.

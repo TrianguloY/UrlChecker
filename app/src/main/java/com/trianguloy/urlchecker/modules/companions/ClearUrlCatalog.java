@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.dialogs.JsonEditor;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.AssetFile;
@@ -59,7 +60,7 @@ public class ClearUrlCatalog {
         catalogURL = new GenericPref.Str("clearurl_catalogURL", "https://rules2.clearurls.xyz/data.minify.json", cntx);
         hashURL = new GenericPref.Str("clearurl_hashURL", "https://rules2.clearurls.xyz/rules.minify.hash", cntx);
         autoUpdate = new GenericPref.Bool("clearurl_autoUpdate", false, cntx);
-        lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", 1661990400000L, cntx); // time when the data.minify.json asset file was updated (floored to previous UTC day)
+        lastUpdate = new GenericPref.Lng("clearurl_lastUpdate", /*data.minify.json-timestamp*/1716151560000L/*data.minify.json-timestamp*/, cntx);
         lastCheck = new GenericPref.Lng("clearurl_lastCheck", -1L, cntx);
         lastAuto = new GenericPref.Bool("clearurl_lastAuto", false, cntx);
 
@@ -113,7 +114,7 @@ public class ClearUrlCatalog {
             return rules;
         } catch (JSONException e) {
             // invalid catalog, return empty
-            AndroidUtils.assertError(e.getMessage());
+            AndroidUtils.assertError(e.getMessage(), e);
             return Collections.emptyList();
         }
     }
@@ -284,7 +285,7 @@ public class ClearUrlCatalog {
         // read content
         String rawRules;
         try {
-            rawRules = StreamUtils.readFromUrl(catalogURL.get());
+            rawRules = HttpUtils.readFromUrl(catalogURL.get());
         } catch (IOException e) {
             e.printStackTrace();
             return R.string.mClear_urlError;
@@ -296,7 +297,7 @@ public class ClearUrlCatalog {
             // read hash
             String hash;
             try {
-                hash = StreamUtils.readFromUrl(hashURL.get()).trim();
+                hash = HttpUtils.readFromUrl(hashURL.get()).trim();
             } catch (IOException e) {
                 e.printStackTrace();
                 return R.string.mClear_hashError;

@@ -7,8 +7,8 @@ import android.util.Pair;
 
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
-import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.InternalFile;
 import com.trianguloy.urlchecker.utilities.wrappers.ProgressDialog;
 
@@ -18,16 +18,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Represents and manages the hosts data
- */
+/** Represents and manages the hosts data */
 public class Hosts {
 
     private final HostsCatalog data;
 
     private static final char SEPARATOR = '\t';
     private static final int FILES = 128;
-    private static final String PREFIX = "hosts_";
+    public static final String PREFIX = "hosts_";
 
     // A custom mapping from a given hash with queryable buckets
     private final HashMap<Integer, HashMap<String, Pair<String, String>>> buckets = new HashMap<>();
@@ -38,19 +36,18 @@ public class Hosts {
         data = new HostsCatalog(cntx);
     }
 
-    /**
-     * Builds the hosts database (asks first)
-     */
+    /** Builds the hosts database (asks first) */
     public void build(boolean showEditor, Runnable onFinished) {
         var builder = new AlertDialog.Builder(cntx)
                 .setTitle(R.string.mHosts_buildTitle)
                 .setMessage(R.string.mHosts_buildDesc)
                 .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    var progress = new ProgressDialog(cntx, cntx.getString(R.string.mHosts_buildProgress));
-                    progress.setMessage(cntx.getString(R.string.mHosts_buildInit));
-                    new Thread(() -> _build(progress, onFinished)).start();
-                });
+                .setPositiveButton(android.R.string.ok, (dialog, which) ->
+                        ProgressDialog.run(cntx, R.string.mHosts_buildProgress, progress -> {
+                            progress.setMessage(cntx.getString(R.string.mHosts_buildInit));
+                            _build(progress, onFinished);
+                        })
+                );
 
         if (showEditor) builder
                 .setNeutralButton(R.string.json_edit, (dialog, which) -> data.showEditor());
@@ -58,16 +55,12 @@ public class Hosts {
         builder.show();
     }
 
-    /**
-     * @see JsonCatalog#showEditor
-     */
+    /** @see JsonCatalog#showEditor */
     public void showEditor() {
         data.showEditor();
     }
 
-    /**
-     * Background thread that builds the database (and notifies progress)
-     */
+    /** Background thread that builds the database (and notifies progress) */
     private void _build(ProgressDialog progress, Runnable onFinished) {
         var catalog = data.getCatalog();
 
@@ -96,11 +89,14 @@ public class Hosts {
                     progress.setMessage(cntx.getString(R.string.mHosts_buildDownload, label, file));
 
                     Log.d("HOSTS", "Downloading " + file);
-                    StreamUtils.streamFromUrl(file, line -> {
-                        var parts = line.replaceAll("#.*", "").trim().split(" +");
-                        if (parts.length != 2) return;
-                        // valid, add
-                        add(parts[1], Pair.create(label, color), replace);
+                    HttpUtils.streamFromUrl(file, line -> {
+                        var parts = line.replaceAll("#.*", "").trim().split("\\s+");
+                        // everything except the first entry is a possible host
+                        for (int i = 1; i < parts.length; i++) {
+                            add(parts[i], Pair.create(label, color), replace);
+                        }
+                        // just the host, special syntax
+                        if (parts.length == 1) add(parts[0], Pair.create(label, color), replace);
                     });
                 }
                 if (entry.has("hosts")) {
@@ -147,17 +143,21 @@ public class Hosts {
         });
     }
 
-    /**
-     * return true if the database is built
-     */
+    /** return true if the database is built */
     public boolean isUninitialized() {
         return buckets.isEmpty() && getFileNames().isEmpty();
     }
 
-    /**
-     * Returns the label and color for the host, null if not in the database
-     */
+    /** Returns the label and color for the host, or bigger partial host (no subdomain). null if not in the database */
     public Pair<String, String> contains(String host) {
+        var contains = containsExact(host);
+        if (contains != null) return contains;
+        if (!host.contains(".")) return null; // no more subdomains to check
+        return contains(host.split("\\.", 2)[1]); // remove leftmost subdomain
+    }
+
+    /** Returns the label and color for the exact host, null if not in the database */
+    public Pair<String, String> containsExact(String host) {
         return getBucket(host, key -> {
             var values = new HashMap<String, Pair<String, String>>();
             new InternalFile(PREFIX + key, cntx).stream(line -> {
@@ -171,9 +171,7 @@ public class Hosts {
 
     /* ------------------- internal ------------------- */
 
-    /**
-     * returns all the files from this database
-     */
+    /** returns all the files from this database */
     private ArrayList<String> getFileNames() {
         var files = new ArrayList<String>();
         for (var fileName : cntx.fileList()) {
@@ -182,11 +180,9 @@ public class Hosts {
         return files;
     }
 
-    /**
-     * The number of hosts.
-     * I miss streams :(
-     */
+    /** The number of hosts. */
     public int size() {
+        // I miss streams :(
         var s = 0;
         for (var value : buckets.values()) {
             s += value.size();
@@ -203,9 +199,7 @@ public class Hosts {
         if (replace || !bucket.containsKey(host)) bucket.put(host, data);
     }
 
-    /**
-     * returns the bucket of a value, if not ready computes it
-     */
+    /** returns the bucket of a value, if not ready computes it */
     private HashMap<String, Pair<String, String>> getBucket(String value, JavaUtils.Function<Integer, HashMap<String, Pair<String, String>>> compute) {
         // HASHING
         var hash = Math.floorMod(value.hashCode(), FILES);

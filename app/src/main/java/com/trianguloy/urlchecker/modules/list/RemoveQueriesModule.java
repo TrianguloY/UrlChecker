@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.UrlUtils.decode;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,7 +18,6 @@ import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -141,10 +142,11 @@ class RemoveQueriesDialog extends AModuleDialog {
      * Sets the 'more' indicator.
      */
     private void updateMoreIndicator() {
-        AndroidUtils.setStartDrawables(info,
+        info.setCompoundDrawablesRelativeWithIntrinsicBounds(
                 box.getChildCount() == 0 ? 0
                         : box.getVisibility() == View.VISIBLE ? R.drawable.arrow_down
-                        : R.drawable.arrow_right);
+                        : R.drawable.arrow_right,
+                0, 0, 0);
     }
 
     /**
@@ -187,21 +189,16 @@ class RemoveQueriesDialog extends AModuleDialog {
          * Returns the name of a query (by index)
          */
         public String getQueryName(int index) {
-            return queries.get(index).split("=")[0];
+            return splitFix(queries.get(index),"=").get(0);
         }
 
         /**
          * Returns the decoded value of a query (by index)
          */
         public String getQueryValue(int index) {
-            String[] split = queries.get(index).split("=");
-            if (split.length == 1) return "";
-            try {
-                return URLDecoder.decode(split[1]);
-            } catch (Exception e) {
-                // can't decode, return it directly
-                return split[1];
-            }
+            var split = splitFix(queries.get(index),"=");
+            if (split.size() <= 1) return "";
+            return decode(split.get(1));
         }
 
         /**

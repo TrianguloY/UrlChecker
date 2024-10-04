@@ -18,15 +18,15 @@
     <!-- about -->
     <string name="txt_about">"App creata da TrianguloY.
 
-Contributi: %s.
-Traduzioni: %s."</string>
+Contributi: %1$s.
+Traduzioni: %2$s."</string>
     <string name="link_blog">Blog di TrianguloY</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Codice sorgente</string>
     <string name="link_privacy">Informativa sulla privacy</string>
     <!-- modules -->
     <string name="txt_conf">Qui puoi vedere tutti i moduli disponibili, la loro descrizione, ed impostazioni. Puoi anche re-ordinarli, ed abilitarli o disabilitarli.</string>
-    <string name="toast_cantEnable">"Impossibile abilitare il modulo, configurazione mancante?"</string>
+    <string name="toast_cantEnable">Impossibile abilitare il modulo: %s</string>
     <string name="menu_resetOrder">Ripristina ordine</string>
     <string name="menu_toggleDecorations">Inverti tutti</string>
     <string name="desc_up">Muovi su</string>
@@ -128,7 +128,7 @@ Il contenuto viene recuperato (GET) ma non controllato, quindi re-indirizzamenti
     <string name="mStatus_unknownCode">%d: Status code sconosciuto</string>
     <string name="mStatus_redir">Re-indirizzazione: %s</string>
     <string name="mInput_name">Modifica link</string>
-    <string name="mInput_desc">"Mostra l'url corrente, che può essere modificato manualmente."</string>
+    <string name="mInput_desc">Mostra l\'url corrente, che può essere modificato manualmente.</string>
     <string name="mVT_name">Url Scanner</string>
     <string name="mVT_desc">"Quando questo modulo è abilitato puoi scansionare l'url utilizzando VirusTotal e visualizzare il report.
 Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi crearne una qui dopo esserti registrato con un account gratuito: https://www.virustotal.com/gui/join-us ."</string>
@@ -137,9 +137,9 @@ Una chiave API personale di VirusTotal è richiesta per il funzionamento, puoi c
     <string name="mVT_scan">Scansiona</string>
     <string name="mVT_cancel">Cancella</string>
     <string name="mVT_scanning">Scansionando…</string>
-    <string name="mVT_goodUrl">Nessun %d engine ha rilevato qualcosa (ad oggi %s)</string>
-    <string name="mVT_warningUrl">Attenzione, questi engines: %d/%d hanno rilevato qualcosa (ad oggi %s)</string>
-    <string name="mVT_badUrl">Attenzione! %d/%d engines hanno rilevato qualcosa (ad oggi %s)</string>
+    <string name="mVT_goodUrl">Nessun %1$d engine ha rilevato qualcosa (ad oggi %2$s)</string>
+    <string name="mVT_warningUrl">Attenzione, questi engines: %1$d/%2$d hanno rilevato qualcosa (ad oggi %3$s)</string>
+    <string name="mVT_badUrl">Attenzione! %1$d/%2$d engines hanno rilevato qualcosa (ad oggi %3$s)</string>
     <string name="mVT_connectError">"Impossibile connettersi a VirusTotal. Controlla di avere una connessione funzionante e/o riprova più tardi."</string>
     <string name="mVT_jsonError">"Impossibile connettersi a VirusTotal. Controlla che la chiave API inserita sia valida e/o riprova più tardi."</string>
     <string name="mD_name">Modulo di debug</string>
@@ -205,7 +205,7 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mLog_empty">Nessun dato</string>
     <string name="mHosts_name">Categorie hosts</string>
     <string name="mHosts_desc">"Questo modulo etichetta gli hosts, e può essere configurato manualmente od utilizzando un file remoto hosts-like.
-    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
+\n    Puoi utilizzarlo per generare avvertimenti riguardo siti pericolosi o speciali. La configurazione di default utilizza la lista hosts di StevenBlack (adware/malware, fakenews, scommesse e contenuto per adulti) da https://github.com/StevenBlack/hosts"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">nessuna categoria</string>
@@ -215,17 +215,17 @@ Per disabilitare il logging, ti basta disabilitare il modulo."</string>
     <string name="mHosts_build">Crea</string>
     <string name="mHosts_uninitialized">Database degli hosts non inizializzato. Premi per crearlo.</string>
     <string name="mHosts_parseError">"Impossibile recuperare URL host"</string>
-    <string name="mHosts_editor">"Configurazione hosts. Formato: Lista di oggetti dove la chiave è l'etichetta dell'host ed il contenuto include i seguenti valori opzionali:
-- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
-- hosts: Lista di host grezza (stringhe) da aggiungere.
-- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall'alto al basso. Attivato di defualt.
-- enabled: se falso questo intero oggetto sarà saltato. Attivato di default."</string>
+    <string name="mHosts_editor">Configurazione hosts. Formato: Lista di oggetti dove la chiave è l\'etichetta dell\'host ed il contenuto include i seguenti valori opzionali:
+\n- file: un url di un file remoto hosts-file da scaricare. Tutti gli host validi verranno aggiunti.
+\n- hosts: Lista di host grezza (stringhe) da aggiungere.
+\n- replace: se falso gli host esistenti non verranno sostituiti. Tieni conto del fatto che gli oggetti sono considerati dall\'alto al basso. Attivato di defualt.
+\n- enabled: se falso questo intero oggetto sarà saltato. Attivato di default.</string>
     <string name="mHosts_buildTitle">Riempi database hosts</string>
     <string name="mHosts_buildDesc">"Questo pulirà il database degli hosts e lo riconfigurerà con la configurazione corrente, scaricando files hosts da internet se richiesto. Quest'azione potrebbe richiedere qualche secondo. Continuare?"</string>
     <string name="mHosts_buildProgress">Preparando lista</string>
     <string name="mHosts_buildInit">Inizializzazione</string>
     <string name="mHosts_buildClear">Pulizia…</string>
-    <string name="mHosts_buildDownload">"Scaricando '%s' hosts da %s…"</string>
+    <string name="mHosts_buildDownload">"Scaricando '%1$s' hosts da %2$s…"</string>
     <string name="mHosts_buildSave">Salvando…</string>
     <string name="mHosts_built">Database pronto: %d hosts</string>
     <string name="txt_tutorial1">Grazie per aver scaricato l\'applicazione!

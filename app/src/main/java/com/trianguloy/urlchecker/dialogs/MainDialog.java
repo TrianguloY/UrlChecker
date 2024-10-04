@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,9 @@ import com.trianguloy.urlchecker.modules.list.DrawerModule;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,8 +92,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onPrepareUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onPrepareUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onPrepareUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -121,8 +121,7 @@ public class MainDialog extends Activity {
                         continue main_loop;
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onModifyUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onModifyUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -133,8 +132,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onDisplayUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onDisplayUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onDisplayUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -145,8 +143,7 @@ public class MainDialog extends Activity {
                 try {
                     module.onFinishUrl(urlData);
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    AndroidUtils.assertError("Exception in onFinishUrl for module " + module.getClass().getName());
+                    AndroidUtils.assertError("Exception in onFinishUrl for module " + module.getClass().getName(), e);
                 }
             }
 
@@ -187,7 +184,7 @@ public class MainDialog extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, true);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_main);
         setFinishOnTouchOutside(true);
@@ -230,7 +227,7 @@ public class MainDialog extends Activity {
                             onNewUrl(new UrlData(links_array[which]));
                             dialog.dismiss();
                         })
-                        .setOnCancelListener(o -> this.finish())
+                        .setOnCancelListener(o -> finish())
                         .show();
         }
     }
@@ -257,6 +254,8 @@ public class MainDialog extends Activity {
         if (ll_main.getChildCount() == 0) {
             ll_main.addView(egg()); // ;)
         }
+
+        Animations.enableAnimationsRecursively(this);
     }
 
     /**
@@ -309,8 +308,7 @@ public class MainDialog extends Activity {
             module.onInitialize(child);
         } catch (Exception e) {
             // can't add module
-            e.printStackTrace();
-            AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId());
+            AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId(), e);
         }
     }
 
@@ -343,18 +341,6 @@ public class MainDialog extends Activity {
             var uri = intent.getData();
             if (uri == null) return Collections.emptySet();
             return Collections.singleton(uri.toString());
-        }
-    }
-
-    /**
-     * Remove from recent programmatically (https://stackoverflow.com/a/47688494)
-     */
-    @Override
-    public void finish() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            finishAndRemoveTask();
-        } else {
-            super.finish();
         }
     }
 

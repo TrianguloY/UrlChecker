@@ -5,16 +5,16 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.util.Pair;
 import android.util.Patterns;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -33,26 +35,6 @@ import java.util.Set;
 public interface AndroidUtils {
 
     /**
-     * Sets the start drawable of a textview
-     * Wrapped for android compatibility
-     */
-    static void setStartDrawables(TextView txt, int start) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            // we can use the function directly!
-            txt.setCompoundDrawablesRelativeWithIntrinsicBounds(start, 0, 0, 0);
-        } else {
-            // we need to manually adjust
-            if ((txt.getContext().getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_LAYOUTDIR_MASK) == Configuration.SCREENLAYOUT_LAYOUTDIR_RTL) {
-                // rtl
-                txt.setCompoundDrawablesWithIntrinsicBounds(0, 0, start, 0);
-            } else {
-                // ltr
-                txt.setCompoundDrawablesWithIntrinsicBounds(start, 0, 0, 0);
-            }
-        }
-    }
-
-    /**
      * For some reason some drawable buttons are displayed the same when enabled and disabled.
      * This method also sets an alpha as a workaround
      */
@@ -61,14 +43,17 @@ public interface AndroidUtils {
         view.setAlpha(enabled ? 1f : 0.35f);
     }
 
-    /**
-     * In debug mode, throws an AssertionError, in production just logs it and continues.
-     */
+    /** In debug mode, throws an AssertionError, in production just logs it and continues. */
     static void assertError(String detailMessage) {
-        Log.d("ASSERT_ERROR", detailMessage);
+        assertError(detailMessage, null);
+    }
+
+    /** In debug mode, throws an AssertionError, in production just logs it and continues. */
+    static void assertError(String detailMessage, Throwable cause) {
+        Log.d("ASSERT_ERROR", detailMessage, cause);
         if (BuildConfig.DEBUG) {
             // in debug mode, throw exception
-            throw new AssertionError(detailMessage);
+            throw new AssertionError(detailMessage, cause);
         }
         // non-debug, just discard
     }
@@ -118,11 +103,10 @@ public interface AndroidUtils {
     static String formatMillis(long millis, Context cntx) {
         if (millis < 0) return "---";
 
-        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT,
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                        ? cntx.getResources().getConfiguration().getLocales().get(0)
-                        : cntx.getResources().getConfiguration().locale
-        ).format(new Date(millis));
+        var locale = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+                ? cntx.getResources().getConfiguration().getLocales().get(0)
+                : cntx.getResources().getConfiguration().locale;
+        return DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, locale).format(new Date(millis));
     }
 
     /**
@@ -145,7 +129,7 @@ public interface AndroidUtils {
         clipboard.setPrimaryClip(ClipData.newPlainText("", text));
 
         // show toast to notify it was copied (except on Android 13+, where the device shows a popup itself)
-        if (Build.VERSION.SDK_INT < /*Build.VERSION_CODES.TIRAMISU*/33)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU)
             Toast.makeText(activity, toast, Toast.LENGTH_LONG).show();
     }
 
@@ -194,9 +178,11 @@ public interface AndroidUtils {
     static void longTapForDescription(View view) {
         view.setOnLongClickListener(v -> {
             var contentDescription = v.getContentDescription();
-            if (contentDescription == null)
+            if (contentDescription == null) {
                 AndroidUtils.assertError("No content description for view " + view);
-            Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(v.getContext(), contentDescription, Toast.LENGTH_SHORT).show();
+            }
             return true;
         });
     }
@@ -210,19 +196,15 @@ public interface AndroidUtils {
     }
 
     /**
-     * Returns a drawable with a different color
+     * Fixes the color of a MenuItem icon (colorFilter=textColorPrimary)
      */
-    static Drawable getColoredDrawable(int drawableId, int colorAttr, Context cntx) {
-        // get drawable
-        var drawable = cntx.getResources().getDrawable(drawableId).mutate();
-
+    static void fixMenuIconColor(MenuItem menuItem, Context cntx) {
         // get color
         var resolvedAttr = new TypedValue();
-        cntx.getTheme().resolveAttribute(colorAttr, resolvedAttr, true);
+        cntx.getTheme().resolveAttribute(android.R.attr.textColorPrimary, resolvedAttr, true);
 
         // tint
-        drawable.setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
-        return drawable;
+        menuItem.getIcon().setColorFilter(cntx.getResources().getColor(resolvedAttr.resourceId), PorterDuff.Mode.SRC_IN);
     }
 
     /**
@@ -233,5 +215,24 @@ public interface AndroidUtils {
         var matcher = Patterns.WEB_URL.matcher(text);
         while (matcher.find()) links.add(matcher.group());
         return links;
+    }
+
+    /** Copies a Uri to a file. */
+    static void copyUri2File(Uri uri, File file, Context cntx) throws IOException {
+        try (var in = cntx.getContentResolver().openInputStream(uri)) {
+            StreamUtils.inputStream2File(in, file);
+        }
+    }
+
+    /** OnClickListener that reports the click position */
+    static void setOnClickWithPositionListener(View view, JavaUtils.Consumer<Pair<Float, Float>> listener) {
+        var xy = new float[2];
+        view.setOnTouchListener((v, event) -> {
+            // store any interaction and continue
+            xy[0] = event.getX();
+            xy[1] = event.getY();
+            return false;
+        });
+        view.setOnClickListener(v -> listener.accept(Pair.create(xy[0], xy[1])));
     }
 }

@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">"Aplicación creada por TrianguloY.
 
-Contribuciones: %s.
-Traducciones: %s."</string>
+Contribuciones: %1$s.
+Traducciones: %2$s."</string>
     <string name="link_blog">Blog de TrianguloY</string>
     <string name="link_changelog">Cambios</string>
     <string name="link_source">Código fuente</string>
@@ -32,7 +32,7 @@ Traducciones: %s."</string>
         modules
     -->
     <string name="txt_conf">Aquí se encuentran todos los módulos disponibles, con su descripción y configuración. También los puedes reordenar, mostrar/ocultar los títulos y activarlos o desactivarlos.</string>
-    <string name="toast_cantEnable">No se puede habilitar el módulo. ¿Está configurado?</string>
+    <string name="toast_cantEnable">No se puede habilitar el módulo: %s</string>
     <string name="menu_resetOrder">Reiniciar orden</string>
     <string name="menu_toggleDecorations">Alternar los títulos</string>
     <string name="desc_up">Subir</string>
@@ -52,6 +52,7 @@ Traducciones: %s."</string>
     <string name="spin_darkTheme">Oscuro</string>
     <string name="spin_lightTheme">Claro</string>
     <string name="txt_locale">Idioma:</string>
+    <string name="txt_animation">Activar animaciones</string>
     <!--
         generic
     -->
@@ -85,17 +86,21 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="save">Guardar</string>
     <string name="reset">Reiniciar</string>
     <string name="close">Cerrar</string>
-    <string name="clear">Borrar</string>
+    <string name="clear">Limpiar</string>
     <string name="none">Nada</string>
     <string name="auto">Automático</string>
     <string name="share">Compartir</string>
     <string name="canceled">Cancelado</string>
     <string name="deviceDefault">Por defecto del dispositivo</string>
+    <string name="noLinks">No se han detectado enlaces</string>
+    <string name="small">Pequeño</string>
+    <string name="normal">Normal</string>
+    <string name="big">Grande</string>
     <!--
         json
     -->
-    <string name="json_desc">[Funcionalidad beta] Este es un editor avanzado, el contenido debe ser JSON válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
-    <string name="json_edit">Editor avanzado</string>
+    <string name="json_desc">Editor Json: el contenido debe ser Json válido. Puedes pulsar el botón de arriba a la derecha para formatearlo y validarlo.</string>
+    <string name="json_edit">Editor Json</string>
     <!--
         shortcuts
     -->
@@ -143,6 +148,8 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mOpen_closeShare">Cierra la ventana después de compartir</string>
     <string name="mOpen_perDomain">Ordenar diferentes dominios de forma independiente</string>
     <string name="mOpen_noReferrer">Ocultar la aplicación de origen (referrer)</string>
+    <string name="mOpen_rejected">Ocultar la aplicación si se rechaza la URL (una aplicación solicita inmediatamente abrir la misma URL con la que se abrió). No afecta a la compartición.</string>
+    <string name="mOpen_iconSize">Tamaño del icono</string>
     <string name="mOpen_with">Abrir con %s</string>
     <string name="mOpen_open">Abrir</string>
     <string name="mOpen_share">Compartir</string>
@@ -180,18 +187,20 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mStatus_autoCheck">Verifica automáticamente las URL que coincidan con el siguiente patrón de expresiones regulares. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar tu IP.</string>
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
-    <string name="mInput_desc">Muestra la URL actual, que puede ser modificada manualmente.</string>
+    <string name="mInput_desc">Muestra la URL actual. Pulsa para editarla.</string>
+    <string name="mInput_alwaysEdit">Mantener activo el modo edición</string>
     <!-- -->
     <string name="mVT_name">Escáneador de la URL</string>
     <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">Clave de la API</string>
+    <string name="mVT_noKey">Falta la clave de la API</string>
     <string name="mVT_tm">VirusTotal™ es una marca registrada de Google, Inc.</string>
     <string name="mVT_scan">Escanear</string>
     <string name="mVT_cancel">Cancelar</string>
     <string name="mVT_scanning">Escaneando…</string>
-    <string name="mVT_goodUrl">Ninguno de los antivirus %d detectó la URL (a fecha %s)</string>
-    <string name="mVT_warningUrl">Advertencia, %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
-    <string name="mVT_badUrl">¡Cuidado! %d/%d antivirus detectaron la URL (a partir de la fecha %s)</string>
+    <string name="mVT_goodUrl">Ninguno de los antivirus %1$d detectó la URL (a fecha %2$s)</string>
+    <string name="mVT_warningUrl">Advertencia, %1$d/%2$d antivirus detectaron la URL (a partir de la fecha %3$s)</string>
+    <string name="mVT_badUrl">¡Cuidado! %1$d/%2$d antivirus detectaron la URL (a partir de la fecha %3$s)</string>
     <string name="mVT_connectError">No se puede conectar a VirusTotal. Asegúrese de que está conectado a Internet o inténtelo más tarde.</string>
     <string name="mVT_jsonError">No se ha podido conectar con VirusTotal. Comprueba que la clave api es correcta o prueba mas tarde.</string>
     <!-- -->
@@ -202,6 +211,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n
 \nPuede mantener pulsado para seleccionar el texto.</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
+    <string name="mD_show">Mostrar datos de debug</string>
     <!-- -->
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la URL cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
@@ -262,7 +272,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mLog_empty">Sin datos</string>
     <!-- -->
     <string name="mHosts_name">Etiquetador de hosts</string>
-    <string name="mHosts_desc">Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_desc">"Este módulo etiqueta hosts, configurado al especificarlos directamente o al usar un fichero remoto tipo hosts. Puedes usarlo para avisar sobre sitios peligrosos o especiales. La configuración incluida corresponde a los hosts de StevenBlack (software dañino, noticias falsas, juego/apuestas y contenido de adulto) de https://github.com/StevenBlack/hosts. Nota: subdominios también se comprobarán, con lo que 'x.y.z' e 'y.z' serán detectados para la entrada 'y.z'"</string>
     <string name="mHosts_malware">software dañino</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">sin etiqueta</string>
@@ -273,7 +283,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mHosts_uninitialized">Catálogo de hosts sin inicializar. Pulsa para generarlo</string>
     <string name="mHosts_parseError">No se puede analizar la URL del host</string>
     <string name="mHosts_editor">Configuración de hosts. Formato: Lista de objectos en los que la clave es la etiqueta de los hosts y el contenido incluye los siguientes campos opcionales:
-\n- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos.
+\n- file: Enlace a un fichero remoto tipo hosts para descargar. Todos los hosts válidos que incluya serán añadidos. Las líneas deben seguir el formato host: \'ip host [alias…]\', aunque aquellas con solo \'host\' también son validas.
 \n- hosts: Lista de hosts (strings) para añadir.
 \n- color: El color de la etiqueta. Un string de color de Android (#AARRGGBB, #RRGGBB o un color válido). Rojo \'peligro\' por defecto.
 \n- replace: si es \'false\' hosts existentes no serán reemplazados. Notar que los objetos se evalúan de arriba a abajo. \'true\' por defecto.
@@ -283,7 +293,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mHosts_buildProgress">Generando base de datos</string>
     <string name="mHosts_buildInit">Inicializando</string>
     <string name="mHosts_buildClear">Borrando…</string>
-    <string name="mHosts_buildDownload">"Descargando '%s' hosts de %s…"</string>
+    <string name="mHosts_buildDownload">"Descargando '%1$s' hosts de %2$s…"</string>
     <string name="mHosts_buildSave">Guardando…</string>
     <string name="mHosts_built">Base de datos construida: %d hosts</string>
     <string name="btn_tutorialSettings">Repetir tutorial</string>
@@ -299,7 +309,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
     <string name="mUnshort_notFound">No se ha encontrado redirección</string>
-    <string name="mUnshort_pending">quedan: %d/%d</string>
+    <string name="mUnshort_pending">quedan: %1$d/%2$d</string>
     <string name="mUnshort_ok">Desacortado</string>
     <!-- -->
     <string name="mFlags_name">Editor de flags</string>
@@ -336,4 +346,32 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mChg_updated">La aplicación se ha actualizado.</string>
     <string name="mChg_current">Versión actual: %s</string>
     <string name="mChg_view">Ver los cambios</string>
+    <string name="btn_backupRestore">Copia de seguridad y restauración</string>
+    <string name="bck_mn_advanced">Mostrar opciones avanzadas</string>
+    <string name="btn_backup">Hacer copia</string>
+    <string name="btn_replace">Reemplazar</string>
+    <string name="btn_restore">Restaurar</string>
+    <string name="btn_delete">Borrar</string>
+    <string name="bkp_description">Elige los elementos para hacer copia/restaurar.\nAl restaurar, si la copia se creó sin ellos, los existentes se mantendrán.</string>
+    <string name="bkp_data">Ajustes: Ajustes generales de la aplicación. Por ejemplo módulos habilitados, configuración json, etc. No incluye secretos ni caché.</string>
+    <string name="bkp_data_prefs">Preferencias: Ajustes guardados como preferencias (preferences).</string>
+    <string name="bkp_data_files">Archivos: Ajustes guardados como ficheros.</string>
+    <string name="bkp_secrets">Secretos: Ajustes considerados \'secretos\', como la clave de VirusTotal o el registro (log).</string>
+    <string name="bjp_cache">Caché: Datos que pueden ser fácilmente descargados/generados, como la base de datos del etiquetador de hosts. Activar esta opción puede aumentar el tamaño de la copia notablemente.</string>
+    <string name="bck_restoreDelete">Borrar elementos antes de restaurar. Ten en cuenta que las preferencias y algunos ficheros con valores por defecto pueden no existir, con lo que deshabilitando esta opción combinarán los elementos existentes con los de la copia de formas inesperadas. Deshabilitalo sólo si sabes lo que estás haciendo.</string>
+    <string name="bck_ignoreNewer">Permitir copias creadas en versiones más recientes de la aplicación.</string>
+    <string name="bck_newer">Cancelado. La copia fue creada con una versión más reciente de la aplicación.</string>
+    <string name="bck_chooseFile">Elige fichero de la copia</string>
+    <string name="bck_backupOk">Copia de seguridad creada</string>
+    <string name="bck_backupError">No se ha podido crear la copia, prueba a elegir otra ubicación para el fichero.</string>
+    <string name="bck_restoreTitle">Restaurar copia de seguridad</string>
+    <string name="bck_restoreMessage">¡CUIDADO! Esto va a reemplazar los elementos seleccionados con los de la copia de seguridad.\n¿Realmente deseas continuar?</string>
+    <string name="bck_restoreConfirm">Reemplazar elementos</string>
+    <string name="bck_restoreOk">Copia restaurada</string>
+    <string name="bck_restoreError">No se ha podido restaurar la copia. ¿Es un fichero válido?</string>
+    <string name="bck_deleteTitle">Borrar elementos</string>
+    <string name="bck_deleteMessage">¡CUIDADO! Esto borrará todos los elementos seleccionados.\n¿Realmente deseas continuar?</string>
+    <string name="bck_deleteConfirm">Borrar elementos</string>
+    <string name="bck_deleteOk">Elementos borrados</string>
+    <string name="bck_deleteError">No se han podido borrar los elementos</string>
 </resources>

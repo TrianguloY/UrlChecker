@@ -34,29 +34,22 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set gradlew as executable
-        # for some reason the gradle-build-action doesn't do this automatically
-        run: chmod +x ./gradlew
+      - name: Setup gradle
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Build & assemble with gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: >
-            build
-            assemble${{ env.VARIANT }}
+      - name: Build & assemble
+        run: ./gradlew build assemble${{ env.VARIANT }}
 
       - name: Zip ${{ env.VARIANT }} apk as ${{ env.ZIP }}
         # just remove the password here if you want to build the apk yourself instead of sponsoring me and getting it as a benefit :(
         run: zip -j -P ${{ secrets.ALPHA_PASS }} ${{ env.ZIP }} app/build/outputs/apk/${{ env.VARIANT }}/app-${{ env.VARIANT }}.apk
 
       - name: Update ${{ env.TAG }} tag to current commit
-        # equivalent to EndBug/latest-tag@latest but simpler
         run: |
           git tag --force ${{ env.TAG }}
           git push --force origin tag ${{ env.TAG }}
 
       - name: Upload ${{ env.ZIP }} to ${{ env.TAG }} release
-        # equivalent to softprops/action-gh-release@v1 but using official cli
         run: |
           gh release upload ${{ env.TAG }} ${{ env.ZIP }} --clobber
         env:

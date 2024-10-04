@@ -22,8 +22,8 @@
     -->
     <string name="txt_about">"App created by TrianguloY.
 
-Contributions: %s.
-Translations: %s."</string>
+Contributions: %1$s.
+Translations: %2$s."</string>
     <string name="link_blog">"TrianguloY's blog"</string>
     <string name="link_changelog">Changelog</string>
     <string name="link_source">Source code</string>
@@ -32,7 +32,7 @@ Translations: %s."</string>
         modules
     -->
     <string name="txt_conf">Here are all the available modules, where you can check their description and settings. You can also reorder, toggle the title visibility and enable/disable them.</string>
-    <string name="toast_cantEnable">"Can't enable the module, missing configuration?"</string>
+    <string name="toast_cantEnable">"Can't enable the module: %s"</string>
     <string name="menu_resetOrder">Reset order</string>
     <string name="menu_toggleDecorations">Toggle all titles</string>
     <string name="desc_up">Move up</string>
@@ -52,7 +52,42 @@ Translations: %s."</string>
     <string name="spin_darkTheme">Dark</string>
     <string name="spin_lightTheme">Light</string>
     <string name="txt_locale">Locale:</string>
+    <string name="txt_animation">Enable animations</string>
     <string name="btn_tutorialSettings">Repeat tutorial</string>
+    <string name="btn_backupRestore">Backup / Restore</string>
+    <!--
+        Backup / Restore
+    -->
+    <string name="bck_mn_advanced">Show advanced options</string>
+    <string name="btn_backup">Backup</string>
+    <string name="btn_replace">Replace</string>
+    <string name="btn_restore">Restore</string>
+    <string name="btn_delete">Delete</string>
+    <string name="bkp_description">"Choose which elements to backup/restore.
+When restoring, if the backup was created without it, existing ones will be kept."</string>
+    <string name="bkp_data">Data: Standard application data. Things like enabled modules, json configurations, etc. Will not include secrets nor cache.</string>
+    <string name="bkp_data_prefs">Preferences: Data saved as preferences.</string>
+    <string name="bkp_data_files">Files: Data saved as files.</string>
+    <string name="bkp_secrets">"Secrets: Data considered 'secret', like the VirusTotal api key or the log."</string>
+    <string name="bjp_cache">Cache: Data that can be easily downloaded/generated, like the hosts database. Enabling this option may increase the backup size notably.</string>
+    <string name="bck_restoreDelete">Delete elements before restoring. Note that preferences and some files with default values may not exist, so disabling this option will merge the existing elements with the backup ones in unexpected ways. Disable if you know what you are doing.</string>
+    <string name="bck_ignoreNewer">Allow backups created from newer app versions.</string>
+    <string name="bck_newer">Canceled. The backup was created with a newer app version.</string>
+    <string name="bck_chooseFile">Choose backup file</string>
+    <string name="bck_backupOk">Backup created</string>
+    <string name="bck_backupError">"Unable to create backup, try to choose a different location for the file."</string>
+    <string name="bck_restoreTitle">Restore backup</string>
+    <string name="bck_restoreMessage">"WARNING! This will replace the selected elements from the backup.
+Do you really want to continue?"</string>
+    <string name="bck_restoreConfirm">Replace elements</string>
+    <string name="bck_restoreOk">Backup restored</string>
+    <string name="bck_restoreError">Unable to restore the backup. Is it a valid file?</string>
+    <string name="bck_deleteTitle">Delete elements</string>
+    <string name="bck_deleteMessage">"WARNING! This will delete all the selected elements.
+Do you really want to continue?"</string>
+    <string name="bck_deleteConfirm">Delete elements</string>
+    <string name="bck_deleteOk">Elements deleted</string>
+    <string name="bck_deleteError">Unable to delete elements</string>
     <!--
         tutorial
     -->
@@ -103,11 +138,15 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="dismiss">Dismiss</string>
+    <string name="noLinks">No links detected</string>
+    <string name="small">Small</string>
+    <string name="normal">Normal</string>
+    <string name="big">Big</string>
     <!--
         json
     -->
-    <string name="json_desc">[Beta feature] This is an advanced editor, the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
-    <string name="json_edit">Advanced editor</string>
+    <string name="json_desc">Json editor: the content must be formatted into valid JSON. You can press the top-right button to format and validate it.</string>
+    <string name="json_edit">Json editor</string>
     <!--
         shortcuts
     -->
@@ -157,7 +196,9 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mOpen_closeCopy">Close dialog after copying</string>
     <string name="mOpen_perDomain">Sort different domains independently</string>
     <string name="mOpen_noReferrer">Hide the source app (referrer)</string>
+    <string name="mOpen_rejected">Hide app if URL was rejected (an app immediately requests to open the same URL it was opened with). Doesn\'t affect sharing.</string>
     <string name="mOpen_mergeCopy">Merge Copy and Share buttons (long press to copy)</string>
+    <string name="mOpen_iconSize">Icon size</string>
     <string name="mOpen_with">Open with %s</string>
     <string name="mOpen_open">Open</string>
     <string name="mOpen_share">Share</string>
@@ -197,17 +238,20 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <string name="mStatus_autoCheck">Automatically check URLs that match the following regex pattern. Warning! It is advised to specify a restrictive pattern (and not .* for all) otherwise malicious servers may log your IP.</string>
     <!-- -->
     <string name="mInput_name">Input text</string>
-    <string name="mInput_desc">Displays the current URL, which can be edited manually.</string>
+    <string name="mInput_desc">Displays the current URL. Press it to enter edit mode.</string>
+    <string name="mInput_alwaysEdit">Keep always in edit mode</string>
+    <!-- -->
     <string name="mVT_name">URL Scanner</string>
     <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us .</string>
     <string name="mVT_apiKey">API key</string>
+    <string name="mVT_noKey">Missing API key</string>
     <string name="mVT_tm">VirusTotal™ is a trademark of Google, Inc.</string>
     <string name="mVT_scan">Scan</string>
     <string name="mVT_cancel">Cancel</string>
     <string name="mVT_scanning">Scanning…</string>
-    <string name="mVT_goodUrl">None of the %d engines detected the URL (as of date %s)</string>
-    <string name="mVT_warningUrl">Warning, %d/%d engines detected the URL (as of date %s)</string>
-    <string name="mVT_badUrl">Careful! %d/%d engines detected the URL (as of date %s)</string>
+    <string name="mVT_goodUrl">None of the %1$d engines detected the URL (as of date %2$s)</string>
+    <string name="mVT_warningUrl">Warning, %1$d/%2$d engines detected the URL (as of date %3$s)</string>
+    <string name="mVT_badUrl">Careful! %1$d/%2$d engines detected the URL (as of date %3$s)</string>
     <string name="mVT_connectError">Can not connect to VirusTotal. Ensure you are connected to the Internet, or try again later.</string>
     <string name="mVT_jsonError">Can not connect to VirusTotal. Ensure the API key is valid, or try again later.</string>
     <!-- -->
@@ -218,6 +262,7 @@ If you enable this it will display some internal debug data (like original inten
 
 You can hold to select text."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
+    <string name="mD_show">Show debug data</string>
     <!-- -->
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the URL is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
@@ -280,7 +325,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mLog_unlimited">Unlimited</string>
     <!-- -->
     <string name="mHosts_name">Hosts labeler</string>
-    <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts"</string>
+    <string name="mHosts_desc">"This module labels hosts, configured either by specifying them manually or by using a remote hosts-like file. You can use it to warn about dangerous or special sites. The builtin configuration specifies StevenBlack's hosts (adware/malware, fakenews, gambling and adult content) from https://github.com/StevenBlack/hosts. Note: subdomains will also be checked, so 'x.y.z' and 'y.z' will be detected for the entry 'y.z'"</string>
     <string name="mHosts_malware">adware/malware</string>
     <string name="mHosts_info">Host:</string>
     <string name="mHosts_noLabel">no label</string>
@@ -291,7 +336,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mHosts_uninitialized">Hosts database uninitialized. Press to build</string>
     <string name="mHosts_parseError">Can not parse URL host</string>
     <string name="mHosts_editor">"Hosts configuration. Format: List of objects where the key is the hosts label and the content includes the following optional values:
-- file: An url of a remote hosts-file to download. All valid hosts present will be added.
+- file: An url of a remote hosts-file to download. All valid hosts present will be added. The lines should follow the hosts syntax: 'ip host [alias…]', but those with only 'host' are valid too.
 - hosts: List of raw hosts (strings) to add.
 - color: The label's color. An Android color string (#AARRGGBB, #RRGGBB or a valid color name). Defaults to a 'danger' red.
 - replace: if false existing hosts won't be replaced. Note that objects are evaluated from top to bottom. True by default.
@@ -301,7 +346,7 @@ This module has been deprecated in favor of the 'Uri parts' module"</string>
     <string name="mHosts_buildProgress">Building catalog</string>
     <string name="mHosts_buildInit">Initializing</string>
     <string name="mHosts_buildClear">Clearing…</string>
-    <string name="mHosts_buildDownload">"Downloading '%s' hosts from %s…"</string>
+    <string name="mHosts_buildDownload">"Downloading '%1$s' hosts from %2$s…"</string>
     <string name="mHosts_buildSave">Saving…</string>
     <string name="mHosts_built">Database built: %d hosts</string>
     <!-- -->
@@ -314,7 +359,7 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
     <string name="mUnshort_notFound">No redirection found</string>
-    <string name="mUnshort_pending">pending: %d/%d</string>
+    <string name="mUnshort_pending">pending: %1$d/%2$d</string>
     <string name="mUnshort_ok">Unshortened</string>
     <!-- -->
     <string name="mFlags_name">Flags editor</string>

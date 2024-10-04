@@ -2,8 +2,11 @@ package com.trianguloy.urlchecker.modules.list;
 
 import static java.util.Objects.requireNonNullElse;
 
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -15,13 +18,14 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.services.CustomTabs;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.IntentApp;
 
 import java.util.List;
 
 /**
  * This modules marks the insertion point of new modules
  * If enabled, shows a textview with debug info.
- * Currently shows the original intent (as uri)
  * Allows also to enable/disable ctabs toasts
  */
 public class DebugModule extends AModuleData {
@@ -56,11 +60,9 @@ public class DebugModule extends AModuleData {
 class DebugDialog extends AModuleDialog {
 
     public static final String SEPARATOR = "";
-    private TextView textView;
-
-    // cached
-    private String intentUri;
-    private String referrer;
+    private Button showData;
+    private TextView data;
+    private UrlData urlData;
 
     public DebugDialog(MainDialog dialog) {
         super(dialog);
@@ -73,29 +75,34 @@ class DebugDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        textView = views.findViewById(R.id.data);
+        showData = views.findViewById(R.id.showData);
+        data = views.findViewById(R.id.data);
 
-        // expand when touched (not only clicked, to avoid a double-click-required bug and because it feels better)
-        textView.setOnTouchListener((v, event) -> {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN || textView.getMaxHeight() != Integer.MAX_VALUE) textView.setMaxHeight(Integer.MAX_VALUE);
-            return false;
-        });
-
-        // cached values
-        intentUri = getActivity().getIntent().toUri(0);
-        referrer = requireNonNullElse(AndroidUtils.getReferrer(getActivity()), "null");
+        showData.setOnClickListener(v -> showData());
     }
 
-    @Override
-    public void onDisplayUrl(UrlData urlData) {
-        // collapse module to show exactly 5 lines and a half (to indicate there is more data)
-        var fontMetrics = textView.getPaint().getFontMetrics();
-        textView.setMaxHeight(Math.round((fontMetrics.bottom - fontMetrics.top) * 5.5f));
-
+    private void showData() {
+        showData.setVisibility(View.GONE);
+        data.setVisibility(View.VISIBLE);
         // data to display
-        textView.setText(String.join("\n", List.of(
+        data.setText(String.join("\n", List.of(
                 "Intent:",
-                intentUri,
+                getActivity().getIntent().toUri(0),
+
+                SEPARATOR,
+
+                "queryIntentActivities:",
+                IntentApp.getOtherPackages(UrlUtils.getViewIntent(urlData.url, null), getActivity()).toString(),
+
+                SEPARATOR,
+
+                "queryIntentActivityOptions:",
+                getActivity().getPackageManager().queryIntentActivityOptions(
+                        new ComponentName(getActivity(), MainDialog.class.getName()),
+                        null,
+                        UrlUtils.getViewIntent(urlData.url, null),
+                        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0
+                ).toString(),
 
                 SEPARATOR,
 
@@ -110,8 +117,19 @@ class DebugDialog extends AModuleDialog {
                 SEPARATOR,
 
                 "Referrer:",
-                referrer
+                requireNonNullElse(AndroidUtils.getReferrer(getActivity()), "null")
         )));
+    }
+
+    @Override
+    public void onPrepareUrl(UrlData urlData) {
+        data.setVisibility(View.GONE);
+        showData.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onDisplayUrl(UrlData urlData) {
+        this.urlData = urlData;
     }
 }
 

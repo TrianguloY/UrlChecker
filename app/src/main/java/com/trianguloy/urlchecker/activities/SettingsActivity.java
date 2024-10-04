@@ -10,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.trianguloy.urlchecker.R;
-import com.trianguloy.urlchecker.fragments.ActivityResultInjector;
+//import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
 import com.trianguloy.urlchecker.fragments.BrowserButtonsFragment;
+import com.trianguloy.urlchecker.fragments.ResultCodeInjector;
 import com.trianguloy.urlchecker.utilities.AndroidSettings;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.LocaleUtils;
+import com.trianguloy.urlchecker.utilities.methods.Animations;
 import com.trianguloy.urlchecker.utilities.methods.PackageUtils;
 
 import java.util.Objects;
@@ -27,7 +30,7 @@ public class SettingsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidSettings.setTheme(this, false);
-        AndroidSettings.setLocale(this);
+        LocaleUtils.setLocale(this);
         setContentView(R.layout.activity_settings);
         setTitle(R.string.a_settings);
         AndroidUtils.configureUp(this);
@@ -35,8 +38,11 @@ public class SettingsActivity extends Activity {
         configureBrowserButtons();
         configureDayNight();
         configureLocale();
-    }
+        Animations.ANIMATIONS(this).attachToSwitch(findViewById(R.id.animations));
 
+        // if this was reloaded, some settings may have change, so reload previous one too
+        if (AndroidSettings.wasReloaded(this)) AndroidSettings.markForReloading(this);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -50,8 +56,8 @@ public class SettingsActivity extends Activity {
 
     /* ------------------- configure browser ------------------- */
 
-    private final ActivityResultInjector activityResultInjector = new ActivityResultInjector();
-    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, activityResultInjector);
+    private final ResultCodeInjector resultCodeInjector = new ResultCodeInjector();
+    private final BrowserButtonsFragment browserButtons = new BrowserButtonsFragment(this, resultCodeInjector);
 
     private void configureBrowserButtons() {
         browserButtons.onInitialize(findViewById(browserButtons.getLayoutId()));
@@ -59,7 +65,7 @@ public class SettingsActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!activityResultInjector.onActivityResult(requestCode, resultCode, data))
+        if (!resultCodeInjector.onActivityResult(requestCode, resultCode, data))
             super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -82,11 +88,11 @@ public class SettingsActivity extends Activity {
      */
     private void configureLocale() {
         // init
-        var pref = AndroidSettings.LOCALE_PREF(this);
+        var pref = LocaleUtils.LOCALE_PREF(this);
         var spinner = this.<Spinner>findViewById(R.id.locale);
 
         // populate available
-        var locales = AndroidSettings.getLocales(this);
+        var locales = LocaleUtils.getLocales(this);
         var adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -121,5 +127,15 @@ public class SettingsActivity extends Activity {
 
     public void openTutorial(View view) {
         PackageUtils.startActivity(new Intent(this, TutorialActivity.class), R.string.toast_noApp, this);
+    }
+
+    /* ------------------- backup ------------------- */
+
+    public void openBackup(View view) {
+        PackageUtils.startActivityForResult(new Intent(this, BackupActivity.class),
+                AndroidSettings.registerForReloading(resultCodeInjector, this),
+                R.string.toast_noApp,
+                this
+        );
     }
 }

@@ -10,7 +10,7 @@
         Write the locale name in the locale language, for users that doesn't know english. For example 'Español' instead of 'Spanish'-->
     <string name="locale">日本語</string>
     <!-- main -->
-    <string name="txt_info">このアプリは、URLリンクを開くための中間ステップとして機能します。リンクをクリックし、このアプリを選んで開くと、そのリンクに関する情報をダイアログで表示します。\n下のモジュールボタンを押すと、利用可能なすべてのモジュールを確認・設定することができます。</string>
+    <string name="txt_info">このアプリは、クリックされた URL リンクを開く際の仲介として機能します。 このアプリを選択して開くと、リンクに関する情報を含むダイアログが表示されます。 下のモジュール ボタンを押して、利用可能なすべてのモジュールを確認して設定します。</string>
     <string name="txt_sample">以下のリンクをタップしてテストしてみてください。</string>
     <string name="a_modules">モジュール</string>
     <string name="a_settings">設定</string>
@@ -18,15 +18,15 @@
     <!-- about -->
     <string name="txt_about">"このアプリは TrianguloY によって開発されました。
 
-貢献者: %s
-翻訳者: %s"</string>
+貢献者: %1$s
+翻訳者: %2$s"</string>
     <string name="link_blog">TrianguloY のブログ</string>
     <string name="link_changelog">変更履歴</string>
     <string name="link_source">ソースコード</string>
     <string name="link_privacy">プライバシーポリシー</string>
     <!-- modules -->
     <string name="txt_conf">以下は、モジュールのリストです。これらは有効化・無効化、並び替えすることができ、タップすると、その説明と設定も確認できます。\nまた、タイトルの表示・非表示の切り替えも可能です。</string>
-    <string name="toast_cantEnable">モジュールを有効にできません。設定を忘れていませんか？</string>
+    <string name="toast_cantEnable">モジュールを有効にできません: %s</string>
     <string name="menu_resetOrder">並び順をリセット</string>
     <string name="menu_toggleDecorations">モジュール名の表示・非表示を切り替え</string>
     <string name="desc_up">上へ移動</string>
@@ -36,8 +36,8 @@
     <!-- settings -->
     <string name="txt_openLinks">このアプリで外部リンクを開くように設定してください。\n設定方法は、Androidのバージョンによって異なります。\n以下の設定をお試しください。</string>
     <string name="btn_setBrowser">デフォルトのアプリとして設定する</string>
-    <string name="toast_defaultSet">このアプリはデフォルトブラウザに設定されています</string>
-    <string name="btn_configureBrowser">デフォルトのブラウザアプリ</string>
+    <string name="toast_defaultSet">アプリがデフォルトの Web ブラウザーになりました</string>
+    <string name="btn_configureBrowser">デフォルトの Web ブラウザアプリ</string>
     <string name="btn_linksSettings">対応リンクの設定</string>
     <string name="btn_androidSettings">Androidのアプリ設定</string>
     <string name="txt_theme">テーマ:</string>
@@ -46,7 +46,7 @@
     <string name="txt_locale">言語:</string>
     <!-- generic -->
     <string name="toast_noApp">アプリを開けません</string>
-    <string name="toast_noBrowser">ブラウザを開けません</string>
+    <string name="toast_noBrowser">Web ブラウザを開けません</string>
     <string name="title_choose">アプリを選択</string>
     <string name="toast_invalid">無効です</string>
     <string name="save">保存</string>
@@ -138,9 +138,9 @@ URLコンテンツは取得 (GET) されますが、JavaScript によるリダ�
     <string name="mVT_scan">スキャン</string>
     <string name="mVT_cancel">キャンセル</string>
     <string name="mVT_scanning">スキャン中…</string>
-    <string name="mVT_goodUrl">%dつのエンジンのいずれもURLを検出しませんでした (%s 時点データ)</string>
-    <string name="mVT_warningUrl">警告! %dつのエンジンの内、%dのエンジンがURLを検出しました (%s 時点データ)</string>
-    <string name="mVT_badUrl">注意! %dつのエンジンの内 %dつがURLを検出しました (%s 時点データ)</string>
+    <string name="mVT_goodUrl">%1$dつのエンジンのいずれもURLを検出しませんでした (%2$s 時点データ)</string>
+    <string name="mVT_warningUrl">警告! %1$dつのエンジンの内、%2$dのエンジンがURLを検出しました (%3$s 時点データ)</string>
+    <string name="mVT_badUrl">注意! %1$dつのエンジンの内 %2$dつがURLを検出しました (%3$s 時点データ)</string>
     <string name="mVT_connectError">VirusTotal に接続できません。インターネット接続が有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mVT_jsonError">VirusTotal に接続できません。APIキーが有効であることを確認するか、後でもう一度試してください。</string>
     <string name="mD_name">デバッグ/マーカー モジュール</string>
@@ -205,7 +205,8 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mLog_edit">ログを編集</string>
     <string name="mLog_empty">ログはありません</string>
     <string name="mHosts_name">ホスト ラベラー</string>
-    <string name="mHosts_desc">このモジュールは、手動で指定するか、リモートホストのようなファイルを使って設定されたホストにラベル付けします。危険なサイトや特殊なサイトについて警告するために使用することができます。\nデフォルトの設定では、StevenBlack のホスト (アドウェア/マルウェア、fakenews、ギャンブル、アダルトコンテンツ) を https://github.com/StevenBlack/hosts から取得します。</string>
+    <string name="mHosts_desc">このモジュールは、手動で指定するか、リモートホストのようなファイルを使って設定されたホストにラベル付けします。危険なサイトや特殊なサイトについて警告するために使用することができます。
+\nデフォルトの設定では、StevenBlack のホスト (アドウェア/マルウェア、fakenews、ギャンブル、アダルトコンテンツ) を https://github.com/StevenBlack/hosts から取得します。</string>
     <string name="mHosts_malware">アドウェア/マルウェア</string>
     <string name="mHosts_info">ホスト:</string>
     <string name="mHosts_noLabel">ラベルなし</string>
@@ -215,18 +216,30 @@ PabloOQさんのアイデアとはじめの実装に感謝します!"</string>
     <string name="mHosts_build">データベースを作成</string>
     <string name="mHosts_uninitialized">ホストデータベースが初期化されていません。\n「データベースを作成」を押してください。</string>
     <string name="mHosts_parseError">URLのホストファイルを解析できませんでした</string>
-    <string name="mHosts_editor">"ホストの設定 です。\n形式: hosts ラベルをキーとした、オブジェクトのリスト。以下の値を含むことができます。
-- file: ダウンロードするリモートホストファイルのURL。ファイルに含まれるすべての有効なホストが追加されます。
-- hosts: 追加する生(raw)ホストのリスト(文字列)。
-- color: ラベルの色。Androidの色文字列 (#AARRGGBB, #RRGGBB または有効な色名)。デフォルトは「危険な」赤です。
-- replace: false の場合、既存のホストは置き換えられません。オブジェクトは上から下へ評価されることに注意してください。デフォルトでは true です。
-- enabled: false の場合、このオブジェクト全体がスキップされます。デフォルトでは true です。"</string>
+    <string name="mHosts_editor">ホストの設定 です。
+\n形式: hosts ラベルをキーとした、オブジェクトのリスト。以下の値を含むことができます。
+\n- file: ダウンロードするリモートホストファイルのURL。ファイルに含まれるすべての有効なホストが追加されます。
+\n- hosts: 追加する生(raw)ホストのリスト(文字列)。
+\n- color: ラベルの色。Androidの色文字列 (#AARRGGBB, #RRGGBB または有効な色名)。デフォルトは「危険な」赤です。
+\n- replace: false の場合、既存のホストは置き換えられません。オブジェクトは上から下へ評価されることに注意してください。デフォルトでは true です。
+\n- enabled: false の場合、このオブジェクト全体がスキップされます。デフォルトでは true です。</string>
     <string name="mHosts_buildTitle">ホストデータベースの作成</string>
     <string name="mHosts_buildDesc">この操作は、既存のホストデータベースを削除し、新しい設定でデータベースを作成します。必要であればインターネットからホストファイルをダウンロードします。この操作には数秒かかることがあります。続行しますか？</string>
     <string name="mHosts_buildProgress">データベースを作成中…</string>
     <string name="mHosts_buildInit">準備中…</string>
     <string name="mHosts_buildClear">初期化中…</string>
-    <string name="mHosts_buildDownload">"%s個のホストを %s からダウンロード中…"</string>
+    <string name="mHosts_buildDownload">"%1$s個のホストを %2$s からダウンロード中…"</string>
     <string name="mHosts_buildSave">保存中…</string>
     <string name="mHosts_built">データベースが作成されました: %d個のホスト</string>
+    <string name="tutorial">チュートリアル</string>
+    <string name="btn_tutorialSettings">チュートリアルを繰り返す</string>
+    <string name="btn_tutorialSkip">チュートリアルをスキップする</string>
+    <string name="btn_tutorialEnd">チュートリアルを終了する</string>
+    <string name="none">なし</string>
+    <string name="back">戻る</string>
+    <string name="next">次に</string>
+    <string name="hidden">隠れた</string>
+    <string name="shortcut_checkClipboard">クリップボードから URL を確認する</string>
+    <string name="mChg_desc">アプリが更新されたらお知らせします。</string>
+    <string name="mLog_limit">保持するエントリーの最大数。推奨値：100。無制限の場合はUnlimitedに設定</string>
 </resources>

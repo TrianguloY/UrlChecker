@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_info">يعمل هذا التطبيق كوسيط عند فتح روابط URL التي تم النقر عليها. يتم عرض نافذة تحتوي على بعض المعلومات حول الرابط عند اختيار هذا التطبيق لفتحه. اضغط على زر الوحدة بالأسفل للتحقق من جميع الوحدات وضبطها.</string>
+    <string name="txt_sample">اضغط على الرابط بالأسفل للاختبار:</string>
+    <string name="a_modules">الوحدات</string>
+    <string name="a_settings">الإعدادات</string>
+    <string name="a_about">حول التطبيق</string>
+    <string name="translators">Magdy Elgendy</string>
+    <string name="locale">العربية</string>
+    <string name="txt_about">تم إنشاء التطبيق بواسطة TrianguloY.
+\n
+\nالمساهمون: %1$s.
+\nالمترجمون: %2$s.</string>
+    <string name="link_blog">مدونة TrianguloY</string>
+    <string name="link_changelog">سجل التغييرات</string>
+    <string name="link_source">رمز المصدر</string>
+    <string name="link_privacy">سياسة الخصوصية</string>
+    <string name="toast_cantEnable">لا يمكن تمكين الوحدة: %s</string>
+    <string name="menu_resetOrder">إعادة الترتيب</string>
+    <string name="menu_toggleDecorations">عكس حالة العرض لعناوين جميع الوحدات</string>
+    <string name="desc_up">حرّك للأعلى</string>
+    <string name="desc_down">حرّك للأسفل</string>
+    <string name="desc_decorations">إظهار/إخفاء العنوان</string>
+    <string name="desc_enable">تمكين/تعطيل الوحدة</string>
+    <string name="btn_configureBrowser">متصفح الويب الافتراضي</string>
+    <string name="btn_linksSettings">فتح الروابط المدعومة</string>
+    <string name="btn_androidSettings">إعدادات تطبيق أندرويد</string>
+    <string name="txt_theme">السمة:</string>
+    <string name="spin_darkTheme">داكن</string>
+    <string name="txt_locale">اللغة:</string>
+    <string name="txt_animation">تمكين الرسوم المتحركة</string>
+    <string name="btn_tutorialSettings">إعادة الدليل التعليمي</string>
+    <string name="btn_backupRestore">النسخ الاحتياطي / استعادة البيانات</string>
+    <string name="bck_mn_advanced">عرض الخيارات المتقدمة</string>
+    <string name="btn_backup">عمل نسخة احتياطية</string>
+    <string name="btn_replace">استبدال</string>
+    <string name="btn_restore">استعادة البيانات</string>
+    <string name="btn_delete">حذف</string>
+    <string name="bkp_data_prefs">التفضيلات: البيانات المحفوظة كتفضيلات.</string>
+    <string name="bkp_data_files">الملفات: البيانات المحفوظة كملفات.</string>
+    <string name="bkp_secrets">البيانات السرية: البيانات المعتبرة \'سرية\'، مثل مفتاح api ل VirusTotal أو السجل.</string>
+    <string name="bck_ignoreNewer">السماح بالنسخ الاحتياطي الذي تم إنشاؤه من إصدارات التطبيق الأحدث.</string>
+    <string name="bck_newer">تم الإلغاء. تم إنشاء النسخ الاحتياطي باستخدام إصدار أحدث من التطبيق.</string>
+    <string name="bck_chooseFile">اختر ملف النسخ الاحتياطي</string>
+    <string name="bck_backupOk">تم إنشاء النسخ الاحتياطي</string>
+    <string name="bck_restoreTitle">استعادة النسخ الاحتياطي</string>
+    <string name="bck_restoreConfirm">استبدال العناصر</string>
+    <string name="bck_restoreOk">تمت استعادة النسخ الاحتياطي</string>
+    <string name="bck_restoreError">تعذر استعادة النسخ الاحتياطي. هل الملف صالح؟</string>
+    <string name="bck_deleteTitle">حذف العناصر</string>
+    <string name="bck_deleteMessage">تحذير! سيؤدي هذا إلى حذف جميع العناصر المحددة.
+\nهل ترغب حقا بالمتابعة؟</string>
+    <string name="bck_deleteConfirm">حذف العناصر</string>
+    <string name="bck_deleteOk">تم حذف العناصر</string>
+    <string name="tutorial">الدليل التعليمي</string>
+    <string name="txt_tutorial1">شكرًا لتحميل هذا التطبيق!
+\n
+\nهذا هو الدليل التعليمي، إذا كنت ترغب في تخطيه يمكنك ذلك بالزر بالأسفل. يمكنك دائمًا العودة إلى الدليل التعليمي من قائمة الإعدادات.</string>
+    <string name="txt_conf">فيما يلي جميع الوحدات المتاحة، حيث يمكنك التحقق من الوصف والإعدادات الخاصة بها. يمكنك أيضًا إعادة ترتيب وتبديل رؤية العنوان وتمكينها/تعطيلها.</string>
+    <string name="txt_openLinks">فتح الروابط من خلال هذا التطبيق: على مر السنين، غيّر Android طريقة التمكين والضبط، ويختلف بين الإصدارات المختلفة. تجد بالأسفل جميع الإعدادات المتاحة لجهازك، إذا لم يتم فتح الروابط على هذا التطبيق، فجرّبها جميعًا.</string>
+    <string name="btn_setBrowser">تعيين كمتصفح افتراضي</string>
+    <string name="toast_defaultSet">التطبيق الأن هو المتصفح الافتراضي للويب</string>
+    <string name="bkp_description">اختر العناصر التي سيتم نسخها احتياطيًا/استعادتها.
+\nتتم استعادة العناصر المضمنة في النسخة الاحتياطية فقط، بينما تبقى العناصر الأخرى دون تغيير.</string>
+    <string name="spin_lightTheme">فاتح</string>
+    <string name="bkp_data">البيانات: تشمل بيانات التطبيق المبدئية. أشياء مثل الوحدات المُمكّنة، اعدادات json... إلخ. لكن لا تشمل البيانات السرية ولا الذاكرة المؤقتة.</string>
+    <string name="bjp_cache">الذاكرة المؤقتة: البيانات التي يمكن تنزيلها/إنشاؤها بسهولة، مثل قاعدة بيانات المضيفين. تمكين هذا الخيار قد يزيد حجم النسخ الاحتياطي بشكل ملحوظ.</string>
+    <string name="bck_restoreDelete">حذف العناصر قبل الاستعادة. يرجى ملاحظة أن التفضيلات وبعض الملفات ذات القيم الافتراضية قد لا تكون موجودة، لذا فإن تعطيل هذا الخيار سيؤدي إلى دمج العناصر الموجودة مع العناصر الاحتياطية بطرق غير متوقعة. قم بالتعطيل إذا كنت تعرف ما تفعله.</string>
+    <string name="bck_restoreMessage">تحذير! سيؤدي هذا إلى استبدال العناصر المحددة من النسخ الاحتياطي.
+\nهل ترغب حقًا في المتابعة؟</string>
+    <string name="bck_deleteError">تعذر حذف العناصر</string>
+    <string name="bck_backupError">تعذر إنشاء النسخ الاحتياطي، حاول اختيار موقع مختلف للملف.</string>
+    <string name="txt_tutorial2">يعمل التطبيق كوسيط عند فتح روابط URL أو مشاركتها. بمجرد إرسال URL إلى التطبيق، يمكنك التفاعل معه من خلال الوحدات. بعد ذلك، يمكنك فتح الرابط (في التطبيق الذي تريده)، مشاركته، أو نسخه إلى الحافظة.</string>
+    <string name="toast_noApp">لا يمكن فتح التطبيق</string>
+    <string name="toast_noBrowser">لا يمكن فتح متصفح الويب</string>
+    <string name="title_choose">اختر التطبيق</string>
+    <string name="toast_invalid">غير صالح</string>
+    <string name="save">حفظ</string>
+    <string name="close">إغلاق</string>
+    <string name="clear">مسح</string>
+    <string name="none">لا شئ</string>
+    <string name="auto">تلقائي</string>
+    <string name="defaultOn">ممكّن افتراضيًا</string>
+    <string name="defaultOff">معطل افتراضيًا</string>
+    <string name="alwaysOn">مفعّل دائمًا</string>
+    <string name="alwaysOff">معطل دائمًا</string>
+    <string name="hidden">مخفي</string>
+    <string name="share">مشاركة</string>
+    <string name="canceled">تم الإلغاء</string>
+    <string name="deviceDefault">الافتراضي للجهاز</string>
+    <string name="next">التالي</string>
+    <string name="back">السابق</string>
+    <string name="dismiss">تجاهل</string>
+    <string name="json_edit">محرر متقدم</string>
+    <string name="shortcut_checkClipboard">التحقق من عناوين الويب URLs الموجودة في الحافظة</string>
+    <string name="mPttrn_name">فحص النمط</string>
+    <string name="mPttrn_regexfix">إصلاح مجموعات الفحص النمطية الاختيارية (تعطيلها إذا كان الفحص النمطي لا يعمل بشكل صحيح)</string>
+    <string name="mPttrn_userContent">قائمة بأنماط أخرى مفيدة التي تم إنشاؤها من قبل المستخدمين: %s</string>
+    <string name="mPttrn_fix">تطبيق</string>
+    <string name="mPttrn_fixed">تم التطبيق - %s</string>
+    <string name="mPttrn_http">رابط HTTP. يُنصح باستخدام HTTPS.</string>
+    <string name="mPttrn_noSchemeHttp">نظام HTTP مفقود.</string>
+    <string name="mPttrn_noSchemeHttps">نظام HTTPS مفقود.</string>
+    <string name="mPttrn_wrongSchemaHttps">صيغة https غير صالحة بالحروف الكبيرة.</string>
+    <string name="mOpen_name">فتح ومشاركة</string>
+    <string name="mOpen_closeOpen">إغلاق النافذة المنبثقة بعد الفتح</string>
+    <string name="mOpen_closeShare">إغلاق النافذة المنبثقة بعد المشاركة</string>
+    <string name="mOpen_closeCopy">إغلاق النافذة المنبثقة بعد النسخ</string>
+    <string name="mOpen_perDomain">فرز اسماء الدومين أو النطاق المختلفة بشكل مستقل</string>
+    <string name="mOpen_noReferrer">إخفاء التطبيق المصدر (المُرجع)</string>
+    <string name="mOpen_rejected">إخفاء التطبيق إذا تم رفض عنوان URL (تطلب التطبيق على الفور فتح نفس عنوان URL الذي تم فتحه به). هذا لا يؤثر على المشاركة.</string>
+    <string name="mOpen_mergeCopy">دمج أزرار النسخ والمشاركة (الضغط المطوّل للنسخ)</string>
+    <string name="mOpen_with">فتح بواسطة %s</string>
+    <string name="mOpen_open">فتح</string>
+    <string name="mOpen_share">مشاركة</string>
+    <string name="mOpen_copyUrl">نسخ</string>
+    <string name="mOpen_clipboard">تم نسخ الرابط إلى الحافظة</string>
+    <string name="mOpen_noapps">لا توجد تطبيقات</string>
+    <string name="mStatus_ioerror">خطأ في الشبكة أثناء محاولة التحقق من عنوان URL: %s</string>
+    <string name="mStatus_error">خطأ داخلي أثناء محاولة التحقق من عنوان URL: %s</string>
+    <string name="mStatus_check">التحقق من الحالة</string>
+    <string name="mStatus_recheck">تحقق</string>
+    <string name="mStatus_checking">جاري التحقق…</string>
+    <string name="mStatus_unknownCode">%d: كود حالة غير معروف</string>
+    <string name="mStatus_redir">يعيد التوجيه إلى %s</string>
+    <string name="mStatus_autoRedirect">استبدال عناوين URL الموجهة تلقائيًا</string>
+    <string name="mInput_name">نص الإدخال</string>
+    <string name="mInput_desc">يعرض العنوان الحالي للرابط URL، والذي يمكن تحريره يدويًا.</string>
+    <string name="mVT_name">فحص الروابط</string>
+    <string name="mVT_apiKey">مفتاح API</string>
+    <string name="mVT_noKey">مفتاح API مفقود</string>
+    <string name="mVT_tm">VirusTotal™ هي علامة تجارية لشركة Google، Inc.</string>
+    <string name="mVT_scan">فحص</string>
+    <string name="mVT_cancel">إلغاء</string>
+    <string name="mVT_scanning">جاري الفحص…</string>
+    <string name="mVT_badUrl">حذار! اكتشف %1$d/%2$d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %3$s)</string>
+    <string name="mVT_warningUrl">تحذير، اكتشف %1$d/%2$d من محركات البحث عنوان الويب (اعتبارًا من تاريخ %3$s)</string>
+    <string name="mVT_goodUrl">لم يتم اكتشاف أي من محركات %1$d عنوان الويب (اعتبارًا من تاريخ %2$s)</string>
+    <string name="mVT_connectError">لا يمكن الاتصال بـ VirusTotal. تأكد من الاتصال بالإنترنت، أو حاول مرة أخرى لاحقًا.</string>
+    <string name="mVT_jsonError">لا يمكن الاتصال بـ VirusTotal. تأكد من أن مفتاح API صالح، أو حاول مرة أخرى لاحقًا.</string>
+    <string name="mD_name">وحدة تصحيح الأخطاء/العلامة</string>
+    <string name="mD_ctabs">عرض رسائل التصحيح من خدمة علامات التبويب المخصصة</string>
+    <string name="mHist_name">السجل</string>
+    <string name="mHist_desc">عند تحرير عنوان URL، سواء يدويًا أو من قبل وحدات أخرى، تتيح لك هذه الوحدة عرض التغييرات والتراجع عنها.</string>
+    <string name="mClear_name">منظف العناوين URL</string>
+    <string name="txt_tutorial3">قم بتعيين التطبيق كمتصفح ويب افتراضي لالتقاط روابط URL عند فتحها.
+\n(لا يلزم ذلك إذا تم إعادة توجيه عناوين URL باستخدام وظيفة \"مشاركة\".)</string>
+    <string name="txt_tutorial4">الوحدات هي كيفية تفاعل التطبيق مع عناوين الويب URLs.
+\nكل وحدة لها وظيفة محددة، عادةً لعرض معلومات حول عنوان الويب، أو السماح بتعديله.
+\nاقرأ عنها وقم بتهيئتها حسب الحاجة.
+\n
+\nمهم: جميع الإجراءات يتم تنفيذها يدويًا بشكل افتراضي. لن يقوم التطبيق بتعديل أي شيء أو الاتصال بالإنترنت ما لم تسمح بذلك بشكل صريح، ولكن يمكن تطبيق بعض الإجراءات تلقائيًا إذا رغبت في ذلك.
+\n
+\nافتح قائمة الوحدات من الشاشة الرئيسية، أو بالنقر على الزر بالأسفل.</string>
+    <string name="txt_tutorial5">هذا كل شيء. إليك بعض النصائح التي قد تكون مفيدة:
+\n
+\nعندما لا يوفر التطبيق وسيلة لفتح أو مشاركة رابط URL، لكن يوفر لك وسيلة للقيام بالإجراء الآخر، يمكنك حل المشكلة باستخدام هذا التطبيق. يمكنك أيضًا نسخ عنوان الويب إلى الحافظة عن طريق الضغط المطول على زر المشاركة.
+\n
+\nهناك بعض عناوين الويب التي تهدف فقط إلى توجيهك إلى عنوان URL آخر. إذا كان بإمكان فتح العنوان النهائي في تطبيق، فيمكنك تجنب فتحه في متصفح الويب.
+\n
+\nآمل أن تجد التطبيق مفيدًا! ولا تتردد في اقتراح ميزات، أو الإبلاغ عن الأخطاء، أو حتى اقتراح التغييرات. يمكنك العثور على جميع الروابط ذات الصلة على شاشة حول التطبيق.</string>
+    <string name="btn_tutorialSkip">تخطي الدليل التعليمي</string>
+    <string name="btn_tutorialEnd">إنهاء الدليل التعليمي</string>
+    <string name="reset">إعادة الضبط</string>
+    <string name="noLinks">لم يتم اكتشاف أي روابط</string>
+    <string name="json_desc">[ميزة تجريبية] هذا محرر متقدم، يجب تنسيق المحتوى إلى JSON صالح. يمكنك الضغط على الزر في الزاوية العلوية اليمنى لتنسيقه والتحقق من صحته.</string>
+    <string name="mPttrn_desc">هذه الوحدة تقوم بفحص عنوان الويب باستخدام أنماط الفحص النمطية التي تحذر، تقترح أو تطبق الاستبدالات. يمكنك تعديل أو إنشاء أنماط خاصة بك، أو حتى استخدام أنماط تم إنشاؤها من قبل المستخدمين.
+\nالأنماط المضمنة تشمل:
+\n- تحذير عندما يحتوي على أحرف غير ascii مثل الحروف اليونانية. يمكن استخدام هذا للصيد الاحتيالي: googĺe.com بدلاً من google.com
+\n- اقتراح استبدال \'http\' بـ \'https\'
+\n- اقتراح استبدال YouTube أو Reddit أو Twitter ببدائل صديقة للخصوصية [معطلة افتراضيًا]</string>
+    <string name="mPttrn_ascii">تحذير! تم العثور على أحرف غير ASCII.</string>
+    <string name="mPttrn_wrongSchemaHttp">صيغة http غير صالحة بالحروف الكبيرة.</string>
+    <string name="mPttrn_ok">لا توجد أنماط مطابقة</string>
+    <string name="mPttrn_editor">هنا يمكنك تحرير أو إضافة نمط جديد. الصيغة:
+\n- \'encode\': boolean: قم بتعيينها على صحيح لترميز عنوان الويب قبل فحصه بواسطة التعبير النمطي.
+\n- \'regex\': string, required: تعبير نمطي صالح في جافا يجب أن يتطابق معه عنوان الويب، وإلا سيتم تخطي النمط.
+\n- \'excludeRegex\': string: إذا تم توفيره، فهو تعبير نمطي صالح في جافا يجب أن لا يتطابق معه عنوان الويب، وإلا سيتم تخطي النمط.
+\n- \'replacement\': string|list: إذا تم توفيره، فسيقوم الزر \'تصحيح\' بتشغيل \'url=url.replaceAll(regex,replacement)\'. إذا كانت قائمة، سيكون الاستبدال عنصرًا عشوائيًا منها.
+\n- \'decode\': boolean: قم بتعيينها على صحيح لفك تشفير العنوان النهائي.
+\n- \'automatic\': boolean: قم بتعيينها على صحيح لتطبيق النمط تلقائيًا.
+\n- \'enabled\': boolean: قم بتعيينها على غير صحيح لتعطيل النمط.
+\nملاحظة: إذا قمت بتحرير الأنماط، فلن يتم إضافة أنماط جديدة مضمنة من تحديثات التطبيق تلقائيًا (يمكنك استعادتها باستخدام الخيار إعادة الضبط).</string>
+    <string name="mOpen_desc">يحتوي على الأزرار التالية (من اليسار إلى اليمين):
+\n- زر علامات تبويب مخصصة: قم بتبديل تمكين/تعطيل ميزة علامات التبويب المخصصة. عند التمكين، يجب أن يتم فتح المتصفح في وضع \'خفيف\'.
+\n- زر التصفح الخفي: للمتصفح Firefox فقط. قم بتبديل تمكين/تعطيل وضع التصفح الخفي. عند التمكين، يجب أن يتم فتح المتصفح في وضع التصفح الخفي.
+\n- زر الفتح: اضغط على اسم التطبيق لفتح الرابط على ذلك التطبيق. إذا كان بإمكان فتح الرابط باستخدام عدة تطبيقات، سيتم عرض سهم للسماح لك باختيارها.
+\n- زر النسخ: اضغط على الزر لنسخ الرابط إلى الحافظة.
+\n- زر المشاركة: اضغط على الزر لمشاركة الرابط.</string>
+    <string name="mOpen_ctabs">علامات تبويب مخصصة:</string>
+    <string name="mOpen_incognito">وضع التصفح الخفي:</string>
+    <string name="mOpen_tabsDesc">تبديل ميزة علامات التبويب المخصصة</string>
+    <string name="mOpen_incognitoDesc">تبديل وضع التصفح الخفي (Firefox فقط)</string>
+    <string name="mStatus_name">كود الحالة</string>
+    <string name="mStatus_desc">من خلال الضغط على زر التحقق، سيتم إجراء طلب شبكة لاسترجاع وعرض كود حالة الموقع. إذا كانت النتيجة توجيهًا، فستتمكن من عرض عنوان URL النهائي. يتم الحصول على محتوى عنوان URL (GET)، ولكن لا يتم تقييمه، لذلك لن يتم اكتشاف التوجيهات استنادًا إلى JavaScript.</string>
+    <string name="mStatus_autoCheck">التحقق التلقائي من عناوين URL التي تتطابق مع نمط التعبير النمطي التالي. تحذير! من المستحسن تحديد نمط مقيد (وليس .* للجميع) وإلا فقد تقوم السيرفرات الخبيثة بتسجيل عنوان IP الخاص بك.</string>
+    <string name="mVT_desc">عند تمكين هذه الوحدة، يمكنك فحص عنوان الويب باستخدام VirusTotal والتحقق من التقرير. يلزم وجود مفتاح API الخاص بـ VirusTotal الشخصي لعمله، يمكنك الحصول على واحد بعد التسجيل للحصول على حساب مجاني هنا: https://www.virustotal.com/gui/join-us .</string>
+    <string name="mD_desc">إذا قمت بإعادة ترتيب الوحدات، سيتم وضع الجديدة التي يتم إضافتها في التحديثات المستقبلية فوق هذه الوحدة.
+\n
+\nإذا قمت بتمكين هذا، سيتم عرض بعض البيانات التصحيحية الداخلية (مثل عنوان intent الأصلي)، مفيدة للمطورين.
+\n
+\nيمكنك الضغط المطول لتحديد النص.</string>
+    <string name="mClear_desc">تقوم هذه الوحدة بإزالة tracking وreferrer وغيرها من parameters الغير مفيدة من عنوان URL. كما تسمح أيضًا بتوجيهات URL المشتركة في وضع عدم الاتصال بالإنترنت.</string>
+    <string name="mClear_tm">كتالوج مدمج تم نسخه من ClearURL: https://docs.clearurls.xyz/latest/specs/rules/</string>
+    <string name="mClear_clear">تطبيق</string>
+    <string name="mClear_matches">يطابق %s</string>
+    <string name="mClear_blocked">- محظور!</string>
+    <string name="mClear_exception">تم تجاهله بسبب الاستثناء %s</string>
+    <string name="mClear_rule">- تم العثور على parameters غير مفيدة</string>
+    <string name="mClear_rawRule">- تم العثور على محتوى غير مفيد</string>
+    <string name="mClear_referral">- تم العثور على توجيه</string>
+    <string name="mClear_forcedRedirection">- تم العثور على إعادة توجيه إجبارية</string>
+    <string name="mClear_redirection">- تم العثور على إعادة توجيه</string>
+    <string name="mClear_cleared">- تم التنظيف</string>
+    <string name="mClear_noRules">لا توجد قواعد مطابقة</string>
+    <string name="mClear_auto">تطبيق تلقائي</string>
+    <string name="mClear_toggleReferral">تمكين التسويق عبر referral (لن يتم مسح referral parameters)</string>
+    <string name="mClear_toggleVerbose">تمكين معلومات مفصلة لعملية التطابق</string>
+    <string name="mClear_error">تعذر التحقق من القاعدة</string>
+    <string name="mClear_updater">المُحدّث</string>
+    <string name="mClear_sourceDesc">عنوان URL لكتالوج ملف JSON مع القواعد:</string>
+    <string name="mClear_urlHint">عنوان URL للكتالوج</string>
+    <string name="mClear_hashHint">عدم فحص التجزئة hash</string>
+    <string name="mClear_hashDesc">عنوان URL لملف التجزئة hash الخاص بالكتالوج. إذا تم حذفه، فلن يتم التحقق من التنزيل لمعرفة ما إذا كان قد تم العبث به أو تعديله (غير مُوصى به)</string>
+    <string name="mClear_updateNow">تحديث الآن</string>
+    <string name="mClear_autoUpdate">التحديث بشكل دوري</string>
+    <string name="mClear_lastCheck">آخر فحص:</string>
+    <string name="mClear_lastUpdate">آخر تحديث:</string>
+    <string name="mClear_updated">تم تحديث الكتالوج</string>
+    <string name="mClear_upToDate">الكتالوج محدّث</string>
+    <string name="mClear_urlError">تعذر جلب القواعد، تأكد من أن عنوان URL صالح وأن لديك اتصالاً نشطًا</string>
+    <string name="mClear_hashError">تعذر جلب التجزئة hash، تأكد من أن عنوان URL صالح وأن لديك اتصالاً نشطًا</string>
+    <string name="mClear_restore">استعادة مسارات ClearURLs</string>
+    <string name="mRemove_name">مزيل الاستعلامات Queries</string>
+    <string name="mRemove_desc">[مهمل] بهذه الوحدة يمكنك إزالة الاستعلامات من عنوان URL.
+\nاضغط على الزر لإزالتها جميعًا أو اضغط على السهم لإزالة واحدة في كل مرة.
+\nشكرًا لـ PabloOQ على الفكرة والتنفيذ الأصلي!
+\n
+\nتم إهمال هذه الوحدة لصالح وحدة \'أجزاء الـ Uri\'</string>
+    <string name="mRemove_found">تم العثور على %d استعلامات (queries)</string>
+    <string name="mRemove_found1">تم العثور على استعلام (query) واحد</string>
+    <string name="mRemove_noQueries">لا يوجد استعلامات (queries)</string>
+    <string name="mRemove_all">حذف الكل</string>
+    <string name="mRemove_one">حذف %s</string>
+    <string name="mClear_hashMismatch">التجزئات Hashes غير متطابقة، قد يكون الملف قد تم التلاعب به. إذا كنت ترغب في تخطي التحقق، قم بإزالة العنوان الخاص بالتجزئة hash URL</string>
+    <string name="mClear_editor">قواعد الكتالوج: يجب أن تتبع التنسيق الموجود في https://docs.clearurls.xyz/latest/specs/rules/.
+\nيرجى ملاحظة أن أي تعديل على الكائن الأصلي parent object \'providers\' سيتم استبداله overwritten إذا تم تحديث الكتالوج تلقائيًا أو يدويًا من نافذة المُحدّث. لتعيين قواعد شخصية، ضعها في كائن أبوي parent object آخر (أي اسم).</string>
+    <string name="mRemove_empty">حذف الفراغ</string>
+    <string name="mLog_name">سجل</string>
+    <string name="mLog_view">عرض السجل</string>
+    <string name="mLog_edit">تحرير السجل</string>
+    <string name="mLog_empty">لا توجد بيانات</string>
+    <string name="mLog_limit">الحد الأقصى لعدد الإدخالات للاحتفاظ بها. القيمة الموصى بها: 100. اتركها فارغة لعدد غير محدود</string>
+    <string name="mLog_unlimited">غير محدود</string>
+    <string name="mHosts_name">مُصنّف المضيفين Hosts</string>
+    <string name="mLog_desc">هذه الوحدة تسجل جميع عناوين URL المُفحَصة. يمكنك عرض، مسح أو تحرير السجل الكامل هنا، لن تظهر أي إشارة بصرية على النافذة الرئيسية. لتعطيل التسجيل، ما عليك سوى تعطيل الوحدة.</string>
+    <string name="mHosts_malware">إعلان(adware)/برمجيات خبيثة(malware)</string>
+    <string name="mHosts_info">مضيف(Host):</string>
+    <string name="mHosts_noLabel">بدون تصنيف</string>
+    <string name="mHosts_fakenews">أخبار مزيفة(fakenews)</string>
+    <string name="mHosts_gambling">مقامرة(gambling)</string>
+    <string name="mHosts_adult">محتوى خاص بالكبار(adult content)</string>
+    <string name="mHosts_build">بناء</string>
+    <string name="mHosts_uninitialized">قاعدة بيانات المضيفين(Hosts) غير مُهيأة. اضغط للبناء</string>
+    <string name="mHosts_parseError">تعذر تحليل مضيف عنوان URL</string>
+    <string name="mHosts_buildTitle">بناء قاعدة بيانات المضيفين(hosts)</string>
+    <string name="mHosts_buildProgress">جاري بناء الكتالوج</string>
+    <string name="mHosts_buildInit">جاري التهيئة</string>
+    <string name="mHosts_buildClear">جاري المسح…</string>
+    <string name="mHosts_buildDownload">جاري تحميل \'%1$s\' المضيفين(hosts) من %2$s…</string>
+    <string name="mHosts_buildSave">جاري الحفظ…</string>
+    <string name="mHosts_built">تم بناء قاعدة البيانات: %d مضيفين (hosts)</string>
+    <string name="mUnshort_name">موسع الروابط</string>
+    <string name="mUnshort_unshort">إلغاء تقصير الروابط</string>
+    <string name="mUnshort_tm">واجهة(API) unshorten.me المجانية بواسطة Unshorten.me</string>
+    <string name="mUnshort_checking">جاري الفحص…</string>
+    <string name="mUnshort_error">خطأ في الخادم(server): %s</string>
+    <string name="mUnshort_internal">خطأ داخلي (%s)</string>
+    <string name="mUnshort_notFound">لم يتم العثور على توجيه(redirection)</string>
+    <string name="mUnshort_pending">قيد الانتظار: %1$d/%2$d</string>
+    <string name="mUnshort_ok">تم إلغاء التقصير</string>
+    <string name="mFlags_name">محرر الأعلام(flags)</string>
+    <string name="mFlag_editFlags">تعديل قيم العلم(flag) الافتراضية</string>
+    <string name="mParts_name">أجزاء الرابط (URI)</string>
+    <string name="mParts_empty">(فارغ)</string>
+    <string name="mParts_copy">تم نسخ الجزء إلى الحافظة</string>
+    <string name="mDrawer_name">الدرج</string>
+    <string name="mDrawer_desc">سيتم إخفاء جميع الوحدات بالأسفل في درج. ستعمل الوحدات بشكل طبيعي، ولكن ستكون مخفية حتى تفتح الدرج. يمكنك وضع الوحدات التي تستخدمها نادرًا هنا، لتجنب الفوضى.</string>
+    <string name="mChg_name">سجل التغييرات</string>
+    <string name="mHosts_desc">هذه الوحدة تقوم بتصنيف المضيفين (hosts)، سواء عن طريق تحديدها يدويًا أو باستخدام ملف آخر يشبه المضيفين (hosts). يمكنك استخدامها للتحذير من المواقع الخطرة أو الخاصة. يحدد التكوين (configuration) المدمج مضيفي StevenBlack\'s hosts (الإعلانات (adware)/البرمجيات الخبيثة(malware)، الأخبار المزيفة(fakenews)، المقامرة(gambling) والمحتوى الخاص بالكبار(adult content)) من https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_editor">تكوين المضيفين(Hosts configuration). التنسيق: قائمة من الكائنات(objects) حيث يكون المفتاح هو تصنيف المضيفين(hosts label) ويشمل المحتوى القيم الاختيارية التالية:
+\n- ملف(file): عنوان URL لملف مضيفين(hosts) عن بُعد للتنزيل. سيتم إضافة جميع المضيفين الصالحين الموجودين.
+\n- مضيفين(hosts): قائمة من المضيفين(hosts) الخام (strings) لإضافتها.
+\n- لون(color): لون التصنيف. سلسلة لون Android (#AARRGGBB، #RRGGBB أو اسم لون صالح). الافتراضي هو الأحمر للخطر.
+\n- استبدال(replace): إذا كانت قيمتها خاطئة، فلن يتم استبدال المضيفين الحالية. لاحظ أن الكائنات تُقَيَم من الأعلى إلى الأسفل. الافتراضي هو صحيح.
+\n- ممكّن(enabled): إذا كانت قيمتها خاطئة، سيتم تخطي هذا الكائن بأكمله. الافتراضي هو صحيح.</string>
+    <string name="mHosts_buildDesc">سيؤدي هذا إلى مسح قاعدة بيانات المضيفين(hosts) الحالية وبنائها مرة أخرى بالتكوين(configuration) الحالي، مع تنزيل ملفات المضيفين(hosts) من الإنترنت إذا لزم الأمر. قد يستغرق هذا الإجراء بضع ثوانٍ. هل ترغب في المتابعة؟</string>
+    <string name="mUnshort_desc">تقوم هذه الوحدة بإلغاء تقصير الروابط عن طريق إرسالها إلى https://unshorten.me/، حيث يتم تقييمها على خوادمهم(servers) وحفظ التوجيه(redirection) للطلبات المستقبلية. تجنب إلغاء تقصير الروابط التي تحتوي على بيانات خاصة أو حساسة.
+\nتقتصر واجهة api الخاصة بهم على 10 طلبات في الساعة للفحوصات الجديدة. ستوضح استجابة الوحدة عدد الطلبات المعلقة التي لديك.</string>
+    <string name="mFlag_desc">[ميزة تجريبية] هذه وحدة متقدمة، تتيح لك تحرير الأعلام(intent flags) عند فتح تطبيق آخر.
+\nستعرض هذه الوحدة قائمة بالأعلام، يمكنك تغيير ما إذا كان العلم مفعلاً أم لا بالنقر على الأيقونة. هناك أيضًا قائمة كاملة لإخفاء الأعلام هناك، هي مرئية فقط، وستظل الأعلام تستخدم الحالة المخصصة..
+\nسيكون للأعلام مؤشران لونيان بجوار مربع الاختيار. الأيسر يُظهر القيمة التي تم استلامها من النية(intent)، والأيمن يشير إلى الحالة التي تم تعيينها بواسطة الوحدة نفسها. اللون الأحمر يعني أن العلم(flag) غير مفعل واللون الأخضر يعني أن العلم(flag) مفعل. بالإضافة إلى ذلك، يمكن أن يكون مؤشر الخيار رماديًا، وهذا يعني أن الحالة تم تعيينها لتكون تلقائية.
+\nباستخدام الزر بالأسفل، يمكنك تعديل الحالة الافتراضية ورؤية الأعلام.</string>
+    <string name="mParts_desc">هذه الوحدة تعرض كل أجزاء الرابط (URL) المفككة: المخطط(scheme)، السُلطة(authority)، المسارات(paths)، الاستعلامات(queries)، والجزء المعرف(fragment).
+\nمن خلال النقر على جزء معين سيتم تعيينه كرابط جديد، وهو مفيد على سبيل المثال إذا كان أحد الاستعلامات(queries) أو المسارات(paths) كان يمثل رابطًا URL لإعادة التوجيه(redirection) مشفرًا.
+\nمن خلال النقر المطول على جزء معين سيتم نسخه إلى الحافظة.
+\nيمكنك أيضًا النقر على الزر \'X\' لإزالة بعضها.
+\nهذه نسخة متقدمة من وحدة \'مزيل الاستعلامات\'.</string>
+    <string name="mChg_updated">تم تحديث التطبيق.</string>
+    <string name="mChg_current">الإصدار الحالي: %s</string>
+    <string name="mChg_desc">سيتم الإشعار عند تحديث التطبيق.</string>
+    <string name="mChg_view">عرض التغييرات</string>
+</resources>

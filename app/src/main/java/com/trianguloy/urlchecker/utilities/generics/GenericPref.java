@@ -26,6 +26,11 @@ import java.util.Objects;
  */
 public abstract class GenericPref<T> {
 
+    /** Returns the sharedPrefs used by everything in the app */
+    public static SharedPreferences getPrefs(Context cntx) {
+        return cntx.getSharedPreferences(cntx.getPackageName(), Context.MODE_PRIVATE);
+    }
+
     /**
      * android sharedprefs
      */
@@ -50,7 +55,7 @@ public abstract class GenericPref<T> {
     public GenericPref(String prefName, T defaultValue, Context cntx) {
         this.prefName = prefName;
         this.defaultValue = defaultValue;
-        prefs = cntx.getSharedPreferences(cntx.getPackageName(), Context.MODE_PRIVATE);
+        prefs = getPrefs(cntx);
     }
 
     /**

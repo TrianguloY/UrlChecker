@@ -1,1 +1,1 @@
-Permite analizar (o compartir) las URL antes de abrirlas.
+Permite analizar (o compartir) las direcciones URL antes de abrirlas.

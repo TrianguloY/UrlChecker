@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.UrlUtils.decode;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -128,9 +130,6 @@ class PatternDialog extends AModuleDialog {
                 // get regex (must exists)
                 if (!data.has("regex")) continue;
 
-                // applied previously?
-                message.applied = urlData.getData(APPLIED + pattern) != null;
-
                 // encode if required
                 if (data.optBoolean("encode")) {
                     url = URLEncoder.encode(url);
@@ -156,9 +155,8 @@ class PatternDialog extends AModuleDialog {
                     var replacements = data.opt("replacement");
                     if (replacements != null) {
                         // data exists
-                        if (replacements instanceof JSONArray) {
+                        if (replacements instanceof JSONArray replacementsArray) {
                             // array, get random
-                            var replacementsArray = (JSONArray) replacements;
                             replacement = replacementsArray.getString(new Random().nextInt(replacementsArray.length()));
                         } else {
                             // single data, get that one
@@ -172,19 +170,19 @@ class PatternDialog extends AModuleDialog {
 
                         // decode if required
                         if (data.optBoolean("decode")) {
-                            message.newUrl = URLDecoder.decode(message.newUrl);
+                            message.newUrl = decode(message.newUrl);
                         }
 
                         // automatic? apply
                         if (data.optBoolean("automatic")) {
-                            if (setNewUrl.apply(new UrlData(message.newUrl).putData(APPLIED + pattern, APPLIED))) return;
+                            if (setNewUrl.apply(new UrlData(message.newUrl).putData(APPLIED + pattern, pattern))) return;
                         }
                     }
                 }
 
 
                 // add
-                if (message.applied || message.matches) messages.add(message);
+                if (message.matches) messages.add(message);
 
             } catch (Exception e) {
                 // invalid pattern? ignore
@@ -197,34 +195,42 @@ class PatternDialog extends AModuleDialog {
     public void onDisplayUrl(UrlData urlData) {
         // visualize
         box.removeAllViews();
-        if (messages.isEmpty()) {
-            // no messages, all good
+
+        // add applied + matching
+        for (var entry : urlData.getDataByPrefix(APPLIED)) {
+            addMessage(true, new Message(entry));
+        }
+        for (var message : messages) {
+            addMessage(false, message);
+        }
+
+        // set visibility
+        if (box.getChildCount() == 0) {
             txt_noPatterns.setVisibility(View.VISIBLE);
             setVisibility(false);
         } else {
-            // messages to show, set them
             txt_noPatterns.setVisibility(View.GONE);
             setVisibility(true);
-
-            for (Message message : messages) {
-                // either matches and/or applied is true
-                View row = Inflater.inflate(R.layout.button_text, box);
-
-                // text
-                TextView text = row.findViewById(R.id.text);
-                text.setText(message.applied
-                        ? getActivity().getString(R.string.mPttrn_fixed, message.pattern)
-                        : message.pattern
-                );
-                AndroidUtils.setRoundedColor(message.matches ? R.color.warning : R.color.good, text);
-
-                // button
-                Button fix = row.findViewById(R.id.button);
-                fix.setText(R.string.mPttrn_fix);
-                fix.setEnabled(message.newUrl != null);
-                if (message.newUrl != null) fix.setOnClickListener(v -> setUrl(new UrlData(message.newUrl).putData(APPLIED + message.pattern, APPLIED)));
-            }
         }
+    }
+
+    /** Creates a new button for an applied/matching pattern */
+    private void addMessage(boolean applied, Message message) {
+        View row = Inflater.inflate(R.layout.button_text, box);
+
+        // text
+        TextView text = row.findViewById(R.id.text);
+        text.setText(applied
+                ? getActivity().getString(R.string.mPttrn_fixed, message.pattern)
+                : message.pattern
+        );
+        AndroidUtils.setRoundedColor(message.matches ? R.color.warning : R.color.good, text);
+
+        // button
+        Button fix = row.findViewById(R.id.button);
+        fix.setText(R.string.mPttrn_fix);
+        fix.setEnabled(message.newUrl != null);
+        if (message.newUrl != null) fix.setOnClickListener(v -> setUrl(new UrlData(message.newUrl).putData(APPLIED + message.pattern, message.pattern)));
     }
 
     /**
@@ -232,9 +238,8 @@ class PatternDialog extends AModuleDialog {
      */
     private static class Message {
         final String pattern;
-        boolean applied;
-        public boolean matches;
-        String newUrl;
+        public boolean matches = false;
+        String newUrl = null;
 
         public Message(String pattern) {
             this.pattern = pattern;

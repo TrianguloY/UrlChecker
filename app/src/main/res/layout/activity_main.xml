@@ -61,47 +61,53 @@
             android:padding="@dimen/smallPadding"
             android:text="@string/sample_url" />
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding"
-            android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_sort_by_size"
-            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
-            android:drawablePadding="@dimen/smallPadding"
-            android:onClick="openModulesActivity"
-            android:paddingLeft="@dimen/padding"
-            android:paddingRight="@dimen/padding"
-            android:text="@string/a_modules" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_preferences"
-            android:drawableLeft="@android:drawable/ic_menu_preferences"
-            android:drawablePadding="@dimen/smallPadding"
-            android:onClick="openSettings"
-            android:paddingLeft="@dimen/padding"
-            android:paddingRight="@dimen/padding"
-            android:text="@string/a_settings" />
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/module"
+                android:drawableLeft="@drawable/module"
+                android:drawablePadding="@dimen/smallPadding"
+                android:onClick="openModulesActivity"
+                android:paddingLeft="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:text="@string/a_modules" />
 
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/smallPadding"
-            android:layout_weight="1"
-            android:drawableStart="@android:drawable/ic_menu_info_details"
-            android:drawableLeft="@android:drawable/ic_menu_info_details"
-            android:drawablePadding="@dimen/smallPadding"
-            android:onClick="openAbout"
-            android:paddingLeft="@dimen/padding"
-            android:paddingRight="@dimen/padding"
-            android:text="@string/a_about" />
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallPadding"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/settings"
+                android:drawableLeft="@drawable/settings"
+                android:drawablePadding="@dimen/smallPadding"
+                android:onClick="openSettings"
+                android:paddingLeft="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:text="@string/a_settings" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallPadding"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/about"
+                android:drawableLeft="@drawable/about"
+                android:drawablePadding="@dimen/smallPadding"
+                android:onClick="openAbout"
+                android:paddingLeft="@dimen/padding"
+                android:paddingRight="@dimen/padding"
+                android:text="@string/a_about" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

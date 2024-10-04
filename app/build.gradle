@@ -7,41 +7,13 @@ android {
     namespace 'com.trianguloy.urlchecker'
     defaultConfig {
         applicationId "com.trianguloy.urlchecker"
-        compileSdk 33
-        minSdkVersion 14
-        targetSdkVersion 33
-        versionCode 28
-        versionName "2.13"
-
-
-        // generate buildconfig field with all locales
-        def folder = file("src/main/res") // from this folder
-        def prefix = "values-" // with this prefix
-        def translations = folder.list().toList().stream() // from all files in the folder
-                .filter { it.startsWith(prefix) } // keep those starting with the prefix
-                .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
-                .collect { it }
-        def constructor = translations.stream()
-                .map { it.substring(prefix.length()).replace('-r', '-') } // extract the locale code
-                .collect { '"' + it + '"' } // convert as 'string'
-                .join(',') // and concatenate with commas
-        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of(\"en\",$constructor)" // create field
-
-        // generate string resource with all translators
-        def translators = translations.stream() // for all translations
-                .map { file("$folder.path/$it/strings.xml") } // get the xml file
-                .map { new XmlParser().parse(it).find { it.@name == "translators" }?.text() ?: "" } // extract translators
-                .filter { it != "" } // filter empty
-                .flatMap { it.split(';').stream() } // split multiple
-                .map { it.strip() } // trim
-                .filter { it != "TrianguloY" } // remove myself
-                .distinct().sorted() // keep distinct and sort them
-                .collect { it }.join(', ') // join with commas
-        print "Extracted translators: $translators"
-        resValue "string", "all_translators", translators // create resource
+        compileSdk 34
+        minSdkVersion 19
+        targetSdkVersion 34
+        versionCode 35
+        versionName "2.17"
 
         buildConfigField("boolean", "IS_INCOGNITO", "false") // default incognito value
-        
         resValue "string", "app_name", "URLCheck"
     }
 
@@ -80,6 +52,13 @@ android {
         }
     }
 
+    // rename output apks
+    applicationVariants.configureEach {
+        outputs.configureEach {
+            outputFileName = "URLCheck-$versionName${name == "release" ? "" : "-$name"}.apk"
+        }
+    }
+
     lint {
         // users are free to update translations whenever
         // this mean that they are not usually up to date
@@ -89,8 +68,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        buildConfig true
     }
 }
 
@@ -102,4 +84,61 @@ play {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     incognitoImplementation project(path: ':forceurl');
+}
+
+// configure signing for release
+private String secret(String name) { project.hasProperty(name) ? project.property(name) : System.getenv(name) }
+
+if (secret('RELEASE_STORE_FILE')) {
+    println("Secrets provided, release will be signed")
+    android {
+        signingConfigs {
+            release {
+                storeFile file(secret('RELEASE_STORE_FILE'))
+                storePassword secret('RELEASE_STORE_PASSWORD')
+                keyAlias secret('RELEASE_KEY_ALIAS')
+                keyPassword secret('RELEASE_KEY_PASSWORD')
+            }
+        }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+} else {
+    println("No secrets provided, release will not be signed")
+}
+
+// Generate translation related fields
+android {
+    defaultConfig {
+        // get translations names
+        def folder = file("src/main/res") // from this folder
+        def translations = Arrays.stream(folder.list()) // from all files in the folder
+                .filter { file("$folder.path/$it/strings.xml").exists() } // and containing a strings translation
+                .collect { it }
+
+        // generate buildconfig field with all locales
+        def locales = translations.stream()
+                .map { it.replace('values-', '').replace('-r', '-').replace('values', 'en') } // extract the locale code
+                .distinct().sorted() // keep distinct and sort them
+                .collect { '"' + it + '"' } // convert as 'string'
+                .join(',') // and concatenate with commas
+        println "Found locales: $locales"
+        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of($locales)" // create field
+
+        // generate string resource with all translators
+        def translators = translations.stream() // for all translations
+                .map { file("$folder.path/$it/strings.xml") } // get the xml file
+                .map { new XmlParser().parse(it).find { it.@name == "translators" }?.text() ?: "" } // extract translators
+                .filter { it != "" } // filter empty
+                .flatMap { it.split(';').stream() } // split multiple
+                .map { it.strip() } // trim
+                .filter { it != "TrianguloY" } // remove myself
+                .distinct().sorted() // keep distinct and sort them
+                .collect { it }.join(', ') // join with commas
+        println "Extracted translators: $translators"
+        resValue "string", "all_translators", translators // create resource
+    }
 }

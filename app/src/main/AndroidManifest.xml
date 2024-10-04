@@ -28,6 +28,9 @@
         <activity android:name=".activities.TutorialActivity" />
         <activity
             android:name=".dialogs.MainDialog"
+            android:excludeFromRecents="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleInstance"
             android:exported="true"
             android:noHistory="true"
             android:windowSoftInputMode="adjustResize|stateHidden"
@@ -110,6 +113,24 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.BackupActivity"
+            android:parentActivityName=".activities.SettingsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.ucbckp" />
+                <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
 

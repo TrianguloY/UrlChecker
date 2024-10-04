@@ -1,9 +1,11 @@
 package com.trianguloy.urlchecker.modules.companions;
 
+import android.content.ComponentName;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.IntentApp;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -44,27 +46,28 @@ public class LastOpened {
     }
 
     /**
-     * Sorts an existing list of [packages] with the preferred order
+     * Sorts an existing list of [intentApps] with the preferred order
      */
-    public void sort(List<String> packages, String url) {
-        Collections.sort(packages, (from, another) -> comparePrefer(from, another, url));
+    public void sort(List<IntentApp> intentApps, String url) {
+        Collections.sort(intentApps, (from, another) ->
+                comparePrefer(from.getComponent(), another.getComponent(), url));
     }
 
     /**
-     * Marks the [prefer] package as preferred over [others].
+     * Marks the [prefer] intentApp as preferred over [others].
      */
-    public void prefer(String prefer, List<String> others, String url) {
-        for (String other : others) {
-            prefer(prefer, other, 1, url);
+    public void prefer(IntentApp prefer, List<IntentApp> others, String url) {
+        for (var other : others) {
+            prefer(prefer.getComponent(), other.getComponent(), 1, url);
         }
     }
 
     /* ------------------- private ------------------- */
 
     /**
-     * Marks that [prefer] package is preferred over [other] as much as [amount] more
+     * Marks that [prefer] component is preferred over [other] as much as [amount] more
      */
-    private void prefer(String prefer, String other, int amount, String url) {
+    private void prefer(ComponentName prefer, ComponentName other, int amount, String url) {
         // skip prefer over ourselves, it's useless
         if (prefer.equals(other)) return;
 
@@ -80,10 +83,10 @@ public class LastOpened {
     }
 
     /**
-     * Returns the current preference between these two packages.
+     * Returns the current preference between these two components.
      * Equivalent result as [from].compareTo([another])
      */
-    private int comparePrefer(String from, String another, String url) {
+    private int comparePrefer(ComponentName from, ComponentName another, String url) {
         // switch order if not lexicographically sorted
         if (from.compareTo(another) > 0) {
             return -comparePrefer(another, from, url);
@@ -94,10 +97,10 @@ public class LastOpened {
     }
 
     /**
-     * The preference between two packages. ([left] must be lexicographically less than [right])
+     * The preference between two components. ([left] must be lexicographically less than [right])
      */
-    private GenericPref.Int getPref(String left, String right, String url) {
-        String prefName = String.format(PREFIX, left, right);
+    private GenericPref.Int getPref(ComponentName left, ComponentName right, String url) {
+        String prefName = String.format(PREFIX, left.flattenToShortString(), right.flattenToShortString());
         if (perDomainPref.get()) {
             prefName = getDomain(url) + " " + prefName;
         }

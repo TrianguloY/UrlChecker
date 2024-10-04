@@ -2,7 +2,6 @@ package com.trianguloy.urlchecker.modules.companions;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -29,13 +28,6 @@ public class CTabs {
         return new GenericPref.Enumeration<>("open_ctabs", OnOffConfig.AUTO, OnOffConfig.class, cntx);
     }
 
-    /**
-     * Returns true iff the CTabs feature is available on the device
-     */
-    public static boolean isAvailable() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2;
-    }
-
 
     /* ------------------- state ------------------- */
 
@@ -51,40 +43,34 @@ public class CTabs {
      */
     public void initFrom(Intent intent, ImageButton button) {
         boolean visible;
-        if (CTabs.isAvailable()) {
-            // configure
-            switch (pref.get()) {
-                case AUTO:
-                default:
-                    // If auto we get it from the intent
-                    state = intent.hasExtra(CTabs.EXTRA);
-                    visible = true;
-                    break;
-                case HIDDEN:
-                    // If hidden we also get it from the intent
-                    state = intent.hasExtra(CTabs.EXTRA);
-                    visible = false;
-                    break;
-                case DEFAULT_ON:
-                    state = true;
-                    visible = true;
-                    break;
-                case DEFAULT_OFF:
-                    state = false;
-                    visible = true;
-                    break;
-                case ALWAYS_ON:
-                    state = true;
-                    visible = false;
-                    break;
-                case ALWAYS_OFF:
-                    state = false;
-                    visible = false;
-                    break;
+        // configure
+        switch (pref.get()) {
+            default -> {
+                // If auto we get it from the intent
+                state = intent.hasExtra(CTabs.EXTRA);
+                visible = true;
             }
-        } else {
-            // not available, just ignore
-            visible = false;
+            case HIDDEN -> {
+                // If hidden we also get it from the intent
+                state = intent.hasExtra(CTabs.EXTRA);
+                visible = false;
+            }
+            case DEFAULT_ON -> {
+                state = true;
+                visible = true;
+            }
+            case DEFAULT_OFF -> {
+                state = false;
+                visible = true;
+            }
+            case ALWAYS_ON -> {
+                state = true;
+                visible = false;
+            }
+            case ALWAYS_OFF -> {
+                state = false;
+                visible = false;
+            }
         }
 
         // set
@@ -106,7 +92,6 @@ public class CTabs {
      * applies the setting to a given intent
      */
     public void apply(Intent intent) {
-        if (!CTabs.isAvailable()) return;
         if (state && !intent.hasExtra(CTabs.EXTRA)) {
             // enable Custom tabs
             Bundle extras = new Bundle();
