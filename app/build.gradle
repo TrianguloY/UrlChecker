@@ -14,6 +14,7 @@ android {
         versionName "2.17"
 
         buildConfigField("boolean", "IS_INCOGNITO", "false") // default incognito value
+        
         resValue "string", "app_name", "URLCheck"
     }
 
@@ -46,8 +47,8 @@ android {
             buildConfigField("boolean", "IS_INCOGNITO", "true")
 
             applicationIdSuffix ".incognito"
-            versionNameSuffix "-incognito"
 
+            // For easy differentiation when installed
             resValue "string", "app_name", "URLCheck-I"
         }
     }
