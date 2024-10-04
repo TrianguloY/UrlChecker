@@ -26,6 +26,10 @@ public interface Apps {
         // i.e. "incognito.forks.Chromium"
     }
 
+    static String getMode(Apps app) {
+        return getId(app).split("\\.")[0];
+    }
+
     /**
      * Checks if the app/fork is the same as the one we want to open
      */
@@ -35,18 +39,19 @@ public interface Apps {
      * Applies the necessary changes so it opens as we need.
      *
      * @param intent
-     * @return If the app needs help to input the URL
      */
-    boolean transform(Intent intent);
+    void transform(Intent intent);
 
     /**
-     * @return If the app needs help to input the URL
+     * @return If the app needs help to input the URL. Internally, it checks if it is an instance of
+     *      {@link AccessibilityFunction})
      */
-    boolean needsHelp();
+    static boolean needsHelp(Apps app){
+        return app instanceof AccessibilityFunction;
+    }
 
     /**
      * @return A read only set of extras related to opening the app in this mode
      */
     Set<String> getExtras();
-
 }

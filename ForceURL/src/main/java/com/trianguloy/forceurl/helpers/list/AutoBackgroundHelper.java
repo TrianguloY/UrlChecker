@@ -2,6 +2,7 @@ package com.trianguloy.forceurl.helpers.list;
 
 import android.content.Context;
 
+import com.trianguloy.forceurl.data.Apps;
 import com.trianguloy.forceurl.helpers.AHelper;
 import com.trianguloy.forceurl.lib.Preferences;
 import com.trianguloy.forceurl.utilities.ClipboardBorrower;
@@ -23,7 +24,7 @@ public class AutoBackgroundHelper implements AHelper {
      * be cancelled an a new one launched.
      */
     @Override
-    public void run(Context context, String url, String pckg, String mode) {
+    public void run(Context context, String url, String pckg, Apps app) {
         // The task will probably outlive any context
         Context finalContext = context.getApplicationContext();
 

@@ -33,14 +33,8 @@ public class Fenix implements Apps {
     }
 
     @Override
-    public boolean transform(Intent intent) {
+    public void transform(Intent intent) {
         intent.putExtra("private_browsing_mode", true);
-        return needsHelp();
-    }
-
-    @Override
-    public boolean needsHelp() {
-        return false;
     }
 
     @Override

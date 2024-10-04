@@ -2,6 +2,7 @@ package com.trianguloy.forceurl.helpers.list;
 
 import android.content.Context;
 
+import com.trianguloy.forceurl.data.Apps;
 import com.trianguloy.forceurl.helpers.AHelper;
 import com.trianguloy.forceurl.lib.Preferences;
 import com.trianguloy.forceurl.utilities.ClipboardBorrower;
@@ -24,7 +25,7 @@ public class SemiautoBubbleHelper implements AHelper {
      * When restoring the clipboard the Bubble dissapears.
      */
     @Override
-    public void run(Context context, String url, String pckg, String mode) {
+    public void run(Context context, String url, String pckg, Apps app) {
         synchronized (lock) {
             // Is it possible this could run before relaseSafely(from background) finishes
             // releasing? I think not, but I'm not sure

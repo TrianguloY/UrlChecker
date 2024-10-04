@@ -84,14 +84,14 @@ public interface ForceUrl {
     /**
      * @return Return the key for the dictionaries if the app can be opened in mode, null if not
      */
-    static String findId(Context context, Intent intent, String mode) {
+    static String findId(Context context, String pckg, String mode) {
         var dataMode = data.get(mode);
 
         for (var appsKey : ForceUrl.groupOrder) {
             var group = dataMode.get(appsKey);
             if (group != null) {
                 for (var entry : group.values()) {
-                    if (entry.isThis(context, intent.getPackage())) {
+                    if (entry.isThis(context, pckg)) {
                         return Apps.getId(entry);
                     }
                 }
@@ -141,7 +141,8 @@ public interface ForceUrl {
     }
 
     static void applyAndLaunchHelper(Context context, Intent intent, String url, boolean apply, String mode){
-        var id = findId(context, intent, mode);
+        var pckg = intent.getComponent().getPackageName();
+        var id = findId(context, pckg, mode);
         if (id == null) return;
         // Package can be opened in mode
 
@@ -151,13 +152,13 @@ public interface ForceUrl {
             var app = getApps(id);
             var urlHelper = Preferences.CURRENT_PREF(context).get();
             // If url needs help but there is no helper, do not apply mode
-            if (urlHelper == Helpers.none && app.needsHelp()){
+            if (urlHelper == Helpers.none && Apps.needsHelp(app)){
                 // Do nothing
             } else {
                 // Apply mode
                 app.transform(intent);
-                if (app.needsHelp()){
-                    urlHelper.getHelper().run(context, url, intent.getPackage(), mode);
+                if (Apps.needsHelp(app)){
+                    urlHelper.getHelper().run(context, url, pckg, app);
                 }
             }
         }

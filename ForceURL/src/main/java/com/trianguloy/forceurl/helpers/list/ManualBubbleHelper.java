@@ -2,6 +2,7 @@ package com.trianguloy.forceurl.helpers.list;
 
 import android.content.Context;
 
+import com.trianguloy.forceurl.data.Apps;
 import com.trianguloy.forceurl.helpers.AHelper;
 import com.trianguloy.forceurl.utilities.ClipboardBorrower;
 import com.trianguloy.forceurl.utilities.Bubble;
@@ -18,7 +19,7 @@ public class ManualBubbleHelper implements AHelper {
      * When restoring the clipboard the Bubble dissapears.
      */
     @Override
-    public void run(Context context, String url, String pckg, String mode) {
+    public void run(Context context, String url, String pckg, Apps app) {
         synchronized (lock) {
             ClipboardBorrower.borrow(context, url);
 

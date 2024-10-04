@@ -5,6 +5,9 @@ import android.view.accessibility.AccessibilityNodeInfo;
 /**
  * Meant to be used with {@link Apps}. Has one function, which will be called by the
  * accessibility helper to help open the URL as needed.
+ *
+ * When an implementation of {@link Apps} also implements this, it means it needs help,
+ * so {@link Apps#needsHelp(Apps)}
  */
 public interface AccessibilityFunction {
     /**
