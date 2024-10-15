@@ -348,5 +348,4 @@
     <string name="normal">一般</string>
     <string name="mOpen_iconSize">图标大小</string>
     <string name="small">小</string>
-    <string name="mInput_alwaysEdit">总使用编辑模式</string>
 </resources>

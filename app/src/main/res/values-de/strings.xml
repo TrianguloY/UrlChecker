@@ -315,5 +315,4 @@
     <string name="normal">Normal</string>
     <string name="big">Groß</string>
     <string name="mOpen_iconSize">Symbolgröße</string>
-    <string name="mInput_alwaysEdit">Bearbeitungsmodus dauerhaft aktivieren</string>
 </resources>

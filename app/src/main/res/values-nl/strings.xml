@@ -314,6 +314,5 @@
     <string name="small">Klein</string>
     <string name="normal">Normaal</string>
     <string name="big">Groot</string>
-    <string name="mInput_alwaysEdit">Blijf altijd in de bewerkingsmodus</string>
     <string name="mD_show">Toon debuggegevens</string>
 </resources>

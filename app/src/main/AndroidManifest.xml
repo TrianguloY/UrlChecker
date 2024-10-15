@@ -33,7 +33,6 @@
             android:launchMode="singleInstance"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@android:style/Theme.DeviceDefault.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

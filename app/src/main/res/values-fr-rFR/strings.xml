@@ -364,7 +364,6 @@ Notez que toute modification apportée à l'objet parent 'fournisseurs' sera éc
     <string name="bkp_data_files">Fichiers: Données enregistrées sous forme de fichiers.</string>
     <string name="bjp_cache">Cache: Données qui peuvent être facilement téléchargées/générées, comme la base de données des hôtes. L\'activation de cette option augmente considérablement la taille de la sauvegarde.</string>
     <string name="bck_restoreTitle">Restorer la sauvegarde</string>
-    <string name="mInput_alwaysEdit">Toujours en mode édition</string>
     <string name="mVT_noKey">Clé API manquante</string>
     <string name="bck_restoreMessage">ATTENTION! Ceci remplacera les éléments sélectionnés dans la sauvegarde.
 \nVoulez-vous vraiment continuer ?</string>

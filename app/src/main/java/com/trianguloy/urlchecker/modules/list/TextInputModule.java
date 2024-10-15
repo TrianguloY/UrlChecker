@@ -2,14 +2,14 @@ package com.trianguloy.urlchecker.modules.list;
 
 import static android.graphics.Typeface.BOLD;
 import static android.graphics.Typeface.ITALIC;
+import static android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
+import static android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE;
 
-import android.content.Context;
-import android.text.Editable;
+import android.app.AlertDialog;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,18 +20,12 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
-import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
-import com.trianguloy.urlchecker.utilities.wrappers.DoubleEvent;
 
 /** This module shows the current url and allows manual editing */
 public class TextInputModule extends AModuleData {
-
-    public static GenericPref.Bool ALWAYSEDIT_PREF(Context cntx) {
-        return new GenericPref.Bool("text_alwaysEdit", false, cntx);
-    }
 
     @Override
     public String getId() {
@@ -50,41 +44,16 @@ public class TextInputModule extends AModuleData {
 
     @Override
     public AModuleConfig getConfig(ModulesActivity cntx) {
-        return new TextInputConfig(cntx);
-    }
-}
-
-class TextInputConfig extends AModuleConfig {
-
-    public TextInputConfig(ModulesActivity cntx) {
-        super(cntx);
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.config_input;
-    }
-
-    @Override
-    public void onInitialize(View views) {
-        TextInputModule.ALWAYSEDIT_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.alwaysEdit));
+        return new DescriptionConfig(R.string.mInput_desc);
     }
 }
 
 class TextInputDialog extends AModuleDialog {
 
-    private final DoubleEvent doubleEdit = new DoubleEvent(1000); // if two updates happens in less than this milliseconds, they are considered as the same
-    private final InputMethodManager inputMethodManager;
-    private final GenericPref.Bool alwaysEdit;
-    private boolean skipUpdate = false;
-
     private TextView txt_url;
-    private EditText edtxt_url;
 
     public TextInputDialog(MainDialog dialog) {
         super(dialog);
-        inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        alwaysEdit = TextInputModule.ALWAYSEDIT_PREF(dialog);
     }
 
     @Override
@@ -95,62 +64,46 @@ class TextInputDialog extends AModuleDialog {
     @Override
     public void onInitialize(View views) {
         txt_url = views.findViewById(R.id.url);
-        edtxt_url = views.findViewById(R.id.urlEdit);
-        edtxt_url.addTextChangedListener(new DefaultTextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (skipUpdate) return;
 
-                // new url by the user
-                var newUrlData = new UrlData(s.toString())
-                        .dontTriggerOwn()
-                        .disableUpdates();
+        // Show fullscreen editor with the cursor in the clicked position when clicked
+        AndroidUtils.setOnClickWithPositionListener(txt_url, cursor -> showEditor(txt_url.getOffsetForPosition(cursor.first, cursor.second)));
 
-                // mark as minor if too quick
-                if (doubleEdit.checkAndTrigger()) newUrlData.asMinorUpdate();
-
-                // set
-                setUrl(newUrlData);
-            }
-
+        // Show fullscreen editor with everything selected when long clicked
+        txt_url.setOnLongClickListener(v -> {
+            showEditor(-1);
+            return true;
         });
+    }
 
-        if (alwaysEdit.get()) {
-            // always editable
-            txt_url.setVisibility(View.GONE);
-            edtxt_url.setVisibility(View.VISIBLE);
-        } else {
-            // editable when clicked
-            AndroidUtils.setOnClickWithPositionListener(txt_url, position -> {
-                edtxt_url.setSelection(txt_url.getOffsetForPosition(position.first, position.second));
-                txt_url.setVisibility(View.GONE);
-                edtxt_url.setVisibility(View.VISIBLE);
-                // force open the keyboard
-                edtxt_url.requestFocus();
-                inputMethodManager.showSoftInput(edtxt_url, 0);
-            });
-        }
+    /**
+     * Show a popup editor for the url text.
+     * The cursor is placed at [position], or everything is selected if position is negative
+     */
+    public void showEditor(int position) {
+        // init view
+        var editText = new EditText(getActivity());
+        editText.setText(getUrl());
+        if (position >= 0) editText.setSelection(position);
+        else editText.setSelection(0, editText.length());
+        editText.requestFocus();
 
+        // init dialog
+        var dialog = new AlertDialog.Builder(getActivity())
+                .setView(editText)
+                .setPositiveButton(android.R.string.ok, (d, w) -> setUrl(editText.getText().toString()))
+                .setNegativeButton(android.R.string.cancel, null)
+                .setCancelable(true)
+                .create();
+        if (dialog.getWindow() != null)
+            dialog.getWindow().setSoftInputMode(SOFT_INPUT_STATE_VISIBLE | SOFT_INPUT_ADJUST_RESIZE);
+
+        // show
+        dialog.show();
     }
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
-        // setText fires the afterTextChanged listener, so we need to skip it
-        skipUpdate = true;
-
-        edtxt_url.setText(urlData.url);
-        if (!alwaysEdit.get()) {
-            // back to non-edit
-            txt_url.setText(getSpannableUriText(urlData.url));
-            txt_url.setVisibility(View.VISIBLE);
-            edtxt_url.setVisibility(View.GONE);
-
-            // force close the keyboard
-            inputMethodManager.hideSoftInputFromWindow(edtxt_url.getWindowToken(), 0);
-        }
-
-        skipUpdate = false;
-        doubleEdit.reset(); // next user update, even if immediately after, will be considered new
+        txt_url.setText(getSpannableUriText(urlData.url));
     }
 
     private CharSequence getSpannableUriText(String rawUri) {
