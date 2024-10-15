@@ -47,16 +47,6 @@ public class UrlData {
         return this;
     }
 
-    /**
-     * If set, this update is considered 'minor' and modules may decide to ignore or merge it with the previous one
-     */
-    public boolean minorUpdate = false;
-
-    public UrlData asMinorUpdate() {
-        minorUpdate = true;
-        return this;
-    }
-
     // ------------------- extra data -------------------
 
     private final LinkedHashMap<String, String> extraData = new LinkedHashMap<>(); // keeps order
@@ -102,7 +92,6 @@ public class UrlData {
                 ", trigger=" + trigger +
                 ", triggerOwn=" + triggerOwn +
                 ", disableUpdates=" + disableUpdates +
-                ", minorUpdate=" + minorUpdate +
                 ", extraData=" + extraData +
                 '}';
     }

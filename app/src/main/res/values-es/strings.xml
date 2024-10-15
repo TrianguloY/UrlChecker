@@ -210,7 +210,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n
 \nPuede mantener pulsado para seleccionar el texto.</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
-    <string name="mD_show">Mostrar datos de debug</string>
+    <string name="mD_show">Cargar datos de debug</string>
     <!-- -->
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la URL cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>

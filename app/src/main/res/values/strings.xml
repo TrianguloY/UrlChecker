@@ -260,7 +260,7 @@ If you enable this it will display some internal debug data (like original inten
 
 You can hold to select text."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
-    <string name="mD_show">Show debug data</string>
+    <string name="mD_show">Load debug data</string>
     <!-- -->
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the URL is edited, either manually or by other modules, this one allows you to view and revert changes.</string>

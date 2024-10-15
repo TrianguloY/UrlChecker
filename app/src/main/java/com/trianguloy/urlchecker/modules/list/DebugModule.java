@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.trianguloy.urlchecker.R;
@@ -60,7 +59,6 @@ public class DebugModule extends AModuleData {
 class DebugDialog extends AModuleDialog {
 
     public static final String SEPARATOR = "";
-    private Button showData;
     private TextView data;
     private UrlData urlData;
 
@@ -75,14 +73,11 @@ class DebugDialog extends AModuleDialog {
 
     @Override
     public void onInitialize(View views) {
-        showData = views.findViewById(R.id.showData);
         data = views.findViewById(R.id.data);
-
-        showData.setOnClickListener(v -> showData());
+        views.findViewById(R.id.showData).setOnClickListener(v -> showData());
     }
 
     private void showData() {
-        showData.setVisibility(View.GONE);
         data.setVisibility(View.VISIBLE);
         // data to display
         data.setText(String.join("\n", List.of(
@@ -124,7 +119,6 @@ class DebugDialog extends AModuleDialog {
     @Override
     public void onPrepareUrl(UrlData urlData) {
         data.setVisibility(View.GONE);
-        showData.setVisibility(View.VISIBLE);
     }
 
     @Override

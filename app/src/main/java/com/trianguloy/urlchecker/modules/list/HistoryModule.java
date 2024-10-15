@@ -103,14 +103,9 @@ class HistoryDialog extends AModuleDialog {
         if (index + 1 < history.size())
             history.subList(index + 1, history.size()).clear();
 
-        if (urlData.minorUpdate) {
-            // minor update, replace previous entry
-            history.set(index, urlData.url);
-        } else {
-            // add new entry
-            history.add(urlData.url);
-            index++;
-        }
+        // add new entry
+        history.add(urlData.url);
+        index++;
     }
 
     @Override
