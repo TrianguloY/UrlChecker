@@ -166,6 +166,10 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="auto_available_prefix">Available automation keys:</string>
     <string name="auto_available_disabled">"(!) This module is disabled, automations won't run (!)"</string>
     <string name="auto_open">"Will open the url with the first available app. Equivalent of pressing the 'open' button."</string>
+    <string name="auto_share">"Will share the url. Equivalent of pressing the 'share' button."</string>
+    <string name="auto_copy">"Will copy the url. Equivalent of pressing the 'copy' button."</string>
+    <string name="auto_ctabs">"Will enable ctabs. Equivalent of pressing the 'ctabs' button if disabled (even if hidden)."</string>
+    <string name="auto_incognito">"Will enable incognito. Equivalent of pressing the 'incognito' button if disabled (even if hidden)."</string>
     <!--
         modules
     -->

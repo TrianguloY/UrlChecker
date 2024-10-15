@@ -74,7 +74,7 @@ public interface ShareUtility {
         /* ------------------- Buttons ------------------- */
 
         /** Shares the url as text */
-        private void shareUrl() {
+        public void shareUrl() {
             // create send intent
             var sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -94,7 +94,7 @@ public interface ShareUtility {
         }
 
         /** Copy the url */
-        private void copyUrl() {
+        public void copyUrl() {
             AndroidUtils.copyToClipboard(mainDialog, R.string.mOpen_clipboard, mainDialog.getUrl());
             if (closeCopyPref.get()) {
                 mainDialog.finish();

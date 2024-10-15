@@ -23,6 +23,7 @@ public class Incognito {
 
     private final GenericPref.Enumeration<OnOffConfig> pref;
     private boolean state = false;
+    private ImageButton button;
 
     public Incognito(Context cntx) {
         this.pref = PREF(cntx);
@@ -32,6 +33,7 @@ public class Incognito {
      * Initialization from a given intent and a button to toggle
      */
     public void initFrom(Intent intent, ImageButton button) {
+        this.button = button;
         // init state
         boolean visible;
         switch (pref.get()) {
@@ -69,14 +71,18 @@ public class Incognito {
             // show and configure
             button.setVisibility(View.VISIBLE);
             AndroidUtils.longTapForDescription(button);
-            AndroidUtils.toggleableListener(button,
-                    imageButton -> state = !state,
-                    v -> v.setImageResource(state ? R.drawable.incognito : R.drawable.no_incognito)
-            );
+            button.setOnClickListener(v1 -> setState(!state));
+            setState(state);
         } else {
             // hide
             button.setVisibility(View.GONE);
         }
+    }
+
+    /** Sets the incognito state */
+    public void setState(boolean state) {
+        this.state = state;
+        button.setImageResource(state ? R.drawable.incognito : R.drawable.no_incognito);
     }
 
     /**
