@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Manages an url and extra data associated with it
  * I don't like this approach, but unfortunately I can't think of something better
+ * TODO: make this immutable with a builder/factory or something
  */
 public class UrlData {
 

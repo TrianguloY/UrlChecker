@@ -78,7 +78,7 @@ public interface ShareUtility {
             // create send intent
             var sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, mainDialog.getUrl());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, mainDialog.getUrlData().url);
             sendIntent.setType("text/plain");
 
             // share intent
@@ -95,7 +95,7 @@ public interface ShareUtility {
 
         /** Copy the url */
         public void copyUrl() {
-            AndroidUtils.copyToClipboard(mainDialog, R.string.mOpen_clipboard, mainDialog.getUrl());
+            AndroidUtils.copyToClipboard(mainDialog, R.string.mOpen_clipboard, mainDialog.getUrlData().url);
             if (closeCopyPref.get()) {
                 mainDialog.finish();
             }

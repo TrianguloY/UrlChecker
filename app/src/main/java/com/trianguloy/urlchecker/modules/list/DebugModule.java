@@ -60,7 +60,6 @@ class DebugDialog extends AModuleDialog {
 
     public static final String SEPARATOR = "";
     private TextView data;
-    private UrlData urlData;
 
     public DebugDialog(MainDialog dialog) {
         super(dialog);
@@ -87,7 +86,7 @@ class DebugDialog extends AModuleDialog {
                 SEPARATOR,
 
                 "queryIntentActivities:",
-                IntentApp.getOtherPackages(UrlUtils.getViewIntent(urlData.url, null), getActivity()).toString(),
+                IntentApp.getOtherPackages(UrlUtils.getViewIntent(getUrl(), null), getActivity()).toString(),
 
                 SEPARATOR,
 
@@ -95,14 +94,14 @@ class DebugDialog extends AModuleDialog {
                 getActivity().getPackageManager().queryIntentActivityOptions(
                         new ComponentName(getActivity(), MainDialog.class.getName()),
                         null,
-                        UrlUtils.getViewIntent(urlData.url, null),
+                        UrlUtils.getViewIntent(getUrl(), null),
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PackageManager.MATCH_ALL : 0
                 ).toString(),
 
                 SEPARATOR,
 
                 "UrlData:",
-                urlData.toString(),
+                getUrlData().toString(),
 
                 SEPARATOR,
 
@@ -119,11 +118,6 @@ class DebugDialog extends AModuleDialog {
     @Override
     public void onPrepareUrl(UrlData urlData) {
         data.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onDisplayUrl(UrlData urlData) {
-        this.urlData = urlData;
     }
 }
 

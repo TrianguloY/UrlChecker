@@ -61,11 +61,14 @@ public abstract class AModuleDialog implements Fragment {
         return dialog;
     }
 
-    /**
-     * @return the current url
-     */
+    /** Returns the current urlData. Please don't modify it. */
+    protected final UrlData getUrlData() {
+        return dialog.getUrlData();
+    }
+
+    /** Returns the current url (shorthand for getUrlData().url) */
     protected final String getUrl() {
-        return dialog.getUrl();
+        return getUrlData().url;
     }
 
     /**

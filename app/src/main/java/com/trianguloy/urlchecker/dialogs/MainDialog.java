@@ -184,11 +184,9 @@ public class MainDialog extends Activity {
         updating = 0;
     }
 
-    /**
-     * Return the current url
-     */
-    public String getUrl() {
-        return urlData.url;
+    /** Returns the current url data. Please don't modify it */
+    public UrlData getUrlData() {
+        return urlData;
     }
 
     /**
