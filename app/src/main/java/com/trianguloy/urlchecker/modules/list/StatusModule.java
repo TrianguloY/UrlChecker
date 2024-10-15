@@ -106,7 +106,7 @@ class StatusDialog extends AModuleDialog {
         check = views.findViewById(R.id.check);
         check.setOnClickListener(v -> {
             AndroidUtils.setHideableText(previous, null);
-            check();
+            check(false);
         });
 
         previous = views.findViewById(R.id.previous);
@@ -146,16 +146,16 @@ class StatusDialog extends AModuleDialog {
         redirectionUrl = null;
         updateRedirect();
 
-        if (!urlData.disableUpdates && urlData.url.matches(autoCheck.get())) {
+        if (urlData.url.matches(autoCheck.get())) {
             // autocheck
-            check();
+            check(urlData.disableUpdates);
         }
     }
 
     /**
      * Starts the checking process
      */
-    private void check() {
+    private void check(boolean disableUpdates) {
         // disable button
         check.setEnabled(false);
         check.setText(R.string.mStatus_recheck);
@@ -164,7 +164,7 @@ class StatusDialog extends AModuleDialog {
         updateRedirect();
 
         // check in background
-        thread = new Thread(this::_check);
+        thread = new Thread(() -> _check(disableUpdates));
         thread.start();
     }
 
@@ -172,7 +172,7 @@ class StatusDialog extends AModuleDialog {
      * Checks a redirect, in background
      * https://stackoverflow.com/questions/1884230/urlconnection-doesnt-follow-redirect
      */
-    private void _check() {
+    private void _check(boolean disableUpdates) {
         // get url
         var url = getUrl();
         Log.d("STATUS", "Checking: " + url);
@@ -235,7 +235,7 @@ class StatusDialog extends AModuleDialog {
             info.setText(finalMessage);
             check.setEnabled(true);
 
-            if (autoRedir.get() && redirectionUrl != null) {
+            if (!disableUpdates && autoRedir.get() && redirectionUrl != null) {
                 // autoredirect, replace url
                 var previousMessage = previous.getText().toString() + (previous.length() == 0 ? "" : "\n") + "--> " + finalMessage;
                 setUrl(new UrlData(redirectionUrl).putData(PREVIOUS, previousMessage));
