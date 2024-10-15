@@ -67,7 +67,7 @@ public class MainDialog extends Activity {
     /**
      * Available automations
      */
-    private final Map<String, AModuleDialog> automations = new ArrayMap<>();
+    private final Map<String, Runnable> automations = new ArrayMap<>();
 
     /**
      * The current url
@@ -162,16 +162,16 @@ public class MainDialog extends Activity {
             // fifth run automations
             if (automationRules.automationsEnabledPref.get()) {
                 for (var automationKey : automationRules.check(urlData)) {
-                    var dialog = automations.get(automationKey);
-                    if (dialog == null) {
+                    var action = automations.get(automationKey);
+                    if (action == null) {
                         if (automationRules.automationsShowErrorToast.get()) {
                             Toast.makeText(this, getString(R.string.auto_notFound, automationKey), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         try {
-                            dialog.runAutomation(automationKey);
+                            action.run();
                         } catch (Exception e) {
-                            AndroidUtils.assertError("Exception while running automation " + automationKey + " with module " + dialog.getClass().getName(), e);
+                            AndroidUtils.assertError("Exception while running automation " + automationKey, e);
                         }
                     }
                 }
@@ -344,7 +344,7 @@ public class MainDialog extends Activity {
                     if (BuildConfig.DEBUG && automations.containsKey(automation.key())) {
                         AndroidUtils.assertError("There is already an automation with that key!");
                     }
-                    automations.put(automation.key(), module);
+                    automations.put(automation.key(), () -> automation.action().accept(module));
                 }
             }
         } catch (Exception e) {

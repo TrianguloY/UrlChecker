@@ -74,14 +74,16 @@ public class OpenModule extends AModuleData {
     }
 
     @Override
-    public List<AutomationRules.Automation> getAutomations() {
-        return List.of(
-                new AutomationRules.Automation("open", R.string.auto_open)
-        );
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) OpenDialog.AUTOMATIONS;
     }
 }
 
 class OpenDialog extends AModuleDialog {
+
+    static List<AutomationRules.Automation<OpenDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("open", R.string.auto_open, dialog -> dialog.openUrl(0))
+    );
 
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool noReferrerPref;
@@ -154,14 +156,6 @@ class OpenDialog extends AModuleDialog {
     @Override
     public void onDisplayUrl(UrlData urlData) {
         updateSpinner(urlData.url);
-    }
-
-    @Override
-    public void runAutomation(String key) {
-        switch (key) {
-            case "open" -> openUrl(0);
-            default -> super.runAutomation(key);
-        }
     }
 
     // ------------------- Spinner -------------------

@@ -22,7 +22,7 @@ public class AutomationRules extends JsonCatalog {
     /* ------------------- inner classes ------------------- */
 
     /** Represents an available automation */
-    public record Automation(String key, int description) {
+    public record Automation<T extends AModuleDialog>(String key, int description, JavaUtils.Consumer<T> action) {
     }
 
     /* ------------------- static ------------------- */
