@@ -301,13 +301,14 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mUnshort_name">Desacortador</string>
     <string name="mUnshort_unshort">Desacortar</string>
-    <string name="mUnshort_desc">Este módulo abreviará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para futuras solicitudes. Evita acortar los enlaces con datos privados o confidenciales.
+    <string name="mUnshort_desc">Este módulo desacortará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la url desacortada para futuras solicitudes. Evite desacortar los enlaces con datos privados o confidenciales.
 \nEsta API tiene una tasa limitada a 10 peticiones por hora para nuevas solicitudes. La respuesta del módulo mostrará cuántas solicitudes tienes pendientes.</string>
     <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
-    <string name="mUnshort_notFound">No se ha encontrado redirección</string>
+    <string name="mUnshort_to">Se desacorta a %s</string>
+    <string name="mUnshort_notFound">No se ha encontrado desacortación</string>
     <string name="mUnshort_pending">quedan: %1$d/%2$d</string>
     <string name="mUnshort_ok">Desacortado</string>
     <!-- -->

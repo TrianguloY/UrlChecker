@@ -171,6 +171,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="auto_ctabs">"Will enable ctabs. Equivalent of pressing the 'ctabs' button if disabled (even if hidden)."</string>
     <string name="auto_incognito">"Will enable incognito. Equivalent of pressing the 'incognito' button if disabled (even if hidden)."</string>
     <string name="auto_checkStatus">"Will run the status check. Equivalent of pressing the 'Check' button."</string>
+    <string name="auto_unshort">"Will try to unshort the url. Equivalent of pressing the 'Unshort' button."</string>
     <!--
         modules
     -->
@@ -376,7 +377,8 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
-    <string name="mUnshort_notFound">No redirection found</string>
+    <string name="mUnshort_to">Unshortens to %s</string>
+    <string name="mUnshort_notFound">No unshorted url found</string>
     <string name="mUnshort_pending">pending: %1$d/%2$d</string>
     <string name="mUnshort_ok">Unshortened</string>
     <!-- -->
