@@ -232,4 +232,27 @@ public interface AndroidUtils {
         });
         view.setOnClickListener(v -> listener.accept(Pair.create(xy[0], xy[1])));
     }
+
+    String MARKER = "%S$S/S%";
+
+    /** this code replaces the [MARKER] in [textWithMarker] with the underlined [url]. Will call onClick with the url when clicked. */
+    static CharSequence underlineUrl(String textWithMarker, String url, JavaUtils.Consumer<String> onClick) {
+        // it does so by using a marker to underline exactly the parameter (wherever it is) and later replace it with the final url
+        // all underlined looks bad, and auto-underline may not work with some malformed urls
+
+        // "Redirects to {marker}" -> "Redirects to _{marker}_"
+        var start = textWithMarker.indexOf(MARKER);
+        var end = start + MARKER.length();
+        SpannableStringBuilder text = new SpannableStringBuilder(textWithMarker);
+        text.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View ignored) {
+                onClick.accept(url);
+            }
+        }, start, end, 0);
+
+        // "Redirects to _{marker}_" -> "Redirects to _{redirectionUrl}_"
+        text.replace(start, end, url);
+        return text;
+    }
 }

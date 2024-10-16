@@ -1,8 +1,8 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.AndroidUtils.MARKER;
+
 import android.content.Context;
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +14,7 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
@@ -22,6 +23,7 @@ import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 /**
  * A module that checks the page status code by performing a GET request
@@ -57,6 +59,11 @@ public class StatusModule extends AModuleData {
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new StatusConfig(cntx);
     }
+
+    @Override
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) StatusDialog.AUTOMATIONS;
+    }
 }
 
 class StatusConfig extends AModuleConfig {
@@ -80,13 +87,16 @@ class StatusConfig extends AModuleConfig {
 class StatusDialog extends AModuleDialog {
     private static final String PREVIOUS = "redirected.redirected";
 
+    static List<AutomationRules.Automation<StatusDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("checkStatus", R.string.auto_checkStatus, dialog ->
+                    dialog.check(dialog.getUrlData().disableUpdates))
+    );
 
     private Button check;
     private TextView previous;
     private TextView info;
     private TextView redirect;
 
-    private String redirectionUrl = null;
     private Thread thread = null;
 
     private GenericPref.Bool autoRedir;
@@ -115,13 +125,6 @@ class StatusDialog extends AModuleDialog {
         info = views.findViewById(R.id.info);
 
         redirect = views.findViewById(R.id.redirect);
-        redirect.setOnClickListener(v -> {
-            // replace url
-            if (redirectionUrl != null) {
-                setUrl(redirectionUrl);
-                redirectionUrl = null;
-            }
-        });
 
         autoRedir = StatusModule.AUTOREDIR_PREF(getActivity());
         autoCheck = StatusModule.AUTOCHECK_PREF(getActivity());
@@ -143,8 +146,7 @@ class StatusDialog extends AModuleDialog {
         check.setText(R.string.mStatus_check);
         AndroidUtils.setHideableText(previous, urlData.getData(PREVIOUS));
         AndroidUtils.setHideableText(info, null);
-        redirectionUrl = null;
-        updateRedirect();
+        updateRedirect(null);
 
         if (urlData.url.matches(autoCheck.get())) {
             // autocheck
@@ -160,8 +162,7 @@ class StatusDialog extends AModuleDialog {
         check.setEnabled(false);
         check.setText(R.string.mStatus_recheck);
         AndroidUtils.setHideableText(info, getActivity().getString(R.string.mStatus_checking));
-        redirectionUrl = null;
-        updateRedirect();
+        updateRedirect(null);
 
         // check in background
         thread = new Thread(() -> _check(disableUpdates));
@@ -177,6 +178,8 @@ class StatusDialog extends AModuleDialog {
         var url = getUrl();
         Log.d("STATUS", "Checking: " + url);
         String message;
+
+        var redirectionUrl = (String) null;
 
         HttpURLConnection conn = null;
         try {
@@ -230,53 +233,31 @@ class StatusDialog extends AModuleDialog {
         }
 
         // notify
-        final var finalMessage = message;
+        var finalMessage = message;
+        var finalRedirectionUrl = redirectionUrl;
         getActivity().runOnUiThread(() -> {
             info.setText(finalMessage);
             check.setEnabled(true);
 
-            if (!disableUpdates && autoRedir.get() && redirectionUrl != null) {
+            if (!disableUpdates && autoRedir.get() && finalRedirectionUrl != null) {
                 // autoredirect, replace url
                 var previousMessage = previous.getText().toString() + (previous.length() == 0 ? "" : "\n") + "--> " + finalMessage;
-                setUrl(new UrlData(redirectionUrl).putData(PREVIOUS, previousMessage));
-                redirectionUrl = null;
+                setUrl(new UrlData(finalRedirectionUrl).putData(PREVIOUS, previousMessage));
             } else {
-                updateRedirect();
+                updateRedirect(finalRedirectionUrl);
             }
 
         });
     }
 
-    /**
-     * Updates the redirect textview based on the redirect variable
-     */
-    private void updateRedirect() {
+    /** Updates the redirect textview */
+    private void updateRedirect(String redirectionUrl) {
         if (redirectionUrl == null) {
             AndroidUtils.setHideableText(redirect, null);
             return;
         }
 
-        // this code sets the redirect text to "Redirects to _{redirectionUrl}_" with url underscored.
-        // it does so by using a marker to underline exactly the parameter (wherever it is) and later replace it with the final url
-        // all underlined looks bad, and auto-underline may not work with some malformed urls
-
-        // "Redirects to %s" -> "Redirects to {marker}"
-        var marker = "%S%";
-        var string = getActivity().getString(R.string.mStatus_redir, marker);
-
-        // "Redirects to {marker}" -> "Redirects to _{marker}_"
-        var start = string.indexOf(marker);
-        var end = start + marker.length();
-        SpannableStringBuilder text = new SpannableStringBuilder(string);
-        text.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View ignored) {
-                // do nothing, the whole view is clickable
-            }
-        }, start, end, 0);
-
-        // "Redirects to _{marker}_" -> "Redirects to _{redirectionUrl}_"
-        text.replace(start, end, redirectionUrl);
+        var text = AndroidUtils.underlineUrl(getActivity().getString(R.string.mStatus_redir, MARKER), redirectionUrl, this::setUrl);
 
         AndroidUtils.setHideableText(redirect, text);
     }

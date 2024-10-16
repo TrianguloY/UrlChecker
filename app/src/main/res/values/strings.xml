@@ -170,6 +170,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="auto_copy">"Will copy the url. Equivalent of pressing the 'copy' button."</string>
     <string name="auto_ctabs">"Will enable ctabs. Equivalent of pressing the 'ctabs' button if disabled (even if hidden)."</string>
     <string name="auto_incognito">"Will enable incognito. Equivalent of pressing the 'incognito' button if disabled (even if hidden)."</string>
+    <string name="auto_checkStatus">"Will run the status check. Equivalent of pressing the 'Check' button."</string>
     <!--
         modules
     -->
