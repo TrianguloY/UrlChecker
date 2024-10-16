@@ -172,6 +172,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="auto_incognito">"Will enable incognito. Equivalent of pressing the 'incognito' button if disabled (even if hidden)."</string>
     <string name="auto_checkStatus">"Will run the status check. Equivalent of pressing the 'Check' button."</string>
     <string name="auto_unshort">"Will try to unshort the url. Equivalent of pressing the 'Unshort' button."</string>
+    <string name="auto_scan">"Will scan the url. Equivalent of pressing the 'Scan' button."</string>
     <!--
         modules
     -->

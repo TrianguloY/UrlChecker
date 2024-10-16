@@ -14,12 +14,15 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.companions.VirusTotalUtility;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.UrlUtils;
 import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
+
+import java.util.List;
 
 /**
  * This module uses the VirusTotal api (https://developers.virustotal.com/reference) for url reports
@@ -55,6 +58,11 @@ public class VirusTotalModule extends AModuleData {
     @Override
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new VirusTotalConfig(cntx);
+    }
+
+    @Override
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) VirusTotalDialog.AUTOMATIONS;
     }
 }
 
@@ -93,6 +101,10 @@ class VirusTotalConfig extends AModuleConfig {
 }
 
 class VirusTotalDialog extends AModuleDialog {
+
+    static List<AutomationRules.Automation<VirusTotalDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("scan", R.string.auto_scan, VirusTotalDialog::scanOrCancel)
+    );
 
     private static final int RETRY_TIMEOUT = 5000;
     private Button btn_scan;
