@@ -84,13 +84,13 @@ public class AutomationRules extends JsonCatalog {
 
     /** Generates the list of available automation keys, as text. */
     private static String getAvailableAutomations(Context cntx) {
-        var stringBuilder = new StringBuilder(cntx.getString(R.string.auto_available_prefix)).append("\n\n");
+        var stringBuilder = new StringBuilder(cntx.getString(R.string.auto_available_prefix)).append("\n");
 
         for (var module : ModuleManager.getModules(true, cntx)) {
             var automations = module.getAutomations();
             if (automations.isEmpty()) continue;
 
-            stringBuilder.append(cntx.getString(module.getName())).append(":\n");
+            stringBuilder.append("\n").append(cntx.getString(module.getName())).append(":\n");
             if (!ModuleManager.getEnabledPrefOfModule(module, cntx).get()) {
                 stringBuilder.append(cntx.getString(R.string.auto_available_disabled)).append("\n");
             }
