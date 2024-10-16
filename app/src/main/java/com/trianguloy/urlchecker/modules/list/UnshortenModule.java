@@ -62,7 +62,7 @@ public class UnshortenModule extends AModuleData {
 class UnshortenDialog extends AModuleDialog {
 
     static List<AutomationRules.Automation<UnshortenDialog>> AUTOMATIONS = List.of(
-            new AutomationRules.Automation<>("unshort", R.string.auto_checkStatus, dialog ->
+            new AutomationRules.Automation<>("unshort", R.string.auto_unshort, dialog ->
                     dialog.unshort(dialog.getUrlData().disableUpdates))
     );
 

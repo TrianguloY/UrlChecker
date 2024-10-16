@@ -106,6 +106,28 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     -->
     <string name="shortcut_checkClipboard">Comprobar las URL desde el portapapeles</string>
     <!--
+        automations
+    -->
+    <string name="a_automations">Automatizaciones</string>
+    <string name="auto_desc">Con automatizaciones, puedes realizar acciones basadas en estados. Puedes configurar las automatizaciones aquí, o deshabilitarlas completamente usando el boton de debajo.</string>
+    <string name="auto_enabled">Activar automatizaciones</string>
+    <string name="auto_error_toast">Mostrar aviso si alguna automatización falla</string>
+    <string name="auto_notFound">"No hay ninguna automatización disponible con clave '%s'. Asegúrate de que es válida y el módulo que la incluye está activo."</string>
+    <string name="auto_editor">"Configuración de automatizaciones. Formato: lista de objectos cuya clave es cualquier nombre único para la automatización y su conntenido incluye los siguientes valores:
+- 'regex': string, requerida: una expresión regular de Java válida que la URL debe coincidir para que se ejecute la automatización.
+- 'action': string, requerida: la clave de la automatización a ejecutar. Debajo se muestra la lista completa de claves disponibles.
+- 'enabled': booleano, opcional: si es falso, la automatización se omitirá. Verdadero (true) por defecto."</string>
+    <string name="auto_available_prefix">Claves de automatizaciones disponibles:</string>
+    <string name="auto_available_disabled">"Este módulo está deshabilitado, las automatizaciones no se ejecutarán"</string>
+    <string name="auto_open">"Abrirá el enlace con la primera aplicación disponible. Equivalente a pulsar el boton 'abrir'."</string>
+    <string name="auto_share">"Compartirá el enlace. Equivalente a pulsar el botón de compartir."</string>
+    <string name="auto_copy">"Copiará el enlace en el portapapeles. Equivalente a pulsar el boton de 'copiar'"</string>
+    <string name="auto_incognito">"Activará el modo incógnito. Equivalente a pulsar el boton de 'incógnito' cuando está desactivado (incluso si está oculto)."</string>
+    <string name="auto_ctabs">"Activará el modo de custom tabs. Equivalente a pulsar el boton de 'custom tabs' cuando está desactivado (incluso si está oculto)."</string>
+    <string name="auto_checkStatus">"Ejecutará la comprobación del estado. Equivalente a pulsar el botón de 'comprobar'"</string>
+    <string name="auto_unshort">"Ejecutará el proceso de desacortar enlace. Equivalente a pulsar el botón de 'desacortar'."</string>
+    <string name="auto_scan">"Escaneará el enlace. Equivalente a pulsar el botón de escanear."</string>
+    <!--
         modules
     -->
     <string name="mPttrn_name">Verificador de patrones</string>
