@@ -33,6 +33,14 @@ public class UrlHelperService extends AccessibilityService {
         return instance;
     }
 
+    public static boolean isConnected(){
+        return getInstance() != null;
+    }
+
+    public static boolean isEnabled(Context context){
+        return AndroidUtils.isAccessibilityServiceEnabled(context, UrlHelperService.class);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

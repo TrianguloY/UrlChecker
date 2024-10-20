@@ -19,6 +19,7 @@ public interface IncognitoDimension {
 
     // These assertions are contradictions, this file is on base so that means IS_INCOGNITO is
     // ALWAYS false.
+
     static boolean isIncognito(Intent intent) {
         assert BuildConfig.IS_INCOGNITO : errormsg;
         return false;
@@ -30,6 +31,16 @@ public interface IncognitoDimension {
 
     static void applyAndLaunchHelper(Context context, Intent intent, String url, boolean state) {
         assert BuildConfig.IS_INCOGNITO : errormsg;
+    }
+
+    static boolean isServiceConnected(){
+        assert BuildConfig.IS_INCOGNITO : errormsg;
+        return false;
+    }
+
+    static boolean isServiceEnabled(Context context){
+        assert BuildConfig.IS_INCOGNITO : errormsg;
+        return false;
     }
 
     // NoSuchMethodException ?

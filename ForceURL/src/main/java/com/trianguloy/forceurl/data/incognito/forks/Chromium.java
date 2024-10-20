@@ -38,7 +38,9 @@ public class Chromium implements Apps, AccessibilityFunction {
         // extras do not work in chromium
         // https://source.chromium.org/chromium/chromium/src/+/refs/heads/main:chrome/android/java/src/org/chromium/chrome/browser/IntentHandler.java;drc=e39fffa6900a679961f5992b8f24a084853b811a;l=1036
         // https://source.chromium.org/chromium/chromium/src/+/refs/heads/main:chrome/android/java/src/org/chromium/chrome/browser/IntentHandler.java;l=988;drc=fb3fab0be2804a2864783c326518f1acb0402968
-        intent.setComponent(new ComponentName(intent.getComponent().getPackageName(), "org.chromium.chrome.browser.incognito.IncognitoTabLauncher"));
+        intent.setComponent(new ComponentName(
+                AndroidUtils.getPackage(intent),
+                "org.chromium.chrome.browser.incognito.IncognitoTabLauncher"));
 
         // XXX: I got a case in API 30 where without this flag, the activity wouldn't launch.
         //      Maybe it was a one time thing, if it ever happens again, this fixed it.

@@ -20,4 +20,12 @@ public interface IncognitoDimension {
     static void applyAndLaunchHelper(Context context, Intent intent, String url, boolean state) {
         ForceUrl.applyAndLaunchHelper(context, intent, url, state, mode_key);
     }
+
+    static boolean isServiceConnected(){
+        return ForceUrl.isServiceConnected();
+    }
+
+    static boolean isServiceEnabled(Context context){
+        return ForceUrl.isServiceEnabled(context);
+    }
 }

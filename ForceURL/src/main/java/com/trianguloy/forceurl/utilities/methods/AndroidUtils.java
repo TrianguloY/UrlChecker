@@ -3,22 +3,31 @@ package com.trianguloy.forceurl.utilities.methods;
 import static android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND;
 import static android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE;
 
+import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ServiceInfo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
 
 import com.trianguloy.forceurl.BuildConfig;
 import com.trianguloy.forceurl.R;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public interface AndroidUtils {
@@ -286,5 +295,36 @@ public interface AndroidUtils {
         } else {
             return false;
         }
+    }
+
+    /**
+     * Retrieves the package from the intent.
+     * Used to read intents that come from outside the library.
+     */
+    static String getPackage(Intent intent){
+        return intent.getPackage();
+    }
+
+
+    // https://stackoverflow.com/a/40568194
+    static boolean isAccessibilityServiceEnabled(Context context, Class<? extends AccessibilityService> accessibilityService) {
+        ComponentName expectedComponentName = new ComponentName(context, accessibilityService);
+
+        String enabledServicesSetting = Settings.Secure.getString(context.getContentResolver(),  Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+        if (enabledServicesSetting == null)
+            return false;
+
+        TextUtils.SimpleStringSplitter colonSplitter = new TextUtils.SimpleStringSplitter(':');
+        colonSplitter.setString(enabledServicesSetting);
+
+        while (colonSplitter.hasNext()) {
+            String componentNameString = colonSplitter.next();
+            ComponentName enabledService = ComponentName.unflattenFromString(componentNameString);
+
+            if (enabledService != null && enabledService.equals(expectedComponentName))
+                return true;
+        }
+
+        return false;
     }
 }

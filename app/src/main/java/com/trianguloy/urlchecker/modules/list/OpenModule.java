@@ -237,6 +237,8 @@ class OpenDialog extends AModuleDialog {
         Flags.applyGlobalFlags(intent, this);
 
         // incognito
+        // redundant, should not affect result
+        intent.setPackage(chosen.getPackage());
         incognito.apply(getActivity(), intent, getUrl());
 
         // rejection detector: mark as open

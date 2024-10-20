@@ -7,6 +7,8 @@ import com.trianguloy.forceurl.data.Apps;
 import com.trianguloy.forceurl.helpers.Helpers;
 import com.trianguloy.forceurl.data.incognito.forks.Chromium;
 import com.trianguloy.forceurl.data.incognito.forks.Fenix;
+import com.trianguloy.forceurl.services.UrlHelperService;
+import com.trianguloy.forceurl.utilities.methods.AndroidUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -141,7 +143,7 @@ public interface ForceUrl {
     }
 
     static void applyAndLaunchHelper(Context context, Intent intent, String url, boolean apply, String mode){
-        var pckg = intent.getComponent().getPackageName();
+        var pckg = AndroidUtils.getPackage(intent);
         var id = findId(context, pckg, mode);
         if (id == null) return;
         // Package can be opened in mode
@@ -164,4 +166,11 @@ public interface ForceUrl {
         }
     }
 
+    static boolean isServiceConnected(){
+        return UrlHelperService.isConnected();
+    }
+
+    static boolean isServiceEnabled(Context context){
+        return UrlHelperService.isEnabled(context);
+    }
 }

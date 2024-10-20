@@ -1,5 +1,6 @@
 package com.trianguloy.forceurl.data.incognito.forks;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -25,7 +26,7 @@ public class Fenix implements Apps {
 
     @Override
     public boolean isThis(Context cntx, String pckg) {
-        // all firefox apps share the same home activity
+        // all fenix apps share the same home activity
         var activity = "org.mozilla.fenix.HomeActivity";
         if (exclude.contains(pckg)) return false;
         Set<String> activities = AndroidUtils.getActivities(cntx, pckg);
@@ -34,6 +35,10 @@ public class Fenix implements Apps {
 
     @Override
     public void transform(Intent intent) {
+        intent.setComponent(null);
+        /*intent.setComponent(new ComponentName(
+                AndroidUtils.getPackage(intent),
+                "org.mozilla.fenix.IntentReceiverActivity"));*/
         intent.putExtra("private_browsing_mode", true);
     }
 
