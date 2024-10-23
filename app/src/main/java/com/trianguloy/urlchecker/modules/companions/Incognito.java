@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
+import com.trianguloy.urlchecker.flavors.IncognitoDimension;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 
@@ -39,13 +41,11 @@ public class Incognito {
         switch (pref.get()) {
             case AUTO:
             default:
-                // for Firefox
-                state = intent.getBooleanExtra("private_browsing_mode", false);
+                state = isIncognito(intent);
                 visible = true;
                 break;
             case HIDDEN:
-                // for Firefox
-                state = intent.getBooleanExtra("private_browsing_mode", false);
+                state = isIncognito(intent);
                 visible = false;
                 break;
             case DEFAULT_ON:
@@ -85,11 +85,23 @@ public class Incognito {
         button.setImageResource(state ? R.drawable.incognito : R.drawable.no_incognito);
     }
 
+    private boolean isIncognito(Intent intent) {
+        if (BuildConfig.IS_INCOGNITO) {
+            return IncognitoDimension.isIncognito(intent);
+        } else {
+            return intent.getBooleanExtra("private_browsing_mode", false);
+        }
+    }
+
     /**
-     * applies the setting to a given intent
+     * Applies the setting to a given intent, and launches any helper needed
      */
-    public void apply(Intent intent) {
-        // for Firefox
-        intent.putExtra("private_browsing_mode", state);
+    public void apply(Context context, Intent intent, String url) {
+        if (BuildConfig.IS_INCOGNITO) {
+            IncognitoDimension.applyAndLaunchHelper(context, intent, url, state);
+        } else {
+            // for Firefox
+            intent.putExtra("private_browsing_mode", state);
+        }
     }
 }
