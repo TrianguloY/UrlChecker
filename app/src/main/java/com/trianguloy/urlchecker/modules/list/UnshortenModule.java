@@ -1,5 +1,7 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import static com.trianguloy.urlchecker.utilities.methods.AndroidUtils.MARKER;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,21 +13,23 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
-import com.trianguloy.urlchecker.utilities.methods.StreamUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * Module to Unshort links by using https://unshorten.me/
  * Consider adding other services, or even allow custom
+ * TODO: the redirect logic here and in the Status check module is very similar, consider extracting a common wrapper
  */
 public class UnshortenModule extends AModuleData {
 
@@ -48,9 +52,19 @@ public class UnshortenModule extends AModuleData {
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new DescriptionConfig(R.string.mUnshort_desc);
     }
+
+    @Override
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) UnshortenDialog.AUTOMATIONS;
+    }
 }
 
 class UnshortenDialog extends AModuleDialog {
+
+    static List<AutomationRules.Automation<UnshortenDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("unshort", R.string.auto_unshort, dialog ->
+                    dialog.unshort(dialog.getUrlData().disableUpdates))
+    );
 
     private Button unshort;
     private TextView info;
@@ -70,7 +84,7 @@ class UnshortenDialog extends AModuleDialog {
     public void onInitialize(View views) {
         unshort = views.findViewById(R.id.button);
         unshort.setText(R.string.mUnshort_unshort);
-        unshort.setOnClickListener(v -> unshort());
+        unshort.setOnClickListener(v -> unshort(false));
 
         info = views.findViewById(R.id.text);
     }
@@ -92,20 +106,18 @@ class UnshortenDialog extends AModuleDialog {
         AndroidUtils.clearRoundedColor(info);
     }
 
-    /**
-     * Unshorts the current url
-     */
-    private void unshort() {
+    /** Unshorts the current url */
+    private void unshort(boolean disableUpdates) {
         // disable button and run in background
         unshort.setEnabled(false);
         info.setText(R.string.mUnshort_checking);
         AndroidUtils.clearRoundedColor(info);
 
-        thread = new Thread(this::_check);
+        thread = new Thread(() -> _check(disableUpdates));
         thread.start();
     }
 
-    private void _check() {
+    private void _check(boolean disableUpdates) {
 
         try {
             // get response
@@ -144,23 +156,28 @@ class UnshortenDialog extends AModuleDialog {
             } else if (Objects.equals(resolved_url, getUrl())) {
                 // same, nothing to replace
                 getActivity().runOnUiThread(() -> {
-                    var pending = ref.remaining_calls <= ref.usage_limit / 2
-                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
-                            : "";
-                    info.setText(getActivity().getString(R.string.mUnshort_notFound) + pending);
+                    info.setText(getActivity().getString(R.string.mUnshort_notFound));
+                    if (ref.remaining_calls <= ref.usage_limit / 2)
+                        info.append(" (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")");
                     AndroidUtils.clearRoundedColor(info);
                 });
             } else {
                 // correct, replace
                 getActivity().runOnUiThread(() -> {
-                    setUrl(new UrlData(resolved_url).dontTriggerOwn());
 
-                    var pending = ref.remaining_calls <= ref.usage_limit / 2
-                            ? " (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
-                            : "";
-                    info.setText(getActivity().getString(R.string.mUnshort_ok) + pending);
-                    AndroidUtils.setRoundedColor(R.color.good, info);
-                    // a short url can redirect to another short url
+                    if (!disableUpdates) {
+                        // unshort to new url
+                        unshortTo(resolved_url);
+                    } else {
+                        // show unshorted url
+                        info.setText(AndroidUtils.underlineUrl(getActivity().getString(R.string.mUnshort_to, MARKER), resolved_url, this::unshortTo));
+                    }
+
+                    if (ref.remaining_calls <= ref.usage_limit / 2)
+                        info.append(" (" + getActivity().getString(R.string.mUnshort_pending, ref.remaining_calls, ref.usage_limit) + ")"
+                        );
+
+                    // a short url can be unshorted to another short url
                     unshort.setEnabled(true);
                 });
             }
@@ -182,6 +199,13 @@ class UnshortenDialog extends AModuleDialog {
             });
         }
 
+    }
+
+    /** Unshorts to another url */
+    private void unshortTo(String url) {
+        setUrl(new UrlData(url).dontTriggerOwn());
+        info.setText(getActivity().getString(R.string.mUnshort_ok));
+        AndroidUtils.setRoundedColor(R.color.good, info);
     }
 
 }

@@ -240,7 +240,7 @@
     <string name="mLog_edit">修改日志</string>
     <string name="mLog_empty">无数据</string>
     <string name="mHosts_name">主机标识符</string>
-    <string name="mHosts_desc">此模块可以标记主机，通过手动指定或使用类似远程主机的文件进行配置。您可以使用它来警告危险或特殊的网站。内置的配置使用StevenBlack的hosts（广告软件/恶意软件、假新闻、赌博和成人内容）来自https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_desc">此模块可以标记主机，通过手动指定或使用类似远程主机的文件进行配置。您可以使用它来警告危险或特殊的网站。内置的配置使用StevenBlack的hosts（广告软件/恶意软件、假新闻、赌博和成人内容）来自https://github.com/StevenBlack/hosts。注意：也会对子域名进行检查，因此“x.y.z”与“y.z”中会检测出“y.z”</string>
     <string name="mHosts_malware">广告软件/恶意软件</string>
     <string name="mHosts_info">主机:</string>
     <string name="mHosts_noLabel">无标识</string>
@@ -251,7 +251,7 @@
     <string name="mHosts_uninitialized">主机数据库未初始化，点击以构建</string>
     <string name="mHosts_parseError">无法解析链接主机</string>
     <string name="mHosts_editor">主机配置。格式：键是主机标签的对象列表(List of Objects)，内容包括以下可选的值:
-\n- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。
+\n- 文件：要下载的远程主机文件的URL。将添加所有有效的主机。每行的语法应该如此：“ip 主机 [别名...]”，但只有“主机”的也可以。
 \n- 主机：要添加的原始主机（字符串）的列表。
 \n- color：标签的颜色。 一个 Android 颜色字符串（#AARRGGBB，#RRGGBB 或有效颜色名称）。默认为 danger 红色。
 \n- replace：如果为 false ，则不会替换现有主机。请注意，从上到下评估对象。默认为true。
@@ -348,5 +348,4 @@
     <string name="normal">一般</string>
     <string name="mOpen_iconSize">图标大小</string>
     <string name="small">小</string>
-    <string name="mInput_alwaysEdit">总使用编辑模式</string>
 </resources>

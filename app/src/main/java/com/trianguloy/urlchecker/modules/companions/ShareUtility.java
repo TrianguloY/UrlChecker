@@ -74,11 +74,11 @@ public interface ShareUtility {
         /* ------------------- Buttons ------------------- */
 
         /** Shares the url as text */
-        private void shareUrl() {
+        public void shareUrl() {
             // create send intent
             var sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, mainDialog.getUrl());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, mainDialog.getUrlData().url);
             sendIntent.setType("text/plain");
 
             // share intent
@@ -94,8 +94,8 @@ public interface ShareUtility {
         }
 
         /** Copy the url */
-        private void copyUrl() {
-            AndroidUtils.copyToClipboard(mainDialog, R.string.mOpen_clipboard, mainDialog.getUrl());
+        public void copyUrl() {
+            AndroidUtils.copyToClipboard(mainDialog, R.string.mOpen_clipboard, mainDialog.getUrlData().url);
             if (closeCopyPref.get()) {
                 mainDialog.finish();
             }

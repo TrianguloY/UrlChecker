@@ -23,6 +23,7 @@
         android:theme="@style/ActivityThemeDark"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.AutomationActivity" />
         <activity android:name=".activities.ModulesActivity" />
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.TutorialActivity" />
@@ -33,7 +34,6 @@
             android:launchMode="singleInstance"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@android:style/Theme.DeviceDefault.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

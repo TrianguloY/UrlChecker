@@ -20,7 +20,6 @@ import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.companions.Flags;
-import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.Enums;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.Inflater;
@@ -254,10 +253,8 @@ class FlagsDialog extends AModuleDialog {
                         currentFlags.setFlag(flag, !currentFlags.isSet(flag));
 
                         // Update global
+                        // this will not trigger an update, consider creating an onGlobalData handler if needed
                         Flags.setGlobalFlags(currentFlags, this);
-
-                        // To update debug module view of GlobalData
-                        setUrl(new UrlData(getUrl()).dontTriggerOwn().asMinorUpdate());
                     },
                     v -> checkBox.setImageResource(currentFlags.isSet(flag) ? R.drawable.flag_on : R.drawable.flag_off)
             );

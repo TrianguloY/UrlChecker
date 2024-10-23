@@ -17,6 +17,7 @@ import com.trianguloy.urlchecker.flavors.IncognitoDimension;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.companions.CTabs;
 import com.trianguloy.urlchecker.modules.companions.Flags;
 import com.trianguloy.urlchecker.modules.companions.Incognito;
@@ -74,9 +75,27 @@ public class OpenModule extends AModuleData {
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new OpenConfig(cntx);
     }
+
+    @Override
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) OpenDialog.AUTOMATIONS;
+    }
 }
 
 class OpenDialog extends AModuleDialog {
+
+    static List<AutomationRules.Automation<OpenDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("open", R.string.auto_open, dialog ->
+                    dialog.openUrl(0)),
+            new AutomationRules.Automation<>("share", R.string.auto_share, dialog ->
+                    dialog.shareUtility.shareUrl()),
+            new AutomationRules.Automation<>("copy", R.string.auto_copy, dialog ->
+                    dialog.shareUtility.copyUrl()),
+            new AutomationRules.Automation<>("ctabs", R.string.auto_ctabs, dialog ->
+                    dialog.cTabs.setState(true)),
+            new AutomationRules.Automation<>("incognito", R.string.auto_incognito, dialog ->
+                    dialog.incognito.setState(true))
+    );
 
     private final GenericPref.Bool closeOpenPref;
     private final GenericPref.Bool noReferrerPref;
@@ -132,7 +151,6 @@ class OpenDialog extends AModuleDialog {
         // init openWith
         btn_openWith = views.findViewById(R.id.open_with);
         btn_openWith.setOnClickListener(v -> showList());
-
 
         // init openWith popup
         popup = new PopupMenu(getActivity(), btn_open);

@@ -74,7 +74,6 @@
     <string name="mStatus_error">Interna greška pri pokušaju provere URL adrese: %s</string>
     <string name="mInput_name">Unesi tekst</string>
     <string name="mInput_desc">Prikazuje trenutni URL. Pritisnite ga da uđete u režim za uređivanje.</string>
-    <string name="mInput_alwaysEdit">Uvek držite u režimu za uređivanje</string>
     <string name="mVT_name">URL Skener</string>
     <string name="mVT_apiKey">API ključ</string>
     <string name="mVT_warningUrl">Upozorenje, %1$d/%2$d mašine su otkrile URL (od datuma %3$s)</string>

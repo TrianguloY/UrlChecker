@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Manages an url and extra data associated with it
  * I don't like this approach, but unfortunately I can't think of something better
+ * TODO: make this immutable with a builder/factory or something
  */
 public class UrlData {
 
@@ -44,16 +45,6 @@ public class UrlData {
 
     public UrlData disableUpdates() {
         disableUpdates = true;
-        return this;
-    }
-
-    /**
-     * If set, this update is considered 'minor' and modules may decide to ignore or merge it with the previous one
-     */
-    public boolean minorUpdate = false;
-
-    public UrlData asMinorUpdate() {
-        minorUpdate = true;
         return this;
     }
 
@@ -102,7 +93,6 @@ public class UrlData {
                 ", trigger=" + trigger +
                 ", triggerOwn=" + triggerOwn +
                 ", disableUpdates=" + disableUpdates +
-                ", minorUpdate=" + minorUpdate +
                 ", extraData=" + extraData +
                 '}';
     }

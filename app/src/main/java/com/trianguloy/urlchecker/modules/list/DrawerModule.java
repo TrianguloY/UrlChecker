@@ -9,9 +9,11 @@ import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.modules.AModuleConfig;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.DescriptionConfig;
 import com.trianguloy.urlchecker.url.UrlData;
-import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+
+import java.util.List;
 
 /**
  * A special module that manages the drawer functionality
@@ -41,16 +43,24 @@ public class DrawerModule extends AModuleData {
     public AModuleConfig getConfig(ModulesActivity cntx) {
         return new DescriptionConfig(R.string.mDrawer_desc);
     }
+
+    @Override
+    public List<AutomationRules.Automation<AModuleDialog>> getAutomations() {
+        return (List<AutomationRules.Automation<AModuleDialog>>) (List<?>) DrawerDialog.AUTOMATIONS;
+    }
 }
 
 class DrawerDialog extends AModuleDialog {
+
+    static List<AutomationRules.Automation<DrawerDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>("drawer", R.string.auto_drawer, dialog -> dialog.setDrawerVisibility(true))
+    );
+
     private ImageView buttonL;
     private ImageView buttonR;
-    private final MainDialog dialog;
 
     public DrawerDialog(MainDialog dialog) {
         super(dialog);
-        this.dialog = dialog;
     }
 
     @Override
@@ -65,17 +75,21 @@ class DrawerDialog extends AModuleDialog {
         var parent = views.findViewById(R.id.parent);
         parent.getBackground().setAlpha(25);
 
-        AndroidUtils.toggleableListener(parent, v -> dialog.toggleDrawer(), v -> {
-            buttonL.setImageResource(dialog.isDrawerVisible() ?
-                    R.drawable.arrow_down : R.drawable.arrow_right);
-            buttonR.setImageResource(dialog.isDrawerVisible() ?
-                    R.drawable.arrow_down : R.drawable.arrow_right);
-        });
+        parent.setOnClickListener(v -> setDrawerVisibility(!getActivity().isDrawerVisible()));
+        setDrawerVisibility(false);
+    }
+
+    public void setDrawerVisibility(boolean visible) {
+        getActivity().setDrawerVisibility(visible);
+        buttonL.setImageResource(visible ?
+                R.drawable.arrow_down : R.drawable.arrow_right);
+        buttonR.setImageResource(visible ?
+                R.drawable.arrow_down : R.drawable.arrow_right);
     }
 
     @Override
     public void onFinishUrl(UrlData urlData) {
-        setVisibility(dialog.anyDrawerChildVisible());
+        setVisibility(getActivity().anyDrawerChildVisible());
     }
 
 }

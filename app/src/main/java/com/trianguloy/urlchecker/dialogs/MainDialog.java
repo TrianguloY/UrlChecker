@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,9 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.trianguloy.urlchecker.BuildConfig;
 import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.modules.AModuleData;
 import com.trianguloy.urlchecker.modules.AModuleDialog;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.modules.ModuleManager;
 import com.trianguloy.urlchecker.modules.companions.VersionManager;
 import com.trianguloy.urlchecker.modules.list.DrawerModule;
@@ -45,6 +48,10 @@ public class MainDialog extends Activity {
      */
     private static final int MAX_UPDATES = 100;
 
+    // ------------------- helpers -------------------
+
+    private AutomationRules automationRules;
+
     // ------------------- data -------------------
 
     /**
@@ -56,6 +63,11 @@ public class MainDialog extends Activity {
      * Global data to keep even if the url changes
      */
     public final Map<String, String> globalData = new HashMap<>();
+
+    /**
+     * Available automations
+     */
+    private final Map<String, Runnable> automations = new ArrayMap<>();
 
     /**
      * The current url
@@ -147,6 +159,24 @@ public class MainDialog extends Activity {
                 }
             }
 
+            // fifth run automations
+            if (automationRules.automationsEnabledPref.get()) {
+                for (var automationKey : automationRules.check(urlData)) {
+                    var action = automations.get(automationKey);
+                    if (action == null) {
+                        if (automationRules.automationsShowErrorToast.get()) {
+                            Toast.makeText(this, getString(R.string.auto_notFound, automationKey), Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        try {
+                            action.run();
+                        } catch (Exception e) {
+                            AndroidUtils.assertError("Exception while running automation " + automationKey, e);
+                        }
+                    }
+                }
+            }
+
             break;
         }
 
@@ -154,11 +184,9 @@ public class MainDialog extends Activity {
         updating = 0;
     }
 
-    /**
-     * Return the current url
-     */
-    public String getUrl() {
-        return urlData.url;
+    /** Returns the current url data. Please don't modify it */
+    public UrlData getUrlData() {
+        return urlData;
     }
 
     /**
@@ -196,6 +224,9 @@ public class MainDialog extends Activity {
         ll_main = findViewById(R.id.main);
         ll_drawer = findViewById(R.id.drawer);
         ll_drawer.setVisibility(View.GONE);
+
+        // load helpers
+        automationRules = new AutomationRules(this);
 
         // load url (or urls)
         var links = getOpenUrl();
@@ -306,6 +337,14 @@ public class MainDialog extends Activity {
             // init
             modules.put(module, views);
             module.onInitialize(child);
+            if (automationRules.automationsEnabledPref.get()) {
+                for (var automation : moduleData.getAutomations()) {
+                    if (BuildConfig.DEBUG && automations.containsKey(automation.key())) {
+                        AndroidUtils.assertError("There is already an automation with key " + automation.key() + "!");
+                    }
+                    automations.put(automation.key(), () -> automation.action().accept(module));
+                }
+            }
         } catch (Exception e) {
             // can't add module
             AndroidUtils.assertError("Exception in initializeModule for module " + moduleData.getId(), e);
@@ -346,23 +385,17 @@ public class MainDialog extends Activity {
 
     // ------------------- drawer module -------------------
 
-    /**
-     * returns the visibility of the drawer
-     */
+    /** returns the visibility of the drawer */
     public boolean isDrawerVisible() {
         return ll_drawer.getVisibility() != View.GONE;
     }
 
-    /**
-     * Toggles the drawer visibility
-     */
-    public void toggleDrawer() {
-        ll_drawer.setVisibility(isDrawerVisible() ? View.GONE : View.VISIBLE);
+    /** Sets the drawer visibility */
+    public void setDrawerVisibility(boolean visible) {
+        ll_drawer.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
-    /**
-     * returns true if the drawer contains at least one visible children
-     */
+    /** returns true if the drawer contains at least one visible children */
     public boolean anyDrawerChildVisible() {
         int childCount = ll_drawer.getChildCount();
         for (int i = 0; i < childCount; i++) {

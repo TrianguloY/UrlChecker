@@ -152,6 +152,29 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     -->
     <string name="shortcut_checkClipboard">Check URLs from the clipboard</string>
     <!--
+        automations
+    -->
+    <string name="a_automations">Automations</string>
+    <string name="auto_desc">With automations you can perform module actions based on triggers. You can configure the automations here, or disable all them together using the toggle below.</string>
+    <string name="auto_enabled">Enable automations feature</string>
+    <string name="auto_error_toast">Show toast if automation fails</string>
+    <string name="auto_notFound">"No automation with key '%s' is available. Make sure it is valid and the required module is active."</string>
+    <string name="auto_editor">"Automations configuration. Format: list of objects where the key is a unique automation name and the content includes the following values:
+- 'regex': string, required: a valid java regex that the url must match for the automation to run.
+- 'action': string, required: the key of the automation to run. Check below for a list of all the available keys.
+- 'enabled': boolean, optional: if false this automation will be skipped. True by default."</string>
+    <string name="auto_available_prefix">Available automation actions (keys):</string>
+    <string name="auto_available_disabled">"This module is disabled, automations won't run"</string>
+    <string name="auto_open">"Will open the url with the first available app. Equivalent of pressing the 'open' button."</string>
+    <string name="auto_share">"Will share the url. Equivalent of pressing the 'share' button."</string>
+    <string name="auto_copy">"Will copy the url. Equivalent of pressing the 'copy' button."</string>
+    <string name="auto_ctabs">"Will enable ctabs. Equivalent of pressing the 'ctabs' button if disabled (even if hidden)."</string>
+    <string name="auto_incognito">"Will enable incognito. Equivalent of pressing the 'incognito' button if disabled (even if hidden)."</string>
+    <string name="auto_checkStatus">"Will run the status check. Equivalent of pressing the 'Check' button."</string>
+    <string name="auto_unshort">"Will run the unshort process. Equivalent of pressing the 'Unshort' button."</string>
+    <string name="auto_scan">"Will scan the url. Equivalent of pressing the 'Scan' button."</string>
+    <string name="auto_drawer">"Will open the drawer. Equivalent of pressing the drawer button if collapsed."</string>
+    <!--
         modules
     -->
     <string name="mPttrn_name">Pattern checker</string>
@@ -239,7 +262,6 @@ Note: if you edit the patterns, new built-in patterns from app updates will not 
     <!-- -->
     <string name="mInput_name">Input text</string>
     <string name="mInput_desc">Displays the current URL. Press it to enter edit mode.</string>
-    <string name="mInput_alwaysEdit">Keep always in edit mode</string>
     <!-- -->
     <string name="mVT_name">URL Scanner</string>
     <string name="mVT_desc">When this module is enabled you can scan the URL using VirusTotal and check the report. A personal VirusTotal API key is needed for it to work, you can get one after registering for a free account here: https://www.virustotal.com/gui/join-us .</string>
@@ -262,7 +284,7 @@ If you enable this it will display some internal debug data (like original inten
 
 You can hold to select text."</string>
     <string name="mD_ctabs">Show debug messages from the custom tabs service</string>
-    <string name="mD_show">Show debug data</string>
+    <string name="mD_show">Load debug data</string>
     <!-- -->
     <string name="mHist_name">History</string>
     <string name="mHist_desc">When the URL is edited, either manually or by other modules, this one allows you to view and revert changes.</string>
@@ -358,7 +380,8 @@ Their api is rate limited to 10 requests per hour for new checks. The module res
     <string name="mUnshort_checking">Checking…</string>
     <string name="mUnshort_error">Server error: %s</string>
     <string name="mUnshort_internal">Internal error (%s)</string>
-    <string name="mUnshort_notFound">No redirection found</string>
+    <string name="mUnshort_to">Unshortens to %s</string>
+    <string name="mUnshort_notFound">No unshorted url found</string>
     <string name="mUnshort_pending">pending: %1$d/%2$d</string>
     <string name="mUnshort_ok">Unshortened</string>
     <!-- -->

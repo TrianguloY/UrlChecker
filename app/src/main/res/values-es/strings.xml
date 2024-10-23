@@ -106,6 +106,29 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     -->
     <string name="shortcut_checkClipboard">Comprobar las URL desde el portapapeles</string>
     <!--
+        automations
+    -->
+    <string name="a_automations">Automatizaciones</string>
+    <string name="auto_desc">Con automatizaciones, puedes realizar acciones basadas en estados. Puedes configurar las automatizaciones aquí, o deshabilitarlas completamente usando el boton de debajo.</string>
+    <string name="auto_enabled">Activar automatizaciones</string>
+    <string name="auto_error_toast">Mostrar aviso si alguna automatización falla</string>
+    <string name="auto_notFound">"No hay ninguna automatización disponible con clave '%s'. Asegúrate de que es válida y el módulo que la incluye está activo."</string>
+    <string name="auto_editor">"Configuración de automatizaciones. Formato: lista de objectos cuya clave es cualquier nombre único para la automatización y su conntenido incluye los siguientes valores:
+- 'regex': string, requerida: una expresión regular de Java válida que la URL debe coincidir para que se ejecute la automatización.
+- 'action': string, requerida: la clave de la automatización a ejecutar. Debajo se muestra la lista completa de claves disponibles.
+- 'enabled': booleano, opcional: si es falso, la automatización se omitirá. Verdadero (true) por defecto."</string>
+    <string name="auto_available_prefix">Claves de automatizaciones disponibles:</string>
+    <string name="auto_available_disabled">"Este módulo está deshabilitado, las automatizaciones no se ejecutarán"</string>
+    <string name="auto_open">"Abrirá el enlace con la primera aplicación disponible. Equivalente a pulsar el boton 'abrir'."</string>
+    <string name="auto_share">"Compartirá el enlace. Equivalente a pulsar el botón de compartir."</string>
+    <string name="auto_copy">"Copiará el enlace en el portapapeles. Equivalente a pulsar el boton de 'copiar'"</string>
+    <string name="auto_incognito">"Activará el modo incógnito. Equivalente a pulsar el boton de 'incógnito' cuando está desactivado (incluso si está oculto)."</string>
+    <string name="auto_ctabs">"Activará el modo de custom tabs. Equivalente a pulsar el boton de 'custom tabs' cuando está desactivado (incluso si está oculto)."</string>
+    <string name="auto_checkStatus">"Ejecutará la comprobación del estado. Equivalente a pulsar el botón de 'comprobar'"</string>
+    <string name="auto_unshort">"Ejecutará el proceso de desacortar enlace. Equivalente a pulsar el botón de 'desacortar'."</string>
+    <string name="auto_scan">"Escaneará el enlace. Equivalente a pulsar el botón de escanear."</string>
+    <string name="auto_drawer">"Abrirá el cajón. Equivalente a pulsar el boton del cajón cuando está cerrado."</string>
+    <!--
         modules
     -->
     <string name="mPttrn_name">Verificador de patrones</string>
@@ -188,7 +211,6 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
     <string name="mInput_desc">Muestra la URL actual. Pulsa para editarla.</string>
-    <string name="mInput_alwaysEdit">Mantener activo el modo edición</string>
     <!-- -->
     <string name="mVT_name">Escáneador de la URL</string>
     <string name="mVT_desc">Cuando este módulo se habilita puedes escanear la URL mediante VirusTotal y comprobar el informe. Se necesita una clave de la API de VirusTotal para que funcione, puedes obtener una tras registrarte gratis aquí: https://www.virustotal.com/gui/join-us .</string>
@@ -211,7 +233,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n
 \nPuede mantener pulsado para seleccionar el texto.</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
-    <string name="mD_show">Mostrar datos de debug</string>
+    <string name="mD_show">Cargar datos de debug</string>
     <!-- -->
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la URL cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
@@ -302,13 +324,14 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mUnshort_name">Desacortador</string>
     <string name="mUnshort_unshort">Desacortar</string>
-    <string name="mUnshort_desc">Este módulo abreviará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para futuras solicitudes. Evita acortar los enlaces con datos privados o confidenciales.
+    <string name="mUnshort_desc">Este módulo desacortará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la url desacortada para futuras solicitudes. Evite desacortar los enlaces con datos privados o confidenciales.
 \nEsta API tiene una tasa limitada a 10 peticiones por hora para nuevas solicitudes. La respuesta del módulo mostrará cuántas solicitudes tienes pendientes.</string>
     <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
-    <string name="mUnshort_notFound">No se ha encontrado redirección</string>
+    <string name="mUnshort_to">Se desacorta a %s</string>
+    <string name="mUnshort_notFound">No se ha encontrado desacortación</string>
     <string name="mUnshort_pending">quedan: %1$d/%2$d</string>
     <string name="mUnshort_ok">Desacortado</string>
     <!-- -->

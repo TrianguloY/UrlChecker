@@ -20,7 +20,7 @@
     <string name="btn_tutorialSettings">Herhaal tutorial</string>
     <string name="mVT_connectError">Kan geen verbinding maken met VirusTotal. Zorg ervoor dat u verbonden bent met internet of probeer het later opnieuw.</string>
     <string name="mPttrn_regexfix">Optionele regex-groepen repareren (uitschakelen als regex niet correct werkt)</string>
-    <string name="json_desc">[Bètafunctie] Dit is een geavanceerde editor, de inhoud moet worden opgemaakt in geldige JSON. U kunt op de knop rechtsboven drukken om deze te formatteren en te valideren.</string>
+    <string name="json_desc">Json-editor: de content moet worden geformatteerd in geldige JSON. U kunt op de knop rechtsboven drukken om het te formatteren en valideren.</string>
     <string name="tutorial">Tutorial</string>
     <string name="toast_defaultSet">De app is nu de standaardwebbrowser</string>
     <string name="mPttrn_http">HTTP-link. Overweeg het gebruik van HTTPS.</string>
@@ -155,7 +155,7 @@
 \n
 \nOpen de lijst met modules vanuit het hoofdscherm of door op de onderstaande knop te tikken.</string>
     <string name="mPttrn_wrongSchemaHttps">Ongeldig hoofdlettergebruik van https-schema.</string>
-    <string name="json_edit">Geavanceerde editor</string>
+    <string name="json_edit">Json editor</string>
     <string name="mPttrn_fixed">Toegepast - %s</string>
     <string name="mD_name">Debug/Marker-module</string>
     <string name="mOpen_clipboard">URL gekopieerd naar klembord</string>
@@ -202,12 +202,12 @@
     <string name="mHosts_parseError">Kan URL-host niet parseren</string>
     <string name="mClear_lastUpdate">Laatste update:</string>
     <string name="mUnshort_error">Serverfout: %s</string>
-    <string name="mHosts_editor">Hostconfiguratie. Indeling: Lijst met objecten waarbij de sleutel het hosts-label is en de inhoud de volgende optionele waarden bevat:
-\n- bestand: een URL van een extern hosts-bestand om te downloaden. Alle aanwezige geldige hosts worden toegevoegd.
-\n- hosts: Lijst met onbewerkte hosts (strings) die moeten worden toegevoegd.
-\n- kleur: de kleur van het label. Een Android-kleurreeks (#AARRGGBB, #RRGGBB of een geldige kleurnaam). Standaard ingesteld op \'gevaar\' rood.
-\n- vervangen: als valse bestaande hosts niet worden vervangen. Houd er rekening mee dat objecten van boven naar beneden worden geëvalueerd. Standaard waar.
-\n- ingeschakeld: indien false wordt dit hele object overgeslagen. Standaard waar.</string>
+    <string name="mHosts_editor">Hostconfiguratie. Formaat: Lijst met objecten waarbij de sleutel het hosts-label is en de inhoud de volgende optionele waarden bevat:
+\n- bestand: Een url van een extern hosts-bestand om te downloaden. Alle geldige hosts die aanwezig zijn, worden toegevoegd. De regels moeten de hosts-syntaxis volgen: \'ip host [alias…]\', maar regels met alleen \'host\' zijn ook geldig.
+\n- hosts: Lijst met onbewerkte hosts (strings) om toe te voegen.
+\n- kleur: De kleur van het label. Een Android-kleurenstring (#AARRGGBB, #RRGGBB of een geldige kleurnaam). Standaard is dit een \'gevaar\'-rood.
+\n- vervangen: als dit onwaar is, worden bestaande hosts niet vervangen. Let op dat objecten van boven naar beneden worden geëvalueerd. Standaard True.
+\n- ingeschakeld: als dit onwaar is, wordt dit hele object overgeslagen. Standaard True.</string>
     <string name="mChg_current">Huidige versie: %s</string>
     <string name="mRemove_name">Zoekopdracht Verwijderaar</string>
     <string name="mClear_hashMismatch">Hashes komen niet overeen, er is mogelijk met het bestand geknoeid. Als u de controle wilt overslaan, verwijdert u de hash-URL</string>
@@ -270,7 +270,7 @@
     <string name="mFlags_name">Flags editor</string>
     <string name="mRemove_found1">1 zoekopdracht gevonden</string>
     <string name="mUnshort_tm">unshorten.me gratis API van Unshorten.me</string>
-    <string name="mHosts_desc">Deze module labelt hosts, geconfigureerd door ze handmatig op te geven of door een extern hosts-achtig bestand te gebruiken. U kunt het gebruiken om te waarschuwen voor gevaarlijke of bijzondere locaties. De ingebouwde configuratie specificeert de hosts van StevenBlack (adware/malware, fakenews, gokken en inhoud voor volwassenen) van https://github.com/StevenBlack/hosts</string>
+    <string name="mHosts_desc">Deze module labelt hosts, geconfigureerd door ze handmatig te specificeren of door een remote hosts-achtig bestand te gebruiken. U kunt het gebruiken om te waarschuwen voor gevaarlijke of speciale sites. De ingebouwde configuratie specificeert StevenBlack\'s hosts (adware/malware, fakenews, gokken en inhoud voor volwassenen) van https://github.com/StevenBlack/hosts. Let op: subdomeinen worden ook gecontroleerd, dus \'x.y.z\' en \'y.z\' worden gedetecteerd voor de invoer \'y.z\'</string>
     <string name="mLog_edit">Logboek bewerken</string>
     <string name="mClear_hashDesc">URL van het catalogus-hashbestand. Als u dit weglaat, wordt de download niet gecontroleerd om te zien of er mee is geknoeid/gewijzigd (niet aanbevolen)</string>
     <string name="mClear_hashError">Kan de hash niet ophalen. Zorg ervoor dat de URL geldig is en dat u een actieve verbinding heeft</string>
@@ -314,6 +314,5 @@
     <string name="small">Klein</string>
     <string name="normal">Normaal</string>
     <string name="big">Groot</string>
-    <string name="mInput_alwaysEdit">Blijf altijd in de bewerkingsmodus</string>
     <string name="mD_show">Toon debuggegevens</string>
 </resources>

@@ -33,6 +33,7 @@ public class CTabs {
 
     private final GenericPref.Enumeration<OnOffConfig> pref;
     private boolean state = false;
+    private ImageButton button;
 
     public CTabs(Context cntx) {
         pref = PREF(cntx);
@@ -42,6 +43,7 @@ public class CTabs {
      * Initialization from a given intent and a button to toggle
      */
     public void initFrom(Intent intent, ImageButton button) {
+        this.button = button;
         boolean visible;
         // configure
         switch (pref.get()) {
@@ -77,15 +79,19 @@ public class CTabs {
         if (visible) {
             // show
             AndroidUtils.longTapForDescription(button);
-            AndroidUtils.toggleableListener(button,
-                    o -> state = !state,
-                    view -> view.setImageResource(state ? R.drawable.ctabs_on : R.drawable.ctabs_off)
-            );
+            button.setOnClickListener(v -> setState(!state));
+            setState(state);
             button.setVisibility(View.VISIBLE);
         } else {
             // hide
             button.setVisibility(View.GONE);
         }
+    }
+
+    /** Sets the cTabs state */
+    public void setState(boolean state) {
+        this.state = state;
+        button.setImageResource(state ? R.drawable.ctabs_on : R.drawable.ctabs_off);
     }
 
     /**

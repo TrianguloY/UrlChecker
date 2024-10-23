@@ -1,7 +1,5 @@
 package com.trianguloy.urlchecker.modules;
 
-import android.app.Activity;
-
 import com.trianguloy.urlchecker.dialogs.MainDialog;
 import com.trianguloy.urlchecker.fragments.Fragment;
 import com.trianguloy.urlchecker.url.UrlData;
@@ -57,15 +55,18 @@ public abstract class AModuleDialog implements Fragment {
     /**
      * @return this activity context
      */
-    public final Activity getActivity() {
+    public final MainDialog getActivity() {
         return dialog;
     }
 
-    /**
-     * @return the current url
-     */
+    /** Returns the current urlData. Please don't modify it. */
+    protected final UrlData getUrlData() {
+        return dialog.getUrlData();
+    }
+
+    /** Returns the current url (shorthand for getUrlData().url) */
     protected final String getUrl() {
-        return dialog.getUrl();
+        return getUrlData().url;
     }
 
     /**
