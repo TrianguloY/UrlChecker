@@ -340,7 +340,7 @@ public class MainDialog extends Activity {
             if (automationRules.automationsEnabledPref.get()) {
                 for (var automation : moduleData.getAutomations()) {
                     if (BuildConfig.DEBUG && automations.containsKey(automation.key())) {
-                        AndroidUtils.assertError("There is already an automation with that key!");
+                        AndroidUtils.assertError("There is already an automation with key " + automation.key() + "!");
                     }
                     automations.put(automation.key(), () -> automation.action().accept(module));
                 }
@@ -385,23 +385,17 @@ public class MainDialog extends Activity {
 
     // ------------------- drawer module -------------------
 
-    /**
-     * returns the visibility of the drawer
-     */
+    /** returns the visibility of the drawer */
     public boolean isDrawerVisible() {
         return ll_drawer.getVisibility() != View.GONE;
     }
 
-    /**
-     * Toggles the drawer visibility
-     */
-    public void toggleDrawer() {
-        ll_drawer.setVisibility(isDrawerVisible() ? View.GONE : View.VISIBLE);
+    /** Sets the drawer visibility */
+    public void setDrawerVisibility(boolean visible) {
+        ll_drawer.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
-    /**
-     * returns true if the drawer contains at least one visible children
-     */
+    /** returns true if the drawer contains at least one visible children */
     public boolean anyDrawerChildVisible() {
         int childCount = ll_drawer.getChildCount();
         for (int i = 0; i < childCount; i++) {

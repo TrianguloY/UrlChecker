@@ -127,6 +127,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="auto_checkStatus">"Ejecutará la comprobación del estado. Equivalente a pulsar el botón de 'comprobar'"</string>
     <string name="auto_unshort">"Ejecutará el proceso de desacortar enlace. Equivalente a pulsar el botón de 'desacortar'."</string>
     <string name="auto_scan">"Escaneará el enlace. Equivalente a pulsar el botón de escanear."</string>
+    <string name="auto_drawer">"Abrirá el cajón. Equivalente a pulsar el boton del cajón cuando está cerrado."</string>
     <!--
         modules
     -->
