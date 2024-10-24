@@ -298,7 +298,7 @@ Notez que toute modification apportée à l'objet parent 'fournisseurs' sera éc
     <string name="mUnshort_checking">Vérification…</string>
     <string name="mUnshort_error">Erreur de serveur : %s</string>
     <string name="mUnshort_internal">Erreur interne (%s)</string>
-    <string name="mUnshort_notFound">"Aucune redirection n'a été trouvée"</string>
+    <string name="mUnshort_notFound">Aucune redirection n\'a été trouvée</string>
     <string name="mUnshort_pending">en attente : %1$d/%2$d</string>
     <string name="mUnshort_ok">Non raccourci</string>
     <string name="mOpen_mergeCopy">Fusionner les boutons Copier et Partager (appuie long pour copier)</string>

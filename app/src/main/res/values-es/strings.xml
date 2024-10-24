@@ -124,9 +124,9 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="auto_copy">"Copiará el enlace en el portapapeles. Equivalente a pulsar el boton de 'copiar'"</string>
     <string name="auto_incognito">"Activará el modo incógnito. Equivalente a pulsar el boton de 'incógnito' cuando está desactivado (incluso si está oculto)."</string>
     <string name="auto_ctabs">"Activará el modo de custom tabs. Equivalente a pulsar el boton de 'custom tabs' cuando está desactivado (incluso si está oculto)."</string>
-    <string name="auto_checkStatus">"Ejecutará la comprobación del estado. Equivalente a pulsar el botón de 'comprobar'"</string>
-    <string name="auto_unshort">"Ejecutará el proceso de desacortar enlace. Equivalente a pulsar el botón de 'desacortar'."</string>
-    <string name="auto_scan">"Escaneará el enlace. Equivalente a pulsar el botón de escanear."</string>
+    <string name="auto_checkStatus">Se ejecutará la comprobación del estado. Equivale a pulsar el botón \"Comprobar\".</string>
+    <string name="auto_unshort">Se ejecutará el proceso de anulación del acortamiento. Equivale a presionar el botón \"Anular el acortamiento\".</string>
+    <string name="auto_scan">Escaneará la URL. Equivale a presionar el botón \"Escanear\".</string>
     <string name="auto_drawer">"Abrirá el cajón. Equivalente a pulsar el boton del cajón cuando está cerrado."</string>
     <!--
         modules
@@ -233,7 +233,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \n
 \nPuede mantener pulsado para seleccionar el texto.</string>
     <string name="mD_ctabs">Mostrar mensajes de debug del servicio custom tabs</string>
-    <string name="mD_show">Cargar datos de debug</string>
+    <string name="mD_show">Cargar datos de depuración</string>
     <!-- -->
     <string name="mHist_name">Historial</string>
     <string name="mHist_desc">Cuando la URL cambia, tanto manualmente como por otros módulos, éste te permite ver y revertir los cambios.</string>
@@ -275,11 +275,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 \nTen en cuenta que las modificaciones del objeto principal \'providers\' serán sobreescritas al actualizar el catálogo automática o manualmente desde la ventana del actualizador. Para añadir reglas personales inclúyelas en un objeto padre distinto (cualquier nombre).</string>
     <!-- -->
     <string name="mRemove_name">Eliminador de parámetros</string>
-    <string name="mRemove_desc">[OBSOLETO] Con este módulo puede eliminar consultas de la URL.
-\nPresione el botón para eliminarlos todos o presione la flecha para eliminar uno a la vez.
-\n¡Gracias a PabloOQ por la idea y la implementación original!
-\n
-\nEste módulo ha quedado obsoleto en favor del módulo \'Partes de la URI\'</string>
+    <string name="mRemove_desc">[OBSOLETO] Con este módulo puedes eliminar consultas de la URL.\nPresione el botón para eliminarlos todos o presione la flecha para eliminarlos uno a la vez.\n¡Gracias a PabloOQ por la idea y la implementación original!\n\nEste módulo ha quedado obsoleto en favor del módulo \'Partes Uri\'</string>
     <string name="mRemove_found1">1 parámetro encontrado</string>
     <string name="mRemove_found">%d parámetros encontrados</string>
     <string name="mRemove_noQueries">Sin parámetros</string>
@@ -324,14 +320,13 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <!-- -->
     <string name="mUnshort_name">Desacortador</string>
     <string name="mUnshort_unshort">Desacortar</string>
-    <string name="mUnshort_desc">Este módulo desacortará los enlaces enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la url desacortada para futuras solicitudes. Evite desacortar los enlaces con datos privados o confidenciales.
-\nEsta API tiene una tasa limitada a 10 peticiones por hora para nuevas solicitudes. La respuesta del módulo mostrará cuántas solicitudes tienes pendientes.</string>
-    <string name="mUnshort_tm">unshorten.me API gratuita de Unshorten.me</string>
+    <string name="mUnshort_desc">Este módulo deshacerá los enlaces cortos enviándolos a https://unshorten.me/, que los evalúa en sus servidores y guarda la redirección para futuras solicitudes. Evite deshacer enlaces cortos con datos privados o sensibles.\nSu API tiene un límite de 10 solicitudes por hora para nuevas verificaciones. La respuesta del módulo mostrará cuántas solicitudes tienes pendientes.</string>
+    <string name="mUnshort_tm">API gratuita de Unshorten.me</string>
     <string name="mUnshort_checking">Comprobando…</string>
     <string name="mUnshort_error">Error de servidor: %s</string>
     <string name="mUnshort_internal">Error interno (%s)</string>
-    <string name="mUnshort_to">Se desacorta a %s</string>
-    <string name="mUnshort_notFound">No se ha encontrado desacortación</string>
+    <string name="mUnshort_to">Se acorta a %s</string>
+    <string name="mUnshort_notFound">Sin URL acortadas</string>
     <string name="mUnshort_pending">quedan: %1$d/%2$d</string>
     <string name="mUnshort_ok">Desacortado</string>
     <!-- -->
