@@ -55,9 +55,10 @@ public class AutomationRules extends JsonCatalog {
     public JSONObject buildBuiltIn(Context cntx) throws JSONException {
         return new JSONObject()
 
-                .put("autoopen", new JSONObject()
-                        .put("regex", ".*\\?open")
-                        .put("action", "open")
+                .put("Unshort bit.ly", new JSONObject()
+                        .put("regex", "https?://bit\\.ly/.*")
+                        .put("action", "unshort")
+                        .put("enabled", false)
                 )
                 ;
     }

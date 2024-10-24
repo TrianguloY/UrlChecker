@@ -119,6 +119,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 - 'enabled': booleano, opcional: si es falso, la automatización se omitirá. Verdadero (true) por defecto."</string>
     <string name="auto_available_prefix">Claves de automatizaciones disponibles:</string>
     <string name="auto_available_disabled">"Este módulo está deshabilitado, las automatizaciones no se ejecutarán"</string>
+    <!-- -->
     <string name="auto_open">"Abrirá el enlace con la primera aplicación disponible. Equivalente a pulsar el boton 'abrir'."</string>
     <string name="auto_share">"Compartirá el enlace. Equivalente a pulsar el botón de compartir."</string>
     <string name="auto_copy">"Copiará el enlace en el portapapeles. Equivalente a pulsar el boton de 'copiar'"</string>
