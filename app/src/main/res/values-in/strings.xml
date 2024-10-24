@@ -88,7 +88,6 @@
     <string name="mStatus_name">Kode status</string>
     <string name="mOpen_closeShare">Tutup kotak dialog setelah membagikan tautan</string>
     <string name="mClear_tm">Katalog bawaan disalin dari ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
-    <string name="mStatus_autoCheck">Cek secara otomatis kecocokan URL berdasarkan pola regex berikut. Peringatan! Disarankan untuk menentukan sebuah pola yang restriktif (bukan .* untuk semuanya), jika tidak, server yang berbahaya dapat merekam IP Anda.</string>
     <string name="back">Kembali</string>
     <string name="hidden">Tersembunyi</string>
     <string name="mPttrn_desc">Modul ini bertugas untuk mengecek url menggunakan pola regex yang akan memberi peringatan, saran ataupun menerapkan perubahan tertentu. Anda bisa membuat atau memodifikasi pola milik Anda sendiri, atau bahkan menggunakan pola dari pengguna lain.

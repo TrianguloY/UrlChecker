@@ -35,11 +35,6 @@ public class StatusModule extends AModuleData {
         return new GenericPref.Bool("statusCode_autoRedir", false, cntx);
     }
 
-    public static GenericPref.Str AUTOCHECK_PREF(Context cntx) {
-        return new GenericPref.Str("statusCode_autoCheck", "", cntx);
-    }
-
-
     @Override
     public String getId() {
         return "statusCode";
@@ -80,7 +75,6 @@ class StatusConfig extends AModuleConfig {
     @Override
     public void onInitialize(View views) {
         StatusModule.AUTOREDIR_PREF(getActivity()).attachToSwitch(views.findViewById(R.id.autoredirect));
-        StatusModule.AUTOCHECK_PREF(getActivity()).attachToEditText(views.findViewById(R.id.autoCheck));
     }
 }
 
@@ -100,7 +94,6 @@ class StatusDialog extends AModuleDialog {
     private Thread thread = null;
 
     private GenericPref.Bool autoRedir;
-    private GenericPref.Str autoCheck;
 
     public StatusDialog(MainDialog dialog) {
         super(dialog);
@@ -127,7 +120,6 @@ class StatusDialog extends AModuleDialog {
         redirect = views.findViewById(R.id.redirect);
 
         autoRedir = StatusModule.AUTOREDIR_PREF(getActivity());
-        autoCheck = StatusModule.AUTOCHECK_PREF(getActivity());
     }
 
     @Override
@@ -147,11 +139,6 @@ class StatusDialog extends AModuleDialog {
         AndroidUtils.setHideableText(previous, urlData.getData(PREVIOUS));
         AndroidUtils.setHideableText(info, null);
         updateRedirect(null);
-
-        if (urlData.url.matches(autoCheck.get())) {
-            // autocheck
-            check(urlData.disableUpdates);
-        }
     }
 
     /**

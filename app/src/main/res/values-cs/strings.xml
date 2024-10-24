@@ -93,7 +93,6 @@
     <string name="mStatus_unknownCode">%d: Neznámý stavový kód</string>
     <string name="mStatus_redir">Přesměrovává na %s</string>
     <string name="mStatus_autoRedirect">Automaticky nahrazovat adresy přesměrování</string>
-    <string name="mStatus_autoCheck">Automaticky kontrolovat adresy URL, které odpovídají následujícímu vzoru regulárních výrazů. Varování! Doporučuje se zadat omezující vzor (a ne .* pro všechno), jinak by škodlivé servery mohly zaznamenat vaši IP.</string>
     <string name="mInput_name">Vstupní text</string>
     <string name="mInput_desc">Zobrazuje aktuální adresu URL, kterou lze ručně upravit.</string>
     <string name="mVT_apiKey">API klíč</string>

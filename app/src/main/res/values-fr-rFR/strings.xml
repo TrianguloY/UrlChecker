@@ -180,7 +180,6 @@ Ceci est le didacticiel, si vous souhaitez l'ignorer vous pouvez le faire en uti
     <string name="mStatus_unknownCode">%d: Code d\'état inconnu</string>
     <string name="mStatus_redir">Redirige vers %s</string>
     <string name="mStatus_autoRedirect">Remplacer automatiquement les URLs de redirection</string>
-    <string name="mStatus_autoCheck">Vérifie automatiquement les URLs qui correspondent au modèle d\'expression régulière suivant. Avertissement ! Il est conseillé de spécifier un modèle restrictif (et non .* pour tous) sinon des serveurs malveillants pourraient enregistrer votre adresse IP.</string>
     <!-- -->
     <string name="mInput_name">Texte d\'entrée</string>
     <string name="mInput_desc">Affiche l\'URL actuel. Appuyez dessus pour passer en mode édition.</string>

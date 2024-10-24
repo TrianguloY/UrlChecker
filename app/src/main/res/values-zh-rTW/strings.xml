@@ -225,7 +225,6 @@
 \n長按個別元素，則會將該元素複製到剪貼簿。
 \n你也可以藉由點選「叉號」按鈕來移除個別元素。
 \n這是進階版的「參數移除器」模組。</string>
-    <string name="mStatus_autoCheck">若網址匹配下列規則運算式型樣，將自動檢查狀態碼。警告！建議指定一個限制性的型樣 (並且避免使用「.*」來匹配全部)，否則惡意的伺服器可能會記錄你的 IP 位址。</string>
     <string name="mClear_exception">- 因「%s」而忽略</string>
     <string name="mClear_desc">此模組能移除網址中的追蹤碼、參照連結等非必要參數。其亦能實現常見的離線重新導向。</string>
     <string name="mClear_editor">此為規則目錄，其必須遵循 https://docs.clearurls.xyz/latest/specs/rules/ 的格式。

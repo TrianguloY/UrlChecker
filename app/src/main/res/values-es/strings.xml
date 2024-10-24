@@ -208,7 +208,6 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
     <string name="mStatus_redir">Redirige a %s</string>
     <string name="mStatus_autoRedirect">Sustituir automáticamente las URL de redireccionamiento</string>
-    <string name="mStatus_autoCheck">Verifica automáticamente las URL que coincidan con el siguiente patrón de expresiones regulares. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar tu IP.</string>
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
     <string name="mInput_desc">Muestra la URL actual. Pulsa para editarla.</string>

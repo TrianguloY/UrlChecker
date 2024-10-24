@@ -132,7 +132,6 @@
     <string name="json_desc">[Função Beta] Este é um editor avançado, o conteúdo deve ser formatado em JSON válido. Você pode pressionar o botão no canto superior direito para formatá-lo e validá-lo.</string>
     <string name="mPttrn_noSchemeHttps">Esquema HTTPS ausente.</string>
     <string name="mPttrn_ok">Não há padrões correspondentes.</string>
-    <string name="mStatus_autoCheck">Verifique automaticamente as URLs que correspondem ao seguinte padrão de expressão regular. Aviso! É aconselhável especificar um padrão restritivo (e não .* para todos) caso contrário, servidores mal-intencionados podem registrar seu endereço IP.</string>
     <string name="mStatus_autoRedirect">Substituir as URLs de redirecionamento automaticamente</string>
     <string name="mVT_name">Scanner de URL</string>
     <string name="mInput_desc">Mostra a URL atual, que pode ser editada manualmente.</string>

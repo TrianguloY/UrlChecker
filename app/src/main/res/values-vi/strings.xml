@@ -208,7 +208,6 @@
     <string name="mStatus_redir">Chuyển hướng đến %s</string>
     <string name="mStatus_autoRedirect">Tự động thay thế các URL chuyển hướng</string>
     <string name="mStatus_desc">Bằng cách nhấn nút kiểm tra, yêu cầu mạng sẽ được thực hiện để truy xuất và hiển thị mã trạng thái trang web. Nếu kết quả là chuyển hướng, bạn sẽ có thể xem URL đích. Nội dung URL được lấy (GET) nhưng không được đánh giá, do đó các chuyển hướng dựa trên JavaScript sẽ không bị phát hiện.</string>
-    <string name="mStatus_autoCheck">Tự động kiểm tra các URL khớp với mẫu biểu thức chính quy sau. Cảnh báo! Bạn nên chỉ định một mẫu hạn chế (chứ không phải .* cho tất cả), nếu không các máy chủ độc hại có thể ghi lại IP của bạn.</string>
     <string name="mInput_name">Văn bản đầu vào</string>
     <string name="mInput_desc">Hiển thị URL hiện tại, có thể chỉnh sửa thủ công.</string>
     <string name="mVT_name">Máy quét URL</string>

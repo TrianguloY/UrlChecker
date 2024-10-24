@@ -167,7 +167,6 @@
     <string name="mHosts_uninitialized">होस्ट डेटाबेस प्रारंभ नहीं किया गया। बनाने के लिए दबाएँ</string>
     <string name="mHosts_buildSave">सहेजा जा रहा है…</string>
     <string name="mRemove_all">सभी हटाएं</string>
-    <string name="mStatus_autoCheck">निम्नलिखित regex पैटर्न से मेल खाने वाले यूआरएल को स्वचालित रूप से जांचें। चेतावनी! यह सलाह दी जाती है कि एक प्रतिबंधात्मक पैटर्न निर्दिष्ट करें (और सभी के लिए .* नहीं) अन्यथा दुर्भावनापूर्ण सर्वर आपके आईपी को लॉग कर सकते हैं।</string>
     <string name="mLog_empty">कोई डेटा नहीं</string>
     <string name="mHosts_noLabel">कोई लेबल नहीं</string>
     <string name="mRemove_empty">खाली हटाएँ</string>
