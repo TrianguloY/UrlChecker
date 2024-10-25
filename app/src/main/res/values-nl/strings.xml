@@ -61,7 +61,6 @@
     <string name="mOpen_closeShare">Dialoogvenster sluiten na delen</string>
     <string name="txt_openLinks">Links openen in deze app: Android heeft in de loop der jaren de manier veranderd waarop het wordt geconfigureerd en verschilt per versie. Hieronder vindt u alle beschikbare instellingen voor uw apparaat. Als er geen links worden geopend in deze app, probeer ze dan allemaal.</string>
     <string name="mClear_tm">Ingebouwde catalogus gekopieerd van ClearURLs: https://docs.clearurls.xyz/latest/specs/rules/</string>
-    <string name="mStatus_autoCheck">Controleer automatisch URL\'s die overeenkomen met het volgende regex-patroon. Waarschuwing! Het wordt aanbevolen om een beperkend patroon op te geven (en niet .* voor alles), anders kunnen kwaadwillende servers uw IP-adres registreren.</string>
     <string name="back">Terug</string>
     <string name="hidden">Verborgen</string>
     <string name="mPttrn_desc">Deze module controleert de url met regex-patronen die vervangingen waarschuwen, voorstellen of toepassen. U kunt uw eigen patronen wijzigen of creëren, of zelfs door de gebruiker gemaakte patronen gebruiken.

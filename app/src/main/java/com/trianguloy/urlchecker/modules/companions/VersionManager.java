@@ -1,10 +1,16 @@
 package com.trianguloy.urlchecker.modules.companions;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.trianguloy.urlchecker.BuildConfig;
+import com.trianguloy.urlchecker.R;
 import com.trianguloy.urlchecker.activities.TutorialActivity;
+import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +33,7 @@ public class VersionManager {
     /**
      * Check if the version must be updated
      */
-    public static void check(Context cntx) {
+    public static void check(Activity cntx) {
         // just call the constructor, it does the check
         new VersionManager(cntx);
     }
@@ -60,7 +66,7 @@ public class VersionManager {
 
     /* ------------------- instance ------------------- */
 
-    public VersionManager(Context cntx) {
+    public VersionManager(Activity cntx) {
         lastVersion = LASTVERSION_PREF(cntx);
         if (lastVersion.get() == null) {
             // no previous setting, the app is a new install, mark as seen
@@ -68,6 +74,29 @@ public class VersionManager {
             // we check by testing the tutorial flag (which should be set if the app was used)
             if (TutorialActivity.DONE(cntx).get()) lastVersion.set("<2.12");
             else markSeen();
+        }
+
+        // --- run migrations --- //
+        var prefs = GenericPref.getPrefs(cntx);
+
+        // status module auto-check -> automation
+        try {
+            var regex = prefs.getString("statusCode_autoCheck", "");
+            if (!regex.isEmpty()) {
+                var automationRules = new AutomationRules(cntx);
+                var catalog = automationRules.getCatalog();
+                var name = cntx.getString(R.string.mStatus_check);
+                if (!catalog.has(name)) {
+                    catalog.put(name, new JSONObject()
+                            .put("regex", regex)
+                            .put("action", "checkStatus")
+                    );
+                }
+                automationRules.save(catalog);
+                prefs.edit().remove("statusCode_autoCheck").apply();
+            }
+        } catch (Exception e) {
+            AndroidUtils.assertError("Unable to migrate statusCode_autoCheck to automation", e);
         }
     }
 

@@ -163,7 +163,6 @@
     <string name="mStatus_unknownCode">%d: 未知状态码</string>
     <string name="mStatus_redir">重定向到 %s</string>
     <string name="mStatus_autoRedirect">自动替换重定向链接</string>
-    <string name="mStatus_autoCheck">自动检查与以下正则表达式模式匹配的链接。警告！建议指定一个限制性模式（而不是使用 .* 匹配全部），否则恶意服务器可能会记录您的 IP。</string>
     <string name="mInput_name">输入文本</string>
     <string name="mInput_desc">显示当前链接，点击以进入编辑模式。</string>
     <string name="mVT_name">链接扫描器</string>

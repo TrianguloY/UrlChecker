@@ -223,7 +223,6 @@
 \n- Öffnen-Button: Tippen Sie auf den Namen der App um den Link in dieser zu öffnen. Wenn ein Link mit mehreren Apps geöffnet werden kann, wird ein Pfeil zur Auswahl angezeigt.
 \n- Kopieren-Button: Tippen Sie auf diesen Button um den Link zu kopieren.
 \n- Teilen-Button: Tippen Sie auf diesen Button um den Link zu teilen.</string>
-    <string name="mStatus_autoCheck">URLs, die diesem Muster entsprechen, automatisch prüfen. Warnung! Es ist ratsam ein restriktives Muster zu benutzen (nicht .* für alle Links), da sonst böswillige Server Ihre IP-Adresse loggen könnten.</string>
     <string name="mVT_cancel">Abbrechen</string>
     <string name="mVT_scanning">Scan läuft…</string>
     <string name="mHist_desc">Wenn eine URL verändert wird (manuell oder von anderen Modulen), können Sie hiermit Änderungen sehen und rückgängig machen.</string>

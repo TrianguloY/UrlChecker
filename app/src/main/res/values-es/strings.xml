@@ -119,6 +119,7 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
 - 'enabled': booleano, opcional: si es falso, la automatización se omitirá. Verdadero (true) por defecto."</string>
     <string name="auto_available_prefix">Claves de automatizaciones disponibles:</string>
     <string name="auto_available_disabled">"Este módulo está deshabilitado, las automatizaciones no se ejecutarán"</string>
+    <!-- -->
     <string name="auto_open">"Abrirá el enlace con la primera aplicación disponible. Equivalente a pulsar el boton 'abrir'."</string>
     <string name="auto_share">"Compartirá el enlace. Equivalente a pulsar el botón de compartir."</string>
     <string name="auto_copy">"Copiará el enlace en el portapapeles. Equivalente a pulsar el boton de 'copiar'"</string>
@@ -207,7 +208,6 @@ Hay algunos enlaces cuyo único propósito es redirigirte a otro enlace. Si el e
     <string name="mStatus_unknownCode">%d: Código de error desconocido</string>
     <string name="mStatus_redir">Redirige a %s</string>
     <string name="mStatus_autoRedirect">Sustituir automáticamente las URL de redireccionamiento</string>
-    <string name="mStatus_autoCheck">Verifica automáticamente las URL que coincidan con el siguiente patrón de expresiones regulares. ¡Advertencia! Se recomienda especificar un patrón restrictivo (y no .* para todos), de lo contrario, los servidores maliciosos pueden registrar tu IP.</string>
     <!-- -->
     <string name="mInput_name">Texto de entrada</string>
     <string name="mInput_desc">Muestra la URL actual. Pulsa para editarla.</string>

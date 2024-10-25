@@ -241,7 +241,6 @@
     <string name="mStatus_recheck">Proveri</string>
     <string name="mStatus_unknownCode">%d: Nepoznat statusni kod</string>
     <string name="mStatus_redir">Preusmerava na %s</string>
-    <string name="mStatus_autoCheck">Automatski proverite URL adrese koje odgovaraju sledećem regex šablonu . Upozorenje! Savetuje se da navedete restriktivni šablon (a ne .* za sve) u suprotnom zlonamerni serveri mogu da evidentiraju vašu IP adresu.</string>
     <string name="mVT_desc">Kada je ovaj modul omogućen, možete skenirati URL koristeći VirusTotal i proveriti izveštaj. Lični VirusTotal API ključ je potreban da bi funkcionisao, možete ga dobiti nakon registracije za besplatni nalog ovde: https://vvv.virustotal.com/gui/join-us.</string>
     <string name="mVT_noKey">Nedostaje API ključ</string>
     <string name="mVT_tm">VirusTotal™ je zaštitni znak kompanije Google, Inc.</string>

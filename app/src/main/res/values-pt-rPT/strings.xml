@@ -308,7 +308,6 @@ Para desabilitar o log, basta desabilitar o módulo."</string>
     <string name="dismiss">Descartar</string>
     <string name="shortcut_checkClipboard">Verificar ligação da área de transferência</string>
     <string name="mStatus_autoRedirect">Substituir as URLs de redirecionamento automaticamente</string>
-    <string name="mStatus_autoCheck">Verifique automaticamente as URLs que correspondem ao seguinte padrão de expressão regular. Aviso! É aconselhável especificar um padrão restritivo (e não .* para todos) caso contrário, servidores mal-intencionados podem registar o seu endereço IP.</string>
     <string name="mParts_empty">(vazio)</string>
     <string name="mChg_name">Novidades</string>
     <string name="mOpen_incognito">Modo anônimo:</string>

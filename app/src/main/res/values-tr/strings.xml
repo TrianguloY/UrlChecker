@@ -181,7 +181,6 @@ Not: kalıpları düzenlerseniz, uygulama güncellemelerinden yeni yerleşik kal
     <string name="mStatus_unknownCode">%d: Bilinmeyen durum kodu</string>
     <string name="mStatus_redir">Yönlendirme: %s</string>
     <string name="mStatus_autoRedirect">Yönlendirme URL\'lerini otomatik olarak değiştir</string>
-    <string name="mStatus_autoCheck">Aşağıdaki normal ifade kalıbıyla eşleşen URL\'leri otomatik olarak kontrol edin. Dikkat! Kısıtlayıcı bir model belirtmeniz önerilir (tümü için *. değil), aksi takdirde kötü niyetli sunucular IP\'nizi günlüğe kaydedebilir.</string>
     <!-- -->
     <string name="mInput_name">Giriş metni</string>
     <string name="mInput_desc">Elle düzenlenebilen geçerli URL\'yi görüntüler.</string>
