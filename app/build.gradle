@@ -10,8 +10,8 @@ android {
         compileSdk 34
         minSdkVersion 19
         targetSdkVersion 34
-        versionCode 35
-        versionName "2.17"
+        versionCode 36
+        versionName "3.0"
     }
 
     buildTypes {
@@ -66,7 +66,9 @@ dependencies {
 }
 
 // configure signing for release
-private String secret(String name) { project.hasProperty(name) ? project.property(name) : System.getenv(name) }
+private String secret(String name) {
+    project.hasProperty(name) ? project.property(name) : System.getenv(name)
+}
 
 if (secret('RELEASE_STORE_FILE')) {
     println("Secrets provided, release will be signed")
@@ -105,7 +107,8 @@ android {
                 .collect { '"' + it + '"' } // convert as 'string'
                 .join(',') // and concatenate with commas
         println "Found locales: $locales"
-        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of($locales)" // create field
+        buildConfigField "java.util.List<String>", 'LOCALES', "java.util.List.of($locales)"
+        // create field
 
         // generate string resource with all translators
         def translators = translations.stream() // for all translations
