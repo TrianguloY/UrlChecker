@@ -235,7 +235,10 @@ public interface AndroidUtils {
 
     String MARKER = "%S$S/S%";
 
-    /** this code replaces the [MARKER] in [textWithMarker] with the underlined [url]. Will call onClick with the url when clicked. */
+    /**
+     * this code replaces the [MARKER] in [textWithMarker] with the underlined [url]. Will call onClick with the url when clicked.
+     * REMEMBER: you need to configure the textview to accept clicks with textview.setMovementMethod(LinkMovementMethod.getInstance());
+     */
     static CharSequence underlineUrl(String textWithMarker, String url, JavaUtils.Consumer<String> onClick) {
         // it does so by using a marker to underline exactly the parameter (wherever it is) and later replace it with the final url
         // all underlined looks bad, and auto-underline may not work with some malformed urls
