@@ -150,7 +150,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <!--
         shortcuts
     -->
-    <string name="shortcut_checkClipboard">Check URLs from the clipboard</string>
+    <string name="shortcut_checkClipboard">Check URLs in clipboard</string>
     <!--
         automations
     -->
