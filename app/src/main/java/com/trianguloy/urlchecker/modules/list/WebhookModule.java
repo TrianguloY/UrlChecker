@@ -1,7 +1,12 @@
 package com.trianguloy.urlchecker.modules.list;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.text.Editable;
+import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,29 +19,28 @@ import com.trianguloy.urlchecker.modules.AModuleDialog;
 import com.trianguloy.urlchecker.modules.AutomationRules;
 import com.trianguloy.urlchecker.url.UrlData;
 import com.trianguloy.urlchecker.utilities.generics.GenericPref;
+import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
+import com.trianguloy.urlchecker.utilities.methods.HttpUtils;
+import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
+import com.trianguloy.urlchecker.utilities.wrappers.DefaultTextWatcher;
 
-import org.json.JSONObject;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/** This module sends the current url to a custom webhook */
 public class WebhookModule extends AModuleData {
 
     public static GenericPref.Str WEBHOOK_URL_PREF(Context cntx) {
         return new GenericPref.Str("webhook_url", "", cntx);
     }
 
-    public static GenericPref.Bool AUTO_SEND_PREF(Context cntx) {
-        return new GenericPref.Bool("webhook_auto", false, cntx);
+    public static GenericPref.Str WEBHOOK_BODY_PREF(Context cntx) {
+        return new GenericPref.Str("webhook_body", WebhookConfig.DEFAULT, cntx);
     }
 
     @Override
@@ -73,109 +77,102 @@ public class WebhookModule extends AModuleData {
 class WebhookDialog extends AModuleDialog {
 
     private static final Executor executor = Executors.newSingleThreadExecutor();
-    
-    private final GenericPref.Str webhookUrl;
-    private final GenericPref.Bool autoSend;
-    private TextView statusText;
-    private UrlData currentUrl;
 
-    public static final List<AutomationRules.Automation<WebhookDialog>> AUTOMATIONS = new ArrayList<>();
-    static {
-        AUTOMATIONS.add(new AutomationRules.Automation<>(
-            "webhook_send",
-            R.string.mWebhook_auto_send,
-            dialog -> dialog.sendToWebhook()
-        ));
-    }
+    private final GenericPref.Str webhookUrl;
+    private final GenericPref.Str webhookBody;
+    private TextView statusText;
+    private Button statusButton;
+
+    static final List<AutomationRules.Automation<WebhookDialog>> AUTOMATIONS = List.of(
+            new AutomationRules.Automation<>(
+                    "webhook",
+                    R.string.mWebhook_auto_send,
+                    WebhookDialog::sendToWebhook
+            )
+    );
 
     public WebhookDialog(MainDialog dialog) {
         super(dialog);
         webhookUrl = WebhookModule.WEBHOOK_URL_PREF(dialog);
-        autoSend = WebhookModule.AUTO_SEND_PREF(dialog);
+        webhookBody = WebhookModule.WEBHOOK_BODY_PREF(dialog);
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.dialog_webhook;
+        return R.layout.button_text;
     }
 
     @Override
     public void onInitialize(View views) {
-        statusText = views.findViewById(R.id.status_text);
-        views.findViewById(R.id.send_button).setOnClickListener(v -> sendToWebhook());
+        statusText = views.findViewById(R.id.text);
+        statusButton = views.findViewById(R.id.button);
+
+        statusButton.setText(R.string.mWebhook_send);
+        statusButton.setOnClickListener(v -> sendToWebhook());
     }
 
     @Override
     public void onDisplayUrl(UrlData urlData) {
-        currentUrl = urlData;
-        if (autoSend.get()) {
-            sendToWebhook();
-        }
+        statusText.setText("");
+        AndroidUtils.clearRoundedColor(statusText);
     }
 
     private void sendToWebhook() {
-        if (currentUrl == null) return;
-        
-        String webhook = webhookUrl.get();
-        if (webhook.isEmpty()) {
-            showStatus(R.string.mWebhook_no_url, true);
-            return;
-        }
+        statusText.setText(R.string.mWebhook_sending);
+        statusButton.setEnabled(false);
 
-        showStatus(R.string.mWebhook_sending, false);
-        
         executor.execute(() -> {
-            try {
-                JSONObject json = new JSONObject();
-                json.put("url", currentUrl.url);
-                json.put("timestamp", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-                    .format(new Date()));
-                
-                URL url = new URL(webhook);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-                conn.setRequestProperty("Content-Type", "application/json");
-                conn.setDoOutput(true);
-
-                try (OutputStream os = conn.getOutputStream()) {
-                    byte[] input = json.toString().getBytes(StandardCharsets.UTF_8);
-                    os.write(input, 0, input.length);
+            var sent = send(webhookUrl.get(), getUrl(), webhookBody.get());
+            getActivity().runOnUiThread(() -> {
+                statusText.setText(sent ? R.string.mWebhook_success : R.string.mWebhook_error);
+                if (!sent) {
+                    AndroidUtils.setRoundedColor(R.color.bad, statusText);
                 }
-
-                int responseCode = conn.getResponseCode();
-                if (responseCode >= 200 && responseCode < 300) {
-                    showStatus(R.string.mWebhook_success, false);
-                } else {
-                    showStatus(R.string.mWebhook_error, true);
-                }
-
-            } catch (Exception e) {
-                showStatus(R.string.mWebhook_error, true);
-            }
+                statusButton.setEnabled(true);
+            });
         });
     }
 
-    private void showStatus(int stringId, boolean isError) {
-        getActivity().runOnUiThread(() -> {
-            statusText.setText(stringId);
-            statusText.setVisibility(View.VISIBLE);
-            
-            if (!isError) {
-                Toast.makeText(getActivity(), stringId, Toast.LENGTH_SHORT).show();
-            }
-        });
+    /** Performs the send action */
+    static boolean send(String webhook, String url, String body) {
+        try {
+            var json = body
+                    .replace("$URL$", url)
+                    .replace("$TIMESTAMP$", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US).format(new Date()));
+
+            var responseCode = HttpUtils.performPOSTJSON(webhook, json);
+            return responseCode >= 200 && responseCode < 300;
+        } catch (IOException e) {
+            AndroidUtils.assertError("Failed to send to webhook", e);
+            return false;
+        }
+
     }
 }
 
 class WebhookConfig extends AModuleConfig {
 
+    public static final String DEFAULT = "{\"url\":\"$URL$\",\"timestamp\":\"$TIMESTAMP$\"}";
+
+    private static final List<Pair<String, String>> TEMPLATES = List.of(
+            Pair.create("custom", DEFAULT),
+            Pair.create("Discord", "{\"content\":\"$URL$ @ $TIMESTAMP$\"}"),
+            Pair.create("Slack", "{\"text\":\"$URL$ @ $TIMESTAMP$\"}"),
+            Pair.create("Teams", "{\"text\":\"$URL$ @ $TIMESTAMP$\"}")
+    );
+
     private final GenericPref.Str webhookUrl;
-    private final GenericPref.Bool autoSend;
+    private final GenericPref.Str webhookBody;
 
     public WebhookConfig(ModulesActivity activity) {
         super(activity);
         webhookUrl = WebhookModule.WEBHOOK_URL_PREF(activity);
-        autoSend = WebhookModule.AUTO_SEND_PREF(activity);
+        webhookBody = WebhookModule.WEBHOOK_BODY_PREF(activity);
+    }
+
+    @Override
+    public int cannotEnableErrorId() {
+        return webhookUrl.get().isEmpty() || webhookBody.get().isEmpty() ? R.string.mWebhook_missing_config : -1;
     }
 
     @Override
@@ -185,7 +182,49 @@ class WebhookConfig extends AModuleConfig {
 
     @Override
     public void onInitialize(View views) {
-        webhookUrl.attachToEditText(views.findViewById(R.id.webhook_url));
-        autoSend.attachToSwitch(views.findViewById(R.id.auto_send));
+        var url = views.<EditText>findViewById(R.id.webhook_url);
+        var body = views.<EditText>findViewById(R.id.webhook_body);
+        var test = views.findViewById(R.id.webhook_test);
+
+        // configs
+        webhookUrl.attachToEditText(url);
+        webhookBody.attachToEditText(body);
+
+        // check disable
+        var nonEmpty = new DefaultTextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 0) {
+                    disable();
+                    test.setEnabled(false);
+                } else {
+                    test.setEnabled(true);
+                }
+            }
+        };
+        url.addTextChangedListener(nonEmpty);
+        body.addTextChangedListener(nonEmpty);
+
+        test.setEnabled(cannotEnableErrorId() == -1);
+
+        // click template
+        views.findViewById(R.id.webhook_templates).setOnClickListener(v ->
+                new AlertDialog.Builder(v.getContext())
+                        .setTitle(R.string.mWebhook_templates)
+                        .setItems(JavaUtils.mapEach(TEMPLATES, e -> e.first).toArray(new String[0]), (dialog, which) ->
+                                body.setText(TEMPLATES.get(which).second))
+                        .show());
+
+        // click test
+        test.setOnClickListener(v -> {
+            test.setEnabled(false);
+            new Thread(() -> {
+                var ok = WebhookDialog.send(webhookUrl.get(), webhookUrl.get(), webhookBody.get());
+                getActivity().runOnUiThread(() -> {
+                    test.setEnabled(true);
+                    Toast.makeText(v.getContext(), ok ? R.string.mWebhook_success : R.string.mWebhook_error, Toast.LENGTH_SHORT).show();
+                });
+            }).start();
+        });
     }
 } 

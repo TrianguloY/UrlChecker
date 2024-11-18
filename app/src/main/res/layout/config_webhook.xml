@@ -8,8 +8,6 @@
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:linksClickable="true"
         android:text="@string/mWebhook_desc" />
 
     <EditText
@@ -19,11 +17,36 @@
         android:hint="@string/mWebhook_url_hint"
         android:inputType="textUri" />
 
-    <Switch
-        android:id="@+id/auto_send"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/webhook_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/mWebhook_body_hint"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/webhook_templates"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minHeight="0dp"
+            android:text="@string/mWebhook_templates" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/webhook_test"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/mWebhook_auto" />
+        android:text="@string/mWebhook_test" />
 
-</LinearLayout> 
+</LinearLayout>
