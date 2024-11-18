@@ -10,6 +10,7 @@ import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,11 +74,17 @@ public class AutomationRules extends JsonCatalog {
                 var automation = catalog.getJSONObject(key);
                 if (!automation.optBoolean("enabled", true)) continue;
 
-                if (urlData.url.matches(automation.getString("regex"))) {
-                    matches.add(automation.getString("action"));
+                for (String pattern : JavaUtils.getArrayOrElement(automation.get("regex"), String.class)){
+                    if (urlData.url.matches(pattern)) {
+                        matches.add(automation.getString("action"));
+                        break;
+                    }
                 }
+
             } catch (JSONException e) {
                 AndroidUtils.assertError("Invalid automation rule", e);
+            } catch (ClassCastException e) {
+                AndroidUtils.assertError("Invalid automation regex", e);
             }
         }
         return matches;
