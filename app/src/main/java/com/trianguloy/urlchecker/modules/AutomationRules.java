@@ -60,6 +60,11 @@ public class AutomationRules extends JsonCatalog {
                         .put("action", "unshort")
                         .put("enabled", false)
                 )
+                .put("Send everything to webhook", new JSONObject()
+                        .put("regex", ".*")
+                        .put("action", "webhook")
+                        .put("enabled", false)
+                )
                 ;
     }
 
