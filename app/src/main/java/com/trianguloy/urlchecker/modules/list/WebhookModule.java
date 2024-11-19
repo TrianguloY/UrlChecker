@@ -35,8 +35,10 @@ import java.util.concurrent.Executors;
 /** This module sends the current url to a custom webhook */
 public class WebhookModule extends AModuleData {
 
+    public static final String URL_PREF = "webhook_url";
+
     public static GenericPref.Str WEBHOOK_URL_PREF(Context cntx) {
-        return new GenericPref.Str("webhook_url", "", cntx);
+        return new GenericPref.Str(URL_PREF, "", cntx);
     }
 
     public static GenericPref.Str WEBHOOK_BODY_PREF(Context cntx) {
