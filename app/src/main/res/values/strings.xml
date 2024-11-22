@@ -399,6 +399,20 @@ This is an advanced version of the 'Queries Remover' module."</string>
     <string name="mParts_empty">(empty)</string>
     <string name="mParts_copy">Part copied to clipboard</string>
     <!-- -->
+    <string name="mWebhook_name">Webhook</string>
+    <string name="mWebhook_desc">This module sends URLs to a configured webhook endpoint. Each URL is sent with a timestamp, allowing you to collect and process URLs on your own server.\n\nConfigure your webhook URL and body below to start sending URLs.\nFor the body, you can use the placeholders $URL$ and $TIMESTAMP$.</string>
+    <string name="mWebhook_url_hint">Webhook URL</string>
+    <string name="mWebhook_body_hint">Webhook body</string>
+    <string name="mWebhook_send">Send to Webhook</string>
+    <string name="mWebhook_auto">Automatically send URLs</string>
+    <string name="mWebhook_auto_send">Send to webhook</string>
+    <string name="mWebhook_missing_config">Missing webhook url or body</string>
+    <string name="mWebhook_sending">Sending to webhook…</string>
+    <string name="mWebhook_success">Successfully sent to webhook</string>
+    <string name="mWebhook_error">Failed to send to webhook</string>
+    <string name="mWebhook_templates">Templates</string>
+    <string name="mWebhook_test">Test webhook</string>
+    <!-- -->
     <string name="mDrawer_name">Drawer</string>
     <string name="mDrawer_desc">All modules below this will be hidden in a drawer. The modules will still work, but will be hidden until you open the drawer. Here you can place modules you rarely use, to avoid clutter.</string>
     <!-- -->
@@ -407,4 +421,5 @@ This is an advanced version of the 'Queries Remover' module."</string>
     <string name="mChg_updated">The app has been updated.</string>
     <string name="mChg_current">Current version: %s</string>
     <string name="mChg_view">View changes</string>
+
 </resources>

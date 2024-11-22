@@ -26,6 +26,15 @@ public interface JavaUtils {
         return list;
     }
 
+    /** returns list.map{ mapper(it) } but using <24 api android java */
+    static <I, O> List<O> mapEach(List<I> list, Function<I, O> mapper) {
+        var result = new ArrayList<O>();
+        for (var i : list) {
+            result.add(mapper.apply(i));
+        }
+        return result;
+    }
+
     /**
      * Converts a string into a json object, returns empty on failure
      */
