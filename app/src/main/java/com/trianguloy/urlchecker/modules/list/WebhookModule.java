@@ -32,7 +32,10 @@ import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-/** This module sends the current url to a custom webhook */
+/**
+ * This module sends the current url to a custom webhook
+ * Idea and base implementation by anoop-b
+ */
 public class WebhookModule extends AModuleData {
 
     public static final String URL_PREF = "webhook_url";

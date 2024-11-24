@@ -5,6 +5,7 @@
 <!-- Original background with CC0 from https://www.maxpixel.net/Digital-Network-Internet-Communication-Connections-3537400 -->
 
 <!-- title -->
+
 # URLCheck
 
 <!-- ---------- Badges ---------- -->
@@ -25,9 +26,10 @@ height="80">](https://play.google.com/store/apps/details?id=com.trianguloy.urlch
 <hr width="50%">
 
 <!-- contributors -->
+
 ### Android app made by [TrianguloY](https://github.com/TrianguloY)
 
-Special contributors: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ)
+Special contributors: [Ilithy](https://github.com/Ilithy), [PabloOQ](https://github.com/PabloOQ), [anoop-b](https://github.com/anoop-b)
 
 All contributors: \
 [![Contributors](https://contrib.rocks/image?repo=TrianguloY/UrlChecker&anon=1)](https://github.com/TrianguloY/UrlChecker/graphs/contributors) \
