@@ -160,7 +160,7 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
     <string name="auto_error_toast">Show toast if automation fails</string>
     <string name="auto_notFound">"No automation with key '%s' is available. Make sure it is valid and the required module is active."</string>
     <string name="auto_editor">"Automations configuration. Format: list of objects where the key is a unique automation name and the content includes the following values:
-- 'regex': string, required: a valid java regex that the url must match for the automation to run.
+- 'regex': string|list, required: a valid java regex that the url must match for the automation to run. If list, at least one regex must match.
 - 'action': string, required: the key of the automation to run. Check below for a list of all the available keys.
 - 'enabled': boolean, optional: if false this automation will be skipped. True by default."</string>
     <string name="auto_available_prefix">Available automation actions (keys):</string>
