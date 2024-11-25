@@ -165,6 +165,8 @@ Hope you find the app useful! And don't hesitate to suggest features, report bug
 - 'enabled': boolean, optional: if false this automation will be skipped. True by default."</string>
     <string name="auto_available_prefix">Available automation actions (keys):</string>
     <string name="auto_available_disabled">"This module is disabled, automations won't run"</string>
+    <string name="auto_rule_bitly">Unshort bit.ly</string>
+    <string name="auto_rule_webhook">Send everything to webhook</string>
     <string name="auto_open">"Will open the url with the first available app. Equivalent of pressing the 'open' button."</string>
     <string name="auto_share">"Will share the url. Equivalent of pressing the 'share' button."</string>
     <string name="auto_copy">"Will copy the url. Equivalent of pressing the 'copy' button."</string>

@@ -10,7 +10,6 @@ import com.trianguloy.urlchecker.utilities.generics.JsonCatalog;
 import com.trianguloy.urlchecker.utilities.methods.AndroidUtils;
 import com.trianguloy.urlchecker.utilities.methods.JavaUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,13 +54,12 @@ public class AutomationRules extends JsonCatalog {
     @Override
     public JSONObject buildBuiltIn(Context cntx) throws JSONException {
         return new JSONObject()
-
-                .put("Unshort bit.ly", new JSONObject()
+                .put(cntx.getString(R.string.auto_rule_bitly), new JSONObject()
                         .put("regex", "https?://bit\\.ly/.*")
                         .put("action", "unshort")
                         .put("enabled", false)
                 )
-                .put("Send everything to webhook", new JSONObject()
+                .put(cntx.getString(R.string.auto_rule_webhook), new JSONObject()
                         .put("regex", ".*")
                         .put("action", "webhook")
                         .put("enabled", false)
